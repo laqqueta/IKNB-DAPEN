@@ -1,0 +1,18 @@
+package id.go.ojk.asruk.client.builder.field.sa.uus.metadata;
+
+import id.go.ojk.asruk.client.builder.field.EFormSelfAssessmentUus;
+import id.go.ojk.client.model.config.SubmissionFormat;
+import id.go.ojk.conf.client.BaseMetadata;
+
+public class Sa9999 extends BaseMetadata {
+
+	public Sa9999(String reportCode) {
+		super(reportCode, ".pdf");
+	}
+
+	@Override
+	public SubmissionFormat get() {
+		EFormSelfAssessmentUus eEnum = EFormSelfAssessmentUus.SA_9999;
+		return new SubmissionFormat(eEnum.getCode(), eEnum.getName(), reportCode, extension);
+	}
+}

@@ -1,0 +1,12 @@
+H01|031402|291080|2021-12-31|RBPPS|090202|1|
+D01|09020201000000|materi Diklat 1|metode Diklat 1|20200503|durasi Diklat 1|tempat 1|narasumber/Lembaga Diklat 1|1111|22122333
+D01|09020201000000|materi Diklat 2|metode Diklat 2|20200503|durasi Diklat 2|tempat 2|narasumber/Lembaga Diklat 2|1111|22122333
+D01|09020201000000|materi Diklat 3|metode Diklat 3|20200503|durasi Diklat 3|tempat 3|narasumber/Lembaga Diklat 3|1111|22122333
+D01|09020201000000|materi Diklat 4|metode Diklat 4|20200503|durasi Diklat 4|tempat 4|narasumber/Lembaga Diklat 4|1111|22122333
+D01|09020201000000|materi Diklat 5|metode Diklat 5|20200503|durasi Diklat 5|tempat 5|narasumber/Lembaga Diklat 5|1111|22122333
+D01|09020201000000|materi Diklat 6|metode Diklat 6|20200503|durasi Diklat 6|tempat 6|narasumber/Lembaga Diklat 6|1111|22122333
+D01|09020201000000|materi Diklat 7|metode Diklat 7|20200503|durasi Diklat 7|tempat 7|narasumber/Lembaga Diklat 7|1111|22122333
+D01|09020201000000|materi Diklat 8|metode Diklat 8|20200503|durasi Diklat 8|tempat 8|narasumber/Lembaga Diklat 8|1111|22122333
+D01|09020201000000|materi Diklat 9|metode Diklat 9|20200503|durasi Diklat 9|tempat 9|narasumber/Lembaga Diklat 9|1111|22122333
+D01|09020201000000|materi Diklat 10|metode Diklat 10|20200503|durasi Diklat 10|tempat 10|narasumber/Lembaga Diklat 10|1111|22122333
+D01|09020201000000|materi Diklat 11|metode Diklat 11|20200503|durasi Diklat 11|tempat 11|narasumber/Lembaga Diklat 11|1111|22122333

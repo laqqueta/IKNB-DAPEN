@@ -1,0 +1,13 @@
+H01|031301|2000004732|2022-12-31|RBDPPKK|1300|1|
+D01|1301010000|jenis Kantor pembukaan 1|202012|lokasi 1|keterangan 1
+D01|1301010000|jenis Kantor pembukaan 2|202012|lokasi 2|keterangan 2
+D01|1302010000|jenis kantor perubahan status 1|202012|lokasi 1|keterangan 1
+D01|1302010000|jenis kantor perubahan status 2|202012|lokasi 2|keterangan 2
+D01|1303010000|jenis kantor penggabungan 1|202312|lokasi 2|keterangan 1
+D01|1303010000|jenis kantor penggabungan 2|202312|lokasi 3|keterangan 2
+D01|1304010000|jenis kantor pemindahan alamat 1|202312|lokasi 2|keterangan 1
+D01|1304010000|jenis kantor pemindahan alamat 2|202312|lokasi 3|keterangan 2
+D01|1304010000|jenis kantor pemindahan alamat 3|202312|lokasi 4|keterangan 3
+D01|1305010000|jenis kantor penutupan 1|202312|lokasi 2|keterangan 1
+D01|1305010000|jenis kantor penutupan 2|202312|lokasi 3|keterangan 2
+D01|1305010000|jenis kantor penutupan 3|202312|lokasi 4|keterangan 3

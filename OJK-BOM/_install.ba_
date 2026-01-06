@@ -1,0 +1,2 @@
+REM mvn clean install -am -DskipTests -pl !OJK-BOM-Dependency-Local
+mvn clean install -am -DskipTests 

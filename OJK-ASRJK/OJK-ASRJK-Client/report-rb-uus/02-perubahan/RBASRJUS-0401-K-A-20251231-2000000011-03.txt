@@ -1,0 +1,4 @@
+H01|031201|2000000011|2025-12-31|RBASRJUS|0401|1|
+D01|0401010000|nama produk 1|lini usaha 1|saluran 1|rencana 1
+D01|0401010000|nama produk 2|lini usaha 2|saluran 2|rencana 2
+D01|0401010000|nama produk 3|lini usaha 3|saluran 3|rencana 3

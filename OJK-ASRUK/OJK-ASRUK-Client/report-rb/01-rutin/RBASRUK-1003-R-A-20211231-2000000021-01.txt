@@ -1,0 +1,5 @@
+H01|031202|2000000021|2021-12-31|RBASRUK|1003|0|
+D01|1003010000|materi 1|metode 1|perkiraan waktu 1|durasi 1|tempat 1|narasumber 1|1000|500000000
+D01|1003010000|materi 2|metode 2|perkiraan waktu 2|durasi 2|tempat 2|narasumber 2|1000|500000000
+D01|1003010000|materi 3|metode 3|perkiraan waktu 3|durasi 3|tempat 3|narasumber 3|1000|500000000
+D01|1003020000|||||||3000|1500000000

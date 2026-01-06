@@ -1,0 +1,1 @@
+mvn dependency:tree --log-file dependency-tree.txt

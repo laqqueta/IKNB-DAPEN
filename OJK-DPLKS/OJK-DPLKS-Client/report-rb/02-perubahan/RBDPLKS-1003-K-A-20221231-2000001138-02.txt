@@ -1,0 +1,4 @@
+H01|031304|2000001138|2022-12-31|RBDPLKS|1003|1|
+D01|1003010000|materi/Topik 1|nama Peserta 1|jabatan 1|Sertifikasi 1|202203
+D01|1003010000|materi/Topik 2|nama Peserta 2|jabatan 2|Sertifikasi 2|202203
+D01|1003010000|materi/Topik 3|nama Peserta 3|jabatan 3|Sertifikasi 3|202203

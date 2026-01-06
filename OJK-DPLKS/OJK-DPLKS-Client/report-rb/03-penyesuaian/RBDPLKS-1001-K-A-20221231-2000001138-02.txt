@@ -1,0 +1,5 @@
+H01|031304|2000001138|2022-12-31|RBDPLKS|1001|2|TEST-06-RBDPLKS-4Net
+D01|1001010000|bidang Tugas 1|alasan Pemanfaatan Tenaga Alih Daya 1|200|nama Perusahaan 1|20
+D01|1001010000|bidang Tugas 2|alasan Pemanfaatan Tenaga Alih Daya 2|300|nama Perusahaan 2|30
+D01|1001010000|bidang Tugas 3|alasan Pemanfaatan Tenaga Alih Daya 3|200|nama Perusahaan 3|10
+D01|1001020000|||700||60

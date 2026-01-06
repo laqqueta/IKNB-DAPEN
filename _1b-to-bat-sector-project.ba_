@@ -1,0 +1,5 @@
+cd .\OJK-%1
+rename _1-to-bat.ba_ _1-to-bat.bat
+call _1-to-bat.bat
+cd ..
+

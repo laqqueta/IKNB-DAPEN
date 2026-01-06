@@ -1,0 +1,4 @@
+cd .\OJK-%1
+call _2-from-bat.bat
+cd ..
+

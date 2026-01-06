@@ -1,0 +1,2 @@
+REM mvn clean package -am -DskipTests -pl !OJK-PPIK-Client
+mvn clean package -am -DskipTests

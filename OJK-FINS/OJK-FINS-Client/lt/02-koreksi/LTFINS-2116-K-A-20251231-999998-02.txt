@@ -1,0 +1,5 @@
+H01|030417|999998|2025-12-31|LTFINS|2116|2|LTFINS-02
+D01|211601010000|Nama Aset Tak Berwujud|1|1|1|1|Keterangan aset tak berwujud
+D01|211601010000|Nama Aset Tak Berwujud|1|1|1|1|Keterangan aset tak berwujud
+D01|211601010000|Nama Aset Tak Berwujud|1|2|1|2|Keterangan aset tak berwujud
+D01|211601000000||3|4|3|4|

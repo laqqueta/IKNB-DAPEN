@@ -1,0 +1,5 @@
+cd .\\_installer\source\
+rename *.bat *.ba_
+cd ..
+cd ..
+rename *.bat *.ba_

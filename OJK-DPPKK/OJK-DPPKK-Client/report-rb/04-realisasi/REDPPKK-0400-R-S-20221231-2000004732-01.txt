@@ -1,0 +1,6 @@
+H01|031301|2000004732|2022-12-31|REDPPKK|0400|0|
+D01|0401000000||7.00|6.00|-1.00|85.71
+D01|0402000000||200 karakter|200 karakter|200 karakter|200 karakter
+D01|0403000000||200 karakter|200 karakter|200 karakter|200 karakter
+D01|0404000000||120.00|150.54|30.54|125.45
+D01|0405000000|200 karakter|200 karakter|200 karakter|200 karakter|200 karakter

@@ -1,0 +1,5 @@
+ECHO "<<GENERATE DAT FILE>>"
+
+del /F .\_installer\ftp\app\*.dat
+
+call java -jar -Dfile.encoding=UTF-8 .\OJK-GDK-Client-Builder\target\OJK-GDK-Client-Builder-shaded.jar "--rootFolder=.\_installer" "--enviType=DEVEL" "--ftpServer=FTP01"

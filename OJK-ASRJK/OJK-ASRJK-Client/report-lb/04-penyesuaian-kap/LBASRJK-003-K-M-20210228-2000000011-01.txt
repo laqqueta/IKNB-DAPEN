@@ -1,0 +1,4 @@
+H01|031201|2000000011|2021-02-28|LBASRJK|003|3|
+D01|1401000000|PIC Laporan Keuangan 1|keuangan|(021)233333|4444|a_a@gmail.com
+D01|1401000000|PIC Laporan Keuangan 2|keuangan|(021)233334|4445|a_a@gmail.com
+D01|1401000000|PIC Laporan Keuangan 3|keuangan|(021)233335|4446|a_a@gmail.com

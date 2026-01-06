@@ -1,0 +1,14 @@
+EOL conversion:
+for /R %G in (*.txt) do unix2dos "%G"
+
+copy and rename extention:
+xcopy *.ba_ *.bat
+
+xcopy .\_installer\source\*.bat .\_installer\source\*.ba_
+
+rename *.bat *.ba_
+
+rename *.ba_ *.bat
+
+application argument to generate file dat:
+--rootFolder=..\_installer --ljkCode=2100000099 --resourceFolder=..\OJK-PPIK-Client --ftpServer=FTP01

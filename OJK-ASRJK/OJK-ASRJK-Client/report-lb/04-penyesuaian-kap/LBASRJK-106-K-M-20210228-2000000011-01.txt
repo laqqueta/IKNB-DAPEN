@@ -1,0 +1,5 @@
+H01|031201|2000000011|2021-02-28|LBASRJK|106|3|
+D01|1400060100|PT Buanadaya Sarana Utama|Anak |Jasa|99.99|853660467382|PT United Tractors Tbk |Astra|Distributor Alat Berat
+D01|1400060100|PT Indras Insan Jaya Utama|Anak|Jasa|99.98|25424206914|PT Astra Agro Lestari Tbk |Astra|Perkebunan 
+D01|1400060100|PT Manulife Amanah Syariah|Anak|Jasa|95.00|55822563873|PT Astra International Tbk |Astra|Otomotif
+D01|1400060200|||||934907238169|||

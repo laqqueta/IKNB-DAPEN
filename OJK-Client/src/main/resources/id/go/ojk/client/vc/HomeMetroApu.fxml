@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="mainBorderPane"
+	styleClass="background-ojk-grey" stylesheets="@ojk.css"
+	xmlns="http://javafx.com/javafx/8.0.101"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="id.go.ojk.client.vc.HomeMetroApuController">
+	<center>
+		<ScrollPane fx:id="scrollPane" fitToHeight="true"
+			BorderPane.alignment="CENTER">
+			<content>
+				<VBox fx:id="centerVbox" maxHeight="1.7976931348623157E308"
+					maxWidth="1.7976931348623157E308">
+					<children>
+						<GridPane hgap="5.0" vgap="5.0">
+							<columnConstraints>
+								<ColumnConstraints hgrow="SOMETIMES" />
+								<ColumnConstraints hgrow="SOMETIMES" />
+								<ColumnConstraints hgrow="SOMETIMES"
+									minWidth="10.0" />
+								<ColumnConstraints hgrow="SOMETIMES" />
+								<ColumnConstraints hgrow="SOMETIMES" />
+								<ColumnConstraints hgrow="SOMETIMES"
+									minWidth="10.0" />
+								<ColumnConstraints hgrow="SOMETIMES" />
+								<ColumnConstraints hgrow="SOMETIMES" />
+								<ColumnConstraints hgrow="SOMETIMES"
+									maxWidth="-Infinity" minWidth="-Infinity" prefWidth="40.0" />
+							</columnConstraints>
+							<rowConstraints>
+								<RowConstraints minHeight="10.0"
+									prefHeight="30.0" vgrow="SOMETIMES" />
+								<RowConstraints vgrow="SOMETIMES" />
+								<RowConstraints vgrow="SOMETIMES" />
+								<RowConstraints vgrow="SOMETIMES" />
+							</rowConstraints>
+							<children>
+								<Button fx:id="submissionButton" mnemonicParsing="false"
+									onAction="#handlePenilaian" styleClass="button_image"
+									GridPane.rowIndex="1">
+									<graphic>
+										<ImageView fx:id="submissionImage" fitHeight="150.0"
+											fitWidth="150.0">
+											<image>
+												<Image url="@images/rbb/penilaian_tingkat_risiko.png" />
+											</image>
+										</ImageView>
+									</graphic>
+								</Button>
+								<Button fx:id="summarySubmissionButton"
+									mnemonicParsing="false" onAction="#handleRencana"
+									styleClass="button_image" GridPane.columnIndex="1"
+									GridPane.rowIndex="1">
+									<graphic>
+										<ImageView fx:id="summarySubmissionImage"
+											fitHeight="150.0" fitWidth="150.0">
+											<image>
+												<Image url="@images/rbb/rencana_kegiatan.png" />
+											</image>
+										</ImageView>
+									</graphic>
+								</Button>
+								<Button fx:id="submissionButton2" mnemonicParsing="false"
+									onAction="#handleRealisasi" styleClass="button_image"
+									GridPane.rowIndex="2">
+									<graphic>
+										<ImageView fx:id="submissionImage2"
+											fitHeight="150.0" fitWidth="150.0">
+											<image>
+												<Image url="@images/rbb/realisasi_pengkinian.png" />
+											</image>
+										</ImageView>
+									</graphic>
+								</Button>
+								<!-- <Button fx:id="submissionButton1" mnemonicParsing="false" onAction="#handlePerubahanRB" 
+									styleClass="button_image" GridPane.columnIndex="1" GridPane.rowIndex="2"> 
+									<graphic> <ImageView fx:id="submissionImage1" fitHeight="150.0" fitWidth="150.0"> 
+									<image> <Image url="@images/rbb/perubahan_inisiatif_BPR_sq.png" /> </image> 
+									</ImageView> </graphic> </Button> -->
+								<Button fx:id="sendingButton" mnemonicParsing="false"
+									onAction="#handleSending" styleClass="button_image"
+									GridPane.columnSpan="2" GridPane.rowIndex="3">
+									<graphic>
+										<ImageView fx:id="sendingImage" fitHeight="150.0"
+											fitWidth="305.0">
+											<image>
+												<Image url="@images/rbb/SendPrepare_300.png" />
+											</image>
+										</ImageView>
+									</graphic>
+								</Button>
+								<Button fx:id="openErrorFileButton"
+									mnemonicParsing="false" onAction="#handleOpenErrorFile"
+									styleClass="button_image" visible="false"
+									GridPane.columnIndex="3" GridPane.rowIndex="3">
+									<graphic>
+										<ImageView fx:id="openErrorFileImage"
+											visible="false">
+											<image>
+												<Image url="@images/home/BukaFileError_150x150.png" />
+											</image>
+										</ImageView>
+									</graphic>
+								</Button>
+								<Button fx:id="openMasterDataButton"
+									mnemonicParsing="false" onAction="#handleOpenMasterData"
+									styleClass="button_image" GridPane.columnIndex="8"
+									GridPane.rowIndex="1" />
+								<Button fx:id="helpButton" mnemonicParsing="false"
+									onAction="#handleHelp" styleClass="button_image"
+									GridPane.columnIndex="3" GridPane.rowIndex="2">
+									<graphic>
+										<ImageView fx:id="helpImage" fitHeight="150.0"
+											fitWidth="150.0">
+											<image>
+												<Image url="@images/rbb/Manual_300.png" />
+											</image>
+										</ImageView>
+									</graphic>
+								</Button>
+								<Button fx:id="webSlikButton" mnemonicParsing="false"
+									onAction="#handleWebSlik" styleClass="button_image"
+									GridPane.columnIndex="3" GridPane.columnSpan="2"
+									GridPane.rowIndex="1">
+									<graphic>
+										<ImageView fx:id="slikWebImage" fitHeight="150.0"
+											fitWidth="305.0">
+											<image>
+												<Image url="@images/rbb/Apolo_300.png" />
+											</image>
+										</ImageView>
+									</graphic>
+								</Button>
+								<Button fx:id="faqButton" mnemonicParsing="false"
+									onAction="#handleFAQ" styleClass="button_image"
+									GridPane.columnIndex="4" GridPane.rowIndex="2">
+									<graphic>
+										<ImageView fx:id="faqImage" fitHeight="150.0"
+											fitWidth="150.0">
+											<image>
+												<Image url="@images/rbb/Faq_300.png" />
+											</image>
+										</ImageView>
+									</graphic>
+								</Button>
+								<Button fx:id="userOfflineMaintenanceMenu"
+									mnemonicParsing="false"
+									onAction="#handleUserOfflineMaintenance"
+									styleClass="button_image" GridPane.columnIndex="8"
+									GridPane.rowIndex="2">
+									<graphic>
+										<ImageView fx:id="userManagementImage"
+											visible="false">
+											<image>
+												<Image url="@images/home/PengaturanAksesOffline.png" />
+											</image>
+										</ImageView>
+									</graphic>
+								</Button>
+								<Button fx:id="applicationSettingButton"
+									mnemonicParsing="false" onAction="#handleApplicationSetting"
+									styleClass="button_image" GridPane.columnIndex="6"
+									GridPane.rowIndex="2">
+									<graphic>
+										<ImageView fx:id="applicationSettingImage"
+											fitHeight="150.0" fitWidth="150.0">
+											<image>
+												<Image url="@images/rbb/Setting_300.png" />
+											</image>
+										</ImageView>
+									</graphic>
+								</Button>
+								<Button fx:id="updateOnline" mnemonicParsing="false"
+									onAction="#handleUpdateOnline" styleClass="button_image"
+									visible="false" GridPane.columnIndex="7" GridPane.rowIndex="3">
+									<graphic>
+										<ImageView fx:id="updateOnlineImage"
+											fitHeight="150.0" fitWidth="150.0">
+											<image>
+												<Image url="@images/rbb/Online_300.png" />
+											</image>
+										</ImageView>
+									</graphic>
+								</Button>
+								<Button fx:id="updateOffline" mnemonicParsing="false"
+									onAction="#handleUpdateOffline" styleClass="button_image"
+									GridPane.columnIndex="7" GridPane.rowIndex="2">
+									<graphic>
+										<ImageView fx:id="updateOfflineImage"
+											fitHeight="150.0" fitWidth="150.0">
+											<image>
+												<Image url="@images/rbb/Offline_300.png" />
+											</image>
+										</ImageView>
+									</graphic>
+								</Button>
+								<AnchorPane fx:id="userInfoPane"
+									GridPane.columnIndex="6" GridPane.columnSpan="2"
+									GridPane.rowIndex="1">
+									<children>
+										<ImageView fx:id="userInfoImage" fitHeight="150.0"
+											fitWidth="305.0" AnchorPane.bottomAnchor="0.0"
+											AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+											AnchorPane.topAnchor="0.0">
+											<image>
+												<Image url="@images/rbb/Profile_300.png" />
+											</image>
+										</ImageView>
+										<VBox fx:id="userLoginVbox" layoutX="89.0" layoutY="12.0"
+											AnchorPane.leftAnchor="89.0" AnchorPane.topAnchor="12.0">
+											<children>
+												<Label fx:id="userNameLabel"
+													style="-fx-font-size: 16; -fx-font-weight: bold;"
+													text="Arnol Faizal" />
+												<AnchorPane>
+													<children>
+														<ImageView fx:id="offlineImage"
+															AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+															<image>
+																<Image url="@images/home/OfflineUser_74x16.png" />
+															</image>
+														</ImageView>
+														<ImageView fx:id="onlineImage"
+															AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+															<image>
+																<Image url="@images/home/OnlineUser_74x16.png" />
+															</image>
+														</ImageView>
+													</children>
+												</AnchorPane>
+												<Label fx:id="userRole" style="-fx-font-size: 12;"
+													text="User Online" visible="false" />
+											</children>
+										</VBox>
+										<VBox fx:id="memberLoginVbox" layoutX="18.0"
+											layoutY="101.0" AnchorPane.bottomAnchor="14.0"
+											AnchorPane.leftAnchor="18.0">
+											<children>
+												<Label fx:id="memberNameLabel"
+													style="-fx-font-size: 15; -fx-font-weight: bold;"
+													text="PT Bank Central Asia TBK" textFill="WHITE"
+													wrapText="true" />
+												<Label fx:id="memberTypeLabel"
+													style="-fx-font-size: 12; -fx-font-weight: bold;"
+													text="Bank Umum Konvensional" textFill="WHITE" />
+											</children>
+										</VBox>
+									</children>
+								</AnchorPane>
+								<ImageView GridPane.columnSpan="2">
+									<image>
+										<Image url="@images/home/Font_Pelaporan_59x13.png" />
+									</image>
+								</ImageView>
+								<ImageView visible="false" GridPane.columnIndex="4">
+									<image>
+										<Image url="@images/home/Font_Tools_31x10.png" />
+									</image>
+								</ImageView>
+								<ImageView GridPane.columnIndex="3">
+									<image>
+										<Image url="@images/home/Font_Bantuan_50x10.png" />
+									</image>
+								</ImageView>
+								<ImageView GridPane.columnIndex="6"
+									GridPane.columnSpan="2">
+									<image>
+										<Image
+											url="@images/home/Font_ProfildanPengaturan_137x14.png" />
+									</image>
+								</ImageView>
+								<Pane fx:id="separatorPane2" layoutX="493.0" layoutY="45.0"
+									GridPane.columnIndex="2" GridPane.hgrow="ALWAYS"
+									GridPane.rowIndex="1" />
+								<Pane fx:id="separatorPane3" GridPane.columnIndex="5"
+									GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
+								<Pane fx:id="separatorPane112" layoutX="663.0"
+									layoutY="45.0" maxHeight="-Infinity" minWidth="-Infinity"
+									prefWidth="40.0" GridPane.columnIndex="8" GridPane.rowIndex="1" />
+							</children>
+						</GridPane>
+						<Pane maxHeight="1.7976931348623157E308"
+							maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS" />
+						<GridPane maxHeight="-Infinity" minHeight="-Infinity"
+							prefHeight="80.0">
+							<columnConstraints>
+								<ColumnConstraints hgrow="SOMETIMES"
+									maxWidth="124.0" minWidth="-Infinity" prefWidth="124.0" />
+								<ColumnConstraints hgrow="SOMETIMES"
+									maxWidth="84.0" minWidth="-Infinity" prefWidth="27.0" />
+								<ColumnConstraints hgrow="SOMETIMES"
+									maxWidth="917.0" minWidth="849.0" prefWidth="849.0" />
+							</columnConstraints>
+							<rowConstraints>
+								<RowConstraints vgrow="SOMETIMES" />
+								<RowConstraints vgrow="SOMETIMES" />
+								<RowConstraints vgrow="SOMETIMES" />
+							</rowConstraints>
+							<children>
+								<ImageView fitHeight="50.0" fitWidth="135.0"
+									GridPane.rowSpan="2">
+									<image>
+										<Image url="@images/Logo-OJK.png" />
+									</image>
+									<GridPane.margin>
+										<Insets bottom="4.0" />
+									</GridPane.margin>
+								</ImageView>
+								<Label fx:id="ojkHomeNameLabel"
+									style="-fx-text-fill: rgb(122, 117, 130); -fx-font-size: 14;"
+									text="Otoritas Jasa Keuangan, Gedung Soemitro Djojohadikusumo"
+									visible="false" GridPane.columnIndex="2"
+									GridPane.valignment="BOTTOM">
+									<GridPane.margin>
+										<Insets top="12.0" />
+									</GridPane.margin>
+								</Label>
+								<Label fx:id="ojkAddressLabel"
+									style="-fx-text-fill: rgb(122, 117, 130); -fx-font-size: 14;"
+									text="Jalan Lapangan Banteng Timur 2 - 4, Jakarta 10710"
+									visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1"
+									GridPane.valignment="BOTTOM" />
+								<HBox alignment="CENTER_LEFT" GridPane.columnSpan="3"
+									GridPane.rowIndex="2">
+									<children>
+										<ImageView>
+											<image>
+												<Image url="@images/home/PhoneFooter_24x24.png" />
+											</image>
+										</ImageView>
+										<Label fx:id="phoneLabel"
+											style="-fx-text-fill: rgb(122, 117, 130); -fx-font-size: 14;"
+											text="(021) 2960 0000">
+											<HBox.margin>
+												<Insets left="15.0" />
+											</HBox.margin>
+										</Label>
+										<ImageView>
+											<image>
+												<Image url="@images/home/EmailFooter_24x24.png" />
+											</image>
+											<HBox.margin>
+												<Insets left="40.0" />
+											</HBox.margin>
+										</ImageView>
+										<Label fx:id="emailLabel"
+											style="-fx-text-fill: rgb(122, 117, 130); -fx-font-size: 14;"
+											text="humas@ojk.go.id">
+											<padding>
+												<Insets left="15.0" />
+											</padding>
+										</Label>
+										<ImageView visible="false">
+											<image>
+												<Image url="@images/home/FaxFooter_24x24.png" />
+											</image>
+											<HBox.margin>
+												<Insets left="40.0" />
+											</HBox.margin>
+										</ImageView>
+										<Label fx:id="faxLabel"
+											style="-fx-text-fill: rgb(122, 117, 130); -fx-font-size: 14;"
+											text="(021) 385 8321" visible="false">
+											<HBox.margin>
+												<Insets left="15.0" />
+											</HBox.margin>
+										</Label>
+									</children>
+									<GridPane.margin>
+										<Insets bottom="5.0" top="8.0" />
+									</GridPane.margin>
+								</HBox>
+							</children>
+							<VBox.margin>
+								<Insets top="5.0" />
+							</VBox.margin>
+						</GridPane>
+					</children>
+					<padding>
+						<Insets bottom="10.0" left="40.0" top="20.0" />
+					</padding>
+				</VBox>
+			</content>
+		</ScrollPane>
+	</center>
+</BorderPane>

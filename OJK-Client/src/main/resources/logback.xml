@@ -1,0 +1,43 @@
+<configuration>
+
+	<appender name="FILE_ROLLING"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>./log/ojkclient.log</file>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<fileNamePattern>./log/ojkclient-%i.log</fileNamePattern>
+			<minIndex>1</minIndex>
+			<maxIndex>100</maxIndex>
+		</rollingPolicy>
+
+		<triggeringPolicy
+			class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<maxFileSize>10MB</maxFileSize>
+		</triggeringPolicy>
+
+		<encoder>
+			<pattern>%date %level %logger{40} %msg%n</pattern>
+		</encoder>
+		<!-- <logger name="org.apache.http" level="debug"/> -->
+	</appender>
+
+	<!-- <appender name="FILE" class="ch.qos.logback.core.FileAppender"> -->
+	<!-- <file>C:/slik-client/log/slik-client.log</file> -->
+	<!-- <encoder> -->
+	<!-- <pattern>%date %level [%thread] %logger{10} [%file:%line] %msg%n</pattern> -->
+	<!-- </encoder> -->
+	<!-- </appender> -->
+
+	<appender name="STDOUT"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%date %level [%thread] %logger{10} [%file:%line] %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+
+	<root level="debug">
+		<appender-ref ref="FILE_ROLLING" />
+		<appender-ref ref="STDOUT" />
+	</root>
+</configuration>

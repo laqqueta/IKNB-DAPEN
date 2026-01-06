@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity"
+	minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0"
+	prefWidth="315.0" styleClass="background-ojk-red"
+	stylesheets="@ojk.css" xmlns="http://javafx.com/javafx/8.0.101"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="id.go.ojk.client.vc.LoginController">
+	<children>
+		<AnchorPane prefWidth="313.0"
+			styleClass="background-ojk-grey" AnchorPane.bottomAnchor="1.0"
+			AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0"
+			AnchorPane.topAnchor="1.0">
+			<children>
+				<ImageView fitWidth="327.0" nodeOrientation="INHERIT"
+					AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+					AnchorPane.topAnchor="0.0">
+					<image>
+						<Image url="@images/rbb/Login_400.png" />
+					</image>
+				</ImageView>
+				<TextField fx:id="userNameTextField" layoutX="20.0"
+					layoutY="146.0" prefHeight="35.0" promptText="Masukkan User ID"
+					AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0"
+					AnchorPane.topAnchor="146.0" />
+				<PasswordField fx:id="passwordField" layoutX="20.0"
+					layoutY="212.0" prefHeight="35.0" promptText="Masukkan Password"
+					AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0"
+					AnchorPane.topAnchor="212.0" />
+				<Button fx:id="loginButton" defaultButton="true"
+					layoutX="20.0" layoutY="337.0" mnemonicParsing="false"
+					onAction="#handleLogin" prefHeight="35.0"
+					style="-fx-font-weight: bold;" text="MASUK APLIKASI"
+					AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0"
+					AnchorPane.topAnchor="337.0" />
+				<ProgressIndicator fx:id="loginProgress"
+					layoutX="116.0" layoutY="157.0" maxHeight="-Infinity"
+					maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+					prefHeight="20.0" prefWidth="20.0" style="-fx-accent: #ff0000;"
+					AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="120.0"
+					AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="120.0" />
+				<ImageView fitHeight="100.0" fitWidth="73.0"
+					layoutX="120.0" layoutY="14.0" pickOnBounds="true"
+					preserveRatio="true">
+					<image>
+						<Image url="@images/rbb/padlock.png" />
+					</image>
+				</ImageView>
+				<Hyperlink layoutX="104.0" layoutY="372.0"
+					lineSpacing="1.0" onAction="#handleForgotPass"
+					text="Lupa Password?" underline="true">
+					<font>
+						<Font size="13.0" />
+					</font>
+				</Hyperlink>
+				<ComboBox fx:id="reportComboBox" layoutX="20.0"
+					layoutY="274.0" prefHeight="35.0" prefWidth="287.0"
+					visibleRowCount="5" />
+			</children>
+		</AnchorPane>
+	</children>
+</AnchorPane>

@@ -1,0 +1,5 @@
+H01|031201|2000000011|2021-12-31|RBASRJK|1005|1|
+D01|1005010000|bidang tugas 1|alasan pemanfaatan 1|100|nama perusahaan 1|jangka waktu 1
+D01|1005010000|bidang tugas 2|alasan pemanfaatan 2|100|nama perusahaan 2|jangka waktu 2
+D01|1005010000|bidang tugas 3|alasan pemanfaatan 3|100|nama perusahaan 3|jangka waktu 3
+D01|1005010000|bidang tugas 4|alasan pemanfaatan 4|100|nama perusahaan 4|jangka waktu 4

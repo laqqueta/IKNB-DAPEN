@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.65"
+	xmlns:fx="http://javafx.com/fxml/1">
+	<children>
+		<HBox alignment="CENTER_RIGHT" layoutX="10.0" prefHeight="30.0"
+			spacing="5.0" styleClass="background-ojk-grey-light"
+			AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+			AnchorPane.topAnchor="0.0">
+			<children>
+				<Hyperlink fx:id="fileHyperlink" text="nama file.txt.err" />
+				<Label layoutX="408.0" layoutY="17.0"
+					text="Total Kesalahan : ">
+					<padding>
+						<Insets right="2.0" />
+					</padding>
+				</Label>
+				<Label fx:id="totalErrorLabel" layoutX="408.0" layoutY="17.0"
+					text="50">
+					<padding>
+						<Insets right="2.0" />
+					</padding>
+				</Label>
+			</children>
+		</HBox>
+		<TextArea fx:id="errorTextArea" editable="false"
+			layoutX="10.0" layoutY="30.0" AnchorPane.bottomAnchor="0.0"
+			AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+			AnchorPane.topAnchor="30.0" />
+	</children>
+</AnchorPane>

@@ -1,0 +1,15 @@
+cd .\OJK-BOM
+call _install.bat
+cd ..
+
+cd .\OJK-Libraries-Client
+call _install.bat
+cd ..
+
+cd .\OJK-Client
+call _install.bat
+cd ..
+
+cd .\OJK-Configuration-Client
+call _install.bat
+cd ..

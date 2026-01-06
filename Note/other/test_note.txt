@@ -1,0 +1,147 @@
+
+1. Download update pakai ie jadi .zip  <DONE>
+2. Eksport txt ideb perhatikan format tanggal <DONE>  
+3. ECONOMIC_SECTORS tambah REPORT_FLAG  <DONE>
+
+
+
+slikjvadm@ojk.go.id/P@ssw0rd
+
+detail point 2
+
+1. termasuk web upload dan download aplikasi (Arif)
+2. dapat diakses melalui internet (P Akbar)
+3. menyiapkan data 40 gb dan 80 gb (P Akbar, P Ryanto dan P Slamet)
+4. ujicoba 40 gb dan 80 gb dengan server fujitsu, app client (P Slamet)
+5. test upload 40 gb dan 80 gb (dengan internet uplink 1 mbps)  
+
+yang diundang pasti 1 BRI
+
+saat uji coba
+test user pasword ganti2
+
+1. Info struktur data
+2. oresentasi client
+3. test upload presenyasi client
+
+No 5 tekno ikut mendampingi (Arif dan P Slamet)
+buat ringkasan 
+- waktu
+- mesin
+
+No 6 upload termasuk tanda bukti kirim 
+
+ 
+
+
+https://202.124.203.175/slikftp/login?username=ojk1@ojk.go.id&password=aA@123
+https://202.124.203.175/slikftp/app/ojk/clientApp/contructReferences?version=0.0.2
+
+
+
+http://10.208.110.29:8080/login?username=ojk1@ojk.go.id&password=aA@123
+
+http://localhost:8080/svc/loginSession/userName
+
+LOGIN
+
+http://localhost:8080/login?username=ojk1@ojk.go.id&password=aA@123
+http://localhost:8080/login?username=testslikmandiri@gmail.com&password=12345&memberTypeCode=0101&memberCode=008
+http://localhost:8080/login?username=userBprks@test.com&password=aA@123&memberTypeCode=0103&memberCode=600311
+http://localhost:8080/login?username=userPpDummy@test.com&password=aA@123&memberTypeCode=0201&memberCode=999001
+
+http://localhost:8080/login?username=arif.ananto@gmail.com&password=12345&memberTypeCode=0101&memberCode=009
+
+http://localhost:8080/app/ojk/memberStaticAttribute?memberTypeCode=0101&memberCode=009
+
+
+Download SLIK Client
+
+http://localhost:8080/app/dowload/slikClient?osCode=win64
+
+http://localhost:8080/app/ojk/sv/uploadComponent?componentCode=svApplication&version=0.0.1
+
+
+http://localhost:8080/app/dev/initDummyMemberUser
+http://localhost:8080/app/dev/metadataXmlSync
+http://localhost:8080/app/dev/errorCodeXmlSync
+http://localhost:8080/app/dev/referenceXmlSync
+
+http://localhost:8080/app/ojk/clientApp/uploadApplication?version=0.0.1
+
+http://localhost:8080/app/ojk/clientApp/uploadFaq?version=0.0.1
+http://localhost:8080/app/ojk/clientApp/uploadLibrary?version=0.0.1
+http://localhost:8080/app/ojk/clientApp/uploadManual?version=0.0.1
+
+http://localhost:8080/app/ojk/clientApp/contructReferences?version=0.0.1
+http://localhost:8080/app/ojk/clientApp/contructMetadata?version=0.0.1
+http://localhost:8080/app/ojk/clientApp/contructSetup?version=0.0.1
+
+=============== 
+
+LOGIN
+
+http://10.208.110.29:8080/login?username=ojk1&password=123456
+http://10.208.110.29:8080/login?username=userBankMandiri&password=aA@123&memberTypeCode=0101&memberCode=008
+http://10.208.110.29:8080/login?username=userBprks&password=aA@123&memberTypeCode=0103&memberCode=600311
+http://10.208.110.29:8080/login?username=userPpDummy&password=aA@123&memberTypeCode=0201&memberCode=999001
+
+Download SLIK Client
+
+http://10.208.110.29:8080/app/dowload/slikClient?osCode=win64
+
+
+http://localhost:8080/app/dev/initDummyMemberUser
+http://localhost:8080/app/dev/metadataXmlSync
+http://localhost:8080/app/dev/errorCodeXmlSync
+http://localhost:8080/app/dev/referenceXmlSync
+
+http://localhost:8080/app/ojk/clientApp/uploadApplication?version=0.0.1
+http://localhost:8080/app/ojk/clientApp/contructReferences?version=0.0.1
+http://localhost:8080/app/ojk/clientApp/contructMetadata?version=0.0.1
+http://localhost:8080/app/ojk/clientApp/uploadApplication?version=0.0.1
+
+
+================================
+
+LOGIN
+
+http://10.208.110.30:8080/login?username=arif.ananto@gmail.com&password=aA@123456&memberTypeCode=0101&memberCode=009
+
+Download SLIK Client
+
+http://10.208.110.30:8080/app/member/download/slikClient?osCode=win64
+
+http://10.208.110.30:8080/app/member/download/updateOffline
+
+
+
+
+
+LOGIN
+
+http://10.208.110.30:8080/login?username=ojk1@ojk.go.id&password=aA@123
+
+http://10.208.110.30:8080/app/dev/initDummyMemberUser
+http://10.208.110.30:8080/app/dev/metadataXmlSync
+http://10.208.110.30:8080/app/dev/errorCodeXmlSync
+http://10.208.110.30:8080/app/dev/referenceXmlSync
+
+http://10.208.110.30:8080/app/ojk/clientApp/uploadApplication?version=0.0.1
+http://10.208.110.30:8080/app/ojk/clientApp/uploadFaq?version=0.0.1
+http://10.208.110.30:8080/app/ojk/clientApp/uploadLibrary?version=0.0.1
+http://10.208.110.30:8080/app/ojk/clientApp/uploadManual?version=0.0.1
+http://10.208.110.30:8080/app/ojk/clientApp/contructReferences?version=0.0.1
+http://10.208.110.30:8080/app/ojk/clientApp/contructMetadata?version=0.0.1
+http://10.208.110.30:8080/app/ojk/clientApp/contructSetup?version=0.0.1
+
+
+
+
+
+
+
+
+arif.ananto@gmail.com/aA@123
+testslikcimb@gmail.com/P@ssw0rd
+cimb12345

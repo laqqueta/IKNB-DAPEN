@@ -1,0 +1,7 @@
+H01|031203|2000000031|2021-08-31|LBREASK|208|3|
+D01|4700000001|Selisih kurs penjabaran laporan keuangan dalam valuta asing|123
+D01|4700000001|Aset Keuangan tersedia untuk dijual|123
+D01|4700000001|Pengukuran Kembali Program Pensiun Imbalan Pasti|123
+D01|4700000001|Bagian pendapatan komprehensif lain entitas asosiasi|123
+D01|4700000001|Surplus Revaluasi|123
+D01|4700000002||615

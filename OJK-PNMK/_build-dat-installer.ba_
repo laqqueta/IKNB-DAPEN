@@ -1,0 +1,3 @@
+call _build.bat
+call _build-installer.bat
+call _build-dat.bat

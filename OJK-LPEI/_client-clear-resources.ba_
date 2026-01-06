@@ -1,0 +1,5 @@
+cd .\OJK-LPEI-Client
+del /F /Q .\resources\help\*
+rmdir /Q .\resources\help
+del /F /Q .\resources\*
+cd ..

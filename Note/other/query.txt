@@ -1,0 +1,17 @@
+SELECT
+    a.report_year_month, a.cif, a.account_no,
+    b.collateral_reg_no, c.COLLATERAL_COUNT
+FROM
+    JOINED_CREDITS a
+    INNER JOIN collaterals b ON (b.cif=a.cif AND b.account_no=a.account_no)
+    INNER JOIN
+    (
+        select ACCOUNT_NO, COLLATERAL_REG_NO, count(COLLATERAL_REG_NO) COLLATERAL_COUNT 
+        from collaterals
+        where delete_flag='T' AND member_code='167'
+        group by ACCOUNT_NO, COLLATERAL_REG_NO
+    ) c ON c.COLLATERAL_REG_NO=b.COLLATERAL_REG_NO
+WHERE
+    a.member_code='167'
+    AND c.COLLATERAL_COUNT = 2
+order by  a.report_year_month DESC

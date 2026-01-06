@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane styleClass="background-ojk-grey"
+	stylesheets="@ojk.css" xmlns="http://javafx.com/javafx/8.0.101"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="id.go.ojk.client.vc.HomeNotLoginController">
+	<center>
+		<VBox BorderPane.alignment="CENTER">
+			<children>
+				<Pane VBox.vgrow="ALWAYS" />
+				<GridPane>
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES"
+							maxWidth="147.0" minWidth="-Infinity" prefWidth="147.0" />
+						<ColumnConstraints hgrow="SOMETIMES"
+							maxWidth="136.0" minWidth="-Infinity" prefWidth="11.0" />
+						<ColumnConstraints hgrow="SOMETIMES"
+							maxWidth="466.0" minWidth="345.0" prefWidth="390.0" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints vgrow="SOMETIMES" />
+						<RowConstraints vgrow="SOMETIMES" />
+						<RowConstraints vgrow="SOMETIMES" />
+					</rowConstraints>
+					<children>
+						<ImageView fitHeight="50.0" fitWidth="135.0"
+							GridPane.rowSpan="2">
+							<image>
+								<Image url="@images/Logo-OJK.png" />
+							</image>
+							<GridPane.margin>
+								<Insets bottom="4.0" />
+							</GridPane.margin>
+						</ImageView>
+						<Label
+							style="-fx-text-fill: rgb(122, 117, 130); -fx-font-size: 14;"
+							text="Otoritas Jasa Keuangan" visible="false"
+							GridPane.columnIndex="2" GridPane.valignment="BOTTOM">
+							<GridPane.margin>
+								<Insets top="12.0" />
+							</GridPane.margin>
+						</Label>
+						<Label
+							style="-fx-text-fill: rgb(122, 117, 130); -fx-font-size: 14;"
+							text="Jalan Lapangan Banteng Timur 2 - 4, Jakarta 10710"
+							visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1"
+							GridPane.valignment="BOTTOM" />
+						<HBox alignment="CENTER_LEFT" GridPane.columnSpan="3"
+							GridPane.rowIndex="2">
+							<children>
+								<ImageView>
+									<image>
+										<Image url="@images/home/PhoneFooter_24x24.png" />
+									</image>
+								</ImageView>
+								<Label
+									style="-fx-text-fill: rgb(122, 117, 130); -fx-font-size: 14;"
+									text="(021) 2960 0000 ext. 7000">
+									<HBox.margin>
+										<Insets left="15.0" />
+									</HBox.margin>
+								</Label>
+								<ImageView>
+									<image>
+										<Image url="@images/home/EmailFooter_24x24.png" />
+									</image>
+									<HBox.margin>
+										<Insets left="40.0" />
+									</HBox.margin>
+								</ImageView>
+								<Label
+									style="-fx-text-fill: rgb(122, 117, 130); -fx-font-size: 14;"
+									text="helpdesk@ojk.go.id">
+									<padding>
+										<Insets left="15.0" />
+									</padding>
+								</Label>
+								<ImageView visible="false">
+									<image>
+										<Image url="@images/home/FaxFooter_24x24.png" />
+									</image>
+									<HBox.margin>
+										<Insets left="40.0" />
+									</HBox.margin>
+								</ImageView>
+								<Label
+									style="-fx-text-fill: rgb(122, 117, 130); -fx-font-size: 14;"
+									text="(021) 385 8321" visible="false">
+									<HBox.margin>
+										<Insets left="15.0" />
+									</HBox.margin>
+								</Label>
+							</children>
+							<GridPane.margin>
+								<Insets bottom="5.0" top="8.0" />
+							</GridPane.margin>
+						</HBox>
+					</children>
+				</GridPane>
+			</children>
+			<padding>
+				<Insets bottom="10.0" left="40.0" right="40.0" top="20.0" />
+			</padding>
+		</VBox>
+	</center>
+</BorderPane>

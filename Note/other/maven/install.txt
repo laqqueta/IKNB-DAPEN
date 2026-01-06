@@ -1,0 +1,15 @@
+mvn install:install-file -Dfile=icepdf-core-6.1.1.jar -DgroupId=org.icepdf.os -DartifactId=icepdf-core -Dversion=6.1.1 -Dpackaging=jar
+
+mvn install:install-file -Dfile=icepdf-viewer-6.1.1.jar -DgroupId=org.icepdf.os -DartifactId=icepdf-viewer -Dversion=6.1.1 -Dpackaging=jar
+
+mvn install:install-file -Dfile=axis-1.4.0.jar -DgroupId=org.apache.axis -DartifactId=axis -Dversion=1.4.0 -Dpackaging=jar
+
+mvn install:install-file -Dfile=jaxrpc-1.1.jar -DgroupId=javax.xml.rpc -DartifactId=jaxrpc -Dversion=1.1 -Dpackaging=jar
+
+mvn install:install-file -Dfile=commons-discovery-0.2.jar -DgroupId=commons-discovery -DartifactId=commons-discovery -Dversion=0.2 -Dpackaging=jar
+
+mvn install:install-file -Dfile=javax-wsdl-1.6.2.jar -DgroupId=javax.wsdl -DartifactId=javax-wsdl -Dversion=1.6.2 -Dpackaging=jar
+
+mvn install:install-file -Dfile=mssql-jdbc-6.2.2.jre8.jar -DgroupId=mssql-jdbc -DartifactId=mssql-jdbc -Dversion=6.2.2 -Dpackaging=jar
+
+mvn install:install-file -Dfile=duckdb_jdbc-1.1.3.jar -DgroupId=org.duckdb -DartifactId=duckdb_jdbc -Dversion=1.1.3 -Dpackaging=jar

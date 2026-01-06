@@ -1,0 +1,8 @@
+call _build-exe.bat
+
+cd .\_installer\source
+call _installer.bat
+cd ..
+cd ..
+
+call java -cp ".\OJK-PPK-Client-Builder\target\OJK-PPK-Client-Builder-shaded.jar;." id.go.ojk.ppk.client.builder.InstallerFtpSync "--ftpServer=FTP01" "--ftpAppFolder=.\_installer\ftp\app" "--enviType=DEVEL"

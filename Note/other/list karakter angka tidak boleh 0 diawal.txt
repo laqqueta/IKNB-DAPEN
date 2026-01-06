@@ -1,0 +1,80 @@
+DEBITUR INDIVIDU - D01
+_________________________
+Penghasilan Kotor Per Tahun <DONE>
+
+KREDIT/KREDIT JOIN - F01/F02
+______________________________________________
+
+Plafon Awal
+Plafon
+Realisasi/Pencairan Bulan berjalan
+Denda
+Baki Debet
+Nilai Dalam Mata uang asal
+tunggakan pokok 
+tunggakan bunga
+
+Surat Berharga - F03
+________________________________
+nominal
+nilai dalam mata uang asal
+nilai pasar
+nilai perolehan
+tunggakan
+
+
+LC - F04
+____________________________
+Plafon
+Nominal
+Setoran Jaminan
+
+
+Bank Garansi - F05
+_______________________________
+Plafon
+Nominal 
+Setoran Jaminan
+
+
+Fasilitas Lainnya - F06
+______________________________
+Nominal/Jumlah Kewajiban
+Nilai Dalam Mata Uang Asal
+Tunggakan 
+
+AGUNAN - A01
+____________________
+Nilai Agunan Sesuai NJOP
+Nilai Agunan Menurut LJK
+
+
+LAPORAN KEUANGAN - K01
+_____________________________
+Aset
+Aset Lancar
+Kas dan Setara Kas  (Aset Lancar)
+Piutang Usaha/Pembiayaan  (Aset Lancar)
+Investasi / Aset Keuangan Lainnya (Aset Lancar)
+Aset Lancar Lainnya  (Aset Lancar)
+Aset Tidak Lancar  
+Piutang Usaha/Pembiayaan (Aset Tidak Lancar)
+Investasi / Aset Keuangan Lainnya (Aset Tidak Lancar)
+Aset Tidak Lancar Lainnya (Aset Tidak Lancar)
+Liabilitas
+Liabilitas Jangka Pendek
+Pinjaman Jangka Pendek (Liabilitas Jangka Pendek)
+Utang Usaha Jangka Pendek (Liabilitas Jangka Pendek)
+Liabilitas Jangka Pendek Lainnya (Liabilitas Jangka Pendek)
+Liabilitas Jangka Panjang
+Pinjaman Jangka Panjang
+Utang Usaha Jangka Panjang (Liabilitas Jangka Panjang)
+Liabilitas Jangka Panjang Lainnya (Liabilitas Jangka Panjang)
+Ekuitas
+Pendapatan Usaha/Operasional
+Beban Pokok Pendapatan/Beban Operasional
+Laba/Rugi Bruto
+Pendapatan lain-lain/Non-Operasional
+Beban Lain-lain/Non Operasional
+Laba/Rugi Sebelum Pajak
+Laba/Rugi Tahun Berjalan

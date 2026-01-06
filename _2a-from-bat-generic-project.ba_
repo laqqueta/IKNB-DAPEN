@@ -1,0 +1,15 @@
+cd .\OJK-BOM
+call _2-from-bat.bat
+cd ..
+
+cd .\OJK-Libraries-Client
+call _2-from-bat.bat
+cd ..
+
+cd .\OJK-Client
+call _2-from-bat.bat
+cd ..
+
+cd .\OJK-Configuration-Client
+call _2-from-bat.bat
+cd ..

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>id.go.ojk</groupId>
+		<artifactId>OJK-BOM</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>OJK-PA</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+	<name>OJK-PA</name>
+	<description>OJK-PA</description>
+	<dependencies>
+		<dependency>
+			<groupId>id.go.ojk</groupId>
+			<artifactId>OJK-Client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+	</dependencies>
+	<modules>
+		<module>OJK-PA-Client</module>
+	  <module>OJK-PA-Client-Builder</module>
+  </modules>
+</project>

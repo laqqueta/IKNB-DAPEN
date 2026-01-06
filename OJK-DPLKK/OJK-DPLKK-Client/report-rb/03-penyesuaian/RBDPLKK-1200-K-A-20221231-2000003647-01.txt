@@ -1,0 +1,5 @@
+H01|031302|2000003647|2022-12-31|RBDPLKK|1200|2|TEST-06-RBDPLKK-4Net
+D01|1201000000|jenis manfaat lain 1|deskripsi manfaat lain 1|202107|tujuan 1|risiko 1|mitigasi 1|alasan 1|strategi 1
+D01|1201000000|jenis manfaat lain 2|deskripsi manfaat lain 2|202107|tujuan 2|risiko 2|mitigasi 2|alasan 2|strategi 2
+D01|1201000000|jenis manfaat lain 3|deskripsi manfaat lain 3|202107|tujuan 3|risiko 3|mitigasi 3|alasan 3|strategi 3
+D01|1201000000|jenis manfaat lain 4|deskripsi manfaat lain 4|202107|tujuan 4|risiko 4|mitigasi 4|alasan 4|strategi 4

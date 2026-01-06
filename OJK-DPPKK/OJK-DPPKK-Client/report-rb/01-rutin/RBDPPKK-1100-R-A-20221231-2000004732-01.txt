@@ -1,0 +1,12 @@
+H01|031301|2000004732|2022-12-31|RBDPPKK|1100|0|
+D01|1101000000|target 1|a) kebijakan a target 1|strategi 1 kebijakan a target 1
+D01|1101000000|target 1|a) kebijakan a target 1|strategi 2 kebijakan a target 1
+D01|1101000000|target 1|b) kebijakan b target 1|strategi 1 kebijakan b target 1
+D01|1101000000|target 1|b) kebijakan b target 1|strategi 2 kebijakan b target 1
+D01|1101000000|target 1|b) kebijakan b target 1|strategi 3 kebijakan b target 1
+D01|1101000000|target 2|a) kebijakan a target 2|strategi 1 kebijakan a target 2
+D01|1101000000|target 2|a) kebijakan a target 2|strategi 2 kebijakan a target 2
+D01|1101000000|target 2|b) kebijakan b target 2|strategi 1 kebijakan b target 2
+D01|1101000000|target 2|b) kebijakan b target 2|strategi 2 kebijakan b target 2
+D01|1101000000|target 2|b) kebijakan b target 2|strategi 3 kebijakan b target 2
+D01|1101000000|dst|dst|dst

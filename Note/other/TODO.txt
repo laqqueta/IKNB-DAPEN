@@ -1,0 +1,275 @@
+
+T9XUSc6S
+
+http://10.230.254.11/ => web
+http://10.230.254.12/ => upload
+
+[15:09, 11/10/2016] Akbar: 10.231.254.11 => ftp
+[15:30, 11/10/2016] Akbar: [3:24 PM, 11/10/2016] +62 812-2395-9500: Slik upload di 10.230.254.12                        
+[3:24 PM, 11/10/2016] +62 812-2395-9500: Slik report di 10.230.254.13
+
+app redis dan ssm 10.225.254.13
+
+1. Slik Client progress kadang masih tidak update
+2. Connection Pool setting
+- Spring Boot
+- weblogic 
+
+
+1. view login user <DONE>
+2. tendang login User <DONE>
+3. 2 way ssl auth 
+4. service habis login di logoutin 
+5. redis cluster <DONE>
+6. jms menggunakan weblogic
+sementara menggunakan  activemq cluster
+7. update ideb 
+8. error iDeb open GL <DONE>
+error iDeb open GL <DONE> 
+9. slik client F02 validasi harus sama tidak berlaku untuk kondisi 01 dan 14 <DONE>
+10. Test Web Provisioning  <GAK JADI>
+12. Slik Client login OJK <DONE>
+13. "spring:session:ftp:index:org.springframework.session.FindByIndexNameSessionRepository.PRINCIPAL_NAME_INDEX_NAME:"; <DONE>
+14. Web Upload terpisah 
+15. table submission tambah kolom uploaded_by dll <DONE>
+16. ideb viewer file assosiation  
+17. ideb viewer buka file masuk tab  
+18. client login OJK
+	- update <DONE>
+19. Provisioning FTP Server <DONE>
+20. ideb viewer export txt <DONE>
+
+21. Cek MemberCode and MemberType Code
+- Edit Online segment <DONE>
+- Upload <DONE>
+
+22. installer SLIK Client 
+- Win 64 <DONE>
+- Win 32 <DONE>
+- linux 64 rpm  => ganti linux tar.gz <DONE>
+
+ 	
+
+========================
+
+Meeting Ruang Pak Budi 2016 10 10
+
+Web Provisioning buat terpisah user dan role membaca ke web SLIK
+App Server 2 pindah jadi diinstall KDF
+jika debtor badan usaha  C maka pengurus harus C juga
+
+
+========================
+
+
+Rabu
+- migrasi
+- P Wiri, P Rama, B Nita
+Kamis
+- Provisioning
+- Client dan Web (Optional)
+- P Wiri, P Johans, Arif
+
+========================
+
+AuthenticationController
+ContentController
+ScreenController
+HomeController
+ScreenInterceptor
+
+=========================
+
+EDIT ONLINE
+1. Agunan Kredit join tidak boleh edit online <DONE>
+2. data decimal <DONE>
+3. nyeragamin konfirmasi
+4. Apakah Penjamin Join Kredit dan Penjamin (Seperti Paripasu juga tidak boleh diedit)
+
+
+
+1. roolback update <DONE>
+
+
+
+a.       Karakter spasi pada nomor akad awal dan akad akhir untuk setiap fasilitas
+b.      Karakter koma “,” pada bukti kepemilikan – agunan <DONE>
+c.       Panjang karakter kode register agunan, menjadi 30 karakter <DONE>
+d.      Kartu Kredit à  Nomor dan Tanggal Akad Tidak Harus Diisi, Jatuh Tempo wajib diisi <DONE>
+e.      Giro bersaldo debet, Tagihan atas transaksi perdagangan, Lainnya à Nomor dan Tanggal Akad Tidak Harus Diisi, Jatuh Tempo wajib kosong (Tanpa PK) <DONE>
+
+
+a.       Karakter spasi pada setiap nomor rekening <DONE>
+b.      Karakter koma “,” pada bukti kepemilikan – agunan <DONE> 
+c.       Panjang karakter kode register agunan, menjadi 30 karakter <DONE>
+d.      Kartu Kredit à  Nomor dan Tanggal Akad Tidak Harus Diisi, Jatuh Tempo wajib diisi <DONE>
+e.      Giro bersaldo debet, Tagihan atas transaksi perdagangan, Lainnya à Nomor dan Tanggal Akad Tidak Harus Diisi, Jatuh Tempo wajib kosong (Tanpa PK)
+
+
+
+1. Agunan kredit join harus muncul 2 x
+
+2. Agunan muncul 2x harus paripasu
+
+3. Agunan Kredit join tidak boleh edit online
+
+
+
+
+1. pengecekan atas bawah
+=> diskusi user
+
+2. join account
+
+- load hanya pariasu dan joincredit
+jika content tidak sama maka dianggap semua error
+
+3. paripasu
+
+- load hanya pariasu dan joincredit
+jika content tidak sama maka dianggap semua error
+
+untuk penjamin mambandingkan detail data dengan baca text ulang 
+
+4. log
+- urutin kolom  <DONE>
+
+
+
+
+IDI Viewer
+1. Proxy
+2. Pointer
+3. eksport ke text
+
+1. pindah konfigurasi ke server <DONE>
+2. Bug delete user offline <DONE>
+
+
+1. deploy internet <DONE>
+2. validasi last update office <DONE> 
+3. rapikan jarak validasi <DONE>
+4. timer cek koneksi <DONE>
+5. restart application <DONE>
+6. update faq <DONE>
+7. update application <DONE>
+8. setting xmx dan xms <DONE>
+9. setelah simpan parameter koneksi mengupdate state httpservice   <DONE>
+
+10. SSM <DONE>
+11. fix summary Pak Slamet <DONE>
+12. submisssion baca dir harus urut <DONE>
+13. integrasi dengan manajement proses
+14. 
+- last login date <DONE>
+- last passsword change <DONE>
+- Lock fail login user <DONE>
+
+15. 
+- Web update program
+- Web upload file tambah delete dan js validation 
+
+16. progress
+- Change Password <DONE>
+- update online <TIDAK PERLU>
+
+17. all tombol cancel grey <DONE>
+
+18. proxy password menggunakan **** <DONE>
+
+19. config
+- regex password <DONE>
+- config baca db  <DONE>
+
+20. find reference tambah yang active flag Y <DONE>
+
+21. Logout Error UI state tidak tereset <DONE>
+
+22. FTPs behind proxy <DONE> ====
+
+23. Test koneksi melibatkan FTP server <DONE> ==== 
+
+24. Tambahan Config FTP <DONE>
+
+25. TEST KONEKSI FTP byte array harus dibatasin  <DONE> === perlu test
+
+26. Update online setelah klik update tombol update disable <DONE>
+pada tombol login ada tool tip close
+
+27. select member office for setup.jar belum baca active flag <DONE>
+ambil user juga sama <DONE>
+
+28. user login belum memperhitungkan LJK delete / tidak aktif <DONE>
+
+29. setting port proxy error simpan jika di kosongkan <DONE>
+FTP lewat proxy di OJK sekarang gagal meskipun dulu pernah berhasil
+
+30. cek status di atas kanan termasuk test ftp <DONE> 
+
+31. ganti ke domain
+- http 
+- ftp
+
+32. SSL trust
+- http
+- ftp
+
+33.change direktori proses <DONE>
+
+34. validation server run by command prompt <DONE>
+
+35. kadang ui tidak terupdate
+sebelum update persentase cek dulu apakah current lebih besar <DONE>
+Tambah delay update status selesai => sudah solusi diatas  <DONE>
+
+Bu Lili
+
+1. Referensi suku bunga ditambahkan kode 9 (lainnya)
+2. Kode register agunan komposit dgn norek
+3. Kode register agunan hanya boleh berulang kalau status paripasu Y
+4. Kolom pangsa kepemilikan seharusnya tipe data numeric bukan char..
+
+5. Pesan error mohon diperjelas penyebabnya
+
+6. identisas pengurus mestinya komposit dgn cif 
+
+7. Cek lagi validasi pangsa kepemilikan M01 untuk pengurus yg bukan pemilik => master data
+
+8. kode referensi dati 2 hrs diupdate => master data
+
+9. perlu diskusi untuk identitas pemilik koperasi (anggota) dan sekalian pemda jg
+10. Kode reff sektor eko
+11. Kode reff sandi pihak ketiga
+
+
+
+1. Redis cluster
+2. Load Balancing
+	- Http
+	- Ftp
+3. Transfered file size <DONE>
+
+4. spring security role <DONE>
+
+5. management <DONE>
+
+6. Buka Master data dan file Error menggunakan gzip, header dan penamaan file untuk membedakan 
+
+7. Koneksi : Internet dan extranet
+tombol test koneksi
+
+8. proxy
+- http
+- ftp 
+
+9. Update Online
+
+10. update offline
+
+11. config
+
+12. acak constant static key
+
+
+
+

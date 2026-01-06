@@ -1,0 +1,5 @@
+H01|031203|2000000031|2021-12-31|RBREASK|0400|2|TEST-03-RBREASK-4Net
+D01|0401000000|nama a|lini a|saluran a|penerbitan a
+D01|0401000000|nama b|lini b|saluran b|penerbitan b
+D01|0401000000|nama a|lini a|saluran a|penerbitan a
+D01|0401000000|nama b|lini b|saluran b|penerbitan b

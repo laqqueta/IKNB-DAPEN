@@ -1,0 +1,10 @@
+H01|031303|2000004778|2022-10-01|SDPSI|0302|1|TEST-05-SADPPKS-4Net
+D01|0302010000|Analisis Risiko Inheren - Risiko Strategis|Analisis Kualitas Penerapan Manajemen Risiko - Risiko Strategis|Analisis Tingkat Risiko - Risiko Strategis
+D01|0302020000|Analisis Risiko Inheren - Risiko Operasional|Analisis Kualitas Penerapan Manajemen Risiko - Risiko Operasional|Analisis Tingkat Risiko - Risiko Operasional
+D01|0302030000|Analisis Risiko Inheren - Risiko Kredit|Analisis Kualitas Penerapan Manajemen Risiko - Risiko Kredit|Analisis Tingkat Risiko - Risiko Kredit
+D01|0302040000|Analisis Risiko Inheren - Risiko Pasar|Analisis Kualitas Penerapan Manajemen Risiko - Risiko Pasar|Analisis Tingkat Risiko - Risiko Pasar
+D01|0302050000|Analisis Risiko Inheren - Risiko Likuiditas|Analisis Kualitas Penerapan Manajemen Risiko - Risiko Likuiditas|Analisis Tingkat Risiko - Risiko Likuiditas
+D01|0302060000|Analisis Risiko Inheren - Risiko Hukum|Analisis Kualitas Penerapan Manajemen Risiko - Risiko Hukum|Analisis Tingkat Risiko - Risiko Hukum
+D01|0302070000|Analisis Risiko Inheren - Risiko Kepatuhan|Analisis Kualitas Penerapan Manajemen Risiko - Risiko Kepatuhan|Analisis Tingkat Risiko - Risiko Kepatuhan
+D01|0302080000|Analisis Risiko Inheren - Risiko Reputasi|Analisis Kualitas Penerapan Manajemen Risiko - Risiko Reputasi|Analisis Tingkat Risiko - Risiko Reputasi
+D01|0302090000|Analisis Risiko Inheren - Peringkat Komposit|Analisis Kualitas Penerapan Manajemen Risiko - Peringkat Komposit|Analisis Tingkat Risiko - Peringkat Komposit

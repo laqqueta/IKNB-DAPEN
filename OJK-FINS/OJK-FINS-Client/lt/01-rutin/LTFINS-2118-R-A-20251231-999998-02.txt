@@ -1,0 +1,5 @@
+H01|030417|999998|2025-12-31|LTFINS|2118|0|
+D01|211801010000|Nama Pihak Berelasi/Pihak Ketiga|1|Keterangan
+D01|211801010000|Nama Pihak Berelasi/Pihak Ketiga|1|Keterangan
+D01|211801010000|Nama Pihak Berelasi/Pihak Ketiga|2|Keterangan
+D01|211801000000||4|

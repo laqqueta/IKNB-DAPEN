@@ -1,0 +1,4 @@
+H01|031303|2000004778|2022-12-31|RBDPPKS|1003|0|
+D01|1003010000|materi/Topik 1|nama Peserta 1|jabatan 1|Sertifikasi 1|202112
+D01|1003010000|materi/Topik 2|nama Peserta 2|jabatan 2|Sertifikasi 2|202113
+D01|1003010000|materi/Topik 3|nama Peserta 3|jabatan 3|Sertifikasi 3|202114

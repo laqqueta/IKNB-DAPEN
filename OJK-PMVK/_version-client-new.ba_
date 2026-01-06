@@ -1,0 +1,1 @@
+mvn versions:set-property -Dproperty=version.OJK-PMVK-Client -DnewVersion=1.1.0

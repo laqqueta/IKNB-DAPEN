@@ -1,0 +1,8 @@
+call rmdir /S /Q .\_installer\deploy
+call rmdir /S /Q .\_installer\entity
+call rmdir /S /Q .\_installer\ftp
+call rmdir /S /Q .\_installer\jar
+call rmdir /S /Q .\_installer\metadata
+call rmdir /S /Q .\_installer\reference
+call rmdir /S /Q .\log
+mvn clean

@@ -1,0 +1,5 @@
+H01|030417|999998|2025-12-31|LBFINS|2119|2|LBFINS-01
+D01|211901010000|nama Pendapatan non operasional 1|1|Keterangan (Sumber aktivitas pendapatan)
+D01|211901010000|nama Pendapatan non operasional 2|1|Keterangan (Sumber aktivitas pendapatan)
+D01|211901010000|nama Pendapatan non operasional 3|0|Keterangan (Sumber aktivitas pendapatan)
+D01|211901000000||2|

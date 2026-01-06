@@ -1,0 +1,9 @@
+H01|031201|2000000011|2021-12-31|RBASRJK|0900|2|TEST-01-RBASRJK-4Net
+D01|0901010000|jenis kantor 1|waktu pelaksanaan 1|lokasi 1|35000|keterangan 1
+D01|0901020000|jenis kantor 2|waktu pelaksanaan 2|lokasi 2|2000|keterangan 2
+D01|0902010000|jenis kantor pindah 1|waktu pelaksanaan pindah 1|lokasi pindah 1|123444|keterangan pindah 1
+D01|0902010000|jenis kantor pindah 2|waktu pelaksanaan pindah 2|lokasi pindah 2|33333|keterangan pindah 2
+D01|0902010000|jenis kantor pindah 3|waktu pelaksanaan pindah 3|lokasi pindah 3|111111|keterangan pindah 3
+D01|0903010000|jenis kantor tutup 1|waktu pelaksanaan tutup 1|lokasi tutup 1|34567|keterangan tutup 1
+D01|0903010000|jenis kantor tutup 2|waktu pelaksanaan tutup 2|lokasi tutup 2|33333|keterangan tutup 2
+D01|0903010000|jenis kantor tutup 3|waktu pelaksanaan tutup 3|lokasi tutup 3|22222|keterangan tutup 3

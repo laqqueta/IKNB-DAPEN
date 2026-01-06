@@ -1,0 +1,5 @@
+mvn clean install -DskipTests=true
+mvn dependency:sources
+
+
+10.208.110.32:9000

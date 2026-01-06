@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.web.WebView?>
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity"
+	prefHeight="400.0" prefWidth="400.0" styleClass="background-ojk-red"
+	stylesheets="@ojk.css" xmlns="http://javafx.com/javafx/8.0.65"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="id.go.ojk.client.vc.FAQController">
+	<children>
+		<Pane prefWidth="30.0" styleClass="background-ojk-grey"
+			AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0"
+			AnchorPane.topAnchor="35.0" />
+		<WebView fx:id="webView" maxHeight="-1.0" maxWidth="-1.0"
+			minHeight="-1.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0"
+			AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0"
+			AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="36.0" />
+	</children>
+</AnchorPane>

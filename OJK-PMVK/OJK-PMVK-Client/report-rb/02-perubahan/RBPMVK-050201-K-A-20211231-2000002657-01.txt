@@ -1,0 +1,12 @@
+H01|031403|2000002657|2021-12-31|RBPMVK|050201|1|
+D01|05020101000000|KU:e01|deskripsi Umum Kegiatan Usaha 1|20200403|bagi Perusahaan 1|bagi debitur 1|keterkaitan Kegiatan Usaha dengan Strategi Bisnis Perusahaan 1
+D01|05020101000000|KU:e02|deskripsi Umum Kegiatan Usaha 2|20200403|bagi Perusahaan 2|bagi debitur 2|keterkaitan Kegiatan Usaha dengan Strategi Bisnis Perusahaan 2
+D01|05020101000000|KU:e01|deskripsi Umum Kegiatan Usaha 3|20200403|bagi Perusahaan 3|bagi debitur 3|keterkaitan Kegiatan Usaha dengan Strategi Bisnis Perusahaan 3
+D01|05020101000000|KU:e01|deskripsi Umum Kegiatan Usaha 4|20200403|bagi Perusahaan 4|bagi debitur 4|keterkaitan Kegiatan Usaha dengan Strategi Bisnis Perusahaan 4
+D01|05020101000000|KU:e02|deskripsi Umum Kegiatan Usaha 5|20200403|bagi Perusahaan 5|bagi debitur 5|keterkaitan Kegiatan Usaha dengan Strategi Bisnis Perusahaan 5
+D01|05020101000000|KU:e01|deskripsi Umum Kegiatan Usaha 6|20200403|bagi Perusahaan 6|bagi debitur 6|keterkaitan Kegiatan Usaha dengan Strategi Bisnis Perusahaan 6
+D01|05020101000000|KU:e01|deskripsi Umum Kegiatan Usaha 7|20200403|bagi Perusahaan 7|bagi debitur 7|keterkaitan Kegiatan Usaha dengan Strategi Bisnis Perusahaan 7
+D01|05020101000000|KU:e02|deskripsi Umum Kegiatan Usaha 8|20200403|bagi Perusahaan 8|bagi debitur 8|keterkaitan Kegiatan Usaha dengan Strategi Bisnis Perusahaan 8
+D01|05020101000000|KU:e01|deskripsi Umum Kegiatan Usaha 9|20200403|bagi Perusahaan 9|bagi debitur 9|keterkaitan Kegiatan Usaha dengan Strategi Bisnis Perusahaan 9
+D01|05020101000000|KU:e01|deskripsi Umum Kegiatan Usaha 10|20200403|bagi Perusahaan 10|bagi debitur 10|keterkaitan Kegiatan Usaha dengan Strategi Bisnis Perusahaan 10
+D01|05020101000000|KU:e02|deskripsi Umum Kegiatan Usaha 11|20200403|bagi Perusahaan 11|bagi debitur 11|keterkaitan Kegiatan Usaha dengan Strategi Bisnis Perusahaan 11

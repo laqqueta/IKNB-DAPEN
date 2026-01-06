@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane minHeight="430.0" minWidth="500.0"
+	xmlns="http://javafx.com/javafx/8.0.111"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="id.go.ojk.client.vc.ApplicationSettingController">
+	<children>
+		<BorderPane maxHeight="1.7976931348623157E308"
+			maxWidth="1.7976931348623157E308" minHeight="-Infinity"
+			minWidth="-Infinity" prefHeight="430.0" prefWidth="500.0"
+			styleClass="background-ojk-red" stylesheets="@ojk.css"
+			AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+			AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+			<top>
+				<Pane styleClass="background-ojk-grey" />
+			</top>
+			<padding>
+				<Insets bottom="1.0" left="1.0" right="1.0" top="30.0" />
+			</padding>
+			<center>
+				<ScrollPane hbarPolicy="NEVER" vbarPolicy="NEVER"
+					BorderPane.alignment="CENTER">
+					<content>
+						<VBox fx:id="mainVBox" minHeight="-Infinity"
+							minWidth="-Infinity" prefWidth="1000.0"
+							styleClass="background-ojk-grey">
+							<children>
+								<VBox fx:id="preparationAndSendingSettingVBox">
+									<children>
+										<Label styleClass="label-red" text="Penyampaian Laporan" />
+										<HBox>
+											<children>
+												<Label contentDisplay="RIGHT"
+													styleClass="label-grey-small" text="Direktori File Laporan" />
+												<Label contentDisplay="RIGHT" layoutX="10.0"
+													layoutY="10.0" styleClass="sr-label-tooltip">
+													<graphic>
+														<ImageView fitHeight="15.0" fitWidth="20.0"
+															pickOnBounds="true" preserveRatio="true">
+															<image>
+																<Image url="@images/tooltip.png" />
+															</image>
+														</ImageView>
+													</graphic>
+													<tooltip>
+														<Tooltip fx:id="submissionSourceDirTooltip"
+															graphicTextGap="2.0" styleClass="sr-tooltip"
+															text="Lokasi folder untuk menyimpan data laporan &#10;yang akan dikirim ke server SLIK OJK, &#10;berisi semua file segmen dalam bentuk txt file"
+															wrapText="true" />
+													</tooltip>
+												</Label>
+											</children>
+											<VBox.margin>
+												<Insets left="10.0" />
+											</VBox.margin>
+										</HBox>
+										<HBox>
+											<children>
+												<TextField fx:id="submissionSourceDirField"
+													prefHeight="20.0" prefWidth="360.0"
+													promptText="Direktori File Laporan"
+													text="C:\rbb-client\pelaporan\sumber" />
+												<Button fx:id="submissionSourceDirButton"
+													mnemonicParsing="false" text="Browse">
+													<HBox.margin>
+														<Insets left="10.0" />
+													</HBox.margin>
+												</Button>
+											</children>
+											<VBox.margin>
+												<Insets left="10.0" />
+											</VBox.margin>
+										</HBox>
+										<HBox>
+											<children>
+												<Label styleClass="label-grey-small"
+													text="Direktori File Proses" />
+												<Label contentDisplay="RIGHT"
+													styleClass="sr-label-tooltip">
+													<graphic>
+														<ImageView fitHeight="15.0" fitWidth="20.0"
+															pickOnBounds="true" preserveRatio="true">
+															<image>
+																<Image url="@images/tooltip.png" />
+															</image>
+														</ImageView>
+													</graphic>
+													<tooltip>
+														<Tooltip fx:id="submissionSourceDirTooltip1"
+															graphicTextGap="2.0" styleClass="sr-tooltip"
+															text="Lokasi tempat penyimpanan log error &#10;hasil proses validasi client."
+															wrapText="true" />
+													</tooltip>
+												</Label>
+											</children>
+											<VBox.margin>
+												<Insets left="10.0" />
+											</VBox.margin>
+										</HBox>
+										<HBox>
+											<children>
+												<TextField fx:id="submissionProcessDirField"
+													prefHeight="20.0" prefWidth="360.0"
+													text="C:\rbb-client\pelaporan\proses">
+													<HBox.margin>
+														<Insets />
+													</HBox.margin>
+												</TextField>
+												<Button fx:id="submissionProcessDirButton"
+													mnemonicParsing="false" text="Browse">
+													<HBox.margin>
+														<Insets left="10.0" />
+													</HBox.margin>
+												</Button>
+											</children>
+											<VBox.margin>
+												<Insets left="10.0" />
+											</VBox.margin>
+										</HBox>
+										<HBox>
+											<children>
+												<Label styleClass="label-grey-small"
+													text="Direktori File Selesai Kirim" />
+												<Label contentDisplay="RIGHT"
+													styleClass="sr-label-tooltip">
+													<graphic>
+														<ImageView fitHeight="15.0" fitWidth="20.0"
+															pickOnBounds="true" preserveRatio="true">
+															<image>
+																<Image url="@images/tooltip.png" />
+															</image>
+														</ImageView>
+													</graphic>
+													<tooltip>
+														<Tooltip fx:id="submissionSourceDirTooltip11"
+															graphicTextGap="2.0" styleClass="sr-tooltip"
+															text="Lokasi folder untuk menyimpan &#10;hasil pengiriman data ke server SLIK OJK"
+															wrapText="true" />
+													</tooltip>
+												</Label>
+											</children>
+											<VBox.margin>
+												<Insets left="10.0" />
+											</VBox.margin>
+										</HBox>
+										<HBox>
+											<children>
+												<TextField fx:id="submissionDoneDirField"
+													prefHeight="20.0" prefWidth="360.0"
+													text="C:\rbb-client\pelaporan\selesai">
+													<HBox.margin>
+														<Insets />
+													</HBox.margin>
+												</TextField>
+												<Button fx:id="submissionDoneDirButton"
+													mnemonicParsing="false" text="Browse">
+													<HBox.margin>
+														<Insets left="10.0" />
+													</HBox.margin>
+												</Button>
+											</children>
+											<VBox.margin>
+												<Insets left="10.0" />
+											</VBox.margin>
+										</HBox>
+									</children>
+									<VBox.margin>
+										<Insets left="10.0" />
+									</VBox.margin>
+								</VBox>
+								<Label styleClass="label-red" text="Proxy">
+									<VBox.margin>
+										<Insets left="10.0" top="5.0" />
+									</VBox.margin>
+								</Label>
+								<GridPane>
+									<columnConstraints>
+										<ColumnConstraints hgrow="SOMETIMES"
+											maxWidth="-Infinity" minWidth="10.0" prefWidth="210.0" />
+										<ColumnConstraints hgrow="SOMETIMES"
+											maxWidth="-Infinity" minWidth="10.0" prefWidth="10.0" />
+										<ColumnConstraints hgrow="SOMETIMES"
+											maxWidth="-Infinity" minWidth="10.0" prefWidth="210.0" />
+									</columnConstraints>
+									<rowConstraints>
+										<RowConstraints minHeight="10.0"
+											prefHeight="20.0" vgrow="SOMETIMES" />
+										<RowConstraints minHeight="10.0"
+											prefHeight="30.0" vgrow="SOMETIMES" />
+										<RowConstraints minHeight="10.0"
+											prefHeight="20.0" vgrow="SOMETIMES" />
+										<RowConstraints minHeight="10.0"
+											prefHeight="30.0" vgrow="SOMETIMES" />
+										<RowConstraints minHeight="10.0"
+											prefHeight="30.0" vgrow="SOMETIMES" />
+									</rowConstraints>
+									<children>
+										<HBox>
+											<children>
+												<Label styleClass="label-grey-small" text="Host" />
+												<Label contentDisplay="RIGHT"
+													styleClass="sr-label-tooltip">
+													<graphic>
+														<ImageView fitHeight="15.0" fitWidth="20.0"
+															pickOnBounds="true" preserveRatio="true">
+															<image>
+																<Image url="@images/tooltip.png" />
+															</image>
+														</ImageView>
+													</graphic>
+													<tooltip>
+														<Tooltip
+															fx:id="submissionSourceDirTooltip11111111111"
+															graphicTextGap="2.0" styleClass="sr-tooltip"
+															text="Nama server atau pc atau url yang digunakan untuk proxy, &#10;misalnya : http://proxy atau inetgw-proxy"
+															wrapText="true" />
+													</tooltip>
+												</Label>
+											</children>
+										</HBox>
+										<TextField fx:id="proxyHostField" prefHeight="20.0"
+											prefWidth="200.0" GridPane.rowIndex="1" />
+										<HBox GridPane.columnIndex="2">
+											<children>
+												<Label styleClass="label-grey-small" text="Port" />
+												<Label contentDisplay="RIGHT" layoutX="32.0"
+													layoutY="10.0" styleClass="sr-label-tooltip">
+													<graphic>
+														<ImageView fitHeight="15.0" fitWidth="20.0"
+															pickOnBounds="true" preserveRatio="true">
+															<image>
+																<Image url="@images/tooltip.png" />
+															</image>
+														</ImageView>
+													</graphic>
+													<tooltip>
+														<Tooltip
+															fx:id="submissionSourceDirTooltip1111111111112"
+															graphicTextGap="2.0" styleClass="sr-tooltip"
+															text="Port yang digunakan dalam proxy server, &#10;port berupa angka yang spesifik misalnya 80 atau 8080."
+															wrapText="true" />
+													</tooltip>
+												</Label>
+											</children>
+										</HBox>
+										<TextField fx:id="proxyPortField" prefHeight="20.0"
+											prefWidth="200.0" GridPane.columnIndex="2"
+											GridPane.rowIndex="1" />
+										<HBox GridPane.rowIndex="2">
+											<children>
+												<Label styleClass="label-grey-small" text="User ID" />
+												<Label contentDisplay="RIGHT"
+													styleClass="sr-label-tooltip">
+													<graphic>
+														<ImageView fitHeight="15.0" fitWidth="20.0"
+															pickOnBounds="true" preserveRatio="true">
+															<image>
+																<Image url="@images/tooltip.png" />
+															</image>
+														</ImageView>
+													</graphic>
+													<tooltip>
+														<Tooltip
+															fx:id="submissionSourceDirTooltip1111111111111"
+															graphicTextGap="2.0" styleClass="sr-tooltip"
+															text="User yang dipakai untuk autentikasi &#10;di dalam proxy server"
+															wrapText="true" />
+													</tooltip>
+												</Label>
+											</children>
+										</HBox>
+										<TextField fx:id="proxyUserField" prefHeight="20.0"
+											prefWidth="200.0" GridPane.rowIndex="3" />
+										<HBox GridPane.columnIndex="2" GridPane.rowIndex="2">
+											<children>
+												<Label styleClass="label-grey-small" text="Password" />
+												<Label contentDisplay="RIGHT"
+													styleClass="sr-label-tooltip">
+													<graphic>
+														<ImageView fitHeight="15.0" fitWidth="20.0"
+															pickOnBounds="true" preserveRatio="true">
+															<image>
+																<Image url="@images/tooltip.png" />
+															</image>
+														</ImageView>
+													</graphic>
+													<tooltip>
+														<Tooltip
+															fx:id="submissionSourceDirTooltip111111111111"
+															graphicTextGap="2.0" styleClass="sr-tooltip"
+															text="Password yang digunakan untuk proses authentikasi &#10;di dalam proxy server"
+															wrapText="true" />
+													</tooltip>
+												</Label>
+											</children>
+										</HBox>
+										<HBox alignment="CENTER_LEFT" GridPane.columnIndex="2"
+											GridPane.halignment="CENTER" GridPane.rowIndex="4"
+											GridPane.valignment="CENTER">
+											<children>
+												<Button fx:id="testConnectionButton"
+													mnemonicParsing="false" onAction="#handleTestConnection"
+													text="Test Koneksi" />
+												<Pane HBox.hgrow="ALWAYS" />
+												<AnchorPane fx:id="testConnectionResult">
+													<children>
+														<ImageView fx:id="connectionUpImage"
+															fitHeight="25.0" fitWidth="20.0" layoutX="13.0"
+															layoutY="-27.0" AnchorPane.bottomAnchor="0.0"
+															AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="2.0"
+															AnchorPane.topAnchor="0.0">
+															<image>
+																<Image url="@images/Green-Connection_66x78.png" />
+															</image>
+														</ImageView>
+														<ImageView fx:id="connectionDownImage"
+															fitHeight="25.0" fitWidth="20.0" layoutX="10.0"
+															layoutY="10.0" AnchorPane.bottomAnchor="0.0"
+															AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="2.0"
+															AnchorPane.topAnchor="0.0">
+															<image>
+																<Image url="@images/Red-Connection_66x78.png" />
+															</image>
+														</ImageView>
+													</children>
+													<HBox.margin>
+														<Insets right="2.0" />
+													</HBox.margin>
+												</AnchorPane>
+												<Label fx:id="testConnectionLabel" alignment="CENTER" />
+											</children>
+											<GridPane.margin>
+												<Insets top="3.0" />
+											</GridPane.margin>
+										</HBox>
+										<PasswordField fx:id="proxyPasswordField"
+											GridPane.columnIndex="2" GridPane.rowIndex="3" />
+									</children>
+									<VBox.margin>
+										<Insets left="20.0" />
+									</VBox.margin>
+								</GridPane>
+								<Pane prefHeight="40.0" />
+							</children>
+							<padding>
+								<Insets bottom="10.0" />
+							</padding>
+						</VBox>
+					</content>
+					<BorderPane.margin>
+						<Insets bottom="-1.0" left="-1.0" right="-1.0" top="-1.0" />
+					</BorderPane.margin>
+				</ScrollPane>
+			</center>
+			<bottom>
+				<HBox alignment="CENTER_RIGHT" styleClass="background-ojk-grey"
+					BorderPane.alignment="CENTER_RIGHT">
+					<children>
+						<Button fx:id="resetButton" cancelButton="true"
+							layoutX="326.0" layoutY="20.0" mnemonicParsing="false"
+							onAction="#handleReset" text="Reset">
+							<HBox.margin>
+								<Insets />
+							</HBox.margin>
+						</Button>
+						<Button fx:id="closeButton" cancelButton="true"
+							mnemonicParsing="false" onAction="#handleClose" text="Batal">
+							<HBox.margin>
+								<Insets left="10.0" />
+							</HBox.margin>
+						</Button>
+						<Button fx:id="saveButton" defaultButton="true"
+							mnemonicParsing="false" onAction="#handleSave" text="Simpan">
+							<HBox.margin>
+								<Insets left="10.0" right="20.0" />
+							</HBox.margin>
+						</Button>
+					</children>
+					<padding>
+						<Insets bottom="10.0" top="10.0" />
+					</padding>
+				</HBox>
+			</bottom>
+		</BorderPane>
+		<GridPane fx:id="busyPane" layoutY="-7.0727715492248535"
+			visible="false" AnchorPane.bottomAnchor="0.0"
+			AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+			AnchorPane.topAnchor="0.0">
+			<columnConstraints>
+				<ColumnConstraints hgrow="SOMETIMES"
+					minWidth="10.0" />
+			</columnConstraints>
+			<rowConstraints>
+				<RowConstraints minHeight="10.0" prefHeight="30.0"
+					vgrow="SOMETIMES" />
+				<RowConstraints maxHeight="-Infinity"
+					minHeight="-Infinity" prefHeight="50.0" vgrow="SOMETIMES" />
+				<RowConstraints minHeight="10.0" prefHeight="30.0"
+					vgrow="SOMETIMES" />
+			</rowConstraints>
+			<children>
+				<ProgressIndicator style="-fx-accent: #D6181A;"
+					GridPane.rowIndex="1" />
+			</children>
+		</GridPane>
+	</children>
+</AnchorPane>

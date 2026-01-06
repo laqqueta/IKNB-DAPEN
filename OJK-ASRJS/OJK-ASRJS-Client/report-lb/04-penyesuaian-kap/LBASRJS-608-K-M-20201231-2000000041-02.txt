@@ -1,0 +1,8 @@
+H01|031204|2000000041|2020-12-31|LBASRJS|608|3|
+D01|6081010099|1401|5001|1001|uraian Nama Produk 1|2|2|2|2|2|2|2|2|2|2|2|2|2|2|2|2|56.43|metode Perhitungan 1
+D01|6081010099|1401|5001|1001|uraian Nama Produk 2|2|2|2|2|2|2|2|2|2|2|2|2|2|2|2|2|56.43|metode Perhitungan 2
+D01|6081010099|1401|5001|1001|uraian Nama Produk 3|2|2|2|2|2|2|2|2|2|2|2|2|2|2|2|2|56.43|metode Perhitungan 3
+D01|6081010099|1401|5001|1001|uraian Nama Produk 4|2|2|2|2|2|2|2|2|2|2|2|2|2|2|2|2|56.43|metode Perhitungan 4
+D01|6081010099|1401|5001|1001|uraian Nama Produk 5|2|2|2|2|2|2|2|2|2|2|2|2|2|2|2|2|56.43|metode Perhitungan 5
+D01|6081010099|1401|5001|1001|uraian Nama Produk 6|2|2|2|2|2|2|2|2|2|2|2|2|2|2|2|2|56.43|metode Perhitungan 6
+D01|6081010099|1401|5001|1001|uraian Nama Produk 7|2|2|2|2|2|2|2|2|2|2|2|2|2|2|2|2|56.43|metode Perhitungan 7

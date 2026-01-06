@@ -1,0 +1,40 @@
+package id.go.ojk.dplkk.client.builder.field.rb.metadata;
+
+import static id.go.ojk.lib.client.model.config.DataType.alfaNumeric;
+import static id.go.ojk.lib.client.model.config.DataType.alfaSpace;
+import static id.go.ojk.lib.client.model.config.DataType.all;
+import static id.go.ojk.lib.client.model.config.DataType.refTable;
+import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import id.go.ojk.client.model.config.SubmissionField;
+import id.go.ojk.client.model.config.SubmissionFormat;
+import id.go.ojk.conf.client.BaseMetadata;
+import id.go.ojk.dplkk.client.builder.field.EFormRencanaBisnis;
+import id.go.ojk.dplkk.client.builder.field.rb.reference.EHeaderMetadataRb;
+
+public class Rb0700 extends BaseMetadata {
+
+	public Rb0700(String reportCode) {
+		super(reportCode, ".txt");
+	}
+
+	@Override
+	public SubmissionFormat get() {
+		EFormRencanaBisnis eEnum = EFormRencanaBisnis.RB_0700;
+		SubmissionFormat res = new SubmissionFormat(eEnum.getCode(), eEnum.getName(), reportCode,
+				new ArrayList<>(), extension, 0, null);
+		List<SubmissionField> fs = res.getFields();
+		fs.add(sf(0, null, "Flag Detail", sv(M, 3, 3, alfaNumeric).confConstant("D01")));
+		fs.add(sf(1, null, "Kode Komponen / Baris",
+				sv(M, 10, 10, refTable).confReference(EHeaderMetadataRb.R2006_RB0700.getObject())));
+		fs.add(sf(2, null, "Materi/Topik", sv(M, 1, 200, all)));
+		fs.add(sf(3, null, "Nama Peserta", sv(M, 1, 50, alfaSpace)));
+		fs.add(sf(4, null, "Jabatan", sv(M, 1, 50, all)));
+		fs.add(sf(5, null, "Sertifikasi", sv(M, 1, 50, all)));
+		fs.add(sf(6, null, "Waktu Pelatihan", sv(M, 1, 50, all)));
+		return res;
+	}
+}

@@ -1,0 +1,78 @@
+H01|031202|2000000021|2021-08-31|LBASRUK|119|1|
+D01|1408010000|||||||425343649239
+D01|1408010001|FR0042||||||17000000000
+D01|1408010001|FR0043||||||10743649239
+D01|1408010001|FR0044||||||5482500000
+D01|1408010001|FR0070||||||5072500000
+D01|1408010001|FR0072||||||53000000000
+D01|1408010001|FR0059||||||53200000000
+D01|1408010001|FR0061||||||24400000000
+D01|1408010001|FR0068||||||20194000000
+D01|1408010001|FR0058||||||20500000000
+D01|1408010001|FR0063||||||23087500000
+D01|1408010001|FR0065||||||44750000000
+D01|1408010001|FR0064||||||8800000000
+D01|1408010001|FR0075||||||22750000000
+D01|1408010001|FR0074||||||27900000000
+D01|1408010001|FR0077||||||4100000000
+D01|1408010001|PBS012||||||6160000000
+D01|1408010001|PBS019||||||15037500000
+D01|1408010001|FR0067||||||3015000000
+D01|1408010001|FR0072||||||10000000000
+D01|1408010001|PBS017||||||9968000000
+D01|1408010001|ORI015||||||10000000000
+D01|1408010001|FR0068||||||15145500000
+D01|1408010001|PBS019||||||15037500000
+D01|1408020000|||||||127396345000
+D01|1408020001|Obligasi Berkelanjutan I AP II Tahap 1 Seri B Tahun 2018|APIA01A|kepemilikan|idAAA|||5087500000
+D01|1408020001|Obligasi I Angkasa Pura II Tahun 2016 seri A|BEXI01CCN1|kepemilikan|idAAA|||2970000000
+D01|1408020001|Obligasi Berkelanjutan Indonesia Eximbank II Tahap VII Tahun 2016|BEXI02BCN7|kepemilikan|idAAA|||5037700000
+D01|1408020001|Obligasi Berkelanjutan Indonesia Eximbank III Tahap V Th 2017 seri B|BEXI03BCN5|kepemilikan|idAAA|||2878200000
+D01|1408020001|Obligasi Berkelanjutan Indonesia Eximbank IV  Tahap II Th 2018 Seri D|GIAA01CN1|kepemilikan|idAAA|||4822270000
+D01|1408020001|Obl Jasa Marga XIV Seri JM-10/2010|JMPD14JM10|kepemilikan|idAA|||4058800000
+D01|1408020001|Obligasi Berkelanjutan I Jasa Marga Tahap II Tahun 2014 Seri T|JSMR01CCN1S|kepemilikan|idAA|||5058500000
+D01|1408020001|Obligasi I Kereta Api Indonesia Tahun 2017 seri A|JSMR01CN2T|kepemilikan|idAAA|||4906000000
+D01|1408020001|Obligasi Berkelanjutan II PLN Tahap I Th 2017 seri A|KAII01A|kepemilikan|idAAA|||9540000000
+D01|1408020001|Obligasi Berkelanjutan II PLN Tahap II Tahun 2017 seri A|PPLN02ACN1|kepemilikan|idAAA|||10190000000
+D01|1408020001|Obligasi Berkelanjutan II PLN  Tahap III Tahun 2018 Seri A|PPLN01ACN2|kepemilikan|idAAA|||4528240000
+D01|1408020001|Obligasi Berkelanjutan III PLN Tahap II Tahun 2018 Seri C|PPLN02ACN2|kepemilikan|idAAA|||19411220000
+D01|1408020001|Obligasi PIKI IV A 2018|PPLN02ACN3|kepemilikan|idAA|||2960000000
+D01|1408020001|Obligasi Berkelanjutan I PP Tahap II Tahun 2015|PTPP01CN2|kepemilikan|idA|||3068985000
+D01|1408020001|Obligasi Berkelanjutan I Telkom Tahap I Tahun 2015 Seri A|TLKM01ACN1|kepemilikan|idAAA|||6643000000
+D01|1408020001|Obl Telkom II / 2010 Seri B|TLKM02B|kepemilikan|idAAA|||7154000000
+D01|1408020001|Obligasi Berkelanjutan I Waskita Karya Tahap II Tahun 2015 Seri B|WSKT01BCN2|kepemilikan|idA|||2036000000
+D01|1408020001|Obligasi Berkelanjutan II Waskita Karya Tahap III tahun 2017 seri B|WSKT02BCN3|kepemilikan|idA-|||9815000000
+D01|1408020001|Obligasi Berkelanjutan III Waskita Tahap II Tahun 2018 Seri A|WSKT03ACN2|kepemilikan|idA-|||2953500000
+D01|1408020001|Obligasi Berkelanjutan III Waskita Karya Tahap I Th 2017 seri B|WSKT03BCN1|kepemilikan|idA-|||1956000000
+D01|1408020001|Obligasi Berkelanjutan III Waskita Karya Tahap III Th. 2018 Seri B|DIPP01|kepemilikan|idA-|||10000000000
+D01|1408020001|EBA DANAREKSA INDONESIA POWER PLN-1 (EBA KELAS A)|DIPP02|kepemilikan|idAAA|||2321430000
+D01|1408030000|||||||88343392474
+D01|1408030001|Danareksa Proteksi 51||||PT Danareksa Investment Management||9739070000
+D01|1408030001|Danareksa Pendapatan Tetap Indonesia Sehat||||PT Danareksa Investment Management||4123661100
+D01|1408030001|Manulife Obligasi Negara Indonesia II||||PT Manulife Aset Manajemen Indonesia(MAMI)||5856261532
+D01|1408030001|Kehati Lestari||||PT BAHANA TCW INVESTMENT MANAGEMENT||9314938220
+D01|1408030001|RDT Mandiri Seri 72||||PT. Mandiri Manajemen Investasi  ||5013350000
+D01|1408030001|Pinnacle Indonesia Bond Fund||||PT Pinnacle Persada Investama||1928324281
+D01|1408030001|First State Ind Bond Fund||||PT First State Investments||4216749807
+D01|1408030001|Syailendra Fixed Income Fund||||PT Syailendra Capital||18526658430
+D01|1408030001|Panin Gebyar Indonesia II||||PT Panin Asset Management||4623597010
+D01|1408030001|Tram Strategic Plus||||PT Trimegah Asset Management||1834963000
+D01|1408030001|BNI-AM Dana Pendapatan Tetap Nirwasita||||PT BNI Asset Management||1290027690
+D01|1408030001|Ashmore Dana Obligasi Nusantara||||PT Ashmore Asset Management||4384021807
+D01|1408030001|Avrist Prime Bond Fund||||PT Avrist Asset Management||3327461657
+D01|1408030001|Manulife Obligasi Unggulan||||PT Manulife Aset Manajemen Indonesia(MAMI)||2255499929
+D01|1408030001|Simas Danamas Instrumen Negara||||PT Sinarmas Asset Management||8198284503
+D01|1408030001|Ashmore Dana Obligasi Unggulan Nusantara||||PT Ashmore Asset Management||3710523508
+D01|1408040000|||||||3
+D01|1408040001|rincian baris ke-1 Reksadana Penyertaan Terbatas||||aaaa|Emiten Penerima Dana/Project 1|1
+D01|1408040001|rincian baris ke-2 Reksadana Penyertaan Terbatas||||aaaa|Emiten Penerima Dana/Project 2|1
+D01|1408040001|rincian baris ke-3 Reksadana Penyertaan Terbatas dan seterusnya||||aaaa|Emiten Penerima Dana/Project 3|1
+D01|1408050000|||||||6
+D01|1408050001|rincian baris ke-1 Efek Beragun Aset|seri Efek 1|jenis Kepemilikan 1|rating 1|||2
+D01|1408050001|rincian baris ke-2 Efek Beragun Aset|seri Efek 2|jenis Kepemilikan 2|rating 2|||2
+D01|1408050001|rincian baris ke-3 Efek Beragun Aset dan seterusnya|seri Efek 3|jenis Kepemilikan 3|rating 3|||2
+D01|1408060000|||||||9
+D01|1408060001|rincian baris ke-1 Investasi Lain untuk Pembiayaan Proyek Infrastruktur Pemerintah||||||3
+D01|1408060001|rincian baris ke-2 Investasi Lain untuk Pembiayaan Proyek Infrastruktur Pemerintah||||||3
+D01|1408060001|rincian baris ke-3 Investasi Lain untuk Pembiayaan Proyek Infrastruktur Pemerintah dan seterusnya||||||3
+D01|1408000000|||||||641083386731

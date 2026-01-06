@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="500.0" prefWidth="1000.0"
+	stylesheets="@ojk.css" xmlns="http://javafx.com/javafx/8.0.101"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="id.go.ojk.client.vc.PreparationAndSendingController">
+	<top>
+		<HBox alignment="CENTER_LEFT" prefHeight="50.0" spacing="5.0"
+			styleClass="background-ojk-grey">
+			<children>
+				<Label prefWidth="100.0" text="Lokasi Folder">
+					<HBox.margin>
+						<Insets bottom="5.0" left="20.0" right="5.0" top="5.0" />
+					</HBox.margin>
+				</Label>
+				<TextField fx:id="submissionDirectoryTextField"
+					prefHeight="25.0" prefWidth="600.0" />
+				<Button fx:id="browseButton" mnemonicParsing="false"
+					onAction="#handleBrowse" text="Browse" />
+				<Button fx:id="readFolderButton" layoutX="700.0"
+					layoutY="23.0" mnemonicParsing="false" onAction="#handleOpen"
+					text="Buka" />
+				<Pane HBox.hgrow="ALWAYS" />
+				<ImageView>
+					<image>
+						<Image url="@images/Logo-OJK_min.png" />
+					</image>
+				</ImageView>
+			</children>
+			<BorderPane.margin>
+				<Insets />
+			</BorderPane.margin>
+			<padding>
+				<Insets right="5.0" />
+			</padding>
+		</HBox>
+	</top>
+	<center>
+		<SplitPane dividerPositions="0.6"
+			nodeOrientation="LEFT_TO_RIGHT" styleClass="background-ojk-white"
+			BorderPane.alignment="TOP_LEFT">
+			<items>
+				<ScrollPane fx:id="detailFileScrollPane"
+					styleClass="background-ojk-white" />
+				<TabPane fx:id="logTabPane" style="-fx-padding: -5 0 0 -5;"
+					styleClass="background-ojk-grey-light"
+					stylesheets="@ojk-tab-black.css">
+					<tabs>
+						<Tab id="logProcessTab" closable="false" text="Log Process">
+							<content>
+								<AnchorPane maxHeight="1.7976931348623157E308"
+									maxWidth="1.7976931348623157E308"
+									styleClass="background-ojk-white">
+									<children>
+										<HBox alignment="CENTER_RIGHT" prefHeight="30.0"
+											styleClass="background-ojk-grey-light"
+											AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+											AnchorPane.topAnchor="0.0">
+											<children>
+												<Label fx:id="totalErrorLabel"
+													text="Total Kesalahan : 50">
+													<padding>
+														<Insets right="2.0" />
+													</padding>
+												</Label>
+											</children>
+										</HBox>
+										<ScrollPane fx:id="logProcessScrollPane"
+											layoutX="1.0" layoutY="30.0" AnchorPane.bottomAnchor="-2.0"
+											AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="-2.0"
+											AnchorPane.topAnchor="30.0">
+											<content>
+												<VBox fx:id="logProcessVbox" fillWidth="false">
+													<padding>
+														<Insets left="5.0" />
+													</padding>
+												</VBox>
+											</content>
+										</ScrollPane>
+									</children>
+								</AnchorPane>
+							</content>
+						</Tab>
+					</tabs>
+				</TabPane>
+			</items>
+		</SplitPane>
+	</center>
+	<bottom>
+		<VBox styleClass="background-ojk-grey"
+			BorderPane.alignment="TOP_CENTER">
+			<BorderPane.margin>
+				<Insets />
+			</BorderPane.margin>
+			<children>
+				<GridPane hgap="10.0" prefHeight="100.0">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES"
+							minWidth="10.0" percentWidth="33.3" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES"
+							minWidth="10.0" percentWidth="33.3" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES"
+							minWidth="10.0" percentWidth="33.3" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES"
+							minWidth="10.0" percentWidth="33.3" prefWidth="100.0" />
+						<ColumnConstraints />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints minHeight="10.0" prefHeight="25.0"
+							vgrow="SOMETIMES" />
+						<RowConstraints maxHeight="-Infinity"
+							minHeight="-Infinity" prefHeight="50.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="5.0" prefHeight="5.0"
+							vgrow="SOMETIMES" />
+					</rowConstraints>
+					<children>
+						<AnchorPane maxHeight="-Infinity" minWidth="-Infinity"
+							prefHeight="50.0" styleClass="background-ojk-grey-dark"
+							GridPane.rowIndex="1">
+							<children>
+								<ProgressBar fx:id="validationProgressBar"
+									maxHeight="-Infinity" minHeight="-Infinity" prefHeight="15.0"
+									progress="0.5" AnchorPane.leftAnchor="55.0"
+									AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+								<Pane fx:id="validationProgressPane" layoutX="-17.0"
+									layoutY="-86.0" maxHeight="-Infinity" maxWidth="-Infinity"
+									minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0"
+									prefWidth="50.0" style="-fx-background-color: rgb(255,166,2);"
+									AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+									AnchorPane.topAnchor="0.0" />
+								<Label fx:id="validationProgressLabel" alignment="CENTER"
+									contentDisplay="CENTER" maxHeight="-Infinity"
+									maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+									prefHeight="50.0" prefWidth="50.0"
+									style="-fx-text-fill: white; -fx-font-size: 14;" text="50%"
+									AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+									AnchorPane.topAnchor="0.0" />
+								<Hyperlink fx:id="validationDirLink" layoutX="79.0"
+									layoutY="17.0" styleClass="label-status-desc-link"
+									text="Direktori Kesalahan" AnchorPane.bottomAnchor="2.0"
+									AnchorPane.rightAnchor="5.0" />
+								<Label layoutX="69.0" layoutY="20.0" text="Validasi"
+									AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="55.0" />
+							</children>
+						</AnchorPane>
+						<AnchorPane maxHeight="-Infinity" minHeight="-Infinity"
+							prefHeight="50.0" styleClass="background-ojk-grey-dark"
+							GridPane.columnIndex="1" GridPane.rowIndex="1">
+							<children>
+								<ProgressBar fx:id="encryptionProgressBar"
+									maxHeight="-Infinity" minHeight="-Infinity" prefHeight="15.0"
+									progress="0.0" AnchorPane.leftAnchor="55.0"
+									AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+								<Pane fx:id="encryptionProgressPane" maxHeight="-Infinity"
+									maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+									prefHeight="50.0" prefWidth="50.0"
+									style="-fx-background-color: rgb(255,166,2);" />
+								<Label fx:id="encryptionProgressLabel" alignment="CENTER"
+									contentDisplay="CENTER" prefHeight="50.0" prefWidth="50.0"
+									style="-fx-text-fill: white; -fx-font-size: 14;" text="0%"
+									AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+									AnchorPane.topAnchor="0.0" />
+								<Label layoutX="57.0" layoutY="25.0"
+									text="Enkripsi dan Kompresi" AnchorPane.bottomAnchor="5.0"
+									AnchorPane.leftAnchor="55.0" />
+							</children>
+						</AnchorPane>
+						<AnchorPane maxHeight="-Infinity" minHeight="-Infinity"
+							prefHeight="50.0" styleClass="background-ojk-grey-dark"
+							GridPane.columnIndex="3" GridPane.rowIndex="1">
+							<children>
+								<ProgressBar fx:id="sendingProgressBar"
+									maxHeight="-Infinity" minHeight="-Infinity" prefHeight="15.0"
+									progress="0.0" AnchorPane.leftAnchor="55.0"
+									AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+								<Pane fx:id="sendingProgressPane" layoutY="2.0"
+									maxHeight="-Infinity" maxWidth="-Infinity"
+									minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0"
+									prefWidth="50.0" style="-fx-background-color: rgb(255,166,2);"
+									AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+									AnchorPane.topAnchor="0.0" />
+								<Label fx:id="sendingProgressLabel" alignment="CENTER"
+									contentDisplay="CENTER" maxHeight="-Infinity"
+									maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+									prefHeight="50.0" prefWidth="50.0"
+									style="-fx-text-fill: white; -fx-font-size: 14;" text="0%"
+									AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+									AnchorPane.topAnchor="0.0" />
+								<Hyperlink fx:id="sendingDirLink" layoutX="98.0"
+									layoutY="32.0" styleClass="label-status-desc-link"
+									text="Direktori" AnchorPane.bottomAnchor="2.0"
+									AnchorPane.rightAnchor="5.0" />
+								<Label layoutX="92.0" layoutY="28.0" text="Pengiriman"
+									AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="55.0" />
+							</children>
+						</AnchorPane>
+						<AnchorPane layoutX="250.0" layoutY="10.0"
+							maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0"
+							styleClass="background-ojk-grey-dark" GridPane.columnIndex="2"
+							GridPane.rowIndex="1">
+							<children>
+								<ProgressBar fx:id="archiveProgressBar"
+									maxHeight="-Infinity" minHeight="-Infinity" prefHeight="15.0"
+									progress="0.0" AnchorPane.leftAnchor="55.0"
+									AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+								<Pane fx:id="archiveProgressPane" layoutY="5.0"
+									maxHeight="-Infinity" maxWidth="-Infinity"
+									minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0"
+									prefWidth="50.0" style="-fx-background-color: rgb(255,166,2);"
+									AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+									AnchorPane.topAnchor="0.0" />
+								<Label fx:id="archiveProgressLabel" alignment="CENTER"
+									contentDisplay="CENTER" prefHeight="50.0" prefWidth="50.0"
+									style="-fx-text-fill: white; -fx-font-size: 14;" text="0%"
+									AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+									AnchorPane.topAnchor="0.0" />
+								<Hyperlink fx:id="encryptionDirLink" layoutX="86.0"
+									layoutY="29.0" styleClass="label-status-desc-link"
+									text="Direktori" AnchorPane.bottomAnchor="2.0"
+									AnchorPane.rightAnchor="5.0" />
+								<Label layoutY="30.0" text="Pembentukan File Kirim"
+									AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="55.0"
+									AnchorPane.rightAnchor="69.0" />
+							</children>
+						</AnchorPane>
+						<CheckBox fx:id="agreementCheckBox"
+							mnemonicParsing="false"
+							text="Saya menyatakan bahwa data yang disampaikan telah lengkap dan benar"
+							GridPane.columnSpan="4">
+							<GridPane.margin>
+								<Insets />
+							</GridPane.margin>
+						</CheckBox>
+						<TextField fx:id="codeSeqReport" prefWidth="100.0"
+							visible="false" GridPane.columnIndex="2" />
+					</children>
+				</GridPane>
+				<AnchorPane>
+					<children>
+						<GridPane hgap="5.0" vgap="5.0"
+							AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0"
+							AnchorPane.topAnchor="1.0">
+							<columnConstraints>
+								<ColumnConstraints hgrow="SOMETIMES"
+									minWidth="10.0" />
+								<ColumnConstraints hgrow="SOMETIMES"
+									minWidth="10.0" />
+								<ColumnConstraints hgrow="SOMETIMES"
+									minWidth="10.0" />
+							</columnConstraints>
+							<rowConstraints>
+								<RowConstraints minHeight="10.0"
+									prefHeight="30.0" vgrow="SOMETIMES" />
+							</rowConstraints>
+							<children>
+								<CheckBox fx:id="sendFileCheckBox"
+									mnemonicParsing="false"
+									text="Kirim langsung ke server OJK setelah proses Pembentukan File Kirim Selesai" />
+								<Button fx:id="processButton" mnemonicParsing="false"
+									onAction="#handleProcess" text="Proses"
+									GridPane.columnIndex="1" />
+								<Button fx:id="stopButton" mnemonicParsing="false"
+									onAction="#handleStop" text="Berhenti" GridPane.columnIndex="2" />
+							</children>
+						</GridPane>
+					</children>
+				</AnchorPane>
+			</children>
+			<padding>
+				<Insets left="20.0" right="20.0" />
+			</padding>
+		</VBox>
+	</bottom>
+</BorderPane>

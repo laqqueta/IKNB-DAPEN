@@ -1,0 +1,8 @@
+call _build-exe.bat
+
+cd .\_installer\source
+call _installer.bat
+cd ..
+cd ..
+
+call java -cp ".\OJK-ASRUK-Client-Builder\target\OJK-ASRUK-Client-Builder-shaded.jar;." id.go.ojk.asruk.client.builder.InstallerFtpSync "--ftpServer=FTP01" "--ftpAppFolder=.\_installer\ftp\app" "--enviType=DEVEL"

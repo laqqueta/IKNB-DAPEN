@@ -1,0 +1,7 @@
+H01|031303|2000004778|2022-12-31|RBDPPKS|1203|2|TEST-05-RBDPPKS-4Net
+D01|1203010000||34.56|0.01|-34.54|-69.09
+D01|1203020000||ABC|DEF|ABG|XYZ
+D01|1203030000||ABC|DEF|ABG|XYZ
+D01|1203040000||56.67|56.67|56.67|56.67
+D01|1203050000|asumsi Lain yang Relevan 1|varchar 200 karakter|varchar 200 karakter|varchar 200 karakter|varchar 200 karakter
+D01|1203050000|asumsi Lain yang Relevan 2|varchar 200 karakter|varchar 200 karakter|varchar 200 karakter|varchar 200 karakter

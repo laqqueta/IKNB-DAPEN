@@ -1,0 +1,1 @@
+mvn clean install -am -DskipTests -pl !OJK-REASS-Client

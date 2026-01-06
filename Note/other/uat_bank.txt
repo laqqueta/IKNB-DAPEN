@@ -1,0 +1,115 @@
+Hasil UAT dengan Bank :
+BCA : 
+1. tidak muncul pesan ketika pesan telah diganti, Karena email berbeda dengan orang yang di ganti. ========
+2. Kata kunci pencarian untuk dibuat garis bawah
+3. Log aktifitas ada selain BCA, log BCA tidak dapat di down load
+
+Commond Wealth
+1. Sudah logout, tapi masih bisa back
+2. Email, not ok, waktu tambah user, sebagai admin, si user yang bertanggung jawab, password pertama kali =======
+3. Usul tambahkan, clear. Queey / reset
+4. Log out otomatis, untuk waktu tertentu, bisa set manual.
+5. Aktif lupa password, user menjadi non aktif setelah reset password
+6. Ideb minta pengurus pemilik, ada informasi ojk pelapor  ===
+7. Data D01, tidak ada keterangan, WNI harus NIK, WNA Pasport semua. ====
+8. Id Batch, EWM, Kalau cuma 100, ditambahkan jadi 200 
+
+Mandiri
+1. Persiapan File Pelaporan, ok.
+2. Download tanda terima, pada saat dibuka, penamaan file masih error. Click kanan, refresh. Masih di case buffer. Ok, tinggal retest
+3. Koreksi on line, apa yang dikoreksi, captcha berganti otomatis. Yang ada tidak berganti capcha, masih sisi client. Hasil test, capcha memang tidak ganti
+4. Ideb viewer, ada error, sekarang ok. Kasus untuk windows 7, fungsi jalan, seolah olah error. ==========
+5. Batchh, ada rule spasi boleh.
+6. Error tsb waktu batch, waktu di bulan sebelum nya. Akan di test kemudian.
+7. Usulkan ada fasilitas Monitoring, data rek yang belum diupdate.
+
+CIMB Niaga
+1. Pencarian IDEB Kombinasi, selalu format tanggal tidak sesuai, pada bulan 12, khusus bulan 12.
+2. Pencarian kombinasi, nama sama, tempat pendirian sama, tanggal pendirian, sama dengan d02, ada masalah, pada saat kemiripan, masalah ada di hurup besar dan kecil
+3. Log aktifitas, dari ljk yang lain, 
+4. log aksi, ada info kurang informatif
+5. Perlakuan, fasilitas yang dialihkan ke sandi yang lain, ganti kolom cabang
+
+BNI Syariah
+1. User, reaktifasi user, sudah delete, mau dibangkitkan kembali
+2. Proses agak lama, butuh 10 menit
+3. Data tidak ada, tapi hasil keluar.
+4. Kata kunci, NIK tidak ada di kata pencarian.
+5. BNI Syariah
+
+Muamalat
+
+1. Ganti password, langsung tendang
+2. Kasus sama seperti mandiri
+3. Ketika PC mati, telp help desk, agar kill proses sendiri
+4. Pemantauan laporN, validasi akhir sukses, error sebagian, ada perbedaan antara validasi sebagian dan. Validasi sukses
+5. Edit on line agar di urut, tambahkan nama segment.
+6. Capcha dikurangi atau di perbesar
+7. Id request masih proces, ada tombol complate langsung process
+8. Idep, memasukan kode referensi
+
+BPR Intidana
+1. User yang sudah dihapus, yang disana terhapus, masih ada history
+2. Data yang tidak ditemukan, perlu ada print out.
+3. Data sukses semua, tapi masih ada error 
+
+Bpr artharindo
+1. Ganti user dan password, dari password ke password 2
+
+PP Buana Finance
+1. Password jangan di recicle
+2. Referensi thd permintaan idep, pencarian bisa menggunakan kemiripan, atau dibuat filtering. Karena kode ref panjang panjang
+3. Ideb, jumlah kreditur, kolom lainnya, harus di ubah, harus diubah di master nya
+4. Log aksi, bahasa nya harus dapat di mengerti.
+5. Data inisialisasi
+
+City Bank
+
+1. Capcha di buat lebih sedikit
+2. Back tidak di non aktif
+3. Durasi di login nama jika duplikat
+4. Koreksi Data Segmen, error : Data tidak ditemukan ===========
+
+Danamon :
+1. Tampilan Menu Web, back space tidak kembali ke menu awal. Layar mestinya tidak berubah, back space tidak ngaruh san tidak ada perubahan tampilan
+2. Pada saat pengiriman melalui web, pengiriman laporan ada 2, melalui web atau client. Ini hanya konfirmasi.
+3. Spesifkasi untuk ideb sudah disampaikan
+4. Hasil ideb, bisa di view untuk cetak.            ==============
+5. Hasil idep per batch, untuk text, bisa di ekspoet, format nya jason.    ============
+6. IDI Capcha, kalau bisa dibuat 1
+7. Inti nya login, sudah di non aktifkan, kenapa di non aktifkan.
+
+OCBC
+1. Kalau iload idebt batch, i atau c, i dan c ditarik dan hasilnya beda, dengan 2 key nya dua dua nya npwp
+
+Sahabat Sampurna
+1. Proses validasi sebelum kirim, centang validasi, bisa dimunculkan direktory nya. Sudah ada di tools.
+2. Data asli 02, Waktu log error 2. Rek. Apa, Nik nya Apa.
+
+Panin
+1. Nama gadis ibu kandung, jangan ditampilkan
+2. Kombinasi badan usaha, pencarian nomor akte tidak ada
+3. Selesai capcha, setelah submit, jangan clear
+4. Cari hasil ideb, cara masukkan ref code, ada alternatif code
+
+Exim LPI
+1. Debitur Luar Negeri dan Pengurus di LN
+2. NPWP bisa menjadi Tax ID atau Bisnis ID
+
+BPR HIK
+1. IDEB Batch, 4 dikirim, 3 berhasil 1 tidak, akan di download dulu.
+
+PNM
+1. Hasil IDEB, baki debet tertimpa angkanya, dan tanggal update, juga tertimpa. =========
+
+SMF:
+1. User di delete bisa dibangkitkan kembali
+
+HCBC
+1. Tidak ada validasi baki debet masih bisa nol, tidak jadi.
+2. Log error, agak susah mengartikan nya, tapi akhirnya mengerti.
+3. Minta data master, debitur saya sudah bertambah, konsep data master saja atau juga per bulan, tambahkan last modified.
+4. Log error digabung jumlah sukses atau tidak dan log error.
+
+BRI
+1. Idem

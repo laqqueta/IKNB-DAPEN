@@ -1,0 +1,10 @@
+H01|031201|2000000011|2021-02-28|LBASRJK|619|0|
+D01|4401010010|wilayah pemasaran 1|kategori Pemasar Badan Hukum 1|12|11|nama Produk yang Dipasarkan 1|22|22
+D01|4401010020|wilayah pemasaran 2|kategori Pemasar Badan Hukum 2|12|11|nama Produk yang Dipasarkan 2|22|22
+D01|4401010030|wilayah pemasaran 3|kategori Pemasar Badan Hukum 3|12|11|nama Produk yang Dipasarkan 3|22|22
+D01|4401010040|wilayah pemasaran 4||26|22|nama Produk yang Dipasarkan 4|44|44
+D01|4401010041|wilayah pemasaran 5|kategori Pemasar Badan Hukum 4|13|11|nama Produk yang Dipasarkan 5|22|22
+D01|4401010042|wilayah pemasaran 6|kategori Pemasar Badan Hukum 5|13|11|nama Produk yang Dipasarkan 6|22|22
+D01|4401010050|wilayah pemasaran 7|||22|nama Produk yang Dipasarkan 7|22|22
+D01|4401010051|wilayah pemasaran 8|kategori Pemasar Badan Hukum 6||11|nama Produk yang Dipasarkan 8|11|11
+D01|4401010052|wilayah pemasaran 9|kategori Pemasar Badan Hukum 7||11|nama Produk yang Dipasarkan 9|11|11

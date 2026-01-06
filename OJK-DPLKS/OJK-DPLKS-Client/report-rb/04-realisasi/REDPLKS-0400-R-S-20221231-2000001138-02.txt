@@ -1,0 +1,6 @@
+H01|031304|2000001138|2022-12-31|REDPLKS|0400|0|
+D01|0401000000||14500|14500|0|100.00
+D01|0402000000||8.00|8.00|0.00|100.00
+D01|0403000000||10.00|10.00|0.00|100.00
+D01|0404000000|asumsi lain yang relevan 1|200 karakter|200 karakter|200 karakter|200 karakter
+D01|0404000000|asumsi lain yang relevan 2|200 karakter|200 karakter|200 karakter|200 karakter

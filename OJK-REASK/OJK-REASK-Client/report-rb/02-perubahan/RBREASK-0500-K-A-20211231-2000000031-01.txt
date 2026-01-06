@@ -1,0 +1,10 @@
+H01|031203|2000000031|2021-12-31|RBREASK|0500|1|
+D01|0501000000|Kegiatan 1|deskripsi kegiatan 1|waktu kegiatan 2|tujuan kegiatan 1|keterkaitan 1|risiko 1|mitigasi 1
+D01|0501000000|Kegiatan 2|deskripsi kegiatan 2|waktu kegiatan 3|tujuan kegiatan 2|keterkaitan 2|risiko 2|mitigasi 2
+D01|0501000000|Kegiatan 3|deskripsi kegiatan 3|waktu kegiatan 4|tujuan kegiatan 3|keterkaitan 3|risiko 3|mitigasi 3
+D01|0501000000|Kegiatan 4|deskripsi kegiatan 4|waktu kegiatan 5|tujuan kegiatan 4|keterkaitan 4|risiko 4|mitigasi 4
+D01|0501000000|Kegiatan 5|deskripsi kegiatan 5|waktu kegiatan 6|tujuan kegiatan 5|keterkaitan 5|risiko 5|mitigasi 5
+D01|0501000000|Kegiatan 6|deskripsi kegiatan 6|waktu kegiatan 7|tujuan kegiatan 6|keterkaitan 6|risiko 6|mitigasi 6
+D01|0501000000|Kegiatan 7|deskripsi kegiatan 7|waktu kegiatan 8|tujuan kegiatan 7|keterkaitan 7|risiko 7|mitigasi 7
+D01|0501000000|Kegiatan 8|deskripsi kegiatan 8|waktu kegiatan 9|tujuan kegiatan 8|keterkaitan 8|risiko 8|mitigasi 8
+D01|0501000000|Kegiatan 9|deskripsi kegiatan 9|waktu kegiatan 10|tujuan kegiatan 9|keterkaitan 9|risiko 9|mitigasi 9

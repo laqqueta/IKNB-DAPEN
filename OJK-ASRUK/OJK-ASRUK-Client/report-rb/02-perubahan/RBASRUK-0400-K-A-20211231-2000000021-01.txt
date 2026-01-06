@@ -1,0 +1,5 @@
+H01|031202|2000000021|2021-12-31|RBASRUK|0400|1|
+D01|0401000000|nama a|lini a|saluran a|penerbitan a
+D01|0401000000|nama b|lini b|saluran b|penerbitan b
+D01|0401000000|nama a|lini a|saluran a|penerbitan a
+D01|0401000000|nama b|lini b|saluran b|penerbitan b

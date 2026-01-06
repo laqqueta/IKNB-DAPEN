@@ -1,0 +1,10 @@
+ECHO "<<PREPARE BUILD EXE>>"
+call _client-clear-resources.bat
+
+ECHO "<<BUILD & DEPLOY EXE>>"
+mkdir .\_installer\deploy\resources\
+del /F /Q .\_installer\deploy\resources\*
+call mvn clean package -am -DskipTests -pl OJK-ASRJS-Client
+copy .\OJK-ASRJS-Client\target\OjkClient.exe .\_installer\deploy\OjkClient.exe
+REM copy .\_installer\source\Client.properties .\_installer\deploy\resources\Client.properties
+copy .\_installer\source\Client.cfg .\_installer\deploy\resources\Client.cfg

@@ -1,0 +1,9 @@
+H01|031201|2000000011|2025-12-31|RBASRJUS|0901|1|
+D01|0901010100|kantor 1|waktu 1|lokasi 1|3233221|keterangan 1
+D01|0901010200|kantor 2|waktu 2|lokasi 2|3233221|keterangan 2
+D01|0901020100|kantor 3|waktu 3|lokasi 3|21212|keterangan 3
+D01|0901020100|kantor 4|waktu 4|lokasi 4|21212|keterangan 4
+D01|0901020100|kantor 5|waktu 5|lokasi 5|21212|keterangan 5
+D01|0901030100|kantor 6|waktu 6|lokasi 6|23323|keterangan 6
+D01|0901030100|kantor 7|waktu 7|lokasi 7|23323|keterangan 7
+D01|0901030100|kantor 8|waktu 8|lokasi 8|23323|keterangan 8

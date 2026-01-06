@@ -1,0 +1,61 @@
+package id.go.ojk.reask.client.builder.field.lb.metadata;
+
+import static id.go.ojk.lib.client.model.config.DataType.alfaNumeric;
+import static id.go.ojk.lib.client.model.config.DataType.numericNegatif;
+import static id.go.ojk.lib.client.model.config.DataType.refTable;
+import static id.go.ojk.lib.client.model.config.UniqueType.U;
+import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import id.go.ojk.client.model.config.SubmissionField;
+import id.go.ojk.client.model.config.SubmissionFormat;
+import id.go.ojk.conf.client.BaseMetadata;
+import id.go.ojk.reask.client.builder.field.EFormLaporanBulanan;
+import id.go.ojk.reask.client.builder.field.lb.reference.EHeaderMetadataLb;
+import id.go.ojk.reask.client.builder.field.lb.reference.ER3033PosLbReask202;
+
+public class Lb202 extends BaseMetadata {
+
+	public Lb202(String reportCode) {
+		super(reportCode, ".txt");
+	}
+
+	@Override
+	public SubmissionFormat get() {
+		EFormLaporanBulanan eEnum = EFormLaporanBulanan.LB_202;
+		SubmissionFormat res = new SubmissionFormat(eEnum.getCode(), eEnum.getName(), reportCode, new ArrayList<>(),
+				extension, 27, 27, ER3033PosLbReask202.genFieldSave(), null, ER3033PosLbReask202.getRequiredPos());
+		res.addSegmentValidations(ER3033PosLbReask202.genValidationJumlahPendapatanPremiDalamNegeri());
+		res.addSegmentValidations(ER3033PosLbReask202.genValidationJumlahPendapatanPremiAsean());
+		res.addSegmentValidations(ER3033PosLbReask202.genValidationJumlahPendapatanPremiLainnya());
+		res.addSegmentValidations(ER3033PosLbReask202.genValidationJumlahPremiBruto());
+		res.addSegmentValidations(ER3033PosLbReask202.genValidationJumlahPremiReasuransi());
+		res.addSegmentValidations(ER3033PosLbReask202.genValidationJumlahKlaimRetensiSendiri());
+		List<SubmissionField> fs = res.getFields();
+		fs.add(sf(0, null, "Flag Detail", sv(M, 3, 3, alfaNumeric).confConstant("D01")));
+		fs.add(sf(1, null, "Kode Komponen / Baris",
+				sv(M, 10, 10, refTable).confReference(EHeaderMetadataLb.R3033_LB202.getObject())).confUnique(U));
+		fs.add(sf(2, null, "Harta Benda (Property)", sv(M, 1, 16, numericNegatif)));
+		fs.add(sf(3, null, "Kendaraan Bermotor (Own Damage, Third Party Liability, dan Personal Accident)",
+				sv(M, 1, 16, numericNegatif)));
+		fs.add(sf(4, null, "Pengangkutan (Marine Cargo)", sv(M, 1, 16, numericNegatif)));
+		fs.add(sf(5, null, "Rangka Kapal (Marine Hull)", sv(M, 1, 16, numericNegatif)));
+		fs.add(sf(6, null, "Rangka Pesawat (Aviation Hull)", sv(M, 1, 16, numericNegatif)));
+		fs.add(sf(7, null, "Satelit", sv(M, 1, 16, numericNegatif)));
+		fs.add(sf(8, null, "Energi Onshore (Oil and Gas)", sv(M, 1, 16, numericNegatif)));
+		fs.add(sf(9, null, "Energi Offshore (Oil and Gas)", sv(M, 1, 16, numericNegatif)));
+		fs.add(sf(10, null, "Rekayasa (Engineering)", sv(M, 1, 16, numericNegatif)));
+		fs.add(sf(11, null, "Tanggung Gugat (Liability)", sv(M, 1, 16, numericNegatif)));
+		fs.add(sf(12, null, "Kecelakaan Diri", sv(M, 1, 16, numericNegatif)));
+		fs.add(sf(13, null, "Kesehatan", sv(M, 1, 16, numericNegatif)));
+		fs.add(sf(14, null, "Kredit (Credit) ", sv(M, 1, 16, numericNegatif)));
+		fs.add(sf(15, null, "Suretyship", sv(M, 1, 16, numericNegatif)));
+		fs.add(sf(16, null, "Aneka", sv(M, 1, 16, numericNegatif)));
+		fs.add(sf(17, null, "Jiwa", sv(M, 1, 16, numericNegatif)));
+		fs.add(sf(18, null, "Jumlah", sv(M, 1, 16, numericNegatif))
+				.addFieldValidations(ER3033PosLbReask202.genFieldValidation18()));
+		return res;
+	}
+}

@@ -1,0 +1,5 @@
+H01|031201|2000000011|2021-12-31|RBASRJK|1003|0|
+D01|1003010000|materi 1|metode 1|perkiraan waktu 1|durasi 1|tempat 1|narasumber 1|0|1
+D01|1003010000|materi 2|metode 2|perkiraan waktu 2|durasi 2|tempat 2|narasumber 2|0|1
+D01|1003010000|materi 3|metode 3|perkiraan waktu 3|durasi 3|tempat 3|narasumber 3 |0|1
+D01|1003020000|||||||0|3

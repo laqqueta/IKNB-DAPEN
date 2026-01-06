@@ -1,0 +1,5 @@
+H01|030416|999999|2025-12-31|LBFINK|2117|0|
+D01|211701010000|Nama Pihak Berelasi/Pihak Ketiga|1|20220403|keterangan
+D01|211701010000|Nama Pihak Berelasi/Pihak Ketiga|1|20220403|keterangan
+D01|211701010000|Nama Pihak Berelasi/Pihak Ketiga|0|20220403|keterangan
+D01|211701000000||2||

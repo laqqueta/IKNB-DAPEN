@@ -1,0 +1,16 @@
+<updateHeader createdDatetime="20251201170802" createdBy="APOLO-Team">
+  <versions>
+    <entry>
+      <string>clSetup</string>
+      <string>2.0.0</string>
+    </entry>
+    <entry>
+      <string>clMetadata</string>
+      <string>1.0.0</string>
+    </entry>
+    <entry>
+      <string>clReferences</string>
+      <string>1.0.0</string>
+    </entry>
+  </versions>
+</updateHeader>

@@ -1,0 +1,3 @@
+SET JAVA_HOME=D:\_dev_tool\java\jdk\jdk1.8.0_202
+SET PATH=%Path%;%JAVA_HOME%\bin\;
+SET

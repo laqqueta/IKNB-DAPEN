@@ -1,0 +1,12 @@
+H01|031401|251030|2021-12-31|RBPPU|090204|0|
+D01|09020401000000|bidang Tugas 1|alasan Pemanfaatan Tenaga Alih Daya 1|2112|nama Perusahaan Penyedia Tenaga Kerja Alih Daya (apabila ada) 1|jangka Waktu Perjanjian dengan Perusahaan Tenaga Kerja Alih Daya 1
+D01|09020401000000|bidang Tugas 2|alasan Pemanfaatan Tenaga Alih Daya 2|2112|nama Perusahaan Penyedia Tenaga Kerja Alih Daya (apabila ada) 2|jangka Waktu Perjanjian dengan Perusahaan Tenaga Kerja Alih Daya 2
+D01|09020401000000|bidang Tugas 3|alasan Pemanfaatan Tenaga Alih Daya 3|2112|nama Perusahaan Penyedia Tenaga Kerja Alih Daya (apabila ada) 3|jangka Waktu Perjanjian dengan Perusahaan Tenaga Kerja Alih Daya 3
+D01|09020401000000|bidang Tugas 4|alasan Pemanfaatan Tenaga Alih Daya 4|2112|nama Perusahaan Penyedia Tenaga Kerja Alih Daya (apabila ada) 4|jangka Waktu Perjanjian dengan Perusahaan Tenaga Kerja Alih Daya 4
+D01|09020401000000|bidang Tugas 5|alasan Pemanfaatan Tenaga Alih Daya 5|2112|nama Perusahaan Penyedia Tenaga Kerja Alih Daya (apabila ada) 5|jangka Waktu Perjanjian dengan Perusahaan Tenaga Kerja Alih Daya 5
+D01|09020401000000|bidang Tugas 6|alasan Pemanfaatan Tenaga Alih Daya 6|2112|nama Perusahaan Penyedia Tenaga Kerja Alih Daya (apabila ada) 6|jangka Waktu Perjanjian dengan Perusahaan Tenaga Kerja Alih Daya 6
+D01|09020401000000|bidang Tugas 7|alasan Pemanfaatan Tenaga Alih Daya 7|2112|nama Perusahaan Penyedia Tenaga Kerja Alih Daya (apabila ada) 7|jangka Waktu Perjanjian dengan Perusahaan Tenaga Kerja Alih Daya 7
+D01|09020401000000|bidang Tugas 8|alasan Pemanfaatan Tenaga Alih Daya 8|2112|nama Perusahaan Penyedia Tenaga Kerja Alih Daya (apabila ada) 8|jangka Waktu Perjanjian dengan Perusahaan Tenaga Kerja Alih Daya 8
+D01|09020401000000|bidang Tugas 9|alasan Pemanfaatan Tenaga Alih Daya 9|2112|nama Perusahaan Penyedia Tenaga Kerja Alih Daya (apabila ada) 9|jangka Waktu Perjanjian dengan Perusahaan Tenaga Kerja Alih Daya 9
+D01|09020401000000|bidang Tugas 10|alasan Pemanfaatan Tenaga Alih Daya 10|2112|nama Perusahaan Penyedia Tenaga Kerja Alih Daya (apabila ada) 10|jangka Waktu Perjanjian dengan Perusahaan Tenaga Kerja Alih Daya 10
+D01|09020401000000|bidang Tugas 11|alasan Pemanfaatan Tenaga Alih Daya 11|2112|nama Perusahaan Penyedia Tenaga Kerja Alih Daya (apabila ada) 11|jangka Waktu Perjanjian dengan Perusahaan Tenaga Kerja Alih Daya 11

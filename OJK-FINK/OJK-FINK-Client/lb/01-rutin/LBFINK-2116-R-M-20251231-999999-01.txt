@@ -1,0 +1,5 @@
+H01|030416|999999|2025-12-31|LBFINK|2116|0|
+D01|211601010000|Nama Aset Tak Berwujud|0|0|0|0|Keterangan aset tak berwujud
+D01|211601010000|Nama Aset Tak Berwujud|1|0|0|1|Keterangan aset tak berwujud
+D01|211601010000|Nama Aset Tak Berwujud|0|0|0|0|Keterangan aset tak berwujud
+D01|211601000000||1|0|0|1|

@@ -1,0 +1,5 @@
+H01|031201|2000000011|2025-12-31|RBASRJUS|1004|2|RBASRJUS-01
+D01|1004010000|bidang Tugas 1|alasan Pemanfaatan Tenaga Alih Daya 1|jumlah Tenaga Kerja Alih Daya 1|nama Perusahaan Penyedia Tenaga Kerja Alih Daya (apabila ada) 1|jangka Waktu Perjanjian dengan Perusahaan Tenaga Kerja Alih Daya 1
+D01|1004010000|bidang Tugas 2|alasan Pemanfaatan Tenaga Alih Daya 2|jumlah Tenaga Kerja Alih Daya 2|nama Perusahaan Penyedia Tenaga Kerja Alih Daya (apabila ada) 2|jangka Waktu Perjanjian dengan Perusahaan Tenaga Kerja Alih Daya 2
+D01|1004010000|bidang Tugas 3|alasan Pemanfaatan Tenaga Alih Daya 3|jumlah Tenaga Kerja Alih Daya 3|nama Perusahaan Penyedia Tenaga Kerja Alih Daya (apabila ada) 3|jangka Waktu Perjanjian dengan Perusahaan Tenaga Kerja Alih Daya 3
+D01|1004010000|bidang Tugas 4|alasan Pemanfaatan Tenaga Alih Daya 4|jumlah Tenaga Kerja Alih Daya 4|nama Perusahaan Penyedia Tenaga Kerja Alih Daya (apabila ada) 4|jangka Waktu Perjanjian dengan Perusahaan Tenaga Kerja Alih Daya 4

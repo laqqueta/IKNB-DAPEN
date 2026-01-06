@@ -1,0 +1,5 @@
+ECHO "<<GENERATE DAT FILE>>"
+
+del /F .\_installer\ftp\app\*.dat
+
+call java -jar -Dfile.encoding=UTF-8 .\OJK-ASRUS-Client-Builder\target\OJK-ASRUS-Client-Builder-shaded.jar "--rootFolder=.\_installer" "--enviType=DEVEL" "--ftpServer=FTP01"

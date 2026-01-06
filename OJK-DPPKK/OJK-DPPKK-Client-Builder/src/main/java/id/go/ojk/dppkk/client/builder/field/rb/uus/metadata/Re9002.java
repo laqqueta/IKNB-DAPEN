@@ -1,0 +1,18 @@
+package id.go.ojk.dppkk.client.builder.field.rb.uus.metadata;
+
+import id.go.ojk.client.model.config.SubmissionFormat;
+import id.go.ojk.conf.client.BaseMetadata;
+import id.go.ojk.dppkk.client.builder.field.EFormRealisasiBisnisUus;
+
+public class Re9002 extends BaseMetadata {
+
+	public Re9002(String reportCode) {
+		super(reportCode, ".pdf");
+	}
+
+	@Override
+	public SubmissionFormat get() {
+		EFormRealisasiBisnisUus eEnum = EFormRealisasiBisnisUus.RE_9002;
+		return new SubmissionFormat(eEnum.getCode(), eEnum.getName(), reportCode, extension);
+	}
+}

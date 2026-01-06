@@ -1,0 +1,4 @@
+H01|031205|2000000051|2021-12-31|RBASRUS|1003|0|
+D01|1003010000|nama Tenaga Kerja Asing (apabila ada) / Jumlah Tenaga Kerja Asing 1|jabatan 1|bidang 1|jangka Waktu 1|nama Tenaga Pendamping 1|rencana Program Alih Pengetahuan 1|alasan 1
+D01|1003010000|nama Tenaga Kerja Asing (apabila ada) / Jumlah Tenaga Kerja Asing 2|jabatan 2|bidang 2|jangka Waktu 2|nama Tenaga Pendamping 2|rencana Program Alih Pengetahuan 2|alasan 2
+D01|1003010000|nama Tenaga Kerja Asing (apabila ada) / Jumlah Tenaga Kerja Asing 3|jabatan 3|bidang 3|jangka Waktu 3|nama Tenaga Pendamping 3|rencana Program Alih Pengetahuan 3|alasan 3

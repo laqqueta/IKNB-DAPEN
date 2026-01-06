@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane xmlns="http://javafx.com/javafx/8.0.65"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="id.go.ojk.client.vc.SubmissionInfoController">
+	<children>
+		<Pane styleClass="grid-table-odd" stylesheets="@ojk.css"
+			GridPane.valignment="CENTER">
+			<children>
+				<Label style="-fx-font-weight: bold;" text="Tahun Data">
+					<padding>
+						<Insets left="3.0" />
+					</padding>
+				</Label>
+			</children>
+		</Pane>
+		<Pane styleClass="grid-table-even" stylesheets="@ojk.css"
+			GridPane.rowIndex="1" GridPane.valignment="CENTER">
+			<children>
+				<Label style="-fx-font-weight: bold;" text="Bulan Data">
+					<padding>
+						<Insets left="3.0" />
+					</padding>
+				</Label>
+			</children>
+		</Pane>
+		<Pane styleClass="grid-table-odd" stylesheets="@ojk.css"
+			GridPane.rowIndex="2" GridPane.valignment="CENTER">
+			<children>
+				<Label style="-fx-font-weight: bold;" text="Jumlah File">
+					<padding>
+						<Insets left="3.0" />
+					</padding>
+				</Label>
+			</children>
+		</Pane>
+		<Pane styleClass="grid-table-even" stylesheets="@ojk.css"
+			GridPane.rowIndex="3">
+			<children>
+				<Label style="-fx-font-weight: bold;" text="Total Ukuran File">
+					<padding>
+						<Insets left="3.0" />
+					</padding>
+				</Label>
+			</children>
+		</Pane>
+		<Pane styleClass="grid-table-odd" stylesheets="@ojk.css"
+			GridPane.columnIndex="1">
+			<children>
+				<Label fx:id="yearLabel">
+					<padding>
+						<Insets left="3.0" />
+					</padding>
+				</Label>
+			</children>
+		</Pane>
+		<Pane styleClass="grid-table-even" stylesheets="@ojk.css"
+			GridPane.columnIndex="1" GridPane.rowIndex="1">
+			<children>
+				<Label fx:id="monthLabel" text="Label">
+					<padding>
+						<Insets left="3.0" />
+					</padding>
+				</Label>
+			</children>
+		</Pane>
+		<Pane styleClass="grid-table-odd" stylesheets="@ojk.css"
+			GridPane.columnIndex="1" GridPane.rowIndex="2">
+			<children>
+				<Label fx:id="totalFileLabel" text="Label">
+					<padding>
+						<Insets left="3.0" />
+					</padding>
+				</Label>
+			</children>
+		</Pane>
+		<Pane styleClass="grid-table-even" stylesheets="@ojk.css"
+			GridPane.columnIndex="1" GridPane.rowIndex="3">
+			<children>
+				<Label fx:id="totalFileSizeLabel" text="Label">
+					<padding>
+						<Insets left="3.0" />
+					</padding>
+				</Label>
+			</children>
+		</Pane>
+	</children>
+	<columnConstraints>
+		<ColumnConstraints maxWidth="-Infinity"
+			minWidth="100.0" prefWidth="200.0" />
+		<ColumnConstraints maxWidth="-Infinity"
+			minWidth="200.0" prefWidth="400.0" />
+		<ColumnConstraints />
+	</columnConstraints>
+	<rowConstraints>
+		<RowConstraints />
+		<RowConstraints />
+		<RowConstraints />
+		<RowConstraints />
+		<RowConstraints minHeight="10.0" prefHeight="30.0" />
+	</rowConstraints>
+	<padding>
+		<Insets bottom="13.0" left="20.0" top="10.0" />
+	</padding>
+</GridPane>

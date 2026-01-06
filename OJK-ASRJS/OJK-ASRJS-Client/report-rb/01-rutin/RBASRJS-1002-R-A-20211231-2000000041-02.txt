@@ -1,0 +1,4 @@
+H01|031204|2000000041|2021-12-31|RBASRJS|1002|0|
+D01|1002010000|materi 1|metode 1|perkiraan 1|durasi 1|tempat 1|narasumber 1|jumlah seluruh 1|12233
+D01|1002010000|materi 2|metode 2|perkiraan 2|durasi 2|tempat 2|narasumber 2|jumlah seluruh 2|12233
+D01|1002010000|materi 3|metode 3|perkiraan 3|durasi 3|tempat 3|narasumber 3|jumlah seluruh 3|12233

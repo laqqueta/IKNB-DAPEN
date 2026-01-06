@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity"
+	minHeight="-Infinity" minWidth="-Infinity" prefHeight="190.0"
+	prefWidth="500.0" styleClass="background-ojk-red"
+	stylesheets="@ojk.css" xmlns="http://javafx.com/javafx/8.0.65"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="id.go.ojk.client.vc.UpdateOnlineController">
+	<children>
+		<VBox styleClass="background-ojk-grey"
+			AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0"
+			AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="30.0">
+			<children>
+				<Label style="-fx-font-weight: Bold;" styleClass="label-red"
+					text="Download" />
+				<AnchorPane>
+					<children>
+						<ProgressBar fx:id="downloadProgressBar"
+							prefHeight="25.0" prefWidth="600.0" progress="0.0"
+							AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+							AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+						<Label fx:id="downloadProgressLabel" alignment="CENTER"
+							text="0 %" AnchorPane.bottomAnchor="0.0"
+							AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+							AnchorPane.topAnchor="0.0" />
+					</children>
+				</AnchorPane>
+				<Label style="-fx-font-weight: bold;" styleClass="label-red"
+					text="Install" />
+				<AnchorPane>
+					<children>
+						<ProgressBar fx:id="installProgressBar"
+							prefHeight="25.0" prefWidth="600.0" progress="0.0"
+							AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+							AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+						<Label fx:id="installProgressLabel" alignment="CENTER"
+							contentDisplay="CENTER" text="0 %" AnchorPane.bottomAnchor="0.0"
+							AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+							AnchorPane.topAnchor="0.0" />
+					</children>
+				</AnchorPane>
+				<HBox alignment="CENTER_RIGHT" spacing="10.0">
+					<children>
+						<Button fx:id="closeButton" cancelButton="true"
+							mnemonicParsing="false" onAction="#handleClose" text="Tutup" />
+						<Button fx:id="updateButton" defaultButton="true"
+							mnemonicParsing="false" onAction="#handleUpdate" text="Update" />
+					</children>
+					<VBox.margin>
+						<Insets top="10.0" />
+					</VBox.margin>
+				</HBox>
+			</children>
+			<padding>
+				<Insets left="10.0" right="10.0" top="10.0" />
+			</padding>
+		</VBox>
+	</children>
+</AnchorPane>

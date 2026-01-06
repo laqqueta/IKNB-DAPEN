@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<GridPane stylesheets="@ojk.css"
+	xmlns="http://javafx.com/javafx/8.0.101"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="id.go.ojk.client.vc.ProgressSegmentController">
+	<children>
+		<Label fx:id="segmentCodeLabel" alignment="CENTER"
+			maxWidth="-Infinity" minWidth="-Infinity" prefWidth="50.0"
+			styleClass="lable-segment-code" text="D01"
+			GridPane.halignment="CENTER" GridPane.valignment="TOP" />
+		<VBox fx:id="detailVBox" GridPane.columnIndex="2">
+			<children>
+				<Label fx:id="segmentNameLabel"
+					styleClass="lable-segment-name" text="Master Data Individu" />
+			</children>
+		</VBox>
+	</children>
+	<columnConstraints>
+		<ColumnConstraints maxWidth="-Infinity"
+			minWidth="-Infinity" prefWidth="50.0" />
+		<ColumnConstraints maxWidth="-Infinity"
+			minWidth="-Infinity" prefWidth="20.0" />
+		<ColumnConstraints minWidth="10.0" />
+	</columnConstraints>
+	<rowConstraints>
+		<RowConstraints />
+	</rowConstraints>
+	<padding>
+		<Insets left="20.0" />
+	</padding>
+</GridPane>

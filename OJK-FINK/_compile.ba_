@@ -1,0 +1,1 @@
+mvn clean compile -am -DskipTests -pl !OJK-FINK-Client

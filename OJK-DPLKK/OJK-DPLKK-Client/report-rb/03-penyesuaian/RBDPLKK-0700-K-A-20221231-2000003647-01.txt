@@ -1,0 +1,4 @@
+H01|031302|2000003647|2022-12-31|RBDPLKK|0700|2|TEST-06-RBDPLKK-4Net
+D01|0701000000|materi/Topik 1|nama Peserta a|jabatan 1|Sertifikasi 1|Waktu Pelatihan 1
+D01|0701000000|materi/Topik 2|nama Peserta b|jabatan 2|Sertifikasi 2|Waktu Pelatihan 2
+D01|0701000000|materi/Topik 3|nama Peserta c|jabatan 3|Sertifikasi 3|Waktu Pelatihan 3

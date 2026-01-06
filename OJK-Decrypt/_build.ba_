@@ -1,0 +1,2 @@
+call mvn clean package -am -DskipTests
+copy .\target\OJK-Decrypt-1.0.0-shaded.jar .\_bin\decrypt.jar

@@ -1,0 +1,5 @@
+H01|031203|2000000031|2021-12-31|RBREASK|1004|0|
+D01|1004010000|nama tenaga asing 1|posisi 1|bidang kerja 1|jangka waktu 1|nama tenaga 1|rencana program alih 1|alasan 1
+D01|1004010000|nama tenaga asing 2|posisi 2|bidang kerja 2|jangka waktu 2|nama tenaga 2|rencana program alih 2|alasan 2
+D01|1004010000|nama tenaga asing 3|posisi 3|bidang kerja 3|jangka waktu 3|nama tenaga 3|rencana program alih 3|alasan 3
+D01|1004010000|nama tenaga asing 4|posisi 4|bidang kerja 4|jangka waktu 4|nama tenaga 4|rencana program alih 4|alasan 4

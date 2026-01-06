@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity"
+	minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0"
+	prefWidth="400.0" styleClass="background-ojk-red"
+	stylesheets="@ojk.css" xmlns="http://javafx.com/javafx/8.0.65"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="id.go.ojk.client.vc.UserFormController">
+	<children>
+		<VBox layoutX="1.0" layoutY="32.0" spacing="5.0"
+			styleClass="background-ojk-grey" AnchorPane.bottomAnchor="1.0"
+			AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0"
+			AnchorPane.topAnchor="32.0">
+			<children>
+				<Label styleClass="label-red" text="User ID" />
+				<TextField fx:id="userLoginIdField" promptText="User ID" />
+				<Label layoutX="20.0" layoutY="20.0" styleClass="label-red"
+					text="Nama" />
+				<TextField fx:id="userNameField" layoutX="20.0"
+					layoutY="50.0" promptText="Nama" />
+				<Label layoutX="20.0" layoutY="20.0" styleClass="label-red"
+					text="Password">
+					<VBox.margin>
+						<Insets />
+					</VBox.margin>
+				</Label>
+				<PasswordField fx:id="passwordField" layoutX="20.0"
+					layoutY="37.0" promptText="Password baru" />
+				<PasswordField fx:id="rePasswordField" layoutX="20.0"
+					layoutY="96.0" promptText="Konfirmasi password baru" />
+				<HBox alignment="CENTER_RIGHT" prefHeight="100.0"
+					prefWidth="200.0" spacing="10.0">
+					<children>
+						<Button fx:id="cancelButton" cancelButton="true"
+							mnemonicParsing="false" onAction="#closeDialog" text="Batal" />
+						<Button fx:id="okButton" defaultButton="true"
+							mnemonicParsing="false" onAction="#handleOk" text="Simpan" />
+					</children>
+					<VBox.margin>
+						<Insets bottom="10.0" />
+					</VBox.margin>
+				</HBox>
+			</children>
+			<padding>
+				<Insets left="10.0" right="10.0" top="10.0" />
+			</padding>
+		</VBox>
+	</children>
+</AnchorPane>

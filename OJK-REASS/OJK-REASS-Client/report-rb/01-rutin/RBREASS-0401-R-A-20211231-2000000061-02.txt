@@ -1,0 +1,4 @@
+H01|031206|2000000061|2021-12-31|RBREASS|0401|0|
+D01|0401010000|nama produk 1|lini usaha 1|saluran 1|rencana 1
+D01|0401010000|nama produk 2|lini usaha 2|saluran 2|rencana 2
+D01|0401010000|nama produk 3|lini usaha 3|saluran 3|rencana 3

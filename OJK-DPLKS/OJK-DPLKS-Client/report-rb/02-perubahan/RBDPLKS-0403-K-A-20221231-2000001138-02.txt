@@ -1,0 +1,12 @@
+H01|031304|2000001138|2022-12-31|RBDPLKS|0403|1|
+D01|0403010000|target 1|a) kebijakan a target 1|strategi 1 kebijakan a target 1
+D01|0403010000|target 1|a) kebijakan a target 1|strategi 2 kebijakan a target 1
+D01|0403010000|target 1|b) kebijakan b target 1|strategi 1 kebijakan b target 1
+D01|0403010000|target 1|b) kebijakan b target 1|strategi 2 kebijakan b target 1
+D01|0403010000|target 1|b) kebijakan b target 1|strategi 3 kebijakan b target 1
+D01|0403010000|target 2|a) kebijakan a target 2|strategi 1 kebijakan a target 2
+D01|0403010000|target 2|a) kebijakan a target 2|strategi 2 kebijakan a target 2
+D01|0403010000|target 2|b) kebijakan b target 2|strategi 1 kebijakan b target 2
+D01|0403010000|target 2|b) kebijakan b target 2|strategi 2 kebijakan b target 2
+D01|0403010000|target 2|b) kebijakan b target 2|strategi 3 kebijakan b target 2
+D01|0403010000|dst|dst|dst

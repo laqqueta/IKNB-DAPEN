@@ -1,0 +1,5 @@
+H01|031201|2000000011|2021-02-28|LBASRJK|621|3|
+D01|1201000200|123456|2|nama Pemegang Saham 1|kewarganegaraan 1|jenis Usaha 1|nama Otoritas Pengawas 1|anak Usaha Perasuransian 1|rating Badan Hukum 1|lembaga Pemeringkat 1|120000|120000|22.32
+D01|1201000200|123456|2|nama Pemegang Saham 2|kewarganegaraan 2|jenis Usaha 2|nama Otoritas Pengawas 2|anak Usaha Perasuransian 2|rating Badan Hukum 2|lembaga Pemeringkat 2|120000|120000|22.32
+D01|1201000200|123456|2|nama Pemegang Saham 3|kewarganegaraan 3|jenis Usaha 3|nama Otoritas Pengawas 3|anak Usaha Perasuransian 3|rating Badan Hukum 3|lembaga Pemeringkat 3|120000|120000|22.32
+D01|1202000002||||||||||360000|360000|66.96

@@ -1,0 +1,23 @@
+
+
+1.  C tidak boleh backdate U boleh back date
+bulan update laporan tidak boleh < bulan data
+
+Edit online maksimum 12 bulan mundur dari bulan ini
+
+
+edit online misal lunas bln 5 ternyata lunas bulan 2 maka jika endit bulan 2 lunas makan bulan selanjutnya haous
+
+untuk submission update U tapi gak boleh lunas
+
+
+======
+
+1. MOM 4 biji harus selesai besok
+2. tahun maks 2999
+3. cek referensi yang panjangnya tidak klop
+4. Test aplikasi web
+
+
+
+

@@ -1,0 +1,83 @@
+package id.go.ojk.asruk.client.builder.field;
+
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+public enum EFormLaporanBulanan {
+	LB_000 ("000", "Profil Perusahaan "),
+	LB_001 ("001", "a. Rincian Pemegang Saham"),
+	LB_002 ("002", "b. Rincian Direksi dan Komisaris"),
+	LB_003 ("003", "c. Rincian PIC Laporan Keuangan"),
+	LB_910 ("910", "Surat Pernyataan  "),
+	LB_100 ("100", "Laporan Posisi Keuangan dan Pemisahan Dana "),
+	LB_200 ("200", "Laporan Laba / Rugi Komprehensif "),
+	LB_300 ("300", "Laporan Arus Kas "),
+	LB_400 ("400", "Laporan Perubahan Ekuitas "),
+	LB_500 ("500", "Laporan Tingkat Solvabilitas "),
+	LB_501 ("501", "Risiko Kredit (a) "),
+	LB_502 ("502", "Risiko Kredit (b) "),
+	LB_503 ("503", "Risiko Likuiditas "),
+	LB_504 ("504", "Risiko Pasar (a) "),
+	LB_505 ("505", "Risiko Pasar (b) "),
+	LB_506 ("506", "Risiko Pasar (c) "),
+	LB_507 ("507", "Risiko Asuransi "),
+	LB_508 ("508", "Risiko Operasional "),
+	LB_101 ("101", "Perhitungan Aset dan Liabilitas SAP "),
+	LB_102 ("102", "Sub A Penempatan Investasi Yang Bukan Pada Satu Pihak"),
+	LB_103 ("103", "Sub B Penempatan Investasi Pada Pihak Terafiliasi dengan Perusahaan"),
+	LB_104 ("104", "Sub C Penempatan Investasi Pada Pihak Terafiliasi tidak dengan Perusahaan"),
+	LB_105 ("105", "Sub D Penempatan Investasi di Luar Negeri"),
+	LB_106 ("106", "Sub E Daftar Perusahaan Terafiliasi "),
+	LB_107 ("107", "Rincian Investasi Tradisional "),
+	LB_108 ("108", "Rincian Investasi PAYDI "),
+	LB_109 ("109", "Rincian Non Investasi "),
+	LB_110 ("110", "Rincian Utang "),
+	LB_111 ("111", "401 Cadangan Premi dan Cadangan Atas Premi Yang Belum Merupakan Pendapatan"),
+	LB_113 ("113", "402 Cadangan Klaim"),
+	LB_114 ("114", "403 Cadangan Atas Risiko Bencana"),
+	LB_201 ("201", "501 Hasil Underwriting"),
+	LB_123 ("123", "Laporan Akumulasi Risiko Bencana"),
+	LB_202 ("202", "502 Premi dan Klaim Per Region"),
+	LB_203 ("203", "503 Premi Reasuransi"),
+	LB_204 ("204", "504 Penurunan (Kenaikan) Cadangan Premi, CAPYBMP, dan Kenaikan (Penurunan) Cadangan Klaim"),
+	LB_205 ("205", "505 Hasil Investasi"),
+	LB_206 ("206", "506 Beban Usaha"),
+	LB_207 ("207", "507 Hasil (Beban) lain"),
+	LB_208 ("208", "508 Pendapatan komprehensif lain"),
+	LB_115 ("115", "601 Aset Lancar dan Liabilitas Lancar"),
+	LB_116 ("116", "1401 Cadangan Atas PAYDI"),
+	LB_209 ("209", "1501 Pendapatan Premi PAYDI"),
+	LB_117 ("117", "1502 Hasil Investasi (PAYDI)"),
+	LB_118 ("118", "1503 Klaim Penebusan Unit"),
+	LB_210 ("210", "Rincian Pendapatan Premi Berdasarkan Kabupaten/Kota "),
+	LB_211 ("211", "Rincian Klaim Berdasarkan Kabupaten/Kota "),
+	LB_220 ("220", "Rincian Evaluasi Kinerja Produk"),
+	LB_212 ("212", "Rincian Pendapatan Premi dan Pembayaran Klaim Berdasarkan Sektor Ekonomi "),
+	LB_213 ("213", "Rincian Pendapatan Premi, Pembayaran Klaim, dan Cadangan Teknis Berdasarkan Counterparty (mitra) "),
+	LB_601 ("601", "Rasio Tingkat Kesehatan Keuangan selain MMBR "),
+	LB_214 ("214", "Biaya Diklat "),
+	LB_215 ("215", "Rasio Diklat "),
+	LB_216 ("216", "Rincian Pendapatan Premi dan Beban Klaim Berdasarkan Distribution Channel "),
+	LB_602 ("602", "Laporan Dana Jaminan - Ringkasan Perkembangan Dana Jaminan dan Perhitungan Kecukupan Dana Jaminan "),
+	LB_603 ("603", "Rincian Posisi Akhir Dana Jaminan "),
+	LB_604 ("604", "SU Surplus Underwriting (Gabungan semua)"),
+	LB_619 ("619", "RLP Risk And Loss Profile"),
+	LB_119 ("119", "Rincian Pemenuhan SBN "),
+	LB_620 ("620", "Kinerja Subdana PAYDI"),
+	LB_120 ("120", "Rincian Investasi Subdana PAYDI"),
+	LB_121 ("121", "Ketersediaan Aset untuk PAYDI yang Digaransi"),
+	LB_122 ("122", "Laporan Analisis Kesesuaian Aset dan Liabilitas"),
+	LB_621 ("621", "Kinerja Pemasaran Asuransi Mikro Per Jenis Produk Asuransi "),
+	LB_622 ("622", "Kinerja Saluran Pemasaran Asuransi Mikro"),
+	LB_623 ("623", "Daftar Persentase Kepemilikan Perusahaan Oleh Pihak Asing"),
+	LB_624 ("624", "Pemenuhan Kriteria Badan Hukum Asing Yang Menjadi Pemilik/Pemegang Saham Perusahaan"),
+	LB_625 ("625", "Pelaksanaan Seleksi dan Akuntabilitas Saluran Pemasaran"),
+	;
+	
+	@Getter
+	private String code;
+	@Getter
+	private String name;
+}

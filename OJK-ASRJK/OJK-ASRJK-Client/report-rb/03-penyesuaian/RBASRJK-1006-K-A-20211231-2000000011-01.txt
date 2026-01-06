@@ -1,0 +1,5 @@
+H01|031201|2000000011|2021-12-31|RBASRJK|1006|2|TEST-01-RBASRJK-4Net
+D01|1006010000|nama aplikasi 1|kepemilikan 1|nama vendor 1|fungsi aplikasi 1
+D01|1006010000|nama aplikasi 2|kepemilikan 2|nama vendor 2|fungsi aplikasi 2
+D01|1006010000|nama aplikasi 3|kepemilikan 3|nama vendor 3|fungsi aplikasi 3
+D01|1006010000|nama aplikasi 4|kepemilikan 4|nama vendor 4|fungsi aplikasi 4

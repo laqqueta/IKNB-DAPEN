@@ -1,0 +1,5 @@
+H01|031205|2000000051|2021-12-31|RBASRUS|0501|2|TEST-02-RBASRUS-4Net
+D01|0501010000|jenis kegiatan 1|deskripsi 1|waktu 1|tujuan 1|keterkaitan 1|risiko 1|mitigasi 1
+D01|0501010000|jenis kegiatan 2|deskripsi 2|waktu 2|tujuan 2|keterkaitan 2|risiko 2|mitigasi 2
+D01|0501010000|jenis kegiatan 3|deskripsi 3|waktu 3|tujuan 3|keterkaitan 3|risiko 3|mitigasi 3
+D01|0501010000|jenis kegiatan 4|deskripsi 4|waktu 4|tujuan 4|keterkaitan 4|risiko 4|mitigasi 4

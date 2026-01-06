@@ -1,0 +1,4 @@
+H01|031204|2000000041|2021-12-31|RBASRJS|0401|2|TEST-01-RBASRJS-4Net
+D01|0401010000|nama produk 1|lini usaha 1|saluran 1|rencana 1
+D01|0401010000|nama produk 2|lini usaha 2|saluran 2|rencana 2
+D01|0401010000|nama produk 3|lini usaha 3|saluran 3|rencana 3

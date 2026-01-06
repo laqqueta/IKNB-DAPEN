@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
+
+<BorderPane minHeight="400.0" minWidth="300.0"
+	prefHeight="400.0" prefWidth="300.0" styleClass="background-ojk-red"
+	stylesheets="@ojk.css" xmlns="http://javafx.com/javafx/8.0.65"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="id.go.ojk.client.vc.HelpController">
+	<top>
+		<Pane styleClass="background-ojk-grey">
+			<children>
+				<Label text="Bantuan">
+					<font>
+						<Font size="20.0" />
+					</font>
+				</Label>
+			</children>
+		</Pane>
+	</top>
+	<center>
+		<WebView prefHeight="200.0" prefWidth="200.0"
+			BorderPane.alignment="CENTER" />
+	</center>
+	<padding>
+		<Insets bottom="1.0" left="1.0" right="1.0" top="30.0" />
+	</padding>
+</BorderPane>

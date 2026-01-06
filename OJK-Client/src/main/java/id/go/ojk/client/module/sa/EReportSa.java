@@ -1,0 +1,156 @@
+package id.go.ojk.client.module.sa;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import id.go.ojk.client.constant.EReport;
+import id.go.ojk.client.model.ReportInfo;
+
+public enum EReportSa {
+	ASRJK_PELAPORAN ("SAJKA", EReportGroupSa.PELAPORAN, EReport.SA_ASRJK),
+	ASRJK_PELAPORAN_KOREKSI ("SAJKA", EReportGroupSa.PELAPORAN_KOREKSI, EReport.SA_ASRJK),
+	ASRJK_PENGKINIAN ("SAJKI", EReportGroupSa.PENGKINIAN, EReport.SA_ASRJK),
+	ASRJK_PENGKINIAN_KOREKSI ("SAJKI", EReportGroupSa.PENGKINIAN_KOREKSI, EReport.SA_ASRJK),
+
+	ASRUK_PELAPORAN ("SAUKA", EReportGroupSa.PELAPORAN, EReport.SA_ASRUK),
+	ASRUK_PELAPORAN_KOREKSI ("SAUKA", EReportGroupSa.PELAPORAN_KOREKSI, EReport.SA_ASRUK),
+	ASRUK_PENGKINIAN ("SAUKI", EReportGroupSa.PENGKINIAN, EReport.SA_ASRUK),
+	ASRUK_PENGKINIAN_KOREKSI ("SAUKI", EReportGroupSa.PENGKINIAN_KOREKSI, EReport.SA_ASRUK),
+
+	REASK_PELAPORAN ("SARKA", EReportGroupSa.PELAPORAN, EReport.SA_REASK),
+	REASK_PELAPORAN_KOREKSI ("SARKA", EReportGroupSa.PELAPORAN_KOREKSI, EReport.SA_REASK),
+	REASK_PENGKINIAN ("SARKI", EReportGroupSa.PENGKINIAN, EReport.SA_REASK),
+	REASK_PENGKINIAN_KOREKSI ("SARKI", EReportGroupSa.PENGKINIAN_KOREKSI, EReport.SA_REASK),
+
+	ASRJU_PELAPORAN ("SAJUA", EReportGroupSa.PELAPORAN, EReport.SA_ASRJU),
+	ASRJU_PELAPORAN_KOREKSI ("SAJUA", EReportGroupSa.PELAPORAN_KOREKSI, EReport.SA_ASRJU),
+	ASRJU_PENGKINIAN ("SAJUI", EReportGroupSa.PENGKINIAN, EReport.SA_ASRJU),
+	ASRJU_PENGKINIAN_KOREKSI ("SAJUI", EReportGroupSa.PENGKINIAN_KOREKSI, EReport.SA_ASRJU),
+
+	ASRUU_PELAPORAN ("SAUUA", EReportGroupSa.PELAPORAN, EReport.SA_ASRUU),
+	ASRUU_PELAPORAN_KOREKSI ("SAUUA", EReportGroupSa.PELAPORAN_KOREKSI, EReport.SA_ASRUU),
+	ASRUU_PENGKINIAN ("SAUUI", EReportGroupSa.PENGKINIAN, EReport.SA_ASRUU),
+	ASRUU_PENGKINIAN_KOREKSI ("SAUUI", EReportGroupSa.PENGKINIAN_KOREKSI, EReport.SA_ASRUU),
+
+	REASU_PELAPORAN ("SARUA", EReportGroupSa.PELAPORAN, EReport.SA_REASU),
+	REASU_PELAPORAN_KOREKSI ("SARUA", EReportGroupSa.PELAPORAN_KOREKSI, EReport.SA_REASU),
+	REASU_PENGKINIAN ("SARUI", EReportGroupSa.PENGKINIAN, EReport.SA_REASU),
+	REASU_PENGKINIAN_KOREKSI ("SARUI", EReportGroupSa.PENGKINIAN_KOREKSI, EReport.SA_REASU),
+
+	ASRJS_PELAPORAN ("SAJSA", EReportGroupSa.PELAPORAN, EReport.SA_ASRJS),
+	ASRJS_PELAPORAN_KOREKSI ("SAJSA", EReportGroupSa.PELAPORAN_KOREKSI, EReport.SA_ASRJS),
+	ASRJS_PENGKINIAN ("SAJSI", EReportGroupSa.PENGKINIAN, EReport.SA_ASRJS),
+	ASRJS_PENGKINIAN_KOREKSI ("SAJSI", EReportGroupSa.PENGKINIAN_KOREKSI, EReport.SA_ASRJS),
+
+	ASRUS_PELAPORAN ("SAUSA", EReportGroupSa.PELAPORAN, EReport.SA_ASRUS),
+	ASRUS_PELAPORAN_KOREKSI ("SAUSA", EReportGroupSa.PELAPORAN_KOREKSI, EReport.SA_ASRUS),
+	ASRUS_PENGKINIAN ("SAUSI", EReportGroupSa.PENGKINIAN, EReport.SA_ASRUS),
+	ASRUS_PENGKINIAN_KOREKSI ("SAUSI", EReportGroupSa.PENGKINIAN_KOREKSI, EReport.SA_ASRUS),
+
+	REASS_PELAPORAN ("SARSA", EReportGroupSa.PELAPORAN, EReport.SA_REASS),
+	REASS_PELAPORAN_KOREKSI ("SARSA", EReportGroupSa.PELAPORAN_KOREKSI, EReport.SA_REASS),
+	REASS_PENGKINIAN ("SARSI", EReportGroupSa.PENGKINIAN, EReport.SA_REASS),
+	REASS_PENGKINIAN_KOREKSI ("SARSI", EReportGroupSa.PENGKINIAN_KOREKSI, EReport.SA_REASS),
+
+	DPPKK_PELAPORAN ("SDPKA", EReportGroupSa.PELAPORAN, EReport.SA_DPPKK),
+	DPPKK_PELAPORAN_KOREKSI ("SDPKA", EReportGroupSa.PELAPORAN_KOREKSI, EReport.SA_DPPKK),
+	DPPKK_PENGKINIAN ("SDPKI", EReportGroupSa.PENGKINIAN, EReport.SA_DPPKK),
+	DPPKK_PENGKINIAN_KOREKSI ("SDPKI", EReportGroupSa.PENGKINIAN_KOREKSI, EReport.SA_DPPKK),
+
+	DPLKK_PELAPORAN ("SDLKA", EReportGroupSa.PELAPORAN, EReport.SA_DPLKK),
+	DPLKK_PELAPORAN_KOREKSI ("SDLKA", EReportGroupSa.PELAPORAN_KOREKSI, EReport.SA_DPLKK),
+	DPLKK_PENGKINIAN ("SDLKI", EReportGroupSa.PENGKINIAN, EReport.SA_DPLKK),
+	DPLKK_PENGKINIAN_KOREKSI ("SDLKI", EReportGroupSa.PENGKINIAN_KOREKSI, EReport.SA_DPLKK),
+
+	DPPKU_PELAPORAN ("SDPUA", EReportGroupSa.PELAPORAN, EReport.SA_DPPKU),
+	DPPKU_PELAPORAN_KOREKSI ("SDPUA", EReportGroupSa.PELAPORAN_KOREKSI, EReport.SA_DPPKU),
+	DPPKU_PENGKINIAN ("SDPUI", EReportGroupSa.PENGKINIAN, EReport.SA_DPPKU),
+	DPPKU_PENGKINIAN_KOREKSI ("SDPUI", EReportGroupSa.PENGKINIAN_KOREKSI, EReport.SA_DPPKU),
+
+	DPPKS_PELAPORAN ("SDPSA", EReportGroupSa.PELAPORAN, EReport.SA_DPPKS),
+	DPPKS_PELAPORAN_KOREKSI ("SDPSA", EReportGroupSa.PELAPORAN_KOREKSI, EReport.SA_DPPKS),
+	DPPKS_PENGKINIAN ("SDPSI", EReportGroupSa.PENGKINIAN, EReport.SA_DPPKS),
+	DPPKS_PENGKINIAN_KOREKSI ("SDPSI", EReportGroupSa.PENGKINIAN_KOREKSI, EReport.SA_DPPKS),
+
+	DPLKS_PELAPORAN ("SDLSA", EReportGroupSa.PELAPORAN, EReport.SA_DPLKS),
+	DPLKS_PELAPORAN_KOREKSI ("SDLSA", EReportGroupSa.PELAPORAN_KOREKSI, EReport.SA_DPLKS),
+	DPLKS_PENGKINIAN ("SDLSI", EReportGroupSa.PENGKINIAN, EReport.SA_DPLKS),
+	DPLKS_PENGKINIAN_KOREKSI ("SDLSI", EReportGroupSa.PENGKINIAN_KOREKSI, EReport.SA_DPLKS),
+
+	PPK_PELAPORAN ("SPPKA", EReportGroupSa.PELAPORAN, EReport.SA_PPK),
+	PPK_PELAPORAN_KOREKSI ("SPPKA", EReportGroupSa.PELAPORAN_KOREKSI, EReport.SA_PPK),
+	PPK_PENGKINIAN ("SPPKI", EReportGroupSa.PENGKINIAN, EReport.SA_PPK),
+	PPK_PENGKINIAN_KOREKSI ("SPPKI", EReportGroupSa.PENGKINIAN_KOREKSI, EReport.SA_PPK),
+
+	PPU_PELAPORAN ("SPPUA", EReportGroupSa.PELAPORAN, EReport.SA_PPU),
+	PPU_PELAPORAN_KOREKSI ("SPPUA", EReportGroupSa.PELAPORAN_KOREKSI, EReport.SA_PPU),
+	PPU_PENGKINIAN ("SPPUI", EReportGroupSa.PENGKINIAN, EReport.SA_PPU),
+	PPU_PENGKINIAN_KOREKSI ("SPPUI", EReportGroupSa.PENGKINIAN_KOREKSI, EReport.SA_PPU),
+
+	PPS_PELAPORAN ("SPPSA", EReportGroupSa.PELAPORAN, EReport.SA_PPS),
+	PPS_PELAPORAN_KOREKSI ("SPPSA", EReportGroupSa.PELAPORAN_KOREKSI, EReport.SA_PPS),
+	PPS_PENGKINIAN ("SPPSI", EReportGroupSa.PENGKINIAN, EReport.SA_PPS),
+	PPS_PENGKINIAN_KOREKSI ("SPPSI", EReportGroupSa.PENGKINIAN_KOREKSI, EReport.SA_PPS),
+
+	PPIK_PELAPORAN ("SPPIGA", EReportGroupSa.PELAPORAN, EReport.SA_PPIK),
+	PPIK_PELAPORAN_KOREKSI ("SPPIGA", EReportGroupSa.PELAPORAN_KOREKSI, EReport.SA_PPIK),
+	PPIK_PENGKINIAN ("SPPIGI", EReportGroupSa.PENGKINIAN, EReport.SA_PPIK),
+	PPIK_PENGKINIAN_KOREKSI ("SPPIGI", EReportGroupSa.PENGKINIAN_KOREKSI, EReport.SA_PPIK),
+
+	PPIS_PELAPORAN ("SPPISA", EReportGroupSa.PELAPORAN, EReport.SA_PPIS),
+	PPIS_PELAPORAN_KOREKSI ("SPPISA", EReportGroupSa.PELAPORAN_KOREKSI, EReport.SA_PPIS),
+	PPIS_PENGKINIAN ("SPPISI", EReportGroupSa.PENGKINIAN, EReport.SA_PPIS),
+	PPIS_PENGKINIAN_KOREKSI ("SPPISI", EReportGroupSa.PENGKINIAN_KOREKSI, EReport.SA_PPIS),
+
+	PPIU_PELAPORAN ("SPPIUA", EReportGroupSa.PELAPORAN, EReport.SA_PPIU),
+	PPIU_PELAPORAN_KOREKSI ("SPPIUA", EReportGroupSa.PELAPORAN_KOREKSI, EReport.SA_PPIU),
+	PPIU_PENGKINIAN ("SPPIUI", EReportGroupSa.PENGKINIAN, EReport.SA_PPIU),
+	PPIU_PENGKINIAN_KOREKSI ("SPPIUI", EReportGroupSa.PENGKINIAN_KOREKSI, EReport.SA_PPIU),
+	;
+	
+	private String reportTypeCode;
+	private EReportGroupSa reportGroup;
+	private EReport report;
+	
+	private EReportSa(String reportTypeCode, EReportGroupSa reportGroup, EReport report) {
+		this.reportTypeCode = reportTypeCode;
+		this.reportGroup = reportGroup;
+		this.report = report;
+	}
+	
+	public String getReportTypeCode() {
+		return reportTypeCode;
+	}
+	
+	public EReportGroupSa getReportGroup() {
+		return reportGroup;
+	}
+	
+	public EReport getReport() {
+		return report;
+	}
+	
+	public static ReportInfo getReportInfo(String reportCode, int reportMenuCode) {
+		ReportInfo res = new ReportInfo();
+		for (EReportSa eEnum : EReportSa.values()) {
+			EReport eReport = eEnum.getReport();
+			if (eReport.getCode().equals(reportCode) && eEnum.reportGroup.getMenuCode() == reportMenuCode) {
+				res.setId(eEnum.name());
+				res.setReport(eReport);
+				res.setReportGroup(eEnum.reportGroup.getObject());
+				res.setReportTypeCode(eEnum.getReportTypeCode());
+				break;
+			}
+		}
+		return res;
+	}
+
+	public static List<EReportSa> getByReport(List<EReport> reports) {
+		List<EReportSa> result = new ArrayList<EReportSa>();
+		for (EReportSa eReportSa : EReportSa.values()) {
+			if (reports.contains(eReportSa.report))
+				result.add(eReportSa);
+		}
+		return result;
+	}
+}

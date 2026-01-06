@@ -1,0 +1,27 @@
+H01|031201|2000000011|2021-02-28|LBASRJK|119|0|
+D01|1408010000|||||||14711745377500
+D01|1408010001|Indonesia Government Bond||||||8132024223661
+D01|1408010001|Perusahaan Penerbit SBSN Indonesia||||||1680311102637
+D01|1408010001|Republic of Indonesia (Bond Internasional)||||||4899410051202
+D01|1408020000|||||||226037761000
+D01|1408020001|PT Sarana Multi Infrastruktur |SMII01BCN2|<diisi jenis kepemilikan>|AAA|||68494007000
+D01|1408020001|PT Angkasa Pura II Persero|APIA01A|<diisi jenis kepemilikan>|AAA|||29388393000
+D01|1408020001|PT Indonesia Infrastructure Finance|IIFF01B|<diisi jenis kepemilikan>|AAA|||59661354000
+D01|1408020001|PT Sarana Multi Infrastruktur |SMII01BCN1|<diisi jenis kepemilikan>|AAA|||68494007000
+D01|1408030000|||||||0
+D01|1408030001|<diisi rincian Reksadana Underlying SBN ke-1>||||<diisi nama MI>||0
+D01|1408030001|<diisi rincian Reksadana Underlying SBN ke-2>||||<diisi nama MI>||0
+D01|1408030001|<diisi rincian Reksadana Underlying SBN ke-3 dan seterusnya>||||<diisi nama MI>||0
+D01|1408040000|||||||0
+D01|1408040001|<diisi rincian Reksadana Penyertaan Terbatas ke-1>||||<diisi nama MI>|<diisi nama Emiten>|0
+D01|1408040001|<diisi rincian Reksadana Penyertaan Terbatas ke-2>||||<diisi nama MI>|<diisi nama Emiten>|0
+D01|1408040001|<diisi rincian Reksadana Penyertaan Terbatas ke-3 dan seterusnya>||||<diisi nama MI>|<diisi nama Emiten>|0
+D01|1408050000|||||||0
+D01|1408050001|<diisi rincian Efek Beragun Aset ke-1>|<diisi nomor seri>|<diisi jenis kepemilikan>|<diisi rating>|||0
+D01|1408050001|<diisi rincian Efek Beragun Aset ke-2>|<diisi nomor seri>|<diisi jenis kepemilikan>|<diisi rating>|||0
+D01|1408050001|<diisi rincian Efek Beragun Aset ke-3 dan seterusnya>|<diisi nomor seri>|<diisi jenis kepemilikan>|<diisi rating>|||0
+D01|1408060000|||||||0
+D01|1408060001|<diisi rincian Investasi Lain ke-1>||||||0
+D01|1408060001|<diisi rincian Investasi Lain ke-2>||||||0
+D01|1408060001|<diisi rincian Investasi Lain ke-3 dan seterusnya>||||||0
+D01|1408000000|||||||14937783138500

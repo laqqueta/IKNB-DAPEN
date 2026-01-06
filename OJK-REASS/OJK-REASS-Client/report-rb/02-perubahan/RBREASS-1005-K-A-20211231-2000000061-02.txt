@@ -1,0 +1,5 @@
+H01|031206|2000000061|2021-12-31|RBREASS|1005|1|
+D01|1005010000|nama aplikasi 1|vendor|nama vendor 1|fungsi aplikasi 1
+D01|1005010000|nama aplikasi 2|vendor|nama vendor 2|fungsi aplikasi 2
+D01|1005010000|nama aplikasi 3|vendor|nama vendor 3|fungsi aplikasi 3
+D01|1005010000|nama aplikasi 4|vendor|nama vendor 4|fungsi aplikasi 4

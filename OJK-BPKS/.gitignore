@@ -1,0 +1,12 @@
+.settings/
+target/
+client/
+log/
+report/
+Pelaporan/
+_installer/deploy/
+_installer/entity/
+_installer/ftp/
+_installer/jar/
+_installer/metadata/
+_installer/reference/
