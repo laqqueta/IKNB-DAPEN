@@ -5,16 +5,16 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ClientConstant {
-//	public static final String DEV_FTP_HOST = "157.15.77.140";
-//	public static final String DEV_FTP_HOST_INTERNAL = "157.15.77.140";
-//	public static final int DEV_FTP_PORT = 889;
-//	public static final String DEV_FTP_USER = "admfatca";
-//	public static final String DEV_FTP_PWD = "P4$$word";
-//	public static final String DEV_FTP_HOST_2 = "157.15.77.140";
-//	public static final String DEV_FTP_HOST_INTERNAL_2 = "157.15.77.140";
-//	public static final int DEV_FTP_PORT_2 = 889;
-//	public static final String DEV_FTP_USER_2 = "admfatca";
-//	public static final String DEV_FTP_PWD_2 = "P4$$word";
+	public static final String DEV_FTP_HOST = "157.15.77.140";
+	public static final String DEV_FTP_HOST_INTERNAL = "157.15.77.140";
+	public static final int DEV_FTP_PORT = 889;
+	public static final String DEV_FTP_USER = "admfatca";
+	public static final String DEV_FTP_PWD = "P4$$word";
+	public static final String DEV_FTP_HOST_2 = "157.15.77.140";
+	public static final String DEV_FTP_HOST_INTERNAL_2 = "157.15.77.140";
+	public static final int DEV_FTP_PORT_2 = 889;
+	public static final String DEV_FTP_USER_2 = "admfatca";
+	public static final String DEV_FTP_PWD_2 = "P4$$word";
 	
 //	public static final String DEV_FTP_HOST = "127.0.0.1";
 //	public static final String DEV_FTP_HOST_INTERNAL = "127.0.0.1";
@@ -27,16 +27,16 @@ public class ClientConstant {
 //	public static final String DEV_FTP_USER_2 = "admfatca";
 //	public static final String DEV_FTP_PWD_2 = "P4$$word";
 
-	public static final String DEV_FTP_HOST = "10.225.60.68";
-	public static final String DEV_FTP_HOST_INTERNAL = "10.225.60.68";
-	public static final int DEV_FTP_PORT = 889;
-	public static final String DEV_FTP_USER = "admfatca";
-	public static final String DEV_FTP_PWD = "P4$$word";
-	public static final String DEV_FTP_HOST_2 = "10.225.60.68";
-	public static final String DEV_FTP_HOST_INTERNAL_2 = "10.225.60.68";
-	public static final int DEV_FTP_PORT_2 = 889;
-	public static final String DEV_FTP_USER_2 = "admfatca";
-	public static final String DEV_FTP_PWD_2 = "P4$$word";
+//	public static final String DEV_FTP_HOST = "10.225.60.68";
+//	public static final String DEV_FTP_HOST_INTERNAL = "10.225.60.68";
+//	public static final int DEV_FTP_PORT = 889;
+//	public static final String DEV_FTP_USER = "admfatca";
+//	public static final String DEV_FTP_PWD = "P4$$word";
+//	public static final String DEV_FTP_HOST_2 = "10.225.60.68";
+//	public static final String DEV_FTP_HOST_INTERNAL_2 = "10.225.60.68";
+//	public static final int DEV_FTP_PORT_2 = 889;
+//	public static final String DEV_FTP_USER_2 = "admfatca";
+//	public static final String DEV_FTP_PWD_2 = "P4$$word";
 
 	// DEV FTP Apolo
 //	public static final String DEV_FTP_HOST = "157.15.77.140";
