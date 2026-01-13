@@ -21,3 +21,16 @@ jvm/
 *.bat
 
 **/**/Pelaporan
+
+*.xml
+*.jar
+*.cfg
+*.ico
+*.iss
+*.properties
+*.bmp
+*.dat
+*.zip
+*.isl
+*.pdf
+*.txt
