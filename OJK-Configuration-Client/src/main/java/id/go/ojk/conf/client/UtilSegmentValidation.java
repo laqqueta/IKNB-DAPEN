@@ -605,6 +605,19 @@ public class UtilSegmentValidation {
 		return new EqualsFormTotalDetailRowValidation(builder.toString());
 	}
 
+  public static SegmentValidation genEqualsForm6(String selectField, String selectPosCode, String comparatorForm,
+      String comparatorField, String comparatorPosCode, int scale, String msgError) {
+    StringBuilder builder = new StringBuilder("selectField=" + selectField);
+    builder.append("&selectPosCode=" + selectPosCode);
+    builder.append("&comparatorForm=" + comparatorForm);
+    builder.append("&comparatorField=" + comparatorField);
+    builder.append("&comparatorPosCode=" + comparatorPosCode);
+    builder.append("&operator=e");
+    builder.append("&scale=" + scale);
+    builder.append("&msgError=" + msgError);
+    return new ComparisonFormValidation6(builder.toString());
+  }
+
     public static SegmentValidation genEqualsFormTotalRowExpectPos(String selectField, String selectPosCode,
                                                           String comparatorForm, String expectPos, String msgError) {
         StringBuilder builder = new StringBuilder("selectField=" + selectField);
