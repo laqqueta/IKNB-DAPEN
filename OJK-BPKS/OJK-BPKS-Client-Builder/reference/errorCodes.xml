@@ -1,0 +1,1248 @@
+<linked-hash-map>
+  <entry>
+    <string>11.00</string>
+    <validationErrorCode code="11" subCode="00">
+      <description>Format</description>
+      <messageFormat>format data yang diperbolehkan adalah %1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>11.01</string>
+    <validationErrorCode code="11" subCode="01">
+      <description>Panjang Minimum</description>
+      <messageFormat>panjang minimum %1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>11.02</string>
+    <validationErrorCode code="11" subCode="02">
+      <description>Panjang Maksimum</description>
+      <messageFormat>panjang maksimum %1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>11.06</string>
+    <validationErrorCode code="11" subCode="06">
+      <description>Sama Dengan</description>
+      <messageFormat>nilai harus sama dengan %2$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>11.07</string>
+    <validationErrorCode code="11" subCode="07">
+      <description>Sama Dengan</description>
+      <messageFormat>nilai harus sama dengan %1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>11.08</string>
+    <validationErrorCode code="11" subCode="08">
+      <description>Tidak Sama Dengan</description>
+      <messageFormat>nilai harus selain %1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>11.09</string>
+    <validationErrorCode code="11" subCode="09">
+      <description>Kurang dari atau Sama Dengan</description>
+      <messageFormat>nilai harus kurang dari atau sama dengan %1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>11.10</string>
+    <validationErrorCode code="11" subCode="10">
+      <description>Tidak sama dengan nol</description>
+      <messageFormat>kolom %1$s hanya boleh satu yang tidak nol</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>11.11</string>
+    <validationErrorCode code="11" subCode="11">
+      <description>Lebih dari atau Sama Dengan</description>
+      <messageFormat>nilai harus lebih dari atau sama dengan %1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>11.12</string>
+    <validationErrorCode code="11" subCode="12">
+      <description>Kurang dari atau Sama Dengan</description>
+      <messageFormat>nilai %1$s harus kurang dari atau sama dengan %2$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>11.13</string>
+    <validationErrorCode code="11" subCode="13">
+      <description>Lebih dari</description>
+      <messageFormat>nilai harus lebih dari %1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>11.03</string>
+    <validationErrorCode code="11" subCode="03">
+      <description>Panjang fix</description>
+      <messageFormat>panjang harus %1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>11.04</string>
+    <validationErrorCode code="11" subCode="04">
+      <description>Number</description>
+      <messageFormat>nilai harus angka. %1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>11.05</string>
+    <validationErrorCode code="11" subCode="05">
+      <description>desimal</description>
+      <messageFormat>nilai harus angka desimal. %1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>12.01</string>
+    <validationErrorCode code="12" subCode="01">
+      <description>Referensi</description>
+      <messageFormat>tidak ditemukan pada Referensi &apos;%1$s&apos;</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>12.00</string>
+    <validationErrorCode code="12" subCode="00">
+      <description>Table Referensi tidak ditemukan</description>
+      <messageFormat>tabel referensi no %1$s tidak ditemukan</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>12.02</string>
+    <validationErrorCode code="12" subCode="02">
+      <description>Referensi 2</description>
+      <messageFormat>%1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>12.03</string>
+    <validationErrorCode code="12" subCode="03">
+      <description>Tanggal</description>
+      <messageFormat>format tanggal yyyyMMdd</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>12.04</string>
+    <validationErrorCode code="12" subCode="04">
+      <description>Tanggal minimum (global)</description>
+      <messageFormat>semua tanggal minimum %1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>12.05</string>
+    <validationErrorCode code="12" subCode="05">
+      <description>Tanggal maksimum (global)</description>
+      <messageFormat>semua tanggal maksimum %1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>12.06</string>
+    <validationErrorCode code="12" subCode="06">
+      <description>Tanggal minimum</description>
+      <messageFormat>tanggal minimum %1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>12.07</string>
+    <validationErrorCode code="12" subCode="07">
+      <description>Tanggal maksimum</description>
+      <messageFormat>tanggal maksimum %1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>12.08</string>
+    <validationErrorCode code="12" subCode="08">
+      <description>Nilai minimum</description>
+      <messageFormat>nilai harus %1$s %2$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>12.09</string>
+    <validationErrorCode code="12" subCode="09">
+      <description>Nilai maximum</description>
+      <messageFormat>nilai harus %1$s %2$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>12.10</string>
+    <validationErrorCode code="12" subCode="10">
+      <description>Bulan Tahun</description>
+      <messageFormat>format harus yyyyMM</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>12.11</string>
+    <validationErrorCode code="12" subCode="11">
+      <description>Min Bulan Tahun</description>
+      <messageFormat>minimum %1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>12.12</string>
+    <validationErrorCode code="12" subCode="12">
+      <description>MaxBulan Tahun</description>
+      <messageFormat>maksimum %1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>12.13</string>
+    <validationErrorCode code="12" subCode="13">
+      <description>Tahun</description>
+      <messageFormat>format harus yyyy</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>12.14</string>
+    <validationErrorCode code="12" subCode="14">
+      <description>Min Tahun</description>
+      <messageFormat>minimum tahun %1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>12.15</string>
+    <validationErrorCode code="12" subCode="15">
+      <description>Max Tahun</description>
+      <messageFormat>maksimum tahun %1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>12.16</string>
+    <validationErrorCode code="12" subCode="16">
+      <description>Tanggal sesudah lebih atau sama dengan</description>
+      <messageFormat>tanggal kolom %1$s harus &gt;= kolom %2$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>12.17</string>
+    <validationErrorCode code="12" subCode="17">
+      <description>Tanggal sebelum</description>
+      <messageFormat>tanggal kolom %1$s harus &lt; kolom %2$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>12.18</string>
+    <validationErrorCode code="12" subCode="18">
+      <description>Tanggal sebelum</description>
+      <messageFormat>tanggal kolom %1$s harus &lt;= kolom %2$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>12.19</string>
+    <validationErrorCode code="12" subCode="19">
+      <description>Nilai antara</description>
+      <messageFormat>nilai harus antara %1$s dan %2$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>12.20</string>
+    <validationErrorCode code="12" subCode="20">
+      <description>Tanggal sesudah</description>
+      <messageFormat>tanggal kolom %1$s harus &gt; kolom %2$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>12.21</string>
+    <validationErrorCode code="12" subCode="21">
+      <description>Tanggal minimum dan maksimum (global)</description>
+      <messageFormat>semua tanggal minimum %1$s dan maksimum %2$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>13.00</string>
+    <validationErrorCode code="13" subCode="00">
+      <description>Harus Diisi</description>
+      <messageFormat>harus diisi</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>13.01</string>
+    <validationErrorCode code="13" subCode="01">
+      <description>Harus Kosong</description>
+      <messageFormat>harus kosong (pastikan tidak ada spasi/tab)</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>13.10</string>
+    <validationErrorCode code="13" subCode="10">
+      <description>Summary Wajib diisi</description>
+      <messageFormat>harus diisi, %1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>13.11</string>
+    <validationErrorCode code="13" subCode="11">
+      <description>Summary Harus Kosong</description>
+      <messageFormat>harus kosong, %1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>13.12</string>
+    <validationErrorCode code="13" subCode="12">
+      <description>Summary Tunggakan Harus Kosong</description>
+      <messageFormat>harus kosong untuk fasilitas %1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>14.00</string>
+    <validationErrorCode code="14" subCode="00">
+      <description>Unik</description>
+      <messageFormat>harus unik</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>14.01</string>
+    <validationErrorCode code="14" subCode="01">
+      <description>Unik Kombinasi</description>
+      <messageFormat>%1$s harus unik</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>14.02</string>
+    <validationErrorCode code="14" subCode="02">
+      <description>Unik Pos Tidak Kombinasi</description>
+      <messageFormat>kode Komponen/Baris &apos;%1$s&apos; harus unik</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>14.03</string>
+    <validationErrorCode code="14" subCode="03">
+      <description>Unik</description>
+      <messageFormat>harus unik karena %1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>14.04</string>
+    <validationErrorCode code="14" subCode="04">
+      <description>Nila Kode baris Unik</description>
+      <messageFormat>%1$s harus unik di kode baris %2$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>15.00</string>
+    <validationErrorCode code="15" subCode="00">
+      <description>Field Unik</description>
+      <messageFormat>&apos;%1$s&apos; sudah dipakai di kolom lain</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>20.01</string>
+    <validationErrorCode code="20" subCode="01">
+      <description>Conditional Harus Diisi</description>
+      <messageFormat>harus diisi jika %1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>20.02</string>
+    <validationErrorCode code="20" subCode="02">
+      <description>Conditional Harus Kosong</description>
+      <messageFormat>harus kosong %1$s (pastikan tidak ada spasi/tab)</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>20.00</string>
+    <validationErrorCode code="20" subCode="00">
+      <description>Validasi antar kolom</description>
+      <messageFormat>validasi antar kolom</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>20.03</string>
+    <validationErrorCode code="20" subCode="03">
+      <description>Date matrix</description>
+      <messageFormat>nilai harus &quot;%1$s %2$s %3$s&quot;</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>20.04</string>
+    <validationErrorCode code="20" subCode="04">
+      <description>Tanggal Kontrak</description>
+      <messageFormat>%1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>20.05</string>
+    <validationErrorCode code="20" subCode="05">
+      <description>Amount base Condition</description>
+      <messageFormat>nilai field %1$s harus sama dengan %2$s, karena kode kondisi &apos;%3$s&apos; dengan kategori kondisi &apos;DEBITUR TIDAK MEMILIKI KEWAJIBAN&apos;</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>20.06</string>
+    <validationErrorCode code="20" subCode="06">
+      <description>Kolektibilitas</description>
+      <messageFormat>nilai field %1$s harus sama dengan %2$s, karena kode kondisi &apos;%3$s&apos; dengan kategori kondisi &apos;DEBITUR TIDAK MEMILIKI KEWAJIBAN&apos;</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>20.08</string>
+    <validationErrorCode code="20" subCode="08">
+      <description>Baru/Perpanjangan</description>
+      <messageFormat>harus &gt; 0, karena %1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>20.09</string>
+    <validationErrorCode code="20" subCode="09">
+      <description>Date matrix with reason</description>
+      <messageFormat>%1$s harus %2$s %3$s karena %4$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>20.11</string>
+    <validationErrorCode code="20" subCode="11">
+      <description>Validasi Overdue 1</description>
+      <messageFormat>%1$s harus = 0, karena kategori kondisi &apos;DEBITUR TIDAK MEMILIKI KEWAJIBAN</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>20.12</string>
+    <validationErrorCode code="20" subCode="12">
+      <description>Validasi Overdue 2</description>
+      <messageFormat>%1$s harus = 0, karena TUNGGAKAN POKOK=0 dan TUNGGAKAN BUNGA=0</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>20.13</string>
+    <validationErrorCode code="20" subCode="13">
+      <description>Validasi Overdue 3</description>
+      <messageFormat>%1$s harus = 0, karena TUNGGAKAN=0</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>20.14</string>
+    <validationErrorCode code="20" subCode="14">
+      <description>Validasi Overdue 4</description>
+      <messageFormat>%1$s harus &gt; 0, karena TUNGGAKAN POKOK&gt;0 atau TUNGGAKAN BUNGA&gt;0</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>20.17</string>
+    <validationErrorCode code="20" subCode="17">
+      <description>Validasi Overdue 4</description>
+      <messageFormat>%1$s harus &gt; 0, karena TUNGGAKAN&gt;0</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>20.15</string>
+    <validationErrorCode code="20" subCode="15">
+      <description>Frequency restrukturisasi 1</description>
+      <messageFormat>%1$s harus &gt; 0, Sifat Kredit Adalah Kredit yang direstrukturisasi.</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>20.16</string>
+    <validationErrorCode code="20" subCode="16">
+      <description>Frequency restrukturisasi 2</description>
+      <messageFormat>%1$s harus = 0, Sifat Kredit Adalah Kredit lainnya.</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>20.21</string>
+    <validationErrorCode code="20" subCode="21">
+      <description>Original Currency 1</description>
+      <messageFormat>Harus &gt; 0, karena %1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>20.22</string>
+    <validationErrorCode code="20" subCode="22">
+      <description>Original Currency 2</description>
+      <messageFormat>Harus = 0, karena %1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>20.25</string>
+    <validationErrorCode code="20" subCode="25">
+      <description>Financial Report Sum</description>
+      <messageFormat>%1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>20.26</string>
+    <validationErrorCode code="20" subCode="26">
+      <description>Financial Report Revenue</description>
+      <messageFormat>(Pendapatan Usaha/Operasional - Beban Pokok Pendapatan/Beban Operasional) harus sama dengan Laba/Rugi Bruto</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>20.27</string>
+    <validationErrorCode code="20" subCode="27">
+      <description>Financial Report profitBeforeTax</description>
+      <messageFormat>(Laba/Rugi Bruto + Pendapatan Lain-lain/Non Operasional) - Beban Lain-lain/Non Operasional harus sama dengan Laba/Rugi sebelum pajak</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>20.30</string>
+    <validationErrorCode code="20" subCode="30">
+      <description>Establisment Date</description>
+      <messageFormat>%1$s harus sama dengan %2$s, karena %3$s = %4$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>20.35</string>
+    <validationErrorCode code="20" subCode="35">
+      <description>Canceled Condition</description>
+      <messageFormat>kode kondisi %1$s operasi data tidak boleh C</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>40.00</string>
+    <validationErrorCode code="40" subCode="00">
+      <description>Relasi</description>
+      <messageFormat>tidak ditemukan relasi ke %1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>40.01</string>
+    <validationErrorCode code="40" subCode="01">
+      <description>Relasi Multi</description>
+      <messageFormat>relasi tidak valid, %1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>40.02</string>
+    <validationErrorCode code="40" subCode="02">
+      <description>Summary wajib ada</description>
+      <messageFormat>summary untuk fasilitas %1$s, cif %2$s, nomor rekening %3$s wajib ada</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>40.03</string>
+    <validationErrorCode code="40" subCode="03">
+      <description>Paripasu unik</description>
+      <messageFormat>Harus unik karena bukan paripasu!</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>40.04</string>
+    <validationErrorCode code="40" subCode="04">
+      <description>Harus paripasu</description>
+      <messageFormat>KODE REGISTER AGUNAN %1$s Harus paripasu karena digunakan lebih dari 1 kali!</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>40.05</string>
+    <validationErrorCode code="40" subCode="05">
+      <description>Coll Joined Credit 1</description>
+      <messageFormat>Nomor Rekening untuk KODE REGISTER AGUNAN %1$s tidak ditemukan di Kredit Join!</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>40.06</string>
+    <validationErrorCode code="40" subCode="06">
+      <description>Coll Joined Credit 2</description>
+      <messageFormat>STATUS KREDIT JOIN ACCOUNT harus Y karena Nomor Rekening terdaftar di Fasilitas Kredit Join!</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>40.07</string>
+    <validationErrorCode code="40" subCode="07">
+      <description>Coll Joined Must Exist</description>
+      <messageFormat>Harus ada agunan KODE REGISTER AGUNAN %1$s, No. Rekening %2$s, CIF %3$s karena terdaftar di Kredit Join</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>40.08</string>
+    <validationErrorCode code="40" subCode="08">
+      <description>Coll must equal</description>
+      <messageFormat>Detail data untuk KODE REGISTER AGUNAN %1$s muncul lebih dari satu kali, informasi harus sama</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>40.09</string>
+    <validationErrorCode code="40" subCode="09">
+      <description>Gua must equal</description>
+      <messageFormat>Detail data untuk No Identitas %1$s muncul lebih dari satu kali, informasi harus sama</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>40.12</string>
+    <validationErrorCode code="40" subCode="12">
+      <description>Gua must exist</description>
+      <messageFormat>Harus ada penjamin No Identitas Penjamin %1$s, No. Rekening %2$s, CIF %3$s karena terdaftar di Kredit Join</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>40.10</string>
+    <validationErrorCode code="40" subCode="10">
+      <description>Kredit Join 1</description>
+      <messageFormat>Kredit join no rekening %1$s harus terhubung ke lebih dari 1 CIF</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>40.11</string>
+    <validationErrorCode code="40" subCode="11">
+      <description>Kredit Join 2</description>
+      <messageFormat>Sequence debitur tidak urut</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>40.22</string>
+    <validationErrorCode code="40" subCode="22">
+      <description>Kredit Join Must Equal</description>
+      <messageFormat>Detail data kredit join No Rekening %1$s harus sama</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>40.13</string>
+    <validationErrorCode code="40" subCode="13">
+      <description>Man must equal</description>
+      <messageFormat>Detail data untuk NOMOR IDENTITAS %1$s muncul lebih dari satu kali, informasi harus sama</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>40.14</string>
+    <validationErrorCode code="40" subCode="14">
+      <description>Man share harus 100%</description>
+      <messageFormat>Jumlah pangsa kepemilikan untuk CIF %1$s harus 100 persen. Jumlah saat ini %2$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>40.15</string>
+    <validationErrorCode code="40" subCode="15">
+      <description>Harus bukan paripasu</description>
+      <messageFormat>KODE REGISTER AGUNAN %1$s Harus bukan paripasu karena digunakan 1 kali!</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>40.20</string>
+    <validationErrorCode code="40" subCode="20">
+      <description>Fac Must Exist</description>
+      <messageFormat>Nomor CIF %1$s tidak memiliki fasilitas</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>40.21</string>
+    <validationErrorCode code="40" subCode="21">
+      <description>Management Must Exist</description>
+      <messageFormat>Nomor CIF %1$s tidak memiliki data Pengurus/Pemilik</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>40.25</string>
+    <validationErrorCode code="40" subCode="25">
+      <description>Col Gua Must Delete</description>
+      <messageFormat>harus D karena fasilitas kondisi closed</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>40.26</string>
+    <validationErrorCode code="40" subCode="26">
+      <description>Col Gua Must Not Submit</description>
+      <messageFormat>%1$s tidak tidak boleh dikirim karena fasilitas operasi C dan kondisi closed</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>40.30</string>
+    <validationErrorCode code="40" subCode="30">
+      <description>D01 C F must C</description>
+      <messageFormat>Debtor operasi C, %1$s juga harus C</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>40.31</string>
+    <validationErrorCode code="40" subCode="31">
+      <description>D02 C M must C</description>
+      <messageFormat>Debtor Badan Usaha operasi C, pengurus/pemilik juga harus C</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>40.32</string>
+    <validationErrorCode code="40" subCode="32">
+      <description>F C A dan P must C</description>
+      <messageFormat>Fasilitas operasi C, %1$s juga harus C</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>40.33</string>
+    <validationErrorCode code="40" subCode="33">
+      <description>F C Fin must C</description>
+      <messageFormat>Fasilitas operasi C, laporan keuangan juga harus C</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>50.01</string>
+    <validationErrorCode code="50" subCode="01">
+      <description>Percent</description>
+      <messageFormat>nilai persentase tidak sesuai</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>50.02</string>
+    <validationErrorCode code="50" subCode="02">
+      <description>Kesalahan Formula</description>
+      <messageFormat>nilai harus &quot;%2$s&quot;</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>50.03</string>
+    <validationErrorCode code="50" subCode="03">
+      <description>Pos Must Exist</description>
+      <messageFormat>Kode Komponen/Baris &apos;%2$s&apos; tidak ditemukan</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>50.06</string>
+    <validationErrorCode code="50" subCode="06">
+      <description>Nilai tidak ditemukan</description>
+      <messageFormat>Nilai &apos;%1$s&apos; Tidak Ditemukan pada form %2$s kolom %3$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>50.07</string>
+    <validationErrorCode code="50" subCode="07">
+      <description>Percent False</description>
+      <messageFormat>nilai tidak boleh angka desimal</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>50.08</string>
+    <validationErrorCode code="50" subCode="08">
+      <description>Selisih Nilai</description>
+      <messageFormat>nilai selisih &apos;%2$s&apos; tidak sesuai</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>50.09</string>
+    <validationErrorCode code="50" subCode="09">
+      <description>Total Percent</description>
+      <messageFormat>nilai total penjumlahan Kolom &apos;%1$s&apos; harus %2$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>50.10</string>
+    <validationErrorCode code="50" subCode="10">
+      <description>Kesalahan Formula 2</description>
+      <messageFormat>nilai harus &quot;%1$s&quot;</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>50.11</string>
+    <validationErrorCode code="50" subCode="11">
+      <description>Kantor Cabang</description>
+      <messageFormat>Sandi Kantor &apos;%1$s&apos; tidak terdaftar pada Form Daftar Rincian Kantor</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>50.12</string>
+    <validationErrorCode code="50" subCode="12">
+      <description>Pos tidak ditemukan</description>
+      <messageFormat>Sandi Kantor &apos;%1$s&apos; dengan Sandi Pos &apos;%2$s&apos; tidak ditemukan</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>50.13</string>
+    <validationErrorCode code="50" subCode="13">
+      <description>Validasi sandi gabungan</description>
+      <messageFormat>nilai harus &quot;Pos Sandi Kantor Gabungan = seluruh nilai akumulasi Kantor Pusat dan Cabang pada pos yang sama&quot;</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>50.14</string>
+    <validationErrorCode code="50" subCode="14">
+      <description>Kantor Cabang</description>
+      <messageFormat>Sandi Kantor &apos;%1$s&apos; hanya digunakan untuk Form Laporan Posisi Keuangan, Rekening Administratif, dan Laporan Laba Rugi</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>50.15</string>
+    <validationErrorCode code="50" subCode="15">
+      <description>Validasi Kolom Conditional</description>
+      <messageFormat>nilai harus %1$s karena Kolom &apos;%2$s&apos; bernilai %3$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>50.16</string>
+    <validationErrorCode code="50" subCode="16">
+      <description>Validasi Kolom Conditional</description>
+      <messageFormat>nilai harus %1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>50.17</string>
+    <validationErrorCode code="50" subCode="17">
+      <description>Validasi Posisi Tunggal</description>
+      <messageFormat>hanya boleh ada 1 %1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>50.18</string>
+    <validationErrorCode code="50" subCode="18">
+      <description>Kesalahan Formula 3</description>
+      <messageFormat>nilai harus %1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>50.19</string>
+    <validationErrorCode code="50" subCode="19">
+      <description>Validasi Kolom Conditional</description>
+      <messageFormat>nilai harus lebih dari %1$s karena Kolom &apos;%2$s&apos; bernilai %3$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>50.00</string>
+    <validationErrorCode code="50" subCode="00">
+      <description>Kesalahan lain</description>
+      <messageFormat>Kesalahan %1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>50.04</string>
+    <validationErrorCode code="50" subCode="04">
+      <description>Divide by Zero</description>
+      <messageFormat>Penyebut tidak boleh sama dengan 0</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>50.05</string>
+    <validationErrorCode code="50" subCode="05">
+      <description>Nilai tidak ditemukan</description>
+      <messageFormat>Nilai &apos;%2$s&apos; Tidak Ditemukan</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>01.00</string>
+    <validationErrorCode code="01" subCode="00">
+      <description>Proses masih berjalan</description>
+      <messageFormat>Proses masih berjalan</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>01.01</string>
+    <validationErrorCode code="01" subCode="01">
+      <description>Data belum siap</description>
+      <messageFormat>Data belum siap</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>01.02</string>
+    <validationErrorCode code="01" subCode="02">
+      <description>Direktori tidak ditemukan!</description>
+      <messageFormat>Direktori &apos;%1$s&apos; tidak ditemukan!</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>01.03</string>
+    <validationErrorCode code="01" subCode="03">
+      <description>Bukan direktori!</description>
+      <messageFormat>&apos;%1$s&apos; bukan direktori!</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>01.04</string>
+    <validationErrorCode code="01" subCode="04">
+      <description>Direktori Kosong!</description>
+      <messageFormat>Direktori &apos;%1$s&apos; kosong!</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>01.05</string>
+    <validationErrorCode code="01" subCode="05">
+      <description>File tidak valid</description>
+      <messageFormat>File tidak valid : %1$s!</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>01.06</string>
+    <validationErrorCode code="01" subCode="06">
+      <description>file sequence</description>
+      <messageFormat>Urutan file pada format %1$s tidak valid. Urutan file harus urut dimulai dari 1</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>02.01</string>
+    <validationErrorCode code="02" subCode="01">
+      <description>Entity Code</description>
+      <messageFormat>Error di Kolom 3 &apos;Kode LJK&apos;, tidak valid</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>02.02</string>
+    <validationErrorCode code="02" subCode="02">
+      <description>Sector Code</description>
+      <messageFormat>Error di Kolom 2 &apos;Kode Sektor LJK&apos;, Kode Sektor &apos;%1$s&apos; tidak valid seharusnya &apos;%2$s&apos;</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>02.00</string>
+    <validationErrorCode code="02" subCode="00">
+      <description>EntityType Code</description>
+      <messageFormat>Kode jenis LJK tidak valid</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>02.03</string>
+    <validationErrorCode code="02" subCode="03">
+      <description>LJK Code</description>
+      <messageFormat>Kode LJK &apos;%1$s&apos; tidak valid, seharusnya &apos;%2$s&apos;</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>03.01</string>
+    <validationErrorCode code="03" subCode="01">
+      <description>Header - Jumlah Kolom</description>
+      <messageFormat>Jumlah kolom Header harus %1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>03.02</string>
+    <validationErrorCode code="03" subCode="02">
+      <description>Header - Flag H01</description>
+      <messageFormat>Error di Kolom 1 &apos;Flag Header&apos;, harus berisi &apos;H01&apos;</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>03.05</string>
+    <validationErrorCode code="03" subCode="05">
+      <description>Header - Kode Form</description>
+      <messageFormat>Error di Kolom 6 &apos;Kode Form Laporan&apos;, Kode Form &apos;%1$s&apos; tidak valid seharusnya &apos;%2$s&apos;</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>03.07</string>
+    <validationErrorCode code="03" subCode="07">
+      <description>Header - Jumlah Baris Form</description>
+      <messageFormat>Jumlah baris form %1$s seharusnya %2$s. Pastikan hanya ada 1 (satu) enter/baris kosong saja setelah baris F02 tanpa spasi/tab</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>03.08</string>
+    <validationErrorCode code="03" subCode="08">
+      <description>Header - jumlah baris Form</description>
+      <messageFormat>Jumlah baris form %1$s minimum %2$s. Pastikan hanya ada 1 (satu) enter/baris kosong saja setelah baris F02 tanpa spasi/tab</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>03.09</string>
+    <validationErrorCode code="03" subCode="09">
+      <description>Header - Periode Data</description>
+      <messageFormat>Error di Kolom 4 &apos;Periode Data Pelaporan&apos;, Periode &apos;%1$s&apos; tidak valid seharusnya &apos;%2$s&apos;</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>03.10</string>
+    <validationErrorCode code="03" subCode="10">
+      <description>Header - Kode Jenis Laporan</description>
+      <messageFormat>Error di Kolom 5 &apos;Kode Jenis Laporan&apos;, Kode Jenis Laporan &apos;%1$s&apos; tidak valid seharusnya &apos;%2$s&apos;</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>03.11</string>
+    <validationErrorCode code="03" subCode="11">
+      <description>Header - Format Modal Inti</description>
+      <messageFormat>Error di Kolom 7 &apos;Modal Inti&apos;, format data harus angka (bilangan bulat tanpa pemisah ribuan). Contoh: 1000000</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>03.12</string>
+    <validationErrorCode code="03" subCode="12">
+      <description>Header - Nilai Modal Inti</description>
+      <messageFormat>Error di Kolom 7 &apos;Modal Inti&apos;, nilai modal inti &apos;%1$s&apos; tidak sama dengan form lain</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>03.13</string>
+    <validationErrorCode code="03" subCode="13">
+      <description>Header - Jumlah Baris Minimum D01</description>
+      <messageFormat>Jumlah baris D01 paling sedikit %1$s yaitu D01 penggunaan Single</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>03.14</string>
+    <validationErrorCode code="03" subCode="14">
+      <description>Header - Panjang Modal Inti</description>
+      <messageFormat>Error di Kolom 7 &apos;Modal Inti&apos;, panjang maksimum %1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>03.15</string>
+    <validationErrorCode code="03" subCode="15">
+      <description>Header - Nomor Surat</description>
+      <messageFormat>Error di Kolom 8 &apos;Nomor Surat OJK&apos;, harus diisi</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>03.16</string>
+    <validationErrorCode code="03" subCode="16">
+      <description>Header - Nomor Surat Harus Sama</description>
+      <messageFormat>Error di Kolom 8 &apos;Nomor Surat OJK&apos;, Nomor Surat OJK &apos;%1$s&apos; tidak sama dengan form lain</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>03.17</string>
+    <validationErrorCode code="03" subCode="17">
+      <description>Header - Nomor Surat Harus Kosong</description>
+      <messageFormat>Error di Kolom 8 &apos;Nomor Surat OJK&apos;, harus kosong (pastikan tidak ada spasi/tab)</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>03.18</string>
+    <validationErrorCode code="03" subCode="18">
+      <description>Header - Format Nomor Surat</description>
+      <messageFormat>Error di Kolom 8 &apos;Nomor Surat OJK&apos;, format data yang diperbolehkan huruf, angka dan karakter -.,/</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>03.19</string>
+    <validationErrorCode code="03" subCode="19">
+      <description>Header Only</description>
+      <messageFormat>Isi Form 1 baris Header (H01) saja tanpa Detail (D01) dan Footer (F01 dan F02). Pastikan hanya ada 1 (satu) enter/baris kosong saja setelah baris H01 tanpa spasi/tab</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>03.20</string>
+    <validationErrorCode code="03" subCode="20">
+      <description>Header - Report Form Group</description>
+      <messageFormat>Error di Kolom 7 &apos;Kode Status Koreksi&apos;, harus diisi &apos;%1$s&apos;</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>03.21</string>
+    <validationErrorCode code="03" subCode="21">
+      <description>Header - Jumlah Baris Form</description>
+      <messageFormat>Jumlah baris form %1$s seharusnya %2$s. Pastikan hanya ada 1 (satu) enter/baris kosong saja setelah baris terakhir tanpa spasi/tab</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>03.22</string>
+    <validationErrorCode code="03" subCode="22">
+      <description>Header - Jumlah Baris Minimum D01</description>
+      <messageFormat>Jumlah baris D01 paling sedikit harus %1$s baris</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>03.23</string>
+    <validationErrorCode code="03" subCode="23">
+      <description>Header - Tanpa data</description>
+      <messageFormat>Form harus diisi hanya baris Header (H01) %1$s. Pastikan hanya ada 1 (satu) enter/baris kosong saja setelah baris terakhir tanpa spasi/tab</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>03.24</string>
+    <validationErrorCode code="03" subCode="24">
+      <description>Header - Dengan data</description>
+      <messageFormat>Form tidak boleh kosong %1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>03.25</string>
+    <validationErrorCode code="03" subCode="25">
+      <description>Header - Jumlah Baris Form</description>
+      <messageFormat>Jumlah baris form %1$s seharusnya %2$s. Pastikan hanya ada 1 (satu) enter/baris kosong saja setelah baris terakhir tanpa spasi/tab</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>03.26</string>
+    <validationErrorCode code="03" subCode="26">
+      <description>Header - Panjang Nomor Surat</description>
+      <messageFormat>Error di Kolom 8 &apos;Nomor Surat OJK&apos;, panjang maksimum %1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>03.27</string>
+    <validationErrorCode code="03" subCode="27">
+      <description>Header - Format Nomor Surat</description>
+      <messageFormat>Error di Kolom 8 &apos;Nomor Surat OJK&apos;, format data yang diperbolehkan huruf, angka, spasi dan karakter -./</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>03.28</string>
+    <validationErrorCode code="03" subCode="28">
+      <description>Kesalah</description>
+      <messageFormat>Harus diisi sama dengan &apos;%s&apos; karena &apos;%s&apos; = 0.</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>03.29</string>
+    <validationErrorCode code="03" subCode="29">
+      <description>Validasi Formula</description>
+      <messageFormat>Perhitungan Deviasi = (&apos;%s&apos; - &apos;%s&apos;) / &apos;%s&apos;</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>03.00</string>
+    <validationErrorCode code="03" subCode="00">
+      <description>Header</description>
+      <messageFormat>Header tidak valid, %1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>03.03</string>
+    <validationErrorCode code="03" subCode="03">
+      <description>Header - tahun</description>
+      <messageFormat>Tahun &apos;%1$s&apos; tidak sesuai dengan nama file %2$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>03.04</string>
+    <validationErrorCode code="03" subCode="04">
+      <description>Header - bulan</description>
+      <messageFormat>Bulan &apos;%1$s&apos; tidak sesuai dengan nama file %2$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>03.06</string>
+    <validationErrorCode code="03" subCode="06">
+      <description>Header - jumlah baris per format</description>
+      <messageFormat>Jumlah baris lampiran %1$s tidak valid, seharusnya %2$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>04.00</string>
+    <validationErrorCode code="04" subCode="00">
+      <description>Jumlah kolom Detail</description>
+      <messageFormat>Jumlah kolom %1$s, seharusnya %2$s kolom</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>04.01</string>
+    <validationErrorCode code="04" subCode="01">
+      <description>Cr Lf</description>
+      <messageFormat>Karakter ganti baris harus CR LF</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>04.02</string>
+    <validationErrorCode code="04" subCode="02">
+      <description>Jumlah kolom Detail</description>
+      <messageFormat>Jumlah kolom harus %1$s kolom</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>05.00</string>
+    <validationErrorCode code="05" subCode="00">
+      <description>Footer - Flag F01</description>
+      <messageFormat>Error di Kolom 1 &apos;Flag Footer&apos;, harus berisi &apos;F01&apos;</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>05.01</string>
+    <validationErrorCode code="05" subCode="01">
+      <description>Footer - Flag F02</description>
+      <messageFormat>Error di Kolom 1 &apos;Flag Footer&apos;, harus berisi &apos;F02&apos;</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>05.02</string>
+    <validationErrorCode code="05" subCode="02">
+      <description>Footer - Max Length</description>
+      <messageFormat>Error di Kolom 2 &apos;Keterangan Footer&apos;, panjang maksimum %1$s karakter</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>05.04</string>
+    <validationErrorCode code="05" subCode="04">
+      <description>Footer - Harus Kosong</description>
+      <messageFormat>Error di Kolom 2 &apos;Keterangan Footer&apos;, harus kosong (pastikan tidak ada spasi/tab)</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>05.05</string>
+    <validationErrorCode code="05" subCode="05">
+      <description>Footer - Harus Diisi</description>
+      <messageFormat>Error di Kolom 2 &apos;Keterangan Footer&apos;, harus diisi</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>05.06</string>
+    <validationErrorCode code="05" subCode="06">
+      <description>Footer - Jumlah Kolom</description>
+      <messageFormat>Jumlah kolom Footer harus 2</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>05.07</string>
+    <validationErrorCode code="05" subCode="07">
+      <description>Footer - Banyak Enter dibawah</description>
+      <messageFormat>Pastikan hanya ada 1 (satu) enter/baris kosong saja setelah baris F02 tanpa spasi/tab</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>05.08</string>
+    <validationErrorCode code="05" subCode="08">
+      <description>Footer - F02 First Check</description>
+      <messageFormat>Pastikan baris terakhir adalah F02. Contoh: F02|isi footer</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>05.09</string>
+    <validationErrorCode code="05" subCode="09">
+      <description>Footer - Banyak Enter dibawah</description>
+      <messageFormat>Pastikan hanya ada 1 (satu) enter/baris kosong saja setelah baris terakhir tanpa spasi/tab</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>05.10</string>
+    <validationErrorCode code="05" subCode="10">
+      <description>Footer - Flag</description>
+      <messageFormat>Error di Kolom 1 &apos;Flag Footer&apos;, harus berisi &apos;%1$s&apos;</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>05.03</string>
+    <validationErrorCode code="05" subCode="03">
+      <description>Footer - Format</description>
+      <messageFormat>huruf, angka, spasi dan special karakter karakter</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>06.00</string>
+    <validationErrorCode code="06" subCode="00">
+      <description>Format Not Found</description>
+      <messageFormat>Format pelaporan tidak ditemukan</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>07.01</string>
+    <validationErrorCode code="07" subCode="01">
+      <description>Header - Nomor Surat Pengantar</description>
+      <messageFormat>Error di Kolom 8 &apos;Nomor Surat Pengantar&apos;, harus diisi</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>07.02</string>
+    <validationErrorCode code="07" subCode="02">
+      <description>Header - Nomor LHPL</description>
+      <messageFormat>Error di Kolom 9 &apos;Nomor LHPL&apos;, harus diisi</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>07.03</string>
+    <validationErrorCode code="07" subCode="03">
+      <description>Header - Panjang Nomor Surat Pengantar</description>
+      <messageFormat>Error di Kolom 8 &apos;Nomor Surat Pengantar&apos;, panjang maksimum %1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>07.04</string>
+    <validationErrorCode code="07" subCode="04">
+      <description>Header - Panjang Nomor LHPL</description>
+      <messageFormat>Error di Kolom 9 &apos;Nomor LHPL&apos;, panjang maksimum %1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>07.05</string>
+    <validationErrorCode code="07" subCode="05">
+      <description>Header - Format Nomor Surat Pengantar</description>
+      <messageFormat>Error di Kolom 8 &apos;Nomor Surat Pengantar&apos;, format data yang diperbolehkan huruf, angka dan karakter -.,/</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>07.06</string>
+    <validationErrorCode code="07" subCode="06">
+      <description>Header - Format Nomor LHPL</description>
+      <messageFormat>Error di Kolom 9 &apos;Nomor LHPL&apos;, format data yang diperbolehkan huruf, angka dan karakter -.,/</messageFormat>
+    </validationErrorCode>
+  </entry>
+  <entry>
+    <string>99.00</string>
+    <validationErrorCode code="99" subCode="00">
+      <description>Kesalahan</description>
+      <messageFormat>%1$s</messageFormat>
+    </validationErrorCode>
+  </entry>
+</linked-hash-map>

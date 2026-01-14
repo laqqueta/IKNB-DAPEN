@@ -1,0 +1,5417 @@
+<list>
+  <reference>
+    <key>SE:e01111</key>
+    <value>Pertanian Jagung</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01112</key>
+    <value>Pertanian Gandum</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01113</key>
+    <value>Pertanian Kedelai</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01114</key>
+    <value>Pertanian Kacang Tanah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01115</key>
+    <value>Pertanian Kacang Hijau</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01116</key>
+    <value>Pertanian Aneka Kacang Hortikultura</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01117</key>
+    <value>Pertanian Biji-Bijian Penghasil Minyak Makan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01118</key>
+    <value>Pertanian Biji-Bijian Penghasil Bukan Minyak Makan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01119</key>
+    <value>Pertanian Serealia Lainnya, Aneka Kacang Dan Biji-Bijian Penghasil Minyak Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01121</key>
+    <value>Pertanian Padi Hibrida</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01122</key>
+    <value>Pertanian Padi Inbrida</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01131</key>
+    <value>Pertanian Hortikultura Sayuran Daun</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01132</key>
+    <value>Pertanian Holtikura Buah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01133</key>
+    <value>Pertanian Hortikultura Sayuran Buah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e011341</key>
+    <value>Pertanian Hortikultura Bawang Merah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01135</key>
+    <value>Pertanian Aneka Umbi Palawija</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01136</key>
+    <value>Pertanian Jamur</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01137</key>
+    <value>Pertanian Bit Gula Dan Tanaman Pemanis Bukan Tebu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01139</key>
+    <value>Pertanian Hortikultura Sayuran Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01140</key>
+    <value>Perkebunan Tebu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01150</key>
+    <value>Perkebunan Tembakau</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01160</key>
+    <value>Pertanian Tanaman Berserat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01191</key>
+    <value>Pertanian Tanaman Rumput-Rumputan Dan Tanaman Pakan Ternak</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01192</key>
+    <value>Pembibitan Bit (Bukan Bit Gula) Dan Bibit Tanaman Pakan Ternak</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01193</key>
+    <value>Pertanian Tanaman Bunga</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01194</key>
+    <value>Pertanian Pembibitan Tanaman Bunga</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01199</key>
+    <value>Pertanian Tanaman Semusim Lainnya Ytdl</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01210</key>
+    <value>Pertanian Buah Anggur</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e012201</key>
+    <value>Pertanian Buah Pisang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e012209</key>
+    <value>Pertanian Buah-Buahan Tropis Dan Subtropis Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01230</key>
+    <value>Pertanian Buah Jeruk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01240</key>
+    <value>Pertanian Buah Apel Dan Buah Batu (Pome And Stone Fruits)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01251</key>
+    <value>Pertanian Buah Beri</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01252</key>
+    <value>Pertanian Buah Biji Kacang-Kacangan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01253</key>
+    <value>Pertanian Sayuran Tahunan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01259</key>
+    <value>Pertanian Buah Semak Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01261</key>
+    <value>Perkebunan Buah Kelapa</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01262</key>
+    <value>Perkebunan Buah Kelapa Sawit</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01269</key>
+    <value>Perkebunan Buah Oleaginous Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e012701</key>
+    <value>Perkebunan Tanaman Kopi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e012702</key>
+    <value>Perkebunan Tanaman Teh</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e012703</key>
+    <value>Perkebunan Tanaman Coklat (Kakao)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e012709</key>
+    <value>Pertanian Tanaman Untuk Bahan Minuman Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01281</key>
+    <value>Perkebunan Lada</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01282</key>
+    <value>Perkebunan Cengkeh</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01283</key>
+    <value>Pertanian Cabai</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01284</key>
+    <value>Perkebunan Tanaman Aromatik/Penyegar</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01287</key>
+    <value>Perkebunan Tanaman Obat / Bahan Farmasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01285</key>
+    <value>Pertanian Tanaman Obat Atau Biofarmaka Rimpang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01286</key>
+    <value>Pertanian Tanaman Obat Atau Biofarmaka Non Rimpang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e012891</key>
+    <value>Perkebunan Tanaman Rempah Panili</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e012892</key>
+    <value>Perkebunan Tanaman Rempah Pala</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e012899</key>
+    <value>Perkebunan Tanaman Rempah Yang Tidak Diklasifikasikan Di Tempat Lain</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01291</key>
+    <value>Perkebunan Karet Dan Tanaman Penghasil Getah Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01299</key>
+    <value>Pertanian Cemara Dan Tanaman Tahunan Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01301</key>
+    <value>Pertanian Tanaman Hias</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01302</key>
+    <value>Pertanian Pengembangbiakan Tanaman</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01411</key>
+    <value>Pembibitan Dan Budidaya Sapi Potong</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01412</key>
+    <value>Pembibitan Dan Budidaya Sapi Perah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01413</key>
+    <value>Pembibitan Dan Budidaya Kerbau Potong</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01414</key>
+    <value>Pembibitan Dan Budidaya Kerbau Perah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01420</key>
+    <value>Peternakan Kuda Dan Sejenisnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01430</key>
+    <value>Peternakan Unta Dan Sejenisnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01441</key>
+    <value>Pembibitan Dan Budidaya Domba</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01442</key>
+    <value>Pembibitan Dan Budidaya Kambing Potong</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01443</key>
+    <value>Pembibitan Dan Budidaya Kambing Perah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01450</key>
+    <value>Peternakan Babi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01461</key>
+    <value>Budidaya Ayam Ras Pedaging</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01462</key>
+    <value>Budidaya Ayam Ras Petelur</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01463</key>
+    <value>Pembibitan Dan Budidaya Ayam Buras</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01464</key>
+    <value>Pembibitan Dan Budidaya Itik Dan Itik Manila</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01465</key>
+    <value>Pembibitan Dan Budidaya Kalkun</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01466</key>
+    <value>Pembibitan Dan Budidaya Burung Puyuh</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01467</key>
+    <value>Pembibitan Dan Budidaya Burung Merpati</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01468</key>
+    <value>Pembibitan Ayam Ras</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01469</key>
+    <value>Pembibitan Dan Budidaya Ternak Unggas Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01491</key>
+    <value>Pembibitan Dan Budidaya Burung Unta</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01492</key>
+    <value>Pengusahaan Kokon/Kepompong Ulat Sutera</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01493</key>
+    <value>Pembibitan Dan Budidaya Lebah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01494</key>
+    <value>Pembibitan Dan Budidaya Rusa</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01495</key>
+    <value>Pembibitan Dan Budidaya Kelinci</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01496</key>
+    <value>Pembibitan Dan Budidaya Cacing</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01499</key>
+    <value>Pembibitan Dan Budidaya Aneka Ternak Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01611</key>
+    <value>Jasa Pengolahan Lahan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01612</key>
+    <value>Jasa Pemupukan, Penanaman Bibit/Benih Dan Pengendalian Hama Dan Gulma</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01613</key>
+    <value>Jasa Pemanenan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01614</key>
+    <value>Jasa Penyemprotan Dan Penyerbukan Melalui Udara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01619</key>
+    <value>Jasa Penunjang Pertanian Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01621</key>
+    <value>Jasa Pelayanan Kesehatan Ternak</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01622</key>
+    <value>Jasa Perkawinan Ternak</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01623</key>
+    <value>Jasa Penetasan Telur</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01629</key>
+    <value>Jasa Penunjang Peternakan Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01630</key>
+    <value>Jasa Pasca Panen</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01640</key>
+    <value>Pemilihan Benih Tanaman Untuk Pengembangbiakan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01711</key>
+    <value>Perburuan Dan Penangkapan Primata</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01712</key>
+    <value>Perburuan Dan Penangkapan Mamalia</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01713</key>
+    <value>Perburuan Dan Penangkapan Reptil</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01714</key>
+    <value>Perburuan Dan Penangkapan Burung</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01715</key>
+    <value>Perburuan Dan Penangkapan Insekta</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01719</key>
+    <value>Perburuan Dan Penangkapan Satwa Liar Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01721</key>
+    <value>Penangkaran Primata</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01722</key>
+    <value>Penangkaran Mamalia</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01723</key>
+    <value>Penangkaran Reptil</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01724</key>
+    <value>Penangkaran Burung</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01725</key>
+    <value>Penangkaran Insekta</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01726</key>
+    <value>Penangkaran Anggrek</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01727</key>
+    <value>Penangkaran Ikan Dan Coral/Karang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e01729</key>
+    <value>Penangkaran Tumbuhan/Satwa Liar Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e020</key>
+    <value>Kehutanan Dan Penebangan Kayu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02111</key>
+    <value>Pengusahaan Hutan Jati</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02112</key>
+    <value>Pengusahaan Hutan Pinus</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02113</key>
+    <value>Pengusahaan Hutan Mahoni</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02114</key>
+    <value>Pengusahaan Hutan Sonokeling</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02115</key>
+    <value>Pengusahaan Hutan Sengon/Albasia/Jeunjing</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02116</key>
+    <value>Pengusahaan Hutan Cendana</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02117</key>
+    <value>Pengusahaan Hutan Alkasia</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02118</key>
+    <value>Pengusahaan Hutan Ekaliptus</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02119</key>
+    <value>Pengusahaan Hutan Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02120</key>
+    <value>Pengusahaan Hutan Alam</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02131</key>
+    <value>Pengusahaan Rotan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02132</key>
+    <value>Pengusahaan Getah Pinus</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02133</key>
+    <value>Pengusahaan Daun Kayu Putih</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02134</key>
+    <value>Pengusahaan Bambu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02135</key>
+    <value>Pengusahaan Damar</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02136</key>
+    <value>Pengusahaan Gaharu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02139</key>
+    <value>Pengusahaan Hutan Bukan Kayu Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02141</key>
+    <value>Pengusahaan Pembibitan Tanaman Jati</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02142</key>
+    <value>Pengusahaan Pembibitan Tanaman Pinus</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02143</key>
+    <value>Pengusahaan Pembibitan Tanaman Mahoni</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02144</key>
+    <value>Pengusahaan Pembibitan Tanaman Sonokeling</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02145</key>
+    <value>Pengusahaan Pembibitan Tanaman Sengon/Albasia/Jeunjing</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02146</key>
+    <value>Pengusahaan Pembibitan Tanaman Jabon</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02147</key>
+    <value>Pengusahaan Pembibitan Tanaman Akasia</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02148</key>
+    <value>Pengusahaan Pembibitan Tanaman Ekaliptus</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02149</key>
+    <value>Pengusahaan Pembibitan Tanaman Kehutanan Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02201</key>
+    <value>Pemanenan Kayu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02202</key>
+    <value>Usaha Pemungutan Kayu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02209</key>
+    <value>Usaha Kehutanan Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e0221</key>
+    <value>Penebangan Dan Pemungutan Kayu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02301</key>
+    <value>Pemungutan Getah Karet</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02302</key>
+    <value>Pemungutan Rotan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02303</key>
+    <value>Pemungutan Getah Pinus</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02304</key>
+    <value>Pemungutan Daun Kayu Putih</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02305</key>
+    <value>Pemungutan Kokon/Kepompong Ulat Sutera</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02306</key>
+    <value>Pemungutan Damar</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02307</key>
+    <value>Pemungutan Madu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02308</key>
+    <value>Pemungutan Bambu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02309</key>
+    <value>Pemungutan Bukan Kayu Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02401</key>
+    <value>Jasa Penggunaan Kawasan Hutan Di Luar Sektor Kehutanan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02402</key>
+    <value>Jasa Perlindungan Hutan Dan Konservasi Alam</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02403</key>
+    <value>Jasa Rehabilitasi Dan Restorasi Kehutanan Sosial</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02404</key>
+    <value>Jasa Kehutanan Bidang Perencanaan Kehutanan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02405</key>
+    <value>Jasa Sertifikasi, Inspeksi, Dan Verifikasi Produk Kehutanan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e02409</key>
+    <value>Jasa Penunjang Kehutanan Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e031111</key>
+    <value>Penangkapan Ikan Tuna</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e031119</key>
+    <value>Penangkapan Ikan Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e031121</key>
+    <value>Penangkapan Udang Laut</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e031129</key>
+    <value>Penangkapan Crustacea Lainnya Di Laut</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03113</key>
+    <value>Penangkapan Mollusca Di Laut</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03114</key>
+    <value>Penangkapan/Pengambilan Tumbuhan Air Di Laut</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03115</key>
+    <value>Penangkapan/Pengambilan Induk/Benih Ikan Di Laut</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03116</key>
+    <value>Penangkapan Echinodermata Di Laut</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03117</key>
+    <value>Penangkapan Coelenterata Di Laut</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03118</key>
+    <value>Penangkapan Ikan Hias Laut</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03119</key>
+    <value>Penangkapan Biota Air Lainnya Di Laut</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03121</key>
+    <value>Penangkapan Pisces/Ikan Bersirip Di Perairan Umum</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03122</key>
+    <value>Penangkapan Crustacea Di Perairan Umum</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03123</key>
+    <value>Penangkapan Mollusca Di Perairan Umum</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03124</key>
+    <value>Penangkapan/Pengambilan Tumbuhan Air Di Perairan Umum</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03125</key>
+    <value>Penangkapan/Pengambilan Induk/Benih Ikan Di Perairan Umum</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03126</key>
+    <value>Penangkapan Ikan Hias Di Perairan Umum</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03129</key>
+    <value>Penangkapan Biota Air Lainnya Di Perairan Umum</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03131</key>
+    <value>Jasa Sarana Produksi Penangkapan Ikan Di Laut</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03132</key>
+    <value>Jasa Produksi Penangkapan Ikan Di Laut</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03133</key>
+    <value>Jasa Pasca Panen Penangkapan Ikan Di Laut</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03141</key>
+    <value>Jasa Sarana Produksi Penangkapan Ikan Di Perairan Umum</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03142</key>
+    <value>Jasa Produksi Penangkapan Ikan Di Perairan Umum</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03143</key>
+    <value>Jasa Pasca Panen Penangkapan Ikan Di Perairan Umum</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03211</key>
+    <value>Pembesaran Pisces/ Ikan Bersirip Laut</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03212</key>
+    <value>Pembenihan Ikan Laut</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03213</key>
+    <value>Budidaya Ikan Hias Air Laut</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03214</key>
+    <value>Budidaya Karang (Coral)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03215</key>
+    <value>Pembesaran Mollusca Laut</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e032161</key>
+    <value>Budidaya Biota Laut Udang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e032171</key>
+    <value>Budidaya Biota Laut Rumput Laut</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03219</key>
+    <value>Budidaya Biota Air Laut Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03221</key>
+    <value>Pembesaran Ikan Air Tawar Di Kolam</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03222</key>
+    <value>Pembesaran Ikan Air Tawar Di Karamba Jaring Apung/Karamba Jaring Tancap</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03223</key>
+    <value>Pembesaran Ikan Air Tawar Di Karamba</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03224</key>
+    <value>Pembesaran Ikan Air Tawar Di Sawah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03225</key>
+    <value>Budidaya Ikan Hias Air Tawar</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e032201</key>
+    <value>Budidaya Biota Air Tawar Udang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03226</key>
+    <value>Pembenihan Ikan Air Tawar</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03229</key>
+    <value>Budidaya Ikan Air Tawar Di Media Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03231</key>
+    <value>Jasa Sarana Produksi Budidaya Ikan Laut</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03232</key>
+    <value>Jasa Produksi Budidaya Ikan Laut</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03233</key>
+    <value>Jasa Pasca Panen Budidaya Ikan Laut</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03241</key>
+    <value>Jasa Sarana Produksi Budidaya Ikan Air Tawar</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03242</key>
+    <value>Jasa Produksi Budidaya Ikan Air Tawar</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03243</key>
+    <value>Jasa Pasca Panen Budidaya Ikan Air Tawar</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03251</key>
+    <value>Pembesaran Pisces/Ikan Bersirip Air Payau</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03252</key>
+    <value>Pembenihan Ikan Air Payau</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03253</key>
+    <value>Pembesaran Mollusca Air Payau</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e032541</key>
+    <value>Budidaya Biota Air Payau Udang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03255</key>
+    <value>Pembesaran Tumbuhan Air Payau</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03259</key>
+    <value>Budidaya Biota Air Payau Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03261</key>
+    <value>Jasa Sarana Produksi Budidaya Ikan Air Payau</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03262</key>
+    <value>Jasa Produksi Budidaya Ikan Air Payau</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e03263</key>
+    <value>Jasa Pasca Panen Budidaya Ikan Air Payau</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e05101</key>
+    <value>Pertambangan Batu Bara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e05102</key>
+    <value>Gasifikasi Batu Bara Di Lokasi Penambangan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e05200</key>
+    <value>Pertambangan Lignit</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e06100</key>
+    <value>Pertambangan Minyak Bumi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e06201</key>
+    <value>Pertambangan Gas Alam</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e06202</key>
+    <value>Pengusahaan Tenaga Panas Bumi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e07101</key>
+    <value>Pertambangan Pasir Besi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e07102</key>
+    <value>Pertambangan Bijih Besi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e07210</key>
+    <value>Pertambangan Bijih Uranium Dan Thorium</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e07291</key>
+    <value>Pertambangan Bijih Timah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e07292</key>
+    <value>Pertambangan Bijih Timah Hitam</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e07293</key>
+    <value>Pertambangan Bijih Bauksit/Aluminium</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e07294</key>
+    <value>Pertambangan Bijih Tembaga</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e07295</key>
+    <value>Pertambangan Bijih Nikel</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e07296</key>
+    <value>Pertambangan Bijih Mangan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e07299</key>
+    <value>Pertambangan Bahan Galian Lainnya Yang Tidak Mengandung Bijih Besi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e07301</key>
+    <value>Pertambangan Emas Dan Perak</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e07309</key>
+    <value>Pertambangan Bijih Logam Mulia Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e08101</key>
+    <value>Penggalian Batu Hias Dan Batu Bangunan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e08102</key>
+    <value>Penggalian Batu Kapur/Gamping</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e08103</key>
+    <value>Penggalian Kerikil (Sirtu)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e08104</key>
+    <value>Penggalian Pasir</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e08105</key>
+    <value>Penggalian Tanah Dan Tanah Liat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e08106</key>
+    <value>Penggalian Gips</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e08107</key>
+    <value>Penggalian Tras</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e08108</key>
+    <value>Penggalian Batu Apung</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e08109</key>
+    <value>Penggalian Batu, Pasir Dan Tanah Liat Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e08911</key>
+    <value>Pertambangan Belerang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e08912</key>
+    <value>Pertambangan Fosfat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e08913</key>
+    <value>Pertambangan Nitrat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e08914</key>
+    <value>Pertambangan Yodium</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e08915</key>
+    <value>Pertambangan Potash (Kalium Karbonat)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e08919</key>
+    <value>Pertambangan Mineral, Bahan Kimia Dan Bahan Pupuk Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e08920</key>
+    <value>Ekstraksi Tanah Gemuk (Peat)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e08930</key>
+    <value>Ekstraksi Garam</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e08991</key>
+    <value>Pertambangan Batu Mulia</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e08992</key>
+    <value>Penggalian Feldspar Dan Kalsit</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e08993</key>
+    <value>Pertambangan Aspal Alam</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e08994</key>
+    <value>Penggalian Asbes</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e08995</key>
+    <value>Penggalian Kuarsa/Pasir Kuarsa</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e08999</key>
+    <value>Pertambangan Dan Penggalian Lainnya Ytdl</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e09100</key>
+    <value>Aktivitas Penunjang Pertambangan Minyak Bumi Dan Gas Alam</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e09900</key>
+    <value>Aktivitas Penunjang Pertambangan Dan Penggalian Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10110</key>
+    <value>Kegiatan Rumah Potong Dan Pengepakan Daging Bukan Unggas</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10120</key>
+    <value>Kegiatan Rumah Potong Dan Pengepakan Daging Unggas</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10130</key>
+    <value>Industri Pengolahan Dan Pengawetan Produk Daging Dan Daging Unggas</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10212</key>
+    <value>Industri Pengasapan/Pemanggangan Ikan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10213</key>
+    <value>Industri Pembekuan Ikan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10214</key>
+    <value>Industri Pemindangan Ikan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10215</key>
+    <value>Industri Peragian/Fermentasi Ikan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10216</key>
+    <value>Industri Berbasis Daging Lumatan Dan Surimi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10217</key>
+    <value>Industri Pendinginan/Pengesan Ikan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10219</key>
+    <value>Industri Pengolahan Dan Pengawetan Lainnya Untuk Ikan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10221</key>
+    <value>Industri Pengolahan Dan Pengawetan Ikan Dan Biota Air (Bukan Udang) Dalam Kaleng</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10222</key>
+    <value>Industri Pengolahan Dan Pengawetan Udang Dalam Kaleng</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10291</key>
+    <value>Industri Penggaraman/Pengeringan Biota Air Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10292</key>
+    <value>Industri Pengasapan/Pemanggangan Biota Air Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10293</key>
+    <value>Industri Pembekuan Biota Air Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10294</key>
+    <value>Industri Pemindangan Biota Air Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10295</key>
+    <value>Industri Peragian/Fermentasi Biota Air Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10296</key>
+    <value>Industri Berbasis Lumatan Biota Air Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10297</key>
+    <value>Industri Pendinginan/Pengesan Biota Air Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10298</key>
+    <value>Industri Pengolahan Rumput Laut</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10299</key>
+    <value>Industri Pengolahan Dan Pengawetan Lainnya Untuk Biota Air Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10311</key>
+    <value>Industri Pengasinan/Pemanisan Buah-Buahan Dan Sayuran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10312</key>
+    <value>Industri Pelumatan Buah-Buahan Dan Sayuran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10313</key>
+    <value>Industri Pengeringan Buah-Buahan Dan Sayuran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10314</key>
+    <value>Industri Pembekuan Buah-Buahan Dan Sayuran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10320</key>
+    <value>Industri Pengolahan Dan Pengawetan Buah-Buahan Dan Sayuran Dalam Kaleng</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10330</key>
+    <value>Industri Pengolahan Sari Buah Dan Sayuran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10391</key>
+    <value>Industri Tempe Kedelai</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10392</key>
+    <value>Industri Tahu Kedelai</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10399</key>
+    <value>Industri Pengolahan Dan Pengawetan Lainnya Buah-Buahan Dan Sayuran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10411</key>
+    <value>Industri Minyak Mentah Dan Lemak Nabati</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10412</key>
+    <value>Industri Margarine</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10413</key>
+    <value>Industri Minyak Mentah Dan Lemak Hewani Selain Ikan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10414</key>
+    <value>Industri Minyak Ikan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10415</key>
+    <value>Industri Minyak Goreng Bukan Minyak Kelapa Dan Minyak Kelapa Sawit</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10421</key>
+    <value>Industri Kopra</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10422</key>
+    <value>Industri Minyak Mentah Kelapa</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10423</key>
+    <value>Industri Minyak Goreng Kelapa</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10424</key>
+    <value>Industri Tepung Dan Pelet Kelapa</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e104201</key>
+    <value>Industri Kopra, Tepung &amp; Pelet Kelapa</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e104202</key>
+    <value>Industri Minyak Mentah Kelapa &amp; Minyak Goreng Kelapa</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10431</key>
+    <value>Industri Minyak Mentah Kelapa Sawit (Crude Palm Oil)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10432</key>
+    <value>Industri Minyak Mentah Inti Kelapa Sawit (Crude Palm Kernel Oil)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10433</key>
+    <value>Industri Pemisahan/Fraksinasi Minyak Mentah Kelapa Sawit Dan Minyak Mentah Inti Kelapa Sawit</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10434</key>
+    <value>Industri Pemurnian Minyak Mentah Kelapa Sawit Dan Minyak Mentah Inti Kelapa Sawit</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10435</key>
+    <value>Industri Pemisahan/Fraksinasi Minyak Murni Kelapa Sawit</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10436</key>
+    <value>Industri Pemisahan/Fraksinasi Minyak Murni Inti Kelapa Sawit</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10437</key>
+    <value>Industri Minyak Goreng Kelapa Sawit</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10490</key>
+    <value>Industri Minyak Mentah Dan Lemak Nabati Dan Hewani Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10510</key>
+    <value>Industri Pengolahan Susu Segar Dan Krim</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10520</key>
+    <value>Industri Pengolahan Susu Bubuk Dan Susu Kental</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10531</key>
+    <value>Industri Pengolahan Es Krim</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10532</key>
+    <value>Industri Pengolahan Es Sejenisnya Yang Dapat Dimakan (Bukan Es Batu Dan Es Balok)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10590</key>
+    <value>Industri Pengolahan Produk Dari Susu Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10611</key>
+    <value>Industri Penggilingan Gandum Dan Serelia Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10612</key>
+    <value>Industri Penggilingan Aneka Kacang (Termasuk Leguminous)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10613</key>
+    <value>Industri Penggilingan Aneka Umbi Dan Sayuran (Termasuk Rhizoma)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10614</key>
+    <value>Industri Tepung Campuran Dan Adonan Tepung</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10615</key>
+    <value>Industri Makanan Sereal</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10616</key>
+    <value>Industri Tepung Terigu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10621</key>
+    <value>Industri Pati Ubi Kayu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10622</key>
+    <value>Industri Berbagai Macam Pati Palma</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10623</key>
+    <value>Industri Glukosa Dan Sejenisnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10629</key>
+    <value>Industri Pati Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10631</key>
+    <value>Industri Penggilingan Padi Dan Penyosohan Beras</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10632</key>
+    <value>Industri Penggilingan Dan Pembersihan Jagung</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10633</key>
+    <value>Industri Tepung Beras Dan Tepung Jagung</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10634</key>
+    <value>Industri Pati Beras Dan Jagung</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10710</key>
+    <value>Industri Produk Roti Dan Kue</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10721</key>
+    <value>Industri Gula Pasir</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10722</key>
+    <value>Industri Gula Merah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10723</key>
+    <value>Industri Sirop</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10729</key>
+    <value>Industri Pengolahan Gula Lainnya Bukan Sirop</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10731</key>
+    <value>Industri Kakao</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10732</key>
+    <value>Industri Makanan Dari Cokelat Dan Kembang Gula</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10733</key>
+    <value>Industri Manisan Buah-Buahan Dan Sayuran Kering</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10739</key>
+    <value>Industri Kembang Gula Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e1074</key>
+    <value>Industri Makaroni, Mie Dan Produk Sejenisnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10750</key>
+    <value>Industri Makanan Dan Masakan Olahan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10761</key>
+    <value>Industri Pengolahan Kopi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10762</key>
+    <value>Industri Pengolahan Herbal (Herb Infusion)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10763</key>
+    <value>Industri Pengolahan Teh</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10771</key>
+    <value>Industri Kecap</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10772</key>
+    <value>Industri Bumbu Masak Dan Penyedap Masakan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10773</key>
+    <value>Industri Produk Masak Dari Kelapa</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10774</key>
+    <value>Industri Pengolahan Garam</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10779</key>
+    <value>Industri Produk Masak Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10791</key>
+    <value>Industri Makanan Bayi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10792</key>
+    <value>Industri Kue Basah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10793</key>
+    <value>Industri Makanan Dari Kedele Dan Kacang-Kacangan Lainnya Bukan Kecap, Tempe Dan Tahu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10794</key>
+    <value>Industri Kerupuk, Keripik, Peyek Dan Sejenisnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10795</key>
+    <value>Industri Krimer Nabati</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10799</key>
+    <value>Industri Produk Makanan Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10801</key>
+    <value>Industri Ransum Makanan Hewan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e10802</key>
+    <value>Industri Konsentrat Makanan Hewan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e11010</key>
+    <value>Industri Minuman Beralkohol Hasil Destilasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e11020</key>
+    <value>Industri Minuman Beralkohol Hasil Fermentasi Anggur Dan Hasil Pertanian Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e11021</key>
+    <value>Industri Minuman Keras</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e11022</key>
+    <value>Industri Minuman Anggur (Wine)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e11023</key>
+    <value>Industri Minuman Keras Dari Malt Dan Malt</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e11032</key>
+    <value>Industri Malt</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e11040</key>
+    <value>Industri Minuman Ringan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e11050</key>
+    <value>Industri Air Minum Dan Air Mineral</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e11090</key>
+    <value>Industri Minuman Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e12011</key>
+    <value>Industri Kretek</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e12012</key>
+    <value>Industri Rokok Putih</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e12019</key>
+    <value>Industri Rokok Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e12020</key>
+    <value>Industri Rokok Dan Cerutu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e12091</key>
+    <value>Industri Pengeringan Dan Pengolahan Tembakau</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e12099</key>
+    <value>Industri Bumbu Rokok Serta Kelengkapan Rokok Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e13111</key>
+    <value>Industri Persiapan Serat Tekstil</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e13112</key>
+    <value>Industri Pemintalan Benang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e13113</key>
+    <value>Industri Pemintalan Benang Jahit</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e13121</key>
+    <value>Industri Pertenunan (Bukan Pertenunan Karung Goni Dan Karung Lainnya)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e13122</key>
+    <value>Industri Kain Tenun Ikat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e13123</key>
+    <value>Industri Bulu Tiruan Tenunan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e13131</key>
+    <value>Industri Penyempurnaan Benang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e13132</key>
+    <value>Industri Penyempurnaan Kain</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e13133</key>
+    <value>Industri Pencetakan Kain</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e13134</key>
+    <value>Industri Batik</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e13911</key>
+    <value>Industri Kain Rajutan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e13912</key>
+    <value>Industri Kain Sulaman/Bordir</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e13913</key>
+    <value>Industri Bulu Tiruan Rajutan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e13921</key>
+    <value>Industri Barang Jadi Tekstil Untuk Keperluan Rumah Tangga</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e13922</key>
+    <value>Industri Barang Jadi Tekstil Sulaman</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e13923</key>
+    <value>Industri Bantal Dan Sejenisnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e13924</key>
+    <value>Industri Barang Jadi Rajutan Dan Sulaman</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e13925</key>
+    <value>Industri Karung Goni</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e13926</key>
+    <value>Industri Karung Bukan Goni</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e13929</key>
+    <value>Ndustri Barang Jadi Tekstil Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e13930</key>
+    <value>Industri Karpet Dan Permadani</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e13941</key>
+    <value>Industri Tali</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e13942</key>
+    <value>Industri Barang Dari Tali</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e13991</key>
+    <value>Industri Kain Pita (Narrow Fabric)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e13992</key>
+    <value>Industri Yang Menghasilkan Kain Keperluan Industri</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e13993</key>
+    <value>Industri Non Woven (Bukan Tenunan)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e13994</key>
+    <value>Industri Kain Ban</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e13995</key>
+    <value>Industri Kapuk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e13999</key>
+    <value>Industri Tekstil Lainnya Ytdl</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e1411</key>
+    <value>Industri Pakaian Jadi (Konveksi) Dari Tekstil</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e14120</key>
+    <value>Penjahitan Dan Pembuatan Pakaian Sesuai Pesanan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e14131</key>
+    <value>Industri Perlengkapan Pakaian Dari Tekstil</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e14132</key>
+    <value>Industri Perlengkapan Pakaian Dari Kulit</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e14200</key>
+    <value>Industri Pakaian Jadi Dan Barang Dari Kulit Berbulu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e14301</key>
+    <value>Industri Pakaian Jadi Rajutan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e14302</key>
+    <value>Industri Pakaian Jadi Sulaman/Bordir</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e14303</key>
+    <value>Industri Rajutan Kaos Kaki Dan Sejenisnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e15111</key>
+    <value>Industri Pengawetan Kulit</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e15112</key>
+    <value>Industri Penyamakan Kulit</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e15113</key>
+    <value>Industri Pencelupan Kulit Bulu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e15114</key>
+    <value>Industri Kulit Buatan/Imitasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e15121</key>
+    <value>Industri Barang Dari Kulit Dan Kulit Buatan Untuk Keperluan Pribadi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e15122</key>
+    <value>Industri Barang Dari Kulit Dan Kulit Buatan Untuk Keperluan Teknik/Industri</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e15123</key>
+    <value>Industri Barang Dari Kulit Dan Kulit Buatan Untuk Keperluan Hewan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e15129</key>
+    <value>Industri Barang Dari Kulit Dan Kulit Buatan Untuk Keperluan Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e15201</key>
+    <value>Industri Alas Kaki Untuk Keperluan Sehari-Hari</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e15202</key>
+    <value>Industri Sepatu Olahraga</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e15203</key>
+    <value>Industri Sepatu Teknik Lapangan/Keperluan Industri</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e15209</key>
+    <value>Industri Alas Kaki Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e160</key>
+    <value>Industri Penggergajian Dan Pengawetan Kayu, Rotan, Bambu Dan Sejenisnya, Serta Industri Barang Dari Kayu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e16101</key>
+    <value>Industri Penggergajian Kayu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e16102</key>
+    <value>Industri Pengawetan Kayu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e16103</key>
+    <value>Industri Pengawetan Rotan, Bambu Dan Sejenisnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e16104</key>
+    <value>Industri Pengolahan Rotan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e16211</key>
+    <value>Industri Kayu Lapis</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e16212</key>
+    <value>Industri Kayu Lapis Laminasi, Termasuk Decorative Plywood</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e16213</key>
+    <value>Industri Panel Kayu Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e16214</key>
+    <value>Industri Veneer</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e16221</key>
+    <value>Industri Barang Bangunan Dari Kayu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e16222</key>
+    <value>Industri Bangunan Prafabrikasi Dari Kayu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e16230</key>
+    <value>Industri Wadah Dari Kayu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e16291</key>
+    <value>Industri Barang Anyaman Dari Rotan Dan Bambu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e16292</key>
+    <value>Industri Barang Anyaman Dari Tanaman Bukan Rotan Dan Bambu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e16294</key>
+    <value>Industri Alat Dapur Dari Kayu, Rotan Dan Bambu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e16295</key>
+    <value>Industri Kayu Bakar Dan Pelet Kayu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e16299</key>
+    <value>Industri Barang Dari Kayu, Rotan, Gabus Lainnya Ytdl</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e17011</key>
+    <value>Industri Bubur Kertas (Pulp)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e17012</key>
+    <value>Industri Kertas Budaya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e17013</key>
+    <value>Industri Kertas Berharga</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e17014</key>
+    <value>Industri Kertas Khusus</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e17019</key>
+    <value>Industri Kertas Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e17021</key>
+    <value>Industri Kertas Dan Papan Kertas Bergelombang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e17022</key>
+    <value>Industri Kemasan Dan Kotak Dari Kertas Dan Karton</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e17091</key>
+    <value>Industri Kertas Tissue</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e17099</key>
+    <value>Industri Barang Dari Kertas Dan Papan Kertas Lainnya Ytdl</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e18111</key>
+    <value>Industri Pencetakan Umum</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e18112</key>
+    <value>Industri Pencetakan Khusus</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e18120</key>
+    <value>Kegiatan Jasa Penunjang Pencetakan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e18201</key>
+    <value>Reproduksi Media Rekaman Suara Dan Piranti Lunak</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e18202</key>
+    <value>Reproduksi Media Rekaman Film Dan Video</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e19100</key>
+    <value>Industri Produk Dari Batu Bara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e19211</key>
+    <value>Industri Bahan Bakar Dari Pemurnian Dan Pengilangan Minyak Bumi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e19212</key>
+    <value>Industri Pembuatan Minyak Pelumas</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e19213</key>
+    <value>Industri Pengolahan Kembali Minyak Pelumas Bekas</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e19214</key>
+    <value>Industri Bahan Bakar Hasil Pengilangan Minyak Bumi Termasuk Lpg</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e19291</key>
+    <value>Industri Produk Dari Hasil Kilang Minyak Bumi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e19292</key>
+    <value>Industri Briket Batu Bara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e20111</key>
+    <value>Industri Kimia Dasar Anorganik Khlor Dan Alkali</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e20112</key>
+    <value>Industri Kimia Dasar Anorganik Gas Industri</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e20113</key>
+    <value>Industri Kimia Dasar Anorganik Pigmen</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e20114</key>
+    <value>Industri Kimia Dasar Anorganik Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e20115</key>
+    <value>Industri Kimia Dasar Organik Yang Bersumber Dari Hasil Pertanian</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e20116</key>
+    <value>Industri Kimia Dasar Organik Untuk Bahan Baku Zat Warna Dan Pigmen, Zat Warna Dan Pigmen</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e20117</key>
+    <value>Industri Kimia Dasar Organik Yang Bersumber Dari Minyak Bumi, Gas Alam Dan Batu Bara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e20118</key>
+    <value>Industri Kimia Dasar Organik Yang Menghasilkan Bahan Kimia Khusus</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e20119</key>
+    <value>Industri Kimia Dasar Organik Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e20121</key>
+    <value>Industri Pupuk Alam/Non Sintetis Hara Makro Primer</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e20122</key>
+    <value>Industri Pupuk Buatan Tunggal Hara Makro Primer</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e20123</key>
+    <value>Industri Pupuk Buatan Majemuk Hara Makro Primer</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e20124</key>
+    <value>Industri Pupuk Buatan Campuran Hara Makro Primer</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e20125</key>
+    <value>Industri Pupuk Hara Makro Sekunder</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e20126</key>
+    <value>Industri Pupuk Hara Mikro</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e20127</key>
+    <value>Industri Pupuk Pelengkap</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e20128</key>
+    <value>Industri Media Tanam</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e20131</key>
+    <value>Industri Damar Buatan (Resin Sintetis) Dan Bahan Baku Plastik</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e20132</key>
+    <value>Industri Karet Buatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e20211</key>
+    <value>Industri Bahan Baku Pemberantas Hama (Bahan Aktif)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e20212</key>
+    <value>Industri Pemberantas Hama (Formulasi)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e20213</key>
+    <value>Industri Zat Pengatur Tumbuh</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e20214</key>
+    <value>Industri Bahan Amelioran (Pembenah Tanah)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e20221</key>
+    <value>Industri Cat Dan Tinta Cetak</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e20222</key>
+    <value>Industri Pernis (Termasuk Mastik)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e20223</key>
+    <value>Industri Lak</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e20231</key>
+    <value>Industri Sabun Dan Bahan Pembersih Keperluan Rumah Tangga</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e20232</key>
+    <value>Industri Kosmetik, Termasuk Pasta Gigi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e20291</key>
+    <value>Industri Perekat/Lem</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e20292</key>
+    <value>Industri Bahan Peledak</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e20293</key>
+    <value>Industri Tinta</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e20294</key>
+    <value>Industri Minyak Atsiri</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e20295</key>
+    <value>Industri Korek Api</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e20299</key>
+    <value>Industri Barang Kimia Lainnya Ytdl</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e20301</key>
+    <value>Industri Serat/Benang/Strip Filamen Buatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e20302</key>
+    <value>Industri Serat Stapel Buatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e21011</key>
+    <value>Industri Bahan Farmasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e21012</key>
+    <value>Industri Produk Farmasi Untuk Manusia</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e21013</key>
+    <value>Industri Produk Farmasi Untuk Hewan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e21021</key>
+    <value>Industri Bahan Baku Obat Tradisional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e21022</key>
+    <value>Industri Produk Obat Tradisional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e22111</key>
+    <value>Industri Ban Luar Dan Ban Dalam</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e22112</key>
+    <value>Industri Vulkanisir Ban</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e22121</key>
+    <value>Industri Pengasapan Karet</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e22122</key>
+    <value>Industri Remilling Karet</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e22123</key>
+    <value>Industri Karet Remah (Crumb Rubber)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e22191</key>
+    <value>Industri Barang Dari Karet Untuk Keperluan Rumah Tangga</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e22192</key>
+    <value>Industri Barang Dari Karet Untuk Keperluan Industri</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e22199</key>
+    <value>Industri Barang Dari Karet Lainnya Ytdl</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e22210</key>
+    <value>Industri Barang Dari Plastik Untuk Bangunan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e22220</key>
+    <value>Industri Barang Dari Plastik Untuk Pengemasan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e22230</key>
+    <value>Industri Pipa Plastik Dan Perlengkapannya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e22291</key>
+    <value>Industri Barang Plastik Lembaran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e22292</key>
+    <value>Industri Perlengkapan Dan Peralatan Rumah Tangga (Tidak Termasuk Furnitur)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e22293</key>
+    <value>Industri Barang Dan Peralatan Teknik/Industri Dari Plastik</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e22299</key>
+    <value>Industri Barang Plastik Lainnya Ytdl</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e23111</key>
+    <value>Industri Kaca Lembaran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e23112</key>
+    <value>Industri Kaca Pengaman</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e23119</key>
+    <value>Industri Kaca Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e23121</key>
+    <value>Industri Perlengkapan Dan Peralatan Rumah Tangga Dari Kaca</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e23122</key>
+    <value>Industri Alat-Alat Laboratorium, Farmasi Dan Kesehatan Dari Kaca</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e23123</key>
+    <value>Industri Kemasan Dari Kaca</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e23129</key>
+    <value>Industri Barang Lainnya Dari Kaca</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e23911</key>
+    <value>Industri Bata, Mortar, Semen, Dan Sejenisnya Yang Tahan Api</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e23919</key>
+    <value>Industri Barang Tahan Api Dari Tanah Liat/Keramik Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e23921</key>
+    <value>Industri Batu Bata Dari Tanah Liat/Keramik</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e23922</key>
+    <value>Industri Genteng Dari Tanah Liat/Keramik</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e23923</key>
+    <value>Industri Peralatan Saniter Dari Porselen</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e23929</key>
+    <value>Industri Bahan Bangunan Dari Tanah Liat/Keramik Bukan Batu Bata Dan Genteng</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e23931</key>
+    <value>Industri Perlengkapan Rumah Tangga Dari Porselen</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e23932</key>
+    <value>Industri Perlengkapan Rumah Tangga Dari Tanah Liat/Keramik</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e23933</key>
+    <value>Industri Alat Laboratorium Dan Alat Listrik/Teknik Dari Porselen</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e239301</key>
+    <value>Industri Barang Porselen Bukan Bahan Bangunan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e239302</key>
+    <value>Industri Barang Tanah Liat/Keramik Bukan Bahan Bangunan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e23941</key>
+    <value>Industri Semen</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e23942</key>
+    <value>Industri Kapur</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e23943</key>
+    <value>Industri Gips</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e23951</key>
+    <value>Industri Barang Dari Semen</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e23952</key>
+    <value>Industri Barang Dari Kapur</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e23953</key>
+    <value>Industri Barang Dari Semen Dan Kapur Untuk Konstruksi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e23954</key>
+    <value>Industri Barang Dari Gips Untuk Konstruksi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e23955</key>
+    <value>Industri Barang Dari Asbes Untuk Keperluan Bahan Bangunan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e23956</key>
+    <value>Industri Barang Dari Asbes Untuk Keperluan Industri</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e23957</key>
+    <value>Industri Mortar Atau Beton Siap Pakai</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e23959</key>
+    <value>Industri Barang Dari Semen, Kapur, Gips Dan Asbes Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e23961</key>
+    <value>Industri Barang Dari Marmer Dan Granit Untuk Keperluan Rumah Tangga Dan Pajangan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e23962</key>
+    <value>Industri Barang Dari Marmer Dan Granit Untuk Keperluan Bahan Bangunan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e23963</key>
+    <value>Industri Barang Dari Batu Untuk Keperluan Rumah Tangga, Pajangan, Dan Bahan Bangunan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e23969</key>
+    <value>Industri Barang Dari Marmer, Granit Dan Batu Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e23990</key>
+    <value>Industri Barang Galian Bukan Logam Lainnya Ytdl</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e24101</key>
+    <value>Industri Besi Dan Baja Dasar (Iron And Steel Making)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e24102</key>
+    <value>Industri Penggilingan Baja (Steel Rolling)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e24103</key>
+    <value>Industri Pipa Dan Sambungan Pipa Dari Baja Dan Besi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e24206</key>
+    <value>Industri Pengolahan Uranium Dan Bijih Uranium</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e24201</key>
+    <value>Industri Pembuatan Logam Dasar Mulia</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e24202</key>
+    <value>Industri Pembuatan Logam Dasar Bukan Besi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e24203</key>
+    <value>Industri Penggilingan Logam Bukan Besi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e24204</key>
+    <value>Industri Ekstrusi Logam Bukan Besi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e24205</key>
+    <value>Industri Pipa Dan Sambungan Pipa Dari Logam Bukan Besi Dan Baja</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e24209</key>
+    <value>Industri Logam Dasar Mulia Dan Logam Dasar Bukan Besi Lainnya Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e24310</key>
+    <value>Industri Pengecoran Besi Dan Baja</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e24320</key>
+    <value>Industri Pengecoran Logam Bukan Besi Dan Baja</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e25111</key>
+    <value>Industri Barang Dari Logam Bukan Aluminium Siap Pasang Untuk Bangunan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e25112</key>
+    <value>Industri Barang Dari Logam Aluminium Siap Pasang Untuk Bangunan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e25113</key>
+    <value>Industri Konstruksi Berat Siap Pasang Dari Baja Untuk Bangunan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e25119</key>
+    <value>Industri Barang Dari Logam Siap Pasang Untuk Konstruksi Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e25120</key>
+    <value>Industri Tangki, Tandon Air Dan Wadah Dari Logam</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e25130</key>
+    <value>Industri Generator Uap, Bukan Ketel Pemanas</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e25200</key>
+    <value>Industri Senjata Dan Amunisi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e25910</key>
+    <value>Industri Penempaan, Pengepresan, Pencetakan Dan Pembentukan Logam; Metalurgi Bubuk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e25920</key>
+    <value>Jasa Industri Untuk Berbagai Pengerjaan Khusus Logam Dan Barang Dari Logam</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e25931</key>
+    <value>Industri Alat Potong Dan Perkakas Tangan Untuk Pertanian</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e25932</key>
+    <value>Industri Alat Potong Dan Perkakas Tangan Pertukangan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e25933</key>
+    <value>Industri Alat Potong Dan Perkakas Tangan Yang Digunakan Dalam Rumah Tangga</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e25934</key>
+    <value>Industri Peralatan Umum</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e25940</key>
+    <value>Industri Ember, Kaleng, Drum Dan Wadah Sejenis Dari Logam</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e25951</key>
+    <value>Industri Barang Dari Kawat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e25952</key>
+    <value>Industri Paku, Mur Dan Baut</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e25991</key>
+    <value>Industri Brankas, Filling Kantor Dan Sejenisnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e25992</key>
+    <value>Industri Peralatan Dapur Dan Peralatan Meja Dari Logam</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e25993</key>
+    <value>Industri Keperluan Rumah Tangga Dari Logam Bukan Peralatan Dapur Dan Peralatan Meja</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e25994</key>
+    <value>Industri Pembuatan Profil</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e25995</key>
+    <value>Industri Lampu Dari Logam</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e25999</key>
+    <value>Industri Barang Logam Lainnya Ytdl</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e26110</key>
+    <value>Industri Tabung Elektron Dan Konektor Elektronik</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e26120</key>
+    <value>Industri Semi Konduktor Dan Komponen Elektronik Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e26210</key>
+    <value>Industri Komputer Dan/Atau Perakitan Komputer</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e26220</key>
+    <value>Industri Perlengkapan Komputer</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e26310</key>
+    <value>Industri Peralatan Telepon Dan Faksimili</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e26320</key>
+    <value>Industri Peralatan Komunikasi Tanpa Kabel (Wireless)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e26391</key>
+    <value>Industri Kartu Cerdas (Smart Card)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e26399</key>
+    <value>Industri Peralatan Komunikasi Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e2641</key>
+    <value>Industri Televisi Dan/Atau Perakitan Televisi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e26420</key>
+    <value>Industri Peralatan Perekam, Penerima Dan Pengganda Audio Dan Video, Bukan Industri Televisi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e26490</key>
+    <value>Industri Peralatan Audio Dan Video Elektronik Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e26511</key>
+    <value>Industri Alat Ukur Dan Alat Uji Manual</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e26512</key>
+    <value>Industri Alat Ukur Dan Alat Uji Elektrik</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e26513</key>
+    <value>Industri Alat Ukur Dan Alat Uji Elektronik</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e26514</key>
+    <value>Industri Alat Uji Dalam Proses Industri</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e26520</key>
+    <value>Industri Alat Ukur Waktu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e26601</key>
+    <value>Industri Peralatan Iradiasi/Sinar X, Perlengkapan Dan Sejenisnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e26602</key>
+    <value>Industri Peralatan Elektromedikal Dan Elektroterapi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e26710</key>
+    <value>Industri Peralatan Fotografi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e26791</key>
+    <value>Industri Kamera Cinematografi Proyektor Dan Perlengkapannya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e26792</key>
+    <value>Industri Teropong Dan Instrumen Optik Bukan Kaca Mata</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e26800</key>
+    <value>Industri Media Magnetik Dan Media Optik</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e269</key>
+    <value>Industri Komputer, Barang Elektronik Dan Optik Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e27111</key>
+    <value>Industri Motor Listrik</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e27112</key>
+    <value>Industri Mesin Pembangkit Listrik</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e27113</key>
+    <value>Industri Pengubah Tegangan (Transformator), Pengubah Arus (Rectifier) Dan Pengontrol Tegangan (Voltage Stabilizer)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e27120</key>
+    <value>Industri Peralatan Pengontrol Dan Pendistribusian Listrik</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e27201</key>
+    <value>Industri Batu Baterai</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e27202</key>
+    <value>Industri Akumulator Listrik</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e27310</key>
+    <value>Industri Kabel Serat Optik</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e27320</key>
+    <value>Industri Kabel Listrik Dan Elektronik Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e27330</key>
+    <value>Industri Perlengkapan Kabel</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e27401</key>
+    <value>Industri Bola Lampu Pijar, Lampu Penerangan Terpusat Dan Lampu Ultra Violet</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e27402</key>
+    <value>Industri Lampu Tabung Gas (Lampu Pembuang Listrik)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e27403</key>
+    <value>Industri Peralatan Penerangan Untuk Alat Transportasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e27404</key>
+    <value>Industri Lampu Led</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e27409</key>
+    <value>Industri Peralatan Penerangan Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e27510</key>
+    <value>Industri Peralatan Listrik Rumah Tangga</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e27520</key>
+    <value>Industri Peralatan Elektrotermal Rumah Tangga</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e27530</key>
+    <value>Industri Peralatan Pemanas Dan Masak Bukan Listrik Rumah Tangga</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e27900</key>
+    <value>Industri Peralatan Listrik Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e28111</key>
+    <value>Industri Mesin Uap, Turbin Dan Kincir</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e28112</key>
+    <value>Industri Motor Pembakaran Dalam</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e28113</key>
+    <value>Industri Komponen Dan Suku Cadang Mesin Dan Turbin</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e28120</key>
+    <value>Industri Peralatan Tenaga Zat Cair Dan Gas</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e28130</key>
+    <value>Industri Pompa Lainnya, Kompresor, Kran Dan Klep/Katu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e28140</key>
+    <value>Industri Bearing, Roda Gigi Dan Elemen Penggerak Mesin</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e28151</key>
+    <value>Industri Oven, Perapian Dan Tungku Pembakar Sejenis Yang Tidak Menggunakan Arus Listrik</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e28152</key>
+    <value>Industri Oven, Perapian Dan Tungku Pembakar Sejenis Yang Menggunakan Arus Listrik</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e28160</key>
+    <value>Industri Alat Pengangkat Dan Pemindah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e29171</key>
+    <value>Industri Mesin Kantor Dan Akuntansi Manual</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e28172</key>
+    <value>Industri Mesin Kantor Dan Akuntansi Elektrik</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e29173</key>
+    <value>Industri Mesin Kantor Dan Akuntansi Elektronik</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e29174</key>
+    <value>Industri Mesin Fotocopi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e28179</key>
+    <value>Industri Mesin Dan Peralatan Kantor Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e28180</key>
+    <value>Industri Perkakas Tangan Yang Digerakkan Tenaga</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e28191</key>
+    <value>Industri Mesin Untuk Pembungkus, Pembotolan Dan Pengalengan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e28192</key>
+    <value>Industri Mesin Timbangan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e28193</key>
+    <value>Industri Mesin Pendingin</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e28199</key>
+    <value>Industri Mesin Untuk Keperluan Umum Lainnya Ytdl</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e28210</key>
+    <value>Industri Mesin Pertanian Dan Kehutanan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e28221</key>
+    <value>Industri Mesin Dan Perkakas Mesin Untuk Pengerjaan Logam</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e28222</key>
+    <value>Industri Mesin Dan Perkakas Mesin Untuk Pengerjaan Kayu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e28223</key>
+    <value>Industri Mesin Dan Perkakas Mesin Untuk Pengerjaan Bahan Bukan Logam Dan Kayu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e28224</key>
+    <value>Industri Mesin Dan Perkakas Mesin Untuk Pengelasan Yang Menggunakan Arus Listrik</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e28230</key>
+    <value>Industri Mesin Metalurgi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e28240</key>
+    <value>Industri Mesin Penambangan, Penggalian Dan Konstruksi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e28250</key>
+    <value>Industri Mesin Pengolahan Makanan, Minuman Dan Tembakau</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e28261</key>
+    <value>Industri Kabinet Mesin Jahit</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e28262</key>
+    <value>Industri Mesin Jahit Serta Mesin Cuci Dan Mesin Pengering Untuk Keperluan Niaga</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e28263</key>
+    <value>Industri Mesin Tekstil</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e28264</key>
+    <value>Industri Jarum Mesin Jahit, Rajut, Bordir Dan Sejenisnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e28265</key>
+    <value>Industri Mesin Penyiapan Dan Pembuatan Produk Kulit</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e28291</key>
+    <value>Industri Mesin Percetakan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e28292</key>
+    <value>Industri Mesin Pabrik Kertas</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e28299</key>
+    <value>Industri Mesin Keperluan Khusus Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e29100</key>
+    <value>Industri Kendaraan Bermotor Roda Empat Atau Lebih</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e29200</key>
+    <value>Industri Karoseri Kendaraan Bermotor Roda Empat Atau Lebih Dan Industri Trailer Dan Semi Trailer</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e29300</key>
+    <value>Industri Suku Cadang Dan Aksesori Kendaraan Bermotor Roda Empat Atau Lebih</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e30110</key>
+    <value>Industri Pembuatan Kapal Pesiar Dan Perahu Untuk Olahraga</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e30111</key>
+    <value>Industri Kapal Dan Perahu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e30112</key>
+    <value>Industri Bangunan Lepas Pantai Dan Bangunan Terapung</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e30113</key>
+    <value>Industri Peralatan, Perlengkapan Dan Bagian Kapal</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e30120</key>
+    <value>Industri Pembuatan Kapal Dan Perahu Untuk Tujuan Wisata Atau Rekreasi Dan Olahraga</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e30200</key>
+    <value>Industri Lokomotif Dan Gerbong Kereta</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e30300</key>
+    <value>Industri Pesawat Terbang Dan Perlengkapannya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e30400</key>
+    <value>Industri Kendaraan Perang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e30911</key>
+    <value>Industri Sepeda Motor Roda Dua Dan Tiga</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e30912</key>
+    <value>Industri Komponen Dan Perlengkapan Sepeda Motor Roda Dua Dan Tiga</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e30921</key>
+    <value>Industri Sepeda Dan Kursi Roda Termasuk Becak</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e30922</key>
+    <value>Industri Perlengkapan Sepeda Dan Kursi Roda Termasuk Becak</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e30990</key>
+    <value>Industri Alat Angkutan Lainnya Ytdl</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e31001</key>
+    <value>Industri Furnitur Dari Kayu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e31002</key>
+    <value>Industri Furnitur Dari Rotan Dan Atau Bambu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e31003</key>
+    <value>Industri Furnitur Dari Plastik</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e31004</key>
+    <value>Industri Furnitur Dari Logam</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e31009</key>
+    <value>Industri Furnitur Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e32111</key>
+    <value>Industri Permata</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e32112</key>
+    <value>Industri Barang Perhiasan Dari Logam Mulia Untuk Keperluan Pribadi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e32113</key>
+    <value>Industri Barang Perhiasan Dari Logam Mulia Bukan Untuk Keperluan Pribadi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e32114</key>
+    <value>Industri Barang Dari Logam Mulia Untuk Keperluan Teknik Dan Atau Laboratorium</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e32115</key>
+    <value>Industri Perhiasan Mutiara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e32119</key>
+    <value>Industri Barang Lainnya Dari Logam Mulia</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e32120</key>
+    <value>Industri Perhiasan Imitasi Dan Barang Sejenis</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e32201</key>
+    <value>Industri Alat Musik Tradisional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e32202</key>
+    <value>Industri Alat Musik Bukan Tradisional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e32300</key>
+    <value>Industri Alat Olahraga</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e324</key>
+    <value>Industri Alat Permainan Dan Mainan Anak-Anak</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e325</key>
+    <value>Industri Peralatan Kedokteran Dan Kedokteran Gigi Serta Perlengkapannya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e329</key>
+    <value>Industri Pengolahan Lainnya Ytdl</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e3311</key>
+    <value>Reparasi Produk Logam Pabrikasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e3312</key>
+    <value>Reparasi Mesin</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e3313</key>
+    <value>Reparasi Peralatan Elektronik Dan Optik</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e3314</key>
+    <value>Reparasi Peralatan Listrik</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e3315</key>
+    <value>Reparasi Alat Angkutan, Bukan Kendaraan Bermotor</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e3319</key>
+    <value>Reparasi Peralatan Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e332</key>
+    <value>Instalasi/Pemasangan Mesin Dan Peralatan Industri</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e35101</key>
+    <value>Ketenagalistrikan Pedesaan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e35109</key>
+    <value>Ketenagalistrikan Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e352</key>
+    <value>Pengadaan Dan Distribusi Gas Alam Dan Buatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e353</key>
+    <value>Pengadaan Uap/Air Panas, Udara Dingin Dan Produksi Es</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e36</key>
+    <value>Pengelolaan Air</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e37</key>
+    <value>Pengelolaan Air Limbah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e3811</key>
+    <value>Pengumpulan Sampah Tidak Berbahaya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e3812</key>
+    <value>Pengumpulan Sampah Berbahaya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e3821</key>
+    <value>Pengelolaan Dan Pembuangan Sampah Tidak Berbahaya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e3822</key>
+    <value>Pengelolaan Dan Pembuangan Sampah Berbahaya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e383</key>
+    <value>Daur Ulang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e39</key>
+    <value>Aktivitas Remediasi Dan Pengelolaan Sampah Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e410111</key>
+    <value>Konstruksi Perumahan Sederhana Bank Tabungan Negara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e410112</key>
+    <value>Konstruksi Perumahan Sederhana Perumnas</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e410113</key>
+    <value>Konstruksi Perumahan Sederhana Lainnya Tipe S.D. 21</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e410114</key>
+    <value>Konstruksi Perumahan Sederhana Lainnya Tipe 22 S.D. 70</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e410115</key>
+    <value>Konstruksi Perumahan Menengah, Besar, Mewah (Tipe Diatas 70)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e410119</key>
+    <value>Konstruksi Gedung Tempat Tinggal Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e41012</key>
+    <value>Konstruksi Gedung Perkantoran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e41013</key>
+    <value>Konstruksi Gedung Industri</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e410141</key>
+    <value>Konstruksi Gedung Perbelanjaan Pasar Inpres</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e410149</key>
+    <value>Konstruksi Gedung Perbelanjaan Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e41019</key>
+    <value>Konstruksi Gedung Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4102</key>
+    <value>Pemasangan Bangunan Prafabrikasi Untuk Gedung</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e421101</key>
+    <value>Konstruksi Jalan Tol</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e42111</key>
+    <value>Konstruksi Jalan Raya Selain Tol</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e42112</key>
+    <value>Konstruksi Jembatan Dan Jalan Layang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e42114</key>
+    <value>Konstruksi Jalan Rel Dan Jembatan Rel</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e42119</key>
+    <value>Konstruksi Jalan Raya Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4212</key>
+    <value>Pemasangan Bangunan Prafabrikasi Untuk Konstruksi Jalan Dan Jalan Rel</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e42211</key>
+    <value>Konstruksi Jaringan Irigasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e422131</key>
+    <value>Konstruksi Bangunan Listrik Pedesaan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e422139</key>
+    <value>Konstruksi Bangunan Elektrikal Dan Komunikasi Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e42219</key>
+    <value>Konstruksi Jaringan Elektrikal Dan Telekomunikasi Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4222</key>
+    <value>Pemasangan Bangunan Prafabrikasi Untuk Konstruksi Jaringan Saluran Irigasi, Komunikasi Dan Limbah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e42912</key>
+    <value>Konstruksi Bangunan Pelabuhan Bukan Perikanan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e42919</key>
+    <value>Konstruksi Bangunan Sipil Lainnya Ytdl</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4292</key>
+    <value>Pemasangan Bangunan Prafabrikasi Untuk Konstruksi Bangunan Sipil Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4311</key>
+    <value>Pembongkaran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e431201</key>
+    <value>Penyiapan Tanah Pemukiman Transmigrasi (Ptpt)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e431202</key>
+    <value>Pencetakan Lahan Sawah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e431209</key>
+    <value>Penyiapan Lahan Lainnya Dan Pembongkaran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4321</key>
+    <value>Instalasi Sistem Kelistrikan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4322</key>
+    <value>Instalasi Saluran Air (Plambing), Pemanas Dan Pendingin</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4329</key>
+    <value>Instalasi Konstruksi Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e433</key>
+    <value>Penyelesaian Konstruksi Bangunan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e43905</key>
+    <value>Penyewaan Alat Konstruksi Dengan Operator</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e43909</key>
+    <value>Konstruksi Khusus Lainnya Ytdl</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e451</key>
+    <value>Perdagangan Mobil</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e452</key>
+    <value>Reparasi Dan Perawatan Mobil</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e453</key>
+    <value>Perdagangan Suku Cadang Dan Aksesori Mobil</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e454001</key>
+    <value>Perdagangan Sepeda Motor</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e454002</key>
+    <value>Perdagangan Suku Cadang Sepeda Motor Dan Aksesorinya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e45407</key>
+    <value>Reparasi Dan Perawatan Sepeda Motor</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e461</key>
+    <value>Perdagangan Besar Atas Dasar Balas Jasa (Fee) Atau Kontrak</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e462011</key>
+    <value>Perdagangan Besar Jagung</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e462019</key>
+    <value>Perdagangan Besar Padi Dan Palawija Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e46202</key>
+    <value>Perdagangan Besar Buah Yang Mengandung Minyak</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e46204</key>
+    <value>Perdagangan Besar Tembakau Rajangan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e46205</key>
+    <value>Perdagangan Besar Binatang Hidup</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e46206</key>
+    <value>Perdagangan Besar Hasil Perikanan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e462071</key>
+    <value>Perdagangan Kayu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e462079</key>
+    <value>Perdagangan Besar Hasil Kehutanan Dan Perburuan Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e46208</key>
+    <value>Perdagangan Besar Kulit Dan Kulit Jangat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e462091</key>
+    <value>Perdagangan Karet</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e462092</key>
+    <value>Perdagangan Cengkeh</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e462093</key>
+    <value>Perdagangan Lada</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e462094</key>
+    <value>Perdagangan Kapas</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e462095</key>
+    <value>Perdagangan Biji Kelapa Sawit</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e462099</key>
+    <value>Perdagangan Besar Hasil Pertanian Dan Hewan Hidup Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e46311</key>
+    <value>Perdagangan Besar Beras</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e46312</key>
+    <value>Perdagangan Besar Buah-Buahan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e46313</key>
+    <value>Perdagangan Besar Sayuran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e463141</key>
+    <value>Perdagangan Besar Kopi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e463142</key>
+    <value>Perdagangan Besar Teh</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e463143</key>
+    <value>Perdagangan Besar Kakao</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e46315</key>
+    <value>Perdagangan Besar Minyak Dan Lemak Nabati</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e46319</key>
+    <value>Perdagangan Besar Bahan Makanan Dan Minuman Hasil Pertanian Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e463241</key>
+    <value>Perdagangan Besar Udang Olahan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e46329</key>
+    <value>Perdagangan Besar Bahan Makanan Dan Minuman Hasil Peternakan Dan Perikanan Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e463311</key>
+    <value>Perdagangan Besar Gula</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e463312</key>
+    <value>Perdagangan Besar Coklat Dan Kembang Gula</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e46335</key>
+    <value>Perdagangan Besar Rokok Dan Tembakau</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e46339</key>
+    <value>Perdagangan Besar Makanan Dan Minuman Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e46411</key>
+    <value>Perdagangan Besar Tekstil</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e46412</key>
+    <value>Perdagangan Besar Pakaian</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e46413</key>
+    <value>Perdagangan Besar Alas Kaki</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e46419</key>
+    <value>Perdagangan Besar Tekstil, Pakaian Dan Alas Kaki Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4642</key>
+    <value>Perdagangan Besar Alat Tulis Dan Hasil Pencetakan Dan Penerbitan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4643</key>
+    <value>Perdagangan Besar Alat Fotografi Dan Barang Optik</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4649</key>
+    <value>Perdagangan Besar Barang Keperluan Rumah Tangga Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4651</key>
+    <value>Perdagangan Besar Komputer, Perlengkapan Komputer Dan Piranti Lunak</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4652</key>
+    <value>Perdagangan Besar Suku Cadang Elektronik Dan Peralatan Telekomunikasi Dan Bagian-Bagiannya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4653</key>
+    <value>Perdagangan Besar Mesin, Peralatan Dan Perlengkapan Pertanian</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4659</key>
+    <value>Perdagangan Besar Mesin, Peralatan Dan Perlengkapan Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4661</key>
+    <value>Perdagangan Besar Bahan Bakar Padat, Cair Dan Gas Dan Produk Ybdi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4662</key>
+    <value>Perdagangan Besar Logam Dan Bijih Logam</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e46636</key>
+    <value>Perdagangan Besar Bahan Konstruksi Dari Kayu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e46639</key>
+    <value>Perdagangan Besar Berbagai Macam Material Bangunan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e46692</key>
+    <value>Perdagangan Besar Pupuk Dan Produk Agrokimia</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e46693</key>
+    <value>Perdagangan Besar Alat Laboratorium, Farmasi Dan Kedokteran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e46695</key>
+    <value>Perdagangan Besar Kertas Dan Karton</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e46697</key>
+    <value>Perdagangan Besar Barang Bekas Dan Sisa-Sisa Tak Terpakai (Scrap)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e46699</key>
+    <value>Perdagangan Besar Produk Lainnya Ytdl</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e469</key>
+    <value>Perdagangan Besar Berbagai Macam Barang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4711</key>
+    <value>Perdagangan Eceran Yang Utamanya Makanan, Minuman Atau Tembakau Di Toko</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4719</key>
+    <value>Perdagangan Eceran Berbagai Macam Barang Yang Didominasi Oleh Barang Bukan Makanan Dan Tembakau Di Toko</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4721</key>
+    <value>Perdagangan Eceran Khusus Komoditi Makanan Dari Hasil Pertanian Di Toko</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4722</key>
+    <value>Perdagangan Eceran Khusus Minuman Di Toko</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4723</key>
+    <value>Perdagangan Eceran Khusus Rokok Dan Tembakau Di Toko</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4724</key>
+    <value>Perdagangan Eceran Khusus Makanan Hasil Industri Di Toko</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4729</key>
+    <value>Perdagangan Eceran Khusus Makanan, Minuman Dan Tembakau Lainnya Di Toko</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e473</key>
+    <value>Perdagangan Eceran Khusus Bahan Bakar Kendaraan Bermotor</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4741</key>
+    <value>Perdagangan Eceran Khusus Komputer Dan Perlengkapannya; Piranti Lunak Dan Perlengkapan Telekomunikasi Di Toko</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4742</key>
+    <value>Perdagangan Eceran Khusus Peralatan Audio Dan Video Di Toko</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4751</key>
+    <value>Perdagangan Eceran Khusus Tekstil Di Toko</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4752</key>
+    <value>Perdagangan Eceran Khusus Barang Dan Bahan Bangunan, Cat Dan Kaca Di Toko</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4753</key>
+    <value>Perdagangan Eceran Khusus Karpet, Permadani Dan Penutup Dinding Dan Lantai Di Toko</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4759</key>
+    <value>Perdagangan Eceran Khusus Furnitur, Peralatan Listrik Rumah Tangga, Peralatan Penerangan Dan Peralatan Rumah Tangga Lainnya Di Toko</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4761</key>
+    <value>Perdagangan Eceran Khusus Alat Tulis Dan Hasil Pencetakan Dan Penerbitan Di Toko</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4762</key>
+    <value>Perdagangan Eceran Khusus Rekaman Musik Dan Video Di Toko</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4763</key>
+    <value>Perdagangan Eceran Khusus Peralatan Olahraga Di Toko</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4764</key>
+    <value>Perdagangan Eceran Khusus Alat Permainan Dan Mainan Anak-Anak Di Toko</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4765</key>
+    <value>Perdagangan Eceran Kertas, Kertas Karton Dan Barang Dari Kertas/Karton</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4771</key>
+    <value>Perdagangan Eceran Khusus Pakaian, Alas Kaki Dan Barang Dari Kulit Di Toko</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4772</key>
+    <value>Perdagangan Eceran Khusus Bahan Kimia, Barang Farmasi, Alat Kedokteran, Parfum Dan Kosmetik Di Toko</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4773</key>
+    <value>Perdagangan Eceran Khusus Barang Baru Lainnya Di Toko</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4774</key>
+    <value>Perdagangan Eceran Khusus Barang Bekas Di Toko</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4775</key>
+    <value>Perdagangan Eceran Khusus Hewan Piaraan Dan Hewan Ternak</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4776</key>
+    <value>Perdagangan Eceran Bunga Potong, Tanaman Hias, Pupuk Dan Ybdi Di Toko</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4777</key>
+    <value>Perdagangan Eceran Bahan Bakar Bukan Bahan Bakar Untuk Kendaraan Bermotor Di Toko</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4778</key>
+    <value>Perdagangan Eceran Barang Kerajinan Dan Lukisan Di Toko</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4779</key>
+    <value>Perdagangan Eceran Khusus Barang Lainnya Ytdl</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4781</key>
+    <value>Perdagangan Eceran Kaki Lima Dan Los Pasar Komoditi Hasil Pertanian</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e478</key>
+    <value>Perdagangan Eceran Kaki Lima Dan Los Pasar</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4782</key>
+    <value>Perdagangan Eceran Kaki Lima Dan Los Pasar Makanan, Minuman Dan Produk Tembakau Hasil Industri Pengolahan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4783</key>
+    <value>Perdagangan Eceran Kaki Lima Dan Los Pasar Tekstil, Pakaian Dan Alas Kaki</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4784</key>
+    <value>Perdagangan Eceran Kaki Lima Dan Los Pasar Bahan Kimia, Farmasi, Kosmetik Dan Ybdi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4785</key>
+    <value>Perdagangan Eceran Kaki Lima Dan Los Pasar Barang Pribadi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4786</key>
+    <value>Perdagangan Eceran Kaki Lima Dan Los Pasar Perlengkapan Rumah Tangga</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4787</key>
+    <value>Perdagangan Eceran Kaki Lima Dan Los Pasar Kertas, Barang Dari Kertas, Alat Tulis, Barang Cetakan, Alat Olahraga, Alat Musik, Alat Fotografi Dan Komputer</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4788</key>
+    <value>Perdagangan Eceran Kaki Lima Dan Los Pasar Barang Kerajinan, Mainan Anak-Anak Dan Lukisan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e47892</key>
+    <value>Perdagangan Eceran Kaki Lima Dan Los Pasar Bahan Bakar Minyak, Gas, Minyak Pelumas Dan Bahan Bakar Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e47894</key>
+    <value>Perdagangan Eceran Kaki Lima Dan Los Pasar Barang Bekas Perlengkapan Rumah Tangga</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e47899</key>
+    <value>Perdagangan Eceran Kaki Lima Dan Los Pasar Barang Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4791</key>
+    <value>Perdagangan Eceran Melalui Pemesanan Pos Atau Internet</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4792</key>
+    <value>Perdagangan Eceran Atas Dasar Balas Jasa (Fee) Atau Kontrak</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4799</key>
+    <value>Perdagangan Eceran Bukan Di Toko, Kios, Kaki Lima Dan Los Pasar Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4911</key>
+    <value>Angkutan Jalan Rel Jarak Jauh Untuk Penumpang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4912</key>
+    <value>Angkutan Jalan Rel Untuk Barang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4921</key>
+    <value>Angkutan Bus Bertrayek</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e49221</key>
+    <value>Angkutan Bus Pariwisata</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e49229</key>
+    <value>Angkutan Bus Tidak Bertrayek Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e493</key>
+    <value>Angkutan Melalui Saluran Pipa</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4941</key>
+    <value>Angkutan Darat Bukan Bus Untuk Penumpang, Bertrayek</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4942</key>
+    <value>Angkutan Darat Lainnya Untuk Penumpang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e4943</key>
+    <value>Angkutan Darat Untuk Barang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e49450</key>
+    <value>Angkutan Jalan Rel Wisata</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e494509</key>
+    <value>Angkutan Jalan Rel Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e50113</key>
+    <value>Angkutan Laut Dalam Negeri Untuk Wisata</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e50119</key>
+    <value>Angkutan Laut Dalam Negeri Untuk Penumpang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e5012</key>
+    <value>Angkutan Laut Luar Negeri Untuk Penumpang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e5013</key>
+    <value>Angkutan Laut Dalam Negeri Untuk Barang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e5014</key>
+    <value>Angkutan Laut Luar Negeri Untuk Barang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e502102</key>
+    <value>Angkutan Penyeberangan Untuk Penumpang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e50213</key>
+    <value>Angkutan Sungai Dan Danau Untuk Wisata Dan Ybdi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e5022</key>
+    <value>Angkutan Sungai, Danau Dan Penyeberangan Untuk Barang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e511001</key>
+    <value>Angkutan Udara Berjadwal Untuk Penumpang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e511002</key>
+    <value>Angkutan Udara Tidak Berjadwal Untuk Penumpang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e51109</key>
+    <value>Angkutan Udara Untuk Penumpang Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e512</key>
+    <value>Angkutan Udara Untuk Barang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e521</key>
+    <value>Pergudangan Dan Penyimpanan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e5221</key>
+    <value>Aktivitas Penunjang Angkutan Darat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e5222</key>
+    <value>Aktivitas Penunjang Angkutan Perairan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e5223</key>
+    <value>Aktivitas Kebandarudaraan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e5224</key>
+    <value>Penanganan Kargo (Bongkar Muat Barang)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e5229</key>
+    <value>Aktivitas Penunjang Angkutan Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e531</key>
+    <value>Aktivitas Pos</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e532</key>
+    <value>Aktivitas Kurir</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e5511</key>
+    <value>Hotel Bintang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e5512</key>
+    <value>Hotel Melati</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e5513</key>
+    <value>Pondok Wisata</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e5519</key>
+    <value>Penyediaan Akomodasi Jangka Pendek Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e559</key>
+    <value>Penyediaan Akomodasi Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e561</key>
+    <value>Restoran Dan Penyediaan Makanan Keliling</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e5621</key>
+    <value>Jasa Boga Untuk Suatu Event Tertentu (Event Catering)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e5629</key>
+    <value>Penyediaan Makanan Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e563</key>
+    <value>Penyediaan Minuman</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e5811</key>
+    <value>Penerbitan Buku</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e5812</key>
+    <value>Penerbitan Direktori Dan Mailing List</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e5813</key>
+    <value>Penerbitan Surat Kabar, Jurnal Dan Majalah Atau Terbitan Berkala Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e5819</key>
+    <value>Aktivitas Penerbitan Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e582</key>
+    <value>Penerbitan Piranti Lunak (Software)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e5911</key>
+    <value>Aktivitas Produksi Gambar Bergerak, Video Dan Program Televisi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e5912</key>
+    <value>Aktivitas Pasca Produksi Film, Video Dan Program Televisi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e5913</key>
+    <value>Aktivitas Distribusi Gambar Bergerak, Video Dan Program Televisi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e5914</key>
+    <value>Aktivitas Pemutaran Film</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e592</key>
+    <value>Aktivitas Perekaman Suara Dan Penerbitan Musik</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e601</key>
+    <value>Penyiaran Radio</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e602</key>
+    <value>Aktivitas Penyiaran Dan Pemrograman Televisi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e611</key>
+    <value>Aktivitas Telekomunikasi Dengan Kabel</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e612</key>
+    <value>Aktivitas Telekomunikasi Tanpa Kabel</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e613</key>
+    <value>Aktivitas Telekomunikasi Satelit</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e6191</key>
+    <value>Jasa Nilai Tambah Telepon</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e6192</key>
+    <value>Jasa Multimedia</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e6199</key>
+    <value>Aktivitas Telekomunikasi Lainnya Ytdl</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e6201</key>
+    <value>Aktivitas Pemrograman Komputer</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e6202</key>
+    <value>Aktivitas Konsultasi Komputer Dan Manajemen Fasilitas Komputer</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e6209</key>
+    <value>Aktivitas Teknologi Informasi Dan Jasa Komputer Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e63111</key>
+    <value>Aktivitas Pengolahan Data</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e63112</key>
+    <value>Aktivitas Hosting Dan Ybdi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e63121</key>
+    <value>Portal Web Dan/Atau Platform Digital Tanpa Tujuan Komersial</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e63122</key>
+    <value>Portal Web Dan/Atau Platform Digital Dengan Tujuan Komersial</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e6391</key>
+    <value>Aktivitas Kantor Berita</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e6399</key>
+    <value>Aktivitas Jasa Informasi Lainnya Ytdl</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e6411</key>
+    <value>Bank Sentral</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e6412</key>
+    <value>Perbankan Konvensional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e6413</key>
+    <value>Perbankan Syariah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e6414</key>
+    <value>Koperasi Simpan Pinjam/Unit Simpan Pinjam</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e6415</key>
+    <value>Lembaga Keuangan Mikro</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e6419</key>
+    <value>Perantara Moneter Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e642</key>
+    <value>Aktivitas Perusahaan Holding</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e643</key>
+    <value>Trust, Pembiayaan Dan Entitas Keuangan Sejenis</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e6491</key>
+    <value>Sewa Guna Usaha Dengan Hak Opsi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e6492</key>
+    <value>Pinjaman Kredit Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e6499</key>
+    <value>Aktivitas Jasa Keuangan Lainnya Ytdl, Bukan Asuransi Dan Dana Pensiun</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e6511</key>
+    <value>Asuransi Jiwa</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e6512</key>
+    <value>Asuransi Non Jiwa</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e652</key>
+    <value>Reasuransi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e653</key>
+    <value>Dana Pensiun</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e6611</key>
+    <value>Administrasi Pasar Keuangan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e66126</key>
+    <value>Kegiatan Penukaran Valuta Asing (Money Changer)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e6619</key>
+    <value>Aktivitas Penunjang Jasa Keuangan Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e6621</key>
+    <value>Aktivitas Penilaian Risiko Dan Kerugian</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e6622</key>
+    <value>Aktivitas Agen, Broker Dan Pialang Asuransi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e6629</key>
+    <value>Aktivitas Penunjang Lainnya Untuk Asuransi Dan Dana Pensiun</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e663</key>
+    <value>Aktivitas Manajemen Dana</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e6801</key>
+    <value>Jasa Manajemen Dana Real Estate</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e681101</key>
+    <value>Real Estate Perumahan Sederhana Perumnas</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e681102</key>
+    <value>Real Estate Perumahan Sederhana Perumnas Tipe 21</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e681103</key>
+    <value>Real Estate Perumahan Sederhana Perumnas Tipe 22 S.D. 70</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e681104</key>
+    <value>Real Estate Perumahan Menengah, Besar Atau Mewah (Tipe Diatas 70)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e681105</key>
+    <value>Real Estate Perumahan Flat / Apartemen</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e681106</key>
+    <value>Real Estate Gedung Perbelanjaan (Mal, Plaza)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e681107</key>
+    <value>Real Estate Gedung Perkantoran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e681108</key>
+    <value>Real Estate Gedung Rumah Toko (Ruko) Atau Rumah Kantor (Rukan)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e681109</key>
+    <value>Real Estate Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e6812</key>
+    <value>Kawasan Pariwisata</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e6813</key>
+    <value>Kawasan Industri</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e682</key>
+    <value>Real Estat Atas Dasar Balas Jasa (Fee) Atau Kontrak</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e691</key>
+    <value>Aktivitas Hukum</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e692</key>
+    <value>Aktivitas Akuntansi, Pembukuan Dan Pemeriksa; Konsultasi Pajak</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e701</key>
+    <value>Aktivitas Kantor Pusat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e70201</key>
+    <value>Aktivitas Konsultasi Pariwisata</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e70209</key>
+    <value>Aktivitas Konsultasi Manajemen Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e711</key>
+    <value>Aktivitas Arsitektur Dan Keinsinyuran Serta Konsultasi Teknis Ybdi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e712</key>
+    <value>Analisis Dan Uji Teknis</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e721</key>
+    <value>Penelitian Dan Pengembangan Ilmu Pengetahuan Alam Dan Ilmu Teknologi Dan Rekayasa</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e722</key>
+    <value>Penelitian Dan Pengembangan Ilmu Pengetahuan Sosial Dan Humaniora</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e731</key>
+    <value>Periklanan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e732</key>
+    <value>Penelitian Pasar Dan Jajak Pendapat Masyarakat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e741</key>
+    <value>Aktivitas Perancangan Khusus</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e742</key>
+    <value>Aktivitas Fotografi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e749</key>
+    <value>Aktivitas Profesional, Ilmiah Dan Teknis Lainnya Ytdl</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e75</key>
+    <value>Aktivitas Kesehatan Hewan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e771</key>
+    <value>Aktivitas Penyewaan Dan Sewa Guna Usaha Tanpa Hak Opsi Mobil, Bus, Truk Dan Sejenisnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e7721</key>
+    <value>Aktivitas Penyewaan Dan Sewa Guna Usaha Tanpa Hak Opsi Alat Rekreasi Dan Olahraga</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e7722</key>
+    <value>Aktivitas Penyewaan Kaset Video, Cd, Vcd/Dvd Dan Sejenisnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e7729</key>
+    <value>Aktivitas Penyewaan Dan Sewa Guna Usaha Tanpa Hak Opsi Barang Pribadi Dan Rumah Tangga Lain Ytdl</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e77302</key>
+    <value>Aktivitas Penyewaan Dan Sewa Guna Usaha Tanpa Hak Opsi Alat Transportasi Darat Bukan Kendaraan Bermotor Roda Empat Atau Lebih</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e77303</key>
+    <value>Aktivitas Penyewaan Dan Sewa Guna Usaha Tanpa Hak Opsi Alat Transportasi Air</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e77304</key>
+    <value>Aktivitas Penyewaan Dan Sewa Guna Usaha Tanpa Hak Opsi Alat Transportasi Udara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e77305</key>
+    <value>Aktivitas Penyewaan Dan Sewa Guna Usaha Tanpa Hak Opsi Mesin Pertanian Dan Peralatannya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e77306</key>
+    <value>Aktivitas Penyewaan Dan Sewa Guna Usaha Tanpa Hak Opsi Mesin Dan Peralatan Konstruksi Dan Teknik Sipil</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e77307</key>
+    <value>Aktivitas Penyewaan Dan Sewa Guna Usaha Tanpa Hak Opsi Mesin Kantor Dan Peralatannya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e77309</key>
+    <value>Aktivitas Penyewaan Dan Sewa Guna Usaha Tanpa Hak Opsi Mesin, Peralatan Dan Barang Berwujud Lainnya Ytdl</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e774</key>
+    <value>Sewa Guna Usaha Tanpa Hak Opsi Aset Non Finansial, Bukan Karya Hak Cipta</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e781</key>
+    <value>Aktivitas Penempatan Tenaga Kerja</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e782</key>
+    <value>Aktivitas Penyediaan Tenaga Kerja Waktu Tertentu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e783</key>
+    <value>Penyediaan Sumber Daya Manusia Dan Manajemen Fungsi Sumber Daya Manusia</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e79111</key>
+    <value>Aktivitas Agen Perjalanan Wisata</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e79112</key>
+    <value>Aktivitas Agen Perjalanan Bukan Wisata</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e7912</key>
+    <value>Aktivitas Biro Perjalanan Wisata</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e7991</key>
+    <value>Jasa Informasi Pariwisata</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e7992</key>
+    <value>Jasa Pramuwisata Dan Interpreter Wisata</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e7999</key>
+    <value>Jasa Reservasi Lainnya Ybdi Ytdl</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e801</key>
+    <value>Aktivitas Keamanan Swasta (Pribadi)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e802</key>
+    <value>Aktivitas Jasa Sistem Keamanan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e803</key>
+    <value>Aktivitas Penyelidikan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e811</key>
+    <value>Aktivitas Penyedia Gabungan Jasa Penunjang Fasilitas</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e8121</key>
+    <value>Aktivitas Kebersihan Umum Bangunan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e8129</key>
+    <value>Aktivitas Kebersihan Bangunan Dan Industri Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e813</key>
+    <value>Aktivitas Jasa Perawatan Dan Pemeliharaan Taman</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e8211</key>
+    <value>Aktivitas Penyedia Gabungan Jasa Administrasi Kantor</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e8219</key>
+    <value>Aktivitas Foto Kopi, Penyiapan Dokumen Dan Aktivitas Khusus Penunjang Kantor Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e822</key>
+    <value>Aktivitas Call Centre</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e823</key>
+    <value>Penyelenggara Konvensi Dan Pameran Dagang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e8291</key>
+    <value>Aktivitas Debt Collection Dan Biro Kredit</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e8292</key>
+    <value>Aktivitas Pengepakan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e8299</key>
+    <value>Aktivitas Jasa Penunjang Usaha Lainnya Ytdl</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e8411</key>
+    <value>Kegiatan Administrasi Pemerintahan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e8412</key>
+    <value>Administrasi Pelayanan Pemerintah Bidang Kesehatan, Pendidikan, Kebudayaan Dan Pelayanan Sosial Lain Bukan Jaminan Sosial</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e8413</key>
+    <value>Kegiatan Lembaga Pemerintahan Untuk Menciptakan Efisiensi Produksi Dan Bisnis</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e8421</key>
+    <value>Hubungan Luar Negeri</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e8422</key>
+    <value>Pertahanan Dan Keamanan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e8423</key>
+    <value>Ketertiban Dan Keamanan Masyarakat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e843</key>
+    <value>Jaminan Sosial Wajib</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e8511</key>
+    <value>Pendidikan Dasar Pemerintah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e8512</key>
+    <value>Pendidikan Dasar Swasta</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e8513</key>
+    <value>Pendidikan Anak Usia Dini</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e8521</key>
+    <value>Pendidikan Menengah Umum/Madrasah Aliyah Pemerintah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e8522</key>
+    <value>Pendidikan Menengah Umum/Madrasah Aliyah Swasta</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e8523</key>
+    <value>Pendidikan Menengah Kejuruan Dan Teknis/Madrasah Aliyah Kejuruan Pemerintah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e8524</key>
+    <value>Pendidikan Menengah Kejuruan/Madrasah Aliyah Kejuruan Swasta</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e8531</key>
+    <value>Pendidikan Tinggi Pemerintah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e8532</key>
+    <value>Pendidikan Tinggi Swasta</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e8541</key>
+    <value>Jasa Pendidikan Olahraga Dan Rekreasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e8542</key>
+    <value>Pendidikan Kebudayaan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e8543</key>
+    <value>Pendidikan Lainnya Pemerintah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e8549</key>
+    <value>Pendidikan Lainnya Ytdl</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e855</key>
+    <value>Kegiatan Penunjang Pendidikan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e861</key>
+    <value>Aktivitas Rumah Sakit</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e862</key>
+    <value>Aktivitas Praktik Dokter Dan Dokter Gigi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e869</key>
+    <value>Aktivitas Pelayanan Kesehatan Manusia Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e871</key>
+    <value>Aktivitas Sosial Di Dalam Panti Untuk Perawatan Dan Pemulihan Kesehatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e872</key>
+    <value>Aktivitas Sosial Di Dalam Panti Untuk Keterbelakangan Mental, Gangguan Mental Dan Penyalahgunaan Obat Terlarang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e873</key>
+    <value>Aktivitas Sosial Di Dalam Panti Untuk Lanjut Usia Dan Penyandang Disabilitas</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e879</key>
+    <value>Aktivitas Sosial Di Dalam Panti Lainnya Ytdl</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e881</key>
+    <value>Aktivitas Sosial Di Luar Panti Untuk Lanjut Usia Dan Penyandang Disabilitas</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e889</key>
+    <value>Aktivitas Sosial Di Luar Panti Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e90004</key>
+    <value>Jasa Impresariat Bidang Seni</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e90009</key>
+    <value>Aktivitas Hiburan, Seni Dan Kreativitas Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e9101</key>
+    <value>Perpustakaan Dan Arsip</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e9102</key>
+    <value>Museum Dan Operasional Bangunan Dan Situs Bersejarah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e9103</key>
+    <value>Aktivitas Kebun Binatang, Taman Botani Dan Cadangan Alam</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e92</key>
+    <value>Aktivitas Perjudian Dan Pertaruhan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e9311</key>
+    <value>Aktivitas Operasional Fasilitas Olahraga</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e9312</key>
+    <value>Aktivitas Klub Olahraga</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e9319</key>
+    <value>Aktivitas Lainnya Yang Berkaitan Dengan Olahraga</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e9321</key>
+    <value>Aktivitas Taman Bertema Atau Taman Hiburan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e9322</key>
+    <value>Daya Tarik Wisata Alam</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e9323</key>
+    <value>Daya Tarik Wisata Buatan/Binaan Manusia</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e9324</key>
+    <value>Wisata Tirta</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e9329</key>
+    <value>Aktivitas Hiburan Dan Rekreasi Lainnya Ytdl</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e9411</key>
+    <value>Aktivitas Organisasi Bisnis Dan Pengusaha</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e9412</key>
+    <value>Aktivitas Organisasi Profesi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e942</key>
+    <value>Aktivitas Organisasi Buruh</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e9491</key>
+    <value>Aktivitas Organisasi Keagamaan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e9492</key>
+    <value>Aktivitas Organisasi Politik</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e9499</key>
+    <value>Aktivitas Organisasi Keanggotaan Lainnya Ytdl</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e9511</key>
+    <value>Reparasi Komputer Dan Peralatan Sejenisnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e9512</key>
+    <value>Reparasi Peralatan Komunikasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e9521</key>
+    <value>Reparasi Alat-Alat Elektronik Konsumen</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e9522</key>
+    <value>Reparasi Peralatan Rumah Tangga Dan Peralatan Rumah Dan Kebun</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e9523</key>
+    <value>Reparasi Alas Kaki Dan Barang Dari Kulit</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e9524</key>
+    <value>Reparasi Furnitur Dan Perlengkapan Rumah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e9529</key>
+    <value>Reparasi Barang Keperluan Pribadi Dan Perlengkapan Rumah Tangga Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e960001</key>
+    <value>Aktivitas Panti Pijat &amp; Spa</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e960009</key>
+    <value>Aktivitas Jasa Perorangan Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e9611</key>
+    <value>Aktivitas Pangkas Rambut Dan Salon Kecantikan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e9612</key>
+    <value>Aktivitas Kebugaran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e962</key>
+    <value>Aktivitas Binatu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e9691</key>
+    <value>Aktivitas Pemakaman Dan Kegiatan Ybdi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e9699</key>
+    <value>Aktivitas Jasa Perorangan Lainnya Ytdl</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e97</key>
+    <value>Aktivitas Rumah Tangga Sebagai Pemberi Kerja Dari Personil Domestik</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e981</key>
+    <value>Aktivitas Yang Menghasilkan Barang Oleh Rumah Tangga Yang Digunakan Untuk Memenuhi Kebutuhan Sendiri</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e982</key>
+    <value>Aktivitas Yang Menghasilkan Jasa Oleh Rumah Tangga Yang Digunakan Untuk Memenuhi Kebutuhan Sendiri</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e99</key>
+    <value>Aktivitas Badan Internasional Dan Badan Ekstra Internasional Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e00111</key>
+    <value>Rumah Tangga Untuk Pemilikan Rumah Tinggal S.D. Tipe 21</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e00112</key>
+    <value>Rumah Tangga Untuk Pemilikan Rumah Tinggal Tipe 22 S.D. 70</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e00113</key>
+    <value>Rumah Tangga Untuk Pemilikan Rumah Tinggal Tipe Diatas 70</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e00121</key>
+    <value>Rumah Tangga Untuk Pemilikan Flat Atau Apartemen S.D. Tipe 21</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e00122</key>
+    <value>Rumah Tangga Untuk Pemilikan Flat Atau Apartemen Tipe 22 S.D. 70</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e00123</key>
+    <value>Rumah Tangga Untuk Pemilikan Flat Atau Apartemen Tipe Diatas 70</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e00130</key>
+    <value>Rumah Tangga Untuk Pemilikan Rumah Toko (Ruko) Atau Rumah Kantor (Rukan)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e0021</key>
+    <value>Rumah Tangga Untuk Pemilikan Mobil Roda Empat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e0022</key>
+    <value>Rumah Tangga Untuk Pemilikan Sepeda Bermotor</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e0023</key>
+    <value>Rumah Tangga Untuk Pemilikan Truk Dan Kendaraan Bermotor Roda Enam Atau Lebih</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e0029</key>
+    <value>Rumah Tangga Untuk Pemilikan Kendaraan Bermotor Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e0031</key>
+    <value>Rumah Tangga Untuk Pemilikan Furnitur Dan Peralatan Rumah Tangga</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e0032</key>
+    <value>Rumah Tangga Untuk Pemilikan Televisi, Radio, Dan Alat Elektronik</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e0033</key>
+    <value>Rumah Tangga Untuk Pemilikan Komputer Dan Alat Komunikasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e0039</key>
+    <value>Rumah Tangga Untuk Pemilikan Peralatan Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e00411</key>
+    <value>Rumah Tangga Untuk Keperluan Multiguna Beragunan Rumah Tinggal S.D Tipe 21</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e00412</key>
+    <value>Rumah Tangga Untuk Keperluan Multiguna Beragunan Rumah Tinggal Tipe 22 S.D 70</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e00413</key>
+    <value>Rumah Tangga Untuk Keperluan Multiguna Beragunan Rumah Tinggal Tipe Diatas 70</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e00414</key>
+    <value>Rumah Tangga Untuk Keperluan Multiguna Beragunan Apartemen S.D Tipe 21</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e00415</key>
+    <value>Rumah Tangga Untuk Keperluan Multiguna Beragunan Apartemen Tipe 22 S.D 70</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e00416</key>
+    <value>Rumah Tangga Untuk Keperluan Multiguna Beragunan Apartemen Tipe Diatas 70</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e00417</key>
+    <value>Rumah Tangga Untuk Keperluan Multiguna Beragunan Ruko/Rukan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e00418</key>
+    <value>Rumah Tangga Untuk Keperluan Multiguna Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e0049</key>
+    <value>Rumah Tangga Untuk Keperluan Yang Tidak Diklasifikasikan Di Tempat Lain</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SE:e009</key>
+    <value>Bukan Lapangan Usaha Lainnya</value>
+    <labels/>
+  </reference>
+</list>

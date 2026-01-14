@@ -1,0 +1,920 @@
+<setupHeader>
+  <version>2.0.0</version>
+  <lastModified>20260114072146</lastModified>
+  <mapReport>
+    <entry>
+      <string>3016|SAJK</string>
+      <string>Laporan Self Assessment Asuransi Jiwa Konvensional</string>
+    </entry>
+    <entry>
+      <string>1005|RBAJS</string>
+      <string>Laporan Rencana Bisnis Asuransi Jiwa Syariah</string>
+    </entry>
+    <entry>
+      <string>7002|PLSAJU</string>
+      <string>Laporan Polis Asuransi Jiwa Unit Usaha Syariah</string>
+    </entry>
+    <entry>
+      <string>3024|SARS</string>
+      <string>Laporan Self Assessment Reasuransi Syariah</string>
+    </entry>
+    <entry>
+      <string>7003|PLSAJS</string>
+      <string>Laporan Polis Asuransi Jiwa Syariah</string>
+    </entry>
+    <entry>
+      <string>2017|LBPIU</string>
+      <string>Laporan Bulanan Perusahaan Pembiayaan Infrasruktur Unit Usaha Syariah</string>
+    </entry>
+    <entry>
+      <string>3035|SPPIU</string>
+      <string>Laporan Self Assessment Perusahaan Pembiayaan Infrasruktur Unit Usaha Syariah</string>
+    </entry>
+    <entry>
+      <string>2023|LBLPIG</string>
+      <string>Laporan Bulanan LPEI Gabungan</string>
+    </entry>
+    <entry>
+      <string>3025|SDPK</string>
+      <string>Laporan Self Assessment Dana Pensiun Pemberi Kerja (DPPK) Konvensional</string>
+    </entry>
+    <entry>
+      <string>4001|APUAUK</string>
+      <string>Laporan APU-PPT Asuransi Umum Konvensional</string>
+    </entry>
+    <entry>
+      <string>1011|RBDLS</string>
+      <string>Laporan Rencana Bisnis Dana Pensiun Lembaga Keuangan (DPLK) Syariah</string>
+    </entry>
+    <entry>
+      <string>3023|SAUS</string>
+      <string>Laporan Self Assessment Asuransi Umum Syariah</string>
+    </entry>
+    <entry>
+      <string>3034|SPPIS</string>
+      <string>Laporan Self Assessment Perusahaan Pembiayaan Infrasruktur Syariah</string>
+    </entry>
+    <entry>
+      <string>7001|PLSAJK</string>
+      <string>Laporan Polis Asuransi Jiwa Konvensional</string>
+    </entry>
+    <entry>
+      <string>4004|APUAUS</string>
+      <string>Laporan APU-PPT Asuransi Umum Syariah</string>
+    </entry>
+    <entry>
+      <string>3029|SDLS</string>
+      <string>Laporan Self Assessment Dana Pensiun Lembaga Keuangan (DPLK) Syariah</string>
+    </entry>
+    <entry>
+      <string>7120|LBBPTK</string>
+      <string>Laporan Keuangan Bulanan BPJS Ketenagakerjaan</string>
+    </entry>
+    <entry>
+      <string>3032|SPPS</string>
+      <string>Laporan Self Assessment Perusahaan Pembiayaan Syariah</string>
+    </entry>
+    <entry>
+      <string>2024|LBLPIU</string>
+      <string>Laporan Bulanan LPEI Unit Usaha Syariah</string>
+    </entry>
+    <entry>
+      <string>5010|TPPFNK</string>
+      <string>Laporan TPPU, TPPT, PPSPM Fintech Konvensional</string>
+    </entry>
+    <entry>
+      <string>6003|TLRDLK</string>
+      <string>Laporan Tindak Lanjut Dana Pensiun Lembaga Keuangan (DPLK) Konvensional</string>
+    </entry>
+    <entry>
+      <string>5020|TPPPA</string>
+      <string>Laporan TPPU, TPPT, PPSPM Pialang Asuransi</string>
+    </entry>
+    <entry>
+      <string>2026|LBPNJU</string>
+      <string>Laporan Bulanan Perusahaan Penjaminan Unit Usaha Syariah</string>
+    </entry>
+    <entry>
+      <string>7005|PLSAUU</string>
+      <string>Laporan Polis Asuransi Umum Unit Usaha Syariah</string>
+    </entry>
+    <entry>
+      <string>2019|LBPNK</string>
+      <string>Laporan Bulanan PNM Konvensional</string>
+    </entry>
+    <entry>
+      <string>1013|RBPVU</string>
+      <string>Laporan Rencana Bisnis Perusahaan Modal Ventura Unit Usaha Syariah</string>
+    </entry>
+    <entry>
+      <string>3033|SPPIG</string>
+      <string>Laporan Self Assessment Perusahaan Pembiayaan Infrasruktur Gabungan</string>
+    </entry>
+    <entry>
+      <string>4008|APUPPK</string>
+      <string>Laporan APU-PPT Perusahaan Pembiayaan Konvensional</string>
+    </entry>
+    <entry>
+      <string>6001|TLRDPU</string>
+      <string>Laporan Tindak Lanjut Dana Pensiun Pemberi Kerja (DPPK) Unit Usaha Syariah</string>
+    </entry>
+    <entry>
+      <string>4014|APUFNK</string>
+      <string>Laporan APU-PPT Fintech Konvensional</string>
+    </entry>
+    <entry>
+      <string>4002|APUARK</string>
+      <string>Laporan APU-PPT ReAsuransi Konvensional</string>
+    </entry>
+    <entry>
+      <string>1009|LRBPPU</string>
+      <string>Laporan Rencana Bisnis Perusahaan Pembiayaan Unit Usaha Syariah</string>
+    </entry>
+    <entry>
+      <string>4000|APUAJK</string>
+      <string>Laporan APU-PPT Asuransi Jiwa Konvensional</string>
+    </entry>
+    <entry>
+      <string>1001|LRBPPK</string>
+      <string>Laporan Rencana Bisnis Perusahaan Pembiayaan Konvensional</string>
+    </entry>
+    <entry>
+      <string>3026|SDLK</string>
+      <string>Laporan Self Assessment Dana Pensiun Lembaga Keuangan (DPLK) Konvensional</string>
+    </entry>
+    <entry>
+      <string>7100|LBBPKS</string>
+      <string>Laporan Bulanan BPJS Kesehatan</string>
+    </entry>
+    <entry>
+      <string>4006|APUDLK</string>
+      <string>Laporan APU-PPT Dana Pensiun Lembaga Keuangan (DPLK) Konvensional</string>
+    </entry>
+    <entry>
+      <string>3017|SAUK</string>
+      <string>Laporan Self Assessment Asuransi Umum Konvensional</string>
+    </entry>
+    <entry>
+      <string>3030|SPPK</string>
+      <string>Laporan Self Assessment Perusahaan Pembiayaan Konvensional</string>
+    </entry>
+    <entry>
+      <string>4013|APUGDS</string>
+      <string>Laporan APU-PPT Pegadaian Syariah</string>
+    </entry>
+    <entry>
+      <string>3022|SAJS</string>
+      <string>Laporan Self Assessment Asuransi Jiwa Syariah</string>
+    </entry>
+    <entry>
+      <string>7004|PLSAUK</string>
+      <string>Laporan Polis Asuransi Umum Konvensional</string>
+    </entry>
+    <entry>
+      <string>4003|APUAJS</string>
+      <string>Laporan APU-PPT Asuransi Jiwa Syariah</string>
+    </entry>
+    <entry>
+      <string>3018|SARK</string>
+      <string>Laporan Self Assessment ReAsuransi Konvensional</string>
+    </entry>
+    <entry>
+      <string>4010|APUPVK</string>
+      <string>Laporan APU-PPT Perusahaan Modal Ventura Konvensional</string>
+    </entry>
+    <entry>
+      <string>4012|APUGDK</string>
+      <string>Laporan APU-PPT Pegadaian Konvensional</string>
+    </entry>
+    <entry>
+      <string>1003|RBDLK</string>
+      <string>Laporan Rencana Bisnis Dana Pensiun Lembaga Keuangan (DPLK) Konvensional</string>
+    </entry>
+    <entry>
+      <string>2012|LBRAK</string>
+      <string>Laporan Bulanan ReAsuransi Konvensional</string>
+    </entry>
+    <entry>
+      <string>4011|APUPVS</string>
+      <string>Laporan APU-PPT Perusahaan Modal Ventura Syariah</string>
+    </entry>
+    <entry>
+      <string>1017|RBDPU</string>
+      <string>Laporan Rencana Bisnis Dana Pensiun Pemberi Kerja (DPPK) Unit Usaha Syariah</string>
+    </entry>
+    <entry>
+      <string>4015|APUFNS</string>
+      <string>Laporan APU-PPT Fintech Syariah</string>
+    </entry>
+    <entry>
+      <string>5001|LFINS</string>
+      <string>Laporan Berkala Fintech Syariah</string>
+    </entry>
+    <entry>
+      <string>1012|RBPVS</string>
+      <string>Laporan Rencana Bisnis Perusahaan Modal Ventura Syariah</string>
+    </entry>
+    <entry>
+      <string>3031|SPPU</string>
+      <string>Laporan Self Assessment Perusahaan Pembiayaan Unit Usaha Syariah</string>
+    </entry>
+    <entry>
+      <string>4009|APUPPS</string>
+      <string>Laporan APU-PPT Perusahaan Pembiayaan Syariah</string>
+    </entry>
+    <entry>
+      <string>5897|RBAJK</string>
+      <string>Laporan Rencana Bisnis Asuransi Jiwa Konvensional</string>
+    </entry>
+    <entry>
+      <string>3027|SDPU</string>
+      <string>Laporan Self Assessment Dana Pensiun Pemberi Kerja (DPPK) Unit Usaha Syariah</string>
+    </entry>
+    <entry>
+      <string>3028|SDPS</string>
+      <string>Laporan Self Assessment Dana Pensiun Pemberi Kerja (DPPK) Syariah</string>
+    </entry>
+    <entry>
+      <string>2020|LBPNU</string>
+      <string>Laporan Bulanan PNM Unit Usaha Syariah</string>
+    </entry>
+    <entry>
+      <string>3021|SARU</string>
+      <string>Laporan Self Assessment ReAsuransi Unit Usaha Syariah</string>
+    </entry>
+    <entry>
+      <string>3019|SAJU</string>
+      <string>Laporan Self Assessment Asuransi Jiwa Unit Usaha Syariah</string>
+    </entry>
+    <entry>
+      <string>3020|SAUU</string>
+      <string>Laporan Self Assessment Asuransi Umum Unit Usaha Syariah</string>
+    </entry>
+    <entry>
+      <string>2016|LBPIK</string>
+      <string>Laporan Bulanan Perusahaan Pembiayaan Infrasruktur Gabungan</string>
+    </entry>
+    <entry>
+      <string>7150|LABPTK</string>
+      <string>Laporan Aktuaris Tahunan Jamsostek BPJS Ketenagakerjaan</string>
+    </entry>
+    <entry>
+      <string>5011|TPPFNS</string>
+      <string>Laporan TPPU, TPPT, PPSPM Fintech Syariah</string>
+    </entry>
+    <entry>
+      <string>2015|LBRAS</string>
+      <string>Laporan Bulanan Reasuransi Syariah</string>
+    </entry>
+    <entry>
+      <string>5900|RBRAK</string>
+      <string>Laporan Rencana Bisnis ReAsuransi Konvensional</string>
+    </entry>
+    <entry>
+      <string>1014|RBAJUS</string>
+      <string>Laporan Rencana Bisnis Asuransi Jiwa Unit Usaha Syariah</string>
+    </entry>
+    <entry>
+      <string>6000|TLRDPK</string>
+      <string>Laporan Tindak Lanjut Dana Pensiun Pemberi Kerja (DPPK) Konvensional</string>
+    </entry>
+    <entry>
+      <string>1004|RBPVK</string>
+      <string>Laporan Rencana Bisnis Perusahaan Modal Ventura Konvensional</string>
+    </entry>
+    <entry>
+      <string>2018|LBPIS</string>
+      <string>Laporan Bulanan Perusahaan Pembiayaan Infrasruktur Syariah</string>
+    </entry>
+    <entry>
+      <string>7130|LPBPTK</string>
+      <string>Laporan Pengelolaan Program BPJS Ketenagakerjaan</string>
+    </entry>
+    <entry>
+      <string>6004|TLRDLS</string>
+      <string>Laporan Tindak Lanjut Dana Pensiun Lembaga Keuangan (DPLK) Syariah</string>
+    </entry>
+    <entry>
+      <string>1016|RBRAUS</string>
+      <string>Laporan Rencana Bisnis ReAsuransi Unit Usaha Syariah</string>
+    </entry>
+    <entry>
+      <string>1015|RBAUUS</string>
+      <string>Laporan Rencana Bisnis Asuransi Umum Unit Usaha Syariah</string>
+    </entry>
+    <entry>
+      <string>6002|TLRDPS</string>
+      <string>Laporan Tindak Lanjut Dana Pensiun Pemberi Kerja (DPPK) Syariah</string>
+    </entry>
+    <entry>
+      <string>5896|RBAUK</string>
+      <string>Laporan Rencana Bisnis Asuransi Umum Konvensional</string>
+    </entry>
+    <entry>
+      <string>1007|RBRAS</string>
+      <string>Laporan Rencana Bisnis Reasuransi Syariah</string>
+    </entry>
+    <entry>
+      <string>7140|LTBPTK</string>
+      <string>Laporan Keuangan Tahunan BPJS Ketenagakerjaan</string>
+    </entry>
+    <entry>
+      <string>2013|LBAJS</string>
+      <string>Laporan Bulanan Asuransi Jiwa Syariah</string>
+    </entry>
+    <entry>
+      <string>4007|APUDLS</string>
+      <string>Laporan APU-PPT Dana Pensiun Lembaga Keuangan (DPLK) Syariah</string>
+    </entry>
+    <entry>
+      <string>1008|LRBPPS</string>
+      <string>Laporan Rencana Bisnis Perusahaan Pembiayaan Syariah</string>
+    </entry>
+    <entry>
+      <string>2010|LBAJK</string>
+      <string>Laporan Bulanan Asuransi Jiwa Konvensional</string>
+    </entry>
+    <entry>
+      <string>2025|LBPNJK</string>
+      <string>Laporan Bulanan Perusahaan Penjaminan Konvensional</string>
+    </entry>
+    <entry>
+      <string>1002|RBDPK</string>
+      <string>Laporan Rencana Bisnis Dana Pensiun Pemberi Kerja (DPPK) Konvensional</string>
+    </entry>
+    <entry>
+      <string>1010|RBDPS</string>
+      <string>Laporan Rencana Bisnis Dana Pensiun Pemberi Kerja (DPPK) Syariah</string>
+    </entry>
+    <entry>
+      <string>4005|APUARS</string>
+      <string>Laporan APU-PPT Reasuransi Syariah</string>
+    </entry>
+    <entry>
+      <string>7006|PLSAUS</string>
+      <string>Laporan Polis Asuransi Umum Syariah</string>
+    </entry>
+    <entry>
+      <string>2011|LBAUK</string>
+      <string>Laporan Bulanan Asuransi Umum Konvensional</string>
+    </entry>
+    <entry>
+      <string>2027|LBPNJS</string>
+      <string>Laporan Bulanan Perusahaan Penjaminan Syariah</string>
+    </entry>
+    <entry>
+      <string>5000|LFINK</string>
+      <string>Laporan Berkala Fintech Konvensional</string>
+    </entry>
+    <entry>
+      <string>1006|RBAUS</string>
+      <string>Laporan Rencana Bisnis Asuransi Umum Syariah</string>
+    </entry>
+    <entry>
+      <string>2014|LBAUS</string>
+      <string>Laporan Bulanan Asuransi Umum Syariah</string>
+    </entry>
+  </mapReport>
+  <mapReportBySector>
+    <entry>
+      <string>5020</string>
+      <list>
+        <string>031207</string>
+      </list>
+    </entry>
+    <entry>
+      <string>7120</string>
+      <list>
+        <string>030497</string>
+      </list>
+    </entry>
+    <entry>
+      <string>7002</string>
+      <list>
+        <string>031201</string>
+      </list>
+    </entry>
+    <entry>
+      <string>4010</string>
+      <list>
+        <string>031403</string>
+      </list>
+    </entry>
+    <entry>
+      <string>7001</string>
+      <list>
+        <string>031201</string>
+      </list>
+    </entry>
+    <entry>
+      <string>4011</string>
+      <list>
+        <string>031404</string>
+      </list>
+    </entry>
+    <entry>
+      <string>7004</string>
+      <list>
+        <string>031202</string>
+      </list>
+    </entry>
+    <entry>
+      <string>4012</string>
+      <list>
+        <string>030401</string>
+      </list>
+    </entry>
+    <entry>
+      <string>7003</string>
+      <list>
+        <string>031204</string>
+      </list>
+    </entry>
+    <entry>
+      <string>4013</string>
+      <list>
+        <string>030402</string>
+      </list>
+    </entry>
+    <entry>
+      <string>7006</string>
+      <list>
+        <string>031205</string>
+      </list>
+    </entry>
+    <entry>
+      <string>4014</string>
+      <list>
+        <string>030416</string>
+      </list>
+    </entry>
+    <entry>
+      <string>7005</string>
+      <list>
+        <string>031202</string>
+      </list>
+    </entry>
+    <entry>
+      <string>1017</string>
+      <list>
+        <string>031301</string>
+      </list>
+    </entry>
+    <entry>
+      <string>1016</string>
+      <list>
+        <string>031203</string>
+      </list>
+    </entry>
+    <entry>
+      <string>1015</string>
+      <list>
+        <string>031202</string>
+      </list>
+    </entry>
+    <entry>
+      <string>2027</string>
+      <list>
+        <string>030404</string>
+      </list>
+    </entry>
+    <entry>
+      <string>1014</string>
+      <list>
+        <string>031201</string>
+      </list>
+    </entry>
+    <entry>
+      <string>2026</string>
+      <list>
+        <string>030403</string>
+      </list>
+    </entry>
+    <entry>
+      <string>1013</string>
+      <list>
+        <string>031403</string>
+      </list>
+    </entry>
+    <entry>
+      <string>2025</string>
+      <list>
+        <string>030403</string>
+      </list>
+    </entry>
+    <entry>
+      <string>1012</string>
+      <list>
+        <string>031404</string>
+      </list>
+    </entry>
+    <entry>
+      <string>2024</string>
+      <list>
+        <string>030491</string>
+      </list>
+    </entry>
+    <entry>
+      <string>5896</string>
+      <list>
+        <string>031202</string>
+      </list>
+    </entry>
+    <entry>
+      <string>4004</string>
+      <list>
+        <string>031205</string>
+      </list>
+    </entry>
+    <entry>
+      <string>5897</string>
+      <list>
+        <string>031201</string>
+      </list>
+    </entry>
+    <entry>
+      <string>4005</string>
+      <list>
+        <string>031206</string>
+      </list>
+    </entry>
+    <entry>
+      <string>4006</string>
+      <list>
+        <string>031302</string>
+      </list>
+    </entry>
+    <entry>
+      <string>4007</string>
+      <list>
+        <string>031304</string>
+      </list>
+    </entry>
+    <entry>
+      <string>4008</string>
+      <list>
+        <string>031401</string>
+      </list>
+    </entry>
+    <entry>
+      <string>4009</string>
+      <list>
+        <string>031402</string>
+      </list>
+    </entry>
+    <entry>
+      <string>6001</string>
+      <list>
+        <string>031301</string>
+      </list>
+    </entry>
+    <entry>
+      <string>6000</string>
+      <list>
+        <string>031301</string>
+      </list>
+    </entry>
+    <entry>
+      <string>6003</string>
+      <list>
+        <string>031302</string>
+      </list>
+    </entry>
+    <entry>
+      <string>6002</string>
+      <list>
+        <string>031303</string>
+      </list>
+    </entry>
+    <entry>
+      <string>6004</string>
+      <list>
+        <string>031304</string>
+      </list>
+    </entry>
+    <entry>
+      <string>4015</string>
+      <list>
+        <string>030417</string>
+      </list>
+    </entry>
+    <entry>
+      <string>5900</string>
+      <list>
+        <string>031203</string>
+      </list>
+    </entry>
+    <entry>
+      <string>5000</string>
+      <list>
+        <string>030416</string>
+      </list>
+    </entry>
+    <entry>
+      <string>7100</string>
+      <list>
+        <string>030499</string>
+      </list>
+    </entry>
+    <entry>
+      <string>5001</string>
+      <list>
+        <string>030417</string>
+      </list>
+    </entry>
+    <entry>
+      <string>2012</string>
+      <list>
+        <string>031203</string>
+      </list>
+    </entry>
+    <entry>
+      <string>3024</string>
+      <list>
+        <string>031206</string>
+      </list>
+    </entry>
+    <entry>
+      <string>2011</string>
+      <list>
+        <string>031202</string>
+      </list>
+    </entry>
+    <entry>
+      <string>3023</string>
+      <list>
+        <string>031205</string>
+      </list>
+    </entry>
+    <entry>
+      <string>2010</string>
+      <list>
+        <string>031201</string>
+      </list>
+    </entry>
+    <entry>
+      <string>3022</string>
+      <list>
+        <string>031204</string>
+      </list>
+    </entry>
+    <entry>
+      <string>3021</string>
+      <list>
+        <string>031203</string>
+      </list>
+    </entry>
+    <entry>
+      <string>3020</string>
+      <list>
+        <string>031202</string>
+      </list>
+    </entry>
+    <entry>
+      <string>3019</string>
+      <list>
+        <string>031201</string>
+      </list>
+    </entry>
+    <entry>
+      <string>3018</string>
+      <list>
+        <string>031203</string>
+      </list>
+    </entry>
+    <entry>
+      <string>3017</string>
+      <list>
+        <string>031202</string>
+      </list>
+    </entry>
+    <entry>
+      <string>3016</string>
+      <list>
+        <string>031201</string>
+      </list>
+    </entry>
+    <entry>
+      <string>5010</string>
+      <list>
+        <string>030416</string>
+      </list>
+    </entry>
+    <entry>
+      <string>5011</string>
+      <list>
+        <string>030417</string>
+      </list>
+    </entry>
+    <entry>
+      <string>4000</string>
+      <list>
+        <string>031201</string>
+      </list>
+    </entry>
+    <entry>
+      <string>4001</string>
+      <list>
+        <string>031202</string>
+      </list>
+    </entry>
+    <entry>
+      <string>4002</string>
+      <list>
+        <string>031203</string>
+      </list>
+    </entry>
+    <entry>
+      <string>4003</string>
+      <list>
+        <string>031204</string>
+      </list>
+    </entry>
+    <entry>
+      <string>1011</string>
+      <list>
+        <string>031304</string>
+      </list>
+    </entry>
+    <entry>
+      <string>3035</string>
+      <list>
+        <string>031405</string>
+      </list>
+    </entry>
+    <entry>
+      <string>2023</string>
+      <list>
+        <string>030491</string>
+      </list>
+    </entry>
+    <entry>
+      <string>1010</string>
+      <list>
+        <string>031303</string>
+      </list>
+    </entry>
+    <entry>
+      <string>3034</string>
+      <list>
+        <string>031406</string>
+      </list>
+    </entry>
+    <entry>
+      <string>3033</string>
+      <list>
+        <string>031405</string>
+      </list>
+    </entry>
+    <entry>
+      <string>2020</string>
+      <list>
+        <string>030491</string>
+      </list>
+    </entry>
+    <entry>
+      <string>3032</string>
+      <list>
+        <string>031402</string>
+      </list>
+    </entry>
+    <entry>
+      <string>3031</string>
+      <list>
+        <string>031401</string>
+      </list>
+    </entry>
+    <entry>
+      <string>3030</string>
+      <list>
+        <string>031401</string>
+      </list>
+    </entry>
+    <entry>
+      <string>1008</string>
+      <list>
+        <string>031402</string>
+      </list>
+    </entry>
+    <entry>
+      <string>1007</string>
+      <list>
+        <string>031206</string>
+      </list>
+    </entry>
+    <entry>
+      <string>2019</string>
+      <list>
+        <string>030491</string>
+      </list>
+    </entry>
+    <entry>
+      <string>1006</string>
+      <list>
+        <string>031205</string>
+      </list>
+    </entry>
+    <entry>
+      <string>2018</string>
+      <list>
+        <string>031406</string>
+      </list>
+    </entry>
+    <entry>
+      <string>1005</string>
+      <list>
+        <string>031204</string>
+      </list>
+    </entry>
+    <entry>
+      <string>2017</string>
+      <list>
+        <string>031405</string>
+      </list>
+    </entry>
+    <entry>
+      <string>3029</string>
+      <list>
+        <string>031304</string>
+      </list>
+    </entry>
+    <entry>
+      <string>1004</string>
+      <list>
+        <string>031403</string>
+      </list>
+    </entry>
+    <entry>
+      <string>2016</string>
+      <list>
+        <string>031405</string>
+      </list>
+    </entry>
+    <entry>
+      <string>3028</string>
+      <list>
+        <string>031303</string>
+      </list>
+    </entry>
+    <entry>
+      <string>1003</string>
+      <list>
+        <string>031302</string>
+      </list>
+    </entry>
+    <entry>
+      <string>2015</string>
+      <list>
+        <string>031206</string>
+      </list>
+    </entry>
+    <entry>
+      <string>3027</string>
+      <list>
+        <string>031301</string>
+      </list>
+    </entry>
+    <entry>
+      <string>1002</string>
+      <list>
+        <string>031301</string>
+      </list>
+    </entry>
+    <entry>
+      <string>2014</string>
+      <list>
+        <string>031205</string>
+      </list>
+    </entry>
+    <entry>
+      <string>3026</string>
+      <list>
+        <string>031302</string>
+      </list>
+    </entry>
+    <entry>
+      <string>1001</string>
+      <list>
+        <string>031401</string>
+      </list>
+    </entry>
+    <entry>
+      <string>2013</string>
+      <list>
+        <string>031204</string>
+      </list>
+    </entry>
+    <entry>
+      <string>3025</string>
+      <list>
+        <string>031301</string>
+      </list>
+    </entry>
+    <entry>
+      <string>1009</string>
+      <list>
+        <string>031401</string>
+      </list>
+    </entry>
+  </mapReportBySector>
+</setupHeader>

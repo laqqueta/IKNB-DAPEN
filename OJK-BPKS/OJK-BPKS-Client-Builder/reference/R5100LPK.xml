@@ -1,0 +1,172 @@
+<list>
+  <reference>
+    <key>LPK0101000000</key>
+    <value>Kas dan Bank</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0102000000</key>
+    <value>Deposito</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0103000000</key>
+    <value>Piutang iuran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0104000000</key>
+    <value>Piutang COB</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0105000000</key>
+    <value>Piutang investasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0106000000</key>
+    <value>Piutang hasil investasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0107000000</key>
+    <value>Piutang kontribusi BPJS</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0108000000</key>
+    <value>Piutang kepada BPJS</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0109000000</key>
+    <value>Piutang lain</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0110000000</key>
+    <value>Uang muka</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0111000000</key>
+    <value>Surat berharga yang diterbitkan oleh Bank Indonesia</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0112000000</key>
+    <value>Surat berharga yang diterbitkan oleh Negara RI</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0113000000</key>
+    <value>Sukuk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0114000000</key>
+    <value>Obligasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0115000000</key>
+    <value>Aset lain</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0200000000</key>
+    <value>TOTAL ASET</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0301000000</key>
+    <value>Utang jaminan kesehatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0302000000</key>
+    <value>Pendapatan Diterima Dimuka</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0303000000</key>
+    <value>Akumulasi iuran yang belum dapat teridentifikasi pesertanya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0304000000</key>
+    <value>Utang kepada BPJS</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0304010000</key>
+    <value>Dana operasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0304020000</key>
+    <value>Dana Talangan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0305000000</key>
+    <value>Utang kepada pihak ketiga</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0306000000</key>
+    <value>Utang COB</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0307000000</key>
+    <value>Utang pajak</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0308000000</key>
+    <value>Cadangan teknis</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0308010000</key>
+    <value>Liabilitas pelayanan kesehatan dalam proses</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0308020000</key>
+    <value>Liabilitas pelayanan kesehatan belum dilaporkan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0308030000</key>
+    <value>Iuran belum merupakan pendapatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0309000000</key>
+    <value>Liabilitas lain</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0400000000</key>
+    <value>TOTAL LIABILITAS</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0500000000</key>
+    <value>ASET NETO</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0600000000</key>
+    <value>TOTAL ASET NETO</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0700000000</key>
+    <value>TOTAL LIABILITAS DAN ASET NETO</value>
+    <labels/>
+  </reference>
+</list>

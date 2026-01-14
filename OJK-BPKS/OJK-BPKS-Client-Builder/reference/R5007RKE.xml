@@ -1,0 +1,137 @@
+<list>
+  <reference>
+    <key>RKE0101010000</key>
+    <value>a. Beban Operasional Rasio Beban Terhadap Pendapatan Operasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKE0101020000</key>
+    <value>b. Pendapatan Operasional Rasio Beban Terhadap Pendapatan Operasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKE0101030000</key>
+    <value>c. Rasio ( a : b ) Rasio Beban Terhadap Pendapatan Operasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKE0102010000</key>
+    <value>a. Beban Operasional Rasio Beban Terhadap Pendapatan Operasional dan Pendapatan Investasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKE0102020000</key>
+    <value>b. Pendapatan Operasional Rasio Beban Terhadap Pendapatan Operasional dan Pendapatan Investasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKE0102030000</key>
+    <value>c. Pendapatan Investasi Rasio Beban Terhadap Pendapatan Operasional dan Pendapatan Investasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKE0102040000</key>
+    <value>d. Rasio ( a : ( b + c ) ) Rasio Beban Terhadap Pendapatan Operasional dan Pendapatan Investasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKE0201010000</key>
+    <value>a. Total Aset Neto Rasio Aset Neto Terhadap Liabilitas</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKE0201020000</key>
+    <value>b. Total Liabilitas Rasio Aset Neto Terhadap Liabilitas</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKE0201030000</key>
+    <value>c. Rasio ( a : b ) Rasio Aset Neto Terhadap Liabilitas</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKE0301010000</key>
+    <value>a. Aset Lancar Rasio Likuiditas</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKE0301020000</key>
+    <value>b. Kewajiban Lancar Rasio Likuiditas</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKE0301030000</key>
+    <value>c. Rasio ( a : b ) Rasio Likuiditas</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKE0401010000</key>
+    <value>a. Hasil Investasi Rasio Hasil Investasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKE0401020000</key>
+    <value>b. Rata-Rata Investasi Rasio Hasil Investasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKE0401030000</key>
+    <value>c. Rasio (disetahunkan) ( a : b ) / ( bulan * 12 ) Rasio Hasil Investasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKE0402010000</key>
+    <value>a. Pendapatan Neto Rasio Pendapatan terhadap Aset (RoA) dan terhadap Aset Neto (ROE)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKE0402020000</key>
+    <value>b. Aset Rasio Pendapatan terhadap Aset (RoA) dan terhadap Aset Neto (ROE)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKE0402030000</key>
+    <value>c. Aset Neto Rasio Pendapatan terhadap Aset (RoA) dan terhadap Aset Neto (ROE)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKE0402040000</key>
+    <value>d. Rasio RoA (a : b) / bulan * 12 Rasio Pendapatan terhadap Aset (RoA) dan terhadap Aset Neto (ROE)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKE0402050000</key>
+    <value>e. Rasio RoE (a : c) / bulan * 12 Rasio Pendapatan terhadap Aset (RoA) dan terhadap Aset Neto (ROE)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKE0501010000</key>
+    <value>a. Aset Neto Periode Berjalan Rasio Pertumbuhan Aset Neto</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKE0501020000</key>
+    <value>b. Aset Neto Periode Sebelumnya Rasio Pertumbuhan Aset Neto</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKE0501030000</key>
+    <value>c. Rasio [( a : b ) - 1] Rasio Pertumbuhan Aset Neto</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKE0601000000</key>
+    <value>a. Beban Penyusutan Beban Penyusutan terhadap Beban Operasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKE0602000000</key>
+    <value>b. Beban Operasional Beban Penyusutan terhadap Beban Operasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKE0603000000</key>
+    <value>c. Rasio ( a : b ) Beban Penyusutan terhadap Beban Operasional</value>
+    <labels/>
+  </reference>
+</list>

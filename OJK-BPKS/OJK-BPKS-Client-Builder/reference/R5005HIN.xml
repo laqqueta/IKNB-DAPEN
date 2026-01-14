@@ -1,0 +1,177 @@
+<list>
+  <reference>
+    <key>HIN0101000000</key>
+    <value>a.Deposito</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>HIN0102000000</key>
+    <value>b.Sertifikat Deposito</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>HIN0103000000</key>
+    <value>c.Deposit on Call</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>HIN0104000000</key>
+    <value>Sub Total Investasi Setara Kas</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>HIN0201000000</key>
+    <value>a.Deposito</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>HIN0202000000</key>
+    <value>b.Sertifikat Deposito</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>HIN0203000000</key>
+    <value>c.Saham yang Tercatat di Bursa</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>HIN0204000000</key>
+    <value>d.Surat Utang Korporasi dan Sukuk Korporasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>HIN0205000000</key>
+    <value>e. Surat berharga yang Diterbitkan oleh Negara RI</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>HIN0206000000</key>
+    <value>f. Surat Berharga yang Diterbitkan oleh Bank Indonesia</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>HIN0207000000</key>
+    <value>g. Reksa Dana</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>HIN0208000000</key>
+    <value>h. Kontrak Investasi Kolektif Efek Beragun Aset</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>HIN0209000000</key>
+    <value>i. Dana Investasi Real Estat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>HIN0210000000</key>
+    <value>j. Repurchase Agreement (REPO)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>HIN0211000000</key>
+    <value>k. Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>HIN0212000000</key>
+    <value>Sub Total Investasi Jangka Pendek</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>HIN0301000000</key>
+    <value>a.Deposito</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>HIN0302000000</key>
+    <value>b.Sertifikat Deposito</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>HIN0303000000</key>
+    <value>c.Surat Utang Korporasi dan Sukuk Korporasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>HIN0304000000</key>
+    <value>d.Surat Berharga yang Diterbitkan oleh Negara RI</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>HIN0305000000</key>
+    <value>e.Surat Berharga yang Diterbitkan oleh Bank Indonesia</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>HIN0306000000</key>
+    <value>f.Reksa Dana</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>HIN0307000000</key>
+    <value>g.Penyertaan Langsung</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>HIN0308000000</key>
+    <value>h.Kontrak Investasi Kolektif Efek Beragun Aset</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>HIN0309000000</key>
+    <value>i.Dana Investasi Real Estat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>HIN0310000000</key>
+    <value>j.Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>HIN0311000000</key>
+    <value>Sub Total Investasi Jangka Panjang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>HIN0401000000</key>
+    <value>a.Penyertaan Langsung</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>HIN0402000000</key>
+    <value>b.Saham yang Tercatat di Bursa</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>HIN0403000000</key>
+    <value>Sub Total Investasi pada Entitas Asosiasi dan Entitas Anak</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>HIN0501000000</key>
+    <value>a.Tanah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>HIN0502000000</key>
+    <value>b.Bangunan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>HIN0503000000</key>
+    <value>c.Tanah dengan Bangunan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>HIN0504000000</key>
+    <value>Sub Total Investasi pada Properti</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>HIN0600000000</key>
+    <value>TOTAL HASIL INVESTASI</value>
+    <labels/>
+  </reference>
+</list>

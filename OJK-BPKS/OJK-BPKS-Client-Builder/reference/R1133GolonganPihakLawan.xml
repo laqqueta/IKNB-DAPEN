@@ -1,0 +1,1832 @@
+<list>
+  <reference>
+    <key>EN:e2953</key>
+    <value>Kantor Pelayanan Perbendaharaan Negara (KPPN)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e2954</key>
+    <value>Kementerian Keuangan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e2955</key>
+    <value>Kementerian Pertahanan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e2956</key>
+    <value>Kementerian Kehutanan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e2957</key>
+    <value>Kementerian Pertanian</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e2958</key>
+    <value>Kementerian Pertambangan dan Energi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e2959</key>
+    <value>Kementerian Agama</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e2960</key>
+    <value>Kementerian Negara BUMN</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1000</key>
+    <value>Kementerian Kebudayaan, Pendidikan Dasar, dan Menengah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1001</key>
+    <value>Kementerian Pekerjaan Umum dan Perumahan Rakyat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1002</key>
+    <value>Kementerian Kesehatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1003</key>
+    <value>Kementerian Perhubungan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e2961</key>
+    <value>Kementerian lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e2966</key>
+    <value>Badan dan Lembaga Pemerintah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1006</key>
+    <value>Badan Layanan Umum - Kesehatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1007</key>
+    <value>Badan Layanan Umum - Pendidikan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1008</key>
+    <value>Badan Layanan Umum Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e2963</key>
+    <value>Pemerintah Provinsi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e2964</key>
+    <value>Pemerintah Kota</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e2965</key>
+    <value>Pemerintah Kabupaten</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1010</key>
+    <value>Badan Layanan Umum Daerah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1011</key>
+    <value>Propinsi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1012</key>
+    <value>Kota/Kabupaten</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e2967</key>
+    <value>Badan Urusan Logistik (BULOG)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1323</key>
+    <value>Kementerian Pariwisata dan Ekonomi Kreatif</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1324</key>
+    <value>Badan Pengelolaan Tabungan Perumahan Rakyat (BP-TAPERA)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1325</key>
+    <value>Komisi Pemberantasan Korupsi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1326</key>
+    <value>Majelis Permusyawaratan Rakyat (MPR)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1327</key>
+    <value>Dewan Perwakilan Rakyat (DPR)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1328</key>
+    <value>Badan Pemeriksa Keuangan (BPK)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1329</key>
+    <value>Mahkamah Agung (MA)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1330</key>
+    <value>Mahkamah Konstitusi (MK)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1331</key>
+    <value>Komisi Yudisial (KY)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1332</key>
+    <value>Dewan Perwakilan Daerah (DPD)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e2969</key>
+    <value>Badan-badan dan Lembaga-lembaga Pemerintah Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3597</key>
+    <value>BUMN Bank Umum Konvensional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3598</key>
+    <value>BUMN Bank Umum Syariah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3599</key>
+    <value>BUMN Bank Perkreditan Rakyat (BPR) Konvensional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3600</key>
+    <value>BUMN Bank Perkreditan Rakyat (BPR) Syariah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e2978</key>
+    <value>Jamsostek</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e2979</key>
+    <value>Taspen</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e2980</key>
+    <value>Jiwasraya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e2981</key>
+    <value>Jasa Raharja</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e2982</key>
+    <value>Jasindo</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e2983</key>
+    <value>ASABRI</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e2984</key>
+    <value>BUMN Asuransi Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e2985</key>
+    <value>BUMN Perusahaan Dana Pensiun</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e2987</key>
+    <value>BUMN Modal Ventura</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e2988</key>
+    <value>BUMN Perusahaan Pembiayaan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e2990</key>
+    <value>BUMN Perusahaan Sekuritas yang Tidak Melakukan Kegiatan Usaha Reksa Dana</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e2991</key>
+    <value>BUMN Perusahaan Sekuritas yang Melakukan Kegiatan Usaha Reksa Dana</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e2992</key>
+    <value>BUMN Perusahaan Reksa Dana</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e2993</key>
+    <value>BUMN Manajer Investasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e2994</key>
+    <value>Danareksa</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e2995</key>
+    <value>BUMN Perusahaan Sekuritas dan Reksa Dana Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e2997</key>
+    <value>Perum Pegadaian</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e2998</key>
+    <value>Pos Indonesia</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e2999</key>
+    <value>Lembaga Pembiayaan Ekspor Indonesia</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3000</key>
+    <value>BUMN Lembaga Keuangan Bukan Bank Lainnya Selain Perum Pegadaian, Pos Indonesia, dan LPEI</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3005</key>
+    <value>Kereta Api Indonesia (KAI)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3006</key>
+    <value>Pelayaran Nasional Indonesia (PELNI)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3007</key>
+    <value>Pelabuhan Laut Indonesia (PELINDO)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3008</key>
+    <value>Angkutan Sungai, Danau dan Penyeberangan (ASDP)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3009</key>
+    <value>Angkasa Pura</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3010</key>
+    <value>Perkebunan Nusantara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3011</key>
+    <value>Pertamina</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3012</key>
+    <value>Perusahaan Listrik Negara (PLN)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3013</key>
+    <value>Krakatau Steel</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3014</key>
+    <value>Garuda Indonesia</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3015</key>
+    <value>Telekomunikasi Indonesia</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3016</key>
+    <value>Indosat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3017</key>
+    <value>Jasa Marga</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3018</key>
+    <value>Timah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3019</key>
+    <value>Aneka Tambang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3020</key>
+    <value>Perusahaan Jasa Konstruksi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1336</key>
+    <value>PT Dok Kodja Bahari</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1337</key>
+    <value>PT Sang Hyang Seri</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1338</key>
+    <value>PT PAL</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1339</key>
+    <value>PT Dirgantara Indonesia</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1340</key>
+    <value>PT Pertani</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1375</key>
+    <value>PT Permodalan Nasional Madani (Persero)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1376</key>
+    <value>Bio Farma</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1377</key>
+    <value>Jasa Raharja</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1378</key>
+    <value>Semen Indonesia</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1379</key>
+    <value>Adhi Karya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1380</key>
+    <value>Wijaya Karya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1381</key>
+    <value>Waskita Karya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1382</key>
+    <value>Perusahaan Gas Negara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1383</key>
+    <value>Angkasa Pura I dan II</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1384</key>
+    <value>Pelabuhan Indonesia I-IV</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1385</key>
+    <value>Pos Indonesia</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1386</key>
+    <value>Kimia Farma</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1387</key>
+    <value>Pindad</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3021</key>
+    <value>BUMN Bukan Lembaga Keuangan Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3025</key>
+    <value>BUMD Perusahaan Asuransi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3026</key>
+    <value>BUMD Perusahaan Dana Pensiun</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3027</key>
+    <value>BUMD Modal Ventura</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3028</key>
+    <value>BUMD Perusahaan Pembiayaan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3030</key>
+    <value>BUMD Perusahaan Sekuritas yang Tidak Melakukan Kegiatan Usaha Reksa Dana</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3031</key>
+    <value>BUMD Perusahaan Sekuritas yang Melakukan Kegiatan Usaha Reksa Dana</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3032</key>
+    <value>BUMD Perusahaan Reksa Dana</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3033</key>
+    <value>BUMD Manajer Investasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3034</key>
+    <value>BUMD Perusahaan Sekuritas dan Reksa Dana Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3035</key>
+    <value>BUMD Lembaga Keuangan Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3037</key>
+    <value>Perusahaan Daerah Air Minum (PDAM)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3038</key>
+    <value>Perusahaan Daerah Pasar (PD Pasar)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3039</key>
+    <value>BUMD Bukan Lembaga Keuangan Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1013</key>
+    <value>Jaminan Sosial Pemerintahan Umum</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1015</key>
+    <value>Pemerintah Pusat - Pemerintahan Umum</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1016</key>
+    <value>Pemerintah Federal - Pemerintahan Umum</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1017</key>
+    <value>Pemerintah Daerah- Pemerintahan Umum</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1019</key>
+    <value>Korporasi non finansial LNP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1020</key>
+    <value>Korporasi non finansial LUP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1022</key>
+    <value>Korporasi non finansial publik LNP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1023</key>
+    <value>Korporasi non finansial publik LUP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1024</key>
+    <value>Koorporasi Non Financial Publik - BUMN</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1025</key>
+    <value>Koorporasi Non Financial Publik - BUMD</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1026</key>
+    <value>Koorporasi Non Financial Publik - BUM Desa</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1027</key>
+    <value>Korporasi non finansial Swasta Nasional LNP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1028</key>
+    <value>Korporasi non finansial Swasta Nasional LUP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3097</key>
+    <value>Perusahaan Otomotif Swasta Nasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3098</key>
+    <value>Perusahaan Perminyakan Swasta Nasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3099</key>
+    <value>Perusahaan Tekstil Swasta Nasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3100</key>
+    <value>Perusahaan Perkayuan (HPH) Swasta Nasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1030</key>
+    <value>Perusahaan Properti &amp; Real Estate Swasta Nasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1236</key>
+    <value>Perusahaan Jasa Konstruksi Lainnya Swasta Nasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3102</key>
+    <value>Perusahaan Industri Rokok Swasta Nasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3103</key>
+    <value>Perusahaan Industri Makanan Swasta Nasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3104</key>
+    <value>Perusahaan Agrobisnis Swasta Nasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1031</key>
+    <value>Perusahaan Telekomunikasi Swasta Nasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3105</key>
+    <value>Perusahaan Swasta Nasional Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3107</key>
+    <value>Koperasi Bukan Simpan Pinjam Swasta Nasional Primer</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3108</key>
+    <value>Koperasi Bukan Simpan Pinjam Swasta Nasional Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1032</key>
+    <value>Korporasi non finansial yang dikendalikan asing LNP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1033</key>
+    <value>Korporasi non finansial yang dikendalikan asing LUP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3131</key>
+    <value>Perusahaan Otomotif yang dikendalikan asing</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3132</key>
+    <value>Perusahaan Perminyakan yang dikendalikan asing</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3133</key>
+    <value>Perusahaan Tekstil yang dikendalikan asing</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3134</key>
+    <value>Perusahaan Perkayuan (HPH) yang dikendalikan asing</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1034</key>
+    <value>Perusahaan Properti &amp; Real Estate yang dikendalikan asing</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1035</key>
+    <value>Perusahaan Jasa Konstruksi Lainnya yang dikendalikan asing</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3136</key>
+    <value>Perusahaan Industri Rokok yang dikendalikan asing</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3137</key>
+    <value>Perusahaan Industri Makanan yang dikendalikan asing</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3138</key>
+    <value>Perusahaan Agrobisnis yang dikendalikan asing</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3139</key>
+    <value>Perusahaan yang dikendalikan asing lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1036</key>
+    <value>Kantor Perwakilan Lembaga yang dikendalikan asing di Indonesia</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3142</key>
+    <value>Badan Amil Zakat Infaq dan Shadaqah (BAZIS) yang dikendalikan asing</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3143</key>
+    <value>Lembaga Pendidikan yang dikendalikan asing</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3144</key>
+    <value>Yayasan, Badan Sosial dan Organisasi Kemasyarakatan yang dikendalikan asing Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3145</key>
+    <value>Kantor Perwakilan Lembaga Milik Asing di Indonesia yang dikendalikan asing</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3115</key>
+    <value>Perusahaan Otomotif Campuran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3116</key>
+    <value>Perusahaan Perminyakan Campuran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3117</key>
+    <value>Perusahaan Tekstil Campuran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3118</key>
+    <value>Perusahaan Perkayuan (HPH) Campuran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3119</key>
+    <value>Perusahaan Jasa Konstruksi Campuran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3120</key>
+    <value>Perusahaan Industri Rokok Campuran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3121</key>
+    <value>Perusahaan Industri Makanan Campuran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3122</key>
+    <value>Perusahaan Agrobisnis Campuran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3123</key>
+    <value>Perusahaan Campuran Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3126</key>
+    <value>Badan Amil Zakat Infaq dan Shadaqah (BAZIS) Campuran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3127</key>
+    <value>Lembaga Pendidikan Campuran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3128</key>
+    <value>Yayasan, Badan Sosial dan Organisasi Kemasyarakatan Campuran Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3129</key>
+    <value>Kantor Perwakilan Lembaga Milik Asing di Indonesia yang Dimiliki Campuran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1038</key>
+    <value>Bank Indonesia (Bank Sentral)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1039</key>
+    <value>Otoritas Jasa Keuangan (OJK)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e2968</key>
+    <value>Lembaga Penjamin Simpanan (LPS)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1041</key>
+    <value>Korporasi penghimpunan simpanan LNP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1042</key>
+    <value>Korporasi penghimpunan simpanan LUP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1044</key>
+    <value>Korporasi penghimpun simpanan publik-LNP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1045</key>
+    <value>Korporasi penghimpun simpanan publik- LUP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1047</key>
+    <value>Korporasi penghimpun simpanan swasta nasional-LNP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1048</key>
+    <value>Korporasi penghimpun simpanan swasta nasional- LUP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1050</key>
+    <value>Korporasi penghimpun simpanan yang dikendalikan asing-LNP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1051</key>
+    <value>Korporasi penghimpun simpanan yang dikendalikan asing- LUP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1053</key>
+    <value>Pasar uang reksa dana - LNP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1054</key>
+    <value>Pasar uang reksa dana - LUP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1056</key>
+    <value>Pasar uang reksa dana publik - LNP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1057</key>
+    <value>Pasar uang reksa dana publik - LUP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1059</key>
+    <value>Pasar uang reksa dana swasta nasional - LNP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1060</key>
+    <value>Pasar uang reksa dana swasta nasional - LUP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1062</key>
+    <value>Pasar uang reksa dana yang dikendalikan asing- LNP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1063</key>
+    <value>Pasar uang reksa dana yang dikendalikan asing–LUP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1065</key>
+    <value>Dana investasi non-MMF –LNP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1066</key>
+    <value>Dana investasi non-MMF - LUP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1068</key>
+    <value>Dana investasi non-MMF publik - LNP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1069</key>
+    <value>Dana investasi non-MMF publik - LUP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1071</key>
+    <value>Dana investasi non-MMF swasta nasional - LNP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1072</key>
+    <value>Dana investasi non-MMF swasta nasional - LUP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1074</key>
+    <value>Dana investasi non-MMF yang dikendalikan asing- LNP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1075</key>
+    <value>Dana investasi non-MMF yang dikendalikan asing - LUP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1077</key>
+    <value>Penunjang keuangan - LNP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1078</key>
+    <value>Penunjang keuangan - LUP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1080</key>
+    <value>Penunjang keuangan publik -LNP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1081</key>
+    <value>Penunjang keuangan publik - LUP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1082</key>
+    <value>Penunjang Keuangan Publik - BUMN</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1083</key>
+    <value>Penunjang Keuangan Publik - BUMD</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1084</key>
+    <value>Penunjang Keuangan Publik - BUM Desa</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1086</key>
+    <value>Penunjang keuangan swasta nasional- LNP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1087</key>
+    <value>Penunjang keuangan swasta nasional- LUP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1088</key>
+    <value>Penyelenggara Teknologi Finansial Swasta Nasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1089</key>
+    <value>Penerbit Uang Elektronik Swasta Nasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1090</key>
+    <value>Penunjang Keuangan Swasta Nasional Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1092</key>
+    <value>Penunjang keuangan yang dikendalikan asing- LNP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1093</key>
+    <value>Penunjang keuangan yang dikendalikan asing- LUP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1094</key>
+    <value>Penyelenggara Teknologi Finansial</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1095</key>
+    <value>Penerbit Uang Elektronik</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1096</key>
+    <value>Penunjang Keuangan yang dikendalikan asing Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1098</key>
+    <value>Lembaga keuangan captive- LNP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1099</key>
+    <value>Lembaga keuangan captive- LUP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1101</key>
+    <value>Lembaga keuangan captive publik - LNP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1102</key>
+    <value>Lembaga keuangan captive publik - LUP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1104</key>
+    <value>Lembaga keuangan captive swasta nasional - LNP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1105</key>
+    <value>Lembaga keuangan captive swasta nasional - LUP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1107</key>
+    <value>Lembaga keuangan captive yang dikendalikan asing- LNP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1108</key>
+    <value>Lembaga keuangan captive yang dikendalikan asing-LUP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1110</key>
+    <value>Korporasi asuransi - LNP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1111</key>
+    <value>Korporasi asuransi - LUP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1113</key>
+    <value>Korporasi asuransi publik - LNP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1114</key>
+    <value>Korporasi asuransi publik - LUP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1115</key>
+    <value>Korporasi asuransi - BUMN</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1116</key>
+    <value>Korporasi asuransi - BUMD</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1117</key>
+    <value>Korporasi asuransi - BUM Desa</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1119</key>
+    <value>Korporasi asuransi swasta nasional- LNP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1120</key>
+    <value>Korporasi asuransi swasta nasional- LUP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1122</key>
+    <value>Korporasi asuransi yang dikendalikan asing- LNP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1123</key>
+    <value>Korporasi asuransi yang dikendalikan asing- LUP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1124</key>
+    <value>Dana Pensiun</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1125</key>
+    <value>Dana Pensiun - LNP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1128</key>
+    <value>Dana pensiun publik- LNP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1129</key>
+    <value>Dana pensiun publik- LU</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1130</key>
+    <value>Dana Pensiun Publik BUMN</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1131</key>
+    <value>Dana Pensiun Publik BUMD</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1132</key>
+    <value>Dana Pensiun Publik BUM Desa</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1134</key>
+    <value>Dana pensiun swasta nasional- LNP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1135</key>
+    <value>Dana pensiun swasta nasional- LUP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1137</key>
+    <value>Dana pensiun yang dikendalikan asing- LNP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1138</key>
+    <value>Dana pensiun yang dikendalikan asing- LUP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1140</key>
+    <value>Korporasi finansial lain - LNP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1141</key>
+    <value>Korporasi finansial lain- LUP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1143</key>
+    <value>Korporasi finansial lain publik - LNP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1144</key>
+    <value>Korporasi finansial lain publik - LUP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1146</key>
+    <value>Korporasi finansial lain publik BUMN - Modal Ventura</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1147</key>
+    <value>Korporasi finansial lain publik BUMN - Perusahaan Pembiayaan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1149</key>
+    <value>Korporasi finansial lain publik BUMN - Perusahaan sekuritas yang tidak melakukan kegiatan usaha reksadana</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1150</key>
+    <value>Korporasi finansial lain publik BUMN - Perusahaan sekuritas yang melakukan kegiatan usaha reksadana</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1151</key>
+    <value>Korporasi finansial lain publik BUMN - Perusahaan reksadana</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1152</key>
+    <value>Korporasi finansial lain publik BUMN - Manajer Investasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1153</key>
+    <value>Korporasi finansial lain publik BUMN - Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1154</key>
+    <value>Korporasi finansial lain Publik - Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1156</key>
+    <value>Korporasi finansial lain publik BUMD - Modal Ventura</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1157</key>
+    <value>Korporasi finansial lain publik BUMD - Perusahaan Pembiayaan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1158</key>
+    <value>Korporasi finansial lain publik BUMD - Perusahaan Sekuritas dan Reksadana</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1159</key>
+    <value>Korporasi finansial lain publik BUMD - Perusahaan sekuritas yang tidak melakukan kegiatan usaha reksadana</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1160</key>
+    <value>Korporasi finansial lain publik BUMD - Perusahaan sekuritas yang melakukan kegiatan usaha reksadana</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1161</key>
+    <value>Korporasi finansial lain publik BUMD - Perusahaan reksadana</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1162</key>
+    <value>Korporasi finansial lain publik BUMD - Manajer Investasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1163</key>
+    <value>Korporasi finansial lain publik BUMD - Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1164</key>
+    <value>Perusahaan Finansial Lainnya - Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1165</key>
+    <value>Korporasi finansial lain publik - BUM Desa</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1166</key>
+    <value>Korporasi finansial lain swasta nasional - LNP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1167</key>
+    <value>Korporasi finansial lain swasta nasional - LUP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3603</key>
+    <value>Bank Umum Konvensional Swasta Nasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3604</key>
+    <value>Bank Umum Syariah Swasta Nasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3605</key>
+    <value>Bank Perkreditan Rakyat (BPR) Konvensional Swasta Nasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3606</key>
+    <value>Bank Perkreditan Rakyat (BPR) Syariah Swasta Nasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3042</key>
+    <value>Perusahaan Asuransi Swasta Nasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3043</key>
+    <value>Perusahaan Dana Pensiun Swasta Nasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3044</key>
+    <value>Modal Ventura Swasta Nasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3045</key>
+    <value>Perusahaan Pembiayaan Swasta Nasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3047</key>
+    <value>Perusahaan Sekuritas Swasta Nasional yang Tidak Melakukan Kegiatan Usaha Reksa Dana</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3048</key>
+    <value>Perusahaan Sekuritas Swasta Nasional yang Melakukan Kegiatan Usaha Reksa Dana</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3049</key>
+    <value>Perusahaan Reksa Dana Swasta Nasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3050</key>
+    <value>Manajer Investasi Swasta Nasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3051</key>
+    <value>Perusahaan Sekuritas dan Reksa Dana Swasta Nasional Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1358</key>
+    <value>Fintech P2P</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1359</key>
+    <value>Fintech P2P Syariah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1360</key>
+    <value>Lembaga Pembiayaan - Swasta Nasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1361</key>
+    <value>Perusahaan Pembiayaan Syariah - Swasta Nasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1362</key>
+    <value>Perusahaan Modal Ventura - Swasta Nasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1363</key>
+    <value>Perusahaan Modal Ventura Syariah - Swasta Nasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1364</key>
+    <value>Perusahaan Pembiayaan Infrastruktur - Swasta Nasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1365</key>
+    <value>Perusahaan Pembiayaan Infrastruktur Syariah - Swasta Nasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1366</key>
+    <value>Secondary mortgage facility (SMF)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1367</key>
+    <value>PNM</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1368</key>
+    <value>Lembaga Keuangan Mikro</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1369</key>
+    <value>Lembaga Swasta Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3095</key>
+    <value>Badan Usaha Bukan Lembaga Keuangan Milik Swasta Nasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3053</key>
+    <value>Baitul Maal Wa Tamwil (BMT) Swasta Nasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3055</key>
+    <value>Koperasi Simpan Pinjam Primer</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3056</key>
+    <value>Koperasi Simpan Pinjam Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1168</key>
+    <value>Lembaga Keuangan Bukan Bank Swasta Nasional Lainnya - Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3057</key>
+    <value>LKNB Swasta Nasional Lainnya selain Baitul Maal Wa Tamwil (BMT) dan Koperasi Simpan Pinjam</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3064</key>
+    <value>Perusahaan Asuransi Campuran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3065</key>
+    <value>Perusahaan Dana pensiun Campuran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3066</key>
+    <value>Modal Ventura Campuran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3067</key>
+    <value>Perusahaan Pembiayaan Campuran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3069</key>
+    <value>Perusahaan Sekuritas Campuran yang Tidak Melakukan Kegiatan Usaha Reksa Dana</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3070</key>
+    <value>Perusahaan Sekuritas Campuran yang Melakukan Kegiatan Usaha Reksa Dana</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3071</key>
+    <value>Perusahaan Reksa Dana Campuran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3072</key>
+    <value>Manajer Investasi Campuran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3073</key>
+    <value>Perusahaan Sekuritas dan Reksa Dana Campuran Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3075</key>
+    <value>Baitul Maal Wa Tamwil (BMT) Campuran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3076</key>
+    <value>Kantor Perwakilan Lembaga Keuangan Bukan Bank Milik Asing di Indonesia yang Dimiliki Campuran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3077</key>
+    <value>Lembaga Keuangan Bukan Bank Campuran Lainnya selain Baitul Maal Wa Tamwil (BMT) Campuran dan Kantor Perwakilan Lembaga Keuangan Bukan Bank Milik Asing di Indonesia yang Dimiliki Campuran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1169</key>
+    <value>Korporasi finansial lain yang dikendalikan asing- LNP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1170</key>
+    <value>Korporasi finansial lain yang dikendalikan asing- LUP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3081</key>
+    <value>Perusahaan Asuransi di Luar Indonesia</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3082</key>
+    <value>Dana pensiun Asing</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3083</key>
+    <value>Modal Ventura Asing</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3084</key>
+    <value>Perusahaan Pembiayaan Asing</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3086</key>
+    <value>Perusahaan Sekuritas Asing yang Tidak Melakukan Kegiatan Usaha Reksa Dana</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3087</key>
+    <value>Perusahaan Sekuritas Asing yang Melakukan Kegiatan Usaha Reksa Dana</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3088</key>
+    <value>Perusahaan Reksa Dana Asing</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3089</key>
+    <value>Manajer Investasi Asing</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3090</key>
+    <value>Perusahaan Sekuritas dan Reksa Dana Asing lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3092</key>
+    <value>Baitul Maal Wa Tamwil (BMT) Asing</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3093</key>
+    <value>Kantor Perwakilan Lembaga Keuangan Bukan Bank Milik Asing di Indonesia Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3094</key>
+    <value>Lembaga Keuangan Bukan Bank Asing Lainnya selain Baitul Maal Wa Tamwil (BMT) Asing dan Kantor Perwakilan Lembaga Keuangan Bukan Bank di Indonesia Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1171</key>
+    <value>Perusahaan Sekuritas dan Reksadana Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3111</key>
+    <value>Badan Amil Zakat Infaq dan Shadaqah (BAZIS) Swasta Nasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3112</key>
+    <value>Lembaga Pendidikan Swasta Nasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1173</key>
+    <value>Lembaga Non Profit Melayani Rumah Tangga Swasta Nasional Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1175</key>
+    <value>Badan Amil Zakat Infaq dan Shadaqah (BAZIS) Swasta Pengendalian Asing</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1176</key>
+    <value>Lembaga Pendidikan Swasta Pengendalian Asing</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3113</key>
+    <value>Yayasan, Badan Sosial dan Organisasi Kemasyarakatan Swasta Pengendalian Asing Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1177</key>
+    <value>Lembaga Non Profit Melayani Rumah Tangga Swasta Pengendalian Asing</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1178</key>
+    <value>Pengusaha</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1179</key>
+    <value>Pekerja Mandiri</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1180</key>
+    <value>Pekerja</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1182</key>
+    <value>Penenerima Pendapatan Properti</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1183</key>
+    <value>Penerima Pensiun</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1184</key>
+    <value>Penerima Transfer Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3610</key>
+    <value>Sektor Swasta Lainnya Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3151</key>
+    <value>Pemerintah Pusat Negara Asing</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1186</key>
+    <value>Pemerintah Daerah Negara Asing</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1188</key>
+    <value>Bank Sentral Negara Lain</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e2485</key>
+    <value>Bank Nasional yang Beroperasi di Luar Negeri</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1191</key>
+    <value>Terkait Dengan Bank - Prime Bank</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1192</key>
+    <value>Tidak Terkait Dengan Bank Negara Asing - Prime Bank</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1194</key>
+    <value>Terkait Dengan Bank - Non Prime Bank</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1195</key>
+    <value>Tidak Terkait Dengan Bank - Non Prime Bank</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3153</key>
+    <value>BUMN Asing Bukan Lembaga Keuangan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3154</key>
+    <value>Lembaga Keuangan Bukan Bank yang Beroperasi di Luar Indonesia</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1196</key>
+    <value>Lembaga Keuangan Bukan Bank Milik Negara Asing</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1198</key>
+    <value>BUMN Milik Negara Asing</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3243</key>
+    <value>Swasta Patungan Indonesia dan Negara Asing</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3244</key>
+    <value>Swasta Milik Indonesia yang Beroperasi Di Luar Indonesia</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3607</key>
+    <value>Sektor Swasta Lainnya Bukan Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1199</key>
+    <value>Perusahaan Non Finansial Negara Asing Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3248</key>
+    <value>Islamic Development Bank (IDB)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3249</key>
+    <value>Asian Development Bank (ADB)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3608</key>
+    <value>World Bank</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1200</key>
+    <value>African Development Bank Group (AfDB)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1201</key>
+    <value>European Bank for Reconstruction &amp; Development (EBRD)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1202</key>
+    <value>Inter-American Development Bank Group (IADB)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1203</key>
+    <value>European Investment Bank (EIB)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1204</key>
+    <value>European Investment Fund (EIF)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1205</key>
+    <value>Nordic Investment Bank (NIB)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1206</key>
+    <value>Caribbean Development Bank (CDB)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1207</key>
+    <value>Council of Europe Development Bank (CEDB)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1374</key>
+    <value>International Monetary Fund (IMF)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3261</key>
+    <value>Bank pembangunan multilateral lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3609</key>
+    <value>Lembaga Internasional Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3152</key>
+    <value>Perwakilan negara-negara asing dan stafnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e3263</key>
+    <value>Perseorangan Bukan Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>EN:e1208</key>
+    <value>Lembaga Internasional Lainnya Lainnya</value>
+    <labels/>
+  </reference>
+</list>

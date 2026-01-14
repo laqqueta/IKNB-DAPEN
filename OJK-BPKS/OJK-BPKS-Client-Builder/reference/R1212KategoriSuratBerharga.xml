@@ -1,0 +1,77 @@
+<list>
+  <reference>
+    <key>SB:e1101</key>
+    <value>Setara Kas</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SB:e1102</key>
+    <value>Jangka Pendek</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SB:e1103</key>
+    <value>Jatuh Tempo</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SB:e1104</key>
+    <value>Setara Kas</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SB:e1105</key>
+    <value>Jangka Pendek</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SB:e1106</key>
+    <value>Jatuh Tempo</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SB:e1701</key>
+    <value>OBLIGASI JATUH TEMPO ≤ 1 TAHUN</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SB:e1702</key>
+    <value>OBLIGASI JATUH TEMPO &gt; 1 TAHUN</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SB:e1703</key>
+    <value>OBLIGASI JATUH TEMPO</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SB:e2001</key>
+    <value>Reksadana Kelompok FVT OCI Sukuk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SB:e2002</key>
+    <value>Reksadana Kelompok FVT OCI</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SB:e2003</key>
+    <value>Reksadana Kelompok FVTPL</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SB:e1801</key>
+    <value>SAHAM DIPERDAGANGKAN</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SB:e1802</key>
+    <value>SAHAM TERSEDIA DIJUAL</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SB:e1803</key>
+    <value>SAHAM DIMILIKI UNTUK DIJUAL</value>
+    <labels/>
+  </reference>
+</list>

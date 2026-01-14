@@ -1,0 +1,22 @@
+<list>
+  <reference>
+    <key>BP:e01</key>
+    <value>Girik</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>BP:e02</key>
+    <value>Akta Jual Beli</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>BP:e03</key>
+    <value>Sertifikat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>BP:e04</key>
+    <value>Lainnya</value>
+    <labels/>
+  </reference>
+</list>

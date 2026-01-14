@@ -1,0 +1,17 @@
+<list>
+  <reference>
+    <key>ST:e1</key>
+    <value>Sewa</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ST:e2</key>
+    <value>Milik Sendiri</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ST:e5</key>
+    <value>Pinjam Pakai</value>
+    <labels/>
+  </reference>
+</list>

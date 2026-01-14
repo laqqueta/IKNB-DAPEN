@@ -21,3 +21,10 @@ jvm/
 *.bat
 
 **/**/Pelaporan
+
+### Eclipse ###
+.metadata
+.settings/
+# .project
+# .classpath
+# .factorypath

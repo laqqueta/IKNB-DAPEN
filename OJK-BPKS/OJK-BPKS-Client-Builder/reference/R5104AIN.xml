@@ -1,0 +1,27 @@
+<list>
+  <reference>
+    <key>AIN0100000000</key>
+    <value>a. Deposito</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>AIN0200000000</key>
+    <value>b. Surat berharga yang diterbitkan oleh bank indonesia</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>AIN0300000000</key>
+    <value>c. Surat berharga yang diterbitkan oleh Negara RI</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>AIN0400000000</key>
+    <value>d. Sukuk dan Obligasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>AIN0500000000</key>
+    <value>Total Investasi</value>
+    <labels/>
+  </reference>
+</list>

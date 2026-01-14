@@ -1,0 +1,152 @@
+<list>
+  <reference>
+    <key>LAK0101010000</key>
+    <value>Operasional program jaminan kesehatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0101020000</key>
+    <value>Lain-lain</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0102000000</key>
+    <value>Jumlah Penerimaan Aktivitas Operasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0103010000</key>
+    <value>Operasional program jaminan kesehatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0103020000</key>
+    <value>Lain-lain</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0104000000</key>
+    <value>Jumlah Pengeluaran Aktivitas Operasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0200000000</key>
+    <value>ARUS KAS NETO DARI AKTIVITAS OPERASI</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0301010000</key>
+    <value>Pelepasan investasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0301020000</key>
+    <value>Hasil Investasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0301030000</key>
+    <value>Pelepasan aset tetap</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0301040000</key>
+    <value>Lain-lain</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0302000000</key>
+    <value>Jumlah Penerimaan Aktivitas Investasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0303010000</key>
+    <value>Perolehan investasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0303020000</key>
+    <value>Beban Investasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0303030000</key>
+    <value>Perolehan aset tetap</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0303040000</key>
+    <value>Lain-lain</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0304000000</key>
+    <value>Jumlah Pengeluaran Aktivitas Investasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0400000000</key>
+    <value>ARUS KAS NETO DARI AKTIVITAS INVESTASI</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0501010000</key>
+    <value>Pelunasan talangan dari program jaminan kesehatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0501020000</key>
+    <value>Setoran modal pemerintah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0501030000</key>
+    <value>Lain-lain</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0502000000</key>
+    <value>Jumlah Penerimaan Aktivitas Pendanaan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0503010000</key>
+    <value>Kontribusi kepada program jaminan kesehatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0503020000</key>
+    <value>Pemberian Talangan kepada Program Jaminan Kesehatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0503030000</key>
+    <value>Lain-lain</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0504000000</key>
+    <value>Jumlah Pengeluaran Aktivitas Pendanaan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0600000000</key>
+    <value>ARUS KAS NETO DARI AKTIVITAS PENDANAAN</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0700000000</key>
+    <value>KENAIKAN (PENURUNAN) ARUS KAS</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0800000000</key>
+    <value>KAS DAN SETARA KAS AWAL PERIODE</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0900000000</key>
+    <value>KAS DAN SETARA KAS AKHIR PERIODE</value>
+    <labels/>
+  </reference>
+</list>

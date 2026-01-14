@@ -1,0 +1,87 @@
+<list>
+  <reference>
+    <key>1</key>
+    <value>Penerima Bantuan Iuran </value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>2</key>
+    <value>Pekerja Penerima Upah (PPU) - ASN</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>3</key>
+    <value>PPU – TNI/POLRI/ASN Kemhan/Polri</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4</key>
+    <value>PPU – Pejabat Negara (PN)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>5</key>
+    <value>PPU- Pegawai Pemerintah Non PNS </value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>6</key>
+    <value>PPU – Pegawai Swasta/BUMN/Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>7</key>
+    <value>PPU- Pekerja Penerima Upah selain sandi </value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>8</key>
+    <value>Warga Asing bekerja &gt;=6 bulan </value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>9</key>
+    <value>Pekerja Bukan Penerima Upah (PBPU) – Pekerja Mandiri (PM) </value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>10</key>
+    <value>PBPU selain PM</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>11</key>
+    <value>Bukan Pekerja (BP) – Investor</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>12</key>
+    <value>BP – Pemberi Kerja </value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>13</key>
+    <value>BP – Penerima Pensiun (PP)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>14</key>
+    <value>BP – Veteran </value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>15</key>
+    <value>BP – Perintis Kemerdekaan (PK)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>16</key>
+    <value>BP – Mampu Bayar Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>17</key>
+    <value>Jamkesda dan PJKMU Askes (transisi) </value>
+    <labels/>
+  </reference>
+</list>

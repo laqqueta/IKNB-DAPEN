@@ -1,0 +1,92 @@
+<list>
+  <reference>
+    <key>LKPS0100000000</key>
+    <value>Penerima Bantuan Iuran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LKPS0200000000</key>
+    <value>Pekerja Penerima Upah (PPU)-ASN</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LKPS0300000000</key>
+    <value>PPU- TNI/POLRI/ASN Kemhan/Polri</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LKPS0400000000</key>
+    <value>PPU- Pejabat Negara (PN)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LKPS0500000000</key>
+    <value>PPU- Pegawai Pemerintah Non ASN</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LKPS0600000000</key>
+    <value>PPU- Pegawai Swasta/BUMN/Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LKPS0700000000</key>
+    <value>PPU- Pekerja Penerima Upah selain sandi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LKPS0800000000</key>
+    <value>Warga Asing bekerja &gt;= 6 bulan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LKPS0900000000</key>
+    <value>Pekerja Bukan Penerima Upah (PBPU) - Pekerja Mandiri (PM)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LKPS1000000000</key>
+    <value>PBPU selain PM</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LKPS1100000000</key>
+    <value>Bukan Pekerja (BP) - Investor</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LKPS1200000000</key>
+    <value>BP - Pemberi Kerja</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LKPS1300000000</key>
+    <value>BP - Penerima Pensiun (PP)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LKPS1400000000</key>
+    <value>BP - Veteran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LKPS1500000000</key>
+    <value>BP - Perintis Kemerdekaan (PK)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LKPS1600000000</key>
+    <value>BP - Mampu Bayar Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LKPS1700000000</key>
+    <value>Jamkesda dan PJKMU Askes (transisi)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LKPS1800000000</key>
+    <value>Jumlah</value>
+    <labels/>
+  </reference>
+</list>

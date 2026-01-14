@@ -1,0 +1,32 @@
+<list>
+  <reference>
+    <key>1</key>
+    <value>Aktuaria</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>2</key>
+    <value>Akuntansi, Audit dan Keuangan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>3</key>
+    <value>Asuransi dan Manajemen Risiko</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4</key>
+    <value>Dokter</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>5</key>
+    <value>Teknologi Informasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>6</key>
+    <value>Lainnya</value>
+    <labels/>
+  </reference>
+</list>

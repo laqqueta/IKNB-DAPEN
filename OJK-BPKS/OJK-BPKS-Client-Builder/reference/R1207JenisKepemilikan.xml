@@ -1,0 +1,17 @@
+<list>
+  <reference>
+    <key>JK:e10</key>
+    <value>BUMN</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>JK:e20</key>
+    <value>BUMD</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>JK:e30</key>
+    <value>Anak Perusahaan BUMN/BUMD</value>
+    <labels/>
+  </reference>
+</list>

@@ -1,0 +1,19 @@
+<ArrayOfClientEntity>
+ <ClientEntity>
+  <EntityName>BPJS Kesehatan</EntityName>
+  <FullEntityCode>030499-BPJSKS0001</FullEntityCode>
+  <ListClientUser>
+   <ClientUser>
+    <NamaPengguna>dev.external003</NamaPengguna>
+    <UserKey>uKIKC5CRUUxd+9F+zQQXSQ==</UserKey>
+    <UserName>dev.external003@gmail.com</UserName>
+    </ClientUser>
+   <ClientUser>
+    <NamaPengguna>apolo.sit008</NamaPengguna>
+    <UserKey>uKIKC5CRUUxd+9F+zQQXSQ==</UserKey>
+    <UserName>apolo.sit008@gmail.com</UserName>
+    </ClientUser>
+   </ListClientUser>
+  <SectorCode>030499</SectorCode>
+ </ClientEntity>
+</ArrayOfClientEntity>

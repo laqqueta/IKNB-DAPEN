@@ -1,0 +1,10 @@
+<list>
+  <id.go.ojk.lib.client.model.KeyValueString>
+    <key>AC.summaryStartYearMonth</key>
+    <value>201604</value>
+  </id.go.ojk.lib.client.model.KeyValueString>
+  <id.go.ojk.lib.client.model.KeyValueString>
+    <key>AC.minAllDate</key>
+    <value>19000101</value>
+  </id.go.ojk.lib.client.model.KeyValueString>
+</list>

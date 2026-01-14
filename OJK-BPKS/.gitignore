@@ -1,12 +1,8 @@
 .settings/
 target/
-client/
+*.bat
 log/
-report/
-Pelaporan/
-_installer/deploy/
-_installer/entity/
-_installer/ftp/
-_installer/jar/
-_installer/metadata/
-_installer/reference/
+_installer/*
+!_installer/source
+_installer/source/Client.*
+resources/
