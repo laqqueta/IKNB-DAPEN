@@ -1,0 +1,8 @@
+.settings/
+target/
+*.bat
+log/
+_installer/*
+!_installer/source
+_installer/source/Client.*
+resources/

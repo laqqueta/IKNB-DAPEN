@@ -1,0 +1,90 @@
+package id.go.ojk.bptk.client.builder.field.lpbptkjkk.metadata;
+
+import static id.go.ojk.client.model.config.SimpleValidation.PATTERN_REFERENCE_1;
+import static id.go.ojk.client.model.config.SimpleValidation.PATTERN_REFERENCE_4;
+import static id.go.ojk.client.model.config.SimpleValidation.patternAlfaNumeric;
+import static id.go.ojk.lib.client.model.config.DataType.alfaNumeric;
+import static id.go.ojk.lib.client.model.config.DataType.all;
+import static id.go.ojk.lib.client.model.config.DataType.numeric;
+import static id.go.ojk.lib.client.model.config.DataType.refTable;
+import static id.go.ojk.lib.client.model.constant.RequiredCondition.C;
+import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import id.go.ojk.bptk.client.builder.field.IForm;
+import id.go.ojk.bptk.client.builder.field.lpbptkjkk.reference.EHeaderMetadataLpbptkjkk;
+import id.go.ojk.bptk.client.builder.field.lpbptkjkk.reference.ER5903RPMF;
+import id.go.ojk.bptk.client.builder.field.reference.EHeaderMetadataShared;
+import id.go.ojk.client.model.config.SubmissionField;
+import id.go.ojk.client.model.config.SubmissionFormat;
+import id.go.ojk.conf.client.BaseMetadata;
+
+public class LpRpmfJkk extends BaseMetadata {
+
+  private final IForm form;
+
+  public LpRpmfJkk(IForm form) {
+    super(form.getReportCode(), ".txt");
+    this.form = form;
+  }
+
+  @Override
+  public SubmissionFormat get() {
+    SubmissionFormat res = new SubmissionFormat(form.getCode(), form.getName(), reportCode, new ArrayList<>(),
+        extension, 1, null);
+
+    res.setRequiredPos(ER5903RPMF.genRequiredPos());
+    res.setUniquePos(ER5903RPMF.genUniquePos());
+    res.setSavePos(ER5903RPMF.genFieldSave());
+    res.setSavePosForm(ER5903RPMF.genFieldSaveForm());
+
+    res.addSegmentValidations(ER5903RPMF.genValidationTotal());
+
+    List<SubmissionField> fs = res.getFields();
+    fs.add(sf(0, null, "Flag Detail", sv(M, 3, 3, alfaNumeric).confConstant("D01")));
+    fs.add(sf(1, null, "Kode Komponen", sv(M, 14, 20, refTable /*Huruf Angka*/)
+        .confRegex(patternAlfaNumeric)
+        .confReference(EHeaderMetadataLpbptkjkk.R5903RPMF.getObject())));
+    fs.add(sf(2, null, "Kode Kantor Wilayah", sv(C, 1, 100, all)
+        .confConditionalRequired(ER5903RPMF.genConditionalExistA())));
+    fs.add(sf(3, null, "Kantor Wilayah", sv(C, 1, 100, all)
+        .confConditionalRequired(ER5903RPMF.genConditionalExistA())));
+    fs.add(sf(4, null, "Kode Kantor Cabang", sv(C, 1, 100, all)
+        .confConditionalRequired(ER5903RPMF.genConditionalExistA())));
+    fs.add(sf(5, null, "Kantor Cabang", sv(C, 1, 100, all)
+        .confConditionalRequired(ER5903RPMF.genConditionalExistA())));
+    fs.add(sf(6, null, "Lokasi DATI II", sv(C, 1, 8, refTable /*Huruf Angka :*/)
+        .confRegex(PATTERN_REFERENCE_1)
+        .confConditionalRequired(ER5903RPMF.genConditionalExistA())
+        .confReference(EHeaderMetadataShared.LOKASI_DATI_2.getObject())));
+    fs.add(sf(7, null, "Lokasi DATI I", sv(C, 1, 8, refTable /*Huruf Angka :*/)
+        .confRegex(PATTERN_REFERENCE_1)
+        .confConditionalRequired(ER5903RPMF.genConditionalExistA())
+        .confReference(EHeaderMetadataShared.LOKASI_DATI_1.getObject())));
+    fs.add(sf(8, null, "Segmen Peserta", sv(C, 1, 10, refTable /*Huruf Angka .*/)
+        .confRegex(PATTERN_REFERENCE_4)
+        .confConditionalRequired(ER5903RPMF.genConditionalExistA())
+        .confReference(EHeaderMetadataShared.SEGMEN_PESERTA_LPP.getObject())));
+    fs.add(sf(9, null, "Jenis Manfaat 1", sv(M, 1, 10, numeric)));
+    fs.add(sf(10, null, "Jenis Manfaat 2", sv(M, 1, 10, numeric)));
+    fs.add(sf(11, null, "Jenis Manfaat 3", sv(M, 1, 10, numeric)));
+    fs.add(sf(12, null, "Jenis Manfaat 4", sv(M, 1, 10, numeric)));
+    fs.add(sf(13, null, "Jenis Manfaat 5", sv(M, 1, 10, numeric)));
+    fs.add(sf(14, null, "Jenis Manfaat 6", sv(M, 1, 10, numeric)));
+    fs.add(sf(15, null, "Jenis Manfaat 7", sv(M, 1, 10, numeric)));
+    fs.add(sf(16, null, "Total Jenis Manfaat", sv(M, 1, 10, numeric))
+        .addFieldValidations(ER5903RPMF.genValidationTotalJenisManfaat()));
+    fs.add(sf(17, null, "Jumlah Status Klaim 1", sv(M, 1, 10, numeric)));
+    fs.add(sf(18, null, "Nilai Status Klaim 1", sv(M, 1, 20, numeric)));
+    fs.add(sf(19, null, "Jumlah Status Klaim 2", sv(M, 1, 10, numeric)));
+    fs.add(sf(20, null, "Nilai Status Klaim 2", sv(M, 1, 20, numeric)));
+    fs.add(sf(21, null, "Jumlah Status Klaim 3", sv(M, 1, 10, numeric)));
+    fs.add(sf(22, null, "Nilai Status Klaim 3", sv(M, 1, 20, numeric)));
+    fs.add(sf(23, null, "Jumlah Status Klaim 4", sv(M, 1, 10, numeric)));
+    fs.add(sf(24, null, "Nilai Status Klaim 4", sv(M, 1, 20, numeric)));
+    return res;
+  }
+
+}
