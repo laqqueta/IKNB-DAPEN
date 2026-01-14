@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 
-public class HomeMetroBpjsControllerLKBPTK extends HomeMetroBpjsController {
+public class HomeMetroBpjsControllerLTBPTK extends HomeMetroBpjsController {
   @FXML
   private Button btnBDN;
   @FXML

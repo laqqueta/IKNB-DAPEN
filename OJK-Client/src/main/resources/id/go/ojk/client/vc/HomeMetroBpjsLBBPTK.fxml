@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<BorderPane fx:id="mainBorderPane" styleClass="background-ojk-grey" stylesheets="@ojk.css" xmlns="http://javafx.com/javafx/8.0.101" xmlns:fx="http://javafx.com/fxml/1" fx:controller="id.go.ojk.client.vc.HomeMetroBpjsControllerLKBPTK">
+<BorderPane fx:id="mainBorderPane" styleClass="background-ojk-grey" stylesheets="@ojk.css" xmlns="http://javafx.com/javafx/8.0.101" xmlns:fx="http://javafx.com/fxml/1" fx:controller="id.go.ojk.client.vc.HomeMetroBpjsControllerLBBPTK">
 	<center>
 		<ScrollPane fx:id="scrollPane" fitToHeight="true" BorderPane.alignment="CENTER">
 			<content>
