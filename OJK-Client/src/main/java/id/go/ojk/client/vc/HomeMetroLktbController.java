@@ -16,13 +16,13 @@ public class HomeMetroLktbController extends BaseHomeMetroController {
 
 	@FXML
 	public void handleBulanan() {
-		mainApplication.getCustomForm().getFormLbk().showPelaporanBulanan();
+		mainApplication.getCustomForm().getFormLktb().showBulanan();
 		mainApplication.synchMenuToRealDisplay();
 	}
 
 	@FXML
 	public void handleTahunan() {
-		mainApplication.getCustomForm().getFormLbk().showPelaporanTahunan();
+		mainApplication.getCustomForm().getFormLktb().showTahunan();
 		mainApplication.synchMenuToRealDisplay();
 	}
 

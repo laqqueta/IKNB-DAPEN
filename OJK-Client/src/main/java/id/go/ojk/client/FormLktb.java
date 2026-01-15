@@ -5,6 +5,7 @@ import id.go.ojk.client.model.bind.ProgressSegment;
 import id.go.ojk.client.module.tpp.EReportGroupTpp;
 import id.go.ojk.client.service.ConfigService;
 import id.go.ojk.client.service.SubmissionService;
+import id.go.ojk.client.vc.HomeMetroLktbController;
 import id.go.ojk.client.vc.HomeMetroTppController;
 import id.go.ojk.client.vc.PreparationAndSendingLktbController;
 import id.go.ojk.client.vc.PreparationAndSendingTppController;
@@ -16,7 +17,7 @@ import javafx.scene.layout.BorderPane;
 import lombok.Getter;
 
 public class FormLktb extends BaseCustomForm {
-	private Tupple2<BorderPane, HomeMetroTppController> home;
+	private Tupple2<BorderPane, HomeMetroLktbController> home;
 
 	@Getter
     private Tupple2<BorderPane, PreparationAndSendingLktbController> tahunan;
@@ -32,7 +33,7 @@ public class FormLktb extends BaseCustomForm {
 	protected void init() {
 	}
 
-	public Tupple2<BorderPane, HomeMetroTppController> getHome(UserSession userSession) {
+	public Tupple2<BorderPane, HomeMetroLktbController> getHome(UserSession userSession) {
 		if (home == null) {
 			showHome(userSession);
 		}
@@ -52,11 +53,11 @@ public class FormLktb extends BaseCustomForm {
 	}
 	
 	private String getHomeFxml(String reportCode) {
-		return "vc/HomeMetroTpp.fxml";
+		return "vc/HomeMetroLktb.fxml";
 	}
 
 	public void showTahunan() {
-		tahunan = UtilForm.initAndShowPane(mainApplication, "vc/PreparationAndSendingTpp.fxml", tahunan,
+		tahunan = UtilForm.initAndShowPane(mainApplication, "vc/PreparationAndSendingLktb.fxml", tahunan,
 				DisplayScene.LKT_DP,
 				ui -> ui.getB().setServiceAndBind(
 						appContext.getService(ClientConstant.SUBMISSIION_SERVICE_TPP, SubmissionService.class),
@@ -65,7 +66,7 @@ public class FormLktb extends BaseCustomForm {
 	}
 
 	public void showBulanan() {
-		bulanan = UtilForm.initAndShowPane(mainApplication, "vc/PreparationAndSendingTpp.fxml", bulanan,
+		bulanan = UtilForm.initAndShowPane(mainApplication, "vc/PreparationAndSendingLktb.fxml", bulanan,
                 DisplayScene.LKT_DP,
 				ui -> ui.getB().setServiceAndBind(
 						appContext.getService(ClientConstant.SUBMISSIION_SERVICE_TPP, SubmissionService.class),
