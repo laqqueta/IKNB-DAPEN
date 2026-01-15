@@ -4,22 +4,22 @@ public enum DisplayScene {
 	homeNotLogin(""),
 	home(""),
 	other(""),
-	
+
 	preparationAndSending("Validasi Laporan"),
 	sending("Kirim Data"),
 	summaryData("Pelaporan Inisial"),
 	openErrorFile("Buka File Error"),
 	openMasterData("Buka Data Master"),
-	
+
 	userOfflineManagement("Pengaturan Akses Offline"),
-	
+
 	//RBB
 	pelaporanPreparationRbb("Penyampaian Rencana Bisnis"),
 	perubahanPreparationRbb("Perubahan Rencana Bisnis"),
 	penyesuaianPreparationRbb("Penyesuaian Rencana Bisnis"),
 	realisasiPreparationRbb("Realisasi Rencana Bisnis"),
 	pengawasanPreparationRbb("Pengawasan Rencana Bisnis"),
-	
+
 	//LB
 	rutinPreparationLb("Laporan Bulanan"),
 	perubahanPreparationLb("Perubahan Laporan Bulanan"),
@@ -85,18 +85,22 @@ public enum DisplayScene {
 	LABPTKJHT("Laporan Program Jaminan Hari Tua"),
 	LABPTKJKP("Laporan Program Jaminan Kehilangan Pekerjaan"),
 	LABPTKJP("Laporan Program Jaminan Pensiun"),
+
+    // DPPK Konven
+    LKB_DP("Laporan Keuangan Bulanan"),
+    LKT_DP("Laporan Keuangan Tahunan"),
 	;
-	
+
 	private String name;
-	
+
 	private DisplayScene(String name){
 		this.name = name;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
-	
+
 	public static boolean isCustom(DisplayScene eEnum) {
 		boolean res = false;
 		switch (eEnum) {
@@ -152,6 +156,8 @@ public enum DisplayScene {
 		case LABPTKJHT:
 		case LABPTKJKP:
 		case LABPTKJP:
+        case LKB_DP:
+        case LKT_DP:
 			res = true;
 			break;
 		default:
