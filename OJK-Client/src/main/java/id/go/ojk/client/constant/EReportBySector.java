@@ -100,10 +100,14 @@ public enum EReportBySector {
 	REPORT_PLSASRUU (EReport.PLS_ASRUU.getId(), Arrays.asList(ESector.ASRUU.getCode())),
 	REPORT_PLSASRUS (EReport.PLS_ASRUS.getId(), Arrays.asList(ESector.ASRUS.getCode())),
 	REPORT_LBBPKS (EReport.BPKSLB.getId(), Arrays.asList(ESector.BPKS.getCode())),
-	REPORT_LPBPTK (EReport.BPTKLP.getId(), Arrays.asList(ESector.BPTK.getCode())),
+//	REPORT_LPBPTK (EReport.BPTKLP.getId(), Arrays.asList(ESector.BPTK.getCode())),
 	REPORT_LBBPTK (EReport.BPTKLB.getId(), Arrays.asList(ESector.BPTK.getCode())),
-	REPORT_LTBPTK (EReport.BPTKLT.getId(), Arrays.asList(ESector.BPTK.getCode())),
-	REPORT_LABPTK (EReport.BPTKLA.getId(), Arrays.asList(ESector.BPTK.getCode())),
+//	REPORT_LTBPTK (EReport.BPTKLT.getId(), Arrays.asList(ESector.BPTK.getCode())),
+//	REPORT_LABPTK (EReport.BPTKLA.getId(), Arrays.asList(ESector.BPTK.getCode())),
+    REPORT_LKDPK (EReport.LKTB_DPPKK.getId(), Arrays.asList(ESector.DPPKK.getCode())),
+    REPORT_LKDPS (EReport.LKTB_DPPKS.getId(), Arrays.asList(ESector.DPPKS.getCode())),
+    REPORT_LKDLK (EReport.LKTB_DPLKK.getId(), Arrays.asList(ESector.DPLKK.getCode())),
+    REPORT_LKDLS (EReport.LKTB_DPLKS.getId(), Arrays.asList(ESector.DPLKS.getCode())),
 	;
 	
 	private String key;

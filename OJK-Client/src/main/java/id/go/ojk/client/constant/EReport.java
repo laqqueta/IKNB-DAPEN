@@ -104,6 +104,11 @@ public enum EReport {
 	BPTKLB ("7120", "LBBPTK", EReportGroup.BPTKLKB, ESector.BPTK),
 	BPTKLT ("7140", "LTBPTK", EReportGroup.BPTKLKT, ESector.BPTK),
 	BPTKLA ("7150", "LABPTK", EReportGroup.BPTKLAT, ESector.BPTK),
+    LKTB_DPPKK("7510", "LKDPK", EReportGroup.LKTB, ESector.DPPKK),
+    LKTB_DPPKS("7520", "LKDPS", EReportGroup.LKTB, ESector.DPPKS),
+    LKTB_DPLKK("7530", "LKDLK", EReportGroup.LKTB, ESector.DPLKK),
+    LKTB_DPLKS("7540", "LKDLS", EReportGroup.LKTB, ESector.DPLKS),
+
 	;
 	
 	@Getter
@@ -217,6 +222,10 @@ public enum EReport {
     return reportCode.equals(BPTKLB.getCode()) || reportCode.equals(BPTKLP.getCode()) || 
         reportCode.equals(BPTKLA.getCode()) || reportCode.equals(BPTKLT.getCode());
   }
+    public static boolean isLktb(String reportCode) {
+        return reportCode.equals(LKTB_DPPKK.getCode()) || reportCode.equals(LKTB_DPPKS.getCode()) ||
+                reportCode.equals(LKTB_DPLKK.getCode()) || reportCode.equals(LKTB_DPLKS.getCode());
+    }
 
 	public static boolean useApi(String reportCode) {
 		String tmp = reportCode;

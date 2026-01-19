@@ -22,9 +22,15 @@ jvm/
 
 **/**/Pelaporan
 
-### Eclipse ###
-.metadata
-.settings/
-# .project
-# .classpath
-# .factorypath
+*.xml
+*.jar
+*.cfg
+*.ico
+*.iss
+*.properties
+*.bmp
+*.dat
+*.zip
+*.isl
+*.pdf
+*.txt

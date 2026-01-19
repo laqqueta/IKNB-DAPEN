@@ -15,12 +15,12 @@ public class ConfigConstant {
 //	public static final String URL_SUBMISSTION_DEV = "http://127.0.0.1:8991/api";
 //	public static final String URL_AUTH_DEV = "http://127.0.0.1:8992/api";
 
-//	public static final String URL_SUBMISSTION_DEV = "http://157.15.77.140:8901/api";
-//	public static final String URL_AUTH_DEV = "http://157.15.77.140:8900/api";
+	public static final String URL_SUBMISSTION_DEV = "http://157.15.77.140:8901/api";
+	public static final String URL_AUTH_DEV = "http://157.15.77.140:8900/api";
 
-	public static final String URL_SUBMISSTION_DEV = "http://10.224.60.57:8981/api";
-	public static final String URL_AUTH_DEV = "http://10.224.60.57:8980/api";
-
+//	public static final String URL_SUBMISSTION_DEV = "http://10.224.60.57:8981/api";
+//	public static final String URL_AUTH_DEV = "http://10.224.60.57:8980/api";
+//
 	public static final String URL_SUBMISSTION_PROD = "http://10.226.60.18:8991/api";
 	public static final String URL_AUTH_PROD = "http://10.226.60.18:8080/api";
 	
@@ -62,44 +62,44 @@ public class ConfigConstant {
 //	public static final String DEV_FTP_USER_2 = "ftpuser";
 //	public static final String DEV_FTP_PWD_2 = "rxTfcpKw4gPnBGQbDS2U5N";
 
-	public static final String DEV_FTP_HOST_ENTITY = "10.225.60.68";
-	public static final int DEV_FTP_ENTITY_PORT = 889;
-	public static final String DEV_FTP_USER_ENTITY = "admfatca";
-	public static final String DEV_FTP_PWD_ENTITY = "P4$$word";
-	public static final String DEV_FTP_HOST = "10.225.60.68";
-	public static final String DEV_FTP_HOST_INTERNAL = "10.225.60.68";
-	public static final int DEV_FTP_PORT = 889;
-	public static final String DEV_FTP_USER = "admfatca";
-	public static final String DEV_FTP_PWD = "P4$$word";
-	public static final String DEV_FTP_HOST_ENTITY_2 = "10.225.60.68";
-	public static final int DEV_FTP_ENTITY_PORT_2 = 889;
-	public static final String DEV_FTP_USER_ENTITY_2 = "admfatca";
-	public static final String DEV_FTP_PWD_ENTITY_2 = "P4$$word";
-	public static final String DEV_FTP_HOST_2 = "10.225.60.68";
-	public static final String DEV_FTP_HOST_INTERNAL_2 = "10.225.60.68";
-	public static final int DEV_FTP_PORT_2 = 889;
-	public static final String DEV_FTP_USER_2 = "admfatca";
-	public static final String DEV_FTP_PWD_2 = "P4$$word";
+//	public static final String DEV_FTP_HOST_ENTITY = "10.225.60.68";
+//	public static final int DEV_FTP_ENTITY_PORT = 889;
+//	public static final String DEV_FTP_USER_ENTITY = "admfatca";
+//	public static final String DEV_FTP_PWD_ENTITY = "P4$$word";
+//	public static final String DEV_FTP_HOST = "10.225.60.68";
+//	public static final String DEV_FTP_HOST_INTERNAL = "10.225.60.68";
+//	public static final int DEV_FTP_PORT = 889;
+//	public static final String DEV_FTP_USER = "admfatca";
+//	public static final String DEV_FTP_PWD = "P4$$word";
+//	public static final String DEV_FTP_HOST_ENTITY_2 = "10.225.60.68";
+//	public static final int DEV_FTP_ENTITY_PORT_2 = 889;
+//	public static final String DEV_FTP_USER_ENTITY_2 = "admfatca";
+//	public static final String DEV_FTP_PWD_ENTITY_2 = "P4$$word";
+//	public static final String DEV_FTP_HOST_2 = "10.225.60.68";
+//	public static final String DEV_FTP_HOST_INTERNAL_2 = "10.225.60.68";
+//	public static final int DEV_FTP_PORT_2 = 889;
+//	public static final String DEV_FTP_USER_2 = "admfatca";
+//	public static final String DEV_FTP_PWD_2 = "P4$$word";
 
 	// DEV FTP Apolo
-//	public static final String DEV_FTP_HOST_ENTITY = "157.15.77.140";
-//	public static final int DEV_FTP_ENTITY_PORT = 22442;
-//	public static final String DEV_FTP_USER_ENTITY = "ftpuser";
-//	public static final String DEV_FTP_PWD_ENTITY = "rxTfcpKw4gPnBGQbDS2U5N";
-//	public static final String DEV_FTP_HOST = "157.15.77.140";
-//	public static final String DEV_FTP_HOST_INTERNAL = "157.15.77.140";
-//	public static final int DEV_FTP_PORT = 22442;
-//	public static final String DEV_FTP_USER = "ftpuser";
-//	public static final String DEV_FTP_PWD = "rxTfcpKw4gPnBGQbDS2U5N";
-//	public static final String DEV_FTP_HOST_ENTITY_2 = "157.15.77.141";
-//	public static final int DEV_FTP_ENTITY_PORT_2 = 22442;
-//	public static final String DEV_FTP_USER_ENTITY_2 = "ftpuser";
-//	public static final String DEV_FTP_PWD_ENTITY_2 = "rxTfcpKw4gPnBGQbDS2U5N";
-//	public static final String DEV_FTP_HOST_2 = "157.15.77.141";
-//	public static final String DEV_FTP_HOST_INTERNAL_2 = "157.15.77.141";
-//	public static final int DEV_FTP_PORT_2 = 22442;
-//	public static final String DEV_FTP_USER_2 = "ftpuser";
-//	public static final String DEV_FTP_PWD_2 = "rxTfcpKw4gPnBGQbDS2U5N";
+	public static final String DEV_FTP_HOST_ENTITY = "157.15.77.140";
+	public static final int DEV_FTP_ENTITY_PORT = 22442;
+	public static final String DEV_FTP_USER_ENTITY = "ftpuser";
+	public static final String DEV_FTP_PWD_ENTITY = "rxTfcpKw4gPnBGQbDS2U5N";
+	public static final String DEV_FTP_HOST = "157.15.77.140";
+	public static final String DEV_FTP_HOST_INTERNAL = "157.15.77.140";
+	public static final int DEV_FTP_PORT = 22442;
+	public static final String DEV_FTP_USER = "ftpuser";
+	public static final String DEV_FTP_PWD = "rxTfcpKw4gPnBGQbDS2U5N";
+	public static final String DEV_FTP_HOST_ENTITY_2 = "157.15.77.141";
+	public static final int DEV_FTP_ENTITY_PORT_2 = 22442;
+	public static final String DEV_FTP_USER_ENTITY_2 = "ftpuser";
+	public static final String DEV_FTP_PWD_ENTITY_2 = "rxTfcpKw4gPnBGQbDS2U5N";
+	public static final String DEV_FTP_HOST_2 = "157.15.77.141";
+	public static final String DEV_FTP_HOST_INTERNAL_2 = "157.15.77.141";
+	public static final int DEV_FTP_PORT_2 = 22442;
+	public static final String DEV_FTP_USER_2 = "ftpuser";
+	public static final String DEV_FTP_PWD_2 = "rxTfcpKw4gPnBGQbDS2U5N";
 	
 	public static final String PROD_FTP_HOST_ENTITY = "10.225.60.68";
 	public static final String PROD_FTP_HOST = "10.225.60.68";
