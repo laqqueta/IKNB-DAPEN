@@ -17,8 +17,8 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class BptkDatBuilder extends BaseDatBuilder {
-	private static final List<String> DUMMY_USER = Arrays.asList("dev.external002@gmail.com", "apolo.sit002@gmail.com", "apolo.sit003@gmail.com");
-	private static final List<String> LJK_CODES = Arrays.asList("BPJSTK0001"/*, "2000005346"*/);
+	private static final List<String> DUMMY_USERS = Arrays.asList("dev.external002@gmail.com", "apolo.sit014@gmail.com", "apolo.sit015@gmail.com", "apolo.sit016@gmail.com");
+	private static final List<String> LJK_CODES = Arrays.asList("BPJSTK0001", "BPJSTK0002", "BPJSTK0003");
 
 	public static void main(String[] args) {
 		try {
@@ -77,20 +77,22 @@ public class BptkDatBuilder extends BaseDatBuilder {
 
 	@Override
 	protected String genDummyClientEntity() {
-		return genDummyClientEntity(Constant.SECTOR.getCode(), LJK_CODES, DUMMY_USER);
+		return genDummyClientEntity(Constant.SECTOR.getCode(), LJK_CODES, DUMMY_USERS);
 	}
 
 	@Override
 	protected Map<String, List<String>> genDummyUserAppAccess() {
 		Map<String, List<String>> res = new HashMap<>();
-		List<String> listAppAccess = new ArrayList<>();
-		listAppAccess.add(EReport.BPTKLP.getId());
-    listAppAccess.add(EReport.BPTKLB.getId());
-    listAppAccess.add(EReport.BPTKLA.getId());
-    listAppAccess.add(EReport.BPTKLT.getId());
-		for (String user : DUMMY_USER) {
-			res.put(user, listAppAccess);
-		}
+		List<String> allAccess = new ArrayList<>();
+		allAccess.add(EReport.BPTKLP.getId());
+    allAccess.add(EReport.BPTKLB.getId());
+    allAccess.add(EReport.BPTKLA.getId());
+    allAccess.add(EReport.BPTKLT.getId());
+
+    res.put(DUMMY_USERS.get(0), allAccess);
+    res.put(DUMMY_USERS.get(1), Arrays.asList(EReport.BPTKLP.getId()));
+    res.put(DUMMY_USERS.get(2), Arrays.asList(EReport.BPTKLT.getId()));
+    res.put(DUMMY_USERS.get(3), Arrays.asList(EReport.BPTKLA.getId()));
 		return res;
 	}
 }
