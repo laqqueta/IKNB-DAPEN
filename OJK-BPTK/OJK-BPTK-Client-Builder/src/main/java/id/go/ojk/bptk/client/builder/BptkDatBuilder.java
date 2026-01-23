@@ -89,10 +89,9 @@ public class BptkDatBuilder extends BaseDatBuilder {
     allAccess.add(EReport.BPTKLA.getId());
     allAccess.add(EReport.BPTKLT.getId());
 
-    res.put(DUMMY_USERS.get(0), allAccess);
-    res.put(DUMMY_USERS.get(1), Arrays.asList(EReport.BPTKLP.getId()));
-    res.put(DUMMY_USERS.get(2), Arrays.asList(EReport.BPTKLT.getId()));
-    res.put(DUMMY_USERS.get(3), Arrays.asList(EReport.BPTKLA.getId()));
+    for (String user : DUMMY_USERS) {
+      res.put(user, allAccess);
+    }
 		return res;
 	}
 }

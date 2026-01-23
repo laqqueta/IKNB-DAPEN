@@ -100,10 +100,10 @@ public enum EReport {
 	PLS_ASRUU ("7005", "PLSAUU", EReportGroup.PLS, ESector.ASRUU),
 	PLS_ASRUS ("7006", "PLSAUS", EReportGroup.PLS, ESector.ASRUS),
 	BPKSLB ("7100", "LBBPKS", EReportGroup.BPKSLB, ESector.BPKS),
-	BPTKLP ("7130", "LPBPTK", EReportGroup.BPTKLPP, ESector.BPTK),
-	BPTKLB ("7120", "LBBPTK", EReportGroup.BPTKLKB, ESector.BPTK),
-	BPTKLT ("7140", "LTBPTK", EReportGroup.BPTKLKT, ESector.BPTK),
-	BPTKLA ("7150", "LABPTK", EReportGroup.BPTKLAT, ESector.BPTK),
+	BPTKLP ("7695", "LPBPTK", EReportGroup.BPTKLPP, ESector.BPTK),
+	BPTKLB ("7604", "LBBPTK", EReportGroup.BPTKLKB, ESector.BPTK),
+	BPTKLT ("7696", "LTBPTK", EReportGroup.BPTKLKT, ESector.BPTK),
+	BPTKLA ("7697", "LABPTK", EReportGroup.BPTKLAT, ESector.BPTK),
 	;
 	
 	@Getter
