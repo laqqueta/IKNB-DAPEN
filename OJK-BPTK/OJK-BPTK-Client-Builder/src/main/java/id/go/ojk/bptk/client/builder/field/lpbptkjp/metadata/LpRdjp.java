@@ -55,7 +55,8 @@ public class LpRdjp extends BaseMetadata {
     fs.add(sf(6, null, "Lokasi DATI II", sv(C, 1, 8, refTable /*Huruf Angka :*/)
         .confRegex(PATTERN_REFERENCE_1)
         .confReference(EHeaderMetadataShared.LOKASI_DATI_2.getObject())
-        .confConditionalRequired(ER6303RDJP.genConditionalExistA())));
+        .confConditionalRequired(ER6303RDJP.genConditionalExistA()))
+        .addFieldValidations(ER6303RDJP.genDati2Validation()));
     fs.add(sf(7, null, "Lokasi DATI I", sv(C, 1, 8, refTable /*Huruf Angka :*/)
         .confRegex(PATTERN_REFERENCE_1)
         .confReference(EHeaderMetadataShared.LOKASI_DATI_1.getObject())

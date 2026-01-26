@@ -13,6 +13,8 @@ import id.go.ojk.conf.client.UtilFieldConditional;
 import id.go.ojk.conf.client.UtilFieldValidation;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
+import id.go.ojk.conf.client.field.reference.ER1157LokasiDati1;
+import id.go.ojk.conf.client.field.reference.ER1206LokasiDati2;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
 import lombok.AccessLevel;
@@ -129,5 +131,9 @@ public enum ER5901RKPST implements IObject<KeyValueString> {
 
   public static FieldValidation genValidationTotalKewarganegaraan() {
     return UtilFieldValidation.genEqualsExceptPosFormula(UtilMetadata.genPlusColumn(48, 49), RKPST0200000000.key);
+  }
+  
+  public static FieldValidation genDati2Validation() {
+    return UtilFieldValidation.getEqualsDati2And1(RKPST0100000000.key, 7, ER1157LokasiDati1.getRefNumber(), ER1206LokasiDati2.getRefNumber());
   }
 }

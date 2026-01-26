@@ -13,6 +13,8 @@ import id.go.ojk.conf.client.UtilFieldConditional;
 import id.go.ojk.conf.client.UtilFieldValidation;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
+import id.go.ojk.conf.client.field.reference.ER1157LokasiDati1;
+import id.go.ojk.conf.client.field.reference.ER1206LokasiDati2;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
 import lombok.AccessLevel;
@@ -22,8 +24,7 @@ import lombok.Getter;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ER6303RDJP implements IObject<KeyValueString> {
   RDJP0100000000("RDJP0100000000", "Detail"),
-  RDJP0200000000("RDJP0200000000", "Total"),
-  ;
+  RDJP0200000000("RDJP0200000000", "Total"),;
 
   @Getter
   private String key;
@@ -72,7 +73,7 @@ public enum ER6303RDJP implements IObject<KeyValueString> {
     }
     return res;
   }
-  
+
   public static String genRequiredPos() {
     return RDJP0200000000.key;
   }
@@ -97,5 +98,10 @@ public enum ER6303RDJP implements IObject<KeyValueString> {
 
   public static FieldValidation genValidationSaldoAkhir() {
     return UtilFieldValidation.genEqualsExceptPosFormula(UtilMetadata.genPlusColumn(9, 13), RDJP0200000000.key);
+  }
+
+  public static FieldValidation genDati2Validation() {
+    return UtilFieldValidation.getEqualsDati2And1(RDJP0100000000.key, 7, ER1157LokasiDati1.getRefNumber(),
+        ER1206LokasiDati2.getRefNumber());
   }
 }

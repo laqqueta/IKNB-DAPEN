@@ -13,6 +13,8 @@ import id.go.ojk.conf.client.UtilFieldConditional;
 import id.go.ojk.conf.client.UtilFieldValidation;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
+import id.go.ojk.conf.client.field.reference.ER1157LokasiDati1;
+import id.go.ojk.conf.client.field.reference.ER1206LokasiDati2;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
 import lombok.AccessLevel;
@@ -22,8 +24,7 @@ import lombok.Getter;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ER6304RPMF implements IObject<KeyValueString> {
   RPMF0100000000("RPMF0100000000", "Detail"),
-  RPMF0200000000("RPMF0200000000", "Total"),
-  ;
+  RPMF0200000000("RPMF0200000000", "Total"),;
 
   @Getter
   private String key;
@@ -88,7 +89,7 @@ public enum ER6304RPMF implements IObject<KeyValueString> {
   public static String genFieldSaveForm() {
     return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(15, 23), getObjects());
   }
-  
+
   public static ConditionalRequired genConditionalExistA() {
     return UtilFieldConditional.genExistPosAndHasReference("M", "N", RPMF0100000000.key, getRefNumber(), "O");
   }
@@ -101,5 +102,10 @@ public enum ER6304RPMF implements IObject<KeyValueString> {
 
   public static FieldValidation genValidationTotalJenisManfaat() {
     return UtilFieldValidation.genEqualsExceptPosFormula(UtilMetadata.genPlusColumn(9, 14), RPMF0200000000.key);
+  }
+
+  public static FieldValidation genDati2Validation() {
+    return UtilFieldValidation.getEqualsDati2And1(RPMF0100000000.key, 7, ER1157LokasiDati1.getRefNumber(),
+        ER1206LokasiDati2.getRefNumber());
   }
 }

@@ -58,7 +58,8 @@ public class LpRpmfJkp extends BaseMetadata {
     fs.add(sf(6, null, "Lokasi DATI II", sv(C, 1, 8, refTable /*Huruf Angka :*/)
         .confRegex(PATTERN_REFERENCE_1)
         .confConditionalRequired(ER6203RPMF.genConditionalExistA())
-        .confReference(EHeaderMetadataShared.LOKASI_DATI_2.getObject())));
+        .confReference(EHeaderMetadataShared.LOKASI_DATI_2.getObject()))
+        .addFieldValidations(ER6203RPMF.genDati2Validation()));
     fs.add(sf(7, null, "Lokasi DATI I", sv(C, 1, 8, refTable /*Huruf Angka :*/)
         .confRegex(PATTERN_REFERENCE_1)
         .confConditionalRequired(ER6203RPMF.genConditionalExistA())

@@ -56,7 +56,8 @@ public class LpRpiuJkp extends BaseMetadata {
         .confConditionalRequired(ER6202RPIU.genConditionalExistA())));
     fs.add(sf(6, null, "Lokasi DATI II", sv(C, 1, 8, refTable /*Huruf Angka :*/)
         .confConditionalRequired(ER6202RPIU.genConditionalExistA())
-        .confRegex(PATTERN_REFERENCE_1).confReference(EHeaderMetadataShared.LOKASI_DATI_2.getObject())));
+        .confRegex(PATTERN_REFERENCE_1).confReference(EHeaderMetadataShared.LOKASI_DATI_2.getObject()))
+        .addFieldValidations(ER6202RPIU.genDati2Validation()));
     fs.add(sf(7, null, "Lokasi DATI I", sv(C, 1, 8, refTable /*Huruf Angka :*/)
         .confConditionalRequired(ER6202RPIU.genConditionalExistA())
         .confRegex(PATTERN_REFERENCE_1).confReference(EHeaderMetadataShared.LOKASI_DATI_1.getObject())));
