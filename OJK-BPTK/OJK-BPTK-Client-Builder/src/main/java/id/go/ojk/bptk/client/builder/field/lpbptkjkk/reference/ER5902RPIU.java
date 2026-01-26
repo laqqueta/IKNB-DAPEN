@@ -94,7 +94,7 @@ public enum ER5902RPIU implements IObject<KeyValueString> {
 
   public static SegmentValidation genValidationTotal() {
     String errMsg = "Total|Penjumlahan detail";
-    return UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(9, 22), RPIU0200000000.key,
+    return UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(9, 23), RPIU0200000000.key,
         RPIU0100000000.key, errMsg);
   }
 
