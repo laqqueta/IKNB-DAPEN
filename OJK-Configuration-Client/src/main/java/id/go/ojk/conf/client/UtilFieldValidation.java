@@ -422,4 +422,14 @@ public class UtilFieldValidation {
     ;
     return new EqualsComparePosFormValidation(sb.toString());
   }
+
+  public static FieldValidation getEqualsDati2And1(String selectPosCode, int fieldDati1, int referenceNumberDati1, int referenceNumberDati2) {
+    StringBuilder sb = new StringBuilder()
+      .append("selectPosCode=").append(selectPosCode)
+      .append("&fieldDati1=").append(fieldDati1)
+      .append("&referenceNumberDati1=").append(referenceNumberDati1)
+      .append("&referenceNumberDati2=").append(referenceNumberDati2)
+    ;
+    return new EqualsDati1And2Validation(sb.toString());
+  }
 }
