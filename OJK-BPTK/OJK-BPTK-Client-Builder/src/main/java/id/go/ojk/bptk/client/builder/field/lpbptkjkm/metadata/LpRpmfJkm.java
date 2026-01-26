@@ -63,7 +63,7 @@ public class LpRpmfJkm extends BaseMetadata {
         .confRegex(PATTERN_REFERENCE_1)
         .confConditionalRequired(ER6003RPMF.genConditionalExistA())
         .confReference(EHeaderMetadataShared.LOKASI_DATI_1.getObject())));
-    fs.add(sf(8, null, "Segmen Peserta", sv(C, 1, 10, refTable /*Huruf Angka .*/)
+    fs.add(sf(8, null, "Segmen Peserta", sv(C, 1, 8, refTable /*Huruf Angka .*/)
         .confRegex(PATTERN_REFERENCE_4)
         .confConditionalRequired(ER6003RPMF.genConditionalExistA())
         .confReference(EHeaderMetadataShared.SEGMEN_PESERTA_LPP.getObject())));
