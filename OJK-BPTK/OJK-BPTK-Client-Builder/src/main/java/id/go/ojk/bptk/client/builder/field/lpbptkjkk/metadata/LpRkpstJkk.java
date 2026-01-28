@@ -91,7 +91,8 @@ public class LpRkpstJkk extends BaseMetadata {
         .addFieldValidations(ER5901RKPST.genValidationTotalJenisKelaminB()));
     fs.add(sf(29, null, "Peserta Masuk", sv(M, 1, 10, numeric)));
     fs.add(sf(30, null, "Peserta Keluar", sv(M, 1, 10, numeric)));
-    fs.add(sf(31, null, "Peserta Aktif", sv(M, 1, 10, numeric)));
+    fs.add(sf(31, null, "Peserta Aktif", sv(M, 1, 10, numeric))
+        .addFieldValidations(ER5901RKPST.genValidationTotalPesertaAktif()));
     fs.add(sf(32, null, "Peserta Nonaktif", sv(M, 1, 10, numeric)));
     fs.add(sf(33, null, "Total Peserta", sv(M, 1, 10, numeric))
         .addFieldValidations(ER5901RKPST.genValidationTotalPeserta()));

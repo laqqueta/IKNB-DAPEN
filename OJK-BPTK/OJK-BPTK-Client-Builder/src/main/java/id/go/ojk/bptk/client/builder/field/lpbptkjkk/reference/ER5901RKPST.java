@@ -30,7 +30,7 @@ public enum ER5901RKPST implements IObject<KeyValueString> {
   private String key;
   private String value;
 
-  // public static final String IDX_TOTAL_PESERTA = "33";
+  public static final String IDX_TOTAL_PESERTA_AKTIF = "31";
   public static final String IDX_TOTAL_KELOMPOK_UMUR = "47";
   public static final String IDX_TOTAL_WN = "50";
 
@@ -112,12 +112,17 @@ public enum ER5901RKPST implements IObject<KeyValueString> {
   }
 
   public static FieldValidation genValidationTotalJenisKelaminB() {
-    String errMsg = "Total Jenis Kelamin|Total Kelompok Umur";
-    return UtilFieldValidation.genEqualsPosFormula2(IDX_TOTAL_KELOMPOK_UMUR, RKPST0200000000.key, errMsg);
+    String errMsg = "Total Jenis Kelamin|Total Peserta Aktif";
+    return UtilFieldValidation.genEqualsPosFormula2(IDX_TOTAL_PESERTA_AKTIF, RKPST0200000000.key, errMsg);
   }
 
   public static FieldValidation genValidationTotalPeserta() {
     return UtilFieldValidation.genEqualsExceptPosFormula(UtilMetadata.genPlusColumn(31, 32), RKPST0200000000.key);
+  }
+
+  public static FieldValidation genValidationTotalPesertaAktif() {
+    String errMsg = "Total Peserta Aktif|Total Kelompok Umur";
+    return UtilFieldValidation.genEqualsPosFormula2(IDX_TOTAL_KELOMPOK_UMUR, RKPST0200000000.key, errMsg);
   }
 
   public static FieldValidation genValidationTotalKelompokUmurA() {
