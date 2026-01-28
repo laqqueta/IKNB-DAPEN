@@ -63,7 +63,7 @@ public class LpRkpstJp extends BaseMetadata {
         .confConditionalRequired(ER6301RKPST.genConditionalExistA())));
     fs.add(sf(8, null, "Pemberi Kerja Penerima Upah", sv(M, 1, 10, numeric)));
     fs.add(sf(9, null, "Peserta Penerima Upah", sv(M, 1, 10, numeric)));
-    fs.add(sf(10, null, "Segmen Peserta", sv(C, 1, 10, refTable /*Huruf Angka .*/)
+    fs.add(sf(10, null, "Segmen Peserta", sv(C, 1, 8, refTable /*Huruf Angka .*/)
         .confRegex(PATTERN_REFERENCE_4)
         .confReference(EHeaderMetadataShared.SEGMEN_PESERTA_LPP.getObject())
         .confConditionalRequired(ER6301RKPST.genConditionalExistA())));
