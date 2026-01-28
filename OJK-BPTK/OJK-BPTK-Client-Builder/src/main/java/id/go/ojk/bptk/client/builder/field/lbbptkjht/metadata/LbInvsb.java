@@ -91,8 +91,7 @@ public class LbInvsb extends BaseMetadata {
     fs.add(sf(22, null, "Selisih Penilaian Investasi", sv(C, 1, 20, numeric)
         .confConditionalRequired(ER5608INVSB.genConditionalBagianPenyertaan()))
         .addFieldValidations(ER5608INVSB.genFieldValidation23()));
-    fs.add(sf(23, null, "Hasil Investasi", sv(C, 1, 20, numeric)
-        .confConditionalRequired(ER5608INVSB.genConditionalBagianPenyertaan())));
+    fs.add(sf(23, null, "Hasil Investasi", sv(M, 1, 20, numeric)));
 
     //TODO: Yahya - Kolom 25 s/d 29 di templatenya = C tapi tidak ada kondisinya.
     fs.add(sf(24, null, "Saldo Amortisasi, Premium", sv(O, 1, 20, numeric)));
