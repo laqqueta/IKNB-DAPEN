@@ -132,42 +132,42 @@ public enum ER5905RKPMF implements IObject<KeyValueString> {
   }
 
   public static SegmentValidation genValidatonFormJumlahDiajukan() {
-    String errMsg = "Jumlah Diajukan|Jumlah Status Klaim 1, pada form " + RPMF;
+    String errMsg = "Jumlah Diajukan|Total Jumlah Status Klaim 1, pada form " + RPMF;
     return genEqualsFormColumn("9", RKPMF0401000000, new int[] { 17 }, RPMF0200000000_KEYFORM, errMsg);
   }
 
   public static SegmentValidation genValidatonFormNilaiDiajukan() {
-    String errMsg = "Nilai Diajukan|Jumlah Status Klaim 1, pada form " + RPMF;
+    String errMsg = "Nilai Diajukan|Total Nilai Status Klaim 1, pada form " + RPMF;
     return genEqualsFormColumn("9", RKPMF0402000000, new int[] { 18 }, RPMF0200000000_KEYFORM, errMsg);
   }
   
   public static SegmentValidation genValidatonFormJumlahDitetapkan() {
-    String errMsg = "Jumlah Ditetapkan|Jumlah Status Klaim 2, pada form " + RPMF;
+    String errMsg = "Jumlah Ditetapkan|Total Jumlah Status Klaim 2, pada form " + RPMF;
     return genEqualsFormColumn("9", RKPMF0501000000, new int[] { 19 }, RPMF0200000000_KEYFORM, errMsg);
   }
 
   public static SegmentValidation genValidatonFormNilaiDitetapkan() {
-    String errMsg = "Nilai Ditetapkan|Jumlah Status Klaim 2, pada form " + RPMF;
+    String errMsg = "Nilai Ditetapkan|Total Jumlah Status Klaim 2, pada form " + RPMF;
     return genEqualsFormColumn("9", RKPMF0502000000, new int[] { 20 }, RPMF0200000000_KEYFORM, errMsg);
   }
 
   public static SegmentValidation genValidatonFormJumlahDitolak() {
-    String errMsg = "Jumlah Ditolak|Jumlah Status Klaim 3, pada form " + RPMF;
+    String errMsg = "Jumlah Ditolak|Total Jumlah Status Klaim 3, pada form " + RPMF;
     return genEqualsFormColumn("9", RKPMF0601000000, new int[] { 21 }, RPMF0200000000_KEYFORM, errMsg);
   }
 
   public static SegmentValidation genValidatonFormNilaiDitolak() {
-    String errMsg = "Nilai Ditolak|Jumlah Status Klaim 3, pada form " + RPMF;
+    String errMsg = "Nilai Ditolak|Total Jumlah Status Klaim 3, pada form " + RPMF;
     return genEqualsFormColumn("9", RKPMF0602000000, new int[] { 22 }, RPMF0200000000_KEYFORM, errMsg);
   }
 
   public static SegmentValidation genValidatonFormJumlahDibayarkan() {
-    String errMsg = "Jumlah Dibayarkan|Jumlah Status Klaim 4, pada form " + RPMF;
+    String errMsg = "Jumlah Dibayarkan|Total Jumlah Status Klaim 4, pada form " + RPMF;
     return genEqualsFormColumn("9", RKPMF0701000000, new int[] { 23 }, RPMF0200000000_KEYFORM, errMsg);
   }
 
   public static SegmentValidation genValidatonFormNilaiDibayarkan() {
-    String errMsg = "Nilai Dibayarkan|Jumlah Status Klaim 4, pada form " + RPMF;
+    String errMsg = "Nilai Dibayarkan|Total Jumlah Status Klaim 4, pada form " + RPMF;
     return genEqualsFormColumn("9", RKPMF0702000000, new int[] { 24 }, RPMF0200000000_KEYFORM, errMsg);
   }
 
