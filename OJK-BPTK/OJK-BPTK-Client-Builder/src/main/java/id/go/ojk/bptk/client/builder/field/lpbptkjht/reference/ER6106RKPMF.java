@@ -122,7 +122,7 @@ public enum ER6106RKPMF implements IObject<KeyValueString> {
 
   /* -- ANTAR FORM -- */
   public static SegmentValidation genValidatonFormTotalJenisManfaat() {
-    String errMsg = "Total Jenis Manfaat|Total Jenis Manfaat, pada form " + RPMF;
+    String errMsg = "Total Jenis Klaim|Total Jenis Manfaat, pada form " + RPMF;
     return genEqualsFormColumn("9", RKPMF0200000000, new int[] { 17 }, RPMF0200000000_KEYFORM, errMsg);
   }
 
