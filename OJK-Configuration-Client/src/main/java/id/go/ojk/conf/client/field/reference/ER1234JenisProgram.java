@@ -12,7 +12,7 @@ import lombok.AllArgsConstructor;
 public enum ER1234JenisProgram implements IObject<KeyValueString> {
   R1 ("BDN", "Badan"),
   R2 ("JKK", "Jaminan Kecelakaan Kerja"),
-  R3 ("JKM", "Jaminan Kematian"),
+  R3 ("JK", "Jaminan Kematian"),
   R4 ("JHT", "Jaminan Hari Tua"),
   R5 ("JP", "Jaminan Pensiun"),
   R6 ("JKP", "Jaminan Kehilangan Pekerjaan"),
