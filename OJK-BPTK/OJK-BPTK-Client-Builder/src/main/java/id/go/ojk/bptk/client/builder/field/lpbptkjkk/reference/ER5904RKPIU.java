@@ -168,12 +168,12 @@ public enum ER5904RKPIU implements IObject<KeyValueString> {
 
   public static FieldValidation genValidationTotalPemberiKerja() {
     int[] cols = { 2, 4, 6 };
-    return UtilFieldValidation.genEqualsExceptPosFormula(UtilMetadata.genPlusColumn(cols), RKPIU0100000000.getValue());
+    return UtilFieldValidation.genEqualsFormula(UtilMetadata.genPlusColumn(cols));
   }
 
   public static FieldValidation genValidationTotalPeserta() {
     int[] cols = { 3, 5, 7 };
-    return UtilFieldValidation.genEqualsExceptPosFormula(UtilMetadata.genPlusColumn(cols), RKPIU0100000000.getValue());
+    return UtilFieldValidation.genEqualsFormula(UtilMetadata.genPlusColumn(cols));
   }
 
   private static SegmentValidation genPlusValidation(String selectField, IObject<KeyValueString> selectPos,

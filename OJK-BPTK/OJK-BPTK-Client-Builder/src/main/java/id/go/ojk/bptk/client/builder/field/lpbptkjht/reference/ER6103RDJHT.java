@@ -85,6 +85,10 @@ public enum ER6103RDJHT implements IObject<KeyValueString> {
   public static String genFieldSave() {
     return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(9, 14), getObjects());
   }
+  
+  public static String genFieldSaveForm() {
+    return UtilMetadata.genFieldSave("14", getObjects());
+  }
 
   public static ConditionalRequired genConditionalExistA() {
     return UtilFieldConditional.genExistPosAndHasReference("M", "N", RDJHT0100000000.key, getRefNumber(), "O");

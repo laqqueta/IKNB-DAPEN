@@ -37,6 +37,7 @@ public class LpRdjht extends BaseMetadata {
     res.setRequiredPos(ER6103RDJHT.genRequiredPos());
     res.setUniquePos(ER6103RDJHT.genUniquePos());
     res.setSavePos(ER6103RDJHT.genFieldSave());
+    res.setSavePosForm(ER6103RDJHT.genFieldSaveForm());
 
     res.addSegmentValidations(ER6103RDJHT.genValidationTotal());
 
