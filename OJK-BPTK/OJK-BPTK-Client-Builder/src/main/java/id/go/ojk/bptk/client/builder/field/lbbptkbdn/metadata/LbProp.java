@@ -16,6 +16,7 @@ import java.util.List;
 import id.go.ojk.bptk.client.builder.field.EFormLbbptkbdn;
 import id.go.ojk.bptk.client.builder.field.lbbptkbdn.reference.EHeaderMetadataLbbptkbdn;
 import id.go.ojk.bptk.client.builder.field.lbbptkbdn.reference.ER5311PROP;
+import id.go.ojk.bptk.client.builder.field.ltbptk.metadata.MetadataLtbptkbdn;
 import id.go.ojk.bptk.client.builder.field.reference.EHeaderMetadataShared;
 import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
@@ -34,7 +35,8 @@ public class LbProp extends BaseMetadata {
 
     res.setSavePos(ER5311PROP.genFieldSave());
 
-    if(reportCode.equalsIgnoreCase(MetadataLbbptkbdn.REPORT_CODE)) {
+    if(reportCode.equalsIgnoreCase(MetadataLbbptkbdn.REPORT_CODE) ||
+        reportCode.equalsIgnoreCase(MetadataLtbptkbdn.REPORT_CODE)) {
       /* -- ANTAR FORM -- */
       res.addSegmentValidations(ER5311PROP.genRowValidation18());
     }
