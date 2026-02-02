@@ -22,8 +22,12 @@ public enum ER1238JenisSuratBerharga implements IObject<KeyValueString> {
   R10 ("2014", "Dana investasi real estat berbentuk kontrak investasi kolektif "),
   R11 ("2015", "Dana investasi infrastruktur berbentuk kontrak investasi kolektif"),
   R12 ("2016", "Kontrak opsi dan kontrak berjangka efek yang tercatat di Bursa Efek di Indonesia"),
-  R13 ("2017", "REPO "),
-  R14 ("2018", "Penyertaan langsung"),
+  R13 ("2017", "REPO"),
+  R14 ("2018", "Penyertaan Langsung"),
+  R15 ("20111", "Reksa Dana Pasar Uang"),
+  R16 ("20112", "Reksa Dana Pendapatan Tetap"),
+  R17 ("20113", "Reksa Dana Campuran"),
+  R18 ("20114", "Reksa Dana Saham"),
   ;
 
   private String key;
