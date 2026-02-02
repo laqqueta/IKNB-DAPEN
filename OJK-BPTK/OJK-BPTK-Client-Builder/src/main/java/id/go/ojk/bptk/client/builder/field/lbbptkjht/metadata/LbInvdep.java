@@ -64,7 +64,7 @@ public class LbInvdep extends BaseMetadata {
         .confConditionalRequired(ER5607INVDEP.genConditionalExistA())));
     fs.add(sf(7, null, "Penerbit, Nomor Bilyet", sv(C, 1, 35, all)
         .confConditionalRequired(ER5607INVDEP.genConditionalExistA())));
-    fs.add(sf(8, null, "Penerbit, Syariah/Konvensional", sv(C, 1, 10, refTable)
+    fs.add(sf(8, null, "Penerbit, Syariah/Konvensional", sv(C, 1, 5, refTable)
         .confReference(EHeaderMetadataShared.SYARIAH_KONVENSIONAL.getObject())
         .confRegex(PATTERN_REFERENCE_1)
         .confConditionalRequired(ER5607INVDEP.genConditionalExistA())));
