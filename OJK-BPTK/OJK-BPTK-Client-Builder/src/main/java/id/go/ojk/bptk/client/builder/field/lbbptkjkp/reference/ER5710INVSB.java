@@ -68,8 +68,8 @@ public enum ER5710INVSB implements IObject<KeyValueString> {
     return UtilFieldValidation.genEqualsFormula(UtilMetadata.genMinusColumn(cols));
   }
 
-  public static ConditionalRequired genConditionalExist18() {
-    return UtilFieldConditional.genComparatorHasValue("M", "O", "2", "2007|2011|2018");
+  public static ConditionalRequired genConditionalUnitPenyertaan() {
+    return UtilFieldConditional.genComparatorHasValue("M", "O", "2", "2007|2011|20111|20112|20113|20114");
   }
 
   public static ConditionalRequired genConditionalBagianPenyertaan() {
