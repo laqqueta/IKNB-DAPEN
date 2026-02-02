@@ -147,7 +147,7 @@ public enum ER5905RKPMF implements IObject<KeyValueString> {
   }
 
   public static SegmentValidation genValidatonFormNilaiDitetapkan() {
-    String errMsg = "Nilai Ditetapkan|Total Jumlah Status Klaim 2, pada form " + RPMF;
+    String errMsg = "Nilai Ditetapkan|Total Nilai Status Klaim 2, pada form " + RPMF;
     return genEqualsFormColumn("9", RKPMF0502000000, new int[] { 20 }, RPMF0200000000_KEYFORM, errMsg);
   }
 
@@ -157,7 +157,7 @@ public enum ER5905RKPMF implements IObject<KeyValueString> {
   }
 
   public static SegmentValidation genValidatonFormNilaiDitolak() {
-    String errMsg = "Nilai Ditolak|Total Jumlah Status Klaim 3, pada form " + RPMF;
+    String errMsg = "Nilai Ditolak|Total Nilai Status Klaim 3, pada form " + RPMF;
     return genEqualsFormColumn("9", RKPMF0602000000, new int[] { 22 }, RPMF0200000000_KEYFORM, errMsg);
   }
 
@@ -167,7 +167,7 @@ public enum ER5905RKPMF implements IObject<KeyValueString> {
   }
 
   public static SegmentValidation genValidatonFormNilaiDibayarkan() {
-    String errMsg = "Nilai Dibayarkan|Total Jumlah Status Klaim 4, pada form " + RPMF;
+    String errMsg = "Nilai Dibayarkan|Total Nilai Status Klaim 4, pada form " + RPMF;
     return genEqualsFormColumn("9", RKPMF0702000000, new int[] { 24 }, RPMF0200000000_KEYFORM, errMsg);
   }
 
