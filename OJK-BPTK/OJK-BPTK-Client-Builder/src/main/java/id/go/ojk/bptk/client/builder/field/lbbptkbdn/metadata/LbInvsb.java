@@ -92,7 +92,7 @@ public class LbInvsb extends BaseMetadata {
         .confConditionalRequired(ER5310INVSB.genConditionalUnitPenyertaan())));
     fs.add(sf(19, null, "Nilai Perolehan/Harga Perolehan", sv(M, 1, 20, numeric)));
     fs.add(sf(20, null, "Nilai Wajar/Harga Pasar", sv(M, 1, 20, numeric)));
-    fs.add(sf(21, null, "Selisih Penilaian Investasi", sv(C, 1, 20, numeric))
+    fs.add(sf(21, null, "Selisih Penilaian Investasi", sv(M, 1, 20, numeric))
         .addFieldValidations(ER5310INVSB.genFieldValidation22()));
     fs.add(sf(22, null, "Hasil Investasi", sv(M, 1, 20, numeric)));
 
