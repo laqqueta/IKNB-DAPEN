@@ -124,7 +124,7 @@ public enum ER5306HAI implements IObject<KeyValueString> {
 
   public static FieldValidation genFieldValidation6() {
     int[] cols = { 3, 4 };
-    int[] rows = { 0, 4, 16, 27, 30, 35 };
+    int[] rows = { 0, 4, 16, 27, 30 };
     return UtilFieldValidation.genEqualsPosByConst(UtilMetadata.genPlusColumn(cols), 2,
         UtilMetadata.genPipeRow(getObjects(), rows), "2", "/");
   }
