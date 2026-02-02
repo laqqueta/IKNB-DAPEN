@@ -19,6 +19,7 @@ import id.go.ojk.bptk.client.builder.field.EFormLbbptkbdn;
 import id.go.ojk.bptk.client.builder.field.lbbptkbdn.reference.EHeaderMetadataLbbptkbdn;
 import id.go.ojk.bptk.client.builder.field.lbbptkbdn.reference.ER5310INVSB;
 import id.go.ojk.bptk.client.builder.field.lbbptkjkm.metadata.MetadataLbbptkjkm;
+import id.go.ojk.bptk.client.builder.field.ltbptk.metadata.MetadataLtbptkjkm;
 import id.go.ojk.bptk.client.builder.field.reference.EHeaderMetadataShared;
 import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
@@ -36,7 +37,8 @@ public class LbInvsb extends BaseMetadata {
         extension, 0, null);
     
     String labelSyariahKonven = "Syariah/Konvensional";
-    if(reportCode.equalsIgnoreCase(MetadataLbbptkjkm.REPORT_CODE)) {
+    if(reportCode.equalsIgnoreCase(MetadataLbbptkjkm.REPORT_CODE) ||
+        reportCode.equalsIgnoreCase(MetadataLtbptkjkm.REPORT_CODE)) {
       labelSyariahKonven = "Syariah/Non Syariah";
     }
 
