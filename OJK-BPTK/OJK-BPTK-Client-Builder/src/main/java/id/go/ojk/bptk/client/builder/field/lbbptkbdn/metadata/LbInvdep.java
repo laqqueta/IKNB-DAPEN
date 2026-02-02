@@ -21,6 +21,9 @@ import id.go.ojk.bptk.client.builder.field.lbbptkbdn.reference.EHeaderMetadataLb
 import id.go.ojk.bptk.client.builder.field.lbbptkbdn.reference.ER5309INVDEP;
 import id.go.ojk.bptk.client.builder.field.lbbptkjkk.metadata.MetadataLbbptkjkk;
 import id.go.ojk.bptk.client.builder.field.lbbptkjkm.metadata.MetadataLbbptkjkm;
+import id.go.ojk.bptk.client.builder.field.ltbptk.metadata.MetadataLtbptkbdn;
+import id.go.ojk.bptk.client.builder.field.ltbptk.metadata.MetadataLtbptkjkk;
+import id.go.ojk.bptk.client.builder.field.ltbptk.metadata.MetadataLtbptkjkm;
 import id.go.ojk.bptk.client.builder.field.reference.EHeaderMetadataShared;
 import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
@@ -44,10 +47,15 @@ public class LbInvdep extends BaseMetadata {
     res.addSegmentValidations(ER5309INVDEP.genValidationTotal());
 
     /* -- ANTAR FORM -- */
-    if (reportCode.equalsIgnoreCase(MetadataLbbptkbdn.REPORT_CODE)) {
+    if (reportCode.equalsIgnoreCase(MetadataLbbptkbdn.REPORT_CODE) || 
+        reportCode.equalsIgnoreCase(MetadataLtbptkbdn.REPORT_CODE)) {
       res.addSegmentValidations(ER5309INVDEP.genRowValidation19Bdn());
-    } else if (reportCode.equalsIgnoreCase(MetadataLbbptkjkk.REPORT_CODE)
-        || reportCode.equalsIgnoreCase(MetadataLbbptkjkm.REPORT_CODE)) {
+    } else if (
+        reportCode.equalsIgnoreCase(MetadataLbbptkjkk.REPORT_CODE) ||
+        reportCode.equalsIgnoreCase(MetadataLbbptkjkm.REPORT_CODE) ||
+        reportCode.equalsIgnoreCase(MetadataLtbptkjkk.REPORT_CODE) ||
+        reportCode.equalsIgnoreCase(MetadataLtbptkjkm.REPORT_CODE)) {
+
       res.addSegmentValidations(ER5309INVDEP.genRowValidation19Jkk());
     }
 
