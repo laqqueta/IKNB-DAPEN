@@ -5,6 +5,7 @@ import java.util.List;
 
 import id.go.ojk.bptk.client.builder.field.lbbptkbdn.metadata.MetadataLbbptkbdn;
 import id.go.ojk.bptk.client.builder.field.lbbptkjkk.reference.ER5401LPK;
+import id.go.ojk.bptk.client.builder.field.ltbptk.metadata.MetadataLtbptkbdn;
 import id.go.ojk.client.model.config.validation.conditional.ConditionalRequired;
 import id.go.ojk.client.model.config.validation.field.FieldValidation;
 import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
@@ -76,7 +77,8 @@ public enum ER5310INVSB implements IObject<KeyValueString> {
 
   /* -- ANTAR FORM -- */
   public static SegmentValidation genRowValidation31(String reportCode) {
-    if (reportCode.equalsIgnoreCase(MetadataLbbptkbdn.REPORT_CODE)) {
+    if (reportCode.equalsIgnoreCase(MetadataLbbptkbdn.REPORT_CODE) ||
+        reportCode.equalsIgnoreCase(MetadataLtbptkbdn.REPORT_CODE)) {
       return genRowValidation31Bdn();
     } else {
       return genRowValidation31Jkk();
