@@ -66,8 +66,8 @@ public enum ER5808INVSB implements IObject<KeyValueString> {
 
   public static ConditionalRequired genConditionalBagianPenyertaan() {
 //  Wajib DIISI jika kolom 2 = 2018
-//  Boleh KOSONG jika kolom 2 != 2018
+//  Wajib KOSONG jika kolom 2 != 2018
 //  Boleh KOSONG jika kode komponen != INVSB0100000000
-    return UtilFieldConditional.genExistPosAndComparatorHasValue2("M", "O", "O", INVSB0100000000.key, getRefNumber(), "2", "2018");
+    return UtilFieldConditional.genExistPosAndComparatorHasValue2("M", "N", "O", INVSB0100000000.key, getRefNumber(), "2", "2018");
   }
 }
