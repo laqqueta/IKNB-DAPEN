@@ -21,17 +21,17 @@ public enum ER5306HAI implements IObject<KeyValueString> {
   HAI0102000000("HAI0102000000", "Investasi Setara Kas, Sertifikat Deposito"),
   HAI0103000000("HAI0103000000", "Investasi Setara Kas, Deposito on call"),
   HAI0200000000("HAI0200000000", "Investasi Jangka Pendek"),
-  HAI0201000000("HAI0201000000", "Investasi Setara Kas, Deposito"),
-  HAI0202000000("HAI0202000000", "Investasi Setara Kas, Sertifikat Deposito"),
-  HAI0203000000("HAI0203000000", "Investasi Setara Kas, Saham yang tercatat di bursa"),
-  HAI0204000000("HAI0204000000", "Investasi Setara Kas, Surat utang korporasi & sukuk korporasi"),
-  HAI0205000000("HAI0205000000", "Investasi Setara Kas, Surat berharga yang diterbitkan oleh Negara RI"),
-  HAI0206000000("HAI0206000000", "Investasi Setara Kas, Surat berharga yang diterbitkan oleh Bank Indonesia"),
-  HAI0207000000("HAI0207000000", "Investasi Setara Kas, Reksa dana"),
-  HAI0208000000("HAI0208000000", "Investasi Setara Kas, Kontrak investasi kolektif efek beragun aset"),
-  HAI0209000000("HAI0209000000", "Investasi Setara Kas, Dana investasi real estat"),
-  HAI0210000000("HAI0210000000", "Investasi Setara Kas, Repurchase agreement (repo)"),
-  HAI0211000000("HAI0211000000", "Investasi Setara Kas, Lainnya"),
+  HAI0201000000("HAI0201000000", "Investasi Jangka Pendek, Deposito"),
+  HAI0202000000("HAI0202000000", "Investasi Jangka Pendek, Sertifikat Deposito"),
+  HAI0203000000("HAI0203000000", "Investasi Jangka Pendek, Saham yang tercatat di bursa"),
+  HAI0204000000("HAI0204000000", "Investasi Jangka Pendek, Surat utang korporasi & sukuk korporasi"),
+  HAI0205000000("HAI0205000000", "Investasi Jangka Pendek, Surat berharga yang diterbitkan oleh Negara RI"),
+  HAI0206000000("HAI0206000000", "Investasi Jangka Pendek, Surat berharga yang diterbitkan oleh Bank Indonesia"),
+  HAI0207000000("HAI0207000000", "Investasi Jangka Pendek, Reksa dana"),
+  HAI0208000000("HAI0208000000", "Investasi Jangka Pendek, Kontrak investasi kolektif efek beragun aset"),
+  HAI0209000000("HAI0209000000", "Investasi Jangka Pendek, Dana investasi real estat"),
+  HAI0210000000("HAI0210000000", "Investasi Jangka Pendek, Repurchase agreement (repo)"),
+  HAI0211000000("HAI0211000000", "Investasi Jangka Pendek, Lainnya"),
   HAI0300000000("HAI0300000000", "Investasi Jangka Panjang"),
   HAI0301000000("HAI0301000000", "Investasi Jangka Panjang, Deposito"),
   HAI0302000000("HAI0302000000", "Investasi Jangka Panjang, Sertifikat Deposito"),
@@ -124,7 +124,7 @@ public enum ER5306HAI implements IObject<KeyValueString> {
 
   public static FieldValidation genFieldValidation6() {
     int[] cols = { 3, 4 };
-    int[] rows = { 0, 4, 16, 27, 30 };
+    int[] rows = { 0, 4, 16, 27, 30, 35 };
     return UtilFieldValidation.genEqualsPosByConst(UtilMetadata.genPlusColumn(cols), 2,
         UtilMetadata.genPipeRow(getObjects(), rows), "2", "/");
   }
