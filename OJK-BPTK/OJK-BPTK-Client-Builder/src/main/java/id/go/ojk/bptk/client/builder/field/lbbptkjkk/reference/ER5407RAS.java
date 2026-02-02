@@ -5,6 +5,7 @@ import java.util.List;
 
 import id.go.ojk.bptk.client.builder.field.EFormLbbptkjkk;
 import id.go.ojk.bptk.client.builder.field.lbbptkbdn.metadata.MetadataLbbptkbdn;
+import id.go.ojk.bptk.client.builder.field.ltbptk.metadata.MetadataLtbptkbdn;
 import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
@@ -133,7 +134,8 @@ public enum ER5407RAS implements IObject<KeyValueString> {
   }
 
   public static SegmentValidation genRowValidation20(String reportCode) {
-    if (reportCode.equalsIgnoreCase(MetadataLbbptkbdn.REPORT_CODE)) {
+    if (reportCode.equalsIgnoreCase(MetadataLbbptkbdn.REPORT_CODE) ||
+        reportCode.equalsIgnoreCase(MetadataLtbptkbdn.REPORT_CODE)) {
       return genRowValidation20Bdn();
     } else {
       return genRowValidation20Jkk();
