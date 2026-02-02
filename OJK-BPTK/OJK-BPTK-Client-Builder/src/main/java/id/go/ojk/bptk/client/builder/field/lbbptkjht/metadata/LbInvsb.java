@@ -57,9 +57,9 @@ public class LbInvsb extends BaseMetadata {
     fs.add(sf(9, null, "Lembaga Pemeringkat", sv(O, 1, 10, refTable)
         .confReference(EHeaderMetadataShared.LEMBAGA_PEMERINGKAT.getObject())
         .confRegex(PATTERN_REFERENCE_1)));
-    fs.add(sf(10, null, "Jangka Waktu, Tanggal Mulai/Tanggal Penerbitan", sv(M, 1, 8, date))
+    fs.add(sf(10, null, "Jangka Waktu, Tanggal Mulai/Tanggal Penerbitan", sv(M, 8, 8, date))
         .addFieldValidations(ER5608INVSB.genFieldValidation11()));
-    fs.add(sf(11, null, "Jangka Waktu, Tanggal Jatuh Tempo", sv(M, 1, 8, date))
+    fs.add(sf(11, null, "Jangka Waktu, Tanggal Jatuh Tempo", sv(M, 8, 8, date))
         .addFieldValidations(ER5608INVSB.genFieldValidation12()));
     fs.add(sf(12, null, "Sektor Ekonomi", sv(C, 1, 10, refTable)
         .confReference(EHeaderMetadataShared.SEKTOR_EKONOMI.getObject())
