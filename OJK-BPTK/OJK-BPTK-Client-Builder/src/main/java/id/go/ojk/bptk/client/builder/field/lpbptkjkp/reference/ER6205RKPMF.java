@@ -20,10 +20,10 @@ import lombok.Getter;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ER6205RKPMF implements IObject<KeyValueString> {
-  RKPMF0101000000("RKPMF0101000000","Jenis Klaim, Uang Tunai"),
-  RKPMF0102000000("RKPMF0102000000","Jenis Klaim, Akses Informasi Pasar Kerja"),
-  RKPMF0103000000("RKPMF0103000000","Jenis Klaim, Pelatihan Kerja"),
-  RKPMF0200000000("RKPMF0200000000","Total Jenis Klaim"),
+  RKPMF0101000000("RKPMF0101000000","Jenis Manfaat, Uang Tunai"),
+  RKPMF0102000000("RKPMF0102000000","Jenis Manfaat, Akses Informasi Pasar Kerja"),
+  RKPMF0103000000("RKPMF0103000000","Jenis Manfaat, Pelatihan Kerja"),
+  RKPMF0200000000("RKPMF0200000000","Total Jenis Manfaat"),
   RKPMF0401000000("RKPMF0401000000","Jumlah Status Klaim Diajukan"),
   RKPMF0402000000("RKPMF0402000000","Nilai Status Klaim Diajukan"),
   RKPMF0501000000("RKPMF0501000000","Jumlah Status Klaim Ditetapkan"),
