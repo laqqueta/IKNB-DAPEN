@@ -73,8 +73,7 @@ public enum ER6105RKPIU implements IObject<KeyValueString> {
   RKPIU1803000000("RKPIU1803000000", "Hasil Pengembangan Rekapitulasi Dana Program JHT"),
   RKPIU1804000000("RKPIU1804000000", "Amalgamasi / Penyesuaian Rekapitulasi Dana Program JHT"),
   RKPIU1805000000("RKPIU1805000000", "Klaim Rekapitulasi Dana Program JHT"),
-  RKPIU1900000000("RKPIU1900000000", "Total Rekapitulasi Dana Program JHT"),
-  ;
+  RKPIU1900000000("RKPIU1900000000", "Total Rekapitulasi Dana Program JHT"),;
 
   @Getter
   private String key;
@@ -140,7 +139,7 @@ public enum ER6105RKPIU implements IObject<KeyValueString> {
   public static String genFieldSave() {
     return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 7), getObjects());
   }
-  
+
   public static SegmentValidation genValidationTotalKelompokUsaha() {
     List<IObject<KeyValueString>> listKv = Arrays.asList(RKPIU0301000000, RKPIU0302000000, RKPIU0303000000,
         RKPIU0304000000, RKPIU0305000000, RKPIU0306000000, RKPIU0307000000, RKPIU0308000000, RKPIU0309000000);
@@ -177,7 +176,8 @@ public enum ER6105RKPIU implements IObject<KeyValueString> {
   }
 
   public static SegmentValidation genValidationTotalRekapDataJHT() {
-    List<IObject<KeyValueString>> listKv = Arrays.asList(RKPIU1801000000, RKPIU1802000000, RKPIU1803000000, RKPIU1804000000, RKPIU1805000000);
+    List<IObject<KeyValueString>> listKv = Arrays.asList(RKPIU1801000000, RKPIU1802000000, RKPIU1803000000,
+        RKPIU1804000000, RKPIU1805000000);
     return genPlusValidation(UtilMetadata.genPipeColumn(COLS_NON_TOTAL), RKPIU1900000000, listKv);
   }
 
@@ -198,14 +198,65 @@ public enum ER6105RKPIU implements IObject<KeyValueString> {
         UtilMetadata.joinValues(listKv, UtilMetadata.PLUS).toString());
     return UtilSegmentValidation.genEqualsFormula(selectField, selectPos.getObject().getKey(), formula, errMsg);
   }
-  
+
   /* -- ANTAR FORM -- */
+  public static SegmentValidation genValidationFormRekapKepesertaan() {
+    return UtilSegmentValidation.genEqualsForm("2", RKPIU0100000000.key, RKPST, "8",
+        ER5901RKPST.RKPST0200000000.getKey());
+  }
+
+  public static SegmentValidation genValidationFormKelompokUsahaA() {
+    return UtilSegmentValidation.genEqualsForm("2", RKPIU0301000000.key, RKPST, "16",
+        ER5901RKPST.RKPST0200000000.getKey());
+  }
+
+  public static SegmentValidation genValidationFormKelompokUsahaB() {
+    return UtilSegmentValidation.genEqualsForm("2", RKPIU0302000000.key, RKPST, "17",
+        ER5901RKPST.RKPST0200000000.getKey());
+  }
+
+  public static SegmentValidation genValidationFormKelompokUsahaC() {
+    return UtilSegmentValidation.genEqualsForm("2", RKPIU0303000000.key, RKPST, "18",
+        ER5901RKPST.RKPST0200000000.getKey());
+  }
+
+  public static SegmentValidation genValidationFormKelompokUsahaD() {
+    return UtilSegmentValidation.genEqualsForm("2", RKPIU0304000000.key, RKPST, "19",
+        ER5901RKPST.RKPST0200000000.getKey());
+  }
+
+  public static SegmentValidation genValidationFormKelompokUsahaE() {
+    return UtilSegmentValidation.genEqualsForm("2", RKPIU0305000000.key, RKPST, "20",
+        ER5901RKPST.RKPST0200000000.getKey());
+  }
+
+  public static SegmentValidation genValidationFormKelompokUsahaF() {
+    return UtilSegmentValidation.genEqualsForm("2", RKPIU0306000000.key, RKPST, "21",
+        ER5901RKPST.RKPST0200000000.getKey());
+  }
+
+  public static SegmentValidation genValidationFormKelompokUsahaG() {
+    return UtilSegmentValidation.genEqualsForm("2", RKPIU0307000000.key, RKPST, "22",
+        ER5901RKPST.RKPST0200000000.getKey());
+  }
+
+  public static SegmentValidation genValidationFormKelompokUsahaH() {
+    return UtilSegmentValidation.genEqualsForm("2", RKPIU0308000000.key, RKPST, "23",
+        ER5901RKPST.RKPST0200000000.getKey());
+  }
+
+  public static SegmentValidation genValidationFormKelompokUsahaI() {
+    return UtilSegmentValidation.genEqualsForm("2", RKPIU0309000000.key, RKPST, "24",
+        ER5901RKPST.RKPST0200000000.getKey());
+  }
+
   public static SegmentValidation genValidationFormTotalKelompokUsahaA() {
     String selectColumn = "6";
     String selectPosCode = RKPIU0400000000.key;
     int cols[] = { 8, 10 };
     String comparatorColumn = UtilMetadata.genPlusColumn(cols);
-    String errMsg = "Total Kelompok Usaha|Total Pemberi Kerja Penerima Upah + Total Pemberi Kerja / Wadah /Jenis Usaha Bukan Penerima Upah, pada form " + RKPST;
+    String errMsg = "Total Kelompok Usaha|Total Pemberi Kerja Penerima Upah + Total Pemberi Kerja / Wadah /Jenis Usaha Bukan Penerima Upah, pada form "
+        + RKPST;
     return UtilSegmentValidation.genEqualsFormColumCalculation(selectColumn, selectPosCode, comparatorColumn,
         ER5901RKPST.RKPST0200000000.getKeyForm(), errMsg, 2);
   }
@@ -215,7 +266,8 @@ public enum ER6105RKPIU implements IObject<KeyValueString> {
     String selectPosCode = RKPIU0400000000.key;
     int cols[] = { 9, 11 };
     String comparatorColumn = UtilMetadata.genPlusColumn(cols);
-    String errMsg = "Total Kelompok Usaha|Total Peserta Penerima Upah + Total Peserta Bukan Penerima Upah, pada form " + RKPST;
+    String errMsg = "Total Kelompok Usaha|Total Peserta Penerima Upah + Total Peserta Bukan Penerima Upah, pada form "
+        + RKPST;
     return UtilSegmentValidation.genEqualsFormColumCalculation(selectColumn, selectPosCode, comparatorColumn,
         ER5901RKPST.RKPST0200000000.getKeyForm(), errMsg, 2);
   }
@@ -269,7 +321,7 @@ public enum ER6105RKPIU implements IObject<KeyValueString> {
     return UtilSegmentValidation.genEqualsFormColumCalculation(selectColumn, selectPosCode, comparatorColumn,
         ER5902RPIU.RPIU0200000000.getKeyForm(), errMsg, 2);
   }
-  
+
   public static SegmentValidation genValidationFormTotalRekapDataJHT() {
     String selectColumn = "7";
     String selectPosCode = RKPIU1900000000.key;

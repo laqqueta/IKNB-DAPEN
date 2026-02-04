@@ -43,6 +43,16 @@ public class LpRkpiuJht extends BaseMetadata {
     res.addSegmentValidations(ER6105RKPIU.genValidationTotalRekapDataJHT());
 
     /* -- ANTAR FORM -- */
+    res.addSegmentValidations(ER6105RKPIU.genValidationFormRekapKepesertaan());
+    res.addSegmentValidations(ER6105RKPIU.genValidationFormKelompokUsahaA());
+    res.addSegmentValidations(ER6105RKPIU.genValidationFormKelompokUsahaB());
+    res.addSegmentValidations(ER6105RKPIU.genValidationFormKelompokUsahaC());
+    res.addSegmentValidations(ER6105RKPIU.genValidationFormKelompokUsahaD());
+    res.addSegmentValidations(ER6105RKPIU.genValidationFormKelompokUsahaE());
+    res.addSegmentValidations(ER6105RKPIU.genValidationFormKelompokUsahaF());
+    res.addSegmentValidations(ER6105RKPIU.genValidationFormKelompokUsahaG());
+    res.addSegmentValidations(ER6105RKPIU.genValidationFormKelompokUsahaH());
+    res.addSegmentValidations(ER6105RKPIU.genValidationFormKelompokUsahaI());
     res.addSegmentValidations(ER6105RKPIU.genValidationFormTotalKelompokUsahaA());
     res.addSegmentValidations(ER6105RKPIU.genValidationFormTotalKelompokUsahaB());
     res.addSegmentValidations(ER6105RKPIU.genValidationFormTotalJenisKelamin());

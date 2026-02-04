@@ -85,13 +85,15 @@ public enum ER5901RKPST implements IObject<KeyValueString> {
   public static String genUniquePos() {
     return RKPST0200000000.key;
   }
-  
+
   public static String genFieldSave() {
     return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumnExcept(8, 51, new int[] { 14 }), getObjects());
   }
 
   public static String genFieldSaveForm() {
-    return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(new int[] { 8, 9, 10, 11, 25, 28, 33, 47, 50 }), getObjects());
+    return UtilMetadata.genFieldSave(
+        UtilMetadata.genPipeColumn(new int[] { 8, 9, 10, 11, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 28, 33, 47, 50 }),
+        getObjects());
   }
 
   public static ConditionalRequired genConditionalExistA() {
@@ -100,7 +102,8 @@ public enum ER5901RKPST implements IObject<KeyValueString> {
 
   public static SegmentValidation genValidationTotal() {
     String errMsg = "Total|Penjumlahan detail";
-    return UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumnExcept(8, 51, new int[] { 14 }), RKPST0200000000.key, RKPST0100000000.key, errMsg);
+    return UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumnExcept(8, 51, new int[] { 14 }),
+        RKPST0200000000.key, RKPST0100000000.key, errMsg);
   }
 
   public static FieldValidation genValidationTotalLapanganUsaha() {
@@ -128,7 +131,7 @@ public enum ER5901RKPST implements IObject<KeyValueString> {
   public static FieldValidation genValidationTotalKelompokUmurA() {
     return UtilFieldValidation.genEqualsExceptPosFormula(UtilMetadata.genPlusColumn(34, 46), RKPST0200000000.key);
   }
-  
+
   public static FieldValidation genValidationTotalKelompokUmurB() {
     String errMsg = "Total Kelompok Umur|Total Kewarganegaraan";
     return UtilFieldValidation.genEqualsPosFormula2(IDX_TOTAL_WN, RKPST0200000000.key, errMsg);
@@ -137,8 +140,9 @@ public enum ER5901RKPST implements IObject<KeyValueString> {
   public static FieldValidation genValidationTotalKewarganegaraan() {
     return UtilFieldValidation.genEqualsExceptPosFormula(UtilMetadata.genPlusColumn(48, 49), RKPST0200000000.key);
   }
-  
+
   public static FieldValidation genDati2Validation() {
-    return UtilFieldValidation.getEqualsDati2And1(RKPST0100000000.key, 7, ER1157LokasiDati1.getRefNumber(), ER1206LokasiDati2.getRefNumber());
+    return UtilFieldValidation.getEqualsDati2And1(RKPST0100000000.key, 7, ER1157LokasiDati1.getRefNumber(),
+        ER1206LokasiDati2.getRefNumber());
   }
 }
