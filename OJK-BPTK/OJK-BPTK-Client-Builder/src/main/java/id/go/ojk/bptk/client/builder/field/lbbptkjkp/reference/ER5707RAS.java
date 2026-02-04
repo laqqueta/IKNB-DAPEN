@@ -16,7 +16,7 @@ import lombok.Getter;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ER5707RAS implements IObject<KeyValueString> {
   RAS0101010000("RAS0101010000", "a. Piutang Iuran subsidi Pemerintah"),
-  RAS0101020000("RAS0101020000", "b. Pendapatan Iuran sd Laporan"),
+  RAS0101020000("RAS0101020000", "b. Pendapatan Iuran s.d Laporan"),
   RAS0101030000("RAS0101030000", "Rasio [1 - ( a : b )], Rasio Kolektibilitas Iuran"),
   RAS0102010000("RAS0102010000", "a. Beban jaminan kehilangan pekerjaan"),
   RAS0102020000("RAS0102020000", "b. Beban cadangan teknis"),
