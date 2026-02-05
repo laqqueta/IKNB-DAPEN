@@ -43,7 +43,10 @@ public class LpRkpiuJht extends BaseMetadata {
     res.addSegmentValidations(ER6105RKPIU.genValidationTotalRekapDataJHT());
 
     /* -- ANTAR FORM -- */
-    res.addSegmentValidations(ER6105RKPIU.genValidationFormRekapKepesertaan());
+    res.addSegmentValidations(ER6105RKPIU.genValidationFormRekapKepesertaanA());
+    res.addSegmentValidations(ER6105RKPIU.genValidationFormRekapKepesertaanB());
+    res.addSegmentValidations(ER6105RKPIU.genValidationFormRekapKepesertaanC());
+    res.addSegmentValidations(ER6105RKPIU.genValidationFormRekapKepesertaanD());
     res.addSegmentValidations(ER6105RKPIU.genValidationFormKelompokUsahaA());
     res.addSegmentValidations(ER6105RKPIU.genValidationFormKelompokUsahaB());
     res.addSegmentValidations(ER6105RKPIU.genValidationFormKelompokUsahaC());

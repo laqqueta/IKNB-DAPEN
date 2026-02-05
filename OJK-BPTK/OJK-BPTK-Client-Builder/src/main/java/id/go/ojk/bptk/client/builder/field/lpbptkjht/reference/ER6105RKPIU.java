@@ -200,8 +200,23 @@ public enum ER6105RKPIU implements IObject<KeyValueString> {
   }
 
   /* -- ANTAR FORM -- */
-  public static SegmentValidation genValidationFormRekapKepesertaan() {
+  public static SegmentValidation genValidationFormRekapKepesertaanA() {
     return UtilSegmentValidation.genEqualsForm("2", RKPIU0100000000.key, RKPST, "8",
+        ER5901RKPST.RKPST0200000000.getKey());
+  }
+
+  public static SegmentValidation genValidationFormRekapKepesertaanB() {
+    return UtilSegmentValidation.genEqualsForm("3", RKPIU0100000000.key, RKPST, "9",
+        ER5901RKPST.RKPST0200000000.getKey());
+  }
+
+  public static SegmentValidation genValidationFormRekapKepesertaanC() {
+    return UtilSegmentValidation.genEqualsForm("4", RKPIU0100000000.key, RKPST, "10",
+        ER5901RKPST.RKPST0200000000.getKey());
+  }
+
+  public static SegmentValidation genValidationFormRekapKepesertaanD() {
+    return UtilSegmentValidation.genEqualsForm("5", RKPIU0100000000.key, RKPST, "11",
         ER5901RKPST.RKPST0200000000.getKey());
   }
 
