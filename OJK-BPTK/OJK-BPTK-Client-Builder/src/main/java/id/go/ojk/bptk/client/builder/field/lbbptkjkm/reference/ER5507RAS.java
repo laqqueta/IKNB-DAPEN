@@ -228,7 +228,7 @@ public enum ER5507RAS implements IObject<KeyValueString> {
       IObject<KeyValueString> posCode2, IObject<KeyValueString> expected) {
     KeyValueString kv1 = posCode1.getObject();
     KeyValueString kv2 = posCode2.getObject();
-    String errMsg = expected.getObject().getValue();//"Rasio (disetahunkan) (" + kv1.getValue() + " : " + kv2.getValue() + ")";
+    String errMsg = "Rasio (disetahunkan) (" + kv1.getValue() + " : " + kv2.getValue() + ")";
     return genEqualsRatio(selectField, posCode1, posCode2, expected, true, errMsg);
   }
 

@@ -27,7 +27,7 @@ public enum ER5307RAS implements IObject<KeyValueString> {
   RAS0301010000("RAS0301010000", "a. Aset Lancar"),
   RAS0301020000("RAS0301020000", "b. Kewajiban Lancar"),
   RAS0301030000("RAS0301030000", "Rasio Likuiditas, Rasio ( a : b )"),
-  RAS0401010000("RAS0401010000", "a. Hasil Investasi, "),
+  RAS0401010000("RAS0401010000", "a. Hasil Investasi"),
   RAS0401020000("RAS0401020000", "b. Rata-Rata Investasi"),
   RAS0401030000("RAS0401030000", "Rasio (disetahunkan) ( a : b )"),
   RAS0402010000("RAS0402010000", "a. Pendapatan Neto"),
@@ -151,7 +151,7 @@ public enum ER5307RAS implements IObject<KeyValueString> {
       IObject<KeyValueString> posCode2, IObject<KeyValueString> expected) {
     KeyValueString kv1 = posCode1.getObject();
     KeyValueString kv2 = posCode2.getObject();
-    String errMsg = expected.getObject().getValue();//"Rasio (disetahunkan) (" + kv1.getValue() + " : " + kv2.getValue() + ")";
+    String errMsg = "Rasio (disetahunkan) (" + kv1.getValue() + " : " + kv2.getValue() + ")";
     return genEqualsRatio(selectField, posCode1, posCode2, expected, true, errMsg);
   }
 
