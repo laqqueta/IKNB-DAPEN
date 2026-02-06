@@ -5,11 +5,9 @@ import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
+import id.go.ojk.client.api.ApiFeature;
 import lombok.Getter;
 
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum EReport {
 	RB_ASRJK ("5897", "RBAJK", EReportGroup.RB, ESector.ASRJK),
 	RB_ASRUK ("5896", "RBAUK", EReportGroup.RB, ESector.ASRUK),
@@ -93,21 +91,21 @@ public enum EReport {
 	TL_DPPKS ("6002", "TLRDPS", EReportGroup.TL, ESector.DPPKS),
 	TL_DPLKK ("6003", "TLRDLK", EReportGroup.TL, ESector.DPLKK),
 	TL_DPLKS ("6004", "TLRDLS", EReportGroup.TL, ESector.DPLKS),
-	PLS_ASRJK ("7001", "PLSAJK", EReportGroup.PLS, ESector.ASRJK),
-	PLS_ASRJU ("7002", "PLSAJU", EReportGroup.PLS, ESector.ASRJU),
-	PLS_ASRJS ("7003", "PLSAJS", EReportGroup.PLS, ESector.ASRJS),
-	PLS_ASRUK ("7004", "PLSAUK", EReportGroup.PLS, ESector.ASRUK),
-	PLS_ASRUU ("7005", "PLSAUU", EReportGroup.PLS, ESector.ASRUU),
-	PLS_ASRUS ("7006", "PLSAUS", EReportGroup.PLS, ESector.ASRUS),
-	BPKSLB ("7100", "LBBPKS", EReportGroup.BPKSLB, ESector.BPKS),
-  BPTKLP ("7695", "LPBPTK", EReportGroup.BPTKLPP, ESector.BPTK),
-  BPTKLB ("7604", "LBBPTK", EReportGroup.BPTKLKB, ESector.BPTK),
-  BPTKLT ("7696", "LTBPTK", EReportGroup.BPTKLKT, ESector.BPTK),
-  BPTKLA ("7697", "LABPTK", EReportGroup.BPTKLAT, ESector.BPTK),
-    LKTB_DPPKK("7510", "LKDPK", EReportGroup.LKTB, ESector.DPPKK),
-    LKTB_DPPKS("7520", "LKDPS", EReportGroup.LKTB, ESector.DPPKS),
-    LKTB_DPLKK("7530", "LKDLK", EReportGroup.LKTB, ESector.DPLKK),
-    LKTB_DPLKS("7540", "LKDLS", EReportGroup.LKTB, ESector.DPLKS),
+	PLS_ASRJK ("7001", "PLSAJK", EReportGroup.PLS, ESector.ASRJK, ApiFeature.sendAndLogin()),
+	PLS_ASRJU ("7002", "PLSAJU", EReportGroup.PLS, ESector.ASRJU, ApiFeature.sendAndLogin()),
+	PLS_ASRJS ("7003", "PLSAJS", EReportGroup.PLS, ESector.ASRJS, ApiFeature.sendAndLogin()),
+	PLS_ASRUK ("7004", "PLSAUK", EReportGroup.PLS, ESector.ASRUK, ApiFeature.sendAndLogin()),
+	PLS_ASRUU ("7005", "PLSAUU", EReportGroup.PLS, ESector.ASRUU, ApiFeature.sendAndLogin()),
+	PLS_ASRUS ("7006", "PLSAUS", EReportGroup.PLS, ESector.ASRUS, ApiFeature.sendAndLogin()),
+	BPKSLB ("7100", "LBBPKS", EReportGroup.BPKSLB, ESector.BPKS, ApiFeature.sendAndLogin()),
+  BPTKLP ("7695", "LPBPTK", EReportGroup.BPTKLPP, ESector.BPTK, ApiFeature.sendAndLogin()),
+  BPTKLB ("7604", "LBBPTK", EReportGroup.BPTKLKB, ESector.BPTK, ApiFeature.sendAndLogin()),
+  BPTKLT ("7696", "LTBPTK", EReportGroup.BPTKLKT, ESector.BPTK, ApiFeature.sendAndLogin()),
+  BPTKLA ("7697", "LABPTK", EReportGroup.BPTKLAT, ESector.BPTK, ApiFeature.sendAndLogin()),
+  LKTB_DPPKK("7510", "LKDPK", EReportGroup.LKTB, ESector.DPPKK),
+  LKTB_DPPKS("7520", "LKDPS", EReportGroup.LKTB, ESector.DPPKS),
+  LKTB_DPLKK("7530", "LKDLK", EReportGroup.LKTB, ESector.DPLKK),
+  LKTB_DPLKS("7540", "LKDLS", EReportGroup.LKTB, ESector.DPLKS),
 	;
 	
 	@Getter
@@ -118,6 +116,20 @@ public enum EReport {
 	private EReportGroup reportGroup;
 	@Getter
 	private ESector sector;
+	@Getter
+	private ApiFeature apiFeature;
+
+  private EReport(String id, String code, EReportGroup reportGroup, ESector sector) {
+    this(id, code, reportGroup, sector, ApiFeature.none());
+  }
+
+  private EReport(String id, String code, EReportGroup reportGroup, ESector sector, ApiFeature apiFeature) {
+    this.id = id;
+    this.code = code;
+    this.reportGroup = reportGroup;
+    this.sector = sector;
+    this.apiFeature = apiFeature;
+  }
 	
 	public static Map<String, String> getMap() {
 		Map<String, String> res = new HashMap<>();
@@ -221,27 +233,34 @@ public enum EReport {
     return reportCode.equals(BPTKLB.getCode()) || reportCode.equals(BPTKLP.getCode()) || 
         reportCode.equals(BPTKLA.getCode()) || reportCode.equals(BPTKLT.getCode());
   }
-    public static boolean isLktb(String reportCode) {
-        return reportCode.equals(LKTB_DPPKK.getCode()) || reportCode.equals(LKTB_DPPKS.getCode()) ||
-                reportCode.equals(LKTB_DPLKK.getCode()) || reportCode.equals(LKTB_DPLKS.getCode());
-    }
 
-	public static boolean useApi(String reportCode) {
-		String tmp = reportCode;
-		if (reportCode.contains("|")) {
-			tmp = StringUtils.split(reportCode, '|')[1];
-		}
-		for (EReport eEnum : EReport.values()) {
-			if (eEnum.getCode().equals(tmp) && eEnum.getReportGroup().equals(EReportGroup.PLS)) {
-				return true;
-			} else if (eEnum.getCode().equals(tmp) && (eEnum.getReportGroup().equals(EReportGroup.BPKSLB)
-			    || eEnum.getReportGroup().equals(EReportGroup.BPTKLKB)
-			    || eEnum.getReportGroup().equals(EReportGroup.BPTKLKT)
-			    || eEnum.getReportGroup().equals(EReportGroup.BPTKLPP)
-          || eEnum.getReportGroup().equals(EReportGroup.BPTKLAT))) {
-			  return true;
-			}
-		}
-		return false;
-	}
+  public static boolean isLktb(String reportCode) {
+      return reportCode.equals(LKTB_DPPKK.getCode()) || reportCode.equals(LKTB_DPPKS.getCode()) ||
+              reportCode.equals(LKTB_DPLKK.getCode()) || reportCode.equals(LKTB_DPLKS.getCode());
+  }
+
+  public static boolean useLoginApi(String reportIdAndCode) {
+    return hasAnyApi(getReportCode(reportIdAndCode), ApiFeature.login());
+  }
+
+  public static boolean useSendApi(String reportIdAndCode) {
+    return hasAnyApi(getReportCode(reportIdAndCode), ApiFeature.send());
+  }
+
+  private static String getReportCode(String reportIdAndCode) {
+    String reportCode = reportIdAndCode;
+    if (reportIdAndCode.contains("|")) {
+      reportCode = StringUtils.split(reportIdAndCode, '|')[1];
+    }
+    return reportCode;
+  }
+
+  private static boolean hasAnyApi(String reportCode, ApiFeature feature) {
+    for (EReport eReport : EReport.values()) {
+      if (eReport.getCode().equals(reportCode) && eReport.apiFeature.hasAny(feature)) {
+        return true;
+      }
+    }
+    return false;
+  }
 }

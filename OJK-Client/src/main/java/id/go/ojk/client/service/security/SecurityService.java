@@ -59,12 +59,12 @@ public class SecurityService extends BaseService {
 	private final UserLoginModel userLoginModel = new UserLoginModel();
 
 	public boolean useApi() {
-		return EReport.useApi(userSession.getReportCode());
+		return EReport.useLoginApi(userSession.getReportCode());
 	}
 
 	public UserSession authenticate(String userId, String password, String report, boolean onlyOfflineUser) {
 		UserSession res = null;
-		if (EReport.useApi(report)) {
+		if (EReport.useLoginApi(report)) {
 			res = authOnline(userId, password, report);
 		}
 		if (res == null || res.getAuthenticationStatus() == null

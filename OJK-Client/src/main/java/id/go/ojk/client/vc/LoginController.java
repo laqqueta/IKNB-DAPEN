@@ -273,7 +273,7 @@ public class LoginController extends BaseDialogController {
 	    return;
 	  }
 
-	  if (EReport.useApi(report)) {
+	  if (EReport.useLoginApi(report)) {
 	    AlertUtil.showAlert(AlertType.INFORMATION, "Lupa Password", "Petunjuk Reset Password", securityService.getResetPasswordInstruction());
 	    return;
 	  }
