@@ -76,7 +76,7 @@ public enum ER5300DTUM implements IObject<KeyValueString> {
   }
 
   public static SegmentValidation genValidationTypeReference() {
-    int[] rows = { 2 };
+    int[] rows = { 5 };
     String selectPosCode = UtilMetadata.genDelimitedRow(getObjects(), rows, "|");
     return UtilSegmentValidation.genRegexReference1("2", selectPosCode);
   }

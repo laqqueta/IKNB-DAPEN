@@ -22,8 +22,6 @@ public enum ER5608INVSB implements IObject<KeyValueString> {
   private String key;
   private String value;
 
-  public static final String REF_SAHAM = "2007|2011";
-
   public static String getName() {
     return ER5608INVSB.class.getSimpleName().substring(6);
   }
@@ -65,11 +63,11 @@ public enum ER5608INVSB implements IObject<KeyValueString> {
     int[] cols = { 21, 20 };
     return UtilFieldValidation.genEqualsFormula(UtilMetadata.genMinusColumn(cols));
   }
-  
+
   public static ConditionalRequired genConditionalBagianPenyertaan() {
 //  Wajib DIISI jika kolom 2 = 2018
-//  Boleh KOSONG jika kolom 2 != 2018
+//  Wajib KOSONG jika kolom 2 != 2018
 //  Boleh KOSONG jika kode komponen != INVSB0100000000
-    return UtilFieldConditional.genExistPosAndComparatorHasValue2("M", "O", "O", INVSB0100000000.key, getRefNumber(), "2", "2018");
+    return UtilFieldConditional.genExistPosAndComparatorHasValue2("M", "N", "O", INVSB0100000000.key, getRefNumber(), "2", "2018");
   }
 }

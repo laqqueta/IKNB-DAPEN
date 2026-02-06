@@ -56,18 +56,19 @@ public class LpRkpstJkk extends BaseMetadata {
     fs.add(sf(6, null, "Lokasi DATI II", sv(C, 1, 8, refTable /*Huruf Angka :*/)
         .confRegex(PATTERN_REFERENCE_1)
         .confReference(EHeaderMetadataShared.LOKASI_DATI_2.getObject())
-        .confConditionalRequired(ER5901RKPST.genConditionalExistA())));
+        .confConditionalRequired(ER5901RKPST.genConditionalExistA()))
+        .addFieldValidations(ER5901RKPST.genDati2Validation()));
     fs.add(sf(7, null, "Lokasi DATI I", sv(C, 1, 8, refTable /*Huruf Angka :*/)
         .confRegex(PATTERN_REFERENCE_1)
         .confReference(EHeaderMetadataShared.LOKASI_DATI_1.getObject())
         .confConditionalRequired(ER5901RKPST.genConditionalExistA())));
     fs.add(sf(8, null, "Pemberi Kerja Penerima Upah", sv(M, 1, 10, numeric)));
     fs.add(sf(9, null, "Peserta Penerima Upah", sv(M, 1, 10, numeric)));
-    fs.add(sf(10, null, "Pemberi Kerja Wadah / Jenis Usaha Bukan Penerima Upah", sv(M, 1, 10, numeric)));
+    fs.add(sf(10, null, "Pemberi Kerja / Wadah / Jenis Usaha Bukan Penerima Upah", sv(M, 1, 10, numeric)));
     fs.add(sf(11, null, "Peserta Bukan Penerima Upah", sv(M, 1, 10, numeric)));
     fs.add(sf(12, null, "Proyek Pekerja Jasa Konstruksi", sv(M, 1, 10, numeric)));
     fs.add(sf(13, null, "Peserta Pekerja Jasa Konstruksi", sv(M, 1, 10, numeric)));
-    fs.add(sf(14, null, "Segmen Peserta", sv(C, 1, 10, refTable /*Huruf Angka .*/)
+    fs.add(sf(14, null, "Segmen Peserta", sv(C, 1, 8, refTable /*Huruf Angka .*/)
         .confRegex(PATTERN_REFERENCE_4)
         .confReference(EHeaderMetadataShared.SEGMEN_PESERTA_LPP.getObject())
         .confConditionalRequired(ER5901RKPST.genConditionalExistA())));
@@ -90,7 +91,8 @@ public class LpRkpstJkk extends BaseMetadata {
         .addFieldValidations(ER5901RKPST.genValidationTotalJenisKelaminB()));
     fs.add(sf(29, null, "Peserta Masuk", sv(M, 1, 10, numeric)));
     fs.add(sf(30, null, "Peserta Keluar", sv(M, 1, 10, numeric)));
-    fs.add(sf(31, null, "Peserta Aktif", sv(M, 1, 10, numeric)));
+    fs.add(sf(31, null, "Peserta Aktif", sv(M, 1, 10, numeric))
+        .addFieldValidations(ER5901RKPST.genValidationTotalPesertaAktif()));
     fs.add(sf(32, null, "Peserta Nonaktif", sv(M, 1, 10, numeric)));
     fs.add(sf(33, null, "Total Peserta", sv(M, 1, 10, numeric))
         .addFieldValidations(ER5901RKPST.genValidationTotalPeserta()));

@@ -13,6 +13,8 @@ import id.go.ojk.conf.client.UtilFieldConditional;
 import id.go.ojk.conf.client.UtilFieldValidation;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
+import id.go.ojk.conf.client.field.reference.ER1157LokasiDati1;
+import id.go.ojk.conf.client.field.reference.ER1206LokasiDati2;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
 import lombok.AccessLevel;
@@ -22,8 +24,7 @@ import lombok.Getter;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ER6103RDJHT implements IObject<KeyValueString> {
   RDJHT0100000000("RDJHT0100000000", "Detail"),
-  RDJHT0200000000("RDJHT0200000000", "Total"),
-  ;
+  RDJHT0200000000("RDJHT0200000000", "Total"),;
 
   @Getter
   private String key;
@@ -84,6 +85,10 @@ public enum ER6103RDJHT implements IObject<KeyValueString> {
   public static String genFieldSave() {
     return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(9, 14), getObjects());
   }
+  
+  public static String genFieldSaveForm() {
+    return UtilMetadata.genFieldSave("14", getObjects());
+  }
 
   public static ConditionalRequired genConditionalExistA() {
     return UtilFieldConditional.genExistPosAndHasReference("M", "N", RDJHT0100000000.key, getRefNumber(), "O");
@@ -97,5 +102,10 @@ public enum ER6103RDJHT implements IObject<KeyValueString> {
 
   public static FieldValidation genValidationSaldoAkhir() {
     return UtilFieldValidation.genEqualsExceptPosFormula(UtilMetadata.genPlusColumn(9, 13), RDJHT0200000000.key);
+  }
+
+  public static FieldValidation genDati2Validation() {
+    return UtilFieldValidation.getEqualsDati2And1(RDJHT0100000000.key, 7, ER1157LokasiDati1.getRefNumber(),
+        ER1206LokasiDati2.getRefNumber());
   }
 }

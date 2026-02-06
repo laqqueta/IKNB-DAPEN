@@ -17,10 +17,10 @@ public enum EReportGroup {
 	TPP ("Laporan TPPU, TPPT, PPSPM"),
 	BPKSLB ("Laporan Bulanan"),
 	BPTKLKB ("Laporan Keuangan Bulanan"),
-	BPTKLPP ("Laporan Pengelolaan Program"),
+	BPTKLPP ("Laporan Pengelolaan Program (LPP)"),
 	BPTKLKT ("Laporan Keuangan Tahunan"),
-	BPTKLAT ("Laporan Aktuaris Tahunan Jamsostek"),
-    LKTB("Laporan Keuangan Tahunan dan Bulanan"),
+  BPTKLAT ("Laporan Aktuaris Tahunan Jaminan Sosial Ketenagakerjaan"),
+  LKTB("Laporan Keuangan Tahunan dan Bulanan"),
 	;
 
 	@Getter

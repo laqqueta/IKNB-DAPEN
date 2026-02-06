@@ -168,12 +168,12 @@ public enum ER5904RKPIU implements IObject<KeyValueString> {
 
   public static FieldValidation genValidationTotalPemberiKerja() {
     int[] cols = { 2, 4, 6 };
-    return UtilFieldValidation.genEqualsExceptPosFormula(UtilMetadata.genPlusColumn(cols), RKPIU0100000000.getValue());
+    return UtilFieldValidation.genEqualsFormula(UtilMetadata.genPlusColumn(cols));
   }
 
   public static FieldValidation genValidationTotalPeserta() {
     int[] cols = { 3, 5, 7 };
-    return UtilFieldValidation.genEqualsExceptPosFormula(UtilMetadata.genPlusColumn(cols), RKPIU0100000000.getValue());
+    return UtilFieldValidation.genEqualsFormula(UtilMetadata.genPlusColumn(cols));
   }
 
   private static SegmentValidation genPlusValidation(String selectField, IObject<KeyValueString> selectPos,
@@ -190,7 +190,7 @@ public enum ER5904RKPIU implements IObject<KeyValueString> {
     String selectPosCode = RKPIU0400000000.key;
     int cols[] = { 8, 10 };
     String comparatorColumn = UtilMetadata.genPlusColumn(cols);
-    String errMsg = "Total Kelompok Usaha|Total Pemberi Kerja Penerima Upah + Total Pemberi Kerja Wadah/Jenis Usaha Bukan Penerima Upah, pada form " + RKPST;
+    String errMsg = "Total Kelompok Usaha|Total Pemberi Kerja Penerima Upah + Total Pemberi Kerja / Wadah /Jenis Usaha Bukan Penerima Upah, pada form " + RKPST;
     return UtilSegmentValidation.genEqualsFormColumCalculation(selectColumn, selectPosCode, comparatorColumn,
         ER5901RKPST.RKPST0200000000.getKeyForm(), errMsg, 2);
   }

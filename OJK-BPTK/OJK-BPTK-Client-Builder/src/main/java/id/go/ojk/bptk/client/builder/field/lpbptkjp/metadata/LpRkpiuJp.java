@@ -46,7 +46,6 @@ public class LpRkpiuJp extends BaseMetadata {
     res.addSegmentValidations(ER6305RKPIU.genValidatonFormTotalKelompokUsahaA());
     res.addSegmentValidations(ER6305RKPIU.genValidatonFormTotalKelompokUsahaB());
     res.addSegmentValidations(ER6305RKPIU.genValidatonFormTotalJenisKelamin());
-    res.addSegmentValidations(ER6305RKPIU.genValidatonFormTotalJenisKelamin());
     res.addSegmentValidations(ER6305RKPIU.genValidatonFormTotalKelompokUmur());
     res.addSegmentValidations(ER6305RKPIU.genValidatonFormTotalKewarganegaraan());
     res.addSegmentValidations(ER6305RKPIU.genValidatonFormTotalKelompokUpah());

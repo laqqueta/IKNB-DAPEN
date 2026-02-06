@@ -5,9 +5,10 @@ import static id.go.ojk.client.model.config.SimpleValidation.PATTERN_REFERENCE_4
 import static id.go.ojk.client.model.config.SimpleValidation.patternAlfaNumeric;
 import static id.go.ojk.lib.client.model.config.DataType.alfaNumeric;
 import static id.go.ojk.lib.client.model.config.DataType.all;
-import static id.go.ojk.lib.client.model.config.DataType.*;
+import static id.go.ojk.lib.client.model.config.DataType.numericNegatif;
 import static id.go.ojk.lib.client.model.config.DataType.refTable;
-import static id.go.ojk.lib.client.model.constant.RequiredCondition.*;
+import static id.go.ojk.lib.client.model.constant.RequiredCondition.C;
+import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +37,7 @@ public class LpRdjht extends BaseMetadata {
     res.setRequiredPos(ER6103RDJHT.genRequiredPos());
     res.setUniquePos(ER6103RDJHT.genUniquePos());
     res.setSavePos(ER6103RDJHT.genFieldSave());
+    res.setSavePosForm(ER6103RDJHT.genFieldSaveForm());
 
     res.addSegmentValidations(ER6103RDJHT.genValidationTotal());
 
@@ -54,12 +56,13 @@ public class LpRdjht extends BaseMetadata {
     fs.add(sf(6, null, "Lokasi DATI II", sv(C, 1, 8, refTable /*Huruf Angka :*/)
         .confRegex(PATTERN_REFERENCE_1)
         .confReference(EHeaderMetadataShared.LOKASI_DATI_2.getObject())
-        .confConditionalRequired(ER6103RDJHT.genConditionalExistA())));
+        .confConditionalRequired(ER6103RDJHT.genConditionalExistA()))
+        .addFieldValidations(ER6103RDJHT.genDati2Validation()));
     fs.add(sf(7, null, "Lokasi DATI I", sv(C, 1, 8, refTable /*Huruf Angka :*/)
         .confRegex(PATTERN_REFERENCE_1)
         .confReference(EHeaderMetadataShared.LOKASI_DATI_1.getObject())
         .confConditionalRequired(ER6103RDJHT.genConditionalExistA())));
-    fs.add(sf(8, null, "Segmen Peserta", sv(C, 1, 10, refTable /*Huruf Angka .*/)
+    fs.add(sf(8, null, "Segmen Peserta", sv(C, 1, 8, refTable /*Huruf Angka .*/)
         .confRegex(PATTERN_REFERENCE_4)
         .confReference(EHeaderMetadataShared.SEGMEN_PESERTA_LPP.getObject())
         .confConditionalRequired(ER6103RDJHT.genConditionalExistA())));

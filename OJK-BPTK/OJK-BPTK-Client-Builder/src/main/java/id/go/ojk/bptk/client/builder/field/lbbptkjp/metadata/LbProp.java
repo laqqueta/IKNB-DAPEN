@@ -39,7 +39,7 @@ public class LbProp extends BaseMetadata {
     fs.add(sf(2, null, "Jenis Properti", sv(M, 1, 10, refTable)
         .confReference(EHeaderMetadataShared.JENIS_PROPERTI.getObject())
         .confRegex(patternAlfaNumeric)));
-    fs.add(sf(3, null, "Bukti Pemilikan ", sv(M, 1, 10, refTable)
+    fs.add(sf(3, null, "Bukti Pemilikan", sv(M, 1, 10, refTable)
         .confReference(EHeaderMetadataShared.BUKTI_PEMILIKAN_TANAH_BANGUNAN.getObject())
         .confRegex(PATTERN_REFERENCE_1)));
     fs.add(sf(4, null, "Status Pemilikan Tanah & Bangunan", sv(M, 1, 10, refTable)

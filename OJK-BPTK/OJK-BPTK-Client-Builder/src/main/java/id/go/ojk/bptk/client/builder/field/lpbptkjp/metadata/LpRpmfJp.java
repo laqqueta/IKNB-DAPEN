@@ -58,12 +58,13 @@ public class LpRpmfJp extends BaseMetadata {
     fs.add(sf(6, null, "Lokasi DATI II", sv(C, 1, 8, refTable /*Huruf Angka :*/)
         .confRegex(PATTERN_REFERENCE_1)
         .confReference(EHeaderMetadataShared.LOKASI_DATI_2.getObject())
-        .confConditionalRequired(ER6304RPMF.genConditionalExistA())));
+        .confConditionalRequired(ER6304RPMF.genConditionalExistA()))
+        .addFieldValidations(ER6304RPMF.genDati2Validation()));
     fs.add(sf(7, null, "Lokasi DATI I", sv(C, 1, 8, refTable /*Huruf Angka :*/)
         .confRegex(PATTERN_REFERENCE_1)
         .confReference(EHeaderMetadataShared.LOKASI_DATI_1.getObject())
         .confConditionalRequired(ER6304RPMF.genConditionalExistA())));
-    fs.add(sf(8, null, "Segmen Peserta", sv(C, 1, 10, refTable /*Huruf Angka .*/)
+    fs.add(sf(8, null, "Segmen Peserta", sv(C, 1, 8, refTable /*Huruf Angka .*/)
         .confRegex(PATTERN_REFERENCE_4)
         .confReference(EHeaderMetadataShared.SEGMEN_PESERTA_LPP.getObject())
         .confConditionalRequired(ER6304RPMF.genConditionalExistA())));

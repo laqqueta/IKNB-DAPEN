@@ -5,6 +5,7 @@ import java.util.List;
 
 import id.go.ojk.bptk.client.builder.field.EFormLbbptkjkk;
 import id.go.ojk.bptk.client.builder.field.lbbptkbdn.metadata.MetadataLbbptkbdn;
+import id.go.ojk.bptk.client.builder.field.ltbptk.metadata.MetadataLtbptkbdn;
 import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
@@ -17,7 +18,7 @@ import lombok.Getter;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ER5407RAS implements IObject<KeyValueString> {
   RAS0101010000("RAS0101010000", "a. Piutang Iuran"),
-  RAS0101020000("RAS0101020000", "b. Pendapatan Iuran setahun"),
+  RAS0101020000("RAS0101020000", "b. Pendapatan Iuran s.d bulan laporan"),
   RAS0101030000("RAS0101030000", "Rasio [1 - ( a : b )], Rasio Kolektibilitas Iuran"),
   RAS0102010000("RAS0102010000", "a. Beban jaminan kecelakaan kerja"),
   RAS0102020000("RAS0102020000", "b. Beban cadangan teknis"),
@@ -37,7 +38,7 @@ public enum ER5407RAS implements IObject<KeyValueString> {
   RAS0303030000("RAS0303030000", "Rasio ( a : b ), Rasio Investasi Terhadap Cadangan Teknis"),
   RAS0401010000("RAS0401010000", "a. Hasil Investasi"),
   RAS0401020000("RAS0401020000", "b. Rata-Rata Investasi"),
-  RAS0401030000("RAS0401030000", "Rasio (disetahunkan) ( a : b ), Rasio Hasil Investasi"),
+  RAS0401030000("RAS0401030000", "Rasio (disetahunkan) ( a : b )"),
   RAS0501010000("RAS0501010000", "a. Aset Neto Periode Berjalan"),
   RAS0501020000("RAS0501020000", "b. Aset Neto Periode Sebelumnya"),
   RAS0501030000("RAS0501030000", "Rasio [( a : b ) - 1], Rasio Pertumbuhan Aset Neto"),;
@@ -133,7 +134,8 @@ public enum ER5407RAS implements IObject<KeyValueString> {
   }
 
   public static SegmentValidation genRowValidation20(String reportCode) {
-    if (reportCode.equalsIgnoreCase(MetadataLbbptkbdn.REPORT_CODE)) {
+    if (reportCode.equalsIgnoreCase(MetadataLbbptkbdn.REPORT_CODE) ||
+        reportCode.equalsIgnoreCase(MetadataLtbptkbdn.REPORT_CODE)) {
       return genRowValidation20Bdn();
     } else {
       return genRowValidation20Jkk();
@@ -241,7 +243,7 @@ public enum ER5407RAS implements IObject<KeyValueString> {
       IObject<KeyValueString> posCode2, IObject<KeyValueString> expected) {
     KeyValueString kv1 = posCode1.getObject();
     KeyValueString kv2 = posCode2.getObject();
-    String errMsg = "Rasio (" + kv1.getValue() + " : " + kv2.getValue() + " ) / ( bulan periode laporan * 12) ";
+    String errMsg = "Rasio (disetahunkan) (" + kv1.getValue() + " : " + kv2.getValue() + ")";
     return genEqualsRatio(selectField, posCode1, posCode2, expected, true, errMsg);
   }
 

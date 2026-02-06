@@ -13,6 +13,8 @@ import id.go.ojk.conf.client.UtilFieldConditional;
 import id.go.ojk.conf.client.UtilFieldValidation;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
+import id.go.ojk.conf.client.field.reference.ER1157LokasiDati1;
+import id.go.ojk.conf.client.field.reference.ER1206LokasiDati2;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
 import lombok.AccessLevel;
@@ -28,6 +30,7 @@ public enum ER6301RKPST implements IObject<KeyValueString> {
   private String key;
   private String value;
 
+  public static final String IDX_TOTAL_PESERTA_AKTIF = "27";
   public static final String IDX_TOTAL_KELOMPOK_UMUR = "43";
   public static final String IDX_TOTAL_WN = "46";
 
@@ -82,7 +85,7 @@ public enum ER6301RKPST implements IObject<KeyValueString> {
   public static String genUniquePos() {
     return RKPST0200000000.key;
   }
-  
+
   public static String genFieldSave() {
     return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumnExcept(8, 47, new int[] { 10 }), getObjects());
   }
@@ -97,7 +100,8 @@ public enum ER6301RKPST implements IObject<KeyValueString> {
 
   public static SegmentValidation genValidationTotal() {
     String errMsg = "Total|Penjumlahan detail";
-    return UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumnExcept(8, 47, new int[] { 10 }), RKPST0200000000.key, RKPST0100000000.key, errMsg);
+    return UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumnExcept(8, 47, new int[] { 10 }),
+        RKPST0200000000.key, RKPST0100000000.key, errMsg);
   }
 
   public static FieldValidation genValidationTotalLapanganUsaha() {
@@ -109,12 +113,17 @@ public enum ER6301RKPST implements IObject<KeyValueString> {
   }
 
   public static FieldValidation genValidationTotalJenisKelaminB() {
-    String errMsg = "Total Jenis Kelamin|Total Kelompok Umur";
-    return UtilFieldValidation.genEqualsPosFormula2(IDX_TOTAL_KELOMPOK_UMUR, RKPST0200000000.key, errMsg);
+    String errMsg = "Total Jenis Kelamin|Total Peserta Aktif";
+    return UtilFieldValidation.genEqualsPosFormula2(IDX_TOTAL_PESERTA_AKTIF, RKPST0200000000.key, errMsg);
   }
 
   public static FieldValidation genValidationTotalPeserta() {
     return UtilFieldValidation.genEqualsExceptPosFormula(UtilMetadata.genPlusColumn(27, 28), RKPST0200000000.key);
+  }
+
+  public static FieldValidation genValidationTotalPesertaAktif() {
+    String errMsg = "Total Peserta Aktif|Total Kelompok Umur";
+    return UtilFieldValidation.genEqualsPosFormula2(IDX_TOTAL_KELOMPOK_UMUR, RKPST0200000000.key, errMsg);
   }
 
   public static FieldValidation genValidationTotalKelompokUmurA() {
@@ -128,5 +137,10 @@ public enum ER6301RKPST implements IObject<KeyValueString> {
 
   public static FieldValidation genValidationTotalKewarganegaraan() {
     return UtilFieldValidation.genEqualsExceptPosFormula(UtilMetadata.genPlusColumn(44, 45), RKPST0200000000.key);
+  }
+
+  public static FieldValidation genDati2Validation() {
+    return UtilFieldValidation.getEqualsDati2And1(RKPST0100000000.key, 7, ER1157LokasiDati1.getRefNumber(),
+        ER1206LokasiDati2.getRefNumber());
   }
 }

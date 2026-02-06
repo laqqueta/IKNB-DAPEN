@@ -14,6 +14,8 @@ import id.go.ojk.bptk.client.builder.field.EFormLbbptkjkk;
 import id.go.ojk.bptk.client.builder.field.lbbptkjkk.reference.EHeaderMetadataLbbptkjkk;
 import id.go.ojk.bptk.client.builder.field.lbbptkjkk.reference.ER5405AI;
 import id.go.ojk.bptk.client.builder.field.lbbptkjkm.metadata.MetadataLbbptkjkm;
+import id.go.ojk.bptk.client.builder.field.ltbptk.metadata.MetadataLtbptkjkk;
+import id.go.ojk.bptk.client.builder.field.ltbptk.metadata.MetadataLtbptkjkm;
 import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.conf.client.BaseMetadata;
@@ -37,9 +39,11 @@ public class LbAi extends BaseMetadata {
     res.addSegmentValidations(ER5405AI.genRowValidation12a());
 
     /* -- ANTAR FORM -- */
-    if (reportCode.equalsIgnoreCase(MetadataLbbptkjkk.REPORT_CODE)) {
+    if (reportCode.equalsIgnoreCase(MetadataLbbptkjkk.REPORT_CODE) ||
+        reportCode.equalsIgnoreCase(MetadataLtbptkjkk.REPORT_CODE)) {
       res.addSegmentValidations(ER5405AI.genRowValidation12Jkk());
-    } else if (reportCode.equalsIgnoreCase(MetadataLbbptkjkm.REPORT_CODE)) {
+    } else if (reportCode.equalsIgnoreCase(MetadataLbbptkjkm.REPORT_CODE) ||
+        reportCode.equalsIgnoreCase(MetadataLtbptkjkm.REPORT_CODE)) {
       res.addSegmentValidations(ER5405AI.genRowValidation12Jkm());
     }
 

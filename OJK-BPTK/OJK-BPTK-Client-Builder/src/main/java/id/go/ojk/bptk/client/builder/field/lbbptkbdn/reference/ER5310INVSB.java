@@ -5,6 +5,7 @@ import java.util.List;
 
 import id.go.ojk.bptk.client.builder.field.lbbptkbdn.metadata.MetadataLbbptkbdn;
 import id.go.ojk.bptk.client.builder.field.lbbptkjkk.reference.ER5401LPK;
+import id.go.ojk.bptk.client.builder.field.ltbptk.metadata.MetadataLtbptkbdn;
 import id.go.ojk.client.model.config.validation.conditional.ConditionalRequired;
 import id.go.ojk.client.model.config.validation.field.FieldValidation;
 import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
@@ -25,8 +26,6 @@ public enum ER5310INVSB implements IObject<KeyValueString> {
   @Getter
   private String key;
   private String value;
-
-  public static final String REF_SAHAM = "2007|2011";
 
   public static String getName() {
     return ER5310INVSB.class.getSimpleName().substring(6);
@@ -70,13 +69,10 @@ public enum ER5310INVSB implements IObject<KeyValueString> {
     return UtilFieldValidation.genEqualsFormula(UtilMetadata.genMinusColumn(cols));
   }
 
-  public static ConditionalRequired genConditionalExist18() {
-    return UtilFieldConditional.genComparatorHasValue("M", "O", "2", "2007|2011|2018");
-  }
-
   /* -- ANTAR FORM -- */
   public static SegmentValidation genRowValidation31(String reportCode) {
-    if (reportCode.equalsIgnoreCase(MetadataLbbptkbdn.REPORT_CODE)) {
+    if (reportCode.equalsIgnoreCase(MetadataLbbptkbdn.REPORT_CODE) ||
+        reportCode.equalsIgnoreCase(MetadataLtbptkbdn.REPORT_CODE)) {
       return genRowValidation31Bdn();
     } else {
       return genRowValidation31Jkk();
@@ -99,10 +95,15 @@ public enum ER5310INVSB implements IObject<KeyValueString> {
     return UtilSegmentValidation.genEqualsFormulaForm4("30", INVSB0100000000.key, "2", comparatorField, errMsg, 2);
   }
 
+  public static ConditionalRequired genConditionalUnitPenyertaan() {
+//    return UtilFieldConditional.genComparatorHasValue("M", "N", "2", "2007|2011|20111|20112|20113|20114");
+    return UtilFieldConditional.genComparatorHasValue("M", "N", "2", "2007|2011");
+  }
+
   public static ConditionalRequired genConditionalBagianPenyertaan() {
 //  Wajib DIISI jika kolom 2 = 2018
-//  Boleh KOSONG jika kolom 2 != 2018
+//  Wajib KOSONG jika kolom 2 != 2018
 //  Boleh KOSONG jika kode komponen != INVSB0100000000
-    return UtilFieldConditional.genExistPosAndComparatorHasValue2("M", "O", "O", INVSB0100000000.key, getRefNumber(), "2", "2018");
+    return UtilFieldConditional.genExistPosAndComparatorHasValue2("M", "N", "O", INVSB0100000000.key, getRefNumber(), "2", "2018");
   }
 }

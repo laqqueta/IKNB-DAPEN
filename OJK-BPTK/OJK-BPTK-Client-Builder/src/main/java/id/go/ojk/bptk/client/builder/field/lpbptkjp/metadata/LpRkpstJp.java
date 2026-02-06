@@ -55,14 +55,15 @@ public class LpRkpstJp extends BaseMetadata {
     fs.add(sf(6, null, "Lokasi DATI II", sv(C, 1, 8, refTable /*Huruf Angka :*/)
         .confRegex(PATTERN_REFERENCE_1)
         .confReference(EHeaderMetadataShared.LOKASI_DATI_2.getObject())
-        .confConditionalRequired(ER6301RKPST.genConditionalExistA())));
+        .confConditionalRequired(ER6301RKPST.genConditionalExistA()))
+        .addFieldValidations(ER6301RKPST.genDati2Validation()));
     fs.add(sf(7, null, "Lokasi DATI I", sv(C, 1, 8, refTable /*Huruf Angka :*/)
         .confRegex(PATTERN_REFERENCE_1)
         .confReference(EHeaderMetadataShared.LOKASI_DATI_1.getObject())
         .confConditionalRequired(ER6301RKPST.genConditionalExistA())));
     fs.add(sf(8, null, "Pemberi Kerja Penerima Upah", sv(M, 1, 10, numeric)));
     fs.add(sf(9, null, "Peserta Penerima Upah", sv(M, 1, 10, numeric)));
-    fs.add(sf(10, null, "Segmen Peserta", sv(C, 1, 10, refTable /*Huruf Angka .*/)
+    fs.add(sf(10, null, "Segmen Peserta", sv(C, 1, 8, refTable /*Huruf Angka .*/)
         .confRegex(PATTERN_REFERENCE_4)
         .confReference(EHeaderMetadataShared.SEGMEN_PESERTA_LPP.getObject())
         .confConditionalRequired(ER6301RKPST.genConditionalExistA())));
@@ -85,7 +86,8 @@ public class LpRkpstJp extends BaseMetadata {
         .addFieldValidations(ER6301RKPST.genValidationTotalJenisKelaminB()));
     fs.add(sf(25, null, "Peserta Masuk", sv(M, 1, 10, numeric)));
     fs.add(sf(26, null, "Peserta Keluar", sv(M, 1, 10, numeric)));
-    fs.add(sf(27, null, "Peserta Aktif", sv(M, 1, 10, numeric)));
+    fs.add(sf(27, null, "Peserta Aktif", sv(M, 1, 10, numeric))
+        .addFieldValidations(ER6301RKPST.genValidationTotalPesertaAktif()));
     fs.add(sf(28, null, "Peserta Nonaktif", sv(M, 1, 10, numeric)));
     fs.add(sf(29, null, "Total Peserta", sv(M, 1, 10, numeric))
         .addFieldValidations(ER6301RKPST.genValidationTotalPeserta()));

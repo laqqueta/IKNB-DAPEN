@@ -236,6 +236,8 @@ public class ValidationErrorCode {
 	public static final ValidationErrorCode E04_01_CRLF					= bvec("04",	 "01",	"Cr Lf",							"Karakter ganti baris harus CR LF");
 	public static final ValidationErrorCode E04_02_DETAIL_COLUMN_AMOUNT = bvec("04",   "02",  "Jumlah kolom Detail",        "Jumlah kolom harus %1$s kolom");
 
+	public static final ValidationErrorCode E04_20_DATI2_DATI1 = bvec("04",   "20",  "DATI II dan I",        "Lokasi DATI II %1$s tidak sesuai dengan DATI I %2$s");
+
 	//Footer
 	//-Digunakan @RBB
 	public static final ValidationErrorCode E05_00_FLAG_F01				= bvec("05", 	 "00", 	"Footer - Flag F01", 				"Error di Kolom 1 'Flag Footer', harus berisi 'F01'");

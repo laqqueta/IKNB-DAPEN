@@ -48,7 +48,7 @@ public enum ER5605RAS implements IObject<KeyValueString> {
   RAS0304030000("RAS0304030000", "Rasio ( a : b ), Rasio Investasi Terhadap Total Aset"),
   RAS0401010000("RAS0401010000", "a. Hasil Investasi"),
   RAS0401020000("RAS0401020000", "b. Rata-Rata Investasi"),
-  RAS0401030000("RAS0401030000", "Rasio (disetahunkan) ( a : b ), Rasio Hasil Investasi"),
+  RAS0401030000("RAS0401030000", "Rasio (disetahunkan) ( a : b )"),
   RAS0501010000("RAS0501010000", "a. Aset Neto Periode Berjalan"),
   RAS0501020000("RAS0501020000", "b. Aset Neto Periode Sebelumnya"),
   RAS0501030000("RAS0501030000", "Rasio [( a : b ) - 1], Rasio Pertumbuhan Aset Neto"),;
@@ -197,7 +197,7 @@ public enum ER5605RAS implements IObject<KeyValueString> {
       IObject<KeyValueString> posCode2, IObject<KeyValueString> expected) {
     KeyValueString kv1 = posCode1.getObject();
     KeyValueString kv2 = posCode2.getObject();
-    String errMsg = "Rasio (" + kv1.getValue() + " : " + kv2.getValue() + " ) / ( bulan periode laporan * 12) ";
+    String errMsg = "Rasio (disetahunkan) (" + kv1.getValue() + " : " + kv2.getValue() + ")";
     return genEqualsRatio(selectField, posCode1, posCode2, expected, true, errMsg);
   }
 }

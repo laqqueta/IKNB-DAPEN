@@ -57,22 +57,19 @@ public class LbInvsb extends BaseMetadata {
     fs.add(sf(9, null, "Lembaga Pemeringkat", sv(O, 1, 10, refTable)
         .confReference(EHeaderMetadataShared.LEMBAGA_PEMERINGKAT.getObject())
         .confRegex(PATTERN_REFERENCE_1)));
-    fs.add(sf(10, null, "Jangka Waktu, Tanggal Mulai/Tanggal Penerbitan", sv(M, 1, 8, date))
+    fs.add(sf(10, null, "Jangka Waktu, Tanggal Mulai/Tanggal Penerbitan", sv(M, 8, 8, date))
         .addFieldValidations(ER5808INVSB.genFieldValidation11()));
-    fs.add(sf(11, null, "Jangka Waktu, Tanggal Jatuh Tempo", sv(M, 1, 8, date))
+    fs.add(sf(11, null, "Jangka Waktu, Tanggal Jatuh Tempo", sv(M, 8, 8, date))
         .addFieldValidations(ER5808INVSB.genFieldValidation12()));
-    fs.add(sf(12, null, "Sektor Ekonomi", sv(C, 1, 10, refTable)
+    fs.add(sf(12, null, "Sektor Ekonomi", sv(M, 1, 10, refTable)
         .confReference(EHeaderMetadataShared.SEKTOR_EKONOMI.getObject())
-        .confRegex(PATTERN_REFERENCE_1)
-        .confConditionalRequired(ER5808INVSB.genConditionalBagianPenyertaan())));
-    fs.add(sf(13, null, "Lokasi", sv(C, 1, 10, refTable)
+        .confRegex(PATTERN_REFERENCE_1)));
+    fs.add(sf(13, null, "Lokasi", sv(M, 1, 10, refTable)
         .confReference(EHeaderMetadataShared.LOKASI_DATI_2.getObject())
-        .confRegex(PATTERN_REFERENCE_1)
-        .confConditionalRequired(ER5808INVSB.genConditionalBagianPenyertaan())));
-    fs.add(sf(14, null, "Tujuan Pemilikan", sv(C, 1, 10, refTable)
+        .confRegex(PATTERN_REFERENCE_1)));
+    fs.add(sf(14, null, "Tujuan Pemilikan", sv(M, 1, 10, refTable)
         .confReference(EHeaderMetadataShared.TUJUAN_KEPEMILIKAN.getObject())
-        .confRegex(PATTERN_REFERENCE_1)
-        .confConditionalRequired(ER5808INVSB.genConditionalBagianPenyertaan())));
+        .confRegex(PATTERN_REFERENCE_1)));
     fs.add(sf(15, null, "Syariah/Non Syariah", sv(M, 1, 10, refTable)
         .confReference(EHeaderMetadataShared.SYARIAH_KONVENSIONAL.getObject())
         .confRegex(PATTERN_REFERENCE_1)));
@@ -80,16 +77,11 @@ public class LbInvsb extends BaseMetadata {
         .addFieldValidations(ER5808INVSB.genFieldValidation17()));
     fs.add(sf(17, null, "Suku Bunga atau Kupon, Jenis Suku Bunga atau Kupon", sv(M, 1, 10, all)
         .confRegex(PATTERN_REFERENCE_1)));
-    fs.add(sf(18, null, "Unit Penyertaan", sv(C, 1, 20, numeric)
-        .confConditionalRequired(ER5808INVSB.genConditionalBagianPenyertaan())));
-    fs.add(sf(19, null, "Nilai Aktiva Bersih (NAB) atau Harga Saham / Nilai Nominal", sv(C, 1, 20, numeric)
-        .confConditionalRequired(ER5808INVSB.genConditionalBagianPenyertaan())));
-    fs.add(sf(20, null, "Nilai Perolehan/Harga Perolehan", sv(C, 1, 20, numeric)
-        .confConditionalRequired(ER5808INVSB.genConditionalBagianPenyertaan())));
-    fs.add(sf(21, null, "Nilai Wajar/Harga Pasar", sv(C, 1, 20, numeric)
-        .confConditionalRequired(ER5808INVSB.genConditionalBagianPenyertaan())));
-    fs.add(sf(22, null, "Selisih Penilaian Investasi", sv(C, 1, 20, numeric)
-        .confConditionalRequired(ER5808INVSB.genConditionalBagianPenyertaan()))
+    fs.add(sf(18, null, "Unit Penyertaan", sv(M, 1, 20, numeric)));
+    fs.add(sf(19, null, "Nilai Aktiva Bersih (NAB) atau Harga Saham / Nilai Nominal", sv(M, 1, 20, numeric)));
+    fs.add(sf(20, null, "Nilai Perolehan/Harga Perolehan", sv(M, 1, 20, numeric)));
+    fs.add(sf(21, null, "Nilai Wajar/Harga Pasar", sv(M, 1, 20, numeric)));
+    fs.add(sf(22, null, "Selisih Penilaian Investasi", sv(M, 1, 20, numeric))
         .addFieldValidations(ER5808INVSB.genFieldValidation23()));
     fs.add(sf(23, null, "Hasil Investasi", sv(M, 1, 20, numeric)));
 
