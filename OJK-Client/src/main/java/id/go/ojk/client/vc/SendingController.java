@@ -260,14 +260,14 @@ public class SendingController extends BaseController {
 	@FXML
 	private void handleSend(){
 		try {
-			if (securityService.useApi() && !securityService.getUserSession().hasOnlineSession()
+			if (securityService.useLoginApi() && !securityService.getUserSession().hasOnlineSession()
 					&& !UtilDialog.reLogin(securityService)) {
 				AlertUtil.showAlert(AlertType.ERROR, "Kesalahan", "Kesalahan", "Login Gagal");
 				return;
 			}
 			sendingModel.getProgressModel().updateStatus(StatusCallback.start);
 			int jenisPelaporan = Integer.parseInt(sendingModel.getSignatureData().get(sigKey_jenisPelaporan));
-			if (securityService.useApi()) {
+			if (securityService.useSendApi()) {
 				ServiceUpload serviceUpload = new ServiceUpload();
 				serviceUpload.uploadReportAsync(sendingModel, jenisPelaporan);
 				
@@ -366,8 +366,8 @@ public class SendingController extends BaseController {
 					return;
 				}
 				
-				if ((!securityService.useApi() && !ftpService.checkUpdate(clientVersion, xstream)) || 
-						(securityService.useApi() && !applicationUpdateService.validateVersion())) {
+				if ((!securityService.useSendApi() && !ftpService.checkUpdate(clientVersion, xstream)) || 
+						(securityService.useSendApi() && !applicationUpdateService.validateVersion())) {
 					return;
 				}
 				handleSend(); // Arnol modif : cek signature & langsung kirim

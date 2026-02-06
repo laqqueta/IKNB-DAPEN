@@ -19,6 +19,7 @@ import com.google.common.collect.ImmutableMap;
 
 import id.go.ojk.client.ClientProperties;
 import id.go.ojk.client.MainApplication;
+import id.go.ojk.client.api.ApiFeature;
 import id.go.ojk.client.api.ApiLogin;
 import id.go.ojk.client.api.ApiLogout;
 import id.go.ojk.client.constant.EReport;
@@ -58,9 +59,17 @@ public class SecurityService extends BaseService {
 	private Map<String, Object> loginRequest;
 	private final UserLoginModel userLoginModel = new UserLoginModel();
 
-	public boolean useApi() {
-		return EReport.useLoginApi(userSession.getReportCode());
+	private boolean hasAnyApiFeature(ApiFeature ...features) {
+		return EReport.hasAnyApiFeature(userSession.getReportCode(), features);
 	}
+
+	public boolean useLoginApi() {
+	  return hasAnyApiFeature(ApiFeature.login());
+	}
+	
+  public boolean useSendApi() {
+    return hasAnyApiFeature(ApiFeature.send());
+  }
 
 	public UserSession authenticate(String userId, String password, String report, boolean onlyOfflineUser) {
 		UserSession res = null;
@@ -206,10 +215,10 @@ public class SecurityService extends BaseService {
 
 	public void logout() throws ClientProtocolException, IOException, URISyntaxException {
 		try {
-			if (isOnlineLogin() && !useApi()) {
+			if (isOnlineLogin() && !useLoginApi()) {
 				cleanUpConnectionCheck();
 				httpService.logout();
-			} else if (useApi()) {
+			} else if (useLoginApi()) {
 				ApiLogout api = new ApiLogout();
 				api.sendReceive(new DtoLogoutRequest());
 			}

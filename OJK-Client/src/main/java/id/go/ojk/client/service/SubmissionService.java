@@ -154,7 +154,7 @@ public class SubmissionService extends BaseService {
 
     private void processSubmissionThread() {
         try {
-            if (securityService.isOnlineLogin() && !securityService.useApi()) {
+            if (securityService.isOnlineLogin() && !securityService.useSendApi()) {
                 try {
                     // check future time
                     Map<String, Object> futureDateCheck = httpService.validateFutureDate(
@@ -260,7 +260,7 @@ public class SubmissionService extends BaseService {
             if (progressModel.isSendFile()) {
                 sendingModel.getProgressModel().updateStatus(StatusCallback.start);
                 boolean uploadStatus = false;
-                if (securityService.useApi()) {
+                if (securityService.useSendApi()) {
                     ServiceUpload serviceUpload = new ServiceUpload();
                     try {
                         uploadStatus = serviceUpload.uploadReport(sendingModel, reportFormGroupCode);

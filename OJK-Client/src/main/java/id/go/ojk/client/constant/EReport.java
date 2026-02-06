@@ -240,11 +240,7 @@ public enum EReport {
   }
 
   public static boolean useLoginApi(String reportIdAndCode) {
-    return hasAnyApi(getReportCode(reportIdAndCode), ApiFeature.login());
-  }
-
-  public static boolean useSendApi(String reportIdAndCode) {
-    return hasAnyApi(getReportCode(reportIdAndCode), ApiFeature.send());
+    return hasAnyApiFeature(getReportCode(reportIdAndCode), ApiFeature.login());
   }
 
   private static String getReportCode(String reportIdAndCode) {
@@ -255,9 +251,9 @@ public enum EReport {
     return reportCode;
   }
 
-  private static boolean hasAnyApi(String reportCode, ApiFeature feature) {
+  public static boolean hasAnyApiFeature(String reportCode, ApiFeature ... features) {
     for (EReport eReport : EReport.values()) {
-      if (eReport.getCode().equals(reportCode) && eReport.apiFeature.hasAny(feature)) {
+      if (eReport.getCode().equals(reportCode) && eReport.apiFeature.hasAny(features)) {
         return true;
       }
     }

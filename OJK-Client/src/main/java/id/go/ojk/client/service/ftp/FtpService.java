@@ -198,7 +198,7 @@ public class FtpService extends BaseService {
 	public boolean readSignatureFile(SendingModel sendingModel) {
 		HashMap<String, String> signatureData = new HashMap<>();
 		try (FileInputStream inputStream = new FileInputStream(sendingModel.getSignatureFile());) {
-			String rsaKey = securityService.useApi() ? new ServiceUpload().getPrivateKey() : getSignatureFtp();
+			String rsaKey = securityService.useSendApi() ? new ServiceUpload().getPrivateKey() : getSignatureFtp();
 			byte[] encrypted = IOUtils.toByteArray(inputStream);
 			try {
 				byte[] decrypted = EncryptionUtil.rsaDecryption(rsaKey, encrypted);
