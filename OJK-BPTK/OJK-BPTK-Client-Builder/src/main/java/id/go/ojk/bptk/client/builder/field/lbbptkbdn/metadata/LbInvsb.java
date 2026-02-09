@@ -73,7 +73,7 @@ public class LbInvsb extends BaseMetadata {
     fs.add(sf(14, null, "Tujuan Pemilikan", sv(M, 1, 10, refTable)
         .confReference(EHeaderMetadataShared.TUJUAN_KEPEMILIKAN.getObject())
         .confRegex(PATTERN_REFERENCE_1)));
-    fs.add(sf(15, null, "Syariah/Non-Syariah", sv(M, 1, 10, refTable)
+    fs.add(sf(15, null, "Syariah/Non Syariah", sv(M, 1, 10, refTable)
         .confReference(EHeaderMetadataShared.SYARIAH_KONVENSIONAL.getObject())
         .confRegex(PATTERN_REFERENCE_1)));
     fs.add(sf(16, null, "Suku Bunga atau Kupon, Tingkat Suku Bunga/Nisbah atau Kupon", sv(M, 1, 6, numericDot))

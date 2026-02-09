@@ -111,7 +111,7 @@ public enum EHeaderMetadataShared implements IObject<ReferenceMetadata> {
 
   public String getDescription() {
     if(number == ER1236SyariahKonvensional.getRefNumber()) {
-      return "Syariah / Konvensional"; // tanda "/" tidak dapat digunakan sebagai nama file
+      return "Syariah/Non Syariah"; // tanda "/" tidak dapat digunakan sebagai nama file
     }
     return name.replaceAll(DESC_REGEX, DESC_REPLACEMENT);
   }
