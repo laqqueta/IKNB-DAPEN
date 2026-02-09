@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 
-import id.go.ojk.client.api.ApiFeature;
+import id.go.ojk.client.api.ApiUsage;
 import lombok.Getter;
 
 public enum EReport {
@@ -91,21 +91,21 @@ public enum EReport {
 	TL_DPPKS ("6002", "TLRDPS", EReportGroup.TL, ESector.DPPKS),
 	TL_DPLKK ("6003", "TLRDLK", EReportGroup.TL, ESector.DPLKK),
 	TL_DPLKS ("6004", "TLRDLS", EReportGroup.TL, ESector.DPLKS),
-	PLS_ASRJK ("7001", "PLSAJK", EReportGroup.PLS, ESector.ASRJK, ApiFeature.sendAndLogin()),
-	PLS_ASRJU ("7002", "PLSAJU", EReportGroup.PLS, ESector.ASRJU, ApiFeature.sendAndLogin()),
-	PLS_ASRJS ("7003", "PLSAJS", EReportGroup.PLS, ESector.ASRJS, ApiFeature.sendAndLogin()),
-	PLS_ASRUK ("7004", "PLSAUK", EReportGroup.PLS, ESector.ASRUK, ApiFeature.sendAndLogin()),
-	PLS_ASRUU ("7005", "PLSAUU", EReportGroup.PLS, ESector.ASRUU, ApiFeature.sendAndLogin()),
-	PLS_ASRUS ("7006", "PLSAUS", EReportGroup.PLS, ESector.ASRUS, ApiFeature.sendAndLogin()),
-	BPKSLB ("7100", "LBBPKS", EReportGroup.BPKSLB, ESector.BPKS, ApiFeature.sendAndLogin()),
-  BPTKLP ("7695", "LPBPTK", EReportGroup.BPTKLPP, ESector.BPTK, ApiFeature.sendAndLogin()),
-  BPTKLB ("7604", "LBBPTK", EReportGroup.BPTKLKB, ESector.BPTK, ApiFeature.sendAndLogin()),
-  BPTKLT ("7696", "LTBPTK", EReportGroup.BPTKLKT, ESector.BPTK, ApiFeature.sendAndLogin()),
-  BPTKLA ("7697", "LABPTK", EReportGroup.BPTKLAT, ESector.BPTK, ApiFeature.sendAndLogin()),
-  LKTB_DPPKK("7510", "LKDPK", EReportGroup.LKTB, ESector.DPPKK),
-  LKTB_DPPKS("7520", "LKDPS", EReportGroup.LKTB, ESector.DPPKS),
-  LKTB_DPLKK("7530", "LKDLK", EReportGroup.LKTB, ESector.DPLKK),
-  LKTB_DPLKS("7540", "LKDLS", EReportGroup.LKTB, ESector.DPLKS),
+	PLS_ASRJK ("7001", "PLSAJK", EReportGroup.PLS, ESector.ASRJK, ApiUsage.sendAndLogin()),
+	PLS_ASRJU ("7002", "PLSAJU", EReportGroup.PLS, ESector.ASRJU, ApiUsage.sendAndLogin()),
+	PLS_ASRJS ("7003", "PLSAJS", EReportGroup.PLS, ESector.ASRJS, ApiUsage.sendAndLogin()),
+	PLS_ASRUK ("7004", "PLSAUK", EReportGroup.PLS, ESector.ASRUK, ApiUsage.sendAndLogin()),
+	PLS_ASRUU ("7005", "PLSAUU", EReportGroup.PLS, ESector.ASRUU, ApiUsage.sendAndLogin()),
+	PLS_ASRUS ("7006", "PLSAUS", EReportGroup.PLS, ESector.ASRUS, ApiUsage.sendAndLogin()),
+	BPKSLB ("7100", "LBBPKS", EReportGroup.BPKSLB, ESector.BPKS, ApiUsage.sendAndLogin()),
+  BPTKLP ("7695", "LPBPTK", EReportGroup.BPTKLPP, ESector.BPTK, ApiUsage.sendAndLogin()),
+  BPTKLB ("7604", "LBBPTK", EReportGroup.BPTKLKB, ESector.BPTK, ApiUsage.sendAndLogin()),
+  BPTKLT ("7696", "LTBPTK", EReportGroup.BPTKLKT, ESector.BPTK, ApiUsage.sendAndLogin()),
+  BPTKLA ("7697", "LABPTK", EReportGroup.BPTKLAT, ESector.BPTK, ApiUsage.sendAndLogin()),
+  LKTB_DPPKK("7510", "LKDPK", EReportGroup.LKTB, ESector.DPPKK, ApiUsage.login()),
+  LKTB_DPPKS("7520", "LKDPS", EReportGroup.LKTB, ESector.DPPKS, ApiUsage.login()),
+  LKTB_DPLKK("7530", "LKDLK", EReportGroup.LKTB, ESector.DPLKK, ApiUsage.login()),
+  LKTB_DPLKS("7540", "LKDLS", EReportGroup.LKTB, ESector.DPLKS, ApiUsage.login()),
 	;
 	
 	@Getter
@@ -117,18 +117,18 @@ public enum EReport {
 	@Getter
 	private ESector sector;
 	@Getter
-	private ApiFeature apiFeature;
+	private ApiUsage apiUsage;
 
   private EReport(String id, String code, EReportGroup reportGroup, ESector sector) {
-    this(id, code, reportGroup, sector, ApiFeature.none());
+    this(id, code, reportGroup, sector, ApiUsage.none());
   }
 
-  private EReport(String id, String code, EReportGroup reportGroup, ESector sector, ApiFeature apiFeature) {
+  private EReport(String id, String code, EReportGroup reportGroup, ESector sector, ApiUsage apiUsage) {
     this.id = id;
     this.code = code;
     this.reportGroup = reportGroup;
     this.sector = sector;
-    this.apiFeature = apiFeature;
+    this.apiUsage = apiUsage;
   }
 	
 	public static Map<String, String> getMap() {
@@ -240,7 +240,7 @@ public enum EReport {
   }
 
   public static boolean useLoginApi(String reportIdAndCode) {
-    return hasAnyApiFeature(getReportCode(reportIdAndCode), ApiFeature.login());
+    return hasAnyApiUsage(getReportCode(reportIdAndCode), ApiUsage.login());
   }
 
   private static String getReportCode(String reportIdAndCode) {
@@ -251,9 +251,9 @@ public enum EReport {
     return reportCode;
   }
 
-  public static boolean hasAnyApiFeature(String reportCode, ApiFeature ... features) {
+  public static boolean hasAnyApiUsage(String reportCode, ApiUsage ... usages) {
     for (EReport eReport : EReport.values()) {
-      if (eReport.getCode().equals(reportCode) && eReport.apiFeature.hasAny(features)) {
+      if (eReport.getCode().equals(reportCode) && eReport.apiUsage.hasAny(usages)) {
         return true;
       }
     }

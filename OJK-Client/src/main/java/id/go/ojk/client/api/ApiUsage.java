@@ -8,7 +8,7 @@ import java.util.List;
 import lombok.Getter;
 
 @Getter
-public class ApiFeature {
+public class ApiUsage {
   public static final String LOGIN = "login";
   public static final String SEND = "send";
   public static final List<String> ALL_FEATURES = new ArrayList<String>();
@@ -20,7 +20,7 @@ public class ApiFeature {
 
   private final List<String> grantedFeatures;
 
-  private ApiFeature(List<String> features) {
+  private ApiUsage(List<String> features) {
     this.grantedFeatures = features;
   }
 
@@ -32,7 +32,7 @@ public class ApiFeature {
     if (obj == null || getClass() != obj.getClass())
       return false;
 
-    ApiFeature that = (ApiFeature) obj;
+    ApiUsage that = (ApiUsage) obj;
     return that.grantedFeatures.equals(this.grantedFeatures);
   }
 
@@ -46,34 +46,34 @@ public class ApiFeature {
     return getClass().hashCode();
   }
 
-  public static ApiFeature none() {
-    return new ApiFeature(Collections.emptyList());
+  public static ApiUsage none() {
+    return new ApiUsage(Collections.emptyList());
   }
 
-  public static ApiFeature login() {
-    return new ApiFeature(Arrays.asList(LOGIN));
+  public static ApiUsage login() {
+    return new ApiUsage(Arrays.asList(LOGIN));
   }
 
-  public static ApiFeature send() {
-    return new ApiFeature(Arrays.asList(SEND));
+  public static ApiUsage send() {
+    return new ApiUsage(Arrays.asList(SEND));
   }
 
-  public static ApiFeature sendAndLogin() {
-    return new ApiFeature(Arrays.asList(LOGIN, SEND));
+  public static ApiUsage sendAndLogin() {
+    return new ApiUsage(Arrays.asList(LOGIN, SEND));
   }
 
-  public static ApiFeature all() {
-    return new ApiFeature(ALL_FEATURES);
+  public static ApiUsage all() {
+    return new ApiUsage(ALL_FEATURES);
   }
 
-  public boolean hasAny(ApiFeature... features) {
+  public boolean hasAny(ApiUsage... features) {
     if (features == null || features.length == 0) {
       return false;
     }
     return Arrays.stream(features).flatMap(f -> f.getGrantedFeatures().stream()).anyMatch(grantedFeatures::contains);
   }
 
-  public boolean hasAll(ApiFeature... features) {
+  public boolean hasAll(ApiUsage... features) {
     if (features == null || features.length == 0) {
       return false;
     }

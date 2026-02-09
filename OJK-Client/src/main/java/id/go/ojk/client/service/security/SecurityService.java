@@ -19,7 +19,7 @@ import com.google.common.collect.ImmutableMap;
 
 import id.go.ojk.client.ClientProperties;
 import id.go.ojk.client.MainApplication;
-import id.go.ojk.client.api.ApiFeature;
+import id.go.ojk.client.api.ApiUsage;
 import id.go.ojk.client.api.ApiLogin;
 import id.go.ojk.client.api.ApiLogout;
 import id.go.ojk.client.constant.EReport;
@@ -59,16 +59,16 @@ public class SecurityService extends BaseService {
 	private Map<String, Object> loginRequest;
 	private final UserLoginModel userLoginModel = new UserLoginModel();
 
-	private boolean hasAnyApiFeature(ApiFeature ...features) {
-		return EReport.hasAnyApiFeature(userSession.getReportCode(), features);
+	private boolean hasAnyApiFeature(ApiUsage ...features) {
+		return EReport.hasAnyApiUsage(userSession.getReportCode(), features);
 	}
 
 	public boolean useLoginApi() {
-	  return hasAnyApiFeature(ApiFeature.login());
+	  return hasAnyApiFeature(ApiUsage.login());
 	}
 	
   public boolean useSendApi() {
-    return hasAnyApiFeature(ApiFeature.send());
+    return hasAnyApiFeature(ApiUsage.send());
   }
 
 	public UserSession authenticate(String userId, String password, String report, boolean onlyOfflineUser) {
