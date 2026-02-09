@@ -65,7 +65,7 @@ public class LbRas extends BaseMetadata {
         .confReference(EHeaderMetadataLbbptkjkk.R5407RAS.getObject())
         .confRegex(patternAlfaNumeric))
         .confUnique(U));
-    fs.add(sf(2, null, "Rasio", sv(M, 1, Integer.MAX_VALUE, all2)));
+    fs.add(sf(2, null, "Nilai Rasio", sv(M, 1, Integer.MAX_VALUE, all2)));
     return res;
   }
 }
