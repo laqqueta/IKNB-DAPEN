@@ -18,8 +18,6 @@ import java.util.List;
 import id.go.ojk.bptk.client.builder.field.EFormLbbptkbdn;
 import id.go.ojk.bptk.client.builder.field.lbbptkbdn.reference.EHeaderMetadataLbbptkbdn;
 import id.go.ojk.bptk.client.builder.field.lbbptkbdn.reference.ER5310INVSB;
-import id.go.ojk.bptk.client.builder.field.lbbptkjkm.metadata.MetadataLbbptkjkm;
-import id.go.ojk.bptk.client.builder.field.ltbptk.metadata.MetadataLtbptkjkm;
 import id.go.ojk.bptk.client.builder.field.reference.EHeaderMetadataShared;
 import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
@@ -35,12 +33,6 @@ public class LbInvsb extends BaseMetadata {
     EFormLbbptkbdn eEnum = EFormLbbptkbdn.INVSB;
     SubmissionFormat res = new SubmissionFormat(eEnum.getCode(), eEnum.getName(), reportCode, new ArrayList<>(),
         extension, 0, null);
-    
-    String labelSyariahKonven = "Syariah/Konvensional";
-    if(reportCode.equalsIgnoreCase(MetadataLbbptkjkm.REPORT_CODE) ||
-        reportCode.equalsIgnoreCase(MetadataLtbptkjkm.REPORT_CODE)) {
-      labelSyariahKonven = "Syariah/Non Syariah";
-    }
 
     res.setSavePos(ER5310INVSB.genFieldSave());
 
@@ -81,7 +73,7 @@ public class LbInvsb extends BaseMetadata {
     fs.add(sf(14, null, "Tujuan Pemilikan", sv(M, 1, 10, refTable)
         .confReference(EHeaderMetadataShared.TUJUAN_KEPEMILIKAN.getObject())
         .confRegex(PATTERN_REFERENCE_1)));
-    fs.add(sf(15, null, labelSyariahKonven, sv(M, 1, 10, refTable)
+    fs.add(sf(15, null, "Syariah/Non-Syariah", sv(M, 1, 10, refTable)
         .confReference(EHeaderMetadataShared.SYARIAH_KONVENSIONAL.getObject())
         .confRegex(PATTERN_REFERENCE_1)));
     fs.add(sf(16, null, "Suku Bunga atau Kupon, Tingkat Suku Bunga/Nisbah atau Kupon", sv(M, 1, 6, numericDot))
