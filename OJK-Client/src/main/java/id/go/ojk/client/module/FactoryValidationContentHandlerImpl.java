@@ -9,6 +9,7 @@ import id.go.ojk.client.module.apu.ValidationHandlerApu;
 import id.go.ojk.client.module.bpjs.ValidationHandlerBpjs;
 import id.go.ojk.client.module.lb.ValidationHandlerLb;
 import id.go.ojk.client.module.lbk.ValidationHandlerLbk;
+import id.go.ojk.client.module.lktb.ValidationHandlerLktb;
 import id.go.ojk.client.module.pls.ValidationHandlerPls;
 import id.go.ojk.client.module.rb.ValidationHandlerRb;
 import id.go.ojk.client.module.sa.ValidationHandlerSa;
@@ -51,6 +52,8 @@ public class FactoryValidationContentHandlerImpl {
 			res = new ValidationHandlerTl(progressModel, progressSegment, executor);
 		} else if (EReport.isPls(reportCode)) {
 			res = new ValidationHandlerPls(progressModel, progressSegment, executor);
+		} else if (EReport.isLktb(reportCode)) {
+			res = new ValidationHandlerLktb(progressModel, progressSegment, executor);
 		} else if (EReport.isTpp(reportCode)) {
 			res = new ValidationHandlerTpp(progressModel, progressSegment, executor);
     } else if (EReport.isBpjsKs(reportCode) || EReport.isBpjsTk(reportCode)) {
