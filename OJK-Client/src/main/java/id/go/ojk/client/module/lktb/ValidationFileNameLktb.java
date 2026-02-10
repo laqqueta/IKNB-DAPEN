@@ -13,26 +13,26 @@ import id.go.ojk.lib.client.model.validation.ValidationErrorCode;
 import java.io.File;
 import java.util.List;
 
-public class ValidationFileNameBpjs extends BaseValidationFileName {
+public class ValidationFileNameLktb extends BaseValidationFileName {
 
-  public ValidationFileNameBpjs(List<File> files, ReportInfo reportInfo, ReadSubmissionDirModel readDirModel) {
+  public ValidationFileNameLktb(List<File> files, ReportInfo reportInfo, ReadSubmissionDirModel readDirModel) {
     super(files, reportInfo, readDirModel);
   }
 
   @Override
   public IValidationFile<ValidFile> initValidation1() {
-    return new ValidationFileNameBpjs1(files, reportInfo, readDirModel, listSubmissionFormat);
+    return new ValidationFileNameLktb1(files, reportInfo, readDirModel, listSubmissionFormat);
   }
 
   @Override
   public IValidationFile<ValidFile> initValidation2() {
-    return new ValidationFileNameBpjs2(getListFile(), reportInfo, memberCode, memberTypeCode, childProgress,
+    return new ValidationFileNameLktb2(getListFile(), reportInfo, memberCode, memberTypeCode, childProgress,
         readDirModel);
   }
 
   @Override
   public IValidationFile<ValidFile> initValidation3() {
-    return new ValidationFileNameBpjs3(getListFile(), reportInfo, memberCode, memberTypeCode, listSubmissionFormat,
+    return new ValidationFileNameLktb3(getListFile(), reportInfo, memberCode, memberTypeCode, listSubmissionFormat,
         mainProgress, childProgress, readDirModel);
   }
 

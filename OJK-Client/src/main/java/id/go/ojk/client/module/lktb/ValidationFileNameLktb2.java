@@ -9,16 +9,16 @@ import id.go.ojk.lib.client.model.MonthDate;
 
 import java.util.List;
 
-public class ValidationFileNameBpjs2 extends ValidationFileName2 {
+public class ValidationFileNameLktb2 extends ValidationFileName2 {
   protected String lastValidPeriod = null;
 
-  public ValidationFileNameBpjs2(List<ValidFile> files, ReportInfo reportInfo, String memberCode,
-      String memberTypeCode) {
+  public ValidationFileNameLktb2(List<ValidFile> files, ReportInfo reportInfo, String memberCode,
+                                 String memberTypeCode) {
     super(files, reportInfo, memberCode, memberTypeCode);
   }
 
-  public ValidationFileNameBpjs2(List<ValidFile> files, ReportInfo reportInfo, String memberCode, String memberTypeCode,
-      ProgressPreparationAndSending childProgress, ReadSubmissionDirModel readDirModel) {
+  public ValidationFileNameLktb2(List<ValidFile> files, ReportInfo reportInfo, String memberCode, String memberTypeCode,
+                                 ProgressPreparationAndSending childProgress, ReadSubmissionDirModel readDirModel) {
     super(files, reportInfo, memberCode, memberTypeCode, childProgress, readDirModel);
   }
 

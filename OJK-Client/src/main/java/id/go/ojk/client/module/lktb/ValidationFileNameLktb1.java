@@ -12,11 +12,11 @@ import id.go.ojk.lib.client.util.UtilPdf;
 import java.io.File;
 import java.util.List;
 
-public class ValidationFileNameBpjs1 extends ValidationFileName1 {
+public class ValidationFileNameLktb1 extends ValidationFileName1 {
   private List<SubmissionFormat> listSubmissionFormats;
 
-  public ValidationFileNameBpjs1(List<File> files, ReportInfo reportInfo, ReadSubmissionDirModel readDirModel,
-      List<SubmissionFormat> listSubmissionFormats) {
+  public ValidationFileNameLktb1(List<File> files, ReportInfo reportInfo, ReadSubmissionDirModel readDirModel,
+                                 List<SubmissionFormat> listSubmissionFormats) {
     super(files, reportInfo, readDirModel);
     this.listSubmissionFormats = listSubmissionFormats;
   }
