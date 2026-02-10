@@ -1,6 +1,7 @@
 package id.go.ojk.dppkk.client.builder.field.ltlb.metadata;
 
 import id.go.ojk.client.model.config.SubmissionFormat;
+import id.go.ojk.dppkk.client.builder.field.ltlb.metadata.ppmpk.Ltlb0001DTUM;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
