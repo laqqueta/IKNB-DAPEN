@@ -10,9 +10,9 @@ import id.go.ojk.client.validation.IValidationContent;
 import java.io.IOException;
 import java.util.concurrent.ThreadPoolExecutor;
 
-public class ValidationHandlerBpjs extends ValidationHandler {
-  public ValidationHandlerBpjs(ProgressPreparationAndSending progressModel, ProgressSegment progressSegment,
-      ThreadPoolExecutor executor) {
+public class ValidationHandlerLktb extends ValidationHandler {
+  public ValidationHandlerLktb(ProgressPreparationAndSending progressModel, ProgressSegment progressSegment,
+                               ThreadPoolExecutor executor) {
     super(progressModel, progressSegment, executor);
   }
 
@@ -20,7 +20,7 @@ public class ValidationHandlerBpjs extends ValidationHandler {
   protected void validatePreHeader(ProgressSegmentFile progressSegmentFile, ValidationResult validationResult,
       int reportFormGroupCode) throws IOException {
 
-    IValidationContent validation = new ValidationPreHeaderBpjs(progressSegmentFile.getFileIntegrity().getFile(),
+    IValidationContent validation = new ValidationPreHeaderLktb(progressSegmentFile.getFileIntegrity().getFile(),
         getSumRow(), reportFormGroupCode, submissionFormat, validationResult);
     validation.validate();
   }
