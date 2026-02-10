@@ -44,8 +44,4 @@ public enum ER5811PIUT implements IObject<KeyValueString> {
   public static String genFieldSave() {
     return UtilMetadata.genFieldSave("13", getObjects());
   }
-
-  public static FieldValidation genFieldValidationJumlahKontrak() {
-    return UtilFieldValidation.genGreaterValue("0");
-  }
 }
