@@ -1,0 +1,12 @@
+<list>
+  <reference>
+    <key>1000</key>
+    <value>Warga Negara Indonesia</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>1100</key>
+    <value>Warga Negara Asing</value>
+    <labels/>
+  </reference>
+</list>

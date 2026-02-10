@@ -1,0 +1,102 @@
+<list>
+  <reference>
+    <key>9110</key>
+    <value>SD - Kantor Pusat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>9120</key>
+    <value>SMP - Kantor Pusat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>9130</key>
+    <value>SMA - Kantor Pusat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>9140</key>
+    <value>D1 - Kantor Pusat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>9150</key>
+    <value>D2 - Kantor Pusat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>9160</key>
+    <value>D3 - Kantor Pusat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>9170</key>
+    <value>S1/D4 - Kantor Pusat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>9180</key>
+    <value>S2 - Kantor Pusat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>9190</key>
+    <value>S3 - Kantor Pusat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>9200</key>
+    <value>Tenaga Asing - Kantor Pusat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>9210</key>
+    <value>SD - Selain Kantor Pusat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>9220</key>
+    <value>SMP - Selain Kantor Pusat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>9230</key>
+    <value>SMA - Selain Kantor Pusat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>9240</key>
+    <value>D1 - Selain Kantor Pusat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>9250</key>
+    <value>D2 - Selain Kantor Pusat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>9260</key>
+    <value>D3 - Selain Kantor Pusat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>9270</key>
+    <value>S1/D4 - Selain Kantor Pusat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>9280</key>
+    <value>S2 - Selain Kantor Pusat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>9290</key>
+    <value>S3 - Selain Kantor Pusat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>9300</key>
+    <value>Tenaga Asing - Selain Kantor Pusat</value>
+    <labels/>
+  </reference>
+</list>

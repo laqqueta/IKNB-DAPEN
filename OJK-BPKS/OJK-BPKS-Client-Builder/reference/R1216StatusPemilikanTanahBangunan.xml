@@ -1,0 +1,27 @@
+<list>
+  <reference>
+    <key>SP:e531</key>
+    <value>Hak Milik (HM)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SP:e532</key>
+    <value>Hak Guna Bangunan (HGB)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SP:e533</key>
+    <value>Hak Guna Usaha (HGU)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SP:e535</key>
+    <value>Hak Pakai (HP)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>SP:e536</key>
+    <value>Hak Milik Atas Satuan Rumah Susun (HMASRS)</value>
+    <labels/>
+  </reference>
+</list>

@@ -1,0 +1,142 @@
+<list>
+  <reference>
+    <key>RKU0101010000</key>
+    <value>a. Piutang Iuran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKU0101020000</key>
+    <value>b. Pendapatan Iuran setahun</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKU0101030000</key>
+    <value>c. Rasio [1 - ( a : b )]</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKU0102010000</key>
+    <value>a. Beban jaminan kesehatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKU0102020000</key>
+    <value>b. Beban cadangan teknis</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKU0102030000</key>
+    <value>c. Pendapatan Iuran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKU0102040000</key>
+    <value>d. Rasio [( a + b ) : c]</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKU0201010000</key>
+    <value>a. Total Aset Neto</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKU0201020000</key>
+    <value>b. Total Liabilitas</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKU0201030000</key>
+    <value>c. Rasio ( a : b )</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKU0301010000</key>
+    <value>a. Aset Lancar</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKU0301020000</key>
+    <value>b. Kewajiban Lancar</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKU0301030000</key>
+    <value>c. Rasio ( a : b )</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKU0302010000</key>
+    <value>a. Aset Neto Akhir Periode</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKU0302020000</key>
+    <value>b. Pembayaran klaim 12 bulan terakhir</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKU0302030000</key>
+    <value>c. Rasio [ a : ( b / 12 )]</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKU0303010000</key>
+    <value>a. Total Investasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKU0303020000</key>
+    <value>b. Total cadangan Teknis</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKU0303030000</key>
+    <value>c. Rasio ( a : b )</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKU0401010000</key>
+    <value>a. Hasil Investasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKU0401020000</key>
+    <value>b. Rata-Rata Investasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKU0401030000</key>
+    <value>c. Rasio (disetahunkan) ( a : b )</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKU0501010000</key>
+    <value>a. Aset Neto Periode Berjalan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKU0501020000</key>
+    <value>b. Aset Neto Periode Sebelumnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKU0501030000</key>
+    <value>c. Rasio [( a : b ) - 1]</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKU0601000000</key>
+    <value>a. Aset Neto</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKU0602000000</key>
+    <value>b. Rata-rata beban pelayanan kesehatan bulanan selama 12 bulan terakhir</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>RKU0603000000</key>
+    <value>c. Jumlah bulan tercukupi (a : b)</value>
+    <labels/>
+  </reference>
+</list>

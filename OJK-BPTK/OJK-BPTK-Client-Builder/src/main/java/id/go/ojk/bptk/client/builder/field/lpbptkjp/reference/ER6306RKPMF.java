@@ -1,0 +1,112 @@
+package id.go.ojk.bptk.client.builder.field.lpbptkjp.reference;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import org.apache.commons.lang3.StringUtils;
+
+import id.go.ojk.bptk.client.builder.field.EFormLpbptkjp;
+import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
+import id.go.ojk.conf.client.UtilMetadata;
+import id.go.ojk.conf.client.UtilSegmentValidation;
+import id.go.ojk.lib.client.IObject;
+import id.go.ojk.lib.client.model.KeyValueString;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+public enum ER6306RKPMF implements IObject<KeyValueString> {
+  RKPMF0101000000("RKPMF0101000000","Jenis Klaim, Pensiun Berkala"),
+  RKPMF0102000000("RKPMF0102000000","Jenis Klaim, Pensiun Hari Tua"),
+  RKPMF0103000000("RKPMF0103000000","Jenis Klaim, Pensiun Cacat"),
+  RKPMF0104000000("RKPMF0104000000","Jenis Klaim, Pensiun Janda/Duda"),
+  RKPMF0105000000("RKPMF0105000000","Jenis Klaim, Pensiun Anak"),
+  RKPMF0106000000("RKPMF0106000000","Jenis Klaim, Pensiun Orang Tua"),
+  RKPMF0200000000("RKPMF0200000000","Total Jenis Klaim"),
+  RKPMF0401000000("RKPMF0401000000","Jumlah Status Klaim Diajukan"),
+  RKPMF0402000000("RKPMF0402000000","Nilai Status Klaim Diajukan"),
+  RKPMF0501000000("RKPMF0501000000","Jumlah Status Klaim Ditetapkan"),
+  RKPMF0502000000("RKPMF0502000000","Nilai Status Klaim Ditetapkan"),
+  RKPMF0601000000("RKPMF0601000000","Jumlah Status Klaim Ditolak"),
+  RKPMF0602000000("RKPMF0602000000","Nilai Status Klaim Ditolak"),
+  RKPMF0701000000("RKPMF0701000000","Jumlah Status Klaim Dibayarkan"),
+  RKPMF0702000000("RKPMF0702000000","Nilai Status Klaim Dibayarkan"),
+  ;
+
+  @Getter
+  private String key;
+  private String value;
+  public static final int[] COLS_NON_TOTAL = { 2, 3 };
+
+  public static String getName() {
+    return ER6306RKPMF.class.getSimpleName().substring(6);
+  }
+
+  public static int getRefNumber() {
+    return Integer.parseInt(ER6306RKPMF.class.getSimpleName().substring(2, 6));
+  }
+
+  public String getKeyForm() {
+    return EFormLpbptkjp.RKPMF.getCode() + key;
+  }
+
+  public String getValue() {
+    String marker = ". ";
+    value = StringUtils.strip(value, "-").trim();
+    int idx = value.indexOf(marker);
+    return idx > -1 ? value.substring(idx + 1).trim() : value;
+  }
+
+  @Override
+  public KeyValueString getObject() {
+    return new KeyValueString(key, value, new String[] {});
+  }
+
+  public KeyValueString getObjectForm() {
+    return new KeyValueString(getKeyForm(), getValue(), new String[] {});
+  }
+
+  public static List<KeyValueString> getObjects() {
+    List<KeyValueString> res = new ArrayList<>();
+    for (ER6306RKPMF eEnum : ER6306RKPMF.values()) {
+      res.add(eEnum.getObject());
+    }
+    return res;
+  }
+
+  public static List<KeyValueString> getObjectsForm() {
+    List<KeyValueString> res = new ArrayList<>();
+    for (ER6306RKPMF eEnum : ER6306RKPMF.values()) {
+      res.add(eEnum.getObjectForm());
+    }
+    return res;
+  }
+
+  public static String genRequiredPos() {
+    return UtilMetadata.genPipeRow(getObjects());
+  }
+
+  public static String genUniquePos() {
+    return UtilMetadata.genPipeRow(getObjects());
+  }
+
+  public static String genFieldSave() {
+    return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 3), getObjects());
+  }
+
+  public static SegmentValidation genValidationTotalJenisManfaat() {
+    List<IObject<KeyValueString>> listKv = Arrays.asList(RKPMF0101000000, RKPMF0102000000, RKPMF0103000000,
+        RKPMF0104000000, RKPMF0105000000, RKPMF0106000000);
+    return genPlusValidation(UtilMetadata.genPipeColumn(COLS_NON_TOTAL), RKPMF0200000000, listKv);
+  }
+
+  private static SegmentValidation genPlusValidation(String selectField, IObject<KeyValueString> selectPos,
+      List<IObject<KeyValueString>> listKv) {
+    String formula = UtilMetadata.joinKeys(listKv, UtilMetadata.PLUS).toString();
+    String errMsg = UtilMetadata.genMessage(selectPos.getObject().getValue(),
+        UtilMetadata.joinValues(listKv, UtilMetadata.PLUS).toString());
+    return UtilSegmentValidation.genEqualsFormula(selectField, selectPos.getObject().getKey(), formula, errMsg);
+  }
+}

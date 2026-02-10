@@ -1,0 +1,2577 @@
+<list>
+  <reference>
+    <key>LO:e1101</key>
+    <value>Kab. Aceh Selatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1102</key>
+    <value>Kab. Aceh Tenggara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1103</key>
+    <value>Kab. Aceh Timur</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1104</key>
+    <value>Kab. Aceh Tengah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1105</key>
+    <value>Kab. Aceh Barat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1106</key>
+    <value>Kab. Aceh Besar</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1107</key>
+    <value>Kab. Pidie</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1108</key>
+    <value>Kab. Aceh Utara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1109</key>
+    <value>Kab. Simeulue</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1110</key>
+    <value>Kab. Aceh Singkil</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1111</key>
+    <value>Kab. Bireuen</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1112</key>
+    <value>Kab. Aceh Barat Daya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1113</key>
+    <value>Kab. Gayo Lues</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1114</key>
+    <value>Kab. Aceh Jaya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1115</key>
+    <value>Kab. Nagan Raya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1116</key>
+    <value>Kab. Aceh Tamiang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1117</key>
+    <value>Kab. Bener Meriah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1118</key>
+    <value>Kab. Pidie Jaya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1171</key>
+    <value>Kota Banda Aceh</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1172</key>
+    <value>Kota Sabang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1173</key>
+    <value>Kota Lhokseumawe</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1174</key>
+    <value>Kota Langsa</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1175</key>
+    <value>Kota Subulussalam</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1201</key>
+    <value>Kab. Tapanuli Tengah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1202</key>
+    <value>Kab. Tapanuli Utara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1203</key>
+    <value>Kab. Tapanuli Selatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1204</key>
+    <value>Kab. Nias</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1205</key>
+    <value>Kab. Langkat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1206</key>
+    <value>Kab. Karo</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1207</key>
+    <value>Kab. Deli Serdang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1208</key>
+    <value>Kab. Simalungun</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1209</key>
+    <value>Kab. Asahan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1210</key>
+    <value>Kab. Labuhanbatu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1211</key>
+    <value>Kab. Dairi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1212</key>
+    <value>Kab. Toba Samosir</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1213</key>
+    <value>Kab. Mandailing Natal</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1214</key>
+    <value>Kab. Nias Selatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1215</key>
+    <value>Kab. Pakpak Bharat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1216</key>
+    <value>Kab. Humbang Hasundutan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1217</key>
+    <value>Kab. Samosir</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1218</key>
+    <value>Kab. Serdang Bedagai</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1219</key>
+    <value>Kab. Batu Bara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1220</key>
+    <value>Kab. Padang Lawas Utara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1221</key>
+    <value>Kab. Padang Lawas</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1222</key>
+    <value>Kab. Labuhanbatu Selatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1223</key>
+    <value>Kab. Labuhanbatu Utara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1224</key>
+    <value>Kab. Nias Utara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1225</key>
+    <value>Kab. Nias Barat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1271</key>
+    <value>Kota Medan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1272</key>
+    <value>Kota Pematang Siantar</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1273</key>
+    <value>Kota Sibolga</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1274</key>
+    <value>Kota Tanjungbalai</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1275</key>
+    <value>Kota Binjai</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1276</key>
+    <value>Kota Tebing Tinggi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1277</key>
+    <value>Kota Padang Sidempuan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1278</key>
+    <value>Kota Gunung Sitoli</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1301</key>
+    <value>Kab. Pesisir Selatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1302</key>
+    <value>Kab. Solok</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1303</key>
+    <value>Kab. Sijunjung</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1304</key>
+    <value>Kab. Tanah Datar</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1305</key>
+    <value>Kab. Padang Pariaman</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1306</key>
+    <value>Kab. Agam</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1307</key>
+    <value>Kab. Lima Puluh Kota</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1308</key>
+    <value>Kab. Pasaman</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1309</key>
+    <value>Kab. Kepulauan Mentawai</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1310</key>
+    <value>Kab. Dharmasraya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1311</key>
+    <value>Kab. Solok Selatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1312</key>
+    <value>Kab. Pasaman Barat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1371</key>
+    <value>Kota Padang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1372</key>
+    <value>Kota Solok</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1373</key>
+    <value>Kota Sawahlunto</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1374</key>
+    <value>Kota Padang Panjang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1375</key>
+    <value>Kota Bukittinggi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1376</key>
+    <value>Kota Payakumbuh</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1377</key>
+    <value>Kota Pariaman</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1401</key>
+    <value>Kab. Kampar</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1402</key>
+    <value>Kab. Indragiri Hulu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1403</key>
+    <value>Kab. Bengkalis</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1404</key>
+    <value>Kab. Indragiri Hilir</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1405</key>
+    <value>Kab. Pelalawan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1406</key>
+    <value>Kab. Rokan Hulu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1407</key>
+    <value>Kab. Rokan Hilir</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1408</key>
+    <value>Kab. Siak</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1409</key>
+    <value>Kab. Kuantan Singingi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1410</key>
+    <value>Kab. Kepulauan Meranti</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1471</key>
+    <value>Kota Pekanbaru</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1472</key>
+    <value>Kota Dumai</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1501</key>
+    <value>Kab. Kerinci</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1502</key>
+    <value>Kab. Merangin</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1503</key>
+    <value>Kab. Sarolangun</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1504</key>
+    <value>Kab. Batanghari</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1505</key>
+    <value>Kab. Muaro Jambi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1506</key>
+    <value>Kab. Tanjung Jabung Barat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1507</key>
+    <value>Kab. Tanjung Jabung Timur</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1508</key>
+    <value>Kab. Bungo</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1509</key>
+    <value>Kab. Tebo</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1571</key>
+    <value>Kota Jambi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1572</key>
+    <value>Kota Sungai Penuh</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1601</key>
+    <value>Kab. Ogan Komering Ulu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1602</key>
+    <value>Kab. Ogan Komering Ilir</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1603</key>
+    <value>Kab. Muara Enim</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1604</key>
+    <value>Kab. Lahat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1605</key>
+    <value>Kab. Musi Rawas</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1606</key>
+    <value>Kab. Musi Banyuasin</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1607</key>
+    <value>Kab. Banyuasin</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1608</key>
+    <value>Kab. Ogan Komering Ulu Timur</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1609</key>
+    <value>Kab. Ogan Komering Ulu Selatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1610</key>
+    <value>Kab. Ogan Ilir</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1611</key>
+    <value>Kab. Empat Lawang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1612</key>
+    <value>Kab. Penukal Abab Lematang Ilir</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1613</key>
+    <value>Kab. Musi Rawas Utara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1671</key>
+    <value>Kota Palembang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1672</key>
+    <value>Kota Pagar Alam</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1673</key>
+    <value>Kota Lubuk Linggau</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1674</key>
+    <value>Kota Prabumulih</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1701</key>
+    <value>Kab. Bengkulu Selatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1702</key>
+    <value>Kab. Rejang Lebong</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1703</key>
+    <value>Kab. Bengkulu Utara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1704</key>
+    <value>Kab. Kaur</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1705</key>
+    <value>Kab. Seluma</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1706</key>
+    <value>Kab. Mukomuko</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1707</key>
+    <value>Kab. Lebong</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1708</key>
+    <value>Kab. Kepahiang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1709</key>
+    <value>Kab. Bengkulu Tengah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1771</key>
+    <value>Kota Bengkulu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1801</key>
+    <value>Kab. Lampung Selatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1802</key>
+    <value>Kab. Lampung Tengah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1803</key>
+    <value>Kab. Lampung Utara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1804</key>
+    <value>Kab. Lampung Barat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1805</key>
+    <value>Kab. Tulang Bawang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1806</key>
+    <value>Kab. Tanggamus</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1807</key>
+    <value>Kab. Lampung Timur</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1808</key>
+    <value>Kab. Way Kanan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1809</key>
+    <value>Kab. Pesawaran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1810</key>
+    <value>Kab. Pringsewu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1811</key>
+    <value>Kab. Mesuji</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1812</key>
+    <value>Kab. Tulang Bawang Barat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1813</key>
+    <value>Kab. Pesisir Barat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1871</key>
+    <value>Kota Bandar Lampung</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1872</key>
+    <value>Kota Metro</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1901</key>
+    <value>Kab. Bangka</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1902</key>
+    <value>Kab. Belitung</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1903</key>
+    <value>Kab. Bangka Selatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1904</key>
+    <value>Kab. Bangka Tengah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1905</key>
+    <value>Kab. Bangka Barat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1906</key>
+    <value>Kab. Belitung Timur</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e1971</key>
+    <value>Kota Pangkal Pinang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e2101</key>
+    <value>Kab. Bintan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e2102</key>
+    <value>Kab. Karimun</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e2103</key>
+    <value>Kab. Natuna</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e2104</key>
+    <value>Kab. Lingga</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e2105</key>
+    <value>Kab. Kepulauan Anambas</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e2171</key>
+    <value>Kota Batam</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e2172</key>
+    <value>Kota Tanjung Pinang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3101</key>
+    <value>Kab. Adm. Kep. Seribu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3171</key>
+    <value>Kota Administrasi Jakarta Pusat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3172</key>
+    <value>Kota Administrasi Jakarta Utara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3173</key>
+    <value>Kota Administrasi Jakarta Barat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3174</key>
+    <value>Kota Administrasi Jakarta Selatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3175</key>
+    <value>Kota Administrasi Jakarta Timur</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3201</key>
+    <value>Kab. Bogor</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3202</key>
+    <value>Kab. Sukabumi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3203</key>
+    <value>Kab. Cianjur</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3204</key>
+    <value>Kab. Bandung</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3205</key>
+    <value>Kab. Garut</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3206</key>
+    <value>Kab. Tasikmalaya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3207</key>
+    <value>Kab. Ciamis</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3208</key>
+    <value>Kab. Kuningan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3209</key>
+    <value>Kab. Cirebon</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3210</key>
+    <value>Kab. Majalengka</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3211</key>
+    <value>Kab. Sumedang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3212</key>
+    <value>Kab. Indramayu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3213</key>
+    <value>Kab. Subang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3214</key>
+    <value>Kab. Purwakarta</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3215</key>
+    <value>Kab. Karawang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3216</key>
+    <value>Kab. Bekasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3217</key>
+    <value>Kab. Bandung Barat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3218</key>
+    <value>Kab. Pangandaran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3271</key>
+    <value>Kota Bogor</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3272</key>
+    <value>Kota Sukabumi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3273</key>
+    <value>Kota Bandung</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3274</key>
+    <value>Kota Cirebon</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3275</key>
+    <value>Kota Bekasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3276</key>
+    <value>Kota Depok</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3277</key>
+    <value>Kota Cimahi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3278</key>
+    <value>Kota Tasikmalaya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3279</key>
+    <value>Kota Banjar</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3301</key>
+    <value>Kab. Cilacap</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3302</key>
+    <value>Kab. Banyumas</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3303</key>
+    <value>Kab. Purbalingga</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3304</key>
+    <value>Kab. Banjarnegara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3305</key>
+    <value>Kab. Kebumen</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3306</key>
+    <value>Kab. Purworejo</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3307</key>
+    <value>Kab. Wonosobo</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3308</key>
+    <value>Kab. Magelang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3309</key>
+    <value>Kab. Boyolali</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3310</key>
+    <value>Kab. Klaten</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3311</key>
+    <value>Kab. Sukoharjo</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3312</key>
+    <value>Kab. Wonogiri</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3313</key>
+    <value>Kab. Karanganyar</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3314</key>
+    <value>Kab. Sragen</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3315</key>
+    <value>Kab. Grobogan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3316</key>
+    <value>Kab. Blora</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3317</key>
+    <value>Kab. Rembang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3318</key>
+    <value>Kab. Pati</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3319</key>
+    <value>Kab. Kudus</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3320</key>
+    <value>Kab. Jepara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3321</key>
+    <value>Kab. Demak</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3322</key>
+    <value>Kab. Semarang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3323</key>
+    <value>Kab. Temanggung</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3324</key>
+    <value>Kab. Kendal</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3325</key>
+    <value>Kab. Batang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3326</key>
+    <value>Kab. Pekalongan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3327</key>
+    <value>Kab. Pemalang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3328</key>
+    <value>Kab. Tegal</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3329</key>
+    <value>Kab. Brebes</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3371</key>
+    <value>Kota Magelang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3372</key>
+    <value>Kota Surakarta</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3373</key>
+    <value>Kota Salatiga</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3374</key>
+    <value>Kota Semarang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3375</key>
+    <value>Kota Pekalongan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3376</key>
+    <value>Kota Tegal</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3401</key>
+    <value>Kab. Kulon Progo</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3402</key>
+    <value>Kab. Bantul</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3403</key>
+    <value>Kab. Gunung Kidul</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3404</key>
+    <value>Kab. Sleman</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3471</key>
+    <value>Kota Yogyakarta</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3501</key>
+    <value>Kab. Pacitan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3502</key>
+    <value>Kab. Ponorogo</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3503</key>
+    <value>Kab. Trenggalek</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3504</key>
+    <value>Kab. Tulungagung</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3505</key>
+    <value>Kab. Blitar</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3506</key>
+    <value>Kab. Kediri</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3507</key>
+    <value>Kab. Malang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3508</key>
+    <value>Kab. Lumajang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3509</key>
+    <value>Kab. Jember</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3510</key>
+    <value>Kab. Banyuwangi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3511</key>
+    <value>Kab. Bondowoso</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3512</key>
+    <value>Kab. Situbondo</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3513</key>
+    <value>Kab. Probolinggo</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3514</key>
+    <value>Kab. Pasuruan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3515</key>
+    <value>Kab. Sidoarjo</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3516</key>
+    <value>Kab. Mojokerto</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3517</key>
+    <value>Kab. Jombang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3518</key>
+    <value>Kab. Nganjuk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3519</key>
+    <value>Kab. Madiun</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3520</key>
+    <value>Kab. Magetan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3521</key>
+    <value>Kab. Ngawi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3522</key>
+    <value>Kab. Bojonegoro</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3523</key>
+    <value>Kab. Tuban</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3524</key>
+    <value>Kab. Lamongan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3525</key>
+    <value>Kab. Gresik</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3526</key>
+    <value>Kab. Bangkalan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3527</key>
+    <value>Kab. Sampang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3528</key>
+    <value>Kab. Pamekasan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3529</key>
+    <value>Kab. Sumenep</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3571</key>
+    <value>Kota Kediri</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3572</key>
+    <value>Kota Blitar</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3573</key>
+    <value>Kota Malang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3574</key>
+    <value>Kota Probolinggo</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3575</key>
+    <value>Kota Pasuruan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3576</key>
+    <value>Kota Mojokerto</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3577</key>
+    <value>Kota Madiun</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3578</key>
+    <value>Kota Surabaya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3579</key>
+    <value>Kota Batu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3601</key>
+    <value>Kab. Pandeglang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3602</key>
+    <value>Kab. Lebak</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3603</key>
+    <value>Kab. Tangerang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3604</key>
+    <value>Kab. Serang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3671</key>
+    <value>Kota Tangerang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3672</key>
+    <value>Kota Cilegon</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3673</key>
+    <value>Kota Serang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e3674</key>
+    <value>Kota Tangerang Selatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5101</key>
+    <value>Kab. Jembrana</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5102</key>
+    <value>Kab. Tabanan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5103</key>
+    <value>Kab. Badung</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5104</key>
+    <value>Kab. Gianyar</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5105</key>
+    <value>Kab. Klungkung</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5106</key>
+    <value>Kab. Bangli</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5107</key>
+    <value>Kab. Karangasem</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5108</key>
+    <value>Kab. Buleleng</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5171</key>
+    <value>Kota Denpasar</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5201</key>
+    <value>Kab. Lombok Barat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5202</key>
+    <value>Kab. Lombok Tengah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5203</key>
+    <value>Kab. Lombok Timur</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5204</key>
+    <value>Kab. Sumbawa</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5205</key>
+    <value>Kab. Dompu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5206</key>
+    <value>Kab. Bima</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5207</key>
+    <value>Kab. Sumbawa Barat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5208</key>
+    <value>Kab. Lombok Utara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5271</key>
+    <value>Kota Mataram</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5272</key>
+    <value>Kota Bima</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5301</key>
+    <value>Kab. Kupang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5302</key>
+    <value>Kab. Timor Tengah Selatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5303</key>
+    <value>Kab. Timor Tengah Utara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5304</key>
+    <value>Kab. Belu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5305</key>
+    <value>Kab. Alor</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5306</key>
+    <value>Kab. Flores Timur</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5307</key>
+    <value>Kab. Sikka</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5308</key>
+    <value>Kab. Ende</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5309</key>
+    <value>Kab. Ngada</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5310</key>
+    <value>Kab. Manggarai</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5311</key>
+    <value>Kab. Sumba Timur</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5312</key>
+    <value>Kab. Sumba Barat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5313</key>
+    <value>Kab. Lembata</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5314</key>
+    <value>Kab. Rote Ndao</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5315</key>
+    <value>Kab. Manggarai Barat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5316</key>
+    <value>Kab. Nagekeo</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5317</key>
+    <value>Kab. Sumba Tengah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5318</key>
+    <value>Kab. Sumba Barat Daya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5319</key>
+    <value>Kab. Manggarai Timur</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5320</key>
+    <value>Kab. Sabu Raijua</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5321</key>
+    <value>Kab. Malaka</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e5371</key>
+    <value>Kota Kupang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6101</key>
+    <value>Kab. Sambas</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6102</key>
+    <value>Kab. Mempawah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6103</key>
+    <value>Kab. Sanggau</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6104</key>
+    <value>Kab. Ketapang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6105</key>
+    <value>Kab. Sintang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6106</key>
+    <value>Kab. Kapuas Hulu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6107</key>
+    <value>Kab. Bengkayang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6108</key>
+    <value>Kab. Landak</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6109</key>
+    <value>Kab. Sekadau</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6110</key>
+    <value>Kab. Melawi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6111</key>
+    <value>Kab. Kayong Utara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6112</key>
+    <value>Kab. Kubu Raya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6171</key>
+    <value>Kota Pontianak</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6172</key>
+    <value>Kota Singkawang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6201</key>
+    <value>Kab. Kotawaringin Barat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6202</key>
+    <value>Kab. Kotawaringin Timur</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6203</key>
+    <value>Kab. Kapuas</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6204</key>
+    <value>Kab. Barito Selatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6205</key>
+    <value>Kab. Barito Utara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6206</key>
+    <value>Kab. Katingan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6207</key>
+    <value>Kab. Seruyan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6208</key>
+    <value>Kab. Sukamara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6209</key>
+    <value>Kab. Lamandau</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6210</key>
+    <value>Kab. Gunung Mas</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6211</key>
+    <value>Kab. Pulang Pisau</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6212</key>
+    <value>Kab. Murung Raya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6213</key>
+    <value>Kab. Barito Timur</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6271</key>
+    <value>Kota Palangka raya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6301</key>
+    <value>Kab. Tanah Laut</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6302</key>
+    <value>Kab. Kotabaru</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6303</key>
+    <value>Kab. Banjar</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6304</key>
+    <value>Kab. Barito Kuala</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6305</key>
+    <value>Kab. Tapin</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6306</key>
+    <value>Kab. Hulu Sungai Selatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6307</key>
+    <value>Kab. Hulu Sungai Tengah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6308</key>
+    <value>Kab. Hulu Sungai Utara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6309</key>
+    <value>Kab. Tabalong</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6310</key>
+    <value>Kab. Tanah Bumbu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6311</key>
+    <value>Kab. Balangan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6371</key>
+    <value>Kota Banjarmasin</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6372</key>
+    <value>Kota Banjarbaru</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6401</key>
+    <value>Kab. Paser</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6402</key>
+    <value>Kab. Kutai Kartanegara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6403</key>
+    <value>Kab. Berau</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6407</key>
+    <value>Kab. Kutai Barat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6408</key>
+    <value>Kab. Kutai Timur</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6409</key>
+    <value>Kab. Penajam Paser Utara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6411</key>
+    <value>Kab. Mahakam Ulu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6471</key>
+    <value>Kota Balikpapan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6472</key>
+    <value>Kota Samarinda</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6474</key>
+    <value>Kota Bontang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6501</key>
+    <value>Kab. Bulungan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6503</key>
+    <value>Kab. Nunukan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6406</key>
+    <value>Kab. Malinau</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6473</key>
+    <value>Kota Tarakan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e6504</key>
+    <value>Kab. Tana Tidung</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7101</key>
+    <value>Kab. Bolaang Mongondow</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7102</key>
+    <value>Kab. Minahasa</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7103</key>
+    <value>Kab. Kepulauan Sangihe</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7104</key>
+    <value>Kab. Kepulauan Talaud</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7105</key>
+    <value>Kab. Minahasa Selatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7106</key>
+    <value>Kab. Minahasa Utara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7107</key>
+    <value>Kab. Minahasa Tenggara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7108</key>
+    <value>Kab. Bolaang Mongondow Utara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7109</key>
+    <value>Kab. Kepulauan Siau Tagulandang Biaro</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7110</key>
+    <value>Kab. Bolaang Mongondow Timur</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7111</key>
+    <value>Kab. Bolaang Mongondow Selatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7171</key>
+    <value>Kota Manado</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7172</key>
+    <value>Kota Bitung</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7173</key>
+    <value>Kota Tomohon</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7174</key>
+    <value>Kota Kotamobagu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7201</key>
+    <value>Kab. Banggai</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7202</key>
+    <value>Kab. Poso</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7203</key>
+    <value>Kab. Donggala</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7204</key>
+    <value>Kab. Toli-Toli</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7205</key>
+    <value>Kab. Buol</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7206</key>
+    <value>Kab. Morowali</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7207</key>
+    <value>Kab. Banggai Kepulauan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7208</key>
+    <value>Kab. Parigi Moutong</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7209</key>
+    <value>Kab. Tojo Una-Una</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7210</key>
+    <value>Kab. Sigi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7211</key>
+    <value>Kab. Banggai Laut</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7212</key>
+    <value>Kab. Morowali Utara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7271</key>
+    <value>Kota Palu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7301</key>
+    <value>Kab. Kepulauan Selayar</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7302</key>
+    <value>Kab. Bulukumba</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7303</key>
+    <value>Kab. Bantaeng</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7304</key>
+    <value>Kab. Jeneponto</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7305</key>
+    <value>Kab. Takalar</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7306</key>
+    <value>Kab. Gowa</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7307</key>
+    <value>Kab. Sinjai</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7308</key>
+    <value>Kab. Bone</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7309</key>
+    <value>Kab. Maros</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7310</key>
+    <value>Kab. Pangkajene Kepulauan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7311</key>
+    <value>Kab. Barru</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7312</key>
+    <value>Kab. Soppeng</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7313</key>
+    <value>Kab. Wajo</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7314</key>
+    <value>Kab. Sidenreng Rappang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7315</key>
+    <value>Kab. Pinrang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7316</key>
+    <value>Kab. Enrekang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7317</key>
+    <value>Kab. Luwu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7318</key>
+    <value>Kab. Tana Toraja</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7322</key>
+    <value>Kab. Luwu Utara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7324</key>
+    <value>Kab. Luwu Timur</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7326</key>
+    <value>Kab. Toraja Utara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7371</key>
+    <value>Kota Makassar</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7372</key>
+    <value>Kota Pare-Pare</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7373</key>
+    <value>Kota Palopo</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7401</key>
+    <value>Kab. Kolaka</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7402</key>
+    <value>Kab. Konawe</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7403</key>
+    <value>Kab. Muna</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7404</key>
+    <value>Kab. Buton</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7405</key>
+    <value>Kab. Konawe Selatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7406</key>
+    <value>Kab. Bombana</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7407</key>
+    <value>Kab. Wakatobi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7408</key>
+    <value>Kab. Kolaka Utara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7409</key>
+    <value>Kab. Konawe Utara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7410</key>
+    <value>Kab. Buton Utara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7411</key>
+    <value>Kab. Kolaka Timur</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7412</key>
+    <value>Kab. Konawe Kepulauan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7413</key>
+    <value>Kab. Muna Barat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7414</key>
+    <value>Kab. Buton Tengah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7415</key>
+    <value>Kab. Buton Selatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7471</key>
+    <value>Kota Kendari</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7472</key>
+    <value>Kota Bau-Bau</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7501</key>
+    <value>Kab. Gorontalo</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7502</key>
+    <value>Kab. Boalemo</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7503</key>
+    <value>Kab. Bone Bolango</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7504</key>
+    <value>Kab. Pohuwato</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7505</key>
+    <value>Kab. Gorontalo Utara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7571</key>
+    <value>Kota Gorontalo</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7601</key>
+    <value>Kab. Mamuju Utara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7602</key>
+    <value>Kab. Mamuju</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7603</key>
+    <value>Kab. Mamasa</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7604</key>
+    <value>Kab. Polewali Mandar</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7605</key>
+    <value>Kab. Majene</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e7606</key>
+    <value>Kab. Mamuju Tengah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e8101</key>
+    <value>Kab. Maluku Tengah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e8102</key>
+    <value>Kab. Maluku Tenggara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e8103</key>
+    <value>Kab. Maluku Tenggara Barat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e8104</key>
+    <value>Kab. Buru</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e8105</key>
+    <value>Kab. Seram Bagian Timur</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e8106</key>
+    <value>Kab. Seram Bagian Barat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e8107</key>
+    <value>Kab. Kepulauan Aru</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e8108</key>
+    <value>Kab. Maluku Barat Daya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e8109</key>
+    <value>Kab. Buru Selatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e8171</key>
+    <value>Kota Ambon</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e8172</key>
+    <value>Kota Tual</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e8201</key>
+    <value>Kab. Halmahera Barat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e8202</key>
+    <value>Kab. Halmahera Tengah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e8203</key>
+    <value>Kab. Halmahera Utara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e8204</key>
+    <value>Kab. Halmahera Selatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e8205</key>
+    <value>Kab. Kepulauan Sula</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e8206</key>
+    <value>Kab. Halmahera Timur</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e8207</key>
+    <value>Kab. Pulau Morotai</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e8208</key>
+    <value>Kab. Pulau Taliabu</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e8271</key>
+    <value>Kota Ternate</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e8272</key>
+    <value>Kota Tidore Kepulauan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9301</key>
+    <value>Kab. Merauke</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9501</key>
+    <value>Kab. Jayawijaya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9103</key>
+    <value>Kab. Jayapura</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9401</key>
+    <value>Kab. Nabire</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9105</key>
+    <value>Kab. Kepulauan Yapen</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9106</key>
+    <value>Kab. Biak Numfor</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9402</key>
+    <value>Kab. Puncak Jaya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9403</key>
+    <value>Kab. Paniai</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9404</key>
+    <value>Kab. Mimika</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9110</key>
+    <value>Kab. Sarmi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9111</key>
+    <value>Kab. Keerom</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9502</key>
+    <value>Kab. Pegunungan Bintang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9503</key>
+    <value>Kab. Yahukimo</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9504</key>
+    <value>Kab. Tolikara</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9115</key>
+    <value>Kab. Waropen</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9302</key>
+    <value>Kab. Boven Digoel</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9303</key>
+    <value>Kab. Mappi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9304</key>
+    <value>Kab. Asmat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9119</key>
+    <value>Kab. Supiori</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9120</key>
+    <value>Kab. Mamberamo Raya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9505</key>
+    <value>Kab. Mamberamo Tengah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9506</key>
+    <value>Kab. Yalimo</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9507</key>
+    <value>Kab. Lanny Jaya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9508</key>
+    <value>Kab. Nduga</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9405</key>
+    <value>Kab. Puncak</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9406</key>
+    <value>Kab. Dogiyai</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9407</key>
+    <value>Kab. Intan Jaya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9408</key>
+    <value>Kab. Deiyai</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9171</key>
+    <value>Kota Jayapura</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9201</key>
+    <value>Kab. Sorong</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9202</key>
+    <value>Kab. Manokwari</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9203</key>
+    <value>Kab. Fak-Fak</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9204</key>
+    <value>Kab. Sorong Selatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9205</key>
+    <value>Kab. Raja Ampat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9206</key>
+    <value>Kab. Teluk Bintuni</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9207</key>
+    <value>Kab. Teluk Wondama</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9208</key>
+    <value>Kab. Kaimana</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9209</key>
+    <value>Kab. Tambrauw</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9210</key>
+    <value>Kab. Maybrat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9211</key>
+    <value>Kab. Manokwari Selatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9212</key>
+    <value>Kab. Pegunungan Arfak</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e9271</key>
+    <value>Kota Sorong</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LO:e0001</key>
+    <value>Luar Negeri</value>
+    <labels/>
+  </reference>
+</list>

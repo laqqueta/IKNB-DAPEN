@@ -1,0 +1,147 @@
+<list>
+  <reference>
+    <key>PRUM0100000000</key>
+    <value>1. Nama Institusi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>PRUM0201000000</key>
+    <value>a. Alamat Lengkap</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>PRUM0202000000</key>
+    <value>b. Status Pemilikan Gedung</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>PRUM0203000000</key>
+    <value>c. Sandi Lokasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>PRUM0204000000</key>
+    <value>d. Nama Kota</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>PRUM0205000000</key>
+    <value>e. Kode Pos</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>PRUM0300000000</key>
+    <value>3. Telepon</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>PRUM0400000000</key>
+    <value>4. Website</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>PRUM0500000000</key>
+    <value>5. NPWP</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>PRUM0601000000</key>
+    <value>a. Jumlah Kantor Kedeputian Wilayah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>PRUM0602000000</key>
+    <value>b. Jumlah Kantor Cabang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>PRUM0603000000</key>
+    <value>c. Total</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>PRUM0701000000</key>
+    <value>a. Kantor Pusat</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>PRUM0702000000</key>
+    <value>b. Kantor Kedeputian Wilayah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>PRUM0703000000</key>
+    <value>c. Kantor Cabang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>PRUM0704000000</key>
+    <value>d. Total</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>PRUM0800000000</key>
+    <value>8. Nama Aktuaris</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>PRUM0901000000</key>
+    <value>a. Jumlah Direksi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>PRUM0902000000</key>
+    <value>b. Jumlah Dewan Pengawas</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>PRUM0903000000</key>
+    <value>c. Total</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>PRUM1001010000</key>
+    <value>a. Nama Lengkap</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>PRUM1001020000</key>
+    <value>b. Jabatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>PRUM1001030000</key>
+    <value>c. Telepon</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>PRUM1001040000</key>
+    <value>d. E-mail</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>PRUM1002010000</key>
+    <value>a. Nama</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>PRUM1002020000</key>
+    <value>b. Jabatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>PRUM1002030000</key>
+    <value>c. Unit Kerja</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>PRUM1002040000</key>
+    <value>d. Telepon</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>PRUM1002050000</key>
+    <value>e. Email</value>
+    <labels/>
+  </reference>
+</list>

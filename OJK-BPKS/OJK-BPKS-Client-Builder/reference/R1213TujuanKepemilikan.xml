@@ -1,0 +1,27 @@
+<list>
+  <reference>
+    <key>TK:e51</key>
+    <value>Dimiliki Hingga Jatuh Tempo (Held To Maturity/HTM)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>TK:e52</key>
+    <value>Diperdagangkan (Held for Trading/Trading)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>TK:e53</key>
+    <value>Tersedia Untuk Dijual (Available For Sale/AFS)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>TK:e55</key>
+    <value>Pengaruh Signifikan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>TK:e56</key>
+    <value>Tidak Memiliki Pengaruh Signifikan</value>
+    <labels/>
+  </reference>
+</list>

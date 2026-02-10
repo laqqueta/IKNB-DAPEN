@@ -119,6 +119,7 @@ public class SimpleValidation {
 	public static final Regex PATTERN_REFERENCE_1 = new Regex("[a-zA-Z0-9[:]]+", "huruf, angka dan karakter :");
 	public static final Regex PATTERN_REFERENCE_2 = new Regex("[a-zA-Z0-9[_]]+", "huruf, angka dan karakter _");
 	public static final Regex PATTERN_REFERENCE_3 = new Regex("[a-zA-Z[:]]+", "huruf dan karakter :");
+	public static final Regex PATTERN_REFERENCE_4 = new Regex("[a-zA-Z0-9[.]]+", "huruf, angka dan karakter .");
 	public static final Regex PATTERN_NOMOR_SURAT = new Regex("[\\w[ ().,/]]+", "Huruf Angka Spasi dan karakter .(),/");
 	public static final Regex PATTERN_PHONE = new Regex("[0-9[.\\-()]]+", "angka dan karakter ( ) . -");
 	public static final Regex PATTERN_ALL_1 = new Regex("[\\w[ @#$%^&*(){}\\[\\]<=>~\\-\\+`'\".,:;\\\\\\/?!]]+", "huruf, angka, spasi dan karakter @#$%^&(){}[]<=>~_-+`'\".,:;\\/?!");

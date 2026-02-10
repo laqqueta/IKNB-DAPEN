@@ -1,10 +1,12 @@
 package id.go.ojk.conf.client;
 
 import java.util.List;
+import java.util.StringJoiner;
 import java.util.stream.IntStream;
 
 import org.apache.commons.lang3.StringUtils;
 
+import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.constant.ESymbolMap;
 import id.go.ojk.lib.client.model.KeyValueString;
 
@@ -301,6 +303,22 @@ public class UtilMetadata {
 		}
 		return res;
 	}
+
+  public static StringJoiner joinKeys(List<IObject<KeyValueString>> listKv, CharSequence delimiter) {
+    StringJoiner joiner = new StringJoiner(delimiter);
+    listKv.forEach(kv -> {
+      joiner.add(kv.getObject().getKey());
+    });
+    return joiner;
+  }
+
+  public static StringJoiner joinValues(List<IObject<KeyValueString>> listKv, CharSequence delimiter) {
+    StringJoiner joiner = new StringJoiner(delimiter);
+    listKv.forEach(kv -> {
+      joiner.add(ESymbolMap.encode(kv.getObject().getValue().trim()));
+    });
+    return joiner;
+  }
 
 	private UtilMetadata() { }
 }

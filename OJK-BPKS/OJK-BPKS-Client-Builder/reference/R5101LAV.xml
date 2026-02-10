@@ -1,0 +1,117 @@
+<list>
+  <reference>
+    <key>LAV0101000000</key>
+    <value>Pendapatan iuran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAV0102000000</key>
+    <value>Kontribusi dari BPJS</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAV0103000000</key>
+    <value>Bantuan dari pemerintah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAV0104000000</key>
+    <value>Pendapatan atas Hibah dari BPJS</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAV0105000000</key>
+    <value>Pendapatan atas Pajak Rokok</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAV0106000000</key>
+    <value>Pendapatan bunga dan bagi hasil</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAV0107000000</key>
+    <value>Keuntungan pelepasan investasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAV0108000000</key>
+    <value>Selisih penilaian investasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAV0109000000</key>
+    <value>Pendapatan lain</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAV0200000000</key>
+    <value>TOTAL PENDAPATAN</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAV0301000000</key>
+    <value>Beban jaminan kesehatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAV0302000000</key>
+    <value>Beban cadangan teknis</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAV0302010000</key>
+    <value>Kenaikan (penurunan) liabilitas pelayanan kesehatan dalam proses</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAV0302020000</key>
+    <value>Kenaikan (penurunan) liabilitas pelayanan kesehatan belum dilaporkan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAV0302030000</key>
+    <value>Kenaikan (penurunan) iuran yang belum merupakan pendapatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAV0303000000</key>
+    <value>Biaya operasional BPJS</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAV0304000000</key>
+    <value>Beban investasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAV0305000000</key>
+    <value>Beban penyisihan piutang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAV0306000000</key>
+    <value>Beban lain</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAV0400000000</key>
+    <value>TOTAL BEBAN</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAV0500000000</key>
+    <value>KENAIKAN (PENURUNAN) ASET NETO</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAV0600000000</key>
+    <value>ASET NETO AWAL PERIODE</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAV0700000000</key>
+    <value>ASET NETO AKHIR PERIODE</value>
+    <labels/>
+  </reference>
+</list>

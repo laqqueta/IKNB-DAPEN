@@ -1,0 +1,12 @@
+<list>
+  <reference>
+    <key>INV0100000000</key>
+    <value>Detail</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>INV0200000000</key>
+    <value>Total</value>
+    <labels/>
+  </reference>
+</list>

@@ -1,0 +1,37 @@
+<list>
+  <reference>
+    <key>LPAN0101000000</key>
+    <value>Saldo Awal Aset Neto</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPAN0102000000</key>
+    <value>Surplus (Defisit) Tahun Berjalan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPAN0103000000</key>
+    <value>Saldo Akhir Aset Neto</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPAN0201000000</key>
+    <value>Saldo Awal Penghasilan Komprehensif Lain</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPAN0202000000</key>
+    <value>Penghasilan Komprehensif Tahun Berjalan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPAN0203000000</key>
+    <value>Saldo Akhir Penghasilan Komprehensif Lain</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPAN0300000000</key>
+    <value>TOTAL</value>
+    <labels/>
+  </reference>
+</list>

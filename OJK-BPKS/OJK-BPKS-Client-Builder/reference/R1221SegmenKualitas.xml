@@ -1,0 +1,32 @@
+<list>
+  <reference>
+    <key>1</key>
+    <value>Kurang dari 30 hari</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>2</key>
+    <value>31 hari - 90 hari</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>3</key>
+    <value>91 hari - 180 hari</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4</key>
+    <value>181 hari - 270 hari</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>5</key>
+    <value>271 hari - 365 hari</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>6</key>
+    <value>Di atas 365 hari</value>
+    <labels/>
+  </reference>
+</list>

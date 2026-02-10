@@ -1,0 +1,17 @@
+<list>
+  <reference>
+    <key>100</key>
+    <value>Kelas 1</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>200</key>
+    <value>Kelas 2</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>300</key>
+    <value>Kelas 3</value>
+    <labels/>
+  </reference>
+</list>

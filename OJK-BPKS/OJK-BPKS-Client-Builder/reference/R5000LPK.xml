@@ -1,0 +1,252 @@
+<list>
+  <reference>
+    <key>LPK0101010000</key>
+    <value>Kas dan setara kas</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0101020000</key>
+    <value>Deposito berjangka</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0101030000</key>
+    <value>Piutang biaya operasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0101040000</key>
+    <value>Piutang talangan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0101050000</key>
+    <value>Piutang investasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0101060000</key>
+    <value>Piutang hasil investasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0101070000</key>
+    <value>Piutang lain</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0101080000</key>
+    <value>Uang muka</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0101090000</key>
+    <value>Pajak dibayar di muka</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0101100000</key>
+    <value>Biaya dibayar di muka</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0101110000</key>
+    <value>Investasi jangka pendek</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0101120000</key>
+    <value>Perlengkapan kantor</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0101130000</key>
+    <value>Aset dimiliki untuk dijual</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0101140000</key>
+    <value>Aset lancar lain</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0102000000</key>
+    <value>Jumlah Aset Lancar</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0103010000</key>
+    <value>Investasi jangka panjang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0103020000</key>
+    <value>Investasi pada entitas asosiasi dan entitas anak</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0103030000</key>
+    <value>Properti Investasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0103040000</key>
+    <value>Aset tetap</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0103050000</key>
+    <value>Aset Hak Guna</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0103060000</key>
+    <value>Aset tidak berwujud</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0103070000</key>
+    <value>Aset pajak tangguhan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0103080000</key>
+    <value>Aset tidak lancar lain</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0104000000</key>
+    <value>Jumlah Aset Tidak Lancar</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0200000000</key>
+    <value>JUMLAH ASET</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0301010000</key>
+    <value>Utang kepada pihak ketiga</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0301020000</key>
+    <value>Utang pajak</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0301030000</key>
+    <value>Utang kontribusi kepada program</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0301040000</key>
+    <value>Utang insentif</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0301050000</key>
+    <value>Biaya yang masih harus dibayar</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0301060000</key>
+    <value>Pendapatan diterima dimuka</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0301070000</key>
+    <value>Liabilitas jangka pendek lain</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0301080000</key>
+    <value>Liabilitas Sewa Jangka Pendek</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0302000000</key>
+    <value>Jumlah Liabilitas Jangka Pendek</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0303010000</key>
+    <value>Pendapatan diterima dimuka</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0303020000</key>
+    <value>Liabilitas imbalan pascakerja</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0303030000</key>
+    <value>Liabilitas pajak tangguhan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0303040000</key>
+    <value>Liabilitas jangka panjang lain</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0303050000</key>
+    <value>Liabilitas Sewa Jangka Panjang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0304000000</key>
+    <value>Jumlah Liabilitas Jangka Panjang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0400000000</key>
+    <value>JUMLAH LIABILITAS</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0501000000</key>
+    <value>Modal</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0502000000</key>
+    <value>Saldo penyesuaian nilai wajar aset keuangan tersedia untuk dijual</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0503000000</key>
+    <value>Saldo keuntungan dan kerugian aktuaria liabilitas pascakerja imbalan pasti</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0504000000</key>
+    <value>Saldo bagian penghasilan komprehensif lain entitas asosiasi dan entitas anak</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0505000000</key>
+    <value>Saldo selisih transaksi dengan pihak nonpengendali</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0506000000</key>
+    <value>Saldo selisih kombinasi dan pelepasan bisnis antar entitas sepengendali</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0507000000</key>
+    <value>Saldo penghasilan (beban) neto</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0600000000</key>
+    <value>JUMLAH EKUITAS</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPK0700000000</key>
+    <value>JUMLAH LIABILITAS DAN EKUITAS</value>
+    <labels/>
+  </reference>
+</list>

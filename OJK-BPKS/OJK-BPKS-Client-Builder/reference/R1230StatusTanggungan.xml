@@ -1,0 +1,22 @@
+<list>
+  <reference>
+    <key>10</key>
+    <value>Peserta</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>20</key>
+    <value>Suami/Istri</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>30</key>
+    <value>Anak</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>40</key>
+    <value>Tambahan</value>
+    <labels/>
+  </reference>
+</list>

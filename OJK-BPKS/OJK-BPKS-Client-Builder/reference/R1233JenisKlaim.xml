@@ -1,0 +1,32 @@
+<list>
+  <reference>
+    <key>1</key>
+    <value>Rawat Jalan Tingkat Pertama (RJTP) Kapitasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>2</key>
+    <value>Klaim Non Kapitasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>3</key>
+    <value>Rawat Inap Tingkat Pertama (RITP)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4</key>
+    <value>Rawat Inap Tingkat Lanjutan (RITL) Ina CBGs</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>5</key>
+    <value>Rawat Jalan Tingkat Lanjutan (RJTL) Ina CBGs</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>6</key>
+    <value>Klaim Non Ina CBGs</value>
+    <labels/>
+  </reference>
+</list>

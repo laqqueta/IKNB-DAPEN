@@ -1,0 +1,17 @@
+<list>
+  <reference>
+    <key>JP:e01</key>
+    <value>Tanah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>JP:e02</key>
+    <value>Bangunan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>JP:e03</key>
+    <value>Tanah dan Bangunan</value>
+    <labels/>
+  </reference>
+</list>

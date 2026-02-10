@@ -487,7 +487,7 @@ public class MainApplication extends BaseService implements ApplicationInterface
 		rootLayoutController.synchMenuToRealDisplay(displayScene);
 
 		// cek update if online login
-		if (userSession.isOnline() && !securityService.useApi()) {
+		if (userSession.isOnline() && !securityService.useLoginApi()) {
 			@SuppressWarnings("unchecked")
 			Map<String, Map<String, Object>> versionCheck = (Map<String, Map<String, Object>>) userSession
 					.getLoginOnlineResponse().get(ApplicationUpdateService.key_versionCheck);
@@ -496,7 +496,7 @@ public class MainApplication extends BaseService implements ApplicationInterface
 				// showUpdateOnlineDialog();
 				// updateOnlineDialog.getB().doUpdate(versionCheck);
 			}
-		} else if (securityService.useApi()) {
+		} else if (securityService.useLoginApi()) {
 			// rootLayoutController.getChangePasswordMenuItem().setVisible(false);
 		}
 	}
@@ -617,7 +617,7 @@ public class MainApplication extends BaseService implements ApplicationInterface
 			@Override
 			public void run() {
 				try {
-					if (securityService.isOnlineLogin() && !securityService.useApi()) {
+					if (securityService.isOnlineLogin() && !securityService.useLoginApi()) {
 						userLogoutReal();
 					}
 					appCtx.shutdown();

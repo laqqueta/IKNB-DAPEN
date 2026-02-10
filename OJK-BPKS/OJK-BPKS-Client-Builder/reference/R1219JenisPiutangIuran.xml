@@ -1,0 +1,97 @@
+<list>
+  <reference>
+    <key>1100</key>
+    <value>PIUTANG IURAN PEMERINTAH DAERAH</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>1200</key>
+    <value>PIUTANG IURAN PNS DAERAH</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>1300</key>
+    <value>PIUTANG IURAN PEGAWAI  NON PNS PEMERINTAH DAERAH</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>1400</key>
+    <value>KONTRIBUSI IURAN PBI</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>1510</key>
+    <value>Bantuan Iuran PBPU dan BP Kelas III</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>1520</key>
+    <value>Bantuan Iuran PD Pemda</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>1600</key>
+    <value>PIUTANG IURAN PENERIMA BANTUAN IURAN (PBI) DAERAH/JAMKESDA</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>2100</key>
+    <value>PIUTANG IURAN PNS </value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>2200</key>
+    <value>PIUTANG IURAN TNI </value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>2300</key>
+    <value>PIUTANG IURAN POLRI</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>2400</key>
+    <value>PIUTANG IURAN PPNPN PUSAT</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>2500</key>
+    <value>PIUTANG IURAN PEMERINTAH PUSAT</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>2600</key>
+    <value>PIUTANG IURAN PENSIUNAN PNS, TNI DAN POLRI</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>2700</key>
+    <value>PIUTANG IURAN PESERTA BUKAN PENERIMA UPAH (PBPU)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>3100</key>
+    <value>PIUTANG IURAN BADAN USAHA (SWASTA)</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>3200</key>
+    <value>KEPALA DESA DAN PERANGKAT DESA</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>3310</key>
+    <value>Piutang Bantuan Iuran Pemerintah Pusat atas PBPU</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>3320</key>
+    <value>Piutang Bantuan Iuran Pemerintah Pusat atas PD PEMDA</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>3400</key>
+    <value>PIUTANG IURAN JPK EKS JAMSOSTEK</value>
+    <labels/>
+  </reference>
+</list>

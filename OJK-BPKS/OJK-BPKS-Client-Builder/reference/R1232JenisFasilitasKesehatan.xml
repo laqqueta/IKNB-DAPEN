@@ -1,0 +1,142 @@
+<list>
+  <reference>
+    <key>10</key>
+    <value>FKTP - Puskesmas</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>11</key>
+    <value>FKTP - Dokter Praktik Perorangan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>12</key>
+    <value>FKTP - Klinik Pratama</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>13</key>
+    <value>FKTP - Rumah Sakit Kelas D-Pratama</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>14</key>
+    <value>FKTP - Apotik</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>15</key>
+    <value>FKTP - Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>16</key>
+    <value>FKTL - Rumah Sakit Pemerintah Kelas A</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>17</key>
+    <value>FKTL - Rumah Sakit Pemerintah Kelas B</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>18</key>
+    <value>FKTL - Rumah Sakit Pemerintah Kelas C</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>19</key>
+    <value>FKTL - Rumah Sakit Pemerintah Kelas D</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>20</key>
+    <value>FKTL - Rumah Sakit Swasta Kelas A</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>21</key>
+    <value>FKTL - Rumah Sakit Swasta Kelas B</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>22</key>
+    <value>FKTL - Rumah Sakit Swasta Kelas C</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>23</key>
+    <value>FKTL - Rumah Sakit Swasta Kelas D</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>24</key>
+    <value>FKTL - Rumah Sakit TNI Tingkat I</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>25</key>
+    <value>FKTL - Rumah Sakit TNI Tingkat II</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>26</key>
+    <value>FKTL - Rumah Sakit TNI Tingkat III</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>27</key>
+    <value>FKTL - Rumah Sakit TNI Tingkat IV</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>28</key>
+    <value>FKTL - Rumah Sakit POLRI Tingkat I</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>29</key>
+    <value>FKTL - Rumah Sakit POLRI Tingkat II</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>30</key>
+    <value>FKTL - Rumah Sakit POLRI Tingkat III</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>31</key>
+    <value>FKTL - Rumah Sakit POLRI Tingkat IV</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>32</key>
+    <value>FKRTL - Rumah Sakit Khusus Non Jiwa</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>33</key>
+    <value>FKRTL - Rumah Sakit Khusus Jiwa</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>34</key>
+    <value>FKTL - Klinik Utama</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>35</key>
+    <value>FKTL - Apotik</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>36</key>
+    <value>FKTL - Optik</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>37</key>
+    <value>FKTL - Lainnya</value>
+    <labels/>
+  </reference>
+</list>

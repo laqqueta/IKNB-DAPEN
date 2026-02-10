@@ -1,0 +1,22 @@
+<list>
+  <reference>
+    <key>1</key>
+    <value>Direksi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>2</key>
+    <value>Bidang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>3</key>
+    <value>Kedeputian Wilayah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4</key>
+    <value>Cabang</value>
+    <labels/>
+  </reference>
+</list>

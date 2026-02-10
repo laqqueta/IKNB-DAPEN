@@ -70,15 +70,8 @@ public class RatioValidation2 extends BaseFormulaValidation {
     if (divByPeriod) {
       LocalDate period = SubmissionFormat.reportPeriod;
       if (period != null)
-
-        //Kondisi: perbaikan applied hanya untuk BPKS dulu, sampai BPTK selesai SIT.
-        //Form RKE hanya ada di BPKS.
-        if(validationResult.rowSplited[1].contains("RKE")) {
-          rightValue = rightValue.divide(BigDecimal.valueOf(period.getMonthValue()), MathContext.DECIMAL128)
-              .multiply(BigDecimal.valueOf(12));
-        } else {
-          rightValue = rightValue.divide(BigDecimal.valueOf(period.getMonthValue() * 12), MathContext.DECIMAL128);
-        }
+        rightValue = rightValue.divide(BigDecimal.valueOf(period.getMonthValue()), MathContext.DECIMAL128)
+            .multiply(BigDecimal.valueOf(12));
     }
 
     rightValue = rightValue.multiply(new BigDecimal(100));

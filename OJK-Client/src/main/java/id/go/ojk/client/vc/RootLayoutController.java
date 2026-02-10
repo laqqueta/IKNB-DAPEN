@@ -226,7 +226,7 @@ public class RootLayoutController extends BaseController {
 
 	@FXML
 	private void handleChangePassword() {
-	  if(securityService.useApi()) {
+	  if(securityService.useLoginApi()) {
 	    AlertUtil.showAlert(AlertType.INFORMATION, "Ubah Password", "Petunjuk Perubahan Password", securityService.getChangePasswordInstruction());
 	  } else {
 	    mainApplication.showChangePasswordDialog();
@@ -297,7 +297,7 @@ public class RootLayoutController extends BaseController {
 		if (userSession.getAuthenticationStatus() == AuthenticationStatus.onlineAuthenticate) {
 			updateConnectionStatus(true);
 //		} else if (ftpService.isLoginFTP(false)) {
-		} else if (userSession.getFtpLogin() && !securityService.useApi()) {
+		} else if (userSession.getFtpLogin() && !securityService.useLoginApi()) {
 			updateConnectionStatus(true);
 		} else {
 			updateConnectionStatus(false);

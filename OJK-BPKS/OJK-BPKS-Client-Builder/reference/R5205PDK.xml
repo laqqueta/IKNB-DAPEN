@@ -1,0 +1,12 @@
+<list>
+  <reference>
+    <key>PDK0100000000</key>
+    <value>Detail</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>PDK0200000000</key>
+    <value>Total</value>
+    <labels/>
+  </reference>
+</list>

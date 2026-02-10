@@ -303,7 +303,7 @@ public abstract class BasePreparationAndSendingController extends BaseController
 
 	@FXML
 	private void handleProcess() {
-		if (sendFileCheckBox.isSelected() && securityService.useApi()
+		if (sendFileCheckBox.isSelected() && securityService.useLoginApi()
 				&& !securityService.getUserSession().hasOnlineSession() && !UtilDialog.reLogin(securityService)) {
 			AlertUtil.showAlert(AlertType.ERROR, "Kesalahan", "Kesalahan", "Login Gagal");
 			return;

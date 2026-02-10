@@ -1,0 +1,797 @@
+<list>
+  <reference>
+    <key>10</key>
+    <value>Kantor Perbendaharaan dan Kas Negara (KPKN) - Pemerintah Pusat - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>20</key>
+    <value>Kementerian Keuangan - Pemerintah Pusat - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>30</key>
+    <value>Kementerian Pertahanan - Pemerintah Pusat - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>40</key>
+    <value>Kementerian Kehutanan - Pemerintah Pusat - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>50</key>
+    <value>Kementerian Pertanian - Pemerintah Pusat - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>60</key>
+    <value>Kementerian Pertambangan dan Energi - Pemerintah Pusat - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>70</key>
+    <value>Kementerian Agama - Pemerintah Pusat - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>80</key>
+    <value>Kementerian Negara BUMN - Pemerintah Pusat - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>999</key>
+    <value>Kementerian lainnya - Pemerintah Pusat - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>1010</key>
+    <value>Provinsi - Pemerintah Daerah (Pemda) - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>1020</key>
+    <value>Pemerintah Kota - Pemerintah Daerah (Pemda) - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>1030</key>
+    <value>Pemerintah Kabupaten - Pemerintah Daerah (Pemda) - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>2010</key>
+    <value>Badan Urusan Logistik (BULOG) - Badan-badan dan Lembaga-lembaga Pemerintah - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>2020</key>
+    <value>Lembaga Penjamin Simpanan (LPS) - Badan-badan dan Lembaga-lembaga Pemerintah - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>2090</key>
+    <value>Lainnya - Badan-badan dan Lembaga-lembaga Pemerintah - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>6110</key>
+    <value>Bank Umum Konvensional - Lembaga Keuangan Bank - Badan Usaha Milik Negara (BUMN) atau Pemerintah Campuran - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>6120</key>
+    <value>Bank Umum Syariah - Lembaga Keuangan Bank - Badan Usaha Milik Negara (BUMN) atau Pemerintah Campuran - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>6130</key>
+    <value>Bank Perkreditan Rakyat (BPR) Konvensional - Lembaga Keuangan Bank - Badan Usaha Milik Negara (BUMN) atau Pemerintah Campuran - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>6140</key>
+    <value>Bank Perkreditan Rakyat (BPR) Syariah - Lembaga Keuangan Bank - Badan Usaha Milik Negara (BUMN) atau Pemerintah Campuran - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4111</key>
+    <value>Asuransi : Jamsostek - Perusahaan Asuransi dan Dana Pensiun -  Lembaga Keuangan Non Bank - Badan Usaha Milik Negara (BUMN) atau Pemerintah Campuran - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4112</key>
+    <value>Taspen - Perusahaan Asuransi dan Dana Pensiun -  Lembaga Keuangan Non Bank - Badan Usaha Milik Negara (BUMN) atau Pemerintah Campuran - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4113</key>
+    <value>Jiwasraya - Perusahaan Asuransi dan Dana Pensiun -  Lembaga Keuangan Non Bank - Badan Usaha Milik Negara (BUMN) atau Pemerintah Campuran - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4114</key>
+    <value>Jasa Raharja - Perusahaan Asuransi dan Dana Pensiun -  Lembaga Keuangan Non Bank - Badan Usaha Milik Negara (BUMN) atau Pemerintah Campuran - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4115</key>
+    <value>Jasindo - Perusahaan Asuransi dan Dana Pensiun -  Lembaga Keuangan Non Bank - Badan Usaha Milik Negara (BUMN) atau Pemerintah Campuran - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4116</key>
+    <value>ASABRI - Perusahaan Asuransi dan Dana Pensiun -  Lembaga Keuangan Non Bank - Badan Usaha Milik Negara (BUMN) atau Pemerintah Campuran - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4119</key>
+    <value>Perusahaan asuransi lainnya - Perusahaan Asuransi dan Dana Pensiun -  Lembaga Keuangan Non Bank - Badan Usaha Milik Negara (BUMN) atau Pemerintah Campuran - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4120</key>
+    <value>Dana Pensiun - Perusahaan Asuransi dan Dana Pensiun -  Lembaga Keuangan Non Bank - Badan Usaha Milik Negara (BUMN) atau Pemerintah Campuran - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4130</key>
+    <value>Modal Ventura -  Lembaga Keuangan Non Bank - Badan Usaha Milik Negara (BUMN) atau Pemerintah Campuran - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4140</key>
+    <value>Perusahaan Pembiayaan -  Lembaga Keuangan Non Bank - Badan Usaha Milik Negara (BUMN) atau Pemerintah Campuran - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4151</key>
+    <value>Perusahaan sekuritas yang tidak melakukan kegiatan usaha Reksadana - Perusahaan Sekuritas dan Reksadana -  Lembaga Keuangan Non Bank - Badan Usaha Milik Negara (BUMN) atau Pemerintah Campuran - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4152</key>
+    <value>Perusahaan sekuritas yang melakukan kegiatan usaha Reksadana - Perusahaan Sekuritas dan Reksadana -  Lembaga Keuangan Non Bank - Badan Usaha Milik Negara (BUMN) atau Pemerintah Campuran - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4153</key>
+    <value>Perusahaan Reksadana - Perusahaan Sekuritas dan Reksadana -  Lembaga Keuangan Non Bank - Badan Usaha Milik Negara (BUMN) atau Pemerintah Campuran - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4154</key>
+    <value>Manajer Investasi - Perusahaan Sekuritas dan Reksadana -  Lembaga Keuangan Non Bank - Badan Usaha Milik Negara (BUMN) atau Pemerintah Campuran - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4155</key>
+    <value>PT Danareksa - Perusahaan Sekuritas dan Reksadana -  Lembaga Keuangan Non Bank - Badan Usaha Milik Negara (BUMN) atau Pemerintah Campuran - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4159</key>
+    <value>Lainnya - Perusahaan Sekuritas dan Reksadana -  Lembaga Keuangan Non Bank - Badan Usaha Milik Negara (BUMN) atau Pemerintah Campuran - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4171</key>
+    <value>Perum Pegadaian - Lembaga Keuangan Non Bank Lainnya -  Lembaga Keuangan Non Bank - Badan Usaha Milik Negara (BUMN) atau Pemerintah Campuran - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4172</key>
+    <value>PT Pos Indonesia - Lembaga Keuangan Non Bank Lainnya -  Lembaga Keuangan Non Bank - Badan Usaha Milik Negara (BUMN) atau Pemerintah Campuran - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4179</key>
+    <value>Lainnya - Lembaga Keuangan Non Bank Lainnya -  Lembaga Keuangan Non Bank - Badan Usaha Milik Negara (BUMN) atau Pemerintah Campuran - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4501</key>
+    <value>PT Kereta Api Indonesia (KAI) - Bukan Lembaga Keuangan - Badan Usaha Milik Negara (BUMN) atau Pemerintah Campuran - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4502</key>
+    <value>PT Pelayaran Nasional Indonesia (PELNI) - Bukan Lembaga Keuangan - Badan Usaha Milik Negara (BUMN) atau Pemerintah Campuran - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4503</key>
+    <value>PT Pelabuhan Laut Indonesia (PELINDO) - Bukan Lembaga Keuangan - Badan Usaha Milik Negara (BUMN) atau Pemerintah Campuran - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4504</key>
+    <value>PT Angkutan Sungai, Danau dan Penyeberangan (ASDP) - Bukan Lembaga Keuangan - Badan Usaha Milik Negara (BUMN) atau Pemerintah Campuran - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4505</key>
+    <value>PT Angkasa Pura - Bukan Lembaga Keuangan - Badan Usaha Milik Negara (BUMN) atau Pemerintah Campuran - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4506</key>
+    <value>PT Perkebunan Nusantara - Bukan Lembaga Keuangan - Badan Usaha Milik Negara (BUMN) atau Pemerintah Campuran - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4507</key>
+    <value>PT Pertamina - Bukan Lembaga Keuangan - Badan Usaha Milik Negara (BUMN) atau Pemerintah Campuran - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4508</key>
+    <value>PT Perusahaan Listrik Negara (PLN) - Bukan Lembaga Keuangan - Badan Usaha Milik Negara (BUMN) atau Pemerintah Campuran - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4509</key>
+    <value>PT Krakatau Steel - Bukan Lembaga Keuangan - Badan Usaha Milik Negara (BUMN) atau Pemerintah Campuran - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4510</key>
+    <value>PT Garuda Indonesia - Bukan Lembaga Keuangan - Badan Usaha Milik Negara (BUMN) atau Pemerintah Campuran - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4511</key>
+    <value>PT Telkom - Bukan Lembaga Keuangan - Badan Usaha Milik Negara (BUMN) atau Pemerintah Campuran - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4512</key>
+    <value>PT Indosat - Bukan Lembaga Keuangan - Badan Usaha Milik Negara (BUMN) atau Pemerintah Campuran - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4513</key>
+    <value>PT Jasa Marga - Bukan Lembaga Keuangan - Badan Usaha Milik Negara (BUMN) atau Pemerintah Campuran - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4514</key>
+    <value>PT Timah - Bukan Lembaga Keuangan - Badan Usaha Milik Negara (BUMN) atau Pemerintah Campuran - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4515</key>
+    <value>PT Aneka Tambang - Bukan Lembaga Keuangan - Badan Usaha Milik Negara (BUMN) atau Pemerintah Campuran - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4516</key>
+    <value>Perusahaan Jasa Kontruksi - Bukan Lembaga Keuangan - Badan Usaha Milik Negara (BUMN) atau Pemerintah Campuran - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>4599</key>
+    <value>Lainnya - Bukan Lembaga Keuangan - Badan Usaha Milik Negara (BUMN) atau Pemerintah Campuran - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>5110</key>
+    <value>Perusahaan Asuransi - Perusahaan Asuransi dan Dana Pensiun - Lembaga Keuangan Non Bank - Badan Usaha Milik Daerah (BUMD) - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>5120</key>
+    <value>Dana Pensiun - Perusahaan Asuransi dan Dana Pensiun - Lembaga Keuangan Non Bank - Badan Usaha Milik Daerah (BUMD) - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>5130</key>
+    <value>Modal Ventura - Lembaga Keuangan Non Bank - Badan Usaha Milik Daerah (BUMD) - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>5140</key>
+    <value>Perusahaan Pembiayaan - Lembaga Keuangan Non Bank - Badan Usaha Milik Daerah (BUMD) - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>5151</key>
+    <value>Perusahaan sekuritas yang tidak melakukan kegiatan usaha Reksadana - Perusahaan Sekuritas dan Reksadana - Lembaga Keuangan Non Bank - Badan Usaha Milik Daerah (BUMD) - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>5152</key>
+    <value>Perusahaan sekuritas yang melakukan kegiatan usaha Reksadana - Perusahaan Sekuritas dan Reksadana - Lembaga Keuangan Non Bank - Badan Usaha Milik Daerah (BUMD) - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>5153</key>
+    <value>Perusahaan Reksadana - Perusahaan Sekuritas dan Reksadana - Lembaga Keuangan Non Bank - Badan Usaha Milik Daerah (BUMD) - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>5154</key>
+    <value>Manajer Investasi - Perusahaan Sekuritas dan Reksadana - Lembaga Keuangan Non Bank - Badan Usaha Milik Daerah (BUMD) - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>5159</key>
+    <value>Lainnya - Perusahaan Sekuritas dan Reksadana - Lembaga Keuangan Non Bank - Badan Usaha Milik Daerah (BUMD) - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>5199</key>
+    <value> -  - Perusahaan Sekuritas dan Reksadana - Lembaga Keuangan Non Bank - Badan Usaha Milik Daerah (BUMD) - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>5501</key>
+    <value>Perusahaan Daerah Air Minum (PDAM) - Bukan Lembaga Keuangan - Badan Usaha Milik Daerah (BUMD) - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>5502</key>
+    <value>Perusahaan Daerah Pasar (PD Pasar) - Bukan Lembaga Keuangan - Badan Usaha Milik Daerah (BUMD) - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>5599</key>
+    <value>Lainnya - Bukan Lembaga Keuangan - Badan Usaha Milik Daerah (BUMD) - Sektor Pemerintah - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>6110</key>
+    <value>Bank Umum Konvensional - Lembaga Keuangan Bank - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>6120</key>
+    <value>Bank Umum Syariah - Lembaga Keuangan Bank - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>6130</key>
+    <value>Bank Perkreditan Rakyat (BPR) Konvensional - Lembaga Keuangan Bank - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>6140</key>
+    <value>Bank Perkreditan Rakyat (BPR) Syariah - Lembaga Keuangan Bank - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>7110</key>
+    <value>Perusahaan Asuransi - Perusahaan Asuransi dan Dana Pensiun - Swasta Nasional - Lembaga Keuangan Non Bank - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>7120</key>
+    <value>Dana Pensiun - Perusahaan Asuransi dan Dana Pensiun - Swasta Nasional - Lembaga Keuangan Non Bank - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>7130</key>
+    <value>Modal Ventura - Swasta Nasional - Lembaga Keuangan Non Bank - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>7140</key>
+    <value>Perusahaan Pembiayaan - Swasta Nasional - Lembaga Keuangan Non Bank - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>7151</key>
+    <value>Perusahaan sekuritas yang tidak melakukan kegiatan usaha Reksadana - Perusahaan Sekuritas dan Reksadana - Swasta Nasional - Lembaga Keuangan Non Bank - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>7152</key>
+    <value>Perusahaan sekuritas yang melakukan kegiatan usaha Reksadana - Perusahaan Sekuritas dan Reksadana - Swasta Nasional - Lembaga Keuangan Non Bank - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>7153</key>
+    <value>Perusahaan Reksadana - Perusahaan Sekuritas dan Reksadana - Swasta Nasional - Lembaga Keuangan Non Bank - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>7154</key>
+    <value>Manajer Investasi - Perusahaan Sekuritas dan Reksadana - Swasta Nasional - Lembaga Keuangan Non Bank - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>7159</key>
+    <value>Lainnya - Perusahaan Sekuritas dan Reksadana - Swasta Nasional - Lembaga Keuangan Non Bank - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>7172</key>
+    <value>Baitul Maal Wa Tamwil (BMT) - Lembaga Keuangan Non Bank Lainnya - Swasta Nasional - Lembaga Keuangan Non Bank - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>7173</key>
+    <value>Koperasi Primer - Koperasi Simpan Pinjam - Lembaga Keuangan Non Bank Lainnya - Swasta Nasional - Lembaga Keuangan Non Bank - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>7174</key>
+    <value>Koperasi Lainnya - Koperasi Simpan Pinjam - Lembaga Keuangan Non Bank Lainnya - Swasta Nasional - Lembaga Keuangan Non Bank - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>7190</key>
+    <value>Lainnya - Lembaga Keuangan Non Bank Lainnya - Swasta Nasional - Lembaga Keuangan Non Bank - Sektor Swasta - Penduduk7210 - Perusahaan Asuransi - Perusahaan Asuransi dan Dana Pensiun - Campuran - Lembaga Keuangan Non Bank - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>7220</key>
+    <value>Dana Pensiun - Perusahaan Asuransi dan Dana Pensiun - Campuran - Lembaga Keuangan Non Bank - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>7230</key>
+    <value>Modal Ventura - Campuran - Lembaga Keuangan Non Bank - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>7240</key>
+    <value>Perusahaan Pembiayaan - Campuran - Lembaga Keuangan Non Bank - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>7251</key>
+    <value>Perusahaan sekuritas yang tidak melakukan kegiatan usaha Reksadana - Perusahaan Sekuritas dan Reksadana - Campuran - Lembaga Keuangan Non Bank - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>7252</key>
+    <value>Perusahaan sekuritas yang melakukan kegiatan usaha Reksadana - Perusahaan Sekuritas dan Reksadana - Campuran - Lembaga Keuangan Non Bank - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>7253</key>
+    <value>Perusahaan Reksadana - Perusahaan Sekuritas dan Reksadana - Campuran - Lembaga Keuangan Non Bank - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>7254</key>
+    <value>Manajer Investasi - Perusahaan Sekuritas dan Reksadana - Campuran - Lembaga Keuangan Non Bank - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>7259</key>
+    <value>Lainnya - Perusahaan Sekuritas dan Reksadana - Campuran - Lembaga Keuangan Non Bank - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>7272</key>
+    <value>Baitul Maal Wa Tamwil (BMT) - Lembaga Keuangan Non Bank Lainnya - Campuran - Lembaga Keuangan Non Bank - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>7273</key>
+    <value>Kantor Perwakilan Lembaga Milik Asing di Indonesia - Lembaga Keuangan Non Bank Lainnya - Campuran - Lembaga Keuangan Non Bank - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>7290</key>
+    <value>Lainnya - Lembaga Keuangan Non Bank Lainnya - Campuran - Lembaga Keuangan Non Bank - Sektor Swasta - Penduduk7310 - Perusahaan Asuransi - Perusahaan Asuransi dan Dana Pensiun - Asing - Lembaga Keuangan Non Bank - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>7320</key>
+    <value>Dana Pensiun - Perusahaan Asuransi dan Dana Pensiun - Asing - Lembaga Keuangan Non Bank - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>7330</key>
+    <value> - Perusahaan Asuransi dan Dana Pensiun - Asing - Lembaga Keuangan Non Bank - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>7340</key>
+    <value> - Perusahaan Asuransi dan Dana Pensiun - Asing - Lembaga Keuangan Non Bank - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>7351</key>
+    <value>Perusahaan sekuritas yang tidak melakukan kegiatan usaha Reksadana - Perusahaan Sekuritas dan Reksadana - Asing - Lembaga Keuangan Non Bank - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>7352</key>
+    <value>Perusahaan sekuritas yang melakukan kegiatan usaha Reksadana - Perusahaan Sekuritas dan Reksadana - Asing - Lembaga Keuangan Non Bank - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>7353</key>
+    <value>Perusahaan Reksadana - Perusahaan Sekuritas dan Reksadana - Asing - Lembaga Keuangan Non Bank - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>7354</key>
+    <value>Manajer Investasi - Perusahaan Sekuritas dan Reksadana - Asing - Lembaga Keuangan Non Bank - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>7359</key>
+    <value>Lainnya - Perusahaan Sekuritas dan Reksadana - Asing - Lembaga Keuangan Non Bank - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>7372</key>
+    <value>Baitul Maal Wa Tamwil (BMT) - Lembaga Keuangan Non Bank Lainnya - Asing - Lembaga Keuangan Non Bank - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>7379</key>
+    <value>Kantor Perwakilan Lembaga Milik Asing di Indonesia lainnya - Lembaga Keuangan Non Bank Lainnya - Asing - Lembaga Keuangan Non Bank - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>7390</key>
+    <value>Lainnya - Lembaga Keuangan Non Bank Lainnya - Asing - Lembaga Keuangan Non Bank - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>8111</key>
+    <value>Perusahaan Otomotif - Perusahaan-perusahaan lainnya - Swasta Nasional - Bukan Lembaga Keuangan - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>8112</key>
+    <value>Perusahaan Perminyakan - Perusahaan-perusahaan lainnya - Swasta Nasional - Bukan Lembaga Keuangan - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>8113</key>
+    <value>Perusahaan Tekstil - Perusahaan-perusahaan lainnya - Swasta Nasional - Bukan Lembaga Keuangan - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>8114</key>
+    <value>Perusahaan Perkayuan (HPH) - Perusahaan-perusahaan lainnya - Swasta Nasional - Bukan Lembaga Keuangan - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>8115</key>
+    <value>Perusahaan Jasa Konstruksi - Perusahaan-perusahaan lainnya - Swasta Nasional - Bukan Lembaga Keuangan - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>8116</key>
+    <value>Perusahaan Industri Rokok - Perusahaan-perusahaan lainnya - Swasta Nasional - Bukan Lembaga Keuangan - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>8117</key>
+    <value>Perusahaan Industri Makanan - Perusahaan-perusahaan lainnya - Swasta Nasional - Bukan Lembaga Keuangan - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>8118</key>
+    <value>Perusahaan Agrobusiness - Perusahaan-perusahaan lainnya - Swasta Nasional - Bukan Lembaga Keuangan - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>8139</key>
+    <value>Perusahaan Lainnya - Perusahaan-perusahaan lainnya - Swasta Nasional - Bukan Lembaga Keuangan - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>8141</key>
+    <value>Koperasi Primer - Koperasi Bukan Simpan Pinjam - Swasta Nasional - Bukan Lembaga Keuangan - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>8149</key>
+    <value>Koperasi Lainnya - Koperasi Bukan Simpan Pinjam - Swasta Nasional - Bukan Lembaga Keuangan - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>8151</key>
+    <value>Badan Amil Zakat Infaq dan Shadaqah (BAZIS) - Yayasan, Badan Sosial dan Organisasi Kemasyarakatan - Swasta Nasional - Bukan Lembaga Keuangan - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>8152</key>
+    <value>Lembaga Pendidikan - Yayasan, Badan Sosial dan Organisasi Kemasyarakatan - Swasta Nasional - Bukan Lembaga Keuangan - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>8159</key>
+    <value>Lainnya - Yayasan, Badan Sosial dan Organisasi Kemasyarakatan - Swasta Nasional - Bukan Lembaga Keuangan - Sektor Swasta - Penduduk8411 - Perusahaan Otomotif - Perusahaan-perusahaan lainnya - Campuran - Bukan Lembaga Keuangan - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>8412</key>
+    <value>Perusahaan Perminyakan - Perusahaan-perusahaan lainnya - Campuran - Bukan Lembaga Keuangan - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>8413</key>
+    <value>Perusahaan Tekstil - Perusahaan-perusahaan lainnya - Campuran - Bukan Lembaga Keuangan - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>8414</key>
+    <value>Perusahaan Perkayuan (HPH) - Perusahaan-perusahaan lainnya - Campuran - Bukan Lembaga Keuangan - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>8415</key>
+    <value>Perusahaan Jasa Konstruksi - Perusahaan-perusahaan lainnya - Campuran - Bukan Lembaga Keuangan - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>8416</key>
+    <value>Perusahaan Industri Rokok - Perusahaan-perusahaan lainnya - Campuran - Bukan Lembaga Keuangan - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>8417</key>
+    <value>Perusahaan Industri Makanan - Perusahaan-perusahaan lainnya - Campuran - Bukan Lembaga Keuangan - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>8418</key>
+    <value>Perusahaan Agrobusiness - Perusahaan-perusahaan lainnya - Campuran - Bukan Lembaga Keuangan - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>8449</key>
+    <value>Perusahaan Lainnya - Perusahaan-perusahaan lainnya - Campuran - Bukan Lembaga Keuangan - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>8451</key>
+    <value>Badan Amil Zakat Infaq dan Shadaqah (BAZIS) - Yayasan, Badan Sosial dan Organisasi Kemasyarakatan - Campuran - Bukan Lembaga Keuangan - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>8452</key>
+    <value>Lembaga Pendidikan - Yayasan, Badan Sosial dan Organisasi Kemasyarakatan - Campuran - Bukan Lembaga Keuangan - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>8469</key>
+    <value>Lainnya - Yayasan, Badan Sosial dan Organisasi Kemasyarakatan - Campuran - Bukan Lembaga Keuangan - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>8480</key>
+    <value>Kantor Perwakilan Lembaga Milik Asing di Indonesia - Campuran - Bukan Lembaga Keuangan - Sektor Swasta - Penduduk8611 - Perusahaan Otomotif -  Perusahaan-perusahaan lainnya - Asing - Bukan Lembaga Keuangan - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>8612</key>
+    <value>Perusahaan Perminyakan -  Perusahaan-perusahaan lainnya - Asing - Bukan Lembaga Keuangan - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>8613</key>
+    <value>Perusahaan Tekstil -  Perusahaan-perusahaan lainnya - Asing - Bukan Lembaga Keuangan - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>8614</key>
+    <value>Perusahaan Perkayuan (HPH) -  Perusahaan-perusahaan lainnya - Asing - Bukan Lembaga Keuangan - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>8615</key>
+    <value>Perusahaan Jasa Konstruksi -  Perusahaan-perusahaan lainnya - Asing - Bukan Lembaga Keuangan - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>8616</key>
+    <value>Perusahaan Industri Rokok -  Perusahaan-perusahaan lainnya - Asing - Bukan Lembaga Keuangan - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>8617</key>
+    <value>Perusahaan Industri Makanan -  Perusahaan-perusahaan lainnya - Asing - Bukan Lembaga Keuangan - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>8618</key>
+    <value>Perusahaan Agrobusiness -  Perusahaan-perusahaan lainnya - Asing - Bukan Lembaga Keuangan - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>8619</key>
+    <value>Perusahaan Lainnya -  Perusahaan-perusahaan lainnya - Asing - Bukan Lembaga Keuangan - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>8651</key>
+    <value>Badan Amil Zakat Infaq dan Shadaqah (BAZIS) -  Yayasan, Badan Sosial dan Organisasi Kemasyarakatan - Asing - Bukan Lembaga Keuangan - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>8652</key>
+    <value>Lembaga Pendidikan -  Yayasan, Badan Sosial dan Organisasi Kemasyarakatan - Asing - Bukan Lembaga Keuangan - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>8659</key>
+    <value>Lainnya -  Yayasan, Badan Sosial dan Organisasi Kemasyarakatan - Asing - Bukan Lembaga Keuangan - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>8670</key>
+    <value>Kantor Perwakilan Lembaga Milik Asing di Indonesia - Asing - Bukan Lembaga Keuangan - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>8900</key>
+    <value>Sektor Swasta Lainnya - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>9000</key>
+    <value>Perseorangan - Sektor Swasta - Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>9100</key>
+    <value>Pemerintah pusat - Bukan Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>9200</key>
+    <value>Perwakilan negara-negara asing dan stafnya - Bukan Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>9300</key>
+    <value>BUMN Milik Negara Asing - Bukan Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>9400</key>
+    <value>Lembaga-lembaga keuangan bukan bank yang beroperasi di luar Indonesia - Bukan Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>9501</key>
+    <value>Swasta Patungan Indonesia dan Negara Asing - Swasta Lainnya - Bukan Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>9502</key>
+    <value>Swasta Milik Indonesia - Swasta Lainnya - Bukan Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>9519</key>
+    <value>Lainnya - Swasta Lainnya - Bukan Penduduk9611 - Islamic Development Bank (ADB) - Bank Pembangunan Multilateral - Lembaga-Lembaga Internasional - Bukan Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>9612</key>
+    <value>Asian Development Bank (ADB) - Bank Pembangunan Multilateral - Lembaga-Lembaga Internasional - Bukan Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>9613</key>
+    <value>World Bank - Bank Pembangunan Multilateral - Lembaga-Lembaga Internasional - Bukan Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>9629</key>
+    <value>Lainnya - Bank Pembangunan Multilateral - Lembaga-Lembaga Internasional - Bukan Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>9690</key>
+    <value>Lainnya - Lembaga-Lembaga Internasional - Bukan Penduduk</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>9700</key>
+    <value>Perseorangan - Bukan Penduduk</value>
+    <labels/>
+  </reference>
+</list>

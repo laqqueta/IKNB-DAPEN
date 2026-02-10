@@ -1,0 +1,26 @@
+@ECHO OFF
+IF "%1" == "" GOTO :ERROR
+
+@ECHO ON
+ECHO "<<BUILD CONFIG GENERATOR>>"
+call mvn clean package -am -DskipTests -pl OJK-BPTK-Client-Builder
+
+ECHO "<<GENERATE DAT FILE>>"
+call java -jar -Dfile.encoding=UTF-8 .\OJK-BPTK-Client-Builder\target\OJK-BPTK-Client-Builder-shaded.jar "--rootFolder=.\_installer" "--ljkCode=%1"
+
+call _client-clear-resources.bat
+
+cd .\OJK-BPTK-Client
+
+mkdir .\resources > NUL
+copy ..\_installer\entity\%1\data.dat .\resources
+copy ..\_installer\source\Client.properties .\resources
+copy ..\_installer\source\Client.cfg .\resources
+
+cd ..
+GOTO :DONE
+
+:ERROR
+ECHO "LJK Code Undefined!!!"
+
+:DONE

@@ -215,12 +215,12 @@ public class LoginController extends BaseDialogController {
 		case offlineAuthenticate:
 			// modif arnol : cek versi melalui FTP
 			// Untuk sosialisasi baris ini di komen saja
-			if (!securityService.useApi() && ftpService.isLoginFTP(EFtpServer.FTP01.name(), false)) {
+			if (!securityService.useLoginApi() && ftpService.isLoginFTP(EFtpServer.FTP01.name(), false)) {
 				userSession.setFtpLogin(true);
 				Map<String, String> clientVersion = applicationUpdateService.getClientVersion();
 				XStream xstream = applicationUpdateService.xStreamUpdateHeader();
 				ftpService.checkUpdate(clientVersion, xstream);
-			} else if (securityService.useApi()) {
+			} else if (securityService.useLoginApi()) {
 				applicationUpdateService.validateVersion();
 			}
 
@@ -230,7 +230,7 @@ public class LoginController extends BaseDialogController {
 					mainApplication.loginSuccess(userSession);
 					stage.close();
 
-					if (!securityService.useApi()) {
+					if (!securityService.useLoginApi()) {
 						// change password if default password
 						if (!securityService.isChangePassword(userSession.getUser().getUserLoginId())) {
 							AlertUtil.showAlert(AlertType.INFORMATION, "Login Sukses", "Login Sukses",
@@ -273,7 +273,7 @@ public class LoginController extends BaseDialogController {
 	    return;
 	  }
 
-	  if (EReport.useApi(report)) {
+	  if (EReport.useLoginApi(report)) {
 	    AlertUtil.showAlert(AlertType.INFORMATION, "Lupa Password", "Petunjuk Reset Password", securityService.getResetPasswordInstruction());
 	    return;
 	  }

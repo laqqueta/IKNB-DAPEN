@@ -1,0 +1,202 @@
+<list>
+  <reference>
+    <key>ALM0100000000</key>
+    <value>A. ASET LANCAR</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ALM0101000000</key>
+    <value>Kas dan setara kas</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ALM0102000000</key>
+    <value>Deposito berjangka</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ALM0103000000</key>
+    <value>Piutang biaya operasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ALM0104000000</key>
+    <value>Piutang talangan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ALM0105000000</key>
+    <value>Piutang investasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ALM0106000000</key>
+    <value>Piutang hasil investasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ALM0107000000</key>
+    <value>Piutang lain</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ALM0108000000</key>
+    <value>Uang muka</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ALM0109000000</key>
+    <value>Pajak dibayar di muka</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ALM0110000000</key>
+    <value>Biaya dibayar di muka</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ALM0111000000</key>
+    <value>Investasi jangka pendek</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ALM0112000000</key>
+    <value>Perlengkapan kantor</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ALM0113000000</key>
+    <value>Aset dimiliki untuk dijual</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ALM0114000000</key>
+    <value>Aset lancar lain</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ALM0200000000</key>
+    <value>B. Aset Tidak Lancar</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ALM0201000000</key>
+    <value>Investasi jangka panjang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ALM0202000000</key>
+    <value>Investasi pada entitas asosiasi dan entitas anak</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ALM0203000000</key>
+    <value>Properti investasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ALM0204000000</key>
+    <value>Aset tetap</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ALM0205000000</key>
+    <value>Aset Hak Guna</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ALM0206000000</key>
+    <value>Aset tidak berwujud</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ALM0207000000</key>
+    <value>Aset pajak tangguhan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ALM0208000000</key>
+    <value>Aset tidak lancar lain</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ALM0300000000</key>
+    <value>C. Total Aset</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ALM0400000000</key>
+    <value>D. Liabilitas Jangka Pendek</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ALM0401000000</key>
+    <value>Utang kepada pihak ketiga</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ALM0402000000</key>
+    <value>Utang pajak</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ALM0403000000</key>
+    <value>Utang kontribusi kepada program</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ALM0404000000</key>
+    <value>Utang insentif</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ALM0405000000</key>
+    <value>Biaya yang masih harus dibayar</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ALM0406000000</key>
+    <value>Pendapatan diterima dimuka</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ALM0407000000</key>
+    <value>Liabilitas jangka pendek lain</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ALM0500000000</key>
+    <value>E. Liabilitas Jangka Panjang</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ALM0501000000</key>
+    <value>Pendapatan diterima dimuka</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ALM0502000000</key>
+    <value>Liabilitas imbalan pascakerja</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ALM0503000000</key>
+    <value>Liabilitas pajak tangguhan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ALM0504000000</key>
+    <value>Liabilitas jangka panjang lain</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ALM0600000000</key>
+    <value>F. Total Liabilitas</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>ALM0700000000</key>
+    <value>G. SELISIH TOTAL ASET DAN TOTAL LIABILITAS (C-F)</value>
+    <labels/>
+  </reference>
+</list>

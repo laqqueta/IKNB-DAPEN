@@ -1,0 +1,17 @@
+<list>
+  <reference>
+    <key>HI:e01</key>
+    <value>Harga Dikutip/Kuotasi Harga Pasar Aktif</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>HI:e02</key>
+    <value>Pasar yang dapat diamati</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>HI:e03</key>
+    <value>Model Perhitungan (appraisal)</value>
+    <labels/>
+  </reference>
+</list>

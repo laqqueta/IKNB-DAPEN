@@ -1,0 +1,32 @@
+<map>
+  <entry>
+    <string>dev.external003@gmail.com</string>
+    <user>
+      <userLoginId>dev.external003@gmail.com</userLoginId>
+      <userName>dev.external003</userName>
+      <jobPosition>Manajer</jobPosition>
+      <password>d**********************om</password>
+      <changePassword>false</changePassword>
+      <passwordHash>$2a$10$RZabu/RDOG5oA/vuQ0GVp.7vqZRrC7QGh50Pi5wK8DSHX9JRhZvl.</passwordHash>
+      <role>ljkOffline</role>
+      <appAccess>
+        <string>7100</string>
+      </appAccess>
+      <lastChangePassword>0</lastChangePassword>
+    </user>
+  </entry>
+  <entry>
+    <string>apolo.sit008@gmail.com</string>
+    <user>
+      <userLoginId>apolo.sit008@gmail.com</userLoginId>
+      <userName>apolo.sit008</userName>
+      <jobPosition>Manajer</jobPosition>
+      <password>a*******************om</password>
+      <changePassword>false</changePassword>
+      <passwordHash>$2a$10$U1HxACW4UdXjjkXqM.JCzelbqThmaKSHTsc7NfLFlJ6SiHYGBswAy</passwordHash>
+      <role>ljkOffline</role>
+      <appAccess reference="../../../entry/user/appAccess"/>
+      <lastChangePassword>0</lastChangePassword>
+    </user>
+  </entry>
+</map>

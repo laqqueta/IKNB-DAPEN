@@ -1,0 +1,127 @@
+<list>
+  <reference>
+    <key>LAK0101010000</key>
+    <value>Iuran</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0101020000</key>
+    <value>Kontribusi dari BPJS</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0101030000</key>
+    <value>Pajak Rokok</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0101040000</key>
+    <value>Bantuan dari pemerintah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0101050000</key>
+    <value>Hibah dari BPJS</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0101060000</key>
+    <value>Denda Peserta</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0101070000</key>
+    <value>Lain-lain</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0102010000</key>
+    <value>Jaminan kesehatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0102020000</key>
+    <value>Biaya operasional BPJS</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0102030000</key>
+    <value>Pengembalian Pajak Rokok</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0102040000</key>
+    <value>Denda Keterlambatan Pembayaran Klaim</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0102050000</key>
+    <value>Lain-lain</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0200000000</key>
+    <value>ARUS KAS NETO DARI AKTIVITAS OPERASI</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0301010000</key>
+    <value>Pelepasan investasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0301020000</key>
+    <value>Hasil Investasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0302010000</key>
+    <value>Perolehan investasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0400000000</key>
+    <value>ARUS KAS NETO DARI AKTIVITAS INVESTASI</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0501010000</key>
+    <value>Talangan dari BPJS</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0501020000</key>
+    <value>Bantuan Pemerintah</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0501030000</key>
+    <value>Lain-lain</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0502010000</key>
+    <value>Pelunasan talangan BPJS</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0600000000</key>
+    <value>ARUS KAS NETO DARI AKTIVITAS PENDANAAN</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0700000000</key>
+    <value>KENAIKAN (PENURUNAN) ARUS KAS</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0800000000</key>
+    <value>KAS DAN SETARA KAS AWAL PERIODE</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LAK0900000000</key>
+    <value>KAS DAN SETARA KAS AKHIR PERIODE</value>
+    <labels/>
+  </reference>
+</list>

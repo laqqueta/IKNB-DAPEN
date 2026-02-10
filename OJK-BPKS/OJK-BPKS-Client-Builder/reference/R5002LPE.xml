@@ -1,0 +1,97 @@
+<list>
+  <reference>
+    <key>LPE0100000000</key>
+    <value>SALDO AWAL PERIODE SEBELUMNYA</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPE0200000000</key>
+    <value>Tambahan modal</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPE0300000000</key>
+    <value>Penghasilan (beban) neto</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPE0400000000</key>
+    <value>Kontribusi kepada program kesehatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPE0500000000</key>
+    <value>Penyesuaian nilai wajar aset keuangan tersedia untuk dijual</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPE0600000000</key>
+    <value>Keuntungan (kerugian) aktuaria liabilitas pascakerja imbalan pasti</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPE0700000000</key>
+    <value>Bagian penghasilan komprehensif lain entitas asosiasi dan entitas anak</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPE0800000000</key>
+    <value>Selisih transaksi dengan pihak nonpengendali</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPE0900000000</key>
+    <value>Selisih kombinasi dan pelepasan bisnis antar entitas sepengendali</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPE1000000000</key>
+    <value>SALDO AKHIR PERIODE SEBELUMNYA</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPE1100000000</key>
+    <value>Tambahan modal</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPE1200000000</key>
+    <value>Penghasilan (beban) neto</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPE1300000000</key>
+    <value>Kontribusi kepada program kesehatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPE1400000000</key>
+    <value>Penyesuaian nilai wajar aset keuangan tersedia untuk dijual</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPE1500000000</key>
+    <value>Keuntungan (kerugian) aktuaria liabilitas pascakerja imbalan pasti</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPE1600000000</key>
+    <value>Bagian penghasilan komprehensif lain entitas asosiasi dan entitas anak</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPE1700000000</key>
+    <value>Selisih transaksi dengan pihak nonpengendali</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPE1800000000</key>
+    <value>Selisih kombinasi dan pelepasan bisnis antar entitas sepengendali</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LPE1900000000</key>
+    <value>SALDO AKHIR PERIODE BERJALAN</value>
+    <labels/>
+  </reference>
+</list>

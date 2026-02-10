@@ -1,0 +1,32 @@
+<list>
+  <reference>
+    <key>5000</key>
+    <value>Aktuaria - FSAI/ASAI/Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>5001</key>
+    <value>Akutansi, Audit dan Keuangan - CFA/WMI/CPA/CISA/ Akuntan/CA/QIA/ CFE/CIA/Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>5002</key>
+    <value>Asuransi dan Manajemen Risiko - AAIJ/AAAIJ/AAIK/AAAIK/ FLMI/ANZIF/ACII/BSMR/ AAK/AAAK/CRMP/Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>5003</key>
+    <value>Kesehatan - Dokter/Dokter Spesialis/Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>5004</key>
+    <value>Teknologi Informasi - Vendor Spesifik/Non Vendor Spesifik/Lainnya</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>5005</key>
+    <value>Lainnya</value>
+    <labels/>
+  </reference>
+</list>

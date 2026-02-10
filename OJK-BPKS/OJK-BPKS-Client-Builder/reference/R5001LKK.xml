@@ -1,0 +1,112 @@
+<list>
+  <reference>
+    <key>LKK0101000000</key>
+    <value>Pendapatan operasional penyelenggaraan program jaminan kesehatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LKK0200000000</key>
+    <value>Jumlah Pendapatan Operasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LKK0301000000</key>
+    <value>Beban operasional penyelenggaraan program jaminan kesehatan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LKK0400000000</key>
+    <value>Jumlah Beban Operasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LKK0500000000</key>
+    <value>PENGHASILAN (BEBAN) OPERASIONAL</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LKK0601000000</key>
+    <value>Pendapatan investasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LKK0602000000</key>
+    <value>Pendapatan lain</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LKK0603000000</key>
+    <value>Beban investasi</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LKK0604000000</key>
+    <value>Beban bunga</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LKK0605000000</key>
+    <value>Beban insentif</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LKK0606000000</key>
+    <value>Beban tanggung jawab sosial dan lingkungan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LKK0607000000</key>
+    <value>Beban lain</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LKK0608000000</key>
+    <value>Bagian laba (rugi) entitas asosiasi dan entitas anak</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LKK0700000000</key>
+    <value>Jumlah Pendapatan dan Beban Non-Operasional</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LKK0800000000</key>
+    <value>PENGHASILAN (BEBAN) SEBELUM PAJAK</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LKK0900000000</key>
+    <value>Beban pajak penghasilan</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LKK1000000000</key>
+    <value>PENGHASILAN (BEBAN) NETO</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LKK1101000000</key>
+    <value>Penyesuaian nilai wajar aset keuangan tersedia untuk dijual</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LKK1102000000</key>
+    <value>Keuntungan (kerugian) aktuaria liabilitas pascakerja imbalan pasti</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LKK1103000000</key>
+    <value>Bagian penghasilan komprehensif lain entitas asosiasi dan entitas anak</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LKK1200000000</key>
+    <value>Jumlah Penghasilan Komprehensif Lain</value>
+    <labels/>
+  </reference>
+  <reference>
+    <key>LKK1300000000</key>
+    <value>PENGHASILAN (BEBAN) KOMPREHENSIF</value>
+    <labels/>
+  </reference>
+</list>
