@@ -18,7 +18,7 @@ public class ReadDirectoryLktb extends BaseReadDirectory {
   @Override
   protected IValidationFile<ValidFile> initValidationFileName(List<File> files,
       List<SubmissionFormat> listSubmissionFormat, ProgressPreparationAndSending childProgress) {
-    ValidationFileNameBpjs res = new ValidationFileNameBpjs(files, getReportInfo(), getReadDirModel());
+    ValidationFileNameLktb res = new ValidationFileNameLktb(files, getReportInfo(), getReadDirModel());
     res.setChildProgress(childProgress);
     res.setListSubmissionFormat(listSubmissionFormat);
     res.setMainProgress(getMainProgress());
