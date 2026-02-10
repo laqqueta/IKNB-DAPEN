@@ -254,8 +254,14 @@ public abstract class BasePreparationAndSendingController extends BaseController
 
 	// ~ Listener
 
+	/*
+	* Dapen 2026:
+	*
+ 	* Changed to protected so a subclass can override it
+ 	* to add custom behavior while still calling the original method
+	* */
 	@FXML
-	private void handleOpen() {
+	protected void handleOpen() {
 		reset();
 
 		ReadSubmissionDirController controller = mainApplication.showReadSubmissionDir(submissionService);
