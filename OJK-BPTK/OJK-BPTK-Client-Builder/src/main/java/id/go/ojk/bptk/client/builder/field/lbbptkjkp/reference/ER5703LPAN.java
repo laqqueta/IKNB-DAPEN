@@ -24,7 +24,7 @@ public enum ER5703LPAN implements IObject<KeyValueString> {
   LPAN0201000000("LPAN0201000000", "Saldo Awal Penghasilan Komprehensif Lain"),
   LPAN0202000000("LPAN0202000000", "Penghasilan komprehensif tahun berjalan Penghasilan Komprehensif Lain"),
   LPAN0203000000("LPAN0203000000", "Saldo Akhir Penghasilan Komprehensif Lain"),
-  LPAN0300000000("LPAN0300000000", "Jumlah Aset Neto Tanpa Pembatasan dari Pemberi Sumberdaya"),
+  LPAN0300000000("LPAN0300000000", "Jumlah"),
   LPAN0401000000("LPAN0401000000", "Saldo Awal Aset Neto Dengan Pembatasan Dari Pemberi Sumber Daya"),
   LPAN0402000000("LPAN0402000000", "Surplus (defisit) tahun berjalan, Aset Neto Dengan Pembatasan Dari Pemberi Sumber Daya"),
   LPAN0403000000("LPAN0403000000", "Aset neto yang dibebaskan dari pembatasan, Aset Neto Dengan Pembatasan Dari Pemberi Sumber Daya"),
@@ -32,7 +32,7 @@ public enum ER5703LPAN implements IObject<KeyValueString> {
   LPAN0406000000("LPAN0406000000", "Saldo Awal Penghasilan Komprehensif Lain"),
   LPAN0407000000("LPAN0407000000", "Penghasilan komprehensif tahun berjalan Penghasilan Komprehensif Lain"),
   LPAN0408000000("LPAN0408000000", "Saldo Akhir Penghasilan Komprehensif Lain"),
-  LPAN0409000000("LPAN0409000000", "Jumlah Aset Neto Dengan Pembatasan Dari Pemberi Sumber Daya"),
+  LPAN0409000000("LPAN0409000000", "Jumlah"),
   LPAN0500000000("LPAN0500000000", "Total Aset Neto"),;
 
   @Getter
