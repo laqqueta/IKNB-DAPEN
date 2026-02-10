@@ -8,20 +8,20 @@ import id.go.ojk.dppkk.client.builder.field.EFormLaporanTahunanLaporanBulanan;
 import java.util.ArrayList;
 import java.util.List;
 
-import static id.go.ojk.lib.client.model.config.DataType.all;
-import static id.go.ojk.lib.client.model.constant.RequiredCondition.O;
+import static id.go.ojk.lib.client.model.config.DataType.*;
+import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
 
-public class Ltlb0002Lank extends BaseMetadata {
+public class Ltlb0011ROIML extends BaseMetadata {
 
-    public Ltlb0002Lank(String reportCode) {
+    public Ltlb0011ROIML(String reportCode) {
         super(reportCode, ".txt");
     }
 
     @Override
     public SubmissionFormat get() {
 
-        EFormLaporanTahunanLaporanBulanan eNum = EFormLaporanTahunanLaporanBulanan.LTLB_LAN;
-        SubmissionFormat res = new SubmissionFormat("LANK", "Laporan Aset Netto Kompleks", reportCode, new ArrayList<>(),
+        EFormLaporanTahunanLaporanBulanan eNum = EFormLaporanTahunanLaporanBulanan.LTLB_ROI_ML;
+        SubmissionFormat res = new SubmissionFormat(eNum.getCode(), eNum.getName(), reportCode, new ArrayList<>(),
                 extension, 0, null, null, null);
 
         List<SubmissionField> fs = res.getFields();
