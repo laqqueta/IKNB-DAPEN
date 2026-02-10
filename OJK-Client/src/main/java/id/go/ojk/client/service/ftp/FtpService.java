@@ -38,6 +38,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Stream;
 
+import id.go.ojk.client.module.lktb.EReportLktb;
 import id.go.ojk.client.module.tpp.EReportTpp;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
@@ -531,7 +532,9 @@ public class FtpService extends BaseService {
 	}
 	
 	private void initReportCodePath(String sectorCode, String reportCode, int reportFormGroupCode) throws IOException {
-		if (EReport.isApuFin(reportCode) || EReport.isLbPnj(reportCode) || EReport.isPls(reportCode) || EReport.isTpp(reportCode) || EReport.isBpjsKs(reportCode) || EReport.isBpjsTk(reportCode)) {
+		if (EReport.isApuFin(reportCode) || EReport.isLbPnj(reportCode) || EReport.isPls(reportCode) ||
+				EReport.isTpp(reportCode) || EReport.isBpjsKs(reportCode) || EReport.isBpjsTk(reportCode) ||
+				EReport.isLktb(reportCode) ) {
 			tryChangeDir(sectorCode);
 		}
 		String tmp = getReportCode(reportCode, reportFormGroupCode);
@@ -573,6 +576,9 @@ public class FtpService extends BaseService {
 			res.append(genReportPath(reportInfo));
 		} else if (EReport.isTpp(reportCode)) {
 			ReportInfo reportInfo = EReportTpp.getReportInfo(reportCode, reportFormGroupCode);
+			res.append(genReportPath(reportInfo));
+		} else if (EReport.isLktb(reportCode)) {
+			ReportInfo reportInfo = EReportLktb.getReportInfo(reportCode, reportFormGroupCode);
 			res.append(genReportPath(reportInfo));
 		} else if (EReport.isBpjsKs(reportCode) || EReport.isBpjsTk(reportCode)) {
 		  	ReportInfo reportInfo = EReportBpjs.getReportInfo(reportCode, reportFormGroupCode);
