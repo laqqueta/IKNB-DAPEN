@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import id.go.ojk.client.module.lktb.EReportLktb;
 import id.go.ojk.client.module.tpp.EReportTpp;
 import org.apache.commons.lang3.time.StopWatch;
 import org.slf4j.Logger;
@@ -208,6 +209,8 @@ public abstract class BaseReadDirectory implements IReadDirectory {
 			res = EReportPls.getReportInfo(reportCode, reportMenuCode);
 		} else if (EReport.isTpp(reportCode)) {
 			res = EReportTpp.getReportInfo(reportCode, reportMenuCode);
+		} else if (EReport.isLktb(reportCode)) {
+			res = EReportLktb.getReportInfo(reportCode, reportMenuCode);
 		} else if (EReport.isBpjsKs(reportCode)) {
 		  res = EReportBpjs.getReportInfo(reportCode, reportMenuCode);
 		} else if (EReport.isBpjsTk(reportCode)) {
