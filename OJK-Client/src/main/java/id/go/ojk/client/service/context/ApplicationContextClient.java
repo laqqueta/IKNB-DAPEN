@@ -71,6 +71,7 @@ public class ApplicationContextClient extends ApplicationContextBase {
 		setService(null, ClientConstant.SUBMISSIION_SERVICE_TL1,	new SubmissionService(MetadataType.normal));
 		setService(null, ClientConstant.SUBMISSIION_SERVICE_TPP, new SubmissionService(MetadataType.normal));
 		setService(null, ClientConstant.SUBMISSIION_SERVICE_BPJS,  new SubmissionService(MetadataType.normal));
+		setService(null, ClientConstant.SUBMISSIION_SERVICE_LTLB,  new SubmissionService(MetadataType.normal));
 //		setService(null, 							"submissionServiceRBB2", 	new SubmissionService(MetadataType.normal));
 //		setService(null, 							"submissionServiceRBB3", 	new SubmissionService(MetadataType.normal));
 //		setService(null, 							"submissionServiceRBB4", 	new SubmissionService(MetadataType.summary));
