@@ -5,6 +5,7 @@ import id.go.ojk.client.module.apu.ReadDirectoryApu;
 import id.go.ojk.client.module.bpjs.ReadDirectoryBpjs;
 import id.go.ojk.client.module.lb.ReadDirectoryLb;
 import id.go.ojk.client.module.lbk.ReadDirectoryLbk;
+import id.go.ojk.client.module.lktb.ReadDirectoryLktb;
 import id.go.ojk.client.module.pls.ReadDirectoryPls;
 import id.go.ojk.client.module.rb.ReadDirectoryRb;
 import id.go.ojk.client.module.sa.ReadDirectorySa;
@@ -35,6 +36,8 @@ public class FactoryReadDirectoryImpl {
 			res = new ReadDirectoryPls();
 		} else if (EReport.isTpp(reportCode)) {
 			res = new ReadDirectoryTpp();
+		} else if (EReport.isLktb(reportCode)) {
+			res = new ReadDirectoryLktb();
 		} else if (EReport.isBpjsKs(reportCode) || EReport.isBpjsTk(reportCode)) {
       res = new ReadDirectoryBpjs();
     }
