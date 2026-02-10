@@ -222,7 +222,11 @@ public class ValidationErrorCode {
     public static final ValidationErrorCode E03_27_NO_SURAT_PATTERN_PM	= bvec("03",	"27",	"Header - Format Nomor Surat",		"Error di Kolom 8 'Nomor Surat OJK', format data yang diperbolehkan huruf, angka, spasi dan karakter -./");
     public static final ValidationErrorCode E03_28_TARGET_ZERO	        = bvec("03",	"28",	"Kesalah",		"Harus diisi sama dengan '%s' karena '%s' = 0.");
     public static final ValidationErrorCode E03_29_DEVIATION_CALCULATION= bvec("03",	"29",	"Validasi Formula",		"Perhitungan Deviasi = ('%s' - '%s') / '%s'");
-	
+
+	// Dapen 2026
+	public static final ValidationErrorCode E03_30_JENIS_PROGRAM		= bvec("03", 	"30", 	"Header - Jenis Program",		"Error di Kolom 9 'Jenis Program'. Jenis Program '%1$s' tidak sesuai dengan pilihan Program '%2$s'.");
+	public static final ValidationErrorCode E03_31_JENIS_PROGRAM_NOT_EXISTS	= bvec("03", 	"31", 	"Header - Jenis Program",		"Error di Kolom 9 'Jenis Program'. Jenis Program '%1$s' Tidak Terdaftar.");
+
 	//-Tidak digunakan
 	public static final ValidationErrorCode E03_00_HEADER 				= bvec("03",	"00",	"Header",							"Header tidak valid, %1$s");
 	public static final ValidationErrorCode E03_03_YEAR 		 		= bvec("03",	"03",	"Header - tahun",					"Tahun '%1$s' tidak sesuai dengan nama file %2$s");
