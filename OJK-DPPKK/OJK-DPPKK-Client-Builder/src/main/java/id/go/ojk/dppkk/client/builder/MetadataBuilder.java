@@ -6,6 +6,7 @@ import java.time.format.DateTimeFormatter;
 import id.go.ojk.client.model.config.SubmissionMetadata;
 import id.go.ojk.client.vc.HomeController;
 import id.go.ojk.conf.client.BaseMetadataBuilder;
+import id.go.ojk.dppkk.client.builder.field.ltlb.metadata.MetadataPPMPK;
 import id.go.ojk.dppkk.client.builder.field.rb.metadata.MetadataRb;
 import id.go.ojk.dppkk.client.builder.field.rb.metadata.MetadataRe;
 import id.go.ojk.dppkk.client.builder.field.rb.metadata.MetadataRp;
@@ -54,6 +55,7 @@ public class MetadataBuilder extends BaseMetadataBuilder {
 		res.getFormats().addAll(MetadataSaaUus.getMetadata());
 		res.getFormats().addAll(MetadataTl.getMetadata());
 		res.getFormats().addAll(MetadataTlUus.getMetadata());
+		res.getFormats().addAll(MetadataPPMPK.getMetadata());
 		return res;
 	}
 
