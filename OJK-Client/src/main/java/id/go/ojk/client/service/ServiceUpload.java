@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
+import id.go.ojk.client.module.lktb.EReportLktb;
 import id.go.ojk.client.module.tpp.EReportTpp;
 import org.apache.commons.lang3.StringUtils;
 
@@ -401,6 +402,8 @@ public class ServiceUpload {
 			return EReportTl.getReportInfo(reportCode, reportFormGroupCode);
 		} else if (EReport.isTpp(reportCode)) {
 			return EReportTpp.getReportInfo(reportCode, reportFormGroupCode);
+		} else if (EReport.isLktb(reportCode)) {
+			return EReportLktb.getReportInfo(reportCode, reportFormGroupCode);
 		} else if (EReport.isBpjsKs(reportCode) || EReport.isBpjsTk(reportCode)) {
       		return EReportBpjs.getReportInfo(reportCode, reportFormGroupCode);
     	}
