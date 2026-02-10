@@ -278,8 +278,10 @@ public class CustomForm extends BaseCustomForm {
                 break;
             case LKB_DP:
                 formLktb.showBulanan();
+                break;
             case LKT_DP:
                 formLktb.showTahunan();
+                break;
             default:
                 formBpjsTk.showForm(displayScene);
                 break;
