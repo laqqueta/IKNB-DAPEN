@@ -1,12 +1,16 @@
 package id.go.ojk.client.vc;
 
+import id.go.ojk.client.module.lktb.EReportGroupLktb;
 import id.go.ojk.client.service.SubmissionService;
+import id.go.ojk.client.service.security.SecurityService;
+import id.go.ojk.client.util.AlertUtil;
+import id.go.ojk.client.util.states.JenisProgramState;
 import id.go.ojk.lib.client.model.config.ConfigString;
 import id.go.ojk.lib.client.vc.object.ReportValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
@@ -14,10 +18,7 @@ import javafx.scene.layout.HBox;
 import javafx.util.StringConverter;
 
 import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class PreparationAndSendingLktbController extends BasePreparationAndSendingController {
     @FXML
@@ -33,19 +34,14 @@ public class PreparationAndSendingLktbController extends BasePreparationAndSendi
     @FXML
     HBox boxReport;
 
-    private static Map<Integer, String> mapReport = new HashMap<>();
+    private static final Map<String, String> mapReport = new HashMap<>();
 
     static {
-        String[] listReport = {
-                "PPMP Murni",
-                "PPMP Kompleks",
-                "PPIP Murni",
-                "PPIP Kompleks",
-                "PPMP PPIP Kompleks",
-        };
-        for (int i = 0; i < listReport.length; i++) {
-            mapReport.put(i + 1, listReport[i]);
-        }
+        mapReport.put("PPMP-M", "PPMP Murni");
+        mapReport.put("PPMP-K", "PPMP Kompleks");
+        mapReport.put("PPIP-M", "PPIP Murni");
+        mapReport.put("PPIP-K", "PPIP Kompleks");
+        mapReport.put("PPMP-PPIP-K", "PPMP PPIP Kompleks");
     }
 
     @Override
@@ -53,16 +49,15 @@ public class PreparationAndSendingLktbController extends BasePreparationAndSendi
         super.initialize();
 
         ObservableList<ReportValue> reportValue = FXCollections.observableArrayList();
-        reportValue.add(new ReportValue("0", "Pilih Laporan :"));
-        for (Map.Entry<Integer, String> entry : mapReport.entrySet()) {
-            reportValue.add(new ReportValue(entry.getKey().toString(), entry.getValue()));
+        reportValue.add(new ReportValue("0", "Pilih Jenis Program :"));
+        for (Map.Entry<String, String> entry : mapReport.entrySet()) {
+            reportValue.add(new ReportValue(entry.getKey(), entry.getValue()));
 
         }
 
         cbxReport.setItems(reportValue);
-
+        cbxReport.getSelectionModel().select(0);
         cbxReport.setConverter(new StringConverter<ReportValue>() {
-
             @Override
             public String toString(ReportValue object) {
                 return object.nameProperty().get();
@@ -74,7 +69,35 @@ public class PreparationAndSendingLktbController extends BasePreparationAndSendi
             }
         });
 
-        cbxReport.getSelectionModel().select(0);
+        cbxReport.setOnAction(actionEvent -> {
+            ReportValue selected = cbxReport.getSelectionModel()
+                    .getSelectedItem();
+
+            JenisProgramState.selectedValue = selected.nameProperty().getValue();
+            JenisProgramState.selectedKey = selected.idProperty().getValue();
+            JenisProgramState.validationState.setValue(true);
+        });
+
+        JenisProgramState.validationState.addListener(e -> {
+            if (!JenisProgramState.validationState.getValue()) {
+                cbxReport.requestFocus();
+            }
+        });
+    }
+
+    @Override
+    @FXML
+    protected void handleOpen() {
+        ReportValue selected = cbxReport.getSelectionModel()
+                .getSelectedItem();
+
+        if (!mapReport.containsKey(selected.idProperty().getValue())) {
+            AlertUtil.showAlert(Alert.AlertType.ERROR, "Kesalahan", "Kesalahan", "Jenis Program belum dipilih.");
+            cbxReport.requestFocus();
+            return;
+        }
+
+        super.handleOpen();
     }
 
     @Override
@@ -83,9 +106,31 @@ public class PreparationAndSendingLktbController extends BasePreparationAndSendi
         super.setServiceAndBind(submissionService, submissionSourceDir, reportFormGroupCode);
     }
 
+    private int getMenuCode() {
+        int baseMenuCode = 100;
+
+        String reportCode = this.appCtx.getService(SecurityService.class)
+                .getUserSession()
+                .getReportCode();
+
+        if (reportCode.equalsIgnoreCase("LKDPK")) {
+            baseMenuCode += 10;
+        } else if (reportCode.equalsIgnoreCase("LKDPS")) {
+            baseMenuCode += 20;
+        } else if (reportCode.equalsIgnoreCase("LKDLK")) {
+            baseMenuCode += 30;
+        } else if (reportCode.equalsIgnoreCase("LKDLS")) {
+            baseMenuCode += 40;
+        }
+
+        return baseMenuCode;
+    }
+
+
     @Override
     protected int getReportFormGroupCode() {
         int res = reportFormGroupCode;
+        int menuCode = getMenuCode();
 
         switch (res) {
             case 1:
@@ -93,6 +138,7 @@ public class PreparationAndSendingLktbController extends BasePreparationAndSendi
                 res = 1;
                 if (koreksiRadio.isSelected())
                     res = 2;
+
                 break;
             case 3:
             case 4:
@@ -100,13 +146,9 @@ public class PreparationAndSendingLktbController extends BasePreparationAndSendi
                 if (koreksiRadio.isSelected())
                     res = 4;
                 break;
-            case 5:
-            case 6:
-                res = 5;
-                if (koreksiRadio.isSelected())
-                    res = 6;
-                break;
         }
+
+        res += menuCode;
 
         return res;
     }
