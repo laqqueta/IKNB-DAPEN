@@ -1,10 +1,13 @@
 package id.go.ojk.client;
 
 import id.go.ojk.client.constant.ClientConstant;
+import id.go.ojk.client.constant.EReport;
 import id.go.ojk.client.model.bind.ProgressSegment;
+import id.go.ojk.client.module.lktb.EReportGroupLktb;
 import id.go.ojk.client.module.tpp.EReportGroupTpp;
 import id.go.ojk.client.service.ConfigService;
 import id.go.ojk.client.service.SubmissionService;
+import id.go.ojk.client.util.AlertUtil;
 import id.go.ojk.client.vc.HomeMetroLktbController;
 import id.go.ojk.client.vc.HomeMetroTppController;
 import id.go.ojk.client.vc.PreparationAndSendingLktbController;
@@ -42,35 +45,39 @@ public class FormLktb extends BaseCustomForm {
 
 	public void cleanUp() {
 		home = null;
-//		home3 = null;
 	}
 
 	public void showHome(UserSession userSession) {
 		String reportCode = userSession != null ? userSession.getReportCode() : "";
-		String fxml = getHomeFxml(reportCode);
 
+        if (!isFormAvailable(reportCode)) {
+            AlertUtil.showErrorSafe("Tidak dapat menemukan Home UI untuk " + reportCode, "");
+            return;
+        }
+
+        String fxml = "vc/HomeMetroLktb.fxml";
 		home = UtilForm.initAndShowPane(mainApplication, fxml, home, null, null, null);
 	}
-	
-	private String getHomeFxml(String reportCode) {
-		return "vc/HomeMetroLktb.fxml";
-	}
+
+    private boolean isFormAvailable(String reportCode) {
+        return EReport.getReportByCode(reportCode) != null;
+    }
 
 	public void showTahunan() {
 		tahunan = UtilForm.initAndShowPane(mainApplication, "vc/PreparationAndSendingLktb.fxml", tahunan,
 				DisplayScene.LKT_DP,
 				ui -> ui.getB().setServiceAndBind(
-						appContext.getService(ClientConstant.SUBMISSIION_SERVICE_TPP, SubmissionService.class),
-						ConfigService.submissionSourceDir, EReportGroupTpp.PENILAIAN_RESIKO_RUTIN.getMenuCode()),
+						appContext.getService(ClientConstant.SUBMISSIION_SERVICE_LTLB, SubmissionService.class),
+						ConfigService.submissionSourceDir, EReportGroupLktb.LKD_TAHUNAN_RUTIN.getMenuCode()),
 				null);
 	}
 
 	public void showBulanan() {
 		bulanan = UtilForm.initAndShowPane(mainApplication, "vc/PreparationAndSendingLktb.fxml", bulanan,
-                DisplayScene.LKT_DP,
+                DisplayScene.LKB_DP,
 				ui -> ui.getB().setServiceAndBind(
-						appContext.getService(ClientConstant.SUBMISSIION_SERVICE_TPP, SubmissionService.class),
-						ConfigService.submissionSourceDir, EReportGroupTpp.RENCANA_RUTIN.getMenuCode()),
+						appContext.getService(ClientConstant.SUBMISSIION_SERVICE_LTLB, SubmissionService.class),
+						ConfigService.submissionSourceDir, EReportGroupLktb.LKD_BULANAN_RUTIN.getMenuCode()),
 				null);
 	}
 
