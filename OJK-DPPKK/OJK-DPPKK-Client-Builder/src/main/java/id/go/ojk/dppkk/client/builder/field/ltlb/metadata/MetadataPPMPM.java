@@ -17,7 +17,7 @@ public class MetadataPPMPM {
     private static List<SubmissionFormat> getFormMetadata() {
         String REPORT_CODE = "PPMPM";
         return Arrays.asList(
-                new Ltlb0001Dtum(REPORT_CODE).get()
+                new Ltlb0001DTUM(REPORT_CODE).get()
         );
     }
 

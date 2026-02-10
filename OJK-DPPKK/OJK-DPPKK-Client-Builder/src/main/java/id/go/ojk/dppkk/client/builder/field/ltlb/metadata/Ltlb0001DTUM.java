@@ -8,13 +8,12 @@ import id.go.ojk.dppkk.client.builder.field.EFormLaporanTahunanLaporanBulanan;
 import java.util.ArrayList;
 import java.util.List;
 
-import static id.go.ojk.lib.client.model.config.DataType.alfaNumeric;
 import static id.go.ojk.lib.client.model.config.DataType.all;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.O;
 
-public class Ltlb0001Dtum extends BaseMetadata {
+public class Ltlb0001DTUM extends BaseMetadata {
 
-    public Ltlb0001Dtum(String reportCode) {
+    public Ltlb0001DTUM(String reportCode) {
         super(reportCode, ".txt");
     }
 
