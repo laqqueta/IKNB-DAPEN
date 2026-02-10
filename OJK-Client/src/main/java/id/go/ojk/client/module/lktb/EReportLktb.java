@@ -18,42 +18,41 @@ import java.util.stream.Collectors;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum EReportLktb {
-    LBDPPKK_RUTIN("LBDPPKK", EReportGroupLktb.LBDPPKK_RUTIN, EReport.LKTB_DPPKK),
-    LBDPPKK_KOREKSI("LBDPPKK", EReportGroupLktb.LBDPPKK_KOREKSI, EReport.LKTB_DPPKK),
-    LTDPPKK_RUTIN("LTDPPKK", EReportGroupLktb.LTDPPKK_RUTIN, EReport.LKTB_DPPKK),
-    LTDPPKK_KOREKSI("LTDPPKK", EReportGroupLktb.LTDPPKK_KOREKSI, EReport.LKTB_DPPKK),
+    LBDPPKK_RUTIN("LBDPPKK", EReportGroupLktb.LKD_BULANAN_RUTIN, 111, EReport.LKTB_DPPKK),
+    LBDPPKK_KOREKSI("LBDPPKK", EReportGroupLktb.LKD_BULANAN_KOREKSI, 112, EReport.LKTB_DPPKK),
+    LTDPPKK_RUTIN("LTDPPKK", EReportGroupLktb.LKD_TAHUNAN_RUTIN, 113, EReport.LKTB_DPPKK),
+    LTDPPKK_KOREKSI("LTDPPKK", EReportGroupLktb.LKD_TAHUNAN_KOREKSI, 114, EReport.LKTB_DPPKK),
 
-    LBDPPKS_RUTIN("LBDPPKS", EReportGroupLktb.LBDPPKS_RUTIN, EReport.LKTB_DPPKS),
-    LBDPPKS_KOREKSI("LBDPPKS", EReportGroupLktb.LBDPPKS_KOREKSI, EReport.LKTB_DPPKS),
-    LTDPPKS_RUTIN("LTDPPKS", EReportGroupLktb.LTDPPKS_RUTIN, EReport.LKTB_DPPKS),
-    LTDPPKS_KOREKSI("LTDPPKS", EReportGroupLktb.LTDPPKS_KOREKSI, EReport.LKTB_DPPKS),
+    LBDPPKS_RUTIN("LBDPPKS", EReportGroupLktb.LKD_BULANAN_RUTIN, 121, EReport.LKTB_DPPKS),
+    LBDPPKS_KOREKSI("LBDPPKS", EReportGroupLktb.LKD_BULANAN_KOREKSI, 122, EReport.LKTB_DPPKS),
+    LTDPPKS_RUTIN("LTDPPKS", EReportGroupLktb.LKD_TAHUNAN_RUTIN, 123, EReport.LKTB_DPPKS),
+    LTDPPKS_KOREKSI("LTDPPKS", EReportGroupLktb.LKD_TAHUNAN_KOREKSI, 124, EReport.LKTB_DPPKS),
 
-    LBDPLKK_RUTIN("LBDPLKK", EReportGroupLktb.LBDPLKK_DPLK_RUTIN, EReport.LKTB_DPLKK),
-    LBDPLKK_KOREKSI("LBDPLKK", EReportGroupLktb.LBDPLKK_DPLK_KOREKSI, EReport.LKTB_DPLKK),
-    LTDPLKK_RUTIN("LTDPLKK", EReportGroupLktb.LTDPLKK_DPLK_RUTIN, EReport.LKTB_DPLKK),
-    LTDPLKK_KOREKSI("LTDPLKK", EReportGroupLktb.LTDPLKK_DPLK_KOREKSI, EReport.LKTB_DPLKK),
+    LBDPLKK_RUTIN("LBDPLKK", EReportGroupLktb.LKD_BULANAN_RUTIN, 131, EReport.LKTB_DPLKK),
+    LBDPLKK_KOREKSI("LBDPLKK", EReportGroupLktb.LKD_BULANAN_KOREKSI, 132, EReport.LKTB_DPLKK),
+    LTDPLKK_RUTIN("LTDPLKK", EReportGroupLktb.LKD_TAHUNAN_RUTIN, 133, EReport.LKTB_DPLKK),
+    LTDPLKK_KOREKSI("LTDPLKK", EReportGroupLktb.LKD_TAHUNAN_KOREKSI, 134, EReport.LKTB_DPLKK),
 
-    LBDPLKS_RUTIN("LBDPLKK", EReportGroupLktb.LBDPLKS_DPLK_RUTIN, EReport.LKTB_DPLKS),
-    LBDPLKS_KOREKSI("LBDPLKS", EReportGroupLktb.LBDPLKS_DPLK_KOREKSI, EReport.LKTB_DPLKS),
-    LTDPLKS_RUTIN("LTDPLKK", EReportGroupLktb.LTDPLKS_DPLK_RUTIN, EReport.LKTB_DPLKS),
-    LTDPLKS_KOREKSI("LTDPLKK", EReportGroupLktb.LTDPLKS_DPLK_KOREKSI, EReport.LKTB_DPLKS),
-
+    LBDPLKS_RUTIN("LBDPLKK", EReportGroupLktb.LKD_BULANAN_RUTIN, 141, EReport.LKTB_DPLKS),
+    LBDPLKS_KOREKSI("LBDPLKS", EReportGroupLktb.LKD_BULANAN_KOREKSI, 142, EReport.LKTB_DPLKS),
+    LTDPLKS_RUTIN("LTDPLKK", EReportGroupLktb.LKD_TAHUNAN_RUTIN, 143, EReport.LKTB_DPLKS),
+    LTDPLKS_KOREKSI("LTDPLKK", EReportGroupLktb.LKD_TAHUNAN_KOREKSI, 144, EReport.LKTB_DPLKS),
     ;
 
     @Getter
-    private String reportTypeCode;
+    private final String reportTypeCode;
     @Getter
-    private EReportGroupLktb reportGroup;
+    private final EReportGroupLktb reportGroup;
     @Getter
-    private EReport report;
-
-
+    private final int reportGroupCode;
+    @Getter
+    private final EReport report;
 
     public static ReportInfo getReportInfo(String reportCode, int reportMenuCode) {
         ReportInfo res = new ReportInfo();
         for (EReportLktb eEnum : EReportLktb.values()) {
             EReport eReport = eEnum.getReport();
-            if (eReport.getCode().equals(reportCode) && eEnum.reportGroup.getMenuCode() == reportMenuCode) {
+            if (eReport.getCode().equals(reportCode) && eEnum.reportGroupCode == reportMenuCode) {
                 res.setId(eEnum.name());
                 res.setReport(eReport);
                 res.setReportTypeCode(eEnum.getReportTypeCode());
@@ -62,24 +61,6 @@ public enum EReportLktb {
             }
         }
         return res;
-    }
-
-    public static List<EReportLktb> getByReport(List<EReport> reports) {
-        List<EReportLktb> result = new ArrayList<EReportLktb>();
-        for (EReportLktb ereport : EReportLktb.values()) {
-            if (reports.contains(ereport.report))
-                result.add(ereport);
-        }
-        return result;
-    }
-
-    public static EReportLktb getByReportCode(String reportCode) {
-        for (EReportLktb eEnum : EReportLktb.values()) {
-            if (eEnum.getReportTypeCode().equals(reportCode)) {
-                return eEnum;
-            }
-        }
-        return null;
     }
 
 }
