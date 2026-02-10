@@ -79,7 +79,7 @@ public class ComparisonFormulaFormValidation4 extends ComparisonFormulaFormValid
           if (!compareValue(engine, totalValue, comparatorValue)) {
             log.error("{}>{}?{}", parameter, totalValue.toPlainString(), comparatorValue);
 
-            ValidationError validationError = new ValidationError(null, ValidationErrorCode.E50_02_FORMULA, String.valueOf(comparatorValue), 
+            ValidationError validationError = new ValidationError(submissionFormat.getFields().get(Integer.valueOf(idxSelectField)), ValidationErrorCode.E50_02_FORMULA, String.valueOf(comparatorValue), 
                 StringUtils.replace(msgError, "|", " " + operatorFormula.replace("==", "=") + " "));
 
             // Simpen error di baris terakhir

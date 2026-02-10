@@ -47,7 +47,7 @@ public enum ER5712SBN implements IObject<KeyValueString> {
 
   public static SegmentValidation genRowValidation04() {
     String comparatorField = UtilMetadata.genPlusRow(ER5701LPK.getObjectsForm(), 9, 9);
-    String fieldName = "SBN, Saldo SAK";
+    String fieldName = "Total Saldo SAK";
     String errMsg = UtilMetadata.genMessage(fieldName, UtilMetadata.genPlusDesc(ER5701LPK.getObjects(), 9, 9) + " pada form LPK");
     return UtilSegmentValidation.genEqualsFormulaForm4("3", SBN0100000000.key, "2", comparatorField, errMsg, 2);
   }
