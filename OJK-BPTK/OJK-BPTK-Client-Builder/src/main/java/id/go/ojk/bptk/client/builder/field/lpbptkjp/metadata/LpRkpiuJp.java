@@ -2,7 +2,7 @@ package id.go.ojk.bptk.client.builder.field.lpbptkjp.metadata;
 
 import static id.go.ojk.client.model.config.SimpleValidation.patternAlfaNumeric;
 import static id.go.ojk.lib.client.model.config.DataType.alfaNumeric;
-import static id.go.ojk.lib.client.model.config.DataType.numeric;
+import static id.go.ojk.lib.client.model.config.DataType.all2;
 import static id.go.ojk.lib.client.model.config.DataType.refTable;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
 
@@ -34,6 +34,9 @@ public class LpRkpiuJp extends BaseMetadata {
     res.setUniquePos(ER6305RKPIU.genUniquePos());
     res.setSavePos(ER6305RKPIU.genFieldSave());
 
+    res.addSegmentValidations(ER6305RKPIU.genRegexValidationNumeric());
+    res.addSegmentValidations(ER6305RKPIU.genRegexValidationNumericNegative());
+
     res.addSegmentValidations(ER6305RKPIU.genValidationTotalKelompokUsaha());
     res.addSegmentValidations(ER6305RKPIU.genValidationTotalJenisKelamin());
     res.addSegmentValidations(ER6305RKPIU.genValidationTotalKelompokUmur());
@@ -56,8 +59,8 @@ public class LpRkpiuJp extends BaseMetadata {
     fs.add(sf(1, null, "Kode Komponen/Baris", sv(M, 15, 20, refTable /*Huruf Angka*/)
         .confRegex(patternAlfaNumeric)
         .confReference(EHeaderMetadataLpbptkjp.R6305RKPIU.getObject())));
-    fs.add(sf(2, null, "Pemberi Kerja Penerima Upah", sv(M, 1, 20, numeric)));
-    fs.add(sf(3, null, "Peserta Penerima Upah", sv(M, 1, 20, numeric)));
+    fs.add(sf(2, null, "Pemberi Kerja Penerima Upah", sv(M, 1, 20, all2)));
+    fs.add(sf(3, null, "Peserta Penerima Upah", sv(M, 1, 20, all2)));
     return res;
   }
 }

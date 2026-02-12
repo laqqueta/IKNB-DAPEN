@@ -67,12 +67,12 @@ public enum ER6305RKPIU implements IObject<KeyValueString> {
   RKPIU1603000000("RKPIU1603000000", "Iuran Dibayar Dimuka"),
   RKPIU1604000000("RKPIU1604000000", "Iuran Belum Rekon Tahun Lalu"),
   RKPIU1700000000("RKPIU1700000000", "Total Iuran"),
-  RKPIU1801000000("RKPIU1801000000", "Saldo Awal Rekapitulasi Dana Program JHT"),
-  RKPIU1802000000("RKPIU1802000000", "Iuran tahun Berjalan Rekapitulasi Dana Program JHT"),
-  RKPIU1803000000("RKPIU1803000000", "Hasil Pengembangan Rekapitulasi Dana Program JHT"),
-  RKPIU1804000000("RKPIU1804000000", "Amalgamasi / Penyesuaian Rekapitulasi Dana Program JHT"),
-  RKPIU1805000000("RKPIU1805000000", "Klaim Rekapitulasi Dana Program JHT"),
-  RKPIU1900000000("RKPIU1900000000", "Total Rekapitulasi Dana Program JHT"),;
+  RKPIU1801000000("RKPIU1801000000", "Saldo Awal Rekapitulasi Dana Program JP"),
+  RKPIU1802000000("RKPIU1802000000", "Iuran tahun Berjalan Rekapitulasi Dana Program JP"),
+  RKPIU1803000000("RKPIU1803000000", "Hasil Pengembangan Rekapitulasi Dana Program JP"),
+  RKPIU1804000000("RKPIU1804000000", "Amalgamasi / Penyesuaian Rekapitulasi Dana Program JP"),
+  RKPIU1805000000("RKPIU1805000000", "Klaim Rekapitulasi Dana Program JP"),
+  RKPIU1900000000("RKPIU1900000000", "Total Rekapitulasi Dana Program JP"),;
 
   @Getter
   private String key;
@@ -137,6 +137,14 @@ public enum ER6305RKPIU implements IObject<KeyValueString> {
 
   public static String genFieldSave() {
     return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 3), getObjects());
+  }
+
+  public static SegmentValidation genRegexValidationNumeric() {
+    return UtilSegmentValidation.genRegexNumeric("2|3", UtilMetadata.genPipeRow(getObjects(), 0, 45));
+  }
+
+  public static SegmentValidation genRegexValidationNumericNegative() {
+    return UtilSegmentValidation.genRegexNumericNegative("2|3", UtilMetadata.genPipeRow(getObjects(), 46, 51));
   }
 
   public static SegmentValidation genValidationTotalKelompokUsaha() {

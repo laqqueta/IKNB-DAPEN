@@ -140,6 +140,14 @@ public enum ER6105RKPIU implements IObject<KeyValueString> {
     return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 7), getObjects());
   }
 
+  public static SegmentValidation genRegexValidationNumeric() {
+    return UtilSegmentValidation.genRegexNumeric("2|3|4|5|6|7", UtilMetadata.genPipeRow(getObjects(), 0, 45));
+  }
+
+  public static SegmentValidation genRegexValidationNumericNegative() {
+    return UtilSegmentValidation.genRegexNumericNegative("2|3|4|5|6|7", UtilMetadata.genPipeRow(getObjects(), 46, 51));
+  }
+
   public static SegmentValidation genValidationTotalKelompokUsaha() {
     List<IObject<KeyValueString>> listKv = Arrays.asList(RKPIU0301000000, RKPIU0302000000, RKPIU0303000000,
         RKPIU0304000000, RKPIU0305000000, RKPIU0306000000, RKPIU0307000000, RKPIU0308000000, RKPIU0309000000);
