@@ -111,7 +111,7 @@ public class ApplicationUpdateService extends BaseService {
 		boolean datNeedUpdate = !(StringUtils.equals(serverVersion.getMetadata(), metadataVersionLocal) && 
 				StringUtils.equals(serverVersion.getReference(),  refVersionLocal));
 		log.info("Metadata version, local:{}, server:{}; Reference version, local:{}, server:{}; needUpdate:{}", 
-				metadataVersionLocal, serverVersion.getMetadata(), refVersionLocal, serverVersion.getReference(), appNeedUpdate);
+				metadataVersionLocal, serverVersion.getMetadata(), refVersionLocal, serverVersion.getReference(), datNeedUpdate);
 		if (appNeedUpdate && datNeedUpdate) {
 			AlertUtil.showAlertSafe(AlertType.INFORMATION, "Download Installer Client", "Download Installer Client", 
 					"Aplikasi Client perlu diperbaharui.\n"
