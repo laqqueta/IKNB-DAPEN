@@ -1,6 +1,7 @@
 package id.go.ojk.client.model.config.validation.field;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
@@ -54,7 +55,7 @@ public abstract class BaseFieldFormulaValidation extends MapParamFieldValidation
 							if (tmp == BigDecimal.ZERO) {
 								res = BigDecimal.ZERO;
 							} else {
-								res = res.divide(tmp);
+								res = res.divide(tmp, 4, RoundingMode.HALF_EVEN);
 							}
 						}
 					} else {
