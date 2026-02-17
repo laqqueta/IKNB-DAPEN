@@ -222,6 +222,16 @@ public class UtilFieldConditional {
 		return new ConditionEquals(builder.toString());
 	}
 
+	public static ConditionalRequired genEqualsExceptPos(String trueCondition, String falseCondition, String comparatorField,
+												String comparatorValue, String exceptPos) {
+		StringBuilder builder = new StringBuilder("trueCondition=" + trueCondition);
+		builder.append("&falseCondition=" + falseCondition);
+		builder.append("&comparatorField=" + comparatorField);
+		builder.append("&comparatorValue=" + comparatorValue);
+		builder.append("&exceptPos=" + exceptPos);
+		return new ConditionEqualsExceptPost(builder.toString());
+	}
+
 	public static ConditionalRequired genNotBetween(String trueCondition, String falseCondition, String comparatorField,
 			int comparatorLowValue, int comparatorHighValue) {
 		StringBuilder builder = new StringBuilder("trueCondition=" + trueCondition);
@@ -292,5 +302,12 @@ public class UtilFieldConditional {
 		builder.append("&trueConditionPosCode2=" + trueConditionPosCode2);
 		builder.append("&falseConditionPosCode2=" + falseConditionPosCode2);
 		return new FintechCondition(builder.toString());
+	}
+
+	public static ConditionalRequired genHasValue(String fieldComparator, String falseCondition, String trueCondition) {
+		StringBuilder builder = new StringBuilder("comparatorField=" + fieldComparator);
+		builder.append("&falseCondition=" + falseCondition);
+		builder.append("&trueCondition=" + trueCondition);
+		return new HasValueConditional(builder.toString());
 	}
 }
