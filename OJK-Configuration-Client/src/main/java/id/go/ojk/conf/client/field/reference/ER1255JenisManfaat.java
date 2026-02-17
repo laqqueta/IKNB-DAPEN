@@ -50,4 +50,16 @@ public enum ER1255JenisManfaat implements IObject<KeyValueString> {
 	public static int getRefNumber() {
 		return Integer.parseInt(ER1255JenisManfaat.class.getSimpleName().substring(2, 6));
 	}
+
+	public static String getReferenceIndex(int index) {
+		StringBuilder res = new StringBuilder();
+		ER1255JenisManfaat[] eEnums = ER1255JenisManfaat.values();
+		for (int i= 0; i < eEnums.length; i++) {
+			if (i == index) {
+				res.append(ER1255JenisManfaat.values()[i].key);
+				break;
+			}
+		}
+        return res.toString();
+	}
 }

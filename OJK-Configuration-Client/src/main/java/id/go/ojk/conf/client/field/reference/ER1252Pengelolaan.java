@@ -37,4 +37,17 @@ public enum ER1252Pengelolaan implements IObject<KeyValueString> {
 	public static int getRefNumber() {
 		return Integer.parseInt(ER1252Pengelolaan.class.getSimpleName().substring(2, 6));
 	}
+
+	public static String getReferenceIndex(int index) {
+		StringBuilder res = new StringBuilder();
+		ER1252Pengelolaan[] eEnums = ER1252Pengelolaan.values();
+		for (int i= 0; i < eEnums.length; i++) {
+			if (i == index) {
+				res.append(ER1252Pengelolaan.values()[i].key);
+				break;
+			}
+		}
+
+		return res.toString();
+	}
 }
