@@ -82,9 +82,7 @@ public enum EHeaderMetadataPpmpk implements IObject<ReferenceMetadata> {
     R7065Bopr(ER7065PosLtlbDppkBopr.getRefNumber(), ER7065PosLtlbDppkBopr.getName(), ER7065PosLtlbDppkBopr.getObjects()),
     R7066Bipr(ER7066PosLtlbDppkBipr.getRefNumber(), ER7066PosLtlbDppkBipr.getName(), ER7066PosLtlbDppkBipr.getObjects()),
     R7067Pph(ER7067PosLtlbDppkPph.getRefNumber(), ER7067PosLtlbDppkPph.getName(), ER7067PosLtlbDppkPph.getObjects()),
-    R7068Pkpl(ER7068PosLtlbDppkPkpl.getRefNumber(), ER7068PosLtlbDppkPkpl.getName(), ER7068PosLtlbDppkPkpl.getObjects())
-
-    ;
+    R7068Pkpl(ER7068PosLtlbDppkPkpl.getRefNumber(), ER7068PosLtlbDppkPkpl.getName(), ER7068PosLtlbDppkPkpl.getObjects());
 
     private int number;
     private String name;
@@ -99,8 +97,8 @@ public enum EHeaderMetadataPpmpk implements IObject<ReferenceMetadata> {
     }
 
     public String getDescription() {
-        return name;
-//    return "R" + number + name;
+//        return name;
+        return "R" + number + name;
     }
 
     @Override

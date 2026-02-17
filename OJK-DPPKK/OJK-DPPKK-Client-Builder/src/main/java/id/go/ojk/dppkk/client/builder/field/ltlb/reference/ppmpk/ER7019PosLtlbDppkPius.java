@@ -1,5 +1,8 @@
 package id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk;
 
+import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
+import id.go.ojk.conf.client.UtilMetadata;
+import id.go.ojk.conf.client.UtilSegmentValidation;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
 import lombok.AccessLevel;
@@ -35,5 +38,18 @@ public enum ER7019PosLtlbDppkPius implements IObject<KeyValueString> {
 
     public static int getRefNumber() {
         return Integer.parseInt(ER7019PosLtlbDppkPius.class.getSimpleName().substring(2, 6));
+    }
+
+    public static String genFieldSave() {
+        return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 6), getObjects());
+    }
+
+    public static String getRequiredPos() {
+        return UtilMetadata.genPipeRow(getObjects(), new int[] { 1 });
+    }
+
+    public static SegmentValidation genValidation() {
+        return UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 6), R_PIUS0000000000.key, R_PIUS0100000000.key,
+                UtilMetadata.genMessageTotal(R_PIUS0000000000.value, R_PIUS0100000000.value));
     }
 }

@@ -1,9 +1,12 @@
 package id.go.ojk.dppkk.client.builder.field.ltlb.metadata.ppmpk;
 
+import id.go.ojk.client.model.config.SimpleValidation;
 import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.conf.client.BaseMetadata;
 import id.go.ojk.dppkk.client.builder.field.EFormLaporanTahunanLaporanBulanan;
+import id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk.EHeaderMetadataPpmpk;
+import id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk.ER7019PosLtlbDppkPius;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,12 +25,19 @@ public class Ltlb0020PIUS extends BaseMetadata {
 
         EFormLaporanTahunanLaporanBulanan eNum = EFormLaporanTahunanLaporanBulanan.LTLB_PIUS;
         SubmissionFormat res = new SubmissionFormat(eNum.getCode(), eNum.getName(), reportCode, new ArrayList<>(),
-                extension, 0, null, null, null);
+                extension, 0, null);
+
+        res.setSavePos(ER7019PosLtlbDppkPius.genFieldSave());
+        res.setRequiredPos(ER7019PosLtlbDppkPius.getRequiredPos());
+
+        res.addSegmentValidations(ER7019PosLtlbDppkPius.genValidation());
 
         List<SubmissionField> fs = res.getFields();
 
         fs.add(sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01")));
-        fs.add(sf(1, null, "Kode Komponen", sv(M, 14, 14, all)));
+        fs.add(sf(1, null, "Kode Komponen", sv(M, 14, 14, refTable)
+                .confRegex(SimpleValidation.patternAlfaNumeric)
+                .confReference(EHeaderMetadataPpmpk.R7019Pius.getObject())));
         fs.add(sf(2, null, "Jumlah Peserta Iuran Sukarela", sv(M, 1, 18, numeric)));
         fs.add(sf(3, null, "Saldo Akumulasi Iuran Sukarela bulan sebelumnya", sv(M, 1, 18, numeric)));
         fs.add(sf(4, null, "Penambahan iuran sukarela bulan berjalan", sv(M, 1, 18, numeric)));

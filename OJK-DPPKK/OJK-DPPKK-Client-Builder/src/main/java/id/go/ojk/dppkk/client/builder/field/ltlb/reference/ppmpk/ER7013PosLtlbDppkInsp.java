@@ -1,5 +1,10 @@
 package id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk;
 
+import id.go.ojk.client.model.config.validation.conditional.ConditionalRequired;
+import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
+import id.go.ojk.conf.client.UtilFieldConditional;
+import id.go.ojk.conf.client.UtilMetadata;
+import id.go.ojk.conf.client.UtilSegmentValidation;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
 import lombok.AccessLevel;
@@ -11,8 +16,8 @@ import java.util.List;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ER7013PosLtlbDppkInsp implements IObject<KeyValueString> {
     
-    R_INSPK010000("INSPK010000", "Detail"),
-    R_INSPK000000("INSPK000000", "Total");
+    R_INSPK010000("INSP010000", "Detail"),
+    R_INSPK000000("INSP000000", "Total");
 
     private String key;
     private String value;
@@ -35,5 +40,27 @@ public enum ER7013PosLtlbDppkInsp implements IObject<KeyValueString> {
 
     public static int getRefNumber() {
         return Integer.parseInt(ER7013PosLtlbDppkInsp.class.getSimpleName().substring(2, 6));
+    }
+
+    public static String genFieldSave() {
+        return UtilMetadata.genFieldSave("4", getObjects());
+    }
+
+    public static String getRequiredPos() {
+        return UtilMetadata.genPipeRow(getObjects(), new int[] { 1 });
+    }
+
+    public static ConditionalRequired genConditionForTotal() {
+        return UtilFieldConditional.genExistPos("N", "M", R_INSPK000000.key);
+    }
+
+    public static ConditionalRequired genConditionForTotalOptional() {
+        return UtilFieldConditional.genExistPos("N", "O", R_INSPK000000.key);
+    }
+
+    public static SegmentValidation genValidation() {
+        return UtilSegmentValidation.genEqualsFormula("4", R_INSPK000000.key, R_INSPK010000.key,
+                UtilMetadata.genMessageTotal(R_INSPK000000.value, R_INSPK010000.value));
+
     }
 }

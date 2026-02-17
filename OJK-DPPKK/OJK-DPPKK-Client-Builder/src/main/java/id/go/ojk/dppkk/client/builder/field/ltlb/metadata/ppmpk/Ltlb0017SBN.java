@@ -23,7 +23,7 @@ public class Ltlb0017SBN extends BaseMetadata {
 
         EFormLaporanTahunanLaporanBulanan eNum = EFormLaporanTahunanLaporanBulanan.LTLB_SBN;
         SubmissionFormat res = new SubmissionFormat(eNum.getCode(), eNum.getName(), reportCode, new ArrayList<>(),
-                extension, 0, null, null, null);
+                extension, 0, null);
 
         List<SubmissionField> fs = res.getFields();
 

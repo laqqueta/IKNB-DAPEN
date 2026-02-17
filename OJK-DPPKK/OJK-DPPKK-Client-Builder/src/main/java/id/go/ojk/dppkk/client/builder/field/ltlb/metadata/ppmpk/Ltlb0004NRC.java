@@ -23,7 +23,7 @@ public class Ltlb0004NRC extends BaseMetadata {
 
         EFormLaporanTahunanLaporanBulanan eNum = EFormLaporanTahunanLaporanBulanan.LTLB_NERACA;
         SubmissionFormat res = new SubmissionFormat(eNum.getCode(), eNum.getName(), reportCode, new ArrayList<>(),
-                extension, 0, null, null, null);
+                extension, 0, null);
 
         List<SubmissionField> fs = res.getFields();
 

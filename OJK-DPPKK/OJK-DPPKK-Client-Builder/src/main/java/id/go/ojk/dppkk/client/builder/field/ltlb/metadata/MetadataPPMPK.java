@@ -1,7 +1,7 @@
 package id.go.ojk.dppkk.client.builder.field.ltlb.metadata;
 
 import id.go.ojk.client.model.config.SubmissionFormat;
-import id.go.ojk.dppkk.client.builder.field.ltlb.metadata.ppmpk.Ltlb0001DTUM;
+import id.go.ojk.dppkk.client.builder.field.ltlb.metadata.ppmpk.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +18,9 @@ public class MetadataPPMPK {
     private static List<SubmissionFormat> getFormMetadata() {
         String REPORT_CODE = "PPMPK";
         return Arrays.asList(
-                new Ltlb0001DTUM(REPORT_CODE).get()
-        );
+                new Ltlb0019RAS2(REPORT_CODE).get()/*,
+                new Ltlb0015INPT(REPORT_CODE).get(),
+                new Ltlb0016INBM(REPORT_CODE).get()*/
+                );
     }
 }

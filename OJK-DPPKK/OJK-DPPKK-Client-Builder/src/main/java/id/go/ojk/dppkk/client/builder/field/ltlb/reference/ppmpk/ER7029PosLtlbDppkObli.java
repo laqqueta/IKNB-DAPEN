@@ -1,5 +1,13 @@
 package id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk;
 
+import id.go.ojk.client.model.config.validation.conditional.ConditionalRequired;
+import id.go.ojk.client.model.config.validation.field.FieldValidation;
+import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
+import id.go.ojk.conf.client.UtilFieldConditional;
+import id.go.ojk.conf.client.UtilFieldValidation;
+import id.go.ojk.conf.client.UtilMetadata;
+import id.go.ojk.conf.client.UtilSegmentValidation;
+import id.go.ojk.conf.client.field.reference.ER1252Pengelolaan;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
 import lombok.AccessLevel;
@@ -35,5 +43,44 @@ public enum ER7029PosLtlbDppkObli implements IObject<KeyValueString> {
 
     public static int getRefNumber() {
         return Integer.parseInt(ER7029PosLtlbDppkObli.class.getSimpleName().substring(2, 6));
+    }
+
+    public static String genFieldSave() {
+        return UtilMetadata.genFieldSave("6|11|12|13", getObjects());
+    }
+
+    public static String getRequiredPos() {
+        return UtilMetadata.genPipeRow(getObjects(), new int[] { 1 });
+    }
+
+    public static ConditionalRequired genConditionForTotal() {
+        return UtilFieldConditional.genExistPos("N", "M", R_OBLI000000.key);
+    }
+
+    public static ConditionalRequired genConditionForTotalOptional() {
+        return UtilFieldConditional.genExistPos("N", "O", R_OBLI000000.key);
+    }
+
+    public static FieldValidation genFieldValidationNilaiInvestasi() {
+        return UtilFieldValidation.genEqualsExceptPosFormula("12-11", R_OBLI000000.key);
+    }
+
+    public static FieldValidation genFieldValidationPersentaseInvestasi() {
+        return UtilFieldValidation.genEqualsPercentageExceptPosFormula("13/11", R_OBLI000000.key);
+    }
+
+    public static ConditionalRequired genConditionNamaPengelola() {
+        return UtilFieldConditional.genEqualsExceptPos("M", "O", "18",
+                ER1252Pengelolaan.getReferenceIndex(0), R_OBLI000000.key);
+    }
+
+    public static FieldValidation genDateGreaterFieldValidation() {
+        return UtilFieldValidation.genDateGreaterEquals("5");
+    }
+
+    public static SegmentValidation genValidation() {
+        return UtilSegmentValidation.genEqualsFormula("6|11|12|13", R_OBLI000000.key, R_OBLI010000.key,
+                UtilMetadata.genMessageTotal(R_OBLI000000.value, R_OBLI010000.value));
+
     }
 }

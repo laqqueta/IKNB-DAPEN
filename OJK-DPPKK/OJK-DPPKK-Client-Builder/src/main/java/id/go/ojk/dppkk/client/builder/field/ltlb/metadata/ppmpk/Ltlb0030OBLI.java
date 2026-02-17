@@ -1,9 +1,14 @@
 package id.go.ojk.dppkk.client.builder.field.ltlb.metadata.ppmpk;
 
+import id.go.ojk.client.model.config.SimpleValidation;
 import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.conf.client.BaseMetadata;
 import id.go.ojk.dppkk.client.builder.field.EFormLaporanTahunanLaporanBulanan;
+import id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk.EHeaderMetadataPpmpk;
+import id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk.ER7029PosLtlbDppkObli;
+import id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk.ER7029PosLtlbDppkObli;
+import id.go.ojk.dppkk.client.builder.field.reference.EHeaderMetadataShared;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,31 +27,108 @@ public class Ltlb0030OBLI extends BaseMetadata {
 
         EFormLaporanTahunanLaporanBulanan eNum = EFormLaporanTahunanLaporanBulanan.LTLB_OBLI;
         SubmissionFormat res = new SubmissionFormat(eNum.getCode(), eNum.getName(), reportCode, new ArrayList<>(),
-                extension, 0, null, null, null);
+                extension, 0, null);
+
+        res.setSavePos(ER7029PosLtlbDppkObli.genFieldSave());
+        res.setRequiredPos(ER7029PosLtlbDppkObli.getRequiredPos());
+
+        res.addSegmentValidations(ER7029PosLtlbDppkObli.genValidation());
 
         List<SubmissionField> fs = res.getFields();
 
-        fs.add(sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01")));
-        fs.add(sf(1, null, "Kode Komponen", sv(M, 10, 10, all)));
-        fs.add(sf(2, null, "Nama Penerbit", sv(M, 1, 100, alfaNumeric)));
-        fs.add(sf(3, null, "Kode Obligasi", sv(M, 1, 30, alfaNumeric)));
-        fs.add(sf(4, null, "Nama Obligasi", sv(M, 1, 100, alfa)));
-        fs.add(sf(5, null, "Tanggal Perolehan", sv(M, 8, 8, date)));
-        fs.add(sf(6, null, "Nilai Nominal", sv(M, 1, 18, numeric)));
-        fs.add(sf(7, null, "Kupon (%)", sv(M, 2, 5, numericDot)));
-        fs.add(sf(8, null, "Tanggal Jatuh Tempo", sv(M, 8, 8, date)));
-        fs.add(sf(9, null, "Peringkat: Awal", sv(M, 1, 10, alfaNumeric)));
-        fs.add(sf(10, null, "Peringkat: Akhir", sv(M, 1, 10, alfaNumeric)));
-        fs.add(sf(11, null, "Nilai Perolehan", sv(M, 1, 18, numeric)));
-        fs.add(sf(12, null, "Nilai Wajar", sv(M, 1, 18, numeric)));
-        fs.add(sf(13, null, "Selisih Penilaian Investasi: Nilai", sv(M, 1, 18, numeric)));
-        fs.add(sf(14, null, "Selisih Penilaian Investasi: %", sv(M, 2, 5, numericDot)));
-        fs.add(sf(15, null, "Sektor Ekonomi", sv(M, 1, 8, alfa)));
-        fs.add(sf(16, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain", sv(M, 1, 6, alfaNumeric)));
-        fs.add(sf(17, null, "Metode Pencatatan", sv(M, 1, 6, alfa)));
-        fs.add(sf(18, null, "Pengelolaan: Swakelola/ KPD", sv(M, 1, 6, alfaNumeric)));
-        fs.add(sf(19, null, "Pengelolaan: Nama Manajer Investasi", sv(C, 1, 250, alfa)));
-        fs.add(sf(20, null, "Keterangan", sv(O, 1, 250, freeText)));
+
+        fs.add(sf(0, null, "Flag",
+                sv(M, 3, 3, alfaNumeric)
+                        .confConstant("D01")));
+
+        fs.add(sf(1, null, "Kode Komponen",
+                sv(M, 10, 10, refTable)   // length follows original java code
+                        .confRegex(SimpleValidation.patternAlfaNumeric)
+                        .confReference(EHeaderMetadataPpmpk.R7029Obli.getObject())));
+
+        fs.add(sf(2, null, "Nama Penerbit",
+                sv(C, 1, 100, alfaNumeric)
+                        .confConditionalRequired(ER7029PosLtlbDppkObli.genConditionForTotal())));
+
+        fs.add(sf(3, null, "Kode Obligasi",
+                sv(C, 1, 30, alfaNumeric)
+                        .confConditionalRequired(ER7029PosLtlbDppkObli.genConditionForTotal())));
+
+        fs.add(sf(4, null, "Nama Obligasi",
+                sv(C, 1, 100, alfa)
+                        .confConditionalRequired(ER7029PosLtlbDppkObli.genConditionForTotal())));
+
+        fs.add(sf(5, null, "Tanggal Perolehan",
+                sv(C, 8, 8, date)
+                        .confConditionalRequired(ER7029PosLtlbDppkObli.genConditionForTotal())));
+
+        fs.add(sf(6, null, "Nilai Nominal",
+                sv(M, 1, 18, numeric)));
+
+        fs.add(sf(7, null, "Kupon (%)",
+                sv(C, 3, 5, numericDot)
+                        .confConditionalRequired(ER7029PosLtlbDppkObli.genConditionForTotal())));
+
+        fs.add(sf(8, null, "Tanggal Jatuh Tempo",
+                sv(C, 8, 8, date)
+                        .confConditionalRequired(ER7029PosLtlbDppkObli.genConditionForTotal()))
+                .addFieldValidations(ER7029PosLtlbDppkObli.genDateGreaterFieldValidation()));
+
+        fs.add(sf(9, null, "Peringkat: Awal",
+                sv(C, 1, 10, alfaNumeric)
+                        .confConditionalRequired(ER7029PosLtlbDppkObli.genConditionForTotal())));
+
+        fs.add(sf(10, null, "Peringkat: Akhir",
+                sv(C, 1, 10, alfaNumeric)
+                        .confConditionalRequired(ER7029PosLtlbDppkObli.genConditionForTotal())));
+
+        fs.add(sf(11, null, "Nilai Perolehan",
+                sv(M, 1, 18, numeric)));
+
+        fs.add(sf(12, null, "Nilai Wajar",
+                sv(M, 1, 18, numeric)));
+
+        fs.add(sf(13, null, "Selisih Penilaian Investasi Nilai",
+                sv(M, 1, 18, numeric))
+                .addFieldValidations(ER7029PosLtlbDppkObli.genFieldValidationNilaiInvestasi()));
+
+        fs.add(sf(14, null, "Selisih Penilaian Investasi %",
+                sv(C, 3, 5, numericDot)
+                        .confConditionalRequired(ER7029PosLtlbDppkObli.genConditionForTotal()))
+                .addFieldValidations(ER7029PosLtlbDppkObli.genFieldValidationPersentaseInvestasi()));
+
+        fs.add(sf(15, null, "Sektor Ekonomi",
+                sv(C, 1, 6, refTable)
+                        .confConditionalRequired(ER7029PosLtlbDppkObli.genConditionForTotal())
+                        .confRegex(SimpleValidation.patternAlfaNumeric)
+                        .confReference(EHeaderMetadataShared.R007.getObject())));
+
+        fs.add(sf(16, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain",
+                sv(C, 1, 6, refTable)
+                        .confConditionalRequired(ER7029PosLtlbDppkObli.genConditionForTotal())
+                        .confRegex(SimpleValidation.patternAlfaNumeric)
+                        .confReference(EHeaderMetadataShared.R009.getObject())));
+
+        fs.add(sf(17, null, "Metode Pencatatan",
+                sv(C, 1, 6, refTable)
+                        .confConditionalRequired(ER7029PosLtlbDppkObli.genConditionForTotal())
+                        .confRegex(SimpleValidation.patternAlfa)
+                        .confReference(EHeaderMetadataShared.R005.getObject())));
+
+        fs.add(sf(18, null, "Pengelolaan Swakelola/ KPD",
+                sv(C, 1, 6, refTable)
+                        .confConditionalRequired(ER7029PosLtlbDppkObli.genConditionForTotal())
+                        .confRegex(SimpleValidation.patternAlfa)
+                        .confReference(EHeaderMetadataShared.R006.getObject())));
+
+        fs.add(sf(19, null, "Pengelolaan Nama Manajer Investasi",
+                sv(C, 1, 250, alfa)
+                        .confConditionalRequired(ER7029PosLtlbDppkObli.genConditionForTotal())
+                        .confConditionalRequired(ER7029PosLtlbDppkObli.genConditionNamaPengelola())));
+
+        fs.add(sf(20, null, "Keterangan",
+                sv(C, 1, 250, freeText)
+                        .confConditionalRequired(ER7029PosLtlbDppkObli.genConditionForTotalOptional())));
 
         return res;
     }

@@ -1,5 +1,8 @@
 package id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk;
 
+import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
+import id.go.ojk.conf.client.UtilMetadata;
+import id.go.ojk.conf.client.UtilSegmentValidation;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
 import lombok.AccessLevel;
@@ -51,11 +54,27 @@ public enum ER7008PosLtlbDppkRekinv implements IObject<KeyValueString> {
         return res;
     }
 
+    public static String genFieldSave() {
+        return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 13), getObjects());
+    }
+
     public static String getName() {
         return ER7008PosLtlbDppkRekinv.class.getSimpleName().substring(6);
     }
 
     public static int getRefNumber() {
         return Integer.parseInt(ER7008PosLtlbDppkRekinv.class.getSimpleName().substring(2, 6));
+    }
+
+    public static String getRequiredPos() {
+        return UtilMetadata.genPipeRow(getObjects());
+    }
+
+    private static final String plusRowValidation = UtilMetadata.genPlusRow(getObjects(), 0, 19);
+
+    public static SegmentValidation genValidationSumPosColEqual() {
+        return UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 14), R_REKINV2100000000.key,
+                plusRowValidation,
+                UtilMetadata.genMessage(R_REKINV2100000000.value, plusRowValidation));
     }
 }

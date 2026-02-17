@@ -1,5 +1,12 @@
 package id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk;
 
+import id.go.ojk.client.model.config.validation.conditional.ConditionalRequired;
+import id.go.ojk.client.model.config.validation.field.FieldValidation;
+import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
+import id.go.ojk.conf.client.UtilFieldConditional;
+import id.go.ojk.conf.client.UtilFieldValidation;
+import id.go.ojk.conf.client.UtilMetadata;
+import id.go.ojk.conf.client.UtilSegmentValidation;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
 import lombok.AccessLevel;
@@ -50,7 +57,28 @@ public enum ER7006PosLtlbDppkPst implements IObject<KeyValueString> {
         return ER7006PosLtlbDppkPst.class.getSimpleName().substring(6);
     }
 
+    public static String genFieldSave() {
+        return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 4), getObjects());
+    }
+
     public static int getRefNumber() {
         return Integer.parseInt(ER7006PosLtlbDppkPst.class.getSimpleName().substring(2, 6));
     }
+
+    public static String getRequiredPos() {
+        return UtilMetadata.genPipeRow(getObjects());
+    }
+
+
+    public static FieldValidation genFieldValidationSumRow() {
+        return UtilFieldValidation.genEqualsFormula(UtilMetadata.genPlusColumn(2, 4));
+    }
+
+    public static SegmentValidation genValidationSumPosColEqual() {
+        return UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPlusColumn(2, 4), R_PST0400000000.key,
+                UtilMetadata.genPlusRow(getObjects(), new int[] { 0, 3, 14 }),
+                UtilMetadata.genMessage(R_PST0400000000.value, UtilMetadata.genPlusRow(getObjects(), new int[] { 0, 3, 14 })));
+    }
+
+
 }

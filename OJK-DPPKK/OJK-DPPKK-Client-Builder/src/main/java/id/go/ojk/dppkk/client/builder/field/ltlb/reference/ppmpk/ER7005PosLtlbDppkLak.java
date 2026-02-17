@@ -1,5 +1,10 @@
 package id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk;
 
+import id.go.ojk.client.model.config.validation.field.FieldValidation;
+import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
+import id.go.ojk.conf.client.UtilFieldValidation;
+import id.go.ojk.conf.client.UtilMetadata;
+import id.go.ojk.conf.client.UtilSegmentValidation;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
 import lombok.AccessLevel;
@@ -65,4 +70,44 @@ public enum ER7005PosLtlbDppkLak implements IObject<KeyValueString> {
     public static int getRefNumber() {
         return Integer.parseInt(ER7005PosLtlbDppkLak.class.getSimpleName().substring(2, 6));
     }
+
+    public static String getRequiredPos() {
+        return UtilMetadata.genPipeRow(getObjects());
+    }
+
+    private static final String pipeColumnValidation = UtilMetadata.genPipeColumn(2, 11);
+
+    public static String genFieldSave() {
+        return UtilMetadata.genFieldSave(pipeColumnValidation, getObjects());
+    }
+
+    public static SegmentValidation genValidationSumPosColEqual1() {
+        return UtilSegmentValidation.genEqualsFormula(pipeColumnValidation, R_LAK0200000000.key, UtilMetadata.genPlusRow(getObjects(), 0, 6),
+                UtilMetadata.genMessage(R_LAK0200000000.value, UtilMetadata.genPlusDesc(getObjects(), 0, 6)));
+    }
+
+    public static SegmentValidation genValidationSumPosColEqual2() {
+        return UtilSegmentValidation.genEqualsFormula(pipeColumnValidation, R_LAK0400000000.key, UtilMetadata.genPlusRow(getObjects(), 8, 17),
+                UtilMetadata.genMessage(R_LAK0400000000.value, UtilMetadata.genPlusDesc(getObjects(), 8, 17)));
+    }
+
+    public static SegmentValidation genValidationSumPosColEqual3() {
+        return UtilSegmentValidation.genEqualsFormula(pipeColumnValidation, R_LAK0600000000.key, UtilMetadata.genPlusRow(getObjects(), 19, 26),
+                UtilMetadata.genMessage(R_LAK0600000000.value, UtilMetadata.genPlusDesc(getObjects(), 19, 26)));
+    }
+
+    public static SegmentValidation genValidationSumPosColEqual4() {
+        return UtilSegmentValidation.genEqualsFormula(pipeColumnValidation, R_LAK0700000000.key, UtilMetadata.genPlusRow(getObjects(), new int[] {7, 18, 27}),
+                UtilMetadata.genMessage(R_LAK0700000000.value, UtilMetadata.genPlusDesc(getObjects(), new int[] {7, 18, 27})));
+    }
+
+    public static SegmentValidation genValidationSumPosColEqual5() {
+        return UtilSegmentValidation.genEqualsFormula(pipeColumnValidation, R_LAK0900000000.key, UtilMetadata.genPlusRow(getObjects(), new int[] {28, 29}),
+                UtilMetadata.genMessage(R_LAK0900000000.value, UtilMetadata.genPlusDesc(getObjects(), new int[] {28, 29})));
+    }
+
+    public static FieldValidation genFieldValidationSumRow() {
+        return UtilFieldValidation.genEqualsExceptPosFormula(UtilMetadata.genPlusColumn(2, 11), R_LAK0200000000.key);
+    }
+
 }

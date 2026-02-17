@@ -23,7 +23,7 @@ public class Ltlb0003LPAN extends BaseMetadata {
 
         EFormLaporanTahunanLaporanBulanan eNum = EFormLaporanTahunanLaporanBulanan.LTLB_LPAN;
         SubmissionFormat res = new SubmissionFormat(eNum.getCode(), eNum.getName(), reportCode, new ArrayList<>(),
-                extension, 0, null, null, null);
+                extension, 0,  null);
 
         List<SubmissionField> fs = res.getFields();
 

@@ -1,5 +1,10 @@
 package id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk;
 
+import id.go.ojk.client.model.config.validation.conditional.ConditionalRequired;
+import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
+import id.go.ojk.conf.client.UtilFieldConditional;
+import id.go.ojk.conf.client.UtilMetadata;
+import id.go.ojk.conf.client.UtilSegmentValidation;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
 import lombok.AccessLevel;
@@ -42,4 +47,33 @@ public enum ER7018PosLtlbDppkRas2 implements IObject<KeyValueString> {
     public static int getRefNumber() {
         return Integer.parseInt(ER7018PosLtlbDppkRas2.class.getSimpleName().substring(2, 6));
     }
+
+    public static String genFieldSave() {
+        return UtilMetadata.genFieldSave("2|3|4", getObjects());
+    }
+
+    public static String getRequiredPos() {
+        return UtilMetadata.genPipeRow(getObjects(), new int[] { 1 });
+    }
+
+    public static ConditionalRequired genValidationMustEmpty1() {
+        return UtilFieldConditional.genMustEmpty("N", "M", "2",
+                UtilMetadata.genPipeRow(getObjects(), 2, 7));
+    }
+
+    public static ConditionalRequired genValidationMustEmpty2() {
+        return UtilFieldConditional.genMustEmpty("N", "M", "3",
+                UtilMetadata.genPipeRow(getObjects(), new int[] { 0, 1 }));
+    }
+
+    public static ConditionalRequired genValidationMustEmpty3() {
+        return UtilFieldConditional.genMustEmpty("N", "M", "4",
+                UtilMetadata.genPipeRow(getObjects(), new int[] { 0, 1 }));
+    }
+
+    public static SegmentValidation genValidation1() {
+        return UtilSegmentValidation.genEqualsFormula("3|4", R_RAS20102000000.key, UtilMetadata.genPlusRow(getObjects(), 2, 5),
+                UtilMetadata.genMessageTotal(R_RAS20102000000.value, UtilMetadata.genPlusDesc(getObjects(), 2, 5)));
+    }
+
 }

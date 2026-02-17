@@ -1,9 +1,13 @@
 package id.go.ojk.dppkk.client.builder.field.ltlb.metadata.ppmpk;
 
+import id.go.ojk.client.model.config.SimpleValidation;
 import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.conf.client.BaseMetadata;
 import id.go.ojk.dppkk.client.builder.field.EFormLaporanTahunanLaporanBulanan;
+import id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk.EHeaderMetadataPpmpk;
+import id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk.ER7035PosLtlbDppkDire;
+import id.go.ojk.dppkk.client.builder.field.reference.EHeaderMetadataShared;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,31 +26,81 @@ public class Ltlb0036DIRE extends BaseMetadata {
 
         EFormLaporanTahunanLaporanBulanan eNum = EFormLaporanTahunanLaporanBulanan.LTLB_DIRE;
         SubmissionFormat res = new SubmissionFormat(eNum.getCode(), eNum.getName(), reportCode, new ArrayList<>(),
-                extension, 0, null, null, null);
+                extension, 0, null);
+
+        res.setSavePos(ER7035PosLtlbDppkDire.genFieldSave());
+        res.setRequiredPos(ER7035PosLtlbDppkDire.getRequiredPos());
+
+        res.addSegmentValidations(ER7035PosLtlbDppkDire.genValidation());
 
         List<SubmissionField> fs = res.getFields();
 
-        fs.add(sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01")));
-        fs.add(sf(1, null, "Kode Komponen", sv(M, 10, 10, all)));
-        fs.add(sf(2, null, "Nama Penerbit", sv(M, 1, 100, alfaNumeric)));
-        fs.add(sf(3, null, "Kode Sukuk", sv(M, 1, 30, alfaNumeric)));
-        fs.add(sf(4, null, "Nama Sukuk", sv(M, 1, 100, alfa)));
-        fs.add(sf(5, null, "Tanggal Perolehan", sv(M, 8, 8, date)));
-        fs.add(sf(6, null, "Nilai Nominal", sv(M, 1, 18, numeric)));
-        fs.add(sf(7, null, "Kupon (%)", sv(M, 2, 5, numericDot)));
-        fs.add(sf(8, null, "Tanggal Jatuh Tempo", sv(M, 8, 8, date)));
-        fs.add(sf(9, null, "Peringkat Awal", sv(M, 1, 10, alfaNumeric)));
-        fs.add(sf(10, null, "Peringkat Akhir", sv(M, 1, 10, alfaNumeric)));
-        fs.add(sf(11, null, "Nilai Perolehan", sv(M, 1, 18, numeric)));
-        fs.add(sf(12, null, "Nilai Wajar", sv(M, 1, 18, numeric)));
-        fs.add(sf(13, null, "Selisih Penilaian Investasi Nilai", sv(M, 1, 18, numeric)));
-        fs.add(sf(14, null, "Selisih Penilaian Investasi %", sv(M, 2, 5, numericDot)));
-        fs.add(sf(15, null, "Sektor Ekonomi", sv(M, 1, 9191, alfa)));
-        fs.add(sf(16, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain", sv(M, 1, 6, alfaNumeric)));
-        fs.add(sf(17, null, "Metode Pencatatan", sv(M, 1, 9191, alfa)));
-        fs.add(sf(18, null, "Pengelolaan Swakelola/ KPD", sv(M, 1, 6, alfaNumeric)));
-        fs.add(sf(19, null, "Pengelolaan Nama Manajer Investasi", sv(C, 1, 250, alfa)));
-        fs.add(sf(20, null, "Keterangan", sv(O, 1, 250, freeText)));
+
+        fs.add(sf(0, null, "Flag",
+                sv(M, 3, 3, alfaNumeric)
+                        .confConstant("D01")));
+
+        
+        fs.add(sf(1, null, "Kode Komponen",
+                sv(M, 10, 10, refTable)
+                        .confRegex(SimpleValidation.patternAlfaNumeric)
+                        .confReference(EHeaderMetadataPpmpk.R7035Dire.getObject())));
+
+        fs.add(sf(2, null, "Kode",
+                sv(C, 1, 20, alfaNumeric)
+                        .confConditionalRequired(ER7035PosLtlbDppkDire.genConditionForTotal())));
+
+        fs.add(sf(3, null, "Nama Produk",
+                sv(C, 1, 100, alfaNumeric)
+                        .confConditionalRequired(ER7035PosLtlbDppkDire.genConditionForTotal())));
+
+        fs.add(sf(4, null, "Manajer Investasi",
+                sv(C, 1, 250, alfaNumeric)
+                        .confConditionalRequired(ER7035PosLtlbDppkDire.genConditionForTotal())));
+
+        fs.add(sf(5, null, "Tanggal Perolehan",
+                sv(C, 8, 8, date)
+                        .confConditionalRequired(ER7035PosLtlbDppkDire.genConditionForTotal())));
+
+        fs.add(sf(6, null, "Jumlah Unit",
+                sv(M, 1, 12, numeric)));
+
+        fs.add(sf(7, null, "Nilai Perolehan",
+                sv(M, 1, 18, numeric)));
+
+        fs.add(sf(8, null, "Nilai Wajar",
+                sv(M, 1, 18, numeric)));
+
+        fs.add(sf(9, null, "Selisih Penilaian Investasi Nilai",
+                sv(M, 1, 18, numeric))
+                .addFieldValidations(ER7035PosLtlbDppkDire.genFieldValidationNilaiInvestasi()));
+
+        fs.add(sf(10, null, "Selisih Penilaian Investasi %",
+                sv(C, 3, 5, numericDot)
+                        .confConditionalRequired(ER7035PosLtlbDppkDire.genConditionForTotal()))
+                .addFieldValidations(ER7035PosLtlbDppkDire.genFieldValidationPersentaseInvestasi()));
+
+        fs.add(sf(11, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain",
+                sv(C, 1, 6, refTable)
+                        .confConditionalRequired(ER7035PosLtlbDppkDire.genConditionForTotal())
+                        .confRegex(SimpleValidation.patternAlfaNumeric)
+                        .confReference(EHeaderMetadataShared.R009.getObject())));
+
+        fs.add(sf(12, null, "Pengelolaan Swakelola/ KPD",
+                sv(C, 1, 6, refTable)
+                        .confConditionalRequired(ER7035PosLtlbDppkDire.genConditionForTotal())
+                        .confRegex(SimpleValidation.patternAlfa)
+                        .confReference(EHeaderMetadataShared.R006.getObject())));
+
+        fs.add(sf(13, null, "Pengelolaan Nama Manajer Investasi",
+                sv(C, 1, 250, alfa)
+                        .confConditionalRequired(ER7035PosLtlbDppkDire.genConditionForTotal())
+                        .confConditionalRequired(ER7035PosLtlbDppkDire.genConditionNamaPengelola())));
+
+        fs.add(sf(14, null, "Keterangan",
+                sv(C, 1, 250, freeText)
+                        .confConditionalRequired(ER7035PosLtlbDppkDire.genConditionForTotalOptional())));
+
 
         return res;
     }

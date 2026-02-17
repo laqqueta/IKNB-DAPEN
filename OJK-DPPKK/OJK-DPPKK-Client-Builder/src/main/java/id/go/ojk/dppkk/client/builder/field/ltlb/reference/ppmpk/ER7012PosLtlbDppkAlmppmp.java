@@ -1,5 +1,12 @@
 package id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk;
 
+import id.go.ojk.client.model.config.validation.conditional.ConditionalRequired;
+import id.go.ojk.client.model.config.validation.field.FieldValidation;
+import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
+import id.go.ojk.conf.client.UtilFieldConditional;
+import id.go.ojk.conf.client.UtilFieldValidation;
+import id.go.ojk.conf.client.UtilMetadata;
+import id.go.ojk.conf.client.UtilSegmentValidation;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
 import lombok.AccessLevel;
@@ -85,5 +92,88 @@ public enum ER7012PosLtlbDppkAlmppmp implements IObject<KeyValueString> {
 
     public static int getRefNumber() {
         return Integer.parseInt(ER7012PosLtlbDppkAlmppmp.class.getSimpleName().substring(2, 6));
+    }
+
+    public static String genFieldSave() {
+        return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 16), getObjects());
+    }
+
+    public static String getRequiredPos() {
+        return UtilMetadata.genPipeRow(getObjects());
+    }
+
+    private static final String pipeColumnValidation = UtilMetadata.genPipeColumn(2, 16);
+
+    // Sum block of column
+
+    public static SegmentValidation genValidationSumPosColEqual1() {
+        return UtilSegmentValidation.genEqualsFormula(pipeColumnValidation, R_ALMPPMP0121000000.key, UtilMetadata.genPlusRow(getObjects(), 0, 19),
+                UtilMetadata.genMessage(R_ALMPPMP0121000000.value, UtilMetadata.genPlusDesc(getObjects(), 0, 19)));
+    }
+
+    public static SegmentValidation genValidationSumPosColEqual2() {
+        return UtilSegmentValidation.genEqualsFormula(pipeColumnValidation, R_ALMPPMP0121000000.key, UtilMetadata.genPlusRow(getObjects(), 21, 30),
+                UtilMetadata.genMessage(R_ALMPPMP0121000000.value, UtilMetadata.genPlusDesc(getObjects(), 21, 30)));
+    }
+
+    public static SegmentValidation genValidationSumPosColEqual3() {
+        return UtilSegmentValidation.genEqualsFormula(pipeColumnValidation, R_ALMPPMP0211000000.key, UtilMetadata.genPlusRow(getObjects(), 32, 36),
+                UtilMetadata.genMessage(R_ALMPPMP0211000000.value, UtilMetadata.genPlusDesc(getObjects(), 32, 36)));
+    }
+
+    public static SegmentValidation genValidationSumPosColEqual4() {
+        return UtilSegmentValidation.genEqualsFormula(pipeColumnValidation, R_ALMPPMP0708000000.key, UtilMetadata.genPlusRow(getObjects(), 41, 47),
+                UtilMetadata.genMessage(R_ALMPPMP0708000000.value, UtilMetadata.genPlusDesc(getObjects(), 41, 47)));
+    }
+
+    // Sum of specific column
+
+    public static SegmentValidation genValidationSumPosColEqual5() {
+        return UtilSegmentValidation.genEqualsFormula("16", R_ALMPPMP0500000000.key, UtilMetadata.genPlusRow(getObjects(), new int[] { 20, 31, 37, 38 }),
+                UtilMetadata.genMessage(R_ALMPPMP0500000000.value, UtilMetadata.genPlusDesc(getObjects(), new int[] { 20, 31, 37, 38 })));
+    }
+
+    public static SegmentValidation genValidationSumPosColEqual6() {
+        return UtilSegmentValidation.genEqualsFormula("16", R_ALMPPMP0800000000.key, UtilMetadata.genPlusRow(getObjects(), 40, 48),
+                UtilMetadata.genMessage(R_ALMPPMP0800000000.value, UtilMetadata.genPlusDesc(getObjects(), 40, 48)));
+    }
+
+    public static SegmentValidation genValidationSumPosColEqual7() {
+        return UtilSegmentValidation.genEqualsFormula("16", R_ALMPPMP0900000000.key, UtilMetadata.genMinusRow(getObjects(), new int[] { 39, 49 }),
+                UtilMetadata.genMessage(R_ALMPPMP0900000000.value, UtilMetadata.genMinusDesc(getObjects(), new int[] { 39, 49 })));
+    }
+
+    // field validation
+
+    public static FieldValidation genFieldTotal1Validation() {
+        return UtilFieldValidation.genEqualsExceptPosFormula("2+5+8+11", UtilMetadata.genPipeRow(getObjects(), new int[] { 20, 31, 37, 39, 48, 49, 50 }));
+    }
+
+    public static FieldValidation genFieldTotal2Validation() {
+        return UtilFieldValidation.genEqualsExceptPosFormula("3+6+9+12", UtilMetadata.genPipeRow(getObjects(), new int[] { 20, 31, 37, 39, 48, 49, 50 }));
+    }
+
+    public static FieldValidation genFieldTotal3Validation() {
+        return UtilFieldValidation.genEqualsExceptPosFormula("14+15", UtilMetadata.genPipeRow(getObjects(), new int[] { 20, 31, 37, 39, 48, 49, 50 }));
+    }
+
+    public static FieldValidation genFieldJtdValidation() {
+        return UtilFieldValidation.genEqualsExceptPosFormula("11+12", UtilMetadata.genPipeRow(getObjects(), new int[] { 20, 31, 37, 39, 48, 49, 50 }));
+    }
+
+    public static FieldValidation genFieldJtcValidation() {
+        return UtilFieldValidation.genEqualsExceptPosFormula("8+9", UtilMetadata.genPipeRow(getObjects(), new int[] { 20, 31, 37, 39, 48, 49, 50 }));
+    }
+
+    public static FieldValidation genFieldJtbValidation() {
+        return UtilFieldValidation.genEqualsExceptPosFormula("5+6", UtilMetadata.genPipeRow(getObjects(), new int[] { 20, 31, 37, 39, 48, 49, 50 }));
+    }
+
+    public static FieldValidation genFieldJtaValidation() {
+        return UtilFieldValidation.genEqualsExceptPosFormula("2+3", UtilMetadata.genPipeRow(getObjects(), new int[] { 20, 31, 37, 39, 48, 49, 50 }));
+    }
+
+    public static ConditionalRequired genConditionForPersentase() {
+        return UtilFieldConditional.genExistPos("N", "M", R_ALMPPMP1000000000.key);
     }
 }

@@ -1,5 +1,10 @@
 package id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk;
 
+import id.go.ojk.client.model.config.validation.field.FieldValidation;
+import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
+import id.go.ojk.conf.client.UtilFieldValidation;
+import id.go.ojk.conf.client.UtilMetadata;
+import id.go.ojk.conf.client.UtilSegmentValidation;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
 import lombok.AccessLevel;
@@ -54,5 +59,27 @@ public enum ER7011PosLtlbDppkRoism implements IObject<KeyValueString> {
 
     public static int getRefNumber() {
         return Integer.parseInt(ER7011PosLtlbDppkRoism.class.getSimpleName().substring(2, 6));
+    }
+
+    public static String genFieldSave() {
+        return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 11), getObjects());
+    }
+
+    public static String getRequiredPos() {
+        return UtilMetadata.genPipeRow(getObjects());
+    }
+
+    public static FieldValidation genFieldValidation1() {
+        return UtilFieldValidation.genEqualsFormula(UtilMetadata.genPlusColumn(2, 8) + " - 9");
+    }
+
+    public static FieldValidation genFieldValidation2() {
+        return UtilFieldValidation.genEqualsExceptPosFormula("9/10", R_ROISM2100000000.key);
+    }
+
+    public static SegmentValidation genValidationSumPosColEqual() {
+        return UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPlusColumn(new int[] { 2, 3, 4, 5, 6, 7, 8, 10, 11}), R_ROISM2100000000.key,
+                UtilMetadata.genPlusRow(getObjects(), 0, 19),
+                UtilMetadata.genMessage(R_ROISM2100000000.value, UtilMetadata.genPlusRow(getObjects(), 0, 19)));
     }
 }

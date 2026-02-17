@@ -10,6 +10,7 @@ import java.util.Map;
 import id.go.ojk.client.vc.HomeController;
 import id.go.ojk.conf.client.BaseReferenceBuilder;
 import id.go.ojk.conf.client.field.reference.EConfig;
+import id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk.EHeaderMetadataPpmpk;
 import id.go.ojk.dppkk.client.builder.field.rb.reference.EHeaderMetadataRb;
 import id.go.ojk.dppkk.client.builder.field.rb.uus.reference.EHeaderMetadataRbUus;
 import id.go.ojk.dppkk.client.builder.field.reference.EHeaderMetadataShared;
@@ -59,6 +60,7 @@ public class ReferenceBuilder extends BaseReferenceBuilder {
 		res.putAll(EHeaderMetadataSa.getMap());
 		res.putAll(EHeaderMetadataSaUus.getMap());
 		res.putAll(EHeaderMetadataTl.getMap());
+		res.putAll(EHeaderMetadataPpmpk.getMap());
 		return res;
 	}
 
@@ -78,6 +80,7 @@ public class ReferenceBuilder extends BaseReferenceBuilder {
 		res.addAll(EHeaderMetadataSa.getObjects());
 		res.addAll(EHeaderMetadataSaUus.getObjects());
 		res.addAll(EHeaderMetadataTl.getObjects());
+		res.addAll(EHeaderMetadataPpmpk.getObjects());
 		return res;
 	}
 }

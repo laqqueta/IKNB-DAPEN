@@ -4,13 +4,13 @@ import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.conf.client.BaseMetadata;
 import id.go.ojk.dppkk.client.builder.field.EFormLaporanTahunanLaporanBulanan;
+import id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk.ER7015PosLtlbDppkInbm;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static id.go.ojk.lib.client.model.config.DataType.*;
-import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
-import static id.go.ojk.lib.client.model.constant.RequiredCondition.O;
+import static id.go.ojk.lib.client.model.constant.RequiredCondition.*;
 
 public class Ltlb0016INBM extends BaseMetadata {
 
@@ -23,18 +23,28 @@ public class Ltlb0016INBM extends BaseMetadata {
 
         EFormLaporanTahunanLaporanBulanan eNum = EFormLaporanTahunanLaporanBulanan.LTLB_INBM;
         SubmissionFormat res = new SubmissionFormat(eNum.getCode(), eNum.getName(), reportCode, new ArrayList<>(),
-                extension, 0, null, null, null);
+                extension, 0, null);
+
+        res.setSavePos(ER7015PosLtlbDppkInbm.genFieldSave());
+        res.setRequiredPos(ER7015PosLtlbDppkInbm.getRequiredPos());
+
+        res.addSegmentValidations(ER7015PosLtlbDppkInbm.genValidation());
 
         List<SubmissionField> fs = res.getFields();
 
         fs.add(sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01")));
         fs.add(sf(1, null, "Kode Komponen", sv(M, 11, 11, all)));
-        fs.add(sf(2, null, "Nama Pihak", sv(M, 1, 100, freeText)));
-        fs.add(sf(3, null, "Investasi Jenis", sv(M, 1, 100, freeText)));
+        fs.add(sf(2, null, "Nama Pihak", sv(C, 1, 100, freeText)
+                .confConditionalRequired(ER7015PosLtlbDppkInbm.genConditionForTotal())));
+        fs.add(sf(3, null, "Investasi Jenis", sv(C, 1, 100, freeText)
+                .confConditionalRequired(ER7015PosLtlbDppkInbm.genConditionForTotal())));
         fs.add(sf(4, null, "Investasi Jumlah", sv(M, 1, 18, numeric)));
-        fs.add(sf(5, null, "Investasi Persentase Terhadap Total Investasi", sv(M, 2, 5, numericDot)));
-        fs.add(sf(6, null, "Kategori Bermasalah", sv(M, 1, 250, freeText)));
-        fs.add(sf(7, null, "Keterangan", sv(O, 1, 250, freeText)));
+        fs.add(sf(5, null, "Investasi Persentase Terhadap Total Investasi", sv(C, 3, 5, numericDot)
+                .confConditionalRequired(ER7015PosLtlbDppkInbm.genConditionForTotal())));
+        fs.add(sf(6, null, "Kategori Bermasalah", sv(C, 1, 250, freeText)
+                .confConditionalRequired(ER7015PosLtlbDppkInbm.genConditionForTotal())));
+        fs.add(sf(7, null, "Keterangan", sv(C, 1, 250, freeText)
+                .confConditionalRequired(ER7015PosLtlbDppkInbm.genConditionForTotalOptional())));
 
         return res;
     }
