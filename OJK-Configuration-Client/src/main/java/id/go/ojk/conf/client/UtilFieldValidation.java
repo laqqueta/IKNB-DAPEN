@@ -34,6 +34,14 @@ public class UtilFieldValidation {
         return new FormulaExceptPosValidation(builder.toString());
     }
 
+	public static FieldValidation genEqualsPercentageExceptPosFormula(String fieldFormula, String exceptPos) {
+		StringBuilder builder = new StringBuilder("comparatorFormula=" + fieldFormula);
+		builder.append("&scale=" + 2);
+		builder.append("&exceptPos=" + exceptPos);
+		builder.append("&operator=e");
+		return new PercentageEqualExceptPosValidation(builder.toString());
+	}
+
   public static FieldValidation genEqualsFormula2(String fieldFormula, String msgError) {
     return genEqualsFormula2(fieldFormula, 0, msgError);
   }
