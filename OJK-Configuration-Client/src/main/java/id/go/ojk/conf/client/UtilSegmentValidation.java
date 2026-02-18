@@ -1043,6 +1043,19 @@ public class UtilSegmentValidation {
 		return new EqualsRatioValidation(builder.toString());
 	}
 
+	public static SegmentValidation genEqualsRatio2(String selectField, String selectPosCode,
+												   String comparator1RowCode, String fieldRow1, String comparator2RowCode, String fieldRow2, String message, int scale) {
+		StringBuilder builder = new StringBuilder("selectField=" + selectField);
+		builder.append("&selectPosCode=" + selectPosCode);
+		builder.append("&comparator1RowCode=" + comparator1RowCode);
+		builder.append("&fieldRow1=" + fieldRow1);
+		builder.append("&comparator2RowCode=" + comparator2RowCode);
+		builder.append("&fieldRow2=" + fieldRow2);
+		builder.append("&scale=" + scale);
+		builder.append("&message=" + message);
+		return new EqualsRatio2Validation(builder.toString());
+	}
+
 	public static SegmentValidation genEqualsPercentageForm(String selectField, String selectPosCode,
 			String comparator1Form, String comparator1Field, String comparator1RowCode, String comparator2Form,
 			String comparator2Field, String comparator2RowCode, String message, int scale) {

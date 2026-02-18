@@ -11,13 +11,13 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ER7018PosLtlbDppkRas2 implements IObject<KeyValueString> {
 
     R_RAS20100000000("RAS20100000000", "Biaya Pegawai, Pengurus, Dewan Pengawas, dan/atau Dewas Pengawas Syariah"),
-    R_RAS20101000000("RAS20101000000", "Biaya Pendidikan dan Latihan (Diklat)"),
     R_RAS20101010000("RAS20101010000", "a. Diklat Pegawai"),
     R_RAS20101020000("RAS20101020000", "b. Diklat Pengurus"),
     R_RAS20101030000("RAS20101030000", "c. Diklat Dewan Pengawas"),
@@ -53,27 +53,43 @@ public enum ER7018PosLtlbDppkRas2 implements IObject<KeyValueString> {
     }
 
     public static String getRequiredPos() {
-        return UtilMetadata.genPipeRow(getObjects(), new int[] { 1 });
+        return UtilMetadata.genPipeRow(getObjects());
     }
 
-    public static ConditionalRequired genValidationMustEmpty1() {
-        return UtilFieldConditional.genMustEmpty("N", "M", "2",
-                UtilMetadata.genPipeRow(getObjects(), 2, 7));
+    public static final List<SegmentValidation> SEGMENTS_VALIDATIONS = Arrays.asList(
+            genValidationNumeric(),
+            genValidationNumericDot(),
+            genValidationSumCol(),
+            genValidationRasio()
+    );
+
+    private static SegmentValidation genValidationNumericDot() {
+        return UtilSegmentValidation.genRegexNumericDot("3|4",
+                UtilMetadata.genPipeRow(getObjects(), new int[] {6}));
     }
 
-    public static ConditionalRequired genValidationMustEmpty2() {
-        return UtilFieldConditional.genMustEmpty("N", "M", "3",
-                UtilMetadata.genPipeRow(getObjects(), new int[] { 0, 1 }));
+    private static SegmentValidation genValidationNumeric() {
+        return UtilSegmentValidation.genRegexNumeric("3|4",
+                UtilMetadata.genPipeRowExcept(getObjects(), new int[] {6}));
     }
 
-    public static ConditionalRequired genValidationMustEmpty3() {
-        return UtilFieldConditional.genMustEmpty("N", "M", "4",
-                UtilMetadata.genPipeRow(getObjects(), new int[] { 0, 1 }));
+    private static SegmentValidation genValidationSumCol() {
+        return UtilSegmentValidation.genEqualsFormula("3|4", R_RAS20102000000.key, UtilMetadata.genPlusRow(getObjects(), 1, 4),
+                UtilMetadata.genMessageTotal(R_RAS20102000000.value, UtilMetadata.genPlusDesc(getObjects(), 1, 4)));
     }
 
-    public static SegmentValidation genValidation1() {
-        return UtilSegmentValidation.genEqualsFormula("3|4", R_RAS20102000000.key, UtilMetadata.genPlusRow(getObjects(), 2, 5),
-                UtilMetadata.genMessageTotal(R_RAS20102000000.value, UtilMetadata.genPlusDesc(getObjects(), 2, 5)));
+    private static SegmentValidation genValidationRasio() {
+        int[] field = new int[] { 5, 0 };
+        return UtilSegmentValidation.genEqualsRatio2("3|4", R_RAS20103000000.key, R_RAS20102000000.key, "3|4", R_RAS20100000000.key, "2",
+                UtilMetadata.genMessage(R_RAS20103000000.value, UtilMetadata.genDevideDesc(getObjects(), field)), 2);
+    }
+
+    public static ConditionalRequired genConditionEmpty1() {
+        return UtilFieldConditional.genExistPos("N", "M", UtilMetadata.genPipeRow(getObjects(), 1, 6));
+    }
+
+    public static ConditionalRequired genConditionEmpty2() {
+        return UtilFieldConditional.genExistPos("N", "M", UtilMetadata.genPipeRow(getObjects(), new int[] { 0 }));
     }
 
 }
