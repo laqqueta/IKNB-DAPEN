@@ -61,7 +61,7 @@ public enum EHeaderMetadataShared implements IObject<ReferenceMetadata> {
   KATEGORI_SURAT_BERHARGA (ER1212KategoriSuratBerharga.getRefNumber(), ER1212KategoriSuratBerharga.getName(), ER1212KategoriSuratBerharga.getObjects()),
   TUJUAN_KEPEMILIKAN (ER1241TujuanKepemilikan.getRefNumber(), "Tujuan Pemilikan", ER1241TujuanKepemilikan.getObjects()),
   KUALITAS_ASET_PRODUKTIF (ER1214KualitasAsetProduktif.getRefNumber(), ER1214KualitasAsetProduktif.getName(), ER1214KualitasAsetProduktif.getObjects()),
-  HIRARKI_HARGA_PASAR (ER1242HirarkiHargaPasar.getRefNumber(), ER1242HirarkiHargaPasar.getName(), ER1242HirarkiHargaPasar.getObjects()),
+  HIRARKI_HARGA_PASAR (ER1242HirarkiHargaPasar.getRefNumber(), "Hierarki Harga Pasar", ER1242HirarkiHargaPasar.getObjects()),
   STATUS_PEMILIKAN_TANAH_BANGUNAN (ER1245StatusPemilikanTanahBangunan.getRefNumber(), "Status Pemilikan Tanah & Bangunan", ER1245StatusPemilikanTanahBangunan.getObjects()),
   SANDI_BANK (ER1191SandiBank.getRefNumber(), ER1191SandiBank.getName(), ER1191SandiBank.getObjects()),
   PENURUNAN_NILAI (ER1246PenurunanNilai.getRefNumber(), ER1246PenurunanNilai.getName(), ER1246PenurunanNilai.getObjects()),

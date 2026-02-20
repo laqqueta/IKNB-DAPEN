@@ -60,7 +60,7 @@ public class LbProp extends BaseMetadata {
         .confReference(EHeaderMetadataShared.PENURUNAN_NILAI.getObject())
         .confRegex(patternAlfa)));
     fs.add(sf(15, null, "Harga Pasar", sv(M, 1, 20, numeric)));
-    fs.add(sf(16, null, "Hirarki Harga Pasar", sv(M, 1, 10, refTable)
+    fs.add(sf(16, null, "Hierarki Harga Pasar", sv(M, 1, 10, refTable)
         .confReference(EHeaderMetadataShared.HIRARKI_HARGA_PASAR.getObject())
         .confRegex(PATTERN_REFERENCE_1)));
     fs.add(sf(17, null, "Saldo", sv(M, 1, 20, numeric)));
