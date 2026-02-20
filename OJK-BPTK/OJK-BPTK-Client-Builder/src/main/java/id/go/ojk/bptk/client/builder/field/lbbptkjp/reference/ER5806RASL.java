@@ -42,7 +42,7 @@ public enum ER5806RASL implements IObject<KeyValueString> {
   RASL0302000000("RASL0302000000", "Utang Kepada BPJS"),
   RASL0302010000("RASL0302010000", "Utang Biaya Operasional Kepada BPJS"),
   RASL0302020000("RASL0302020000", "Utang Biaya Operasional Kepada BPJS - Investasi"),
-  RASL0302030000("RASL0302030000", "Utang Biaya Operasional Kepada Bpjs - Pu - Layanan Syariah"),
+  RASL0302030000("RASL0302030000", "Utang Biaya Operasional Kepada BPJS - Pu - Layanan Syariah"),
   RASL0303000000("RASL0303000000", "Utang Kepada Pihak Lain"),
   RASL0304000000("RASL0304000000", "Utang Pajak"),
   RASL0305000000("RASL0305000000", "Pendapatan Diterima Dimuka"),
