@@ -1,7 +1,9 @@
 package id.go.ojk.conf.client.field.reference;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
@@ -61,5 +63,49 @@ public enum ER1255JenisManfaat implements IObject<KeyValueString> {
 			}
 		}
         return res.toString();
+	}
+
+	public static String getPipedReferenceKeys(String filter) {
+		List<String> keys = Arrays.stream(ER1255JenisManfaat.values())
+				.filter(k -> {
+					String[] filters = filter.split("\\|");
+                    for (String s : filters) {
+						if (k.key.equals(s)) {
+							return true;
+						}
+					}
+
+                    return false;
+                })
+				.map(k -> k.key + "|")
+				.collect(Collectors.toList());
+
+		// remove last pipe
+		String lastElem = keys.get(keys.size() - 1);
+		keys.set(keys.size() - 1, lastElem.substring(0, lastElem.length() - 1));
+
+		return String.join("", keys);
+	}
+
+	public static String getPipedReferenceKeyValues(String filter) {
+		List<String> keys = Arrays.stream(ER1255JenisManfaat.values())
+				.filter(k -> {
+					String[] filters = filter.split("\\|");
+					for (String s : filters) {
+						if (k.key.equals(s)) {
+							return true;
+						}
+					}
+
+					return false;
+				})
+				.map(k -> k.key + " - " + k.value + "|")
+				.collect(Collectors.toList());
+
+		// remove last pipe
+		String lastElem = keys.get(keys.size() - 1);
+		keys.set(keys.size() - 1, lastElem.substring(0, lastElem.length() - 1));
+
+		return String.join("", keys);
 	}
 }
