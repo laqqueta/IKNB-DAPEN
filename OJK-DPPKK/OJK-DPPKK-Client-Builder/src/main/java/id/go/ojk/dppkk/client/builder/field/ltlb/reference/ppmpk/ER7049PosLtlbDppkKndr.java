@@ -45,7 +45,7 @@ public enum ER7049PosLtlbDppkKndr implements IObject<KeyValueString> {
     }
 
     public static String genFieldSave() {
-        return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(6, 8), getObjects());
+        return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(5, 7), getObjects());
     }
 
     public static String getRequiredPos() {
@@ -65,7 +65,7 @@ public enum ER7049PosLtlbDppkKndr implements IObject<KeyValueString> {
     }
 
     public static SegmentValidation genValidation() {
-        return UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(6, 8), R_KNDR000000.key, R_KNDR010000.key,
+        return UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(5, 7), R_KNDR000000.key, R_KNDR010000.key,
                 UtilMetadata.genMessageTotal(R_KNDR000000.value, R_KNDR010000.value));
 
     }

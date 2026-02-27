@@ -5,7 +5,7 @@ import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.conf.client.BaseMetadata;
 import id.go.ojk.dppkk.client.builder.field.EFormLaporanTahunanLaporanBulanan;
-import id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk.*;
+import id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk.EHeaderMetadataPpmpk;
 import id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk.ER7023PosLtlbDppkDpjka;
 import id.go.ojk.dppkk.client.builder.field.reference.EHeaderMetadataShared;
 
@@ -13,11 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static id.go.ojk.lib.client.model.config.DataType.*;
-import static id.go.ojk.lib.client.model.config.DataType.alfaNumeric;
-import static id.go.ojk.lib.client.model.config.DataType.freeText;
-import static id.go.ojk.lib.client.model.config.DataType.numeric;
-import static id.go.ojk.lib.client.model.config.DataType.numericDot;
-import static id.go.ojk.lib.client.model.constant.RequiredCondition.*;
+import static id.go.ojk.lib.client.model.constant.RequiredCondition.C;
+import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
 
 public class Ltlb0024DPJKA extends BaseMetadata {
 
@@ -50,15 +47,17 @@ public class Ltlb0024DPJKA extends BaseMetadata {
                         .confReference(EHeaderMetadataPpmpk.R7023Dpjka.getObject())));
 
         fs.add(sf(2, null, "Nama Bank",
-                sv(C, 1, 100, alfaNumeric)
+                sv(C, 1, 100, freeText)
                         .confConditionalRequired(ER7023PosLtlbDppkDpjka.genConditionForTotalOptional())));
 
         fs.add(sf(3, null, "Kode Bank",
-                sv(C, 1, 6, alfaNumeric)
-                        .confConditionalRequired(ER7023PosLtlbDppkDpjka.genConditionForTotal())));
+                sv(C, 1, 6, refTable)
+                        .confConditionalRequired(ER7023PosLtlbDppkDpjka.genConditionForTotalOptional())
+                        .confRegex(SimpleValidation.patternAlfaNumeric)
+                        .confReference(EHeaderMetadataShared.R011.getObject())));
 
         fs.add(sf(4, null, "Cabang",
-                sv(C, 1, 100, alfaNumeric)
+                sv(C, 1, 100, freeText)
                         .confConditionalRequired(ER7023PosLtlbDppkDpjka.genConditionForTotalOptional())));
 
         fs.add(sf(5, null, "Tanggal Perolehan",
@@ -73,7 +72,7 @@ public class Ltlb0024DPJKA extends BaseMetadata {
                         .confConditionalRequired(ER7023PosLtlbDppkDpjka.genConditionForTotal())));
 
         fs.add(sf(8, null, "Tingkat Bunga/Nisbah (%)",
-                sv(C, 3, 5, numericDot)
+                sv(C, 4, 6, numericDot)
                         .confConditionalRequired(ER7023PosLtlbDppkDpjka.genConditionForTotal())));
 
         fs.add(sf(9, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain/LCF",
@@ -89,7 +88,7 @@ public class Ltlb0024DPJKA extends BaseMetadata {
                         .confReference(EHeaderMetadataShared.R006.getObject())));
 
         fs.add(sf(11, null, "Pengelolaan Nama Manajer Investasi",
-                sv(C, 1, 250, alfa)
+                sv(C, 1, 250, freeText)
                         .confConditionalRequired(ER7023PosLtlbDppkDpjka.genConditionForTotal())
                         .confConditionalRequired(ER7023PosLtlbDppkDpjka.genConditionOptional())));
 

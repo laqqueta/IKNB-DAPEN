@@ -50,7 +50,7 @@ public class Ltlb0068PPH extends BaseMetadata {
                         .confReference(EHeaderMetadataPpmpk.R7067Pph.getObject())));
 
         fs.add(sf(2, null, "Jenis Pajak Penghasilan",
-                sv(C, 1, 100, alfaNumeric)
+                sv(C, 1, 100, freeText)
                         .confConditionalRequired(ER7067PosLtlbDppkPph.genConditionForTotal())));
 
         fs.add(sf(3, null, "Jumlah",

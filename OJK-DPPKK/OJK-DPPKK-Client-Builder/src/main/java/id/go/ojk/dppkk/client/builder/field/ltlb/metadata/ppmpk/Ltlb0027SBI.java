@@ -58,7 +58,7 @@ public class Ltlb0027SBI extends BaseMetadata {
                 sv(M, 1, 18, numeric)));
 
         fs.add(sf(5, null, "Kupon (%)",
-                sv(C, 3, 5, numericDot)
+                sv(C, 4, 6, numericDot)
                         .confConditionalRequired(ER7026PosLtlbDppkSbi.genConditionForTotal())));
 
         fs.add(sf(6, null, "Tanggal Jatuh Tempo",
@@ -77,7 +77,7 @@ public class Ltlb0027SBI extends BaseMetadata {
                 .addFieldValidations(ER7026PosLtlbDppkSbi.genFieldValidationNilaiInvestasi()));
 
         fs.add(sf(10, null, "Selisih Penilaian Investasi %",
-                sv(C, 3, 5, numericDot)
+                sv(C, 4, 6, numericDot)
                         .confConditionalRequired(ER7026PosLtlbDppkSbi.genConditionForTotal()))
                 .addFieldValidations(ER7026PosLtlbDppkSbi.genFieldValidationPersentaseInvestasi()));
 
@@ -94,7 +94,7 @@ public class Ltlb0027SBI extends BaseMetadata {
                         .confReference(EHeaderMetadataShared.R006.getObject())));
 
         fs.add(sf(13, null, "Pengelolaan Nama Manajer Investasi",
-                sv(C, 1, 250, alfa)
+                sv(C, 1, 250, freeText)
                         .confConditionalRequired(ER7026PosLtlbDppkSbi.genConditionForTotal())
                         .confConditionalRequired(ER7026PosLtlbDppkSbi.genConditionNamaPengelola())));
 

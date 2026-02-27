@@ -46,7 +46,7 @@ public class Ltlb0043PIUT extends BaseMetadata {
                         .confReference(EHeaderMetadataPpmpk.R7042Piut.getObject())));
 
         fs.add(sf(2, null, "Nama Pemberi Kerja(Pendiri/Mitra Pendiri)",
-                sv(C, 1, 100, alfaNumeric)
+                sv(C, 1, 100, freeText)
                         .confConditionalRequired(ER7042PosLtlbDppkPiut.genConditionForTotal())));
 
         fs.add(sf(3, null, "Piutang Iuran Pemberi Kerja Usia Piutang <=1 Bulan",

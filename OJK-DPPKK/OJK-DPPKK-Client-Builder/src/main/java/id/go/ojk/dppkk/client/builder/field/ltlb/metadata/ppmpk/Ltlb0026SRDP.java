@@ -50,11 +50,13 @@ public class Ltlb0026SRDP extends BaseMetadata {
                         .confConditionalRequired(ER7025PosLtlbDppkSrdp.genConditionForTotal())));
 
         fs.add(sf(3, null, "Kode Bank",
-                sv(C, 1, 6, numeric)
-                        .confConditionalRequired(ER7025PosLtlbDppkSrdp.genConditionForTotal())));
+                sv(C, 1, 6, refTable)
+                        .confConditionalRequired(ER7025PosLtlbDppkSrdp.genConditionForTotalOptional())
+                        .confRegex(SimpleValidation.patternAlfaNumeric)
+                        .confReference(EHeaderMetadataShared.R011.getObject())));
 
         fs.add(sf(4, null, "Cabang",
-                sv(C, 1, 100, alfaNumeric)
+                sv(C, 1, 100, freeText)
                         .confConditionalRequired(ER7025PosLtlbDppkSrdp.genConditionForTotalOptional())));
 
         fs.add(sf(5, null, "Tanggal Perolehan",
@@ -68,18 +70,28 @@ public class Ltlb0026SRDP extends BaseMetadata {
                 sv(C, 1, 3, numeric)
                         .confConditionalRequired(ER7025PosLtlbDppkSrdp.genConditionForTotal())));
 
-        fs.add(sf(8, null, "Pengelolaan Swakelola/ KPD",
+        fs.add(sf(8, null, "Tingkat Bunga/Nisbah (%)",
+                sv(C, 4, 6, numericDot)
+                        .confConditionalRequired(ER7025PosLtlbDppkSrdp.genConditionForTotal())));
+
+        fs.add(sf(9, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain/LCF",
+                sv(C, 1, 6, refTable)
+                        .confConditionalRequired(ER7025PosLtlbDppkSrdp.genConditionForTotal())
+                        .confRegex(SimpleValidation.patternAlfaNumeric)
+                        .confReference(EHeaderMetadataShared.R009.getObject())));
+
+        fs.add(sf(10, null, "Pengelolaan Swakelola/ KPD",
                 sv(C, 1, 6, refTable)
                         .confConditionalRequired(ER7025PosLtlbDppkSrdp.genConditionForTotal())
                         .confRegex(SimpleValidation.patternAlfa)
                         .confReference(EHeaderMetadataShared.R006.getObject())));
 
-        fs.add(sf(9, null, "Pengelolaan Nama Manajer Investasi",
-                sv(C, 1, 250, alfa)
+        fs.add(sf(11, null, "Pengelolaan Nama Manajer Investasi",
+                sv(C, 1, 250, freeText)
                         .confConditionalRequired(ER7025PosLtlbDppkSrdp.genConditionForTotal())
                         .confConditionalRequired(ER7025PosLtlbDppkSrdp.genConditionNamaPengelola())));
 
-        fs.add(sf(10, null, "Keterangan",
+        fs.add(sf(12, null, "Keterangan",
                 sv(C, 1, 250, freeText)
                         .confConditionalRequired(ER7025PosLtlbDppkSrdp.genConditionForTotalOptional())));
 

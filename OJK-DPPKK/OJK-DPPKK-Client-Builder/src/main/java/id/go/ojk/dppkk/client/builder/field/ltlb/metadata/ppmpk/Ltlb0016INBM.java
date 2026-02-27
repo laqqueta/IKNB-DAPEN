@@ -29,17 +29,18 @@ public class Ltlb0016INBM extends BaseMetadata {
         res.setRequiredPos(ER7015PosLtlbDppkInbm.getRequiredPos());
 
         res.addSegmentValidations(ER7015PosLtlbDppkInbm.genValidation());
+        res.addSegmentValidations(ER7015PosLtlbDppkInbm.genRowValidation());
 
         List<SubmissionField> fs = res.getFields();
 
         fs.add(sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01")));
-        fs.add(sf(1, null, "Kode Komponen", sv(M, 11, 11, all)));
+        fs.add(sf(1, null, "Kode Komponen", sv(M, 10, 10, all)));
         fs.add(sf(2, null, "Nama Pihak", sv(C, 1, 100, freeText)
                 .confConditionalRequired(ER7015PosLtlbDppkInbm.genConditionForTotal())));
         fs.add(sf(3, null, "Investasi Jenis", sv(C, 1, 100, freeText)
                 .confConditionalRequired(ER7015PosLtlbDppkInbm.genConditionForTotal())));
         fs.add(sf(4, null, "Investasi Jumlah", sv(M, 1, 18, numeric)));
-        fs.add(sf(5, null, "Investasi Persentase Terhadap Total Investasi", sv(C, 3, 5, numericDot)
+        fs.add(sf(5, null, "Investasi Persentase Terhadap Total Investasi", sv(C, 4, 6, numericDot)
                 .confConditionalRequired(ER7015PosLtlbDppkInbm.genConditionForTotal())));
         fs.add(sf(6, null, "Kategori Bermasalah", sv(C, 1, 250, freeText)
                 .confConditionalRequired(ER7015PosLtlbDppkInbm.genConditionForTotal())));

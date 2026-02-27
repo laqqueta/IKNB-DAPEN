@@ -31,11 +31,12 @@ public class Ltlb0014INSP extends BaseMetadata {
         res.setSavePos(ER7013PosLtlbDppkInsp.genFieldSave());
 
         res.addSegmentValidations(ER7013PosLtlbDppkInsp.genValidation());
+        res.addSegmentValidations(ER7013PosLtlbDppkInsp.genRowValidation());
 
         List<SubmissionField> fs = res.getFields();
 
         fs.add(sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01")));
-        fs.add(sf(1, null, "Kode Komponen", sv(M, 11, 11, refTable)
+        fs.add(sf(1, null, "Kode Komponen", sv(M, 10, 10, refTable)
                 .confReference(EHeaderMetadataPpmpk.R7013Insp.getObject())
                 .confRegex(SimpleValidation.patternAlfaNumeric)));
         fs.add(sf(2, null, "Nama Pihak", sv(C, 1, 100, freeText)
@@ -45,7 +46,7 @@ public class Ltlb0014INSP extends BaseMetadata {
 
         fs.add(sf(4, null, "Investasi Jumlah", sv(M, 1, 18, numeric)));
 
-        fs.add(sf(5, null, "Investasi Persentase Terhadap Total Investasi", sv(C, 3, 5, numericDot)
+        fs.add(sf(5, null, "Investasi Persentase Terhadap Total Investasi", sv(C, 4, 6, numericDot)
                 .confConditionalRequired(ER7013PosLtlbDppkInsp.genConditionForTotal())));
         fs.add(sf(6, null, "Batasan Dalam Arahan Investasi", sv(C, 1, 18, numeric)
                 .confConditionalRequired(ER7013PosLtlbDppkInsp.genConditionForTotal())));

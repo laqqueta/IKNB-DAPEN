@@ -7,14 +7,14 @@ import id.go.ojk.conf.client.BaseMetadata;
 import id.go.ojk.dppkk.client.builder.field.EFormLaporanTahunanLaporanBulanan;
 import id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk.EHeaderMetadataPpmpk;
 import id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk.ER7022PosLtlbDppkDoc;
-import id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk.ER7022PosLtlbDppkDoc;
 import id.go.ojk.dppkk.client.builder.field.reference.EHeaderMetadataShared;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static id.go.ojk.lib.client.model.config.DataType.*;
-import static id.go.ojk.lib.client.model.constant.RequiredCondition.*;
+import static id.go.ojk.lib.client.model.constant.RequiredCondition.C;
+import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
 
 public class Ltlb0023DOC extends BaseMetadata {
 
@@ -47,15 +47,17 @@ public class Ltlb0023DOC extends BaseMetadata {
                         .confReference(EHeaderMetadataPpmpk.R7022Doc.getObject())));
 
         fs.add(sf(2, null, "Nama Bank",
-                sv(C, 1, 100, alfaNumeric)
+                sv(C, 1, 100, freeText)
                         .confConditionalRequired(ER7022PosLtlbDppkDoc.genConditionForTotalOptional())));
 
         fs.add(sf(3, null, "Kode Bank",
-                sv(C, 1, 6, alfaNumeric)
-                        .confConditionalRequired(ER7022PosLtlbDppkDoc.genConditionForTotal())));
+                sv(C, 1, 6, refTable)
+                        .confConditionalRequired(ER7022PosLtlbDppkDoc.genConditionForTotal())
+                        .confRegex(SimpleValidation.patternAlfaNumeric)
+                        .confReference(EHeaderMetadataShared.R011.getObject())));
 
         fs.add(sf(4, null, "Cabang",
-                sv(C, 1, 100, alfaNumeric)
+                sv(C, 1, 100, freeText)
                         .confConditionalRequired(ER7022PosLtlbDppkDoc.genConditionForTotalOptional())));
 
         fs.add(sf(5, null, "Tanggal Perolehan",
@@ -70,7 +72,7 @@ public class Ltlb0023DOC extends BaseMetadata {
                         .confConditionalRequired(ER7022PosLtlbDppkDoc.genConditionForTotal())));
 
         fs.add(sf(8, null, "Tingkat Bunga/Nisbah (%)",
-                sv(C, 3, 5, numericDot)
+                sv(C, 4, 6, numericDot)
                         .confConditionalRequired(ER7022PosLtlbDppkDoc.genConditionForTotal())));
 
         fs.add(sf(9, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain/LCF",
@@ -86,7 +88,7 @@ public class Ltlb0023DOC extends BaseMetadata {
                         .confReference(EHeaderMetadataShared.R006.getObject())));
 
         fs.add(sf(11, null, "Pengelolaan Nama Manajer Investasi",
-                sv(C, 1, 250, alfa)
+                sv(C, 1, 250, freeText)
                         .confConditionalRequired(ER7022PosLtlbDppkDoc.genConditionForTotal())
                         .confConditionalRequired(ER7022PosLtlbDppkDoc.genConditionOptional())));
 

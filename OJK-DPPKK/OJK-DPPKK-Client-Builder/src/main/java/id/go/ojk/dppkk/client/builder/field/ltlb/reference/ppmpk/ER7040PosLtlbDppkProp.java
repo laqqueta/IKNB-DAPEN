@@ -65,7 +65,7 @@ public enum ER7040PosLtlbDppkProp implements IObject<KeyValueString> {
     }
 
     public static FieldValidation genFieldValidationNilaiInvestasi() {
-        return UtilFieldValidation.genEqualsExceptPosFormula("10-11", R_PROP000000.key);
+        return UtilFieldValidation.genEqualsExceptPosFormula("11-10", R_PROP000000.key);
     }
 
     public static FieldValidation genFieldValidationPersentaseInvestasi() {

@@ -26,7 +26,7 @@ public enum EHeaderMetadataPpmpk implements IObject<ReferenceMetadata> {
     R7009Roi(ER7009PosLtlbDppkRoi.getRefNumber(), ER7009PosLtlbDppkRoi.getName(), ER7009PosLtlbDppkRoi.getObjects()),
     R7010Roiml(ER7010PosLtlbDppkRoiml.getRefNumber(), ER7010PosLtlbDppkRoiml.getName(), ER7010PosLtlbDppkRoiml.getObjects()),
     R7011Roism(ER7011PosLtlbDppkRoism.getRefNumber(), ER7011PosLtlbDppkRoism.getName(), ER7011PosLtlbDppkRoism.getObjects()),
-    R7012Almppmp(ER7012PosLtlbDppkAlmppmp.getRefNumber(), ER7012PosLtlbDppkAlmppmp.getName(), ER7012PosLtlbDppkAlmppmp.getObjects()),
+    R7012Alm(ER7012PosLtlbDppkAlm.getRefNumber(), ER7012PosLtlbDppkAlm.getName(), ER7012PosLtlbDppkAlm.getObjects()),
     R7013Insp(ER7013PosLtlbDppkInsp.getRefNumber(), ER7013PosLtlbDppkInsp.getName(), ER7013PosLtlbDppkInsp.getObjects()),
     R7014Inpt(ER7014PosLtlbDppkInpt.getRefNumber(), ER7014PosLtlbDppkInpt.getName(), ER7014PosLtlbDppkInpt.getObjects()),
     R7015Inbm(ER7015PosLtlbDppkInbm.getRefNumber(), ER7015PosLtlbDppkInbm.getName(), ER7015PosLtlbDppkInbm.getObjects()),

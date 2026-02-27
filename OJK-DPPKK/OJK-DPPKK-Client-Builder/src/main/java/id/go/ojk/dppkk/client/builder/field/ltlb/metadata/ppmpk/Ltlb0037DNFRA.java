@@ -52,11 +52,11 @@ public class Ltlb0037DNFRA extends BaseMetadata {
                         .confConditionalRequired(ER7036PosLtlbDppkDnfra.genConditionForTotal())));
 
         fs.add(sf(3, null, "Nama Produk",
-                sv(C, 1, 100, alfaNumeric)
+                sv(C, 1, 100, freeText)
                         .confConditionalRequired(ER7036PosLtlbDppkDnfra.genConditionForTotal())));
 
         fs.add(sf(4, null, "Manajer Investasi",
-                sv(C, 1, 250, alfaNumeric)
+                sv(C, 1, 250, freeText)
                         .confConditionalRequired(ER7036PosLtlbDppkDnfra.genConditionForTotal())));
 
         fs.add(sf(5, null, "Tanggal Perolehan",
@@ -77,7 +77,7 @@ public class Ltlb0037DNFRA extends BaseMetadata {
                 .addFieldValidations(ER7036PosLtlbDppkDnfra.genFieldValidationNilaiInvestasi()));
 
         fs.add(sf(10, null, "Selisih Penilaian Investasi %",
-                sv(C, 3, 5, numericDot)
+                sv(C, 4, 6, numericDot)
                         .confConditionalRequired(ER7036PosLtlbDppkDnfra.genConditionForTotal()))
                 .addFieldValidations(ER7036PosLtlbDppkDnfra.genFieldValidationPersentaseInvestasi()));
 
@@ -94,7 +94,7 @@ public class Ltlb0037DNFRA extends BaseMetadata {
                         .confReference(EHeaderMetadataShared.R006.getObject())));
 
         fs.add(sf(13, null, "Pengelolaan Nama Manajer Investasi",
-                sv(C, 1, 250, alfa)
+                sv(C, 1, 250, freeText)
                         .confConditionalRequired(ER7036PosLtlbDppkDnfra.genConditionForTotal())
                         .confConditionalRequired(ER7036PosLtlbDppkDnfra.genConditionNamaPengelola())));
 

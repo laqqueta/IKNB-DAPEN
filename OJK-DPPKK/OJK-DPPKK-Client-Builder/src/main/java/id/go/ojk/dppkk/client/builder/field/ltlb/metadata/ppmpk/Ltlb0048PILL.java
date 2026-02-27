@@ -7,14 +7,14 @@ import id.go.ojk.conf.client.BaseMetadata;
 import id.go.ojk.dppkk.client.builder.field.EFormLaporanTahunanLaporanBulanan;
 import id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk.EHeaderMetadataPpmpk;
 import id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk.ER7047PosLtlbDppkPill;
-import id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk.ER7053PosLtlbDppkAsln;
 import id.go.ojk.dppkk.client.builder.field.reference.EHeaderMetadataShared;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static id.go.ojk.lib.client.model.config.DataType.*;
-import static id.go.ojk.lib.client.model.constant.RequiredCondition.*;
+import static id.go.ojk.lib.client.model.constant.RequiredCondition.C;
+import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
 
 public class Ltlb0048PILL extends BaseMetadata {
 
@@ -64,7 +64,7 @@ public class Ltlb0048PILL extends BaseMetadata {
 
         fs.add(sf(6, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain",
                 sv(C, 1, 6, refTable)
-                        .confConditionalRequired(ER7053PosLtlbDppkAsln.genConditionForTotal())
+                        .confConditionalRequired(ER7047PosLtlbDppkPill.genConditionForTotal())
                         .confRegex(SimpleValidation.patternAlfaNumeric)
                         .confReference(EHeaderMetadataShared.R009.getObject())));
 

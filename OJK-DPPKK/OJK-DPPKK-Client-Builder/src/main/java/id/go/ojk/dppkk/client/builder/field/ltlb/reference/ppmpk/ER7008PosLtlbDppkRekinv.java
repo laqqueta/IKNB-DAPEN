@@ -73,7 +73,7 @@ public enum ER7008PosLtlbDppkRekinv implements IObject<KeyValueString> {
     private static final String plusRowValidation = UtilMetadata.genPlusRow(getObjects(), 0, 19);
 
     public static SegmentValidation genValidationSumPosColEqual() {
-        return UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 14), R_REKINV2100000000.key,
+        return UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 13), R_REKINV2100000000.key,
                 plusRowValidation,
                 UtilMetadata.genMessage(R_REKINV2100000000.value, plusRowValidation));
     }

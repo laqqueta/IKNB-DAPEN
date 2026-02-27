@@ -37,7 +37,7 @@ public class Ltlb0012ROISM extends BaseMetadata {
 
         fs.add(sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01")));
         fs.add(sf(1, null, "Kode Komponen", sv(M, 15, 15, refTable)
-                .confReference(EHeaderMetadataPpmpk.R7010Roiml.getObject())
+                .confReference(EHeaderMetadataPpmpk.R7011Roism.getObject())
                 .confRegex(SimpleValidation.patternAlfaNumeric))
                 .confUnique(UniqueType.U));
         fs.add(sf(2, null, "Hasil investasi yang terealisasi Bunga/ Bagi Hasil", sv(M, 1, 18, numeric)));

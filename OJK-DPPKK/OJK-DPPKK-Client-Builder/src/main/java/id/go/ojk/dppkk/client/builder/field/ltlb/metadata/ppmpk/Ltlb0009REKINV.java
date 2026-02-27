@@ -36,7 +36,7 @@ public class Ltlb0009REKINV extends BaseMetadata {
         List<SubmissionField> fs = res.getFields();
 
         fs.add(sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01")));
-        fs.add(sf(1, null, "Kode Komponen", sv(M, 17, 17, all)
+        fs.add(sf(1, null, "Kode Komponen", sv(M, 16, 16, refTable)
                 .confRegex(SimpleValidation.patternAlfaNumeric)
                 .confReference(EHeaderMetadataPpmpk.R7008Rekinv.getObject()))
                 .confUnique(UniqueType.U));

@@ -66,11 +66,11 @@ public enum ER7032PosLtlbDppkRksd implements IObject<KeyValueString> {
     }
 
     public static FieldValidation genFieldValidationPersentaseInvestasi() {
-        return UtilFieldValidation.genEqualsPercentageExceptPosFormula("9/7", R_RKSD000000.key);
+        return UtilFieldValidation.genEqualsPercentageExceptPosFormula("10/8", R_RKSD000000.key);
     }
 
     public static ConditionalRequired genConditionNamaPengelola() {
-        return UtilFieldConditional.genEqualsExceptPos("M", "O", "13",
+        return UtilFieldConditional.genEqualsExceptPos("O", "M", "13",
                 ER1252Pengelolaan.getReferenceIndex(0), R_RKSD000000.key);
     }
 

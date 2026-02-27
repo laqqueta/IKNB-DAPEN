@@ -43,7 +43,7 @@ public enum ER7044PosLtlbDppkBbmk implements IObject<KeyValueString> {
     }
 
     public static String genFieldSave() {
-        return UtilMetadata.genFieldSave("4", getObjects());
+        return UtilMetadata.genFieldSave("3", getObjects());
     }
 
     public static String getRequiredPos() {
@@ -59,7 +59,7 @@ public enum ER7044PosLtlbDppkBbmk implements IObject<KeyValueString> {
     }
 
     public static SegmentValidation genValidation() {
-        return UtilSegmentValidation.genEqualsFormula("4", R_BBMK000000.key, R_BBMK010000.key,
+        return UtilSegmentValidation.genEqualsFormula("3", R_BBMK000000.key, R_BBMK010000.key,
                 UtilMetadata.genMessageTotal(R_BBMK000000.value, R_BBMK010000.value));
 
     }

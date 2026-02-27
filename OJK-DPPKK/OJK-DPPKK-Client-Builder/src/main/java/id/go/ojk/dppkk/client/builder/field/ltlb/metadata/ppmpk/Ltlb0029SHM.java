@@ -52,7 +52,7 @@ public class Ltlb0029SHM extends BaseMetadata {
                         .confConditionalRequired(ER7028PosLtlbDppkShm.genConditionForTotal())));
 
         fs.add(sf(3, null, "Nama Emiten /Penerbit",
-                sv(C, 1, 100, alfaNumeric)
+                sv(C, 1, 100, freeText)
                         .confConditionalRequired(ER7028PosLtlbDppkShm.genConditionForTotal())));
 
         fs.add(sf(4, null, "Tanggal Perolehan",
@@ -73,7 +73,7 @@ public class Ltlb0029SHM extends BaseMetadata {
                 .addFieldValidations(ER7028PosLtlbDppkShm.genFieldValidationNilaiInvestasi()));
 
         fs.add(sf(9, null, "Selisih Penilaian Investasi %",
-                sv(C, 3, 5, numericDot)
+                sv(C, 4, 6, numericDot)
                         .confConditionalRequired(ER7028PosLtlbDppkShm.genConditionForTotal()))
                 .addFieldValidations(ER7028PosLtlbDppkShm.genFieldValidationPersentaseInvestasi()));
 
@@ -96,7 +96,7 @@ public class Ltlb0029SHM extends BaseMetadata {
                         .confReference(EHeaderMetadataShared.R006.getObject())));
 
         fs.add(sf(13, null, "Pengelolaan Nama Manajer Investasi",
-                sv(C, 1, 250, alfa)
+                sv(C, 1, 250, freeText)
                         .confConditionalRequired(ER7028PosLtlbDppkShm.genConditionForTotal())
                         .confConditionalRequired(ER7028PosLtlbDppkShm.genConditionNamaPengelola())));
 

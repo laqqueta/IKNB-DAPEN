@@ -75,7 +75,7 @@ public enum ER7006PosLtlbDppkPst implements IObject<KeyValueString> {
     }
 
     public static SegmentValidation genValidationSumPosColEqual() {
-        return UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPlusColumn(2, 4), R_PST0400000000.key,
+        return UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 4), R_PST0400000000.key,
                 UtilMetadata.genPlusRow(getObjects(), new int[] { 0, 3, 14 }),
                 UtilMetadata.genMessage(R_PST0400000000.value, UtilMetadata.genPlusRow(getObjects(), new int[] { 0, 3, 14 })));
     }

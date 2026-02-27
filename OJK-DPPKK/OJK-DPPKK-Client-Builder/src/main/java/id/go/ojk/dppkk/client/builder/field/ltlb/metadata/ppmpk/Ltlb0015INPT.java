@@ -4,14 +4,14 @@ import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.conf.client.BaseMetadata;
 import id.go.ojk.dppkk.client.builder.field.EFormLaporanTahunanLaporanBulanan;
-import id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk.ER7013PosLtlbDppkInsp;
 import id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk.ER7014PosLtlbDppkInpt;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static id.go.ojk.lib.client.model.config.DataType.*;
-import static id.go.ojk.lib.client.model.constant.RequiredCondition.*;
+import static id.go.ojk.lib.client.model.constant.RequiredCondition.C;
+import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
 
 public class Ltlb0015INPT extends BaseMetadata {
 
@@ -30,6 +30,7 @@ public class Ltlb0015INPT extends BaseMetadata {
         res.setSavePos(ER7014PosLtlbDppkInpt.genFieldSave());
 
         res.addSegmentValidations(ER7014PosLtlbDppkInpt.genValidation());
+        res.addSegmentValidations(ER7014PosLtlbDppkInpt.genRowValidation());
 
         List<SubmissionField> fs = res.getFields();
 
@@ -40,7 +41,7 @@ public class Ltlb0015INPT extends BaseMetadata {
         fs.add(sf(3, null, "Investasi Jenis", sv(C, 1, 100, freeText)
                 .confConditionalRequired(ER7014PosLtlbDppkInpt.genConditionForTotal())));
         fs.add(sf(4, null, "Investasi Jumlah", sv(M, 1, 18, numeric)));
-        fs.add(sf(5, null, "Investasi Persentase Terhadap Total Investasi", sv(C, 3, 5, numericDot)
+        fs.add(sf(5, null, "Investasi Persentase Terhadap Total Investasi", sv(C, 4, 6, numericDot)
                 .confConditionalRequired(ER7014PosLtlbDppkInpt.genConditionForTotal())));
         fs.add(sf(6, null, "Hubungan Afiliasi", sv(C, 1, 100, freeText)
                 .confConditionalRequired(ER7014PosLtlbDppkInpt.genConditionForTotal())));

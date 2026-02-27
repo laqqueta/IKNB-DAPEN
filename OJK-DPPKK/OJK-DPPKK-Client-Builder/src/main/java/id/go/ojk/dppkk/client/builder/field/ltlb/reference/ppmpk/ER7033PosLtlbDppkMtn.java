@@ -70,7 +70,7 @@ public enum ER7033PosLtlbDppkMtn implements IObject<KeyValueString> {
     }
 
     public static ConditionalRequired genConditionNamaPengelola() {
-        return UtilFieldConditional.genEqualsExceptPos("M", "O", "17",
+        return UtilFieldConditional.genEqualsExceptPos("O", "M", "17",
                 ER1252Pengelolaan.getReferenceIndex(0), R_MTN000000.key);
     }
 

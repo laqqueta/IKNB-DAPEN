@@ -51,7 +51,7 @@ public class Ltlb0065BINV extends BaseMetadata {
                 sv(C, 1, 6, refTable)
                         .confConditionalRequired(ER7064PosLtlbDppkBinv.genConditionForTotal())
                         .confRegex(SimpleValidation.patternAlfaNumeric)
-                        .confReference(EHeaderMetadataShared.R018.getObject())));
+                        .confReference(EHeaderMetadataShared.R017.getObject())));
 
         fs.add(sf(3, null, "Jumlah",
                 sv(M, 1, 18, numeric)));

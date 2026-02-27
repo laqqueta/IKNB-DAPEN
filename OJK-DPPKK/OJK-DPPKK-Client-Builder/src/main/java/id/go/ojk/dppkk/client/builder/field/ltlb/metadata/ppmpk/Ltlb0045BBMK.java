@@ -47,7 +47,7 @@ public class Ltlb0045BBMK extends BaseMetadata {
                         .confReference(EHeaderMetadataPpmpk.R7044Bbmk.getObject())));
 
         fs.add(sf(2, null, "Jenis Beban",
-                sv(C, 1, 100, alfaNumeric)
+                sv(C, 1, 100, freeText)
                         .confConditionalRequired(ER7044PosLtlbDppkBbmk.genConditionForTotal())));
 
         fs.add(sf(3, null, "Jumlah",

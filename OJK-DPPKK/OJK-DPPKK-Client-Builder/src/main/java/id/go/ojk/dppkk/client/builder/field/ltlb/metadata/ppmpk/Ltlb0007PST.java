@@ -37,7 +37,7 @@ public class Ltlb0007PST extends BaseMetadata {
         List<SubmissionField> fs = res.getFields();
 
         fs.add(sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01")));
-        fs.add(sf(1, null, "Kode Komponen", sv(M, 14, 14, refTable)
+        fs.add(sf(1, null, "Kode Komponen", sv(M, 13, 13, refTable)
                 .confReference(EHeaderMetadataPpmpk.R7006Pst.getObject())
                 .confRegex(SimpleValidation.patternAlfaNumeric))
                 .confUnique(UniqueType.U));

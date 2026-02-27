@@ -7,6 +7,7 @@ import id.go.ojk.conf.client.BaseMetadata;
 import id.go.ojk.dppkk.client.builder.field.EFormLaporanTahunanLaporanBulanan;
 import id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk.EHeaderMetadataPpmpk;
 import id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk.ER7020PosLtlbDppkPmi;
+import id.go.ojk.dppkk.client.builder.field.reference.EHeaderMetadataShared;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,21 +41,19 @@ public class Ltlb0021PMI extends BaseMetadata {
                 sv(M, 3, 3, alfaNumeric)
                         .confConstant("D01")));
 
-        /* Special rule applied for Kode Komponen */
         fs.add(sf(1, null, "Kode Komponen",
                 sv(M, 9, 9, refTable)
                         .confRegex(SimpleValidation.patternAlfaNumeric)
                         .confReference(EHeaderMetadataPpmpk.R7020Pmi.getObject())));
 
         fs.add(sf(2, null, "Nama Manajer Investasi",
-                sv(C, 1, 100, alfaNumeric)
+                sv(C, 1, 100, freeText)
                         .confConditionalRequired(ER7020PosLtlbDppkPmi.genConditionForTotal())));
 
         fs.add(sf(3, null, "Nomor Kontrak",
-                sv(C, 1, 100, alfaNumeric)
+                sv(C, 1, 100, freeText)
                         .confConditionalRequired(ER7020PosLtlbDppkPmi.genConditionForTotal())));
 
-        /* NOTE: numeric preserved as provided */
         fs.add(sf(4, null, "Tanggal Kontrak",
                 sv(C, 8, 8, numeric)
                         .confConditionalRequired(ER7020PosLtlbDppkPmi.genConditionForTotal())));
@@ -64,7 +63,9 @@ public class Ltlb0021PMI extends BaseMetadata {
                         .confConditionalRequired(ER7020PosLtlbDppkPmi.genConditionForTotal())));
 
         fs.add(sf(6, null, "Jenis Investasi",
-                sv(C, 1, 100, alfa)
+                sv(C, 1, 6, refTable)
+                        .confRegex(SimpleValidation.patternAlfaNumeric)
+                        .confReference(EHeaderMetadataShared.R022.getObject())
                         .confConditionalRequired(ER7020PosLtlbDppkPmi.genConditionForTotal())));
 
         fs.add(sf(7, null, "Jumlah Nilai Wajar Dana Kelolaan (Rp)",
@@ -78,7 +79,7 @@ public class Ltlb0021PMI extends BaseMetadata {
                 .addFieldValidations(ER7020PosLtlbDppkPmi.genFieldValidationPenilaianInvesatsi()));
 
         fs.add(sf(10, null, "Return (%)",
-                sv(C, 2, 5, numericDot)
+                sv(C, 4, 6, numericDot)
                         .confConditionalRequired(ER7020PosLtlbDppkPmi.genConditionForTotal())));
 
         fs.add(sf(11, null, "Tingkat Hasil Investasi Bersih (Rp)",

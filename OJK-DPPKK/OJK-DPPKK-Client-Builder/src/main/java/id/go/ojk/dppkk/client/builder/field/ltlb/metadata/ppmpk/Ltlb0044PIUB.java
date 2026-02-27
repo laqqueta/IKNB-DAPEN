@@ -47,7 +47,7 @@ public class Ltlb0044PIUB extends BaseMetadata {
                         .confReference(EHeaderMetadataPpmpk.R7043Piub.getObject())));
 
         fs.add(sf(2, null, "Nama Pemberi Kerja(Pendiri/Mitra Pendiri)",
-                sv(C, 1, 100, alfaNumeric)
+                sv(C, 1, 100, freeText)
                         .confConditionalRequired(ER7043PosLtlbDppkPiub.genConditionForTotal())));
 
         fs.add(sf(3, null, "Piutang Bunga Iuran Peserta",

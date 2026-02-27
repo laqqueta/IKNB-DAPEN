@@ -70,8 +70,8 @@ public enum ER7036PosLtlbDppkDnfra implements IObject<KeyValueString> {
     }
 
     public static ConditionalRequired genConditionNamaPengelola() {
-        return UtilFieldConditional.genEquals("M", "O", "12",
-                ER1252Pengelolaan.getReferenceIndex(0));
+        return UtilFieldConditional.genEqualsExceptPos("O", "M", "12",
+                ER1252Pengelolaan.getReferenceIndex(0), R_DNFRA000000.key);
     }
 
     public static SegmentValidation genValidation() {

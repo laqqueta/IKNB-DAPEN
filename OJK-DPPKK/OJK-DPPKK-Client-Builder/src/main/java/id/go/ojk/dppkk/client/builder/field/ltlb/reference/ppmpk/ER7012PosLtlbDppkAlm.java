@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public enum ER7012PosLtlbDppkAlmppmp implements IObject<KeyValueString> {
+public enum ER7012PosLtlbDppkAlm implements IObject<KeyValueString> {
 
     R_ALMPPMP0101000000("ALMPPMP0101000000", "Deposito on call pada Bank"),
     R_ALMPPMP0102000000("ALMPPMP0102000000", "Deposito berjangka pada Bank"),
@@ -80,18 +80,18 @@ public enum ER7012PosLtlbDppkAlmppmp implements IObject<KeyValueString> {
 
     public static List<KeyValueString> getObjects() {
         List<KeyValueString> res = new ArrayList<>();
-        for (ER7012PosLtlbDppkAlmppmp eEnum : ER7012PosLtlbDppkAlmppmp.values()) {
+        for (ER7012PosLtlbDppkAlm eEnum : ER7012PosLtlbDppkAlm.values()) {
             res.add(eEnum.getObject());
         }
         return res;
     }
 
     public static String getName() {
-        return ER7012PosLtlbDppkAlmppmp.class.getSimpleName().substring(6);
+        return ER7012PosLtlbDppkAlm.class.getSimpleName().substring(6);
     }
 
     public static int getRefNumber() {
-        return Integer.parseInt(ER7012PosLtlbDppkAlmppmp.class.getSimpleName().substring(2, 6));
+        return Integer.parseInt(ER7012PosLtlbDppkAlm.class.getSimpleName().substring(2, 6));
     }
 
     public static String genFieldSave() {
@@ -112,13 +112,13 @@ public enum ER7012PosLtlbDppkAlmppmp implements IObject<KeyValueString> {
     }
 
     public static SegmentValidation genValidationSumPosColEqual2() {
-        return UtilSegmentValidation.genEqualsFormula(pipeColumnValidation, R_ALMPPMP0121000000.key, UtilMetadata.genPlusRow(getObjects(), 21, 30),
-                UtilMetadata.genMessage(R_ALMPPMP0121000000.value, UtilMetadata.genPlusDesc(getObjects(), 21, 30)));
+        return UtilSegmentValidation.genEqualsFormula(pipeColumnValidation, R_ALMPPMP0211000000.key, UtilMetadata.genPlusRow(getObjects(), 21, 30),
+                UtilMetadata.genMessage(R_ALMPPMP0211000000.value, UtilMetadata.genPlusDesc(getObjects(), 21, 30)));
     }
 
     public static SegmentValidation genValidationSumPosColEqual3() {
-        return UtilSegmentValidation.genEqualsFormula(pipeColumnValidation, R_ALMPPMP0211000000.key, UtilMetadata.genPlusRow(getObjects(), 32, 36),
-                UtilMetadata.genMessage(R_ALMPPMP0211000000.value, UtilMetadata.genPlusDesc(getObjects(), 32, 36)));
+        return UtilSegmentValidation.genEqualsFormula(pipeColumnValidation, R_ALMPPMP0306000000.key, UtilMetadata.genPlusRow(getObjects(), 32, 36),
+                UtilMetadata.genMessage(R_ALMPPMP0306000000.value, UtilMetadata.genPlusDesc(getObjects(), 32, 36)));
     }
 
     public static SegmentValidation genValidationSumPosColEqual4() {
@@ -134,8 +134,8 @@ public enum ER7012PosLtlbDppkAlmppmp implements IObject<KeyValueString> {
     }
 
     public static SegmentValidation genValidationSumPosColEqual6() {
-        return UtilSegmentValidation.genEqualsFormula("16", R_ALMPPMP0800000000.key, UtilMetadata.genPlusRow(getObjects(), 40, 48),
-                UtilMetadata.genMessage(R_ALMPPMP0800000000.value, UtilMetadata.genPlusDesc(getObjects(), 40, 48)));
+        return UtilSegmentValidation.genEqualsFormula("16", R_ALMPPMP0800000000.key, UtilMetadata.genPlusRow(getObjects(), new int[] { 40, 48 }),
+                UtilMetadata.genMessage(R_ALMPPMP0800000000.value, UtilMetadata.genPlusDesc(getObjects(), new int[] { 40, 48 })));
     }
 
     public static SegmentValidation genValidationSumPosColEqual7() {
@@ -146,31 +146,31 @@ public enum ER7012PosLtlbDppkAlmppmp implements IObject<KeyValueString> {
     // field validation
 
     public static FieldValidation genFieldTotal1Validation() {
-        return UtilFieldValidation.genEqualsExceptPosFormula("2+5+8+11", UtilMetadata.genPipeRow(getObjects(), new int[] { 20, 31, 37, 39, 48, 49, 50 }));
+        return UtilFieldValidation.genEqualsExceptPosFormula("2+5+8+11", UtilMetadata.genPipeRow(getObjects(), new int[] { 20, 31, 37, 38, 39, 40, 48, 49, 50, 51 }));
     }
 
     public static FieldValidation genFieldTotal2Validation() {
-        return UtilFieldValidation.genEqualsExceptPosFormula("3+6+9+12", UtilMetadata.genPipeRow(getObjects(), new int[] { 20, 31, 37, 39, 48, 49, 50 }));
+        return UtilFieldValidation.genEqualsExceptPosFormula("3+6+9+12", UtilMetadata.genPipeRow(getObjects(), new int[] { 20, 31, 37, 38, 39, 40, 48, 49, 50, 51 }));
     }
 
     public static FieldValidation genFieldTotal3Validation() {
-        return UtilFieldValidation.genEqualsExceptPosFormula("14+15", UtilMetadata.genPipeRow(getObjects(), new int[] { 20, 31, 37, 39, 48, 49, 50 }));
+        return UtilFieldValidation.genEqualsExceptPosFormula("14+15", UtilMetadata.genPipeRow(getObjects(), new int[] { 20, 31, 37, 38, 39, 40, 48, 49, 50, 51 }));
     }
 
     public static FieldValidation genFieldJtdValidation() {
-        return UtilFieldValidation.genEqualsExceptPosFormula("11+12", UtilMetadata.genPipeRow(getObjects(), new int[] { 20, 31, 37, 39, 48, 49, 50 }));
+        return UtilFieldValidation.genEqualsExceptPosFormula("11+12", UtilMetadata.genPipeRow(getObjects(), new int[] { 20, 31, 37, 38, 39, 40, 48, 49, 50, 51 }));
     }
 
     public static FieldValidation genFieldJtcValidation() {
-        return UtilFieldValidation.genEqualsExceptPosFormula("8+9", UtilMetadata.genPipeRow(getObjects(), new int[] { 20, 31, 37, 39, 48, 49, 50 }));
+        return UtilFieldValidation.genEqualsExceptPosFormula("8+9", UtilMetadata.genPipeRow(getObjects(), new int[] { 20, 31, 37, 38, 39, 40, 48, 49, 50, 51 }));
     }
 
     public static FieldValidation genFieldJtbValidation() {
-        return UtilFieldValidation.genEqualsExceptPosFormula("5+6", UtilMetadata.genPipeRow(getObjects(), new int[] { 20, 31, 37, 39, 48, 49, 50 }));
+        return UtilFieldValidation.genEqualsExceptPosFormula("5+6", UtilMetadata.genPipeRow(getObjects(), new int[] { 20, 31, 37, 38, 39, 40, 48, 49, 50, 51 }));
     }
 
     public static FieldValidation genFieldJtaValidation() {
-        return UtilFieldValidation.genEqualsExceptPosFormula("2+3", UtilMetadata.genPipeRow(getObjects(), new int[] { 20, 31, 37, 39, 48, 49, 50 }));
+        return UtilFieldValidation.genEqualsExceptPosFormula("2+3", UtilMetadata.genPipeRow(getObjects(), new int[] { 20, 31, 37, 38, 39, 40, 48, 49, 50, 51 }));
     }
 
     public static ConditionalRequired genConditionForPersentase() {

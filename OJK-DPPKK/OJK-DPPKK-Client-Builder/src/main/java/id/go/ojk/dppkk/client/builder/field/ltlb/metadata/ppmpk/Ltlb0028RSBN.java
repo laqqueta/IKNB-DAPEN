@@ -47,7 +47,7 @@ public class Ltlb0028RSBN extends BaseMetadata {
                         .confReference(EHeaderMetadataPpmpk.R7027Rsbn.getObject())));
 
         fs.add(sf(2, null, "Kode Surat Berharga",
-                sv(C, 1, 50, alfaNumeric)
+                sv(C, 1, 50, freeText)
                         .confConditionalRequired(ER7027PosLtlbDppkRsbn.genConditionForTotal())));
 
         fs.add(sf(3, null, "Tanggal Perolehan",
@@ -58,7 +58,7 @@ public class Ltlb0028RSBN extends BaseMetadata {
                 sv(M, 1, 18, numeric)));
 
         fs.add(sf(5, null, "Kupon (%)",
-                sv(C, 3, 5, numericDot)
+                sv(C, 4, 6, numericDot)
                         .confConditionalRequired(ER7027PosLtlbDppkRsbn.genConditionForTotal())));
 
         fs.add(sf(6, null, "Tanggal Jatuh Tempo",
@@ -77,7 +77,7 @@ public class Ltlb0028RSBN extends BaseMetadata {
                 .addFieldValidations(ER7027PosLtlbDppkRsbn.genFieldValidationNilaiInvestasi()));
 
         fs.add(sf(10, null, "Selisih Penilaian Investasi %",
-                sv(C, 3, 5, numericDot)
+                sv(C, 4, 6, numericDot)
                         .confConditionalRequired(ER7027PosLtlbDppkRsbn.genConditionForTotal()))
                 .addFieldValidations(ER7027PosLtlbDppkRsbn.genFieldValidationPersentaseInvestasi()));
 
@@ -100,7 +100,7 @@ public class Ltlb0028RSBN extends BaseMetadata {
                         .confReference(EHeaderMetadataShared.R006.getObject())));
 
         fs.add(sf(14, null, "Pengelolaan Nama Manajer Investasi",
-                sv(C, 1, 250, alfa)
+                sv(C, 1, 250, freeText)
                         .confConditionalRequired(ER7027PosLtlbDppkRsbn.genConditionForTotal())
                         .confConditionalRequired(ER7027PosLtlbDppkRsbn.genConditionNamaPengelola())));
 

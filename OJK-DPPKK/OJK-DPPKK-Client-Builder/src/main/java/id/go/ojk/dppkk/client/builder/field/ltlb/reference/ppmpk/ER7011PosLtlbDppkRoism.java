@@ -70,7 +70,7 @@ public enum ER7011PosLtlbDppkRoism implements IObject<KeyValueString> {
     }
 
     public static FieldValidation genFieldValidation1() {
-        return UtilFieldValidation.genEqualsFormula(UtilMetadata.genPlusColumn(2, 8) + " - 9");
+        return UtilFieldValidation.genEqualsFormula(UtilMetadata.genPlusColumn(2, 7) + "-8");
     }
 
     public static FieldValidation genFieldValidation2() {
@@ -78,8 +78,8 @@ public enum ER7011PosLtlbDppkRoism implements IObject<KeyValueString> {
     }
 
     public static SegmentValidation genValidationSumPosColEqual() {
-        return UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPlusColumn(new int[] { 2, 3, 4, 5, 6, 7, 8, 10, 11}), R_ROISM2100000000.key,
+        return UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(new int[] { 2, 3, 4, 5, 6, 7, 8, 10, 11}), R_ROISM2100000000.key,
                 UtilMetadata.genPlusRow(getObjects(), 0, 19),
-                UtilMetadata.genMessage(R_ROISM2100000000.value, UtilMetadata.genPlusRow(getObjects(), 0, 19)));
+                UtilMetadata.genMessage(R_ROISM2100000000.value, UtilMetadata.genPlusDesc(getObjects(), 0, 19)));
     }
 }

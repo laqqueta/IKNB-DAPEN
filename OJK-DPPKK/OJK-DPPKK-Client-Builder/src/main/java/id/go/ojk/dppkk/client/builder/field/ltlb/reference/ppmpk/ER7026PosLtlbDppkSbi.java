@@ -74,7 +74,7 @@ public enum ER7026PosLtlbDppkSbi implements IObject<KeyValueString> {
     }
 
     public static ConditionalRequired genConditionNamaPengelola() {
-        return UtilFieldConditional.genEqualsExceptPos("M", "O", "12",
+        return UtilFieldConditional.genEqualsExceptPos("O", "M", "12",
                 ER1252Pengelolaan.getReferenceIndex(0), R_SBI000000.key);
     }
 

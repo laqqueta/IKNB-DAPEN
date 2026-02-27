@@ -44,7 +44,7 @@ public enum ER7023PosLtlbDppkDpjka implements IObject<KeyValueString> {
     }
 
     public static String genFieldSave() {
-        return UtilMetadata.genFieldSave("6|13", getObjects());
+        return UtilMetadata.genFieldSave("6|10", getObjects());
     }
 
     public static String getRequiredPos() {
@@ -60,7 +60,7 @@ public enum ER7023PosLtlbDppkDpjka implements IObject<KeyValueString> {
     }
 
     public static ConditionalRequired genConditionOptional() {
-        return UtilFieldConditional.genEqualsExceptPos("O", "M", "13",
+        return UtilFieldConditional.genEqualsExceptPos("O", "M", "10",
                 ER1252Pengelolaan.getReferenceIndex(0), R_DPJKA000000.key);
     }
 

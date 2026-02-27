@@ -47,7 +47,7 @@ public class Ltlb0031SUKUK extends BaseMetadata {
                         .confReference(EHeaderMetadataPpmpk.R7030Sukuk.getObject())));
 
         fs.add(sf(2, null, "Nama Penerbit",
-                sv(C, 1, 100, alfaNumeric)
+                sv(C, 1, 100, freeText)
                         .confConditionalRequired(ER7030PosLtlbDppkSukuk.genConditionForTotal())));
 
         fs.add(sf(3, null, "Kode Sukuk",
@@ -55,7 +55,7 @@ public class Ltlb0031SUKUK extends BaseMetadata {
                         .confConditionalRequired(ER7030PosLtlbDppkSukuk.genConditionForTotal())));
 
         fs.add(sf(4, null, "Nama Sukuk",
-                sv(C, 1, 100, alfa)
+                sv(C, 1, 100, freeText)
                         .confConditionalRequired(ER7030PosLtlbDppkSukuk.genConditionForTotal())));
 
         fs.add(sf(5, null, "Tanggal Perolehan",
@@ -66,7 +66,7 @@ public class Ltlb0031SUKUK extends BaseMetadata {
                 sv(M, 1, 18, numeric)));
 
         fs.add(sf(7, null, "Kupon (%)",
-                sv(C, 3, 5, numericDot)
+                sv(C, 4, 6, numericDot)
                         .confConditionalRequired(ER7030PosLtlbDppkSukuk.genConditionForTotal())));
 
         fs.add(sf(8, null, "Tanggal Jatuh Tempo",
@@ -93,7 +93,7 @@ public class Ltlb0031SUKUK extends BaseMetadata {
                 .addFieldValidations(ER7030PosLtlbDppkSukuk.genFieldValidationNilaiInvestasi()));
 
         fs.add(sf(14, null, "Selisih Penilaian Investasi %",
-                sv(C, 3, 5, numericDot)
+                sv(C, 4, 6, numericDot)
                         .confConditionalRequired(ER7030PosLtlbDppkSukuk.genConditionForTotal()))
                 .addFieldValidations(ER7030PosLtlbDppkSukuk.genFieldValidationPersentaseInvestasi()));
 
@@ -122,7 +122,7 @@ public class Ltlb0031SUKUK extends BaseMetadata {
                         .confReference(EHeaderMetadataShared.R006.getObject())));
 
         fs.add(sf(19, null, "Pengelolaan Nama Manajer Investasi",
-                sv(C, 1, 250, alfa)
+                sv(C, 1, 250, freeText)
                         .confConditionalRequired(ER7030PosLtlbDppkSukuk.genConditionForTotal())
                         .confConditionalRequired(ER7030PosLtlbDppkSukuk.genConditionNamaPengelola())));
 

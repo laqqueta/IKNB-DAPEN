@@ -5,6 +5,7 @@ import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
 import id.go.ojk.conf.client.UtilFieldConditional;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
+import id.go.ojk.dppkk.client.builder.field.EFormLaporanTahunanLaporanBulanan;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
 import lombok.AccessLevel;
@@ -62,5 +63,12 @@ public enum ER7013PosLtlbDppkInsp implements IObject<KeyValueString> {
         return UtilSegmentValidation.genEqualsFormula("4", R_INSPK000000.key, R_INSPK010000.key,
                 UtilMetadata.genMessageTotal(R_INSPK000000.value, R_INSPK010000.value));
 
+    }
+
+    public static SegmentValidation genRowValidation() {
+        return UtilSegmentValidation.genEqualsInvestasiRatio("5", R_INSPK010000.key,
+                R_INSPK010000.key, "4", EFormLaporanTahunanLaporanBulanan.LTLB_LAN.getCode(),
+                ER7001PosLtlbDppkLan.R_LAN0102000000.getObject().getKey(), "13",
+                UtilMetadata.genMessage(R_INSPK010000.value, R_INSPK010000.value + "/ Total Investasi (Gabungan) pada form LAN"), 2);
     }
 }

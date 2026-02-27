@@ -70,8 +70,8 @@ public enum ER7037PosLtlbDppkKokb implements IObject<KeyValueString> {
     }
 
     public static ConditionalRequired genConditionNamaPengelola() {
-        return UtilFieldConditional.genEquals("M", "O", "11",
-                ER1252Pengelolaan.getReferenceIndex(0));
+        return UtilFieldConditional.genEqualsExceptPos("O", "M", "11",
+                ER1252Pengelolaan.getReferenceIndex(0), R_KOKB000000.key);
     }
 
     public static SegmentValidation genValidation() {

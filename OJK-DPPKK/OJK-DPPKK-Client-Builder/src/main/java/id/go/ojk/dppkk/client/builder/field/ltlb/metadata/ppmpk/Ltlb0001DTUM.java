@@ -33,7 +33,7 @@ public class Ltlb0001DTUM extends BaseMetadata {
 
         EFormLaporanTahunanLaporanBulanan eNum = EFormLaporanTahunanLaporanBulanan.LTLB_DTUM;
         SubmissionFormat res = new SubmissionFormat(eNum.getCode(), eNum.getName(), reportCode, new ArrayList<>(),
-                extension, 60, 60);
+                extension, 55, 55);
 
         res.setRequiredPos(ER7000PosLtlbDppkDtum.getRequiredPos());
 
@@ -46,8 +46,7 @@ public class Ltlb0001DTUM extends BaseMetadata {
                 .confRegex(SimpleValidation.patternAlfaNumeric)
                 .confReference(EHeaderMetadataPpmpk.R7000Dtum.getObject()))
                 .confUnique(UniqueType.U));
-        fs.add(sf(2, null, "Field", sv(M, 1, 100, all2)));
-        fs.add(sf(3, null, "Keterangan", sv(M, 1, 1000, all2)));
+        fs.add(sf(2, null, "Keterangan", sv(M, 1, 1000, all2)));
 
         return res;
     }

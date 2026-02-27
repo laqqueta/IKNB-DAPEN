@@ -1,8 +1,10 @@
 package id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk;
 
 import id.go.ojk.client.model.config.validation.conditional.ConditionalRequired;
+import id.go.ojk.client.model.config.validation.field.FieldValidation;
 import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
 import id.go.ojk.conf.client.UtilFieldConditional;
+import id.go.ojk.conf.client.UtilFieldValidation;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
 import id.go.ojk.lib.client.IObject;
@@ -58,9 +60,36 @@ public enum ER7039PosLtlbDppkPnyl implements IObject<KeyValueString> {
         return UtilFieldConditional.genHasValue("2", "N", "M");
     }
 
+    public static ConditionalRequired genConditionValidationAnakPerushaan() {
+        return UtilFieldConditional.genHasValue("29", "N", "M");
+    }
+
+    public static ConditionalRequired genConditionValidationAnakPerushaan2() {
+        return UtilFieldConditional.genHasValueExceptPos("29", "N", "M", R_PNYL000000.key);
+    }
+
+    public static FieldValidation genFieldValidationRatio() {
+        return UtilFieldValidation.genEqualsPosRatio("16|11", R_PNYL010000.key);
+    }
+
+    public static FieldValidation genFieldValidationNilai() {
+        return UtilFieldValidation.genEqualsExceptPosFormula("15-11", R_PNYL000000.key);
+    }
+
     public static SegmentValidation genValidation() {
         return UtilSegmentValidation.genEqualsFormula("9|11|15|16|21|30", R_PNYL000000.key, R_PNYL010000.key,
                 UtilMetadata.genMessageTotal(R_PNYL000000.value, R_PNYL010000.value));
+    }
 
+    public static FieldValidation genValidationFixedPersentaseV() {
+        return UtilFieldValidation.genEqualsPosFormulaFixedValue(
+                UtilMetadata.genPlusColumn(22, 28), R_PNYL010000.key,
+                "100");
+    }
+
+    public static FieldValidation genValidationFixedPersentaseE1() {
+        return UtilFieldValidation.genEqualsPosFormulaFixedValue(
+                UtilMetadata.genPlusColumn(31, 36), R_PNYL010000.key,
+                "100");
     }
 }

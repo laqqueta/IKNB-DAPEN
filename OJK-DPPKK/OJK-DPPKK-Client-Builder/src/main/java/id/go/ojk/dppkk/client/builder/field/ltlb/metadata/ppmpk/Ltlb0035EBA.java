@@ -52,11 +52,11 @@ public class Ltlb0035EBA extends BaseMetadata {
                         .confConditionalRequired(ER7034PosLtlbDppkEba.genConditionForTotal())));
 
         fs.add(sf(3, null, "Nama Produk",
-                sv(C, 1, 100, alfaNumeric)
+                sv(C, 1, 100, freeText)
                         .confConditionalRequired(ER7034PosLtlbDppkEba.genConditionForTotal())));
 
         fs.add(sf(4, null, "Nama Penerbit",
-                sv(C, 1, 100, alfaNumeric)
+                sv(C, 1, 100, freeText)
                         .confConditionalRequired(ER7034PosLtlbDppkEba.genConditionForTotal())));
 
         fs.add(sf(5, null, "Tanggal Perolehan",
@@ -67,7 +67,7 @@ public class Ltlb0035EBA extends BaseMetadata {
                 sv(M, 1, 18, numeric)));
 
         fs.add(sf(7, null, "Kupon (%)",
-                sv(C, 3, 5, numericDot)
+                sv(C, 4, 6, numericDot)
                         .confConditionalRequired(ER7034PosLtlbDppkEba.genConditionForTotal())));
 
         fs.add(sf(8, null, "Tanggal Jatuh Tempo",
@@ -94,7 +94,7 @@ public class Ltlb0035EBA extends BaseMetadata {
                 .addFieldValidations(ER7034PosLtlbDppkEba.genFieldValidationNilaiInvestasi()));
 
         fs.add(sf(14, null, "Selisih Penilaian Investasi %",
-                sv(M, 3, 5, numericDot))
+                sv(M, 4, 6, numericDot))
                 .addFieldValidations(ER7034PosLtlbDppkEba.genFieldValidationPersentaseInvestasi()));
 
         fs.add(sf(15, null, "Sektor Ekonomi",
@@ -116,7 +116,7 @@ public class Ltlb0035EBA extends BaseMetadata {
                         .confReference(EHeaderMetadataShared.R006.getObject())));
 
         fs.add(sf(18, null, "Pengelolaan Nama Manajer Investasi",
-                sv(C, 1, 250, alfa)
+                sv(C, 1, 250, freeText)
                         .confConditionalRequired(ER7034PosLtlbDppkEba.genConditionForTotal())
                         .confConditionalRequired(ER7034PosLtlbDppkEba.genConditionNamaPengelola())));
 

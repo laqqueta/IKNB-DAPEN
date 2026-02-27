@@ -70,8 +70,8 @@ public enum ER7035PosLtlbDppkDire implements IObject<KeyValueString> {
     }
 
     public static ConditionalRequired genConditionNamaPengelola() {
-        return UtilFieldConditional.genEquals("M", "O", "12",
-                ER1252Pengelolaan.getReferenceIndex(0));
+        return UtilFieldConditional.genEqualsExceptPos("O", "M", "12",
+                ER1252Pengelolaan.getReferenceIndex(0), R_DIRE000000.key);
     }
 
 

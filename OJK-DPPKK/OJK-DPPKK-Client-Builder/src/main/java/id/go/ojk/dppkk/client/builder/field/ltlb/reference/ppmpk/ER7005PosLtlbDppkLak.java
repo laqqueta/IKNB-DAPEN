@@ -11,6 +11,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
@@ -81,29 +82,43 @@ public enum ER7005PosLtlbDppkLak implements IObject<KeyValueString> {
         return UtilMetadata.genFieldSave(pipeColumnValidation, getObjects());
     }
 
-    public static SegmentValidation genValidationSumPosColEqual1() {
+    public static final List<SegmentValidation> SEGMENT_VALIDATIONS = Arrays.asList(
+            genValidationSumPosColEqual1(),
+            genValidationSumPosColEqual2(),
+            genValidationSumPosColEqual3(),
+            genValidationSumPosColEqual4(),
+            genValidationSumPosColEqual5(),
+            genValidationNegNum()
+    );
+
+    private static SegmentValidation genValidationSumPosColEqual1() {
         return UtilSegmentValidation.genEqualsFormula(pipeColumnValidation, R_LAK0200000000.key, UtilMetadata.genPlusRow(getObjects(), 0, 6),
                 UtilMetadata.genMessage(R_LAK0200000000.value, UtilMetadata.genPlusDesc(getObjects(), 0, 6)));
     }
 
-    public static SegmentValidation genValidationSumPosColEqual2() {
+    private static SegmentValidation genValidationSumPosColEqual2() {
         return UtilSegmentValidation.genEqualsFormula(pipeColumnValidation, R_LAK0400000000.key, UtilMetadata.genPlusRow(getObjects(), 8, 17),
                 UtilMetadata.genMessage(R_LAK0400000000.value, UtilMetadata.genPlusDesc(getObjects(), 8, 17)));
     }
 
-    public static SegmentValidation genValidationSumPosColEqual3() {
+    private static SegmentValidation genValidationSumPosColEqual3() {
         return UtilSegmentValidation.genEqualsFormula(pipeColumnValidation, R_LAK0600000000.key, UtilMetadata.genPlusRow(getObjects(), 19, 26),
                 UtilMetadata.genMessage(R_LAK0600000000.value, UtilMetadata.genPlusDesc(getObjects(), 19, 26)));
     }
 
-    public static SegmentValidation genValidationSumPosColEqual4() {
+    private static SegmentValidation genValidationSumPosColEqual4() {
         return UtilSegmentValidation.genEqualsFormula(pipeColumnValidation, R_LAK0700000000.key, UtilMetadata.genPlusRow(getObjects(), new int[] {7, 18, 27}),
                 UtilMetadata.genMessage(R_LAK0700000000.value, UtilMetadata.genPlusDesc(getObjects(), new int[] {7, 18, 27})));
     }
 
-    public static SegmentValidation genValidationSumPosColEqual5() {
+    private static SegmentValidation genValidationSumPosColEqual5() {
         return UtilSegmentValidation.genEqualsFormula(pipeColumnValidation, R_LAK0900000000.key, UtilMetadata.genPlusRow(getObjects(), new int[] {28, 29}),
                 UtilMetadata.genMessage(R_LAK0900000000.value, UtilMetadata.genPlusDesc(getObjects(), new int[] {28, 29})));
+    }
+
+    private static SegmentValidation genValidationNegNum() {
+        return UtilSegmentValidation.genRegexNumericNegative(UtilMetadata.genPipeColumn(2, 11),
+                UtilMetadata.genPipeRowExcept(getObjects(), new int[] {7, 18, 27, 28, 29, 30}));
     }
 
     public static FieldValidation genFieldValidationSumRow() {

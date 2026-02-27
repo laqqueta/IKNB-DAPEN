@@ -8,6 +8,7 @@ import id.go.ojk.dppkk.client.builder.field.EFormLaporanTahunanLaporanBulanan;
 import id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk.EHeaderMetadataPpmpk;
 import id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk.ER7033PosLtlbDppkMtn;
 import id.go.ojk.dppkk.client.builder.field.reference.EHeaderMetadataShared;
+import org.apache.commons.net.tftp.TFTPErrorPacket;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +37,6 @@ public class Ltlb0034MTN extends BaseMetadata {
 
         List<SubmissionField> fs = res.getFields();
 
-
         fs.add(sf(0, null, "Flag",
                 sv(M, 3, 3, alfaNumeric)
                         .confConstant("D01")));
@@ -51,11 +51,11 @@ public class Ltlb0034MTN extends BaseMetadata {
                         .confConditionalRequired(ER7033PosLtlbDppkMtn.genConditionForTotal())));
 
         fs.add(sf(3, null, "Nama Produk",
-                sv(C, 1, 100, alfaNumeric)
+                sv(C, 1, 100, freeText)
                         .confConditionalRequired(ER7033PosLtlbDppkMtn.genConditionForTotal())));
 
         fs.add(sf(4, null, "Nama Penerbit",
-                sv(C, 1, 100, alfaNumeric)
+                sv(C, 1, 100, freeText)
                         .confConditionalRequired(ER7033PosLtlbDppkMtn.genConditionForTotal())));
 
         fs.add(sf(5, null, "Tanggal Perolehan",
@@ -66,7 +66,7 @@ public class Ltlb0034MTN extends BaseMetadata {
                 sv(M, 1, 18, numeric)));
 
         fs.add(sf(7, null, "Kupon (%)",
-                sv(C, 3, 5, numericDot)
+                sv(C, 4, 6, numericDot)
                         .confConditionalRequired(ER7033PosLtlbDppkMtn.genConditionForTotal())));
 
         fs.add(sf(8, null, "Tanggal Jatuh Tempo",
@@ -93,7 +93,8 @@ public class Ltlb0034MTN extends BaseMetadata {
                 .addFieldValidations(ER7033PosLtlbDppkMtn.genFieldValidationNilaiInvestasi()));
 
         fs.add(sf(14, null, "Selisih Penilaian Investasi %",
-                sv(M, 3, 5, numericDot))
+                sv(C, 4, 6, numericDot)
+                        .confConditionalRequired(ER7033PosLtlbDppkMtn.genConditionForTotal()))
                 .addFieldValidations(ER7033PosLtlbDppkMtn.genFieldValidationPersentaseInvestasi()));
 
         fs.add(sf(15, null, "Sektor Ekonomi",
@@ -115,7 +116,7 @@ public class Ltlb0034MTN extends BaseMetadata {
                         .confReference(EHeaderMetadataShared.R006.getObject())));
 
         fs.add(sf(18, null, "Pengelolaan Nama Manajer Investasi",
-                sv(C, 1, 250, alfa)
+                sv(C, 1, 250, freeText)
                         .confConditionalRequired(ER7033PosLtlbDppkMtn.genConditionForTotal())
                         .confConditionalRequired(ER7033PosLtlbDppkMtn.genConditionNamaPengelola())));
 

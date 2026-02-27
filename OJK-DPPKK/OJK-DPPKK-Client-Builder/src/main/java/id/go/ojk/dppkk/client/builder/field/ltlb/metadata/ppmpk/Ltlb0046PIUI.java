@@ -53,7 +53,7 @@ public class Ltlb0046PIUI extends BaseMetadata {
                         .confReference(EHeaderMetadataShared.R021.getObject())));
 
         fs.add(sf(3, null, "Pihak",
-                sv(C, 1, 100, alfaNumeric)
+                sv(C, 1, 100, freeText)
                         .confConditionalRequired(ER7045PosLtlbDppkPiui.genConditionForTotal())));
 
         fs.add(sf(4, null, "Nominal",

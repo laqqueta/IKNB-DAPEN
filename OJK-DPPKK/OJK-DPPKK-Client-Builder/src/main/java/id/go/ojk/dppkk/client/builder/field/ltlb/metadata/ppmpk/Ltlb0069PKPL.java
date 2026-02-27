@@ -46,7 +46,7 @@ public class Ltlb0069PKPL extends BaseMetadata {
                         .confReference(EHeaderMetadataPpmpk.R7068Pkpl.getObject())));
 
         fs.add(sf(2, null, "Dana Pensiun yang menerima Pengalihan",
-                sv(C, 1, 100, alfaNumeric)
+                sv(C, 1, 100, freeText)
                         .confConditionalRequired(ER7068PosLtlbDppkPkpl.genConditionForTotal())));
 
         fs.add(sf(3, null, "Jumlah",
@@ -59,7 +59,7 @@ public class Ltlb0069PKPL extends BaseMetadata {
                         .confReference(EHeaderMetadataShared.R009.getObject())));
 
         fs.add(sf(5, null, "Rincian Manfaat Lain *)",
-                sv(C, 1, 6, numeric)
+                sv(C, 1, 6, freeText)
                         .confConditionalRequired(ER7068PosLtlbDppkPkpl.genConditionForTotal())
                         .confConditionalRequired(ER7068PosLtlbDppkPkpl.genConditionManfaatLain())));
 

@@ -70,8 +70,8 @@ public enum ER7034PosLtlbDppkEba implements IObject<KeyValueString> {
     }
 
     public static ConditionalRequired genConditionNamaPengelola() {
-        return UtilFieldConditional.genEquals("M", "O", "17",
-                ER1252Pengelolaan.getReferenceIndex(0));
+        return UtilFieldConditional.genEqualsExceptPos("O", "M", "17",
+                ER1252Pengelolaan.getReferenceIndex(0), R_EBA000000.key);
     }
 
     public static FieldValidation genDateGreaterFieldValidation() {

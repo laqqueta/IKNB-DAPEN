@@ -53,7 +53,7 @@ public class Ltlb0041PROP extends BaseMetadata {
                         .confReference(EHeaderMetadataShared.R004.getObject())));
 
         fs.add(sf(3, null, "Alamat Lengkap",
-                sv(C, 1, 250, alfaNumeric)
+                sv(C, 1, 250, freeText)
                         .confConditionalRequired(ER7040PosLtlbDppkProp.genConditionForTotal())));
 
         fs.add(sf(4, null, "Luas(m2)",
@@ -61,14 +61,14 @@ public class Ltlb0041PROP extends BaseMetadata {
                         .confConditionalRequired(ER7040PosLtlbDppkProp.genConditionForTotal())));
 
         fs.add(sf(5, null, "Jenis Bukti Kepemilikan",
-                sv(C, 1, 8, alfaNumeric)
-                        .confConditionalRequired(ER7040PosLtlbDppkProp.genConditionForTotal())));
-
-        fs.add(sf(6, null, "Nomor Surat Kepemilikan",
-                sv(C, 1, 20, refTable)
+                sv(C, 1, 8, refTable)
                         .confConditionalRequired(ER7040PosLtlbDppkProp.genConditionForTotal())
                         .confRegex(SimpleValidation.patternAlfa)
                         .confReference(EHeaderMetadataShared.R016.getObject())));
+
+        fs.add(sf(6, null, "Nomor Surat Kepemilikan",
+                sv(C, 1, 20, alfaNumeric)
+                        .confConditionalRequired(ER7040PosLtlbDppkProp.genConditionForTotal())));
 
         fs.add(sf(7, null, "Tanggal Perolehan",
                 sv(C, 8, 8, date)
@@ -92,11 +92,11 @@ public class Ltlb0041PROP extends BaseMetadata {
                         .confConditionalRequired(ER7040PosLtlbDppkProp.genConditionForTotal())));
 
         fs.add(sf(13, null, "Nama Penilai Publik/Independen",
-                sv(C, 1, 100, alfaNumeric)
+                sv(C, 1, 100, freeText)
                         .confConditionalRequired(ER7040PosLtlbDppkProp.genConditionForTotal())));
 
         fs.add(sf(14, null, "Nama KJPP",
-                sv(C, 1, 100, alfaNumeric)
+                sv(C, 1, 100, freeText)
                         .confConditionalRequired(ER7040PosLtlbDppkProp.genConditionForTotal())));
 
         fs.add(sf(15, null, "Selisih Penilaian Investasi Nilai",
@@ -104,7 +104,7 @@ public class Ltlb0041PROP extends BaseMetadata {
                 .addFieldValidations(ER7040PosLtlbDppkProp.genFieldValidationNilaiInvestasi()));
 
         fs.add(sf(16, null, "Selisih Penilaian Investasi %",
-                sv(C, 3, 5, numericDot)
+                sv(C, 4, 6, numericDot)
                         .confConditionalRequired(ER7040PosLtlbDppkProp.genConditionForTotal()))
                 .addFieldValidations(ER7040PosLtlbDppkProp.genFieldValidationPersentaseInvestasi()));
 

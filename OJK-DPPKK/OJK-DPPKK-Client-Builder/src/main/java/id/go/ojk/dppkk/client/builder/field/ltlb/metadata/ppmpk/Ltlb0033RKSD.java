@@ -52,7 +52,7 @@ public class Ltlb0033RKSD extends BaseMetadata {
                         .confConditionalRequired(ER7032PosLtlbDppkRksd.genConditionForTotal())));
 
         fs.add(sf(3, null, "Nama Produk",
-                sv(C, 1, 100, alfaNumeric)
+                sv(C, 1, 100, freeText)
                         .confConditionalRequired(ER7032PosLtlbDppkRksd.genConditionForTotal())));
 
         fs.add(sf(4, null, "Jenis Reksa Dana *)",
@@ -60,7 +60,7 @@ public class Ltlb0033RKSD extends BaseMetadata {
                         .confConditionalRequired(ER7032PosLtlbDppkRksd.genConditionForTotal())));
 
         fs.add(sf(5, null, "Manajer Investasi",
-                sv(C, 1, 250, alfa)
+                sv(C, 1, 250, freeText)
                         .confConditionalRequired(ER7032PosLtlbDppkRksd.genConditionForTotal())));
 
         fs.add(sf(6, null, "Tanggal Perolehan",
@@ -81,7 +81,8 @@ public class Ltlb0033RKSD extends BaseMetadata {
                 .addFieldValidations(ER7032PosLtlbDppkRksd.genFieldValidationNilaiInvestasi()));
 
         fs.add(sf(11, null, "Selisih Penilaian Investasi %",
-                sv(M, 3, 5, numericDot))
+                sv(C, 4, 6, numericDot)
+                        .confConditionalRequired(ER7032PosLtlbDppkRksd.genConditionForTotal()))
                 .addFieldValidations(ER7032PosLtlbDppkRksd.genFieldValidationPersentaseInvestasi()));
 
         fs.add(sf(12, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain",
@@ -97,7 +98,7 @@ public class Ltlb0033RKSD extends BaseMetadata {
                         .confReference(EHeaderMetadataShared.R006.getObject())));
 
         fs.add(sf(14, null, "Pengelolaan Nama Manajer Investasi",
-                sv(C, 1, 250, alfa)
+                sv(C, 1, 250, freeText)
                         .confConditionalRequired(ER7032PosLtlbDppkRksd.genConditionForTotal())
                         .confConditionalRequired(ER7032PosLtlbDppkRksd.genConditionNamaPengelola())));
 

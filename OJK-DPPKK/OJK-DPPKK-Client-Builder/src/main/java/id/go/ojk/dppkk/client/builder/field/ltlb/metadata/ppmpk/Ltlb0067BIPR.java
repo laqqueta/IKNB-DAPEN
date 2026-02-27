@@ -50,7 +50,7 @@ public class Ltlb0067BIPR extends BaseMetadata {
                         .confReference(EHeaderMetadataPpmpk.R7066Bipr.getObject())));
 
         fs.add(sf(2, null, "Jenis Beban",
-                sv(C, 1, 100, alfaNumeric)
+                sv(C, 1, 100, freeText)
                         .confConditionalRequired(ER7066PosLtlbDppkBipr.genConditionForTotal())));
 
         fs.add(sf(3, null, "Jumlah",

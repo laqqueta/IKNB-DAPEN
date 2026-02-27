@@ -47,7 +47,7 @@ public class Ltlb0039REPO extends BaseMetadata {
                         .confReference(EHeaderMetadataPpmpk.R7038Repo.getObject())));
 
         fs.add(sf(2, null, "Counterparty",
-                sv(C, 1, 100, alfaNumeric)
+                sv(C, 1, 100, freeText)
                         .confConditionalRequired(ER7038PosLtlbDppkRepo.genConditionForTotal())));
 
         fs.add(sf(3, null, "Jenis Jaminan (SBN/SBI/OBL)",
@@ -88,7 +88,7 @@ public class Ltlb0039REPO extends BaseMetadata {
                 sv(M, 1, 18, numeric)));
 
         fs.add(sf(12, null, "Margin(nominal) %",
-                sv(C, 3, 5, numericDot)
+                sv(C, 4, 6, numericDot)
                         .confConditionalRequired(ER7038PosLtlbDppkRepo.genConditionForTotal())));
 
         fs.add(sf(13, null, "Amortized Cost",
@@ -102,7 +102,7 @@ public class Ltlb0039REPO extends BaseMetadata {
                 .addFieldValidations(ER7038PosLtlbDppkRepo.genFieldValidationNilaiInvestasi()));
 
         fs.add(sf(16, null, "Selisih Penilaian Investasi %",
-                sv(C, 3, 5, numericDot)
+                sv(C, 4, 6, numericDot)
                         .confConditionalRequired(ER7038PosLtlbDppkRepo.genConditionForTotal()))
                 .addFieldValidations(ER7038PosLtlbDppkRepo.genFieldValidationPersentaseInvestasi()));
 

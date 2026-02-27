@@ -48,11 +48,11 @@ public class Ltlb0038KOKB extends BaseMetadata {
                         .confReference(EHeaderMetadataPpmpk.R7037Kokb.getObject())));
 
         fs.add(sf(2, null, "Nama Emiten",
-                sv(C, 1, 100, alfaNumeric)
+                sv(C, 1, 100, freeText)
                         .confConditionalRequired(ER7037PosLtlbDppkKokb.genConditionForTotal())));
 
         fs.add(sf(3, null, "Nama Pembeli",
-                sv(C, 1, 100, alfaNumeric)
+                sv(C, 1, 100, freeText)
                         .confConditionalRequired(ER7037PosLtlbDppkKokb.genConditionForTotal())));
 
         fs.add(sf(4, null, "Tanggal Perolehan",
@@ -74,7 +74,7 @@ public class Ltlb0038KOKB extends BaseMetadata {
                 .addFieldValidations(ER7037PosLtlbDppkKokb.genFieldValidationNilaiInvestasi()));
 
         fs.add(sf(9, null, "Selisih Penilaian Investasi %",
-                sv(C, 3, 5, numericDot)
+                sv(C, 4, 6, numericDot)
                         .confConditionalRequired(ER7037PosLtlbDppkKokb.genConditionForTotal()))
                 .addFieldValidations(ER7037PosLtlbDppkKokb.genFieldValidationPersentaseInvestasi()));
 
@@ -91,7 +91,7 @@ public class Ltlb0038KOKB extends BaseMetadata {
                         .confReference(EHeaderMetadataShared.R006.getObject())));
 
         fs.add(sf(12, null, "Pengelolaan Nama Manajer Investasi",
-                sv(C, 1, 250, alfa)
+                sv(C, 1, 250, freeText)
                         .confConditionalRequired(ER7037PosLtlbDppkKokb.genConditionForTotal())
                         .confConditionalRequired(ER7037PosLtlbDppkKokb.genConditionNamaPengelola())));
 

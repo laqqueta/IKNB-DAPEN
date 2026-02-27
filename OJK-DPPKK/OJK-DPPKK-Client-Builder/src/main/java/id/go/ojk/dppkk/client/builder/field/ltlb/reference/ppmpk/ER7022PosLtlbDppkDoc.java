@@ -67,6 +67,5 @@ public enum ER7022PosLtlbDppkDoc implements IObject<KeyValueString> {
     public static SegmentValidation genValidation() {
         return UtilSegmentValidation.genEqualsFormula("6", R_DOC000000.key, R_DOC010000.key,
                 UtilMetadata.genMessageTotal(R_DOC000000.value, R_DOC010000.value));
-
     }
 }

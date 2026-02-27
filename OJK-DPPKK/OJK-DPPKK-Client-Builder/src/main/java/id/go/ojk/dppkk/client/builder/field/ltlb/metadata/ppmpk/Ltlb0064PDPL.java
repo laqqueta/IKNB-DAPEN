@@ -47,7 +47,7 @@ public class Ltlb0064PDPL extends BaseMetadata {
                         .confReference(EHeaderMetadataPpmpk.R7063Pdpl.getObject())));
 
         fs.add(sf(2, null, "Nama Dana Pensiun yang Mengalihkan",
-                sv(C, 1, 100, alfaNumeric)
+                sv(C, 1, 100, freeText)
                         .confConditionalRequired(ER7063PosLtlbDppkPdpl.genConditionForTotal())));
 
         fs.add(sf(3, null, "Jumlah",

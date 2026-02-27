@@ -109,33 +109,33 @@ public enum ER7000PosLtlbDppkDtum implements IObject<KeyValueString> {
     );
 
     private static SegmentValidation genValidationAll() {
-        return UtilSegmentValidation.genRegexAll("4",
-                UtilMetadata.genPipeRowExcept(getObjects(), new int[] {6, 14}));
+        return UtilSegmentValidation.genRegexAll("2",
+                UtilMetadata.genPipeRowExcept(getObjects(), new int[] {6, 13}));
     }
 
     private static SegmentValidation genValidationDate() {
-        return UtilSegmentValidation.genRegexDate("4",
-                UtilMetadata.genPipeRow(getObjects(), new int[] {6, 14}), "dd/MM/yyyy");
+        return UtilSegmentValidation.genRegexDate("2",
+                UtilMetadata.genPipeRow(getObjects(), new int[] {6, 13}));
     }
 
     private static SegmentValidation genValidationLength1() {
-        return UtilSegmentValidation.genLength("4",
+        return UtilSegmentValidation.genLength("2",
                 UtilMetadata.genPipeRow(getObjects(), new int[] {2, 3}), 1, 20);
     }
 
     private static SegmentValidation genValidationLength2() {
-        return UtilSegmentValidation.genLength("4",
+        return UtilSegmentValidation.genLength("2",
                 UtilMetadata.genPipeRow(getObjects(), new int[] {0}),1, 500);
     }
 
     private static SegmentValidation genValidationLength3() {
-        return UtilSegmentValidation.genLength("4",
-                UtilMetadata.genPipeRow(getObjects(), new int[] {6, 14}), 8, 8);
+        return UtilSegmentValidation.genLength("2",
+                UtilMetadata.genPipeRow(getObjects(), new int[] {6, 13}), 8, 10);
     }
 
     private static SegmentValidation genValidationLength4() {
-        return UtilSegmentValidation.genLength("4",
-                UtilMetadata.genPipeRowExcept(getObjects(), new int[] {0, 2, 3, 6, 14}),1, 100);
+        return UtilSegmentValidation.genLength("2",
+                UtilMetadata.genPipeRowExcept(getObjects(), new int[] {0, 2, 3, 6, 13}),1, 100);
     }
 
 

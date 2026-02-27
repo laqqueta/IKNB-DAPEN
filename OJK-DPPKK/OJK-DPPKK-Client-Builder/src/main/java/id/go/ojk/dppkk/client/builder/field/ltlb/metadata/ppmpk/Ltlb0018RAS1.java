@@ -33,7 +33,7 @@ public class Ltlb0018RAS1 extends BaseMetadata {
         fs.add(sf(3, null, "Manfaat Pensiun Lainnya", sv(M, 1, 18, numeric)));
         fs.add(sf(4, null, "Manfaat lain", sv(M, 1, 18, numeric)));
         fs.add(sf(5, null, "Total", sv(M, 1, 18, numeric)));
-        fs.add(sf(6, null, "Keterangan", sv(O, 1, 250, alfaNumeric)));
+        fs.add(sf(6, null, "Keterangan", sv(O, 1, 250, freeText)));
 
         return res;
     }

@@ -48,7 +48,7 @@ public class Ltlb0032OBSUD extends BaseMetadata {
                         .confReference(EHeaderMetadataPpmpk.R7031Obsud.getObject())));
 
         fs.add(sf(2, null, "Nama Penerbit",
-                sv(C, 1, 100, alfaNumeric)
+                sv(C, 1, 100, freeText)
                         .confConditionalRequired(ER7031PosLtlbDppkObsud.genConditionForTotal())));
 
         fs.add(sf(3, null, "Kode Obligasi/ Sukuk Daerah",
@@ -56,7 +56,7 @@ public class Ltlb0032OBSUD extends BaseMetadata {
                         .confConditionalRequired(ER7031PosLtlbDppkObsud.genConditionForTotal())));
 
         fs.add(sf(4, null, "Nama Obligasi/ Sukuk Daerah",
-                sv(C, 1, 100, alfa)
+                sv(C, 1, 100, freeText)
                         .confConditionalRequired(ER7031PosLtlbDppkObsud.genConditionForTotal())));
 
         fs.add(sf(5, null, "Tanggal Perolehan",
@@ -67,7 +67,7 @@ public class Ltlb0032OBSUD extends BaseMetadata {
                 sv(M, 1, 18, numeric)));
 
         fs.add(sf(7, null, "Kupon (%)",
-                sv(C, 3, 5, numericDot)
+                sv(C, 4, 6, numericDot)
                         .confConditionalRequired(ER7031PosLtlbDppkObsud.genConditionForTotal())));
 
         fs.add(sf(8, null, "Tanggal Jatuh Tempo",
@@ -94,7 +94,7 @@ public class Ltlb0032OBSUD extends BaseMetadata {
                 .addFieldValidations(ER7031PosLtlbDppkObsud.genFieldValidationNilaiInvestasi()));
 
         fs.add(sf(14, null, "Selisih Penilaian Investasi %",
-                sv(C, 3, 5, numericDot)
+                sv(C, 4, 6, numericDot)
                         .confConditionalRequired(ER7031PosLtlbDppkObsud.genConditionForTotal()))
                 .addFieldValidations(ER7031PosLtlbDppkObsud.genFieldValidationPersentaseInvestasi()));
 
@@ -123,7 +123,7 @@ public class Ltlb0032OBSUD extends BaseMetadata {
                         .confReference(EHeaderMetadataShared.R006.getObject())));
 
         fs.add(sf(19, null, "Pengelolaan Nama Manajer Investasi",
-                sv(C, 1, 250, alfa)
+                sv(C, 1, 250, freeText)
                         .confConditionalRequired(ER7031PosLtlbDppkObsud.genConditionForTotal())
                         .confConditionalRequired(ER7031PosLtlbDppkObsud.genConditionNamaPengelola())));
 

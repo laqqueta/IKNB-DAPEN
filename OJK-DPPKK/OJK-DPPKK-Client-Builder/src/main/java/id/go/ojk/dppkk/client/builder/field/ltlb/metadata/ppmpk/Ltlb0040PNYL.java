@@ -7,6 +7,7 @@ import id.go.ojk.conf.client.BaseMetadata;
 import id.go.ojk.dppkk.client.builder.field.EFormLaporanTahunanLaporanBulanan;
 import id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk.EHeaderMetadataPpmpk;
 import id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk.ER7039PosLtlbDppkPnyl;
+import id.go.ojk.dppkk.client.builder.field.reference.EHeaderMetadataShared;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +31,7 @@ public class Ltlb0040PNYL extends BaseMetadata {
         res.setSavePos(ER7039PosLtlbDppkPnyl.genFieldSave());
         res.setRequiredPos(ER7039PosLtlbDppkPnyl.getRequiredPos());
 
-//        res.addSegmentValidations(ER7039PosLtlbDppkPnyl.genValidation());
+        res.addSegmentValidations(ER7039PosLtlbDppkPnyl.genValidation());
 
         List<SubmissionField> fs = res.getFields();
 
@@ -46,11 +47,11 @@ public class Ltlb0040PNYL extends BaseMetadata {
                         .confReference(EHeaderMetadataPpmpk.R7039Pnyl.getObject())));
 
         fs.add(sf(2, null, "Nama Perusahaan(1)",
-                sv(C, 1, 100, alfaNumeric)
+                sv(C, 1, 100, freeText)
                         .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionForTotal())));
 
         fs.add(sf(3, null, "Perwakilan Dana Pensiun Nama",
-                sv(C, 1, 100, alfa)
+                sv(C, 1, 100, freeText)
                         .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionForTotal())
                         .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionValidationNamaPerusahaan())));
 
@@ -60,7 +61,9 @@ public class Ltlb0040PNYL extends BaseMetadata {
                         .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionValidationNamaPerusahaan())));
 
         fs.add(sf(5, null, "Kategori Penyertaan*)",
-                sv(C, 1, 8, alfaNumeric)
+                sv(C, 1, 8, refTable)
+                        .confRegex(SimpleValidation.patternAlfaNumeric)
+                        .confReference(EHeaderMetadataShared.R019.getObject())
                         .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionForTotal())
                         .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionValidationNamaPerusahaan())));
 
@@ -75,7 +78,7 @@ public class Ltlb0040PNYL extends BaseMetadata {
                         .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionValidationNamaPerusahaan())));
 
         fs.add(sf(8, null, "Penempatan Awal % Kepemilikan",
-                sv(C, 2, 5, numericDot)
+                sv(C, 4, 6, numericDot)
                         .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionForTotal())
                         .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionValidationNamaPerusahaan())));
 
@@ -83,7 +86,7 @@ public class Ltlb0040PNYL extends BaseMetadata {
                 sv(M, 1, 18, numeric)));
 
         fs.add(sf(10, null, "Nilai Perolehan Per tanggal laporan % Kepemilikan",
-                sv(C, 3, 5, numericDot)
+                sv(C, 4, 6, numericDot)
                         .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionForTotal())
                         .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionValidationNamaPerusahaan())));
 
@@ -91,7 +94,7 @@ public class Ltlb0040PNYL extends BaseMetadata {
                 sv(M, 1, 18, numeric)));
 
         fs.add(sf(12, null, "Nilai Apprasial/wajar Nama Penilai Publik/Independen",
-                sv(C, 1, 100, alfa)
+                sv(C, 1, 100, freeText)
                         .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionForTotal())
                         .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionValidationNamaPerusahaan())));
 
@@ -101,7 +104,7 @@ public class Ltlb0040PNYL extends BaseMetadata {
                         .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionValidationNamaPerusahaan())));
 
         fs.add(sf(14, null, "Nilai Apprasial/wajar % Kepemilikan",
-                sv(C, 2, 5, numericDot)
+                sv(C, 4, 6, numericDot)
                         .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionForTotal())
                         .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionValidationNamaPerusahaan())));
 
@@ -109,20 +112,26 @@ public class Ltlb0040PNYL extends BaseMetadata {
                 sv(M, 1, 18, numeric)));
 
         fs.add(sf(16, null, "Selisih Penilaian Investasi Nilai",
-                sv(M, 1, 18, numeric)));
+                sv(M, 1, 18, numeric))
+                .addFieldValidations(ER7039PosLtlbDppkPnyl.genFieldValidationNilai()));
 
         fs.add(sf(17, null, "Selisih Penilaian Investasi %",
-                sv(C, 2, 5, numericDot)
+                sv(C, 4, 6, numericDot)
                         .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionForTotal())
-                        .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionValidationNamaPerusahaan())));
+                        .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionValidationNamaPerusahaan()))
+                .addFieldValidations(ER7039PosLtlbDppkPnyl.genFieldValidationRatio()));
 
         fs.add(sf(18, null, "Sektor Ekonomi",
-                sv(C, 1, 8, alfa)
+                sv(C, 1, 8, refTable)
+                        .confRegex(SimpleValidation.patternAlfaNumeric)
+                        .confReference(EHeaderMetadataShared.R007.getObject())
                         .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionForTotal())
                         .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionValidationNamaPerusahaan())));
 
         fs.add(sf(19, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain",
-                sv(C, 1, 6, alfaNumeric)
+                sv(C, 1, 6, refTable)
+                        .confRegex(SimpleValidation.patternAlfaNumeric)
+                        .confReference(EHeaderMetadataShared.R009.getObject())
                         .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionForTotal())
                         .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionValidationNamaPerusahaan())));
 
@@ -134,32 +143,33 @@ public class Ltlb0040PNYL extends BaseMetadata {
                 sv(M, 1, 18, numeric)));
 
         fs.add(sf(22, null, "Presentase kepemilikan (v) Pendiri",
-                sv(C, 2, 5, numericDot)
+                sv(C, 4, 6, numericDot)
                         .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionForTotal())));
 
         fs.add(sf(23, null, "Presentase kepemilikan (v) Dana Pensiun",
-                sv(C, 2, 5, numericDot)
+                sv(C, 4, 6, numericDot)
                         .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionForTotal())));
 
         fs.add(sf(24, null, "Presentase kepemilikan (v) Mitra Pendiri",
-                sv(C, 2, 5, numericDot)
+                sv(C, 4, 6, numericDot)
                         .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionForTotal())));
 
         fs.add(sf(25, null, "Presentase kepemilikan (v) Pengurus",
-                sv(C, 2, 5, numericDot)
+                sv(C, 4, 6, numericDot)
                         .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionForTotal())));
 
         fs.add(sf(26, null, "Presentase kepemilikan (v) Penerima titipan",
-                sv(C, 2, 5, numericDot)
+                sv(C, 4, 6, numericDot)
                         .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionForTotal())));
 
         fs.add(sf(27, null, "Presentase kepemilikan (v) Serikat Kerja yang Anggotanya Merupakan Peserta DP",
-                sv(C, 2, 5, numericDot)
+                sv(C, 4, 6, numericDot)
                         .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionForTotal())));
 
         fs.add(sf(28, null, "Presentase kepemilikan (v) Lainnya",
-                sv(C, 2, 5, numericDot)
-                        .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionForTotal())));
+                sv(C, 4, 6, numericDot)
+                        .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionForTotal()))
+                .addFieldValidations(ER7039PosLtlbDppkPnyl.genValidationFixedPersentaseV()));
 
         fs.add(sf(29, null, "Anak Perusahaan dari Penyertaan Langsung(2)",
                 sv(C, 1, 100, freeText)
@@ -167,35 +177,44 @@ public class Ltlb0040PNYL extends BaseMetadata {
                         .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionValidationNamaPerusahaan())));
 
         fs.add(sf(30, null, "Total Modal Disetor Anak Perusahaan dari Penyertaan Langsung",
-                sv(M, 1, 18, numeric)));
+                sv(C, 1, 18, numeric)
+                        .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionValidationAnakPerushaan2())));
 
         fs.add(sf(31, null, "Presentase Kepemilikan (e1) Pendiri",
-                sv(C, 2, 5, numericDot)
-                        .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionForTotal())));
+                sv(C, 4, 6, numericDot)
+                        .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionForTotal())
+                        .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionValidationAnakPerushaan())));
 
         fs.add(sf(32, null, "Presentase Kepemilikan (e1) Mitra Pendiri",
-                sv(C, 2, 5, numericDot)
-                        .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionForTotal())));
+                sv(C, 4, 6, numericDot)
+                        .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionForTotal())
+                        .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionValidationAnakPerushaan())));
 
         fs.add(sf(33, null, "Presentase Kepemilikan (e1) Pengurus",
-                sv(C, 2, 5, numericDot)
-                        .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionForTotal())));
+                sv(C, 4, 6, numericDot)
+                        .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionForTotal())
+                        .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionValidationAnakPerushaan())));
 
         fs.add(sf(34, null, "Presentase Kepemilikan (e1) Penerima Titipan",
-                sv(C, 2, 5, numericDot)
-                        .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionForTotal())));
+                sv(C, 4, 6, numericDot)
+                        .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionForTotal())
+                        .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionValidationAnakPerushaan())));
 
         fs.add(sf(35, null, "Presentase Kepemilikan (e1) Serikat Kerja yang Anggotanya Merupakan Peserta DP",
-                sv(C, 2, 5, numericDot)
-                        .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionForTotal())));
+                sv(C, 4, 6, numericDot)
+                        .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionForTotal())
+                        .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionValidationAnakPerushaan())));
 
         fs.add(sf(36, null, "Presentase Kepemilikan (e1) Lainnya",
-                sv(C, 2, 5, numericDot)
-                        .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionForTotal())));
+                sv(C, 4, 6, numericDot)
+                        .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionForTotal())
+                        .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionValidationAnakPerushaan()))
+                .addFieldValidations(ER7039PosLtlbDppkPnyl.genValidationFixedPersentaseE1()));
 
         fs.add(sf(37, null, "Presentase Kepemilikan (e1) Dividen Anak Perusahaan",
                 sv(C, 1, 18, numeric)
-                        .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionForTotal())));
+                        .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionForTotal())
+                        .confConditionalRequired(ER7039PosLtlbDppkPnyl.genConditionValidationAnakPerushaan())));
 
 
         return res;

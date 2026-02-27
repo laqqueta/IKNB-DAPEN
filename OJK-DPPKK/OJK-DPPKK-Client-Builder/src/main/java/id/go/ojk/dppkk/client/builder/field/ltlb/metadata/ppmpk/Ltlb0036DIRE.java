@@ -51,11 +51,11 @@ public class Ltlb0036DIRE extends BaseMetadata {
                         .confConditionalRequired(ER7035PosLtlbDppkDire.genConditionForTotal())));
 
         fs.add(sf(3, null, "Nama Produk",
-                sv(C, 1, 100, alfaNumeric)
+                sv(C, 1, 100, freeText)
                         .confConditionalRequired(ER7035PosLtlbDppkDire.genConditionForTotal())));
 
         fs.add(sf(4, null, "Manajer Investasi",
-                sv(C, 1, 250, alfaNumeric)
+                sv(C, 1, 250, freeText)
                         .confConditionalRequired(ER7035PosLtlbDppkDire.genConditionForTotal())));
 
         fs.add(sf(5, null, "Tanggal Perolehan",
@@ -76,7 +76,7 @@ public class Ltlb0036DIRE extends BaseMetadata {
                 .addFieldValidations(ER7035PosLtlbDppkDire.genFieldValidationNilaiInvestasi()));
 
         fs.add(sf(10, null, "Selisih Penilaian Investasi %",
-                sv(C, 3, 5, numericDot)
+                sv(C, 4, 6, numericDot)
                         .confConditionalRequired(ER7035PosLtlbDppkDire.genConditionForTotal()))
                 .addFieldValidations(ER7035PosLtlbDppkDire.genFieldValidationPersentaseInvestasi()));
 
@@ -93,7 +93,7 @@ public class Ltlb0036DIRE extends BaseMetadata {
                         .confReference(EHeaderMetadataShared.R006.getObject())));
 
         fs.add(sf(13, null, "Pengelolaan Nama Manajer Investasi",
-                sv(C, 1, 250, alfa)
+                sv(C, 1, 250, freeText)
                         .confConditionalRequired(ER7035PosLtlbDppkDire.genConditionForTotal())
                         .confConditionalRequired(ER7035PosLtlbDppkDire.genConditionNamaPengelola())));
 
