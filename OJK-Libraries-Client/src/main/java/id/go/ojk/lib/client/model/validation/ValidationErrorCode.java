@@ -160,13 +160,15 @@ public class ValidationErrorCode {
 	public static final ValidationErrorCode E50_17_SINGLEPOSITION		= bvec("50",	"17",	"Validasi Posisi Tunggal",			"hanya boleh ada 1 %1$s");
 	public static final ValidationErrorCode E50_18_FORMULA3 			= bvec("50",	"18",	"Kesalahan Formula 3",				"nilai harus %1$s");
 	public static final ValidationErrorCode E50_19_COLUMNCONDITION		= bvec("50",	"19",	"Validasi Kolom Conditional",		"nilai harus lebih dari %1$s karena Kolom '%2$s' bernilai %3$s");
-    
+	public static final ValidationErrorCode E50_20_FORMULA_TOTAL 		= bvec("50",	"20",	"Kesalahan Formula",				"nilai total penjumlahan Kolom '%1$s' harus %2$s");
+	public static final ValidationErrorCode E50_21_FORMULA_SUMIFS 		= bvec("50",	"21",	"Kesalahan Formula",				"nilai harus sama dengan total penjumlahan pada form '%1$s' kolom '%2$s' dengan kondisi '%3$s' pada kolom '%4$s'");
+
     //-Tidak digunakan
     public static final ValidationErrorCode E50_00_OTHER 				= bvec("50",	"00",	"Kesalahan lain",					"Kesalahan %1$s");
     public static final ValidationErrorCode E50_04_DIVIDE_BY_0			= bvec("50",	"04",	"Divide by Zero",					"Penyebut tidak boleh sama dengan 0");
 	public static final ValidationErrorCode E50_05_VALUE_NOT_FOUND		= bvec("50",	"05",	"Nilai tidak ditemukan",			"Nilai '%2$s' Tidak Ditemukan");
 	public static final ValidationErrorCode E50_06_VALUE_NOT_FOUND		= bvec("50",	"06",	"Nilai tidak ditemukan",			"Nilai '%1$s' Tidak Ditemukan pada form %2$s kolom %3$s");
-	
+
     
 	//Preparation Prosess
 	//-Digunakan @RBB
