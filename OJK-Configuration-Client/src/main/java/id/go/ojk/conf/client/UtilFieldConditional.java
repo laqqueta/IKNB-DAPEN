@@ -310,4 +310,12 @@ public class UtilFieldConditional {
 		builder.append("&trueCondition=" + trueCondition);
 		return new HasValueConditional(builder.toString());
 	}
+
+	public static ConditionalRequired genHasValueExceptPos(String fieldComparator, String falseCondition, String trueCondition, String exceptPos) {
+		StringBuilder builder = new StringBuilder("comparatorField=" + fieldComparator);
+		builder.append("&falseCondition=" + falseCondition);
+		builder.append("&trueCondition=" + trueCondition);
+		builder.append("&exceptPos=" + exceptPos);
+		return new HasValueConditional(builder.toString());
+	}
 }

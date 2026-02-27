@@ -90,9 +90,22 @@ public class UtilFieldValidation {
     return new FormulaPosValidation2(builder.toString());
   }
 
+	public static FieldValidation genEqualsPosFormulaFixedValue(String fieldFormula, String fixedValue, String refPosCode, int scale) {
+		StringBuilder builder = new StringBuilder("comparatorFormula=" + fieldFormula);
+		builder.append("&fixedValue=" + fixedValue);
+		builder.append("&scale=" + scale);
+		builder.append("&refPosCode=" + refPosCode);
+		builder.append("&operator=e");
+		return new FormulaFixedRatioPosValidation(builder.toString());
+	}
+
   public static FieldValidation genEqualsPosFormula2(String fieldFormula, String refPosCode, String msgError) {
     return genEqualsPosFormula2(fieldFormula, 0, refPosCode, msgError);
   }
+
+	public static FieldValidation genEqualsPosFormulaFixedValue(String fieldFormula, String refPosCode, String fixedValue) {
+		return genEqualsPosFormulaFixedValue(fieldFormula, fixedValue, refPosCode,0);
+	}
 
 	/**
 	 * @deprecated
