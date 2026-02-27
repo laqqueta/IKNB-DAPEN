@@ -128,22 +128,17 @@ public class ValidationPreHeaderLktb extends BaseValidationPreHeader {
 
 
     protected boolean validatePart7() {
-        String[] part = getPart(8).split("\\s");
+        String part = getPart(8);
 
-        if (part.length > 1) {
-            String jenisProgram = part[1];
-            String code = JenisProgramState.selectedKey;
-            boolean res = jenisProgram.equals(code);
-            if (!res) {
-                JenisProgramState.validationState.setValue(false);
-                result.errors.add(new ValidationError(null, ValidationErrorCode.E03_30_JENIS_PROGRAM, jenisProgram, JenisProgramState.selectedValue));
-            }
-
-            return res;
+        String code = JenisProgramState.selectedKey.replaceAll("[^A-Za-z]", "");
+        boolean res = part.equals(code);
+        if (!res) {
+            JenisProgramState.validationState.setValue(false);
+            result.errors.add(new ValidationError(null, ValidationErrorCode.E03_30_JENIS_PROGRAM, part, JenisProgramState.selectedValue));
         }
 
-        result.errors.add(new ValidationError(null, ValidationErrorCode.E03_31_JENIS_PROGRAM_NOT_EXISTS, part[0]));
-        return false;
+        return res;
+
     }
 
     protected String getPart(int idx) {
