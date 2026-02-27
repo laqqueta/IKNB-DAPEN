@@ -8,6 +8,10 @@ import id.go.ojk.lib.client.model.Tupple2;
 import id.go.ojk.lib.client.model.constant.RequiredCondition;
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.Arrays;
+import java.util.List;
+
+import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.N;
 
 /**
@@ -40,6 +44,10 @@ public class HasValueConditional extends BaseConditional {
 	@Override
 	public Tupple2<RequiredCondition, String> analizeRequiredCondition(SubmissionFormat submissionFormat,
 			ValidationResult validationResult) {
+
+		if (exceptPos != null && hasExceptPosCode(validationResult))
+			return Tupple2.<RequiredCondition, String>builder().a(M).b("").build();
+
 		RequiredCondition result = trueCondition;
 		String[] arrComparatorField = StringUtils.split(comparatorField, "|");
 		String kolom = "";
@@ -65,5 +73,11 @@ public class HasValueConditional extends BaseConditional {
 			}
 		}
 		return Tupple2.<RequiredCondition, String>builder().a(result).b(message).build();
+	}
+
+	private boolean hasExceptPosCode(ValidationResult validationResult) {
+		String value = validationResult.getColumn(1);
+		List<String> list = Arrays.asList(StringUtils.split(exceptPos, "|"));
+		return StringUtils.isNotEmpty(value) && list.contains(value);
 	}
 }
