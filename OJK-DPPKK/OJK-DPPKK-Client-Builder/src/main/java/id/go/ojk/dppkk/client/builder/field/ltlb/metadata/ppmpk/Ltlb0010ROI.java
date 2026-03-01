@@ -31,7 +31,8 @@ public class Ltlb0010ROI extends BaseMetadata {
         res.setSavePos(ER7009PosLtlbDppkRoi.genFieldSave());
         res.setRequiredPos(ER7009PosLtlbDppkRoi.getRequiredPos());
 
-        res.addSegmentValidations(ER7009PosLtlbDppkRoi.genValidationSumPosColEqual());
+//        res.addSegmentValidations(ER7009PosLtlbDppkRoi.genValidationSumPosColEqual());
+        res.addSegmentValidations(ER7009PosLtlbDppkRoi.genGeoMean());
 
         List<SubmissionField> fs = res.getFields();
 

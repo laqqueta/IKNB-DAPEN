@@ -1282,4 +1282,18 @@ public class UtilSegmentValidation {
         builder.append("&conditionError=" + conditionError);
         return new TotalSumIfsFormValidation(builder.toString());
     }
+
+    public static SegmentValidation genGeoMeanInvestasi(String selectField, String selectPosCode,
+                                                        String comparatorForm, String comparatorRow, String comparatorField,
+                                                        String msgError, String msgErrorRow) {
+
+        StringBuilder builder = new StringBuilder("selectField=" + selectField);
+        builder.append("&selectPosCode=" + selectPosCode);
+        builder.append("&comparatorForm=" + comparatorForm);
+        builder.append("&comparatorRow=" + comparatorRow);
+        builder.append("&comparatorField=" + comparatorField);
+        builder.append("&msgError=" + msgError);
+        builder.append("&msgErrorRow=" + msgErrorRow);
+        return new GeoMeanInvestasiFormValidation(builder.toString());
+    }
 }

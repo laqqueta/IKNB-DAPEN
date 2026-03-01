@@ -5,6 +5,7 @@ import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
 import id.go.ojk.conf.client.UtilFieldValidation;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
+import id.go.ojk.dppkk.client.builder.field.EFormLaporanTahunanLaporanBulanan;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
 import lombok.AccessLevel;
@@ -70,16 +71,19 @@ public enum ER7009PosLtlbDppkRoi implements IObject<KeyValueString> {
     }
 
     public static FieldValidation genFieldValidation1() {
-        return UtilFieldValidation.genEqualsFormula(UtilMetadata.genPlusColumn(2, 8) + " - 9");
+        return UtilFieldValidation.genEqualsFormula(UtilMetadata.genPlusColumn(2, 7) + "-8");
     }
 
     public static FieldValidation genFieldValidation2() {
         return UtilFieldValidation.genEqualsExceptPosFormula("9/10", R_ROI2100000000.key);
     }
 
-    public static SegmentValidation genValidationSumPosColEqual() {
-        return UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPlusColumn(new int[] { 2, 3, 4, 5, 6, 7, 8, 10, 11}), R_ROI2100000000.key,
-                UtilMetadata.genPlusRow(getObjects(), 0, 19),
-                UtilMetadata.genMessage(R_ROI2100000000.value, UtilMetadata.genPlusRow(getObjects(), 0, 19)));
+    public static SegmentValidation genGeoMean() {
+        String errMsg = UtilMetadata.genDelimitedColumn(2, 13, "*") + "|3|14|" + "REKINV kode baris ";
+        String formRow = UtilMetadata.genPipeRow(ER7008PosLtlbDppkRekinv.getObjects(), 0, 19);
+
+        return UtilSegmentValidation.genGeoMeanInvestasi("10", UtilMetadata.genPipeRow(getObjects(), 0, 19),
+                EFormLaporanTahunanLaporanBulanan.LTLB_REKINV.getCode(), formRow,
+                UtilMetadata.genPipeColumn(2, 13), errMsg, formRow);
     }
 }
