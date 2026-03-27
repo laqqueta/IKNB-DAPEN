@@ -10,12 +10,12 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ER1249SegmenPeserta implements IObject<KeyValueString> {
-  R1 ("1.1", "Pekerja Penerima Upah, Penyelenggara Negara"),
-  R2 ("1.2", "Pekerja Penerima Upah, Pegawai Swasta/Badan Usaha Milik Negara"),
-  R3 ("1.3", "Pekerja Penerima Upah, Pekerja Lain"),
-  R4 ("2.1", "Pekerja Bukan Penerima Upah, Pekerja Mandiri"),
-  R5 ("2.2", "Pekerja Bukan Penerima Upah, Pekerja Perorangan"),
-  R6 ("2.3", "Pekerja Bukan Penerima Upah, Pekerja Lain"),
+  R1 ("1.1", "Penyelenggara Negara Pekerja Penerima Upah"),
+  R2 ("1.2", "Pegawai Swasta/Badan Usaha Milik Negara Pekerja Penerima Upah"),
+  R3 ("1.3", "Pekerja Lain Pekerja Penerima Upah"),
+  R4 ("2.1", "Pekerja Mandiri Pekerja Bukan Penerima Upah"),
+  R5 ("2.2", "Pekerja Perorangan Pekerja Bukan Penerima Upah"),
+  R6 ("2.3", "Pekerja Lain Pekerja Bukan Penerima Upah"),
   R7 ("3", "Pekerja Jasa Konstruksi"),
   ;
 
