@@ -90,7 +90,7 @@ public enum ER5301LPK implements IObject<KeyValueString> {
   LPK0604000000("LPK0604000000", "Saldo Penghasilan (Beban) Neto"),
   LPK0605000000("LPK0605000000", "Komponen Ekuitas Lainnya"),
   LPK0606000000("LPK0606000000", "Keuntungan ( Kerugian ) Aktuaria"),
-  LPK0607000000("LPK0607000000", "Saldo Penyesuaian Nilai Wajar Aset Keuangan Tersedia Untuk Dijual"),
+  LPK0607000000("LPK0607000000", "Saldo Penyesuaian Nilai Wajar Aset Keuangan FVOCI"),
   LPK0608000000("LPK0608000000", "Saldo Selisih Transaksi Dengan Pihak Nonpengendali"),
   LPK0609000000("LPK0609000000", "Saldo Bagian Penghasilan Komprehensif Lain Entitas Asosiasi"),
   LPK0610000000("LPK0610000000", "Cadangan Umum PT Bijak"),
