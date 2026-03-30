@@ -233,47 +233,47 @@ public enum ER6105RKPIU implements IObject<KeyValueString> {
   }
 
   public static SegmentValidation genValidationFormKelompokUsahaA() {
-    return UtilSegmentValidation.genEqualsForm("2", RKPIU0301000000.key, RKPST, "16",
+    return UtilSegmentValidation.genEqualsForm("6", RKPIU0301000000.key, RKPST, "16",
         ER5901RKPST.RKPST0200000000.getKey());
   }
 
   public static SegmentValidation genValidationFormKelompokUsahaB() {
-    return UtilSegmentValidation.genEqualsForm("2", RKPIU0302000000.key, RKPST, "17",
+    return UtilSegmentValidation.genEqualsForm("6", RKPIU0302000000.key, RKPST, "17",
         ER5901RKPST.RKPST0200000000.getKey());
   }
 
   public static SegmentValidation genValidationFormKelompokUsahaC() {
-    return UtilSegmentValidation.genEqualsForm("2", RKPIU0303000000.key, RKPST, "18",
+    return UtilSegmentValidation.genEqualsForm("6", RKPIU0303000000.key, RKPST, "18",
         ER5901RKPST.RKPST0200000000.getKey());
   }
 
   public static SegmentValidation genValidationFormKelompokUsahaD() {
-    return UtilSegmentValidation.genEqualsForm("2", RKPIU0304000000.key, RKPST, "19",
+    return UtilSegmentValidation.genEqualsForm("6", RKPIU0304000000.key, RKPST, "19",
         ER5901RKPST.RKPST0200000000.getKey());
   }
 
   public static SegmentValidation genValidationFormKelompokUsahaE() {
-    return UtilSegmentValidation.genEqualsForm("2", RKPIU0305000000.key, RKPST, "20",
+    return UtilSegmentValidation.genEqualsForm("6", RKPIU0305000000.key, RKPST, "20",
         ER5901RKPST.RKPST0200000000.getKey());
   }
 
   public static SegmentValidation genValidationFormKelompokUsahaF() {
-    return UtilSegmentValidation.genEqualsForm("2", RKPIU0306000000.key, RKPST, "21",
+    return UtilSegmentValidation.genEqualsForm("6", RKPIU0306000000.key, RKPST, "21",
         ER5901RKPST.RKPST0200000000.getKey());
   }
 
   public static SegmentValidation genValidationFormKelompokUsahaG() {
-    return UtilSegmentValidation.genEqualsForm("2", RKPIU0307000000.key, RKPST, "22",
+    return UtilSegmentValidation.genEqualsForm("6", RKPIU0307000000.key, RKPST, "22",
         ER5901RKPST.RKPST0200000000.getKey());
   }
 
   public static SegmentValidation genValidationFormKelompokUsahaH() {
-    return UtilSegmentValidation.genEqualsForm("2", RKPIU0308000000.key, RKPST, "23",
+    return UtilSegmentValidation.genEqualsForm("6", RKPIU0308000000.key, RKPST, "23",
         ER5901RKPST.RKPST0200000000.getKey());
   }
 
   public static SegmentValidation genValidationFormKelompokUsahaI() {
-    return UtilSegmentValidation.genEqualsForm("2", RKPIU0309000000.key, RKPST, "24",
+    return UtilSegmentValidation.genEqualsForm("6", RKPIU0309000000.key, RKPST, "24",
         ER5901RKPST.RKPST0200000000.getKey());
   }
 
