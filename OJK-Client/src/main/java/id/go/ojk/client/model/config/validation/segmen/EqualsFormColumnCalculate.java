@@ -13,6 +13,7 @@ import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.validation.UtilValidation;
 import id.go.ojk.client.model.validation.ValidationError;
 import id.go.ojk.client.model.validation.ValidationResult;
+import id.go.ojk.lib.client.constant.ESymbolMap;
 import id.go.ojk.lib.client.model.validation.ValidationErrorCode;
 import lombok.extern.slf4j.Slf4j;
 
@@ -36,7 +37,7 @@ public class EqualsFormColumnCalculate extends BaseDecimalValidation {
 		super.initialized();
 		comparatorColumn = getStringParameter("comparatorColumn");
 		comparatorRowCode = getStringParameter("comparatorRowCode");
-		message = getStringParameter("message");
+		message = ESymbolMap.decode(getStringParameter("message"));
 		return this;
 	}
 	
