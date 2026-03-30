@@ -53,6 +53,10 @@ public enum ER7028PosLtlbDppkShm implements IObject<KeyValueString> {
         return UtilMetadata.genPipeRow(getObjects(), new int[] { 1 });
     }
 
+    public static String getFieldFormSave() {
+        return UtilMetadata.genFieldSave("6|11", getObjects());
+    }
+
     public static ConditionalRequired genConditionForTotal() {
         return UtilFieldConditional.genExistPos("N", "M", R_SHM000000.key);
     }

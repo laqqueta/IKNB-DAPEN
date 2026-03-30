@@ -1,10 +1,11 @@
-package id.go.ojk.client.model.config.validation.segmen;
+package id.go.ojk.client.model.config.validation.segmen.v2;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import id.go.ojk.client.model.bind.ProgressPreparationAndSending.SubmissionData;
 import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.validation.UtilValidation;
+import id.go.ojk.client.model.config.validation.segmen.v2.base.BaseDecimalValidation;
 import id.go.ojk.client.model.validation.ValidationError;
 import id.go.ojk.client.model.validation.ValidationResult;
 import id.go.ojk.lib.client.model.validation.ValidationErrorCode;
@@ -14,6 +15,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
+import java.util.Map;
 
 @XStreamAlias("EqualsRatioFormDapenValidation")
 @Slf4j
@@ -46,7 +48,8 @@ public class EqualsInvestasiRatioValidation extends BaseDecimalValidation {
 	}
 
 	private BigDecimal getComparator2Value(String column) {
-		return UtilValidation.calculateColumn(SubmissionFormat.mapPosValueForm, comparator2Form + comparator2RowCode, column, scale);
+		Map<String, Map<String, String>> formValues = SubmissionFormat.getFormValues(comparator2Form + comparator2RowCode, Character.MAX_VALUE);
+		return UtilValidation.calculateColumn(formValues, comparator2Form + comparator2RowCode, column, scale);
 	}
 
 	private BigDecimal getComparatorValue(BigDecimal value1) {
@@ -70,8 +73,8 @@ public class EqualsInvestasiRatioValidation extends BaseDecimalValidation {
 			for (int i = 0; i < arrColumn.length; i++) {
 				String column = arrColumn[i];
 				BigDecimal divVal = getCurrentValue(validationResult, fieldRow1);
-				BigDecimal currentValue = getCurrentValue(validationResult, column);
 				BigDecimal comparatorValue = getComparatorValue(divVal);
+				BigDecimal currentValue = getCurrentValue(validationResult, column);
 				if (currentValue.compareTo(comparatorValue) != 0) {
 					log.error("{}->{}?{}", parameter, currentValue, comparatorValue);
 					List<SubmissionField> fields = submissionFormat.getFields();

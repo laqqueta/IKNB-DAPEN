@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import id.go.ojk.dppkk.client.builder.constant.JenisProgram;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
@@ -17,7 +18,7 @@ public enum EHeaderMetadataPpmpk implements IObject<ReferenceMetadata> {
     R7000Dtum(ER7000PosLtlbDppkDtum.getRefNumber(), ER7000PosLtlbDppkDtum.getName(), ER7000PosLtlbDppkDtum.getObjects()),
     R7001Lan(ER7001PosLtlbDppkLan.getRefNumber(), ER7001PosLtlbDppkLan.getName(), ER7001PosLtlbDppkLan.getObjects()),
     R7002Lpan(ER7002PosLtlbDppkLpan.getRefNumber(), ER7002PosLtlbDppkLpan.getName(), ER7002PosLtlbDppkLpan.getObjects()),
-    R7003Nrc(ER7003PosLtlbDppkNrc.getRefNumber(), ER7003PosLtlbDppkNrc.getName(), ER7003PosLtlbDppkNrc.getObjects()),
+    R7003Nrc(ER7003PosLtlbDppkNrc.getRefNumber(), ER7003PosLtlbDppkNrc.getName(), ER7003PosLtlbDppkNrc.getObjects(JenisProgram.PPMPK)),
     R7004Lphu(ER7004PosLtlbDppkLphu.getRefNumber(), ER7004PosLtlbDppkLphu.getName(), ER7004PosLtlbDppkLphu.getObjects()),
     R7005Lak(ER7005PosLtlbDppkLak.getRefNumber(), ER7005PosLtlbDppkLak.getName(), ER7005PosLtlbDppkLak.getObjects()),
     R7006Pst(ER7006PosLtlbDppkPst.getRefNumber(), ER7006PosLtlbDppkPst.getName(), ER7006PosLtlbDppkPst.getObjects()),

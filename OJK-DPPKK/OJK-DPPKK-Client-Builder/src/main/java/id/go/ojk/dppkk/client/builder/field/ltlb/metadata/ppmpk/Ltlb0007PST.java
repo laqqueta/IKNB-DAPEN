@@ -32,7 +32,7 @@ public class Ltlb0007PST extends BaseMetadata {
         res.setSavePos(ER7006PosLtlbDppkPst.genFieldSave());
         res.setRequiredPos(ER7006PosLtlbDppkPst.getRequiredPos());
 
-        res.addSegmentValidations(ER7006PosLtlbDppkPst.genValidationSumPosColEqual());
+        ER7006PosLtlbDppkPst.SEGMENT_VALIDATIONS.forEach(res::addSegmentValidations);
 
         List<SubmissionField> fs = res.getFields();
 

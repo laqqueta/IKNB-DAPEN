@@ -52,6 +52,10 @@ public enum ER7040PosLtlbDppkProp implements IObject<KeyValueString> {
         return UtilMetadata.genPipeRow(getObjects(), new int[] { 1 });
     }
 
+    public static String getFieldFormSave() {
+        return UtilMetadata.genFieldSave("2|8|17", getObjects());
+    }
+
     public static ConditionalRequired genConditionForTotal() {
         return UtilFieldConditional.genExistPos("N", "M", R_PROP000000.key);
     }

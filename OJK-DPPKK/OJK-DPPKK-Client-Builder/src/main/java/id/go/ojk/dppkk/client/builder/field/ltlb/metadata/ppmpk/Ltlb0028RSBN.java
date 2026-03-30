@@ -31,6 +31,7 @@ public class Ltlb0028RSBN extends BaseMetadata {
 
         res.setSavePos(ER7027PosLtlbDppkRsbn.genFieldSave());
         res.setRequiredPos(ER7027PosLtlbDppkRsbn.getRequiredPos());
+        res.setSavePosForm(ER7027PosLtlbDppkRsbn.getFieldFormSave());
 
         res.addSegmentValidations(ER7027PosLtlbDppkRsbn.genValidation());
 

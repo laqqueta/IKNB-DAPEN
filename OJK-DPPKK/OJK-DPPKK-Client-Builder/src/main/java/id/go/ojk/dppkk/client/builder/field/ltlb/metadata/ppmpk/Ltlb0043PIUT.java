@@ -7,14 +7,14 @@ import id.go.ojk.conf.client.BaseMetadata;
 import id.go.ojk.dppkk.client.builder.field.EFormLaporanTahunanLaporanBulanan;
 import id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk.EHeaderMetadataPpmpk;
 import id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk.ER7042PosLtlbDppkPiut;
-import id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk.ER7046PosLtlbDppkPihi;
 import id.go.ojk.dppkk.client.builder.field.reference.EHeaderMetadataShared;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static id.go.ojk.lib.client.model.config.DataType.*;
-import static id.go.ojk.lib.client.model.constant.RequiredCondition.*;
+import static id.go.ojk.lib.client.model.constant.RequiredCondition.C;
+import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
 
 public class Ltlb0043PIUT extends BaseMetadata {
 
@@ -31,6 +31,7 @@ public class Ltlb0043PIUT extends BaseMetadata {
 
         res.setSavePos(ER7042PosLtlbDppkPiut.genFieldSave());
         res.setRequiredPos(ER7042PosLtlbDppkPiut.getRequiredPos());
+        res.setSavePosForm(ER7042PosLtlbDppkPiut.getFieldFormSave());
 
         res.addSegmentValidations(ER7042PosLtlbDppkPiut.genValidation());
 

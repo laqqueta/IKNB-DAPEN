@@ -53,6 +53,10 @@ public enum ER7031PosLtlbDppkObsud implements IObject<KeyValueString> {
         return UtilMetadata.genPipeRow(getObjects(), new int[] { 1 });
     }
 
+    public static String getFieldFormSave() {
+        return UtilMetadata.genFieldSave("11|16", getObjects());
+    }
+
     public static ConditionalRequired genConditionForTotal() {
         return UtilFieldConditional.genExistPos("N", "M", R_OBSUD000000.key);
     }

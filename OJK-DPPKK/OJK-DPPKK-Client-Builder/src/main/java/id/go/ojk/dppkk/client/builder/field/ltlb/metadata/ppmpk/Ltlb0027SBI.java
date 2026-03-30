@@ -31,6 +31,7 @@ public class Ltlb0027SBI extends BaseMetadata {
 
         res.setSavePos(ER7026PosLtlbDppkSbi.genFieldSave());
         res.setRequiredPos(ER7026PosLtlbDppkSbi.getRequiredPos());
+        res.setSavePosForm(ER7026PosLtlbDppkSbi.getFieldFormSave());
 
         res.addSegmentValidations(ER7026PosLtlbDppkSbi.genValidation());
 

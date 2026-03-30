@@ -31,6 +31,7 @@ public class Ltlb0039REPO extends BaseMetadata {
 
         res.setSavePos(ER7038PosLtlbDppkRepo.genFieldSave());
         res.setRequiredPos(ER7038PosLtlbDppkRepo.getRequiredPos());
+        res.setSavePosForm(ER7038PosLtlbDppkRepo.getFieldFormSave());
 
         res.addSegmentValidations(ER7038PosLtlbDppkRepo.genValidation());
 

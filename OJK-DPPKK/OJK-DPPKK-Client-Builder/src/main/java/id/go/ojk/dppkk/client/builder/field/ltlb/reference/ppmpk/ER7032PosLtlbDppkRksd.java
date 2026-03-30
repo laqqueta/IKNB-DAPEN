@@ -53,6 +53,10 @@ public enum ER7032PosLtlbDppkRksd implements IObject<KeyValueString> {
         return UtilMetadata.genPipeRow(getObjects(), new int[] { 1 });
     }
 
+    public static String getFieldFormSave() {
+        return UtilMetadata.genFieldSave("8|12", getObjects());
+    }
+
     public static ConditionalRequired genConditionForTotal() {
         return UtilFieldConditional.genExistPos("N", "M", R_RKSD000000.key);
     }

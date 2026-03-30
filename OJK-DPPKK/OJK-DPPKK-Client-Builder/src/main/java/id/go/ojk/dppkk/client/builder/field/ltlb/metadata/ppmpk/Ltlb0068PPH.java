@@ -33,6 +33,7 @@ public class Ltlb0068PPH extends BaseMetadata {
 
         res.setSavePos(ER7067PosLtlbDppkPph.genFieldSave());
         res.setRequiredPos(ER7067PosLtlbDppkPph.getRequiredPos());
+        res.setSavePosForm(ER7067PosLtlbDppkPph.genFormFieldSave());
 
         res.addSegmentValidations(ER7067PosLtlbDppkPph.genValidation());
 

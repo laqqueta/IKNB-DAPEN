@@ -31,6 +31,7 @@ public class Ltlb0024DPJKA extends BaseMetadata {
 
         res.setSavePos(ER7023PosLtlbDppkDpjka.genFieldSave());
         res.setRequiredPos(ER7023PosLtlbDppkDpjka.getRequiredPos());
+        res.setSavePosForm(ER7023PosLtlbDppkDpjka.genFieldFormSave());
 
         res.addSegmentValidations(ER7023PosLtlbDppkDpjka.genValidation());
 

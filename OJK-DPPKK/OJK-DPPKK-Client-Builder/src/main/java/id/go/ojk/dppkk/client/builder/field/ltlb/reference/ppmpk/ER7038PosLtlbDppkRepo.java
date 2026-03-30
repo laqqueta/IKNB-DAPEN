@@ -53,6 +53,10 @@ public enum ER7038PosLtlbDppkRepo implements IObject<KeyValueString> {
         return UtilMetadata.genPipeRow(getObjects(), new int[] { 1 });
     }
 
+    public static String getFieldFormSave() {
+        return UtilMetadata.genFieldSave("10|17", getObjects());
+    }
+
     public static ConditionalRequired genConditionForTotal() {
         return UtilFieldConditional.genExistPos("N", "M", R_REPO000000.key);
     }

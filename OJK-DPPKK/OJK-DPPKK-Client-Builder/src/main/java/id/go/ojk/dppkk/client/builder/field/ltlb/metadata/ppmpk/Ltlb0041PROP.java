@@ -31,6 +31,7 @@ public class Ltlb0041PROP extends BaseMetadata {
 
         res.setSavePos(ER7040PosLtlbDppkProp.genFieldSave());
         res.setRequiredPos(ER7040PosLtlbDppkProp.getRequiredPos());
+        res.setSavePosForm(ER7040PosLtlbDppkProp.getFieldFormSave());
 
         res.addSegmentValidations(ER7040PosLtlbDppkProp.genValidation());
 

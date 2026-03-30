@@ -1,9 +1,10 @@
-package id.go.ojk.client.model.config.validation.segmen;
+package id.go.ojk.client.model.config.validation.segmen.v2;
 
 import id.go.ojk.client.model.bind.ProgressPreparationAndSending.SubmissionData;
 import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.validation.UtilValidation;
+import id.go.ojk.client.model.config.validation.segmen.v2.base.BaseRowValidation;
 import id.go.ojk.client.model.validation.ValidationError;
 import id.go.ojk.client.model.validation.ValidationResult;
 import id.go.ojk.lib.client.model.validation.ValidationErrorCode;
@@ -28,9 +29,6 @@ public class GeoMeanInvestasiFormValidation extends BaseRowValidation {
     private String msgErrorRow;
 
     private static final Logger logger = LoggerFactory.getLogger(GeoMeanInvestasiFormValidation.class);
-
-    public GeoMeanInvestasiFormValidation() {
-    }
 
     public GeoMeanInvestasiFormValidation(String parameter) {
         super(parameter);
@@ -59,8 +57,8 @@ public class GeoMeanInvestasiFormValidation extends BaseRowValidation {
             String[] fields = StringUtils.split(selectField, "|");
             String[] comparatorRows = StringUtils.split(comparatorRow, "|");
             String[] errorRows = StringUtils.split(msgErrorRow, "|");
-
             int formRowIndex = selectRowCodes.indexOf(currentRowCode);
+
             for (String idxField : fields) {
                 BigDecimal selectValue = getCurrentValue(validationResult, idxField);
                 BigDecimal formComparatorValue = calculateGeoMean(comparatorRows[formRowIndex]);
@@ -71,7 +69,7 @@ public class GeoMeanInvestasiFormValidation extends BaseRowValidation {
                     SubmissionField submissionField = subsFields.get(Integer.parseInt(idxField));
                     logger.error("{}>{}?{}", parameter, selectValue, formComparatorValue);
                     validationResult.errors.add(new ValidationError(submissionField,
-                            ValidationErrorCode.E50_21_FORMULA_GEOMEAN,
+                            ValidationErrorCode.E50_22_FORMULA_GEOMEAN,
                             getComparatorMsg(msgErrors[0]), msgErrors[1], msgErrors[2], msgErrors[3] + errorRows[formRowIndex]));
                 }
             }
@@ -83,27 +81,24 @@ public class GeoMeanInvestasiFormValidation extends BaseRowValidation {
         BigDecimal p = BigDecimal.ONE;
         long positiveCount = 0;
 
-        for (Map.Entry<String, Map<String, String>> entry : SubmissionFormat.mapPosValueForm.entrySet()) {
-            if (!entry.getKey().startsWith(comparatorForm + comparatorFormRow)) continue; // check if its the required form
+        String prefix = comparatorForm + comparatorFormRow.split("-")[0];
+        Map<String, String> formData = SubmissionFormat.getFormValue(prefix);
 
-            Map<String, String> formVals = entry.getValue();
+        if (formData.isEmpty()) return BigDecimal.ZERO;
 
-            for(String field : comparatorFields) {
-                if (!formVals.containsKey(field)) return BigDecimal.ZERO;
-                if (!isValidInteger(formVals.get(field))) return BigDecimal.ZERO;
+        for(String field : comparatorFields) {
+            if (!formData.containsKey(field)) return BigDecimal.ZERO;
+            if (isInvalidNumeric(formData.get(field))) return BigDecimal.ZERO;
 
-                boolean isNegative = false;
-                BigDecimal value = BigDecimal.valueOf(Long.parseLong(formVals.get(field)));
+            boolean isNegative = false;
+            BigDecimal value = BigDecimal.valueOf(Long.parseLong(formData.get(field)));
 
-                if (value.compareTo(BigDecimal.ZERO) < 0 | value.compareTo(BigDecimal.ZERO) == 0) isNegative = true;
+            if (value.compareTo(BigDecimal.ZERO) < 0 | value.compareTo(BigDecimal.ZERO) == 0) isNegative = true;
 
-                if (!isNegative) positiveCount++;
-                else value = BigDecimal.ONE;
+            if (!isNegative) positiveCount++;
+            else value = BigDecimal.ONE;
 
-                p = p.multiply(value);
-            }
-
-            break;
+            p = p.multiply(value);
         }
 
         BigDecimal exponent = BigDecimal.ONE.divide(
@@ -117,43 +112,25 @@ public class GeoMeanInvestasiFormValidation extends BaseRowValidation {
                 .setScale(2, RoundingMode.CEILING);
     }
 
-    private boolean isValidInteger(String s) {
-        if (s == null) return false;
-
-        int len = s.length();
-        if (len == 0) return false;
-
-        int i = 0;
-
-        for (; i < len; i++) {
-            char c = s.charAt(i);
-            if (c < '0' || c > '9') {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
     private BigDecimal getCurrentValue(ValidationResult validationResult, String idxField) {
         return UtilValidation.toBigDecimal(validationResult.getColumn(Integer.parseInt(idxField)))
                 .setScale(2, RoundingMode.HALF_UP);
     }
 
     private String getComparatorMsg(String comparatorFormula) {
-        String res = "";
+        StringBuilder res = new StringBuilder();
         String[] formulaSplit = comparatorFormula.split("(?<=[-+/*])|(?=[-+/*])");
         int len = formulaSplit.length;
         for (int i = 0; i < len; i++) {
             String str = String.valueOf(formulaSplit[i]);
             String tmp = "";
             if (StringUtils.isNumeric(str)) {
-                tmp = " kolom " + String.valueOf(Integer.parseInt(str) + 1);
+                tmp = " kolom " + (Integer.parseInt(str) + 1);
             } else if (i + 1 < len) {
                 tmp = " " + str;
             }
-            res += tmp;
+            res.append(tmp);
         }
-        return res;
+        return res.toString();
     }
 }

@@ -31,6 +31,7 @@ public class Ltlb0032OBSUD extends BaseMetadata {
 
         res.setSavePos(ER7031PosLtlbDppkObsud.genFieldSave());
         res.setRequiredPos(ER7031PosLtlbDppkObsud.getRequiredPos());
+        res.setSavePosForm(ER7031PosLtlbDppkObsud.getFieldFormSave());
 
         res.addSegmentValidations(ER7031PosLtlbDppkObsud.genValidation());
 

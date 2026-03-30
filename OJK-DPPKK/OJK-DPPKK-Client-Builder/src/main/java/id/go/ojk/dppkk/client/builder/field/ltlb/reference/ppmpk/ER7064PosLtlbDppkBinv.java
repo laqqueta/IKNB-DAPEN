@@ -50,6 +50,10 @@ public enum ER7064PosLtlbDppkBinv implements IObject<KeyValueString> {
         return UtilMetadata.genPipeRow(getObjects(), new int[] { 1 });
     }
 
+    public static String genFieldFormSave() {
+        return UtilMetadata.genFieldSave("2|3|4", getObjects());
+    }
+
     public static ConditionalRequired genConditionForTotal() {
         return UtilFieldConditional.genExistPos("N", "M", R_BINV000000.key);
     }

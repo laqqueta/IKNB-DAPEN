@@ -33,6 +33,7 @@ public class Ltlb0067BIPR extends BaseMetadata {
 
         res.setSavePos(ER7066PosLtlbDppkBipr.genFieldSave());
         res.setRequiredPos(ER7066PosLtlbDppkBipr.getRequiredPos());
+        res.setSavePosForm(ER7066PosLtlbDppkBipr.genFormFieldSave());
 
         res.addSegmentValidations(ER7066PosLtlbDppkBipr.genValidation());
 

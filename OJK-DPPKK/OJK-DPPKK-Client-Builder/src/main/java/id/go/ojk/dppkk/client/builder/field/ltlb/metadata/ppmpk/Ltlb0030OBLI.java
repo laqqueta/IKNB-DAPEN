@@ -31,6 +31,7 @@ public class Ltlb0030OBLI extends BaseMetadata {
 
         res.setSavePos(ER7029PosLtlbDppkObli.genFieldSave());
         res.setRequiredPos(ER7029PosLtlbDppkObli.getRequiredPos());
+        res.setSavePosForm(ER7029PosLtlbDppkObli.getFieldFormSave());
 
         res.addSegmentValidations(ER7029PosLtlbDppkObli.genValidation());
 

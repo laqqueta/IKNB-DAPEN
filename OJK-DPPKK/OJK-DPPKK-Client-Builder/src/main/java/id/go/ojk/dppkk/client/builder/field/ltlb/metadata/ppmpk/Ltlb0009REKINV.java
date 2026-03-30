@@ -30,6 +30,7 @@ public class Ltlb0009REKINV extends BaseMetadata {
 
         res.setSavePos(ER7008PosLtlbDppkRekinv.genFieldSave());
         res.setRequiredPos(ER7008PosLtlbDppkRekinv.getRequiredPos());
+        res.setSavePosForm(ER7008PosLtlbDppkRekinv.genFieldFormSave());
 
         res.addSegmentValidations(ER7008PosLtlbDppkRekinv.genValidationSumPosColEqual());
 

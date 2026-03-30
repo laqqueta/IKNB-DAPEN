@@ -30,6 +30,7 @@ public class Ltlb0036DIRE extends BaseMetadata {
 
         res.setSavePos(ER7035PosLtlbDppkDire.genFieldSave());
         res.setRequiredPos(ER7035PosLtlbDppkDire.getRequiredPos());
+        res.setSavePosForm(ER7035PosLtlbDppkDire.getFieldFormSave());
 
         res.addSegmentValidations(ER7035PosLtlbDppkDire.genValidation());
 

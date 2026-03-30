@@ -31,6 +31,7 @@ public class Ltlb0038KOKB extends BaseMetadata {
 
         res.setSavePos(ER7037PosLtlbDppkKokb.genFieldSave());
         res.setRequiredPos(ER7037PosLtlbDppkKokb.getRequiredPos());
+        res.setSavePosForm(ER7037PosLtlbDppkKokb.getFieldFormSave());
 
         res.addSegmentValidations(ER7037PosLtlbDppkKokb.genValidation());
 

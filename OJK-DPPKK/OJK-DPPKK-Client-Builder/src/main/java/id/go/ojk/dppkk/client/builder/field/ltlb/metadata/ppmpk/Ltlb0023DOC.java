@@ -31,6 +31,7 @@ public class Ltlb0023DOC extends BaseMetadata {
 
         res.setSavePos(ER7022PosLtlbDppkDoc.genFieldSave());
         res.setRequiredPos(ER7022PosLtlbDppkDoc.getRequiredPos());
+        res.setSavePosForm(ER7022PosLtlbDppkDoc.getFieldFormSave());
 
         res.addSegmentValidations(ER7022PosLtlbDppkDoc.genValidation());
 

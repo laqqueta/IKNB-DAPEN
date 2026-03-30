@@ -52,6 +52,7 @@ public class ValidationFileName1 extends BaseValidationFile<ValidFile> {
 				if (listError.isEmpty()) {
 					listFile.add(validFile);
 				} else {
+					System.out.println(files.get(i).getAbsolutePath() + " - " + files.get(i).getAbsoluteFile());
 					String error = "Nama File '" + validFile.getFullFileName() + "', kesalahan : \n\t"
 							+ listError.stream().collect(Collectors.joining("\n\t"));
 					logError(new ValidationError(null, ValidationErrorCode.E01_05_INVALID_FILE, error));

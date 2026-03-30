@@ -9,7 +9,7 @@ public enum EFormLaporanTahunanLaporanBulanan {
 	LTLB_DTUM("DTUM", "Form Data Umum"),
 	LTLB_LAN("LAN", "Form Laporan Aset Neto"),
 	LTLB_LPAN("LPAN", "Form Laporan Perubahan Aset Neto Murni"),
-	LTLB_NERACA("NERACA", "Form Neraca"),
+	LTLB_NERACA("NRC", "Form Neraca"),
 	LTLB_LPHU("LPHU", "Form Laporan Perhitungan Hasil Usaha"),
 	LTLB_LAK("LAK", "Form Laporan Arus Kas"),
 	LTLB_PST("PST", "Form Kepesertaan Dana Pensiun"),

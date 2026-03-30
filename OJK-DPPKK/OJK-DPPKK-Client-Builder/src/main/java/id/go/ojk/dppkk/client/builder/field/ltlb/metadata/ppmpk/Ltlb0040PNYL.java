@@ -30,6 +30,7 @@ public class Ltlb0040PNYL extends BaseMetadata {
 
         res.setSavePos(ER7039PosLtlbDppkPnyl.genFieldSave());
         res.setRequiredPos(ER7039PosLtlbDppkPnyl.getRequiredPos());
+        res.setSavePosForm(ER7039PosLtlbDppkPnyl.getFieldFormSave());
 
         res.addSegmentValidations(ER7039PosLtlbDppkPnyl.genValidation());
 

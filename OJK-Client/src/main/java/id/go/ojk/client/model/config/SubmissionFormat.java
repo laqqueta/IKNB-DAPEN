@@ -2,12 +2,7 @@ package id.go.ojk.client.model.config;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
 
 import org.apache.commons.lang3.StringUtils;
@@ -22,6 +17,7 @@ import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
 import id.go.ojk.lib.client.model.config.UniqueCombineField;
 import lombok.Getter;
 import lombok.Setter;
+import sun.reflect.generics.tree.Tree;
 
 @XStreamAlias("format")
 public class SubmissionFormat {
@@ -97,12 +93,14 @@ public class SubmissionFormat {
 	public static Map<String, Map<String, String>> mapPosValue = new HashMap<>();
 	public static Map<String, List<String>> mapPosValueLBBPRK = new HashMap<String, List<String>>();
 	public static Map<String, Map<String, String>> mapPosValueForm = new HashMap<>();
+	public static TreeMap<String, Map<String, String>> treeMapPosValueForm = new TreeMap<>();
 	public static Boolean tempOtherCondition;
 	private static String[] headers;
-  public static LocalDate reportPeriod;
+  	public static LocalDate reportPeriod;
 	private List<UniqueCombineField> uniqueCombineFields;
 	private List<ConditionalRequired> conditionalRequireds;
 	private List<SegmentValidation> segmentValidations = new ArrayList<>();
+
 
 	public SubmissionFormat() {
 	}
@@ -623,7 +621,32 @@ public class SubmissionFormat {
 	public static BigDecimal getSumMapPosFormValueFilterNotEquals(String pos, String field, String fieldFilter, String valueFilter) {
 		return getSumFilterNotEquals(SubmissionFormat.mapPosValueForm, pos, field, fieldFilter, valueFilter);
 	}
-	
+
+	public static Map<String, String> getFormValue(String prefix) {
+		Map<String, String> result = new HashMap<>();
+
+		Map.Entry<String, Map<String, String>> entry = treeMapPosValueForm.ceilingEntry(prefix);
+
+		if (entry != null && entry.getKey().startsWith(prefix)) {
+			result = entry.getValue();
+		}
+
+		return result;
+	}
+
+	public static String getFormValue(String prefix, String field) {
+        Map<String, String> result = getFormValue(prefix);
+
+		if (result != null) return result.get(field);
+
+		return null;
+	}
+
+	public static NavigableMap<String, Map<String, String>> getFormValues(String prefix, char ranges) {
+		return treeMapPosValueForm
+				.subMap(prefix, true, prefix + ranges, true);
+	}
+
 	public static String getMapPosValue(String pos, String field) {
 		String res = "";
 		Iterator<Entry<String, Map<String, String>>> iterator = SubmissionFormat.mapPosValue.entrySet().iterator();

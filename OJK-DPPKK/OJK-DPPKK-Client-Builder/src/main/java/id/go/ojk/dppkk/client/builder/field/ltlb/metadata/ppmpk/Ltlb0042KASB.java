@@ -52,7 +52,7 @@ public class Ltlb0042KASB extends BaseMetadata {
         fs.add(sf(3, null, "Kode Bank",
                 sv(C, 1, 6, refTable)
                         .confConditionalRequired(ER7041PosLtlbDppkKasb.genConditionForTotal())
-                        .confRegex(SimpleValidation.patternNumeric)
+                        .confRegex(SimpleValidation.patternAlfaNumeric)
                         .confReference(EHeaderMetadataShared.R011.getObject())));
 
         fs.add(sf(4, null, "Cabang",

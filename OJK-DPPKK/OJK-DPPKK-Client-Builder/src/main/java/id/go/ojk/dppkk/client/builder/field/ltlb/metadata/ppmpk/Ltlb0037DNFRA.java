@@ -31,6 +31,7 @@ public class Ltlb0037DNFRA extends BaseMetadata {
 
         res.setSavePos(ER7036PosLtlbDppkDnfra.genFieldSave());
         res.setRequiredPos(ER7036PosLtlbDppkDnfra.getRequiredPos());
+        res.setSavePosForm(ER7036PosLtlbDppkDnfra.getFieldFormSave());
 
         res.addSegmentValidations(ER7036PosLtlbDppkDnfra.genValidation());
 

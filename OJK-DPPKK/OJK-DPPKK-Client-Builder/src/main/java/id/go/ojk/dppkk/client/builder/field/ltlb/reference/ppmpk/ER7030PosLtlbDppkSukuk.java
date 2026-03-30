@@ -53,6 +53,11 @@ public enum ER7030PosLtlbDppkSukuk implements IObject<KeyValueString> {
         return UtilMetadata.genPipeRow(getObjects(), new int[] { 1 });
     }
 
+    public static String getFieldFormSave() {
+        return UtilMetadata.genFieldSave("11|16", getObjects());
+    }
+
+
     public static ConditionalRequired genConditionForTotal() {
         return UtilFieldConditional.genExistPos("N", "M", R_SUKUK000000.key);
     }

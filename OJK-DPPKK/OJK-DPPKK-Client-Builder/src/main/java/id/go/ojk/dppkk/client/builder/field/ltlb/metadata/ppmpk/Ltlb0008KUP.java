@@ -4,6 +4,7 @@ import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.conf.client.BaseMetadata;
 import id.go.ojk.dppkk.client.builder.field.EFormLaporanTahunanLaporanBulanan;
+import id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk.ER7007PosLtlbDppkKup;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,12 @@ public class Ltlb0008KUP extends BaseMetadata {
         EFormLaporanTahunanLaporanBulanan eNum = EFormLaporanTahunanLaporanBulanan.LTLB_KUP;
         SubmissionFormat res = new SubmissionFormat(eNum.getCode(), eNum.getName(), reportCode, new ArrayList<>(),
                 extension, 0, null);
+
+        res.setSavePos(ER7007PosLtlbDppkKup.genFieldSave());
+        res.setRequiredPos(ER7007PosLtlbDppkKup.getRequiredPos());
+        res.setSavePosForm(ER7007PosLtlbDppkKup.genFieldSave());
+
+        ER7007PosLtlbDppkKup.SEGMENT_VALIDATIONS.forEach(res::addSegmentValidations);
 
         List<SubmissionField> fs = res.getFields();
 

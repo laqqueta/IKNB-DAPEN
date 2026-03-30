@@ -9,6 +9,7 @@ import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ER1255JenisManfaat implements IObject<KeyValueString> {
@@ -66,17 +67,11 @@ public enum ER1255JenisManfaat implements IObject<KeyValueString> {
 	}
 
 	public static String getPipedReferenceKeys(String filter) {
-		List<String> keys = Arrays.stream(ER1255JenisManfaat.values())
-				.filter(k -> {
-					String[] filters = filter.split("\\|");
-                    for (String s : filters) {
-						if (k.key.equals(s)) {
-							return true;
-						}
-					}
+		List<String> filters = Arrays.stream(StringUtils.split(filter, "|"))
+				.collect(Collectors.toList());
 
-                    return false;
-                })
+		List<String> keys = Arrays.stream(ER1255JenisManfaat.values())
+				.filter(k -> filters.contains(k.key))
 				.map(k -> k.key + "|")
 				.collect(Collectors.toList());
 
@@ -88,17 +83,11 @@ public enum ER1255JenisManfaat implements IObject<KeyValueString> {
 	}
 
 	public static String getPipedReferenceKeyValues(String filter) {
-		List<String> keys = Arrays.stream(ER1255JenisManfaat.values())
-				.filter(k -> {
-					String[] filters = filter.split("\\|");
-					for (String s : filters) {
-						if (k.key.equals(s)) {
-							return true;
-						}
-					}
+		List<String> filters = Arrays.stream(StringUtils.split(filter, "|"))
+				.collect(Collectors.toList());
 
-					return false;
-				})
+		List<String> keys = Arrays.stream(ER1255JenisManfaat.values())
+				.filter(k -> filters.contains(k.key))
 				.map(k -> k.key + " - " + k.value + "|")
 				.collect(Collectors.toList());
 

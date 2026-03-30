@@ -32,6 +32,7 @@ public class Ltlb0034MTN extends BaseMetadata {
 
         res.setSavePos(ER7033PosLtlbDppkMtn.genFieldSave());
         res.setRequiredPos(ER7033PosLtlbDppkMtn.getRequiredPos());
+        res.setSavePosForm(ER7033PosLtlbDppkMtn.getFieldFormSave());
 
         res.addSegmentValidations(ER7033PosLtlbDppkMtn.genValidation());
 

@@ -31,6 +31,7 @@ public class Ltlb0025DPJKV extends BaseMetadata {
 
         res.setSavePos(ER7024PosLtlbDppkDpjkv.genFieldSave());
         res.setRequiredPos(ER7024PosLtlbDppkDpjkv.getRequiredPos());
+        res.setSavePosForm(ER7024PosLtlbDppkDpjkv.genFieldFormSave());
 
         res.addSegmentValidations(ER7024PosLtlbDppkDpjkv.genValidation());
 
@@ -47,7 +48,7 @@ public class Ltlb0025DPJKV extends BaseMetadata {
                         .confReference(EHeaderMetadataPpmpk.R7024Dpjkv.getObject())));
 
         fs.add(sf(2, null, "Nama Bank",
-                sv(C, 1, 32, alfaNumeric)
+                sv(C, 1, 100, freeText)
                         .confConditionalRequired(ER7024PosLtlbDppkDpjkv.genConditionForTotal())));
 
         fs.add(sf(3, null, "Kode Bank",

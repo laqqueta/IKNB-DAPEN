@@ -75,7 +75,7 @@ public enum ER7009PosLtlbDppkRoi implements IObject<KeyValueString> {
     }
 
     public static FieldValidation genFieldValidation2() {
-        return UtilFieldValidation.genEqualsExceptPosFormula("9/10", R_ROI2100000000.key);
+        return UtilFieldValidation.genEqualsExceptPosFormula("9/10", R_ROI2100000000.key, 2);
     }
 
     public static SegmentValidation genGeoMean() {
@@ -86,4 +86,11 @@ public enum ER7009PosLtlbDppkRoi implements IObject<KeyValueString> {
                 EFormLaporanTahunanLaporanBulanan.LTLB_REKINV.getCode(), formRow,
                 UtilMetadata.genPipeColumn(2, 13), errMsg, formRow);
     }
+
+    public static SegmentValidation genValidationSumPosColEqual() {
+        return UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(new int[] { 2, 3, 4, 5, 6, 7, 8, 10, 11}), R_ROI2100000000.key,
+                UtilMetadata.genPlusRow(getObjects(), 0, 19),
+                UtilMetadata.genMessage(R_ROI2100000000.value, UtilMetadata.genPlusDesc(getObjects(), 0, 19)));
+    }
+
 }

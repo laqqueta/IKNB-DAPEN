@@ -16,8 +16,7 @@ import static id.go.ojk.lib.client.model.config.DataType.alfaNumeric;
 import static id.go.ojk.lib.client.model.config.DataType.freeText;
 import static id.go.ojk.lib.client.model.config.DataType.numeric;
 import static id.go.ojk.lib.client.model.config.DataType.numericDot;
-import static id.go.ojk.lib.client.model.constant.RequiredCondition.C;
-import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
+import static id.go.ojk.lib.client.model.constant.RequiredCondition.*;
 
 public class Ltlb0062IUR extends BaseMetadata {
 

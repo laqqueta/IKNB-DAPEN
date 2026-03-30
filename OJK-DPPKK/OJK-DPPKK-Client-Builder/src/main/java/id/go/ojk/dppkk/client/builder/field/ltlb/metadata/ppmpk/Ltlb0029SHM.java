@@ -31,6 +31,7 @@ public class Ltlb0029SHM extends BaseMetadata {
 
         res.setSavePos(ER7028PosLtlbDppkShm.genFieldSave());
         res.setRequiredPos(ER7028PosLtlbDppkShm.getRequiredPos());
+        res.setSavePosForm(ER7028PosLtlbDppkShm.getFieldFormSave());
 
         res.addSegmentValidations(ER7028PosLtlbDppkShm.genValidation());
 

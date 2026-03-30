@@ -31,6 +31,7 @@ public class Ltlb0066BOPR extends BaseMetadata {
 
         res.setSavePos(ER7065PosLtlbDppkBopr.genFieldSave());
         res.setRequiredPos(ER7065PosLtlbDppkBopr.getRequiredPos());
+        res.setSavePosForm(ER7065PosLtlbDppkBopr.genFormFieldSave());
 
         res.addSegmentValidations(ER7065PosLtlbDppkBopr.genValidation());
 

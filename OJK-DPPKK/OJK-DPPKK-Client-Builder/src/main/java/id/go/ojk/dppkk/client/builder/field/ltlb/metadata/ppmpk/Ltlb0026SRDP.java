@@ -31,6 +31,7 @@ public class Ltlb0026SRDP extends BaseMetadata {
 
         res.setSavePos(ER7025PosLtlbDppkSrdp.genFieldSave());
         res.setRequiredPos(ER7025PosLtlbDppkSrdp.getRequiredPos());
+        res.setSavePosForm(ER7025PosLtlbDppkSrdp.getFieldFormSave());
 
         res.addSegmentValidations(ER7025PosLtlbDppkSrdp.genValidation());
 
@@ -46,7 +47,7 @@ public class Ltlb0026SRDP extends BaseMetadata {
                         .confReference(EHeaderMetadataPpmpk.R7025Srdp.getObject())));
 
         fs.add(sf(2, null, "Nama Bank",
-                sv(C, 1, 32, alfaNumeric)
+                sv(C, 1, 100, freeText)
                         .confConditionalRequired(ER7025PosLtlbDppkSrdp.genConditionForTotal())));
 
         fs.add(sf(3, null, "Kode Bank",

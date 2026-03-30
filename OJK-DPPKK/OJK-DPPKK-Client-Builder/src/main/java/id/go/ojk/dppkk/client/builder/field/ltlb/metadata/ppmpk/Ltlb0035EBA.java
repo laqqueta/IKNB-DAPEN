@@ -31,6 +31,7 @@ public class Ltlb0035EBA extends BaseMetadata {
 
         res.setSavePos(ER7034PosLtlbDppkEba.genFieldSave());
         res.setRequiredPos(ER7034PosLtlbDppkEba.getRequiredPos());
+        res.setSavePosForm(ER7034PosLtlbDppkEba.getFieldFormSave());
 
         res.addSegmentValidations(ER7034PosLtlbDppkEba.genValidation());
 

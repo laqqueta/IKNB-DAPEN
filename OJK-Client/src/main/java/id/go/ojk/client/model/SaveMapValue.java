@@ -1,23 +1,18 @@
 package id.go.ojk.client.model;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import id.go.ojk.client.model.bind.ProgressSegment;
 import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.validation.ValidationResult;
 import id.go.ojk.lib.client.model.Tupple3;
 import id.go.ojk.lib.client.util.CrLfType;
 import id.go.ojk.lib.client.util.CustomBufferedReader;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SaveMapValue {
 	private final Logger logger = LoggerFactory.getLogger(SaveMapValue.class);
@@ -49,7 +44,7 @@ public class SaveMapValue {
 		}
 		return res;
 	}
-	
+
 	protected SaveMapParam getSaveMapParam() {
 		return new SaveMapParam(submissionFormat.getSavePos());
 	}

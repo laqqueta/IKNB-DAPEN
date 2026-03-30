@@ -12,6 +12,7 @@ import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.lib.client.model.reference.ReferenceType;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum EHeaderMetadataShared implements IObject<ReferenceMetadata> {
@@ -40,7 +41,9 @@ public enum EHeaderMetadataShared implements IObject<ReferenceMetadata> {
 	R023(ER1269MetodePendanaan.getRefNumber(), ER1269MetodePendanaan.getName(), ER1269MetodePendanaan.getObjects()),
 	;
 
-	private int number;
+	@Getter
+    private int number;
+
 	private String name;
 	private List<KeyValueString> references;
 	
@@ -79,4 +82,5 @@ public enum EHeaderMetadataShared implements IObject<ReferenceMetadata> {
 		}
 		return res;
 	}
+
 }

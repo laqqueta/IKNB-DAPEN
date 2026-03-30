@@ -45,6 +45,10 @@ public enum ER7024PosLtlbDppkDpjkv implements IObject<KeyValueString> {
         return Integer.parseInt(ER7024PosLtlbDppkDpjkv.class.getSimpleName().substring(2, 6));
     }
 
+    public static String genFieldFormSave() {
+        return UtilMetadata.genFieldSave("6|12", getObjects());
+    }
+
     public static String genFieldSave() {
         return UtilMetadata.genFieldSave("6|7|8|13", getObjects());
     }

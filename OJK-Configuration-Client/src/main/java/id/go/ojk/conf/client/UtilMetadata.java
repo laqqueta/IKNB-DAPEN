@@ -122,6 +122,41 @@ public class UtilMetadata {
 		return res.toString();
 	}
 
+	public static String genDelimitedRowArr(List<KeyValueString> listKv, int[] arr, String delimiters) {
+		StringBuilder res = new StringBuilder();
+		String[] delimiter = delimiters.split("\\|");
+		int length = arr.length;
+
+		if (delimiter.length+1 != length)
+			throw new IllegalArgumentException();
+
+		for (int i = 0; i < length; i++) {
+			KeyValueString kv = listKv.get(arr[i]);
+			res.append(kv.getKey());
+			if (i + 1 < length) {
+				res.append(delimiter[i]);
+			}
+		}
+		return res.toString();
+	}
+
+	public static String genDelimitedRowArr(List<KeyValueString> listKv, int start, int end, String delimiters) {
+		StringBuilder res = new StringBuilder();
+		String[] delimiter = delimiters.split("\\|");
+
+		if (delimiter.length+1 != (end-start))
+			throw new IllegalArgumentException();
+
+		for (int i = start; i <= end; i++) {
+			KeyValueString kv = listKv.get(i);
+			res.append(kv.getKey());
+			if (i < end) {
+				res.append(delimiter[i]);
+			}
+		}
+		return res.toString();
+	}
+
 	public static String genDelimitedRow(List<KeyValueString> listKv, int from, int to, String delimiter) {
 		StringBuilder res = new StringBuilder();
 		for (int i = from; i <= to; i++) {
@@ -143,6 +178,43 @@ public class UtilMetadata {
 			res.append(StringUtils.wrap(desc, "'"));
 			if (i + 1 < length) {
 				res.append(delimiter);
+			}
+		}
+		return res.toString();
+	}
+
+	public static String genDelimitedDescArr(List<KeyValueString> listKv, int[] arr, String delimiters) {
+		StringBuilder res = new StringBuilder();
+		int length = arr.length;
+		String[] delimiter = delimiters.split("\\|");
+
+		if (delimiter.length+1 != length)
+			throw new IllegalArgumentException();
+
+		for (int i = 0; i < length; i++) {
+			KeyValueString kv = listKv.get(arr[i]);
+			String desc = ESymbolMap.encode(kv.getValue().trim());
+			res.append(StringUtils.wrap(desc, "'"));
+			if (i + 1 < length) {
+				res.append(delimiter[i]);
+			}
+		}
+		return res.toString();
+	}
+
+	public static String genDelimitedDescArr(List<KeyValueString> listKv, int start, int end, String delimiters) {
+		StringBuilder res = new StringBuilder();
+		String[] delimiter = delimiters.split("\\|");
+
+		if (delimiter.length+1 != (end-start))
+			throw new IllegalArgumentException();
+
+		for (int i = start; i <= end; i++) {
+			KeyValueString kv = listKv.get(i);
+			String desc = ESymbolMap.encode(kv.getValue().trim());
+			res.append(StringUtils.wrap(desc, "'"));
+			if (i < end) {
+				res.append(delimiter[i]);
 			}
 		}
 		return res.toString();

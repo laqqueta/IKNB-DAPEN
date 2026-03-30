@@ -1,12 +1,14 @@
 package id.go.ojk.conf.client.field.reference;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ER1250Properti implements IObject<KeyValueString> {
@@ -37,5 +39,58 @@ public enum ER1250Properti implements IObject<KeyValueString> {
 
 	public static int getRefNumber() {
 		return Integer.parseInt(ER1250Properti.class.getSimpleName().substring(2, 6));
+	}
+
+	public static String getPipedReferenceKeys() {
+		List<String> keys = Arrays.stream(ER1250Properti.values())
+				.map(k -> k.key + "|")
+				.collect(Collectors.toList());
+
+		// remove last pipe
+		String lastElem = keys.get(keys.size() - 1);
+		keys.set(keys.size() - 1, lastElem.substring(0, lastElem.length() - 1));
+
+		return String.join("", keys);
+	}
+
+	public static String getPipedReferenceKeys(ER1250Properti addProp) {
+		List<String> keys = Arrays.stream(ER1250Properti.values())
+				.map(k -> k.key + "|")
+				.collect(Collectors.toList());
+
+		keys.add(addProp.key + "|");
+
+		// remove last pipe
+		String lastElem = keys.get(keys.size() - 1);
+		keys.set(keys.size() - 1, lastElem.substring(0, lastElem.length() - 1));
+
+		return String.join("", keys);
+	}
+
+	public static String getPipedReferenceKeyValues() {
+		List<String> keys = Arrays.stream(ER1250Properti.values())
+				.map(k -> k.key + " - " + k.value + "|")
+				.collect(Collectors.toList());
+
+		// remove last pipe
+		String lastElem = keys.get(keys.size() - 1);
+		keys.set(keys.size() - 1, lastElem.substring(0, lastElem.length() - 1));
+
+		return String.join("", keys);
+	}
+
+	public static String getPipedReferenceKeyValues(ER1250Properti addProp) {
+		List<String> keys = Arrays.stream(ER1250Properti.values())
+				.map(k -> k.key + " - " + k.value + "|")
+				.collect(Collectors.toList());
+
+		keys.add(addProp.key + " - " + addProp.value + "|");
+
+		// remove last pipe
+		String lastElem = keys.get(keys.size() - 1);
+		keys.set(keys.size() - 1, lastElem.substring(0, lastElem.length() - 1));
+
+
+		return String.join("", keys);
 	}
 }

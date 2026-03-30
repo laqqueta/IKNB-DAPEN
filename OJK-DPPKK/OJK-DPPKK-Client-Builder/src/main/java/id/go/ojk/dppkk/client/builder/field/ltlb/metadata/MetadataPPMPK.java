@@ -1,6 +1,7 @@
 package id.go.ojk.dppkk.client.builder.field.ltlb.metadata;
 
 import id.go.ojk.client.model.config.SubmissionFormat;
+import id.go.ojk.dppkk.client.builder.constant.JenisProgram;
 import id.go.ojk.dppkk.client.builder.field.ltlb.metadata.ppmpk.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -16,12 +17,12 @@ public class MetadataPPMPK {
     private static final List<SubmissionFormat> metadata = getFormMetadata();
 
     private static List<SubmissionFormat> getFormMetadata() {
-        String REPORT_CODE = "PPMPK";
+        String REPORT_CODE = JenisProgram.PPMPK.toString();
         return Arrays.asList(
 //                new Ltlb0001DTUM(REPORT_CODE).get(),
 //                new Ltlb0002LAN(REPORT_CODE).get(),
-                new Ltlb0003LPAN(REPORT_CODE).get(),
-////                new Ltlb0004NRC(REPORT_CODE).get(),
+//                new Ltlb0003LPAN(REPORT_CODE).get()
+//                new Ltlb0004NRC(REPORT_CODE).get()
 ////                new Ltlb0005LPHU(REPORT_CODE).get(),
 //                new Ltlb0006LAK(REPORT_CODE).get(),
 //                new Ltlb0007PST(REPORT_CODE).get(),
@@ -39,7 +40,7 @@ public class MetadataPPMPK {
 //                new Ltlb0019RAS2(REPORT_CODE).get(),
 //                new Ltlb0020PIUS(REPORT_CODE).get(),
 //                new Ltlb0021PMI(REPORT_CODE).get(),
-//                new Ltlb0022TBDSP(REPORT_CODE).get(),
+                new Ltlb0022TBDSP(REPORT_CODE).get()
 //                new Ltlb0023DOC(REPORT_CODE).get(),
 //                new Ltlb0024DPJKA(REPORT_CODE).get(),
 //                new Ltlb0025DPJKV(REPORT_CODE).get(),
@@ -79,7 +80,7 @@ public class MetadataPPMPK {
 //                new Ltlb0059BMHB(REPORT_CODE).get(),
 //                new Ltlb0060UTLN(REPORT_CODE).get(),
 //                new Ltlb0061PPIN(REPORT_CODE).get(),
-                new Ltlb0062IUR(REPORT_CODE).get()
+//                new Ltlb0062IUR(REPORT_CODE).get(),
 //                new Ltlb0063PDIN(REPORT_CODE).get(),
 //                new Ltlb0064PDPL(REPORT_CODE).get(),
 //                new Ltlb0065BINV(REPORT_CODE).get(),

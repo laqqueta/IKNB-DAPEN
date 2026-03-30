@@ -1,5 +1,10 @@
 package id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk;
 
+import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
+import id.go.ojk.conf.client.UtilMetadata;
+import id.go.ojk.conf.client.UtilSegmentValidation;
+import id.go.ojk.conf.client.field.reference.ER1255JenisManfaat;
+import id.go.ojk.dppkk.client.builder.field.EFormLaporanTahunanLaporanBulanan;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
 import lombok.AccessLevel;
@@ -33,7 +38,7 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
     R_LAN0101200000("LAN0101200000", "Tanah dan Bangunan di Indonesia"),
     R_LAN0102000000("LAN0102000000", "TOTAL INVESTASI"),
     R_LAN0103010000("LAN0103010000", "Kas dan Bank"),
-    R_LAN0103020000("LAN0103020000", "Piutang Iuran"),
+//    R_LAN0103020000("LAN0103020000", "Piutang Iuran"),
     R_LAN0103030000("LAN0103030000", "- Iuran Normal Pemberi Kerja"),
     R_LAN0103040000("LAN0103040000", "- Iuran Normal Peserta"),
     R_LAN0103050000("LAN0103050000", "- Iuran Sukarela Peserta"),
@@ -83,5 +88,31 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
 
     public static int getRefNumber() {
         return Integer.parseInt(ER7001PosLtlbDppkLan.class.getSimpleName().substring(2, 6));
+    }
+
+    public static String genFieldSave() {
+        return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 13), getObjects());
+    }
+
+    public static String getRequiredPos() {
+        return UtilMetadata.genPipeRow(getObjects());
+    }
+
+    public static SegmentValidation getTestVal() {
+        String sumField = "3";
+        String rangeField = "6|6"; // I H J K
+        String criteriaField = "9|12";
+        String comparatorForms = EFormLaporanTahunanLaporanBulanan.LTLB_DPJKA.getCode() + "|" + EFormLaporanTahunanLaporanBulanan.LTLB_DPJKV.getCode();
+        String comparatorRows = ER7023PosLtlbDppkDpjka.R_DPJKA010000.getObject().getKey() + "|" + ER7024PosLtlbDppkDpjkv.R_DPJKV010000.getObject().getKey();
+        String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MPL1|MPL2|MPL3|ML1|ML2|ML3|ML4|ML5|ML6");
+        String sumCriteriaCond = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
+        String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MPL1|MPL2|MPL3|ML1|ML2|ML3|ML4|ML5|ML6");
+        String sumConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
+        String errMsg = "DPJKA|DPJKV|Jumlah Nominal|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain";
+
+        return UtilSegmentValidation.genMultiFormSumIf(UtilMetadata.genPipeColumn(3, 12), R_LAN0101020000.key,
+                comparatorForms, comparatorRows,
+                rangeField, criteriaField, sumField, criteriaCondition, sumCriteriaCond,
+                errMsg, criteriaConditionErr, sumConditionErr);
     }
 }

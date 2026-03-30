@@ -31,6 +31,7 @@ public class Ltlb0033RKSD extends BaseMetadata {
 
         res.setSavePos(ER7032PosLtlbDppkRksd.genFieldSave());
         res.setRequiredPos(ER7032PosLtlbDppkRksd.getRequiredPos());
+        res.setSavePosForm(ER7032PosLtlbDppkRksd.getFieldFormSave());
 
         res.addSegmentValidations(ER7032PosLtlbDppkRksd.genValidation());
 

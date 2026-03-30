@@ -31,6 +31,7 @@ public class Ltlb0065BINV extends BaseMetadata {
 
         res.setSavePos(ER7064PosLtlbDppkBinv.genFieldSave());
         res.setRequiredPos(ER7064PosLtlbDppkBinv.getRequiredPos());
+        res.setSavePosForm(ER7064PosLtlbDppkBinv.genFieldFormSave());
 
         res.addSegmentValidations(ER7064PosLtlbDppkBinv.genValidation());
 

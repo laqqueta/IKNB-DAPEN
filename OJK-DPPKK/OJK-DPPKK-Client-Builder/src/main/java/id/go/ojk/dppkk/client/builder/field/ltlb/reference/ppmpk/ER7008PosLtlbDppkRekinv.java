@@ -70,6 +70,11 @@ public enum ER7008PosLtlbDppkRekinv implements IObject<KeyValueString> {
         return UtilMetadata.genPipeRow(getObjects());
     }
 
+    public static String genFieldFormSave() {
+        return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 13), getObjects());
+    }
+
+
     private static final String plusRowValidation = UtilMetadata.genPlusRow(getObjects(), 0, 19);
 
     public static SegmentValidation genValidationSumPosColEqual() {

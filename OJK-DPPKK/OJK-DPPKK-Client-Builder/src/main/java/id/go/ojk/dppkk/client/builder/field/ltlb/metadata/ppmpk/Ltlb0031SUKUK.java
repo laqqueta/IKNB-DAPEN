@@ -31,6 +31,7 @@ public class Ltlb0031SUKUK extends BaseMetadata {
 
         res.setSavePos(ER7030PosLtlbDppkSukuk.genFieldSave());
         res.setRequiredPos(ER7030PosLtlbDppkSukuk.getRequiredPos());
+        res.setSavePosForm(ER7030PosLtlbDppkSukuk.getFieldFormSave());
 
         res.addSegmentValidations(ER7030PosLtlbDppkSukuk.genValidation());
 

@@ -13,6 +13,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
@@ -74,10 +75,43 @@ public enum ER7006PosLtlbDppkPst implements IObject<KeyValueString> {
         return UtilFieldValidation.genEqualsFormula(UtilMetadata.genPlusColumn(2, 4));
     }
 
-    public static SegmentValidation genValidationSumPosColEqual() {
-        return UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 4), R_PST0400000000.key,
-                UtilMetadata.genPlusRow(getObjects(), new int[] { 0, 3, 14 }),
-                UtilMetadata.genMessage(R_PST0400000000.value, UtilMetadata.genPlusRow(getObjects(), new int[] { 0, 3, 14 })));
+    public static final List<SegmentValidation> SEGMENT_VALIDATIONS = Arrays.asList(
+            genValidationSegment1(),
+            genValidationSegment2(),
+            genValidationSegment3(),
+            genValidationSegment4(),
+            genValidationSegment5(),
+            genValidationSegment6()
+    );
+
+    private static SegmentValidation genValidationSegment1() {
+        return UtilSegmentValidation.genEqualsFormula("2|3|4", R_PST0100000000.key, UtilMetadata.genPlusRow(getObjects(), new int[] {1, 2}),
+                UtilMetadata.genMessage(R_PST0100000000.value, UtilMetadata.genPlusDesc(getObjects(), new int[] {1, 2})));
+    }
+
+    private static SegmentValidation genValidationSegment2() {
+        return UtilSegmentValidation.genEqualsFormula("2|3|4", R_PST0200000000.key, UtilMetadata.genPlusRow(getObjects(), new int[] {4, 9}),
+                UtilMetadata.genMessage(R_PST0200000000.value, UtilMetadata.genPlusDesc(getObjects(), new int[] {4, 9})));
+    }
+
+    private static SegmentValidation genValidationSegment3() {
+        return UtilSegmentValidation.genEqualsFormula("2|3|4", R_PST0201000000.key, UtilMetadata.genPlusRow(getObjects(), 5, 8),
+                UtilMetadata.genMessage(R_PST0201000000.value, UtilMetadata.genPlusDesc(getObjects(), 5, 8)));
+    }
+
+    private static SegmentValidation genValidationSegment4() {
+        return UtilSegmentValidation.genEqualsFormula("2|3|4", R_PST0202000000.key, UtilMetadata.genPlusRow(getObjects(), 10, 13),
+                UtilMetadata.genMessage(R_PST0202000000.value, UtilMetadata.genPlusDesc(getObjects(), 10, 13)));
+    }
+
+    private static SegmentValidation genValidationSegment5() {
+        return UtilSegmentValidation.genEqualsFormula("2|3|4", R_PST0300000000.key, UtilMetadata.genPlusRow(getObjects(), new int[] {15, 16}),
+                UtilMetadata.genMessage(R_PST0300000000.value, UtilMetadata.genPlusDesc(getObjects(), new int[] {15, 16})));
+    }
+
+    private static SegmentValidation genValidationSegment6() {
+        return UtilSegmentValidation.genEqualsFormula("2|3|4", R_PST0400000000.key, UtilMetadata.genPlusRow(getObjects(), new int[] {0, 3, 14}),
+                UtilMetadata.genMessage(R_PST0400000000.value, UtilMetadata.genPlusDesc(getObjects(), new int[] {0, 3, 14})));
     }
 
 

@@ -31,6 +31,7 @@ public class Ltlb0063PDIN extends BaseMetadata {
 
         res.setSavePos(ER7062PosLtlbDppkPdin.genFieldSave());
         res.setRequiredPos(ER7062PosLtlbDppkPdin.getRequiredPos());
+        res.setSavePosForm(ER7062PosLtlbDppkPdin.genFormFieldSave());
 
         res.addSegmentValidations(ER7062PosLtlbDppkPdin.genValidation());
 
