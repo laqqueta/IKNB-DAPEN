@@ -33,6 +33,7 @@ public class LpRkpiuJht extends BaseMetadata {
     res.setRequiredPos(ER6105RKPIU.genRequiredPos());
     res.setUniquePos(ER6105RKPIU.genUniquePos());
     res.setSavePos(ER6105RKPIU.genFieldSave());
+    res.setSavePosForm(ER6105RKPIU.genFieldSaveForm());
 
     res.addSegmentValidations(ER6105RKPIU.genRegexValidationNumeric());
     res.addSegmentValidations(ER6105RKPIU.genRegexValidationNumericNegative());
@@ -65,7 +66,9 @@ public class LpRkpiuJht extends BaseMetadata {
     res.addSegmentValidations(ER6105RKPIU.genValidationFormTotalKelompokUmur());
     res.addSegmentValidations(ER6105RKPIU.genValidationFormTotalKewarganegaraan());
     res.addSegmentValidations(ER6105RKPIU.genValidationFormTotalKelompokUpah());
-    res.addSegmentValidations(ER6105RKPIU.genValidationFormTotalIuran());
+
+    // UAT 16: Validasi Total Iuran pindah ke RPIU
+    // res.addSegmentValidations(ER6105RKPIU.genValidationFormTotalIuran());
     res.addSegmentValidations(ER6105RKPIU.genValidationFormTotalRekapDataJHT());
 
     List<SubmissionField> fs = res.getFields();

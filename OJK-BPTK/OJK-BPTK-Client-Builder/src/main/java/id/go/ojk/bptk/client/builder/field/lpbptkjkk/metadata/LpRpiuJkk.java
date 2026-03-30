@@ -19,6 +19,7 @@ import id.go.ojk.bptk.client.builder.field.lpbptkjkk.reference.ER5902RPIU;
 import id.go.ojk.bptk.client.builder.field.reference.EHeaderMetadataShared;
 import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
+import id.go.ojk.client.module.bpjs.EReportBpjs;
 import id.go.ojk.conf.client.BaseMetadata;
 
 public class LpRpiuJkk extends BaseMetadata {
@@ -41,6 +42,13 @@ public class LpRpiuJkk extends BaseMetadata {
     res.setSavePosForm(ER5902RPIU.genFieldSaveForm());
 
     res.addSegmentValidations(ER5902RPIU.genValidationTotal());
+
+    /*
+     * UAT 16: Validasi Total Iuran khusus JHT
+     */
+    if (form.getReportCode().equals(EReportBpjs.LPBPTKJHT_RUTIN.getReportTypeCode())) {
+      res.addSegmentValidations(ER5902RPIU.genValidationFormTotalIuran());
+    }
 
     List<SubmissionField> fs = res.getFields();
     fs.add(sf(0, null, "Flag Detail", sv(M, 3, 3, alfaNumeric).confConstant("D01")));

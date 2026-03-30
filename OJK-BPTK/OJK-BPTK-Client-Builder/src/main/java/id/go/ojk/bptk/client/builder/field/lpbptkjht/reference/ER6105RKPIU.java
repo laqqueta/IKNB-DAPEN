@@ -140,6 +140,10 @@ public enum ER6105RKPIU implements IObject<KeyValueString> {
     return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 7), getObjects());
   }
 
+  public static String genFieldSaveForm() {
+    return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(6, 7), getObjects());
+  }
+
   public static SegmentValidation genRegexValidationNumeric() {
     return UtilSegmentValidation.genRegexNumeric("2|3|4|5|6|7", UtilMetadata.genPipeRow(getObjects(), 0, 45));
   }

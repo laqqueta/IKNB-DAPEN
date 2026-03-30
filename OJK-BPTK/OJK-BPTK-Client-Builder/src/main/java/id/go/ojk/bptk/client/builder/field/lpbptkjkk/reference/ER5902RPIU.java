@@ -5,7 +5,9 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 
+import id.go.ojk.bptk.client.builder.field.EFormLpbptkjht;
 import id.go.ojk.bptk.client.builder.field.EFormLpbptkjkk;
+import id.go.ojk.bptk.client.builder.field.lpbptkjht.reference.ER6105RKPIU;
 import id.go.ojk.client.model.config.validation.conditional.ConditionalRequired;
 import id.go.ojk.client.model.config.validation.field.FieldValidation;
 import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
@@ -25,6 +27,8 @@ import lombok.Getter;
 public enum ER5902RPIU implements IObject<KeyValueString> {
   RPIU0100000000("RPIU0100000000", "Detail"),
   RPIU0200000000("RPIU0200000000", "Total"),;
+
+  private static final String JHT_RKPIU = EFormLpbptkjht.RKPIU.getCode();
 
   @Getter
   private String key;
@@ -115,5 +119,16 @@ public enum ER5902RPIU implements IObject<KeyValueString> {
   public static FieldValidation genDati2Validation() {
     return UtilFieldValidation.getEqualsDati2And1(RPIU0100000000.key, 7, ER1157LokasiDati1.getRefNumber(),
         ER1135LokasiDati2.getRefNumber());
+  }
+
+  /* -- ANTAR FORM -- */
+  public static SegmentValidation genValidationFormTotalIuran() {
+    String selectColumn = "22";
+    String selectPosCode = RPIU0200000000.key;
+    int cols[] = { 6, 7 };
+    String comparatorColumn = UtilMetadata.genPlusColumn(cols);
+    String errMsg = "Total Iuran|Total Iuran Pemberi Kerja / Wadah / Proyek + Total Iuran Peserta pada form " + JHT_RKPIU;
+    return UtilSegmentValidation.genEqualsFormColumCalculation(selectColumn, selectPosCode, comparatorColumn,
+        ER6105RKPIU.RKPIU1700000000.getKeyForm(), errMsg, 2);
   }
 }
