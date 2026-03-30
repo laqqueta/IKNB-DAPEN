@@ -92,7 +92,7 @@ public enum ER5901RKPST implements IObject<KeyValueString> {
 
   public static String genFieldSaveForm() {
     return UtilMetadata.genFieldSave(
-        UtilMetadata.genPipeColumn(new int[] { 8, 9, 10, 11, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 28, 33, 47, 50 }),
+        UtilMetadata.genPipeColumn(new int[] { 8, 9, 10, 11, 12, 13, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 28, 33, 47, 50 }),
         getObjects());
   }
 
