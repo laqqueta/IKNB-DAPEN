@@ -38,6 +38,7 @@ public class LpRpiuJkp extends BaseMetadata {
     res.setRequiredPos(ER6202RPIU.genRequiredPos());
     res.setUniquePos(ER6202RPIU.genUniquePos());
     res.setSavePos(ER6202RPIU.genFieldSave());
+    res.setSavePosForm(ER6202RPIU.genFieldSaveForm());
 
     res.addSegmentValidations(ER6202RPIU.genValidationTotal());
 

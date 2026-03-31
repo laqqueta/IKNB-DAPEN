@@ -86,6 +86,10 @@ public enum ER6202RPIU implements IObject<KeyValueString> {
     return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(9, 23), getObjects());
   }
 
+  public static String genFieldSaveForm() {
+    return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(new int[] { 14, 22 }), getObjects());
+  }
+
   public static ConditionalRequired genConditionalExistA() {
     return UtilFieldConditional.genExistPosAndHasReference("M", "N", RPIU0100000000.key, getRefNumber(), "O");
   }
