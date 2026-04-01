@@ -41,4 +41,16 @@ public enum ER1249SegmenPeserta implements IObject<KeyValueString> {
   public static int getRefNumber() {
     return Integer.parseInt(ER1249SegmenPeserta.class.getSimpleName().substring(2, 6));
   }
+
+  public static String getPpuKeys() {
+    return String.join("|", R1.key, R2.key, R3.key);
+  }
+
+  public static String getBpuKeys() {
+    return String.join("|", R4.key, R5.key, R6.key);
+  }
+
+  public static String getPjkKeys() {
+    return R7.key;
+  }
 }
