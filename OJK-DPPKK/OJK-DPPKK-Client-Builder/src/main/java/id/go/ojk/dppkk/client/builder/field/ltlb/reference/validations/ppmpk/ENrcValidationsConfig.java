@@ -247,28 +247,28 @@ public enum ENrcValidationsConfig {
     private final Supplier<FieldValidation> fieldSupplier;
 
     public SegmentValidation toSegmentValidation() {
-        if (segmentSupplier == null) {
+        if (segmentSupplier.get() == null) {
             throw new UnsupportedOperationException("Segment Validation is null");
         }
         return segmentSupplier.get();
     }
 
     public FieldValidation toFieldValidation() {
-        if (fieldSupplier == null) {
+        if (fieldSupplier.get() == null) {
             throw new UnsupportedOperationException("Field Validation is null");
         }
         return fieldSupplier.get();
     }
 
     public static boolean isSegment(ENrcValidationsConfig eConfig) {
-        return eConfig != ENrcValidationsConfig.FV_EQUALS_EXCEPT;
+        return eConfig.segmentSupplier.get() != null;
     }
 
-    public static boolean isField(FieldValidation fieldValidation) {
-        return fieldValidation != null;
+    public static boolean isField(ENrcValidationsConfig eConfig) {
+        return eConfig.fieldSupplier.get() != null;
     }
 
-    public static SegmentValidation genEqualsForm(String selectField, String comparatorField) {
+    private static SegmentValidation genEqualsForm(String selectField, String comparatorField) {
         return UtilSegmentValidation.genEqualsForm(selectField, ER7003PosLtlbDppkNrc.R_NRC0104010000.getObject().getKey(),
                 EFormLaporanTahunanLaporanBulanan.LTLB_LAN.getCode(), comparatorField,
                 ER7003PosLtlbDppkNrc.R_NRC0104010000.getObject().getKey());

@@ -5,6 +5,7 @@ import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
 import id.go.ojk.conf.client.UtilFieldConditional;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
+import id.go.ojk.conf.client.field.reference.ER1255JenisManfaat;
 import id.go.ojk.dppkk.client.builder.field.EFormLaporanTahunanLaporanBulanan;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
@@ -67,6 +68,11 @@ public enum ER7016PosLtlbDppkSbn implements IObject<KeyValueString> {
     public static SegmentValidation genValidation() {
         return UtilSegmentValidation.genEqualsFormula("10", R_SBN000000.key, R_SBN010000.key,
                 UtilMetadata.genMessageTotal(R_SBN000000.value, R_SBN010000.value));
+    }
+
+    public static ConditionalRequired genConditionManfaatLain() {
+        return UtilFieldConditional.genEquals("M", "N", "4",
+                ER1255JenisManfaat.getReferenceIndex(11));
     }
 
     public static SegmentValidation genRowValidation() {

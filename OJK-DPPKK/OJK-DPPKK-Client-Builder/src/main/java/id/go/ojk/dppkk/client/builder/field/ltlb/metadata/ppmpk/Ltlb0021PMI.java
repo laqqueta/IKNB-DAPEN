@@ -13,8 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static id.go.ojk.lib.client.model.config.DataType.*;
-import static id.go.ojk.lib.client.model.constant.RequiredCondition.C;
-import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
+import static id.go.ojk.lib.client.model.constant.RequiredCondition.*;
+import static id.go.ojk.lib.client.model.constant.RequiredCondition.O;
 
 public class Ltlb0021PMI extends BaseMetadata {
 
@@ -32,64 +32,64 @@ public class Ltlb0021PMI extends BaseMetadata {
         res.setSavePos(ER7020PosLtlbDppkPmi.genFieldSave());
         res.setRequiredPos(ER7020PosLtlbDppkPmi.getRequiredPos());
 
-        res.addSegmentValidations(ER7020PosLtlbDppkPmi.genValidation());
+//        res.addSegmentValidations(ER7020PosLtlbDppkPmi.genValidation());
 
         List<SubmissionField> fs = res.getFields();
 
 
         fs.add(sf(0, null, "Flag",
-                sv(M, 3, 3, alfaNumeric)
+                sv(O, 3, 3, alfaNumeric)
                         .confConstant("D01")));
 
         fs.add(sf(1, null, "Kode Komponen",
-                sv(M, 9, 9, refTable)
+                sv(O, 9, 9, refTable)
                         .confRegex(SimpleValidation.patternAlfaNumeric)
                         .confReference(EHeaderMetadataPpmpk.R7020Pmi.getObject())));
 
         fs.add(sf(2, null, "Nama Manajer Investasi",
-                sv(C, 1, 100, freeText)
+                sv(O, 1, 100, freeText)
                         .confConditionalRequired(ER7020PosLtlbDppkPmi.genConditionForTotal())));
 
         fs.add(sf(3, null, "Nomor Kontrak",
-                sv(C, 1, 100, freeText)
+                sv(O, 1, 100, freeText)
                         .confConditionalRequired(ER7020PosLtlbDppkPmi.genConditionForTotal())));
 
         fs.add(sf(4, null, "Tanggal Kontrak",
-                sv(C, 8, 8, numeric)
+                sv(O, 8, 8, numeric)
                         .confConditionalRequired(ER7020PosLtlbDppkPmi.genConditionForTotal())));
 
         fs.add(sf(5, null, "Masa Perjanjian",
-                sv(C, 1, 18, numeric)
+                sv(O, 1, 18, numeric)
                         .confConditionalRequired(ER7020PosLtlbDppkPmi.genConditionForTotal())));
 
         fs.add(sf(6, null, "Jenis Investasi",
-                sv(C, 1, 6, refTable)
+                sv(O, 1, 6, refTable)
                         .confRegex(SimpleValidation.patternAlfaNumeric)
                         .confReference(EHeaderMetadataShared.R022.getObject())
                         .confConditionalRequired(ER7020PosLtlbDppkPmi.genConditionForTotal())));
 
         fs.add(sf(7, null, "Jumlah Nilai Wajar Dana Kelolaan (Rp)",
-                sv(M, 1, 18, numeric)));
+                sv(O, 1, 18, numeric)));
 
         fs.add(sf(8, null, "Nilai Perolehan (yang dikelola Manajer Investasi)",
-                sv(M, 1, 18, numeric)));
+                sv(O, 1, 18, numeric)));
 
         fs.add(sf(9, null, "Selisih Penilaian Investasi",
-                sv(M, 1, 18, numeric))
+                sv(O, 1, 18, numeric))
                 .addFieldValidations(ER7020PosLtlbDppkPmi.genFieldValidationPenilaianInvesatsi()));
 
         fs.add(sf(10, null, "Return (%)",
-                sv(C, 4, 6, numericDot)
+                sv(O, 4, 6, numericDot)
                         .confConditionalRequired(ER7020PosLtlbDppkPmi.genConditionForTotal())));
 
         fs.add(sf(11, null, "Tingkat Hasil Investasi Bersih (Rp)",
-                sv(M, 1, 18, numeric)));
+                sv(O, 1, 18, numeric)));
 
         fs.add(sf(12, null, "Jumlah Biaya Pengelolaan yang dibebankan (Rp)",
-                sv(M, 1, 18, numeric)));
+                sv(O, 1, 18, numeric)));
 
         fs.add(sf(13, null, "Terafiliasi dengan Dana Pensiun (Ya/Tidak)",
-                sv(C, 1, 10, alfa)
+                sv(O, 1, 10, alfa)
                         .confConditionalRequired(ER7020PosLtlbDppkPmi.genConditionForTotal())));
 
 

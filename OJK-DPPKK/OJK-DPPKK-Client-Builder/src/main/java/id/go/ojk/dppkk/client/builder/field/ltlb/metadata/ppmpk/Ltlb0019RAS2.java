@@ -14,8 +14,8 @@ import java.util.List;
 
 import static id.go.ojk.lib.client.model.config.DataType.*;
 import static id.go.ojk.lib.client.model.config.DataType.numeric;
-import static id.go.ojk.lib.client.model.constant.RequiredCondition.C;
-import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
+import static id.go.ojk.lib.client.model.constant.RequiredCondition.*;
+import static id.go.ojk.lib.client.model.constant.RequiredCondition.O;
 
 public class Ltlb0019RAS2 extends BaseMetadata {
 
@@ -33,28 +33,27 @@ public class Ltlb0019RAS2 extends BaseMetadata {
         res.setSavePos(ER7018PosLtlbDppkRas2.genFieldSave());
         res.setRequiredPos(ER7018PosLtlbDppkRas2.getRequiredPos());
 
-        ER7018PosLtlbDppkRas2.SEGMENTS_VALIDATIONS
-                .forEach(res::addSegmentValidations);
+//        ER7018PosLtlbDppkRas2.SEGMENTS_VALIDATIONS.forEach(res::addSegmentValidations);
 
         List<SubmissionField> fs = res.getFields();
 
-        fs.add(sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01")));
+        fs.add(sf(0, null, "Flag", sv(O, 3, 3, alfaNumeric).confConstant("D01")));
         fs.add(sf(1, null, "Kode Komponen",
-                sv(M, 14, 14, refTable)
+                sv(O, 14, 14, refTable)
                         .confRegex(SimpleValidation.patternAlfaNumeric)
                         .confReference(EHeaderMetadataPpmpk.R7018Ras2.getObject()))
                 .confUnique(UniqueType.U));
 
         fs.add(sf(2, null, "Realisasi Tahun Sebelumnya",
-                sv(C, 1, 18, numeric)
+                sv(O, 1, 18, numeric)
                         .confConditionalRequired(ER7018PosLtlbDppkRas2.genConditionEmpty1())));
 
         fs.add(sf(3, null, "Anggaran",
-                sv(C, 1, 18, all2)
+                sv(O, 1, 18, all2)
                         .confConditionalRequired(ER7018PosLtlbDppkRas2.genConditionEmpty2())));
 
         fs.add(sf(4, null, "Realisasi",
-                sv(C, 1, 18, all2)
+                sv(O, 1, 18, all2)
                         .confConditionalRequired(ER7018PosLtlbDppkRas2.genConditionEmpty2())));
 
         return res;

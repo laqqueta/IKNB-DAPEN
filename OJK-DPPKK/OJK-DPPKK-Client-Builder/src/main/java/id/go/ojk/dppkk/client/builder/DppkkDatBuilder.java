@@ -82,7 +82,7 @@ public class DppkkDatBuilder extends BaseDatBuilder {
 	
 	@Override
 	protected String genDummyClientEntity() {
-		return genDummyClientEntity(Constant.SECTOR.getCode(), Arrays.asList("2000004732", "2000099998", "999998"), DUMMY_USER);
+		return genDummyClientEntity(Constant.SECTOR.getCode(), Arrays.asList("2000004732", "2000099998"), DUMMY_USER);
 	}
 	
 	@Override

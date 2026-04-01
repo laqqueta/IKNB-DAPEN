@@ -40,6 +40,7 @@ public class ValidationPreHeaderLktb extends BaseValidationPreHeader {
             validatePart5();
             validatePart6();
             validatePart7();
+            validatePart8();
         }
         sumRow(result);
         return res;
@@ -139,6 +140,39 @@ public class ValidationPreHeaderLktb extends BaseValidationPreHeader {
 
         return res;
 
+    }
+
+    protected boolean validatePart8() {
+        final int maxLen = 25;
+        String part = getPart(7);
+        boolean res = true;
+        if (reportFormGroupCode % 2 == 0) {
+            if (StringUtils.isBlank(part)) {
+                result.errors.add(new ValidationError(null, ValidationErrorCode.E03_15_NO_SURAT));
+                res = false;
+            } else if (!part.matches(SimpleValidation.patternNomorSurat.getPattern())) {
+                result.errors.add(new ValidationError(null, ValidationErrorCode.E03_18_NO_SURAT_PATTERN));
+                res = false;
+            } else if (part.length() > maxLen) {
+                result.errors.add(new ValidationError(null, ValidationErrorCode.E03_26_MAX_LENGTH_NO_SURAT,
+                        String.valueOf(maxLen)));
+                res = false;
+            } else {
+                List<String> noSurat = SubmissionFormat.noSurat;
+                noSurat.add(part);
+                if (!part.equals(noSurat.get(0))) {
+                    result.errors.add(
+                            new ValidationError(null, ValidationErrorCode.E03_16_NO_SURAT_EQUAL, part, noSurat.get(0)));
+                    res = false;
+                }
+            }
+        } else {
+            if (StringUtils.isNotEmpty(part)) {
+                result.errors.add(new ValidationError(null, ValidationErrorCode.E03_17_NO_SURAT_EMPTY));
+                res = false;
+            }
+        }
+        return res;
     }
 
     protected String getPart(int idx) {

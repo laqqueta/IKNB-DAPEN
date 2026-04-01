@@ -4,6 +4,7 @@ import id.go.ojk.client.model.config.SimpleValidation;
 import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.conf.client.BaseMetadata;
+import id.go.ojk.dppkk.client.builder.constant.JenisProgram;
 import id.go.ojk.dppkk.client.builder.field.EFormLaporanTahunanLaporanBulanan;
 import id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk.EHeaderMetadataPpmpk;
 import id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk.ER7001PosLtlbDppkLan;
@@ -29,9 +30,9 @@ public class Ltlb0002LAN extends BaseMetadata {
         SubmissionFormat res = new SubmissionFormat(eNum.getCode(), eNum.getName(), reportCode, new ArrayList<>(),
                 extension, 49, 49);
 
-        res.setSavePos(ER7001PosLtlbDppkLan.genFieldSave());
-        res.setSavePosForm(ER7001PosLtlbDppkLan.genFieldSave());
-        res.setRequiredPos(ER7001PosLtlbDppkLan.getRequiredPos());
+        res.setSavePos(ER7001PosLtlbDppkLan.genFieldSave(JenisProgram.PPMPK));
+        res.setSavePosForm(ER7001PosLtlbDppkLan.genFieldSave(JenisProgram.PPMPK));
+        res.setRequiredPos(ER7001PosLtlbDppkLan.getRequiredPos(JenisProgram.PPMPK));
 
 //        res.addSegmentValidations(ER7001PosLtlbDppkLan.getTestVal());
 

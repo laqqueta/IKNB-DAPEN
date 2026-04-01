@@ -51,7 +51,9 @@ public enum ER7004PosLtlbDppkLphu implements IObject<KeyValueString> {
     R_LPHU0606000000("LPHU0606000000", "Total Pendapatan dan Beban Lain-Lain"),
     R_LPHU0700000000("LPHU0700000000", "HASIL USAHA SEBELUM PAJAK"),
     R_LPHU0800000000("LPHU0800000000", "PAJAK PENGHASILAN"),
-    R_LPHU0900000000("LPHU0900000000", "HASIL USAHA SETELAH PAJAK");
+    R_LPHU0900000000("LPHU0900000000", "HASIL USAHA SETELAH PAJAK"),
+
+    ;
 
     private final String key;
     private final String value;

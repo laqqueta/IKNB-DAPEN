@@ -32,19 +32,19 @@ public class Ltlb0007PST extends BaseMetadata {
         res.setSavePos(ER7006PosLtlbDppkPst.genFieldSave());
         res.setRequiredPos(ER7006PosLtlbDppkPst.getRequiredPos());
 
-        ER7006PosLtlbDppkPst.SEGMENT_VALIDATIONS.forEach(res::addSegmentValidations);
+//        ER7006PosLtlbDppkPst.SEGMENT_VALIDATIONS.forEach(res::addSegmentValidations);
 
         List<SubmissionField> fs = res.getFields();
 
-        fs.add(sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01")));
-        fs.add(sf(1, null, "Kode Komponen", sv(M, 13, 13, refTable)
+        fs.add(sf(0, null, "Flag", sv(O, 3, 3, alfaNumeric).confConstant("D01")));
+        fs.add(sf(1, null, "Kode Komponen", sv(O, 13, 13, refTable)
                 .confReference(EHeaderMetadataPpmpk.R7006Pst.getObject())
                 .confRegex(SimpleValidation.patternAlfaNumeric))
                 .confUnique(UniqueType.U));
-        fs.add(sf(2, null, "Manfaat Pensiun", sv(M, 1, 18, numeric)));
-        fs.add(sf(3, null, "Manfaat Pensiun Lainnya", sv(M, 1, 18, numeric)));
-        fs.add(sf(4, null, "Manfaat  lain", sv(M, 1, 18, numeric)));
-        fs.add(sf(5, null, "Jumlah", sv(M, 1, 18, numeric))
+        fs.add(sf(2, null, "Manfaat Pensiun", sv(O, 1, 18, numeric)));
+        fs.add(sf(3, null, "Manfaat Pensiun Lainnya", sv(O, 1, 18, numeric)));
+        fs.add(sf(4, null, "Manfaat  lain", sv(O, 1, 18, numeric)));
+        fs.add(sf(5, null, "Jumlah", sv(O, 1, 18, numeric))
                 .addFieldValidations(ER7006PosLtlbDppkPst.genFieldValidationSumRow()));
 
         return res;

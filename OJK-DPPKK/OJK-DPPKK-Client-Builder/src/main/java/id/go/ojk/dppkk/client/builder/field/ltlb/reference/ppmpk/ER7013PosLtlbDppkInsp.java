@@ -17,8 +17,8 @@ import java.util.List;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ER7013PosLtlbDppkInsp implements IObject<KeyValueString> {
     
-    R_INSPK010000("INSP010000", "Detail"),
-    R_INSPK000000("INSP000000", "Total");
+    R_INSP010000("INSP010000", "Detail"),
+    R_INSP000000("INSP000000", "Total");
 
     private String key;
     private String value;
@@ -52,23 +52,23 @@ public enum ER7013PosLtlbDppkInsp implements IObject<KeyValueString> {
     }
 
     public static ConditionalRequired genConditionForTotal() {
-        return UtilFieldConditional.genExistPos("N", "M", R_INSPK000000.key);
+        return UtilFieldConditional.genExistPos("N", "M", R_INSP000000.key);
     }
 
     public static ConditionalRequired genConditionForTotalOptional() {
-        return UtilFieldConditional.genExistPos("N", "O", R_INSPK000000.key);
+        return UtilFieldConditional.genExistPos("N", "O", R_INSP000000.key);
     }
 
     public static SegmentValidation genValidation() {
-        return UtilSegmentValidation.genEqualsFormula("4", R_INSPK000000.key, R_INSPK010000.key,
-                UtilMetadata.genMessageTotal(R_INSPK000000.value, R_INSPK010000.value));
+        return UtilSegmentValidation.genEqualsFormula("4", R_INSP000000.key, R_INSP010000.key,
+                UtilMetadata.genMessageTotal(R_INSP000000.value, R_INSP010000.value));
 
     }
 
     public static SegmentValidation genRowValidation() {
-        return UtilSegmentValidation.genEqualsInvestasiRatio("5", R_INSPK010000.key,
-                R_INSPK010000.key, "4", EFormLaporanTahunanLaporanBulanan.LTLB_LAN.getCode(),
+        return UtilSegmentValidation.genEqualsInvestasiRatio("5", R_INSP010000.key,
+                R_INSP010000.key, "4", EFormLaporanTahunanLaporanBulanan.LTLB_LAN.getCode(),
                 ER7001PosLtlbDppkLan.R_LAN0102000000.getObject().getKey(), "13",
-                UtilMetadata.genMessage(R_INSPK010000.value, R_INSPK010000.value + "/ Total Investasi (Gabungan) pada form LAN"), 2);
+                UtilMetadata.genMessage(R_INSP010000.value, R_INSP010000.value + "/ Total Investasi (Gabungan) pada form LAN"), 2);
     }
 }

@@ -30,17 +30,17 @@ public class Ltlb0022TBDSP extends BaseMetadata {
         res.setSavePos(ER7021PosLtlbDppkTbdsp.genFieldSave());
         res.setRequiredPos(ER7021PosLtlbDppkTbdsp.getRequiredPos());
 
-        ER7021PosLtlbDppkTbdsp.SEGMENTS_VALIDATION.forEach(res::addSegmentValidations);
+//        ER7021PosLtlbDppkTbdsp.SEGMENTS_VALIDATION.forEach(res::addSegmentValidations);
 
         List<SubmissionField> fs = res.getFields();
 
-        fs.add(sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01")));
-        fs.add(sf(1, null, "Kode Komponen", sv(M, 15, 15, refTable)
+        fs.add(sf(0, null, "Flag", sv(O, 3, 3, alfaNumeric).confConstant("D01")));
+        fs.add(sf(1, null, "Kode Komponen", sv(O, 15, 15, refTable)
                 .confRegex(SimpleValidation.patternAlfaNumeric)
                 .confReference(EHeaderMetadataPpmpk.R7021Tbdsp.getObject())));
-        fs.add(sf(2, null, "Uraian", sv(C, 1, 100, freeText)
+        fs.add(sf(2, null, "Uraian", sv(O, 1, 100, freeText)
                 .confConditionalRequired(ER7021PosLtlbDppkTbdsp.genConditionEmpty())));
-        fs.add(sf(3, null, "Jumlah", sv(M, 1, 18, numeric)));
+        fs.add(sf(3, null, "Jumlah", sv(O, 1, 18, numeric)));
         fs.add(sf(4, null, "keterangan", sv(O, 1, 250, freeText)));
 
         return res;

@@ -75,6 +75,7 @@ public enum EFormLaporanTahunanLaporanBulanan {
 	LTLB_BIPR("BIPR", "Form Rincian Beban Di Luar Investasi dan Operasional"),
 	LTLB_PPH("PPH", "Form Rincian Pajak Penghasilan"),
 	LTLB_PKPL("PKPL", "Form Rincian Pengalihan Dana Ke Dana Pensiun Lain"),
+	LTLB_COVER("COVER", "LAPORAN BULANAN / LAPORAN KEUANGAN TAHUNAN DATA ELEKTRONIK DANA PENSIUN PEMBERI KERJA PROGRAM PENSIUN IURAN PASTI"),
 
 	;
 

@@ -4,9 +4,11 @@ import id.go.ojk.client.model.config.SimpleValidation;
 import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.conf.client.BaseMetadata;
+import id.go.ojk.dppkk.client.builder.constant.JenisProgram;
 import id.go.ojk.dppkk.client.builder.field.EFormLaporanTahunanLaporanBulanan;
 import id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk.EHeaderMetadataPpmpk;
 import id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk.ER7002PosLtlbDppkLpan;
+import id.go.ojk.dppkk.client.builder.field.ltlb.reference.validations.ppmpk.ELpanValidationsConfig;
 import id.go.ojk.lib.client.model.config.UniqueType;
 
 import java.util.ArrayList;
@@ -14,6 +16,7 @@ import java.util.List;
 
 import static id.go.ojk.lib.client.model.config.DataType.*;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
+import static id.go.ojk.lib.client.model.constant.RequiredCondition.O;
 
 public class Ltlb0003LPAN extends BaseMetadata {
 
@@ -28,32 +31,33 @@ public class Ltlb0003LPAN extends BaseMetadata {
         SubmissionFormat res = new SubmissionFormat(eNum.getCode(), eNum.getName(), reportCode, new ArrayList<>(),
                 extension, 25,  25);
 
-        res.setSavePos(ER7002PosLtlbDppkLpan.genFieldSave());
-        res.setRequiredPos(ER7002PosLtlbDppkLpan.getRequiredPos());
+        res.setSavePos(ER7002PosLtlbDppkLpan.genFieldSave(JenisProgram.PPMPK));
+        res.setRequiredPos(ER7002PosLtlbDppkLpan.getRequiredPos(JenisProgram.PPMPK));
 
-        ER7002PosLtlbDppkLpan.SEGMENT_VALIDATIONS.forEach(res::addSegmentValidations);
+//        ER7002PosLtlbDppkLpan.getPpmpkSegmentValidations()
+//                .forEach(res::addSegmentValidations);
 
         List<SubmissionField> fs = res.getFields();
 
-        fs.add(sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01")));
+        fs.add(sf(0, null, "Flag", sv(O, 3, 3, alfaNumeric).confConstant("D01")));
         fs.add(sf(1, null, "Kode Komponen",
-                sv(M, 14, 14, refTable)
+                sv(O, 14, 14, refTable)
                         .confRegex(SimpleValidation.patternAlfaNumeric)
                         .confReference(EHeaderMetadataPpmpk.R7002Lpan.getObject()))
                 .confUnique(UniqueType.U));
 
-        fs.add(sf(2, null, "Manfaat Pensiun", sv(M, 1, 18, numericNegatif)));
-        fs.add(sf(3, null, "Manfaat Pensiun Lainnya Manfaat Tambahan", sv(M, 1, 18, numericNegatif)));
-        fs.add(sf(4, null, "Manfaat Pensiun Lainnya Kompensasi Pascakerja", sv(M, 1, 18, numericNegatif)));
-        fs.add(sf(5, null, "Manfaat Pensiun Lainnya Lainnya", sv(M, 1, 18, numericNegatif)));
-        fs.add(sf(6, null, "Manfaat Lain Kompensasi Pascakerja", sv(M, 1, 18, numericNegatif)));
-        fs.add(sf(7, null, "Manfaat Lain Kesehatan", sv(M, 1, 18, numericNegatif)));
-        fs.add(sf(8, null, "Manfaat Lain Santunan Kematian", sv(M, 1, 18, numericNegatif)));
-        fs.add(sf(9, null, "Manfaat Lain Ibadah Keagamaan", sv(M, 1, 18, numericNegatif)));
-        fs.add(sf(10, null, "Manfaat Lain Pendidikan", sv(M, 1, 18, numericNegatif)));
-        fs.add(sf(11, null, "Manfaat Lain Lainnya", sv(M, 1, 18, numericNegatif)));
-        fs.add(sf(12, null, "Gabungan", sv(M, 1, 18, numericNegatif))
-                .addFieldValidations(ER7002PosLtlbDppkLpan.genFieldValidation1()));
+        fs.add(sf(2, null, "Manfaat Pensiun", sv(O, 1, 18, numericNegatif)));
+        fs.add(sf(3, null, "Manfaat Pensiun Lainnya Manfaat Tambahan", sv(O, 1, 18, numericNegatif)));
+        fs.add(sf(4, null, "Manfaat Pensiun Lainnya Kompensasi Pascakerja", sv(O, 1, 18, numericNegatif)));
+        fs.add(sf(5, null, "Manfaat Pensiun Lainnya Lainnya", sv(O, 1, 18, numericNegatif)));
+        fs.add(sf(6, null, "Manfaat Lain Kompensasi Pascakerja", sv(O, 1, 18, numericNegatif)));
+        fs.add(sf(7, null, "Manfaat Lain Kesehatan", sv(O, 1, 18, numericNegatif)));
+        fs.add(sf(8, null, "Manfaat Lain Santunan Kematian", sv(O, 1, 18, numericNegatif)));
+        fs.add(sf(9, null, "Manfaat Lain Ibadah Keagamaan", sv(O, 1, 18, numericNegatif)));
+        fs.add(sf(10, null, "Manfaat Lain Pendidikan", sv(O, 1, 18, numericNegatif)));
+        fs.add(sf(11, null, "Manfaat Lain Lainnya", sv(O, 1, 18, numericNegatif)));
+        fs.add(sf(12, null, "Gabungan", sv(O, 1, 18, numericNegatif))
+                .addFieldValidations(ELpanValidationsConfig.FV_EQUAL_FORMULA_EXCEPT.toFieldValidation()));
         return res;
     }
 }

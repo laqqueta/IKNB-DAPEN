@@ -11,11 +11,11 @@ import lombok.Getter;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum EReportGroupLktb implements IObject<ReportGroup> {
-    LKD_BULANAN_RUTIN(1, "R", "M", 0, EValidExtension.TXT_PDF),
-    LKD_BULANAN_KOREKSI(2, "K", "M", 1, EValidExtension.TXT_PDF),
+    LKD_BULANAN_RUTIN(1, "R", "M", 0, EValidExtension.TXT_PDF, 111),
+    LKD_BULANAN_KOREKSI(2, "K", "M", 2, EValidExtension.TXT_PDF, 112),
 
-    LKD_TAHUNAN_RUTIN(3, "R", "A", 0, EValidExtension.TXT_PDF),
-    LKD_TAHUNAN_KOREKSI(4, "R", "A", 1, EValidExtension.TXT_PDF),
+    LKD_TAHUNAN_RUTIN(3, "R", "A", 0, EValidExtension.TXT_PDF, 113),
+    LKD_TAHUNAN_KOREKSI(4, "R", "A", 2, EValidExtension.TXT_PDF, 114),
 
     ;
 
@@ -29,6 +29,8 @@ public enum EReportGroupLktb implements IObject<ReportGroup> {
     private final int revisionCode;
     @Getter
     private final EValidExtension validExtension;
+    @Getter
+    private final int code;
 
     @Override
     public ReportGroup getObject() {
@@ -45,7 +47,7 @@ public enum EReportGroupLktb implements IObject<ReportGroup> {
     public static ReportGroup getObjectByCode(int code) {
         ReportGroup res = null;
         for (EReportGroupLktb eEnum : EReportGroupLktb.values()) {
-            if (eEnum.getObject().getMenuCode() == code) {
+            if (code == eEnum.getCode()) {
                 res = eEnum.getObject();
                 break;
             }

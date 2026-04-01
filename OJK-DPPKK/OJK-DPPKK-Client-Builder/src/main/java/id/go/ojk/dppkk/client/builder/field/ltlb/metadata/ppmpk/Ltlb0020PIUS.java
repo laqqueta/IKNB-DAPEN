@@ -13,6 +13,7 @@ import java.util.List;
 
 import static id.go.ojk.lib.client.model.config.DataType.*;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
+import static id.go.ojk.lib.client.model.constant.RequiredCondition.O;
 
 public class Ltlb0020PIUS extends BaseMetadata {
 
@@ -30,19 +31,19 @@ public class Ltlb0020PIUS extends BaseMetadata {
         res.setSavePos(ER7019PosLtlbDppkPius.genFieldSave());
         res.setRequiredPos(ER7019PosLtlbDppkPius.getRequiredPos());
 
-        res.addSegmentValidations(ER7019PosLtlbDppkPius.genValidation());
+//        res.addSegmentValidations(ER7019PosLtlbDppkPius.genValidation());
 
         List<SubmissionField> fs = res.getFields();
 
-        fs.add(sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01")));
-        fs.add(sf(1, null, "Kode Komponen", sv(M, 14, 14, refTable)
+        fs.add(sf(0, null, "Flag", sv(O, 3, 3, alfaNumeric).confConstant("D01")));
+        fs.add(sf(1, null, "Kode Komponen", sv(O, 14, 14, refTable)
                 .confRegex(SimpleValidation.patternAlfaNumeric)
                 .confReference(EHeaderMetadataPpmpk.R7019Pius.getObject())));
-        fs.add(sf(2, null, "Jumlah Peserta Iuran Sukarela", sv(M, 1, 18, numeric)));
-        fs.add(sf(3, null, "Saldo Akumulasi Iuran Sukarela bulan sebelumnya", sv(M, 1, 18, numeric)));
-        fs.add(sf(4, null, "Penambahan iuran sukarela bulan berjalan", sv(M, 1, 18, numeric)));
-        fs.add(sf(5, null, "Distribusi Hasil Pengembangan Dana Iuran Sukarela", sv(M, 1, 18, numeric)));
-        fs.add(sf(6, null, "Total Saldo akumulasi iuran sukarela", sv(M, 1, 18, numeric)));
+        fs.add(sf(2, null, "Jumlah Peserta Iuran Sukarela", sv(O, 1, 18, numeric)));
+        fs.add(sf(3, null, "Saldo Akumulasi Iuran Sukarela bulan sebelumnya", sv(O, 1, 18, numeric)));
+        fs.add(sf(4, null, "Penambahan iuran sukarela bulan berjalan", sv(O, 1, 18, numeric)));
+        fs.add(sf(5, null, "Distribusi Hasil Pengembangan Dana Iuran Sukarela", sv(O, 1, 18, numeric)));
+        fs.add(sf(6, null, "Total Saldo akumulasi iuran sukarela", sv(O, 1, 18, numeric)));
 
         return res;
     }

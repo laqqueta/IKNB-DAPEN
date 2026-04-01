@@ -5,6 +5,7 @@ import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
 import id.go.ojk.conf.client.UtilFieldValidation;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
+import id.go.ojk.dppkk.client.builder.constant.JenisProgram;
 import id.go.ojk.dppkk.client.builder.field.EFormLaporanTahunanLaporanBulanan;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
@@ -80,7 +81,7 @@ public enum ER7009PosLtlbDppkRoi implements IObject<KeyValueString> {
 
     public static SegmentValidation genGeoMean() {
         String errMsg = UtilMetadata.genDelimitedColumn(2, 13, "*") + "|3|14|" + "REKINV kode baris ";
-        String formRow = UtilMetadata.genPipeRow(ER7008PosLtlbDppkRekinv.getObjects(), 0, 19);
+        String formRow = UtilMetadata.genPipeRow(ER7008PosLtlbDppkRekinv.getObjects(JenisProgram.PPMPK), 0, 19);
 
         return UtilSegmentValidation.genGeoMeanInvestasi("10", UtilMetadata.genPipeRow(getObjects(), 0, 19),
                 EFormLaporanTahunanLaporanBulanan.LTLB_REKINV.getCode(), formRow,
