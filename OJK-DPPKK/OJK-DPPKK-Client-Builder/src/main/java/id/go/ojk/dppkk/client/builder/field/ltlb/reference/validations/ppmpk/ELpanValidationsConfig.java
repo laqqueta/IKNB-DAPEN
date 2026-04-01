@@ -101,7 +101,7 @@ public enum ELpanValidationsConfig {
 
     FV_EQUAL_FORMULA_EXCEPT(() -> null,
             () -> UtilFieldValidation.genEqualsExceptPosFormula(UtilMetadata.genPlusColumn(2, 11),
-            UtilMetadata.genPipeRow(getObjects(JenisProgram.PPMPK), new int[]{5, 13, 22, 24}), 2))
+            UtilMetadata.genPipeRow(getObjects(JenisProgram.PPMPK), new int[]{5, 13, 21, 22, 24}), 2))
 
     ;
 

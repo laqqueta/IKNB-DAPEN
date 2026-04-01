@@ -58,7 +58,7 @@ public class Ltlb0062IUR extends BaseMetadata {
                 .confConditionalRequired(ER7061PosLtlbDppkIur.genConditionForTotal())));
 
         fs.add(sf(4, null, "Iuran Jatuh Tempo - Iuran Normal Peserta %",
-                sv(C, 1, 18, numeric)
+                sv(C, 4, 6, numericDot)
                         .confConditionalRequired(ER7061PosLtlbDppkIur.genConditionForTotal())));
 
         fs.add(sf(5, null, "Iuran Jatuh Tempo - Iuran Normal Peserta Jumlah", sv(M, 1, 18, numeric)));
@@ -67,7 +67,7 @@ public class Ltlb0062IUR extends BaseMetadata {
                 sv(C, 4, 6, numericDot)
                         .confConditionalRequired(ER7061PosLtlbDppkIur.genConditionForTotal())));
 
-        fs.add(sf(7, null, "Iuran Jatuh Tempo - Iuran Normal Pemberi Kerja Jumlah", sv(M, 4, 6, numericDot)));
+        fs.add(sf(7, null, "Iuran Jatuh Tempo - Iuran Normal Pemberi Kerja Jumlah", sv(M, 1, 18, numeric)));
         fs.add(sf(8, null, "Iuran Jatuh Tempo - Iuran Sukarela Peserta", sv(M, 1, 18, numeric)));
         fs.add(sf(9, null, "Iuran Jatuh Tempo - Iuran Tambahan", sv(M, 1, 18, numeric)));
         fs.add(sf(10, null, "Penerimaan Iuran - Iuran Normal Peserta", sv(M, 1, 18, numeric)));

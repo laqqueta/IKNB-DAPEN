@@ -43,7 +43,7 @@ public enum ER7061PosLtlbDppkIur implements IObject<KeyValueString> {
     }
 
     public static String genFieldSave() {
-        return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(3, 15), getObjects());
+        return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(3, 16), getObjects());
     }
 
     public static String genFieldFormSave() {

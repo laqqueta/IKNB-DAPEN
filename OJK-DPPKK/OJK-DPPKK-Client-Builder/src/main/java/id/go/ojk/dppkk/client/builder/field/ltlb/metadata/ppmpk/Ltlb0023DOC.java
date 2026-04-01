@@ -51,15 +51,15 @@ public class Ltlb0023DOC extends BaseMetadata {
                 sv(C, 1, 100, freeText)
                         .confConditionalRequired(ER7022PosLtlbDppkDoc.genConditionForTotalOptional())));
 
-        fs.add(sf(3, null, "Kode Bank",
+        fs.add(sf(3, null, "Cabang",
+                sv(C, 1, 100, freeText)
+                        .confConditionalRequired(ER7022PosLtlbDppkDoc.genConditionForTotalOptional())));
+
+        fs.add(sf(4, null, "Kode Bank",
                 sv(C, 1, 6, refTable)
                         .confConditionalRequired(ER7022PosLtlbDppkDoc.genConditionForTotal())
                         .confRegex(SimpleValidation.patternAlfaNumeric)
                         .confReference(EHeaderMetadataShared.R011.getObject())));
-
-        fs.add(sf(4, null, "Cabang",
-                sv(C, 1, 100, freeText)
-                        .confConditionalRequired(ER7022PosLtlbDppkDoc.genConditionForTotalOptional())));
 
         fs.add(sf(5, null, "Tanggal Perolehan",
                 sv(C, 8, 8, date)

@@ -24,7 +24,6 @@ import java.util.stream.Collectors;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ER7012PosLtlbDppkAlm implements IObject<KeyValueString> {
 
-    R_ALM0100000000("ALM0100000000", "A. Aset Investasi", EnumSet.of(JenisProgram.ALL)),
     R_ALM0101000000("ALM0101000000", "Deposito on call pada Bank", EnumSet.of(JenisProgram.ALL)),
     R_ALM0102000000("ALM0102000000", "Deposito berjangka pada Bank", EnumSet.of(JenisProgram.ALL)),
     R_ALM0103000000("ALM0103000000", "Sertifikat deposito pada Bank", EnumSet.of(JenisProgram.ALL)),
@@ -46,7 +45,6 @@ public enum ER7012PosLtlbDppkAlm implements IObject<KeyValueString> {
     R_ALM0119000000("ALM0119000000", "Bangunan di Indonesia", EnumSet.of(JenisProgram.ALL)),
     R_ALM0120000000("ALM0120000000", "Tanah dan Bangunan di Indonesia", EnumSet.of(JenisProgram.ALL)),
     R_ALM0121000000("ALM0121000000", "Total Investasi", EnumSet.of(JenisProgram.ALL)),
-    R_ALM0200000000("ALM0200000000", "B. Aset Lancar di Luar Investasi", EnumSet.of(JenisProgram.ALL)),
     R_ALM0201000000("ALM0201000000", "Kas & Bank", EnumSet.of(JenisProgram.ALL)),
     R_ALM0202000000("ALM0202000000", "Piutang Iuran", EnumSet.of(JenisProgram.ALL)),
     R_ALM0203000000("ALM0203000000", "Iuran Normal Pemberi Kerja", EnumSet.of(JenisProgram.ALL)),
@@ -58,7 +56,6 @@ public enum ER7012PosLtlbDppkAlm implements IObject<KeyValueString> {
     R_ALM0209000000("ALM0209000000", "Piutang Hasil Investasi", EnumSet.of(JenisProgram.ALL)),
     R_ALM0210000000("ALM0210000000", "Piutang Lain-Lain", EnumSet.of(JenisProgram.ALL)),
     R_ALM0211000000("ALM0211000000", "Total Aset Lancar di Luar Investasi", EnumSet.of(JenisProgram.ALL)),
-    R_ALM0300000000("ALM0300000000", "C. Aset Operasional", EnumSet.of(JenisProgram.ALL)),
     R_ALM0301000000("ALM0301000000", "Tanah dan Bangunan", EnumSet.of(JenisProgram.ALL)),
     R_ALM0302000000("ALM0302000000", "Kendaraan", EnumSet.of(JenisProgram.ALL)),
     R_ALM0303000000("ALM0303000000", "Peralatan Komputer", EnumSet.of(JenisProgram.ALL)),
@@ -71,8 +68,6 @@ public enum ER7012PosLtlbDppkAlm implements IObject<KeyValueString> {
             EnumSet.of(JenisProgram.PPMPM, JenisProgram.PPMPK, JenisProgram.PPMPPPIPK)),
     R_ALM0700000000("ALM0700000000", "F. Liabilitas Manfaat Pensiun",
             EnumSet.of(JenisProgram.PPIPM, JenisProgram.PPIPK)),
-    R_ALM0800000000("ALM0800000000", "G. Liabilitas di Luar Nilai Kini Aktuarial",
-            EnumSet.of(JenisProgram.PPMPM, JenisProgram.PPMPK)),
     R_ALM0900000000("ALM0900000000", "G. Liabilitas di Luar Liabilitas Manfaat Pensiun",
             EnumSet.of(JenisProgram.PPIPM, JenisProgram.PPIPK, JenisProgram.PPMPPPIPK)),
     R_ALM0901000000("ALM0901000000", "Utang Manfaat Pensiun dan Manfaat Lain Jatuh Tempo", EnumSet.of(JenisProgram.ALL)),

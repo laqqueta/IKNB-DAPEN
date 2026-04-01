@@ -38,7 +38,7 @@ public class Ltlb0013ALM extends BaseMetadata {
         List<SubmissionField> fs = res.getFields();
 
         fs.add(sf(0, null, "Flag", sv(O, 3, 3, alfaNumeric).confConstant("D01")));
-        fs.add(sf(1, null, "Kode Komponen", sv(O, 17, 17, refTable)
+        fs.add(sf(1, null, "Kode Komponen", sv(O, 13, 13, refTable)
                 .confRegex(SimpleValidation.patternAlfaNumeric)
                 .confReference(EHeaderMetadataPpmpk.R7012Alm.getObject()))
                 .confUnique(UniqueType.U));

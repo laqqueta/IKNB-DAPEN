@@ -50,15 +50,15 @@ public class Ltlb0026SRDP extends BaseMetadata {
                 sv(C, 1, 100, freeText)
                         .confConditionalRequired(ER7025PosLtlbDppkSrdp.genConditionForTotal())));
 
-        fs.add(sf(3, null, "Kode Bank",
+        fs.add(sf(3, null, "Cabang",
+                sv(C, 1, 100, freeText)
+                        .confConditionalRequired(ER7025PosLtlbDppkSrdp.genConditionForTotalOptional())));
+
+        fs.add(sf(4, null, "Kode Bank",
                 sv(C, 1, 6, refTable)
                         .confConditionalRequired(ER7025PosLtlbDppkSrdp.genConditionForTotalOptional())
                         .confRegex(SimpleValidation.patternAlfaNumeric)
                         .confReference(EHeaderMetadataShared.R011.getObject())));
-
-        fs.add(sf(4, null, "Cabang",
-                sv(C, 1, 100, freeText)
-                        .confConditionalRequired(ER7025PosLtlbDppkSrdp.genConditionForTotalOptional())));
 
         fs.add(sf(5, null, "Tanggal Perolehan",
                 sv(C, 8, 8, date)

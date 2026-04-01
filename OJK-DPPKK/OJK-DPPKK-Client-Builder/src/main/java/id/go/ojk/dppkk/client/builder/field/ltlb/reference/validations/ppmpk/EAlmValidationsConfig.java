@@ -43,13 +43,13 @@ public enum EAlmValidationsConfig {
             () -> null),
 
     SG_EQUAL_FORMULA_6(() -> UtilSegmentValidation.genEqualsFormula("16",
-            ER7012PosLtlbDppkAlm.R_ALM0800000000.getObject().getKey(), UtilMetadata.genPlusRow(ER7012PosLtlbDppkAlm.getObjects(JenisProgram.PPMPK), new int[] { 40, 48 }),
-            UtilMetadata.genMessage(ER7012PosLtlbDppkAlm.R_ALM0800000000.getObject().getValue(), UtilMetadata.genPlusDesc(ER7012PosLtlbDppkAlm.getObjects(JenisProgram.PPMPK), new int[] { 40, 48 }))),
+            ER7012PosLtlbDppkAlm.R_ALM1000000000.getObject().getKey(), UtilMetadata.genPlusRow(ER7012PosLtlbDppkAlm.getObjects(JenisProgram.PPMPK), new int[] { 40, 48 }),
+            UtilMetadata.genMessage(ER7012PosLtlbDppkAlm.R_ALM1000000000.getObject().getValue(), UtilMetadata.genPlusDesc(ER7012PosLtlbDppkAlm.getObjects(JenisProgram.PPMPK), new int[] { 40, 48 }))),
             () -> null),
 
     SG_EQUAL_FORMULA_7(() -> UtilSegmentValidation.genEqualsFormula("16",
-            ER7012PosLtlbDppkAlm.R_ALM0900000000.getObject().getKey(), UtilMetadata.genMinusRow(ER7012PosLtlbDppkAlm.getObjects(JenisProgram.PPMPK), new int[] { 39, 49 }),
-            UtilMetadata.genMessage(ER7012PosLtlbDppkAlm.R_ALM0900000000.getObject().getValue(), UtilMetadata.genMinusDesc(ER7012PosLtlbDppkAlm.getObjects(JenisProgram.PPMPK), new int[] { 39, 49 }))),
+            ER7012PosLtlbDppkAlm.R_ALM1100000000.getObject().getKey(), UtilMetadata.genMinusRow(ER7012PosLtlbDppkAlm.getObjects(JenisProgram.PPMPK), new int[] { 39, 49 }),
+            UtilMetadata.genMessage(ER7012PosLtlbDppkAlm.R_ALM1100000000.getObject().getValue(), UtilMetadata.genMinusDesc(ER7012PosLtlbDppkAlm.getObjects(JenisProgram.PPMPK), new int[] { 39, 49 }))),
             () -> null),
 
     FV_TOTAL1_EQUAL(() -> null,

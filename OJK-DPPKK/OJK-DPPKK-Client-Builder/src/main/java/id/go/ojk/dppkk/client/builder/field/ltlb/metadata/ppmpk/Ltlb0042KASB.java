@@ -49,15 +49,15 @@ public class Ltlb0042KASB extends BaseMetadata {
                 sv(C, 1, 100, freeText)
                         .confConditionalRequired(ER7041PosLtlbDppkKasb.genConditionForTotalOptional())));
 
-        fs.add(sf(3, null, "Kode Bank",
+        fs.add(sf(3, null, "Cabang",
+                sv(C, 1, 100, freeText)
+                        .confConditionalRequired(ER7041PosLtlbDppkKasb.genConditionForTotalOptional())));
+
+        fs.add(sf(4, null, "Kode Bank",
                 sv(C, 1, 6, refTable)
                         .confConditionalRequired(ER7041PosLtlbDppkKasb.genConditionForTotal())
                         .confRegex(SimpleValidation.patternAlfaNumeric)
                         .confReference(EHeaderMetadataShared.R011.getObject())));
-
-        fs.add(sf(4, null, "Cabang",
-                sv(C, 1, 100, freeText)
-                        .confConditionalRequired(ER7041PosLtlbDppkKasb.genConditionForTotalOptional())));
 
         fs.add(sf(5, null, "No Rekening",
                 sv(C, 1, 20, alfaNumeric)

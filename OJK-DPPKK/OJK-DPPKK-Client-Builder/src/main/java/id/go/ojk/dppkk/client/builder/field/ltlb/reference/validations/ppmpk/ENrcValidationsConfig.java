@@ -271,7 +271,7 @@ public enum ENrcValidationsConfig {
     private static SegmentValidation genEqualsForm(String selectField, String comparatorField) {
         return UtilSegmentValidation.genEqualsForm(selectField, ER7003PosLtlbDppkNrc.R_NRC0104010000.getObject().getKey(),
                 EFormLaporanTahunanLaporanBulanan.LTLB_LAN.getCode(), comparatorField,
-                ER7003PosLtlbDppkNrc.R_NRC0104010000.getObject().getKey());
+                ER7001PosLtlbDppkLan.R_LAN0103010000.getObject().getKey());
     }
 
 }
