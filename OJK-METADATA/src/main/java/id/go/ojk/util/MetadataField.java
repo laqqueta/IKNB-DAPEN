@@ -55,7 +55,7 @@ public class MetadataField<T extends Enum<T> & IFieldMetadata> {
     }
 
     private List<SubmissionField> reindex(List<T> filtered, Map<Integer, Integer> reindexNumber) {
-        if (reindexNumber.size() != enumValues().size()) {
+        if (reindexNumber.size() != filtered.size()) {
             throw new IllegalArgumentException("reindexNumber size must match total of enum entries");
         }
 
