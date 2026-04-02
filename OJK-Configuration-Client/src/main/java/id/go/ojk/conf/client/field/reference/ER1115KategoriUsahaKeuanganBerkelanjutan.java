@@ -23,7 +23,7 @@ public enum ER1115KategoriUsahaKeuanganBerkelanjutan implements IObject<KeyValue
 	R_10 ("EN:e3828", "Bangunan Berwawasan Lingkungan yang Memenuhi Standar atau Sertifikasi yang Diakui secara Nasional, Regional, atau Internasional "),
 	R_11 ("EN:e3829", "Kegiatan Usaha dan/atau Kegiatan Lain yang Berwawasan Lingkungan Lainnya "),
 	R_12 ("EN:e3830", "Kegiatan Usaha Mikro, Kecil, dan Menengah (UMKM)"),
-	R_13 ("EN:e3881", "Tidak Termasuk Kategori Usaha Keuangan Berkelanjutan"),
+	R_13 ("EN:e3831", "Tidak Termasuk Kategori Usaha Keuangan Berkelanjutan"),
 	;
 
 	private String key;

@@ -11,11 +11,11 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ER1119Kualitas implements IObject<KeyValueString> {
-	R_1 ("SF:e21", "Lancar"),
-	R_2 ("SF:e121", "Dalam Perhatian Khusus"),
-	R_3 ("SF:e91", "Kurang Lancar"),
-	R_4 ("SF:e31", "Diragukan"),
-	R_5 ("SF:e41", "Macet"),
+	R_1 ("SF:e2", "Lancar"),
+	R_2 ("SF:e12", "Dalam Perhatian Khusus"),
+	R_3 ("SF:e9", "Kurang Lancar"),
+	R_4 ("SF:e3", "Diragukan"),
+	R_5 ("SF:e4", "Macet"),
 	;
 
 	private String key;

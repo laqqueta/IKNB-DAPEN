@@ -16,8 +16,8 @@ public enum ER1164PenempatanDana implements IObject<KeyValueString> {
 	R_3 ("BJ:e94", "Kas"),
 	R_4 ("BJ:e97", "Tabungan"),
 	R_5 ("BJ:e95", "Giro"),
-	R_6 ("BJ:e128", "Deposito On Call"),
-	R_7 ("BJ:e129", "Call Money"),
+	R_6 ("BJ:e160", "Deposito On Call"),
+	R_7 ("BJ:e161", "Call Money"),
 	;
 
 	private String key;
