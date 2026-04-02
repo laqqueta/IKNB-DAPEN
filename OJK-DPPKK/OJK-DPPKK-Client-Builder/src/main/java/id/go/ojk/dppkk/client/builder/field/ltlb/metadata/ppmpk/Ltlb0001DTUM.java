@@ -32,7 +32,7 @@ public class Ltlb0001DTUM extends BaseMetadata {
 
         List<SubmissionField> fs = res.getFields();
 
-        fs.addAll(Dppk001Dtum.getFields(SectorType.KONVENSIONAL));
+        fs.addAll(Dppk001Dtum.METADATA_FIELD.getFields(SectorType.KONVENSIONAL));
 
         return res;
     }

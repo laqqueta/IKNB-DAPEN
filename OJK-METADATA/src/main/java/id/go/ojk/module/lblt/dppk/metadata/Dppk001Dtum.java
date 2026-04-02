@@ -4,28 +4,28 @@ import id.go.ojk.client.model.config.SimpleValidation;
 import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
 import id.go.ojk.module.lblt.EFormLaporanBulananTahunan;
+import id.go.ojk.util.IFieldMetadata;
+import id.go.ojk.util.MetadataField;
 import id.go.ojk.util.constants.ExtensionType;
 import id.go.ojk.util.constants.SectorType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-import java.util.Arrays;
 import java.util.EnumSet;
-import java.util.List;
-import java.util.stream.Collectors;
 
-import static id.go.ojk.lib.client.model.config.DataType.*;
+import static id.go.ojk.lib.client.model.config.DataType.alfaNumeric;
+import static id.go.ojk.lib.client.model.config.DataType.freeText;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.O;
 import static id.go.ojk.util.FieldBuilder.*;
 import static id.go.ojk.util.constants.SectorType.KONVENSIONAL;
 import static id.go.ojk.util.constants.SectorType.SYARIAH;
 
 @AllArgsConstructor
-public enum Dppk001Dtum {
+public enum Dppk001Dtum implements IFieldMetadata {
 
     FLAG(sf(0, null, "Flag", sv(O, 3, 3, alfaNumeric).confConstant("D01")),
             sectors(KONVENSIONAL, SYARIAH)),
-    KODE_KOMPONEN(sf(1, null, "Kode Komponen", sv(O, 10, 10, refTable)
+    KODE_KOMPONEN(sf(1, null, "Kode Komponen", sv(O, 10, 10, freeText)
             .confRegex(SimpleValidation.patternAlfaNumeric)
             /*.confReference(EHeaderMetadataPpmpk.R7000Dtum.getObject())*/),
             sectors(KONVENSIONAL, SYARIAH)),
@@ -58,12 +58,8 @@ public enum Dppk001Dtum {
             .maxRow(null)
             .build();
 
-    public static List<SubmissionField> getFields(SectorType filterSectorType) {
-        return Arrays.stream(Dppk001Dtum.values())
-                .filter(f -> f.sectorType.contains(filterSectorType))
-                .map(Dppk001Dtum::getField)
-                .collect(Collectors.toList());
-    }
+    public static final MetadataField<Dppk001Dtum> METADATA_FIELD =
+            new MetadataField<>(Dppk001Dtum.class);
 
 
 }
