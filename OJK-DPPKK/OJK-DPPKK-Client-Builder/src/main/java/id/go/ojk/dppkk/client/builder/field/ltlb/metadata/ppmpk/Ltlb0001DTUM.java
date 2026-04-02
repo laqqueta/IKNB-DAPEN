@@ -8,7 +8,6 @@ import id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk.ER7000PosLtlbDp
 import id.go.ojk.module.lblt.dppk.metadata.Dppk001Dtum;
 import id.go.ojk.util.constants.SectorType;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Ltlb0001DTUM extends BaseMetadata {
@@ -20,11 +19,8 @@ public class Ltlb0001DTUM extends BaseMetadata {
     @Override
     public SubmissionFormat get() {
 
-        SubmissionFormatBuilder konvenSubmissionFormat = Dppk001Dtum.KONVENSIONAL_SUBMISSION_FORMAT_CONFIG;
-        konvenSubmissionFormat.setReportCode(reportCode);
-        konvenSubmissionFormat.setFields(new ArrayList<>());
-
-        SubmissionFormat res = new SubmissionFormat(konvenSubmissionFormat);
+        SubmissionFormatBuilder submissionFormatConfig = Dppk001Dtum.getSubmissionFormatConfig(SectorType.KONVENSIONAL, reportCode);
+        SubmissionFormat res = new SubmissionFormat(submissionFormatConfig);
 
         res.setRequiredPos(ER7000PosLtlbDppkDtum.getRequiredPos());
 
@@ -32,7 +28,7 @@ public class Ltlb0001DTUM extends BaseMetadata {
 
         List<SubmissionField> fs = res.getFields();
 
-        fs.addAll(Dppk001Dtum.METADATA_FIELD.getFields(SectorType.KONVENSIONAL));
+        fs.addAll(Dppk001Dtum.METADATA.getFields(SectorType.KONVENSIONAL));
 
         return res;
     }
