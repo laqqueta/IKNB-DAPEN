@@ -134,6 +134,16 @@ public class SubmissionFormat {
 		setMinRow(minRow);
 		setMaxRow(maxRow);
 	}
+
+	public SubmissionFormat(SubmissionFormatBuilder builder){
+		setCode(builder.getCode());
+		setName(builder.getName());
+		setReportCode(builder.getReportCode());
+		setFields(builder.getFields());
+		setExtention(builder.getExtension());
+		setMinRow(builder.getMinRow());
+		setMaxRow(builder.getMaxRow());
+	}
 	
 	public SubmissionFormat(String code, String name, String reportCode, List<SubmissionField> fields, String extention, Integer minRow, Integer maxRow, boolean haveOfficeCode, boolean havePosCode, String fieldSavePos){
 		setCode(code);
