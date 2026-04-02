@@ -58,8 +58,6 @@ public enum Dppk001Dtum implements IFieldMetadata {
             .maxRow(null)
             .build();
 
-    public static final MetadataField<Dppk001Dtum> METADATA_FIELD =
-            new MetadataField<>(Dppk001Dtum.class);
-
+    public static final MetadataField<Dppk001Dtum> METADATA = new MetadataField<>(Dppk001Dtum.class);
 
 }

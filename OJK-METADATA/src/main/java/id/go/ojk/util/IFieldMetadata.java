@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface IFieldMetadata {
     SubmissionField getField();
-    List<SectorType> getSectorType(); // rename from sectorType field
+    List<SectorType> getSectorType();
 }
