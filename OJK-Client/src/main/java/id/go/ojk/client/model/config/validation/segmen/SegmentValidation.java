@@ -6,13 +6,14 @@ import java.util.Map;
 import id.go.ojk.client.model.bind.ProgressPreparationAndSending.SubmissionData;
 import id.go.ojk.client.model.bind.ProgressSegment;
 import id.go.ojk.client.model.config.SubmissionFormat;
+import id.go.ojk.client.model.validation.IValidation;
 import id.go.ojk.client.model.validation.ValidationResult;
 import id.go.ojk.client.service.validation.ValidationErrorWriter;
 import id.go.ojk.lib.client.model.constant.FormatCategoryFlag;
 import id.go.ojk.lib.client.model.constant.SegmentValidationType;
 import id.go.ojk.lib.client.service.context.ApplicationContext;
 
-public interface SegmentValidation {
+public interface SegmentValidation extends IValidation {
 	
 	void setApplicationContext(ApplicationContext appCtx);
 

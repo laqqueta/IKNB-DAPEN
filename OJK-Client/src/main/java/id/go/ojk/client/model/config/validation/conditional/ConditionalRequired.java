@@ -1,12 +1,13 @@
 package id.go.ojk.client.model.config.validation.conditional;
 
 import id.go.ojk.client.model.config.SubmissionFormat;
+import id.go.ojk.client.model.validation.IValidation;
 import id.go.ojk.client.model.validation.ValidationResult;
 import id.go.ojk.lib.client.model.Tupple2;
 import id.go.ojk.lib.client.model.constant.RequiredCondition;
 import id.go.ojk.lib.client.service.context.ApplicationContext;
 
-public interface ConditionalRequired {
+public interface ConditionalRequired extends IValidation {
 
 	ConditionalRequired setParameter(String parameter);
 	
