@@ -22,6 +22,12 @@
 			<groupId>id.go.ojk</groupId>
 			<artifactId>OJK-Configuration-Client</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>id.go.ojk</groupId>
+			<artifactId>OJK-METADATA</artifactId>
+			<version>1.0</version>
+			<scope>compile</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
