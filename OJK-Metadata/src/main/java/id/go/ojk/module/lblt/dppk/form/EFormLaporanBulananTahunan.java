@@ -1,4 +1,4 @@
-package id.go.ojk.module.lblt;
+package id.go.ojk.module.lblt.dppk.form;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

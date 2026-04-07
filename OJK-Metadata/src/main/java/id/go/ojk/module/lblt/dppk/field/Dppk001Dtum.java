@@ -3,7 +3,7 @@ package id.go.ojk.module.lblt.dppk.field;
 import id.go.ojk.client.model.config.SimpleValidation;
 import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
-import id.go.ojk.module.lblt.EFormLaporanBulananTahunan;
+import id.go.ojk.module.lblt.dppk.form.EFormLaporanBulananTahunan;
 import id.go.ojk.util.constants.ExtensionType;
 import id.go.ojk.util.constants.ProgramType;
 import id.go.ojk.util.constants.SectorType;

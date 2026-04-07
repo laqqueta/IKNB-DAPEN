@@ -6,7 +6,6 @@ import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
 import id.go.ojk.client.model.validation.IValidation;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
-import id.go.ojk.module.lblt.dppk.reference.ER7000PosLtlbDppkDtum;
 import id.go.ojk.util.constants.ProgramType;
 import id.go.ojk.util.metadata.validation.IValidationConverter;
 import id.go.ojk.util.metadata.validation.base.BaseMetadataValidation;
@@ -17,13 +16,18 @@ import lombok.AllArgsConstructor;
 import java.util.EnumSet;
 import java.util.function.Supplier;
 
+import static id.go.ojk.module.lblt.dppk.reference.ER7019PosLtlbDppkPius.R_PIUS0000000000;
+import static id.go.ojk.module.lblt.dppk.reference.ER7019PosLtlbDppkPius.R_PIUS0100000000;
 import static id.go.ojk.util.FieldUtil.programs;
-import static id.go.ojk.util.constants.ProgramType.ALL;
+import static id.go.ojk.util.constants.ProgramType.PPMPK;
 
 @AllArgsConstructor
-public enum E7001LanValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
+public enum E7019PiusValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-
+    SG_EQUAL_FORMULA(programs(PPMPK),
+            () -> UtilSegmentValidation.genEqualsFormula(
+                    UtilMetadata.genPipeColumn(2, 6), R_PIUS0000000000.key, R_PIUS0100000000.key,
+                    UtilMetadata.genMessageTotal(R_PIUS0000000000.value, R_PIUS0100000000.value))),
 
     ;
 
@@ -55,7 +59,7 @@ public enum E7001LanValidationsConfig implements ILbltMetadataValidation, IValid
         return METADATA.toFieldConditional(this);
     }
 
-    public static final BaseMetadataValidation<E7001LanValidationsConfig> METADATA =
-            new LbltMetadataValidation<>(E7001LanValidationsConfig.class, ALL);
+    public static final BaseMetadataValidation<E7019PiusValidationsConfig> METADATA =
+            new LbltMetadataValidation<>(E7019PiusValidationsConfig.class, PPMPK);
 
 }
