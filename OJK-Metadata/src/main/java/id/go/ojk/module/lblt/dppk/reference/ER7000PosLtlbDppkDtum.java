@@ -46,8 +46,8 @@ public enum ER7000PosLtlbDppkDtum implements IObject<KeyValueString> {
     ;
 
 
-    private String key;
-    private String value;
+    final String key;
+    final String value;
 
     public KeyValueString getObject() {
         return new KeyValueString(key, value, new String[] {});
@@ -73,7 +73,7 @@ public enum ER7000PosLtlbDppkDtum implements IObject<KeyValueString> {
         return UtilMetadata.genPipeRowExcept(getObjects(), new int[] { 24, 25, 26 });
     }
 
-    public static final List<SegmentValidation> SEGMENT_VALIDATIONS = Arrays.asList(
+    /*public static final List<SegmentValidation> SEGMENT_VALIDATIONS = Arrays.asList(
             genValidationAll(),
             genValidationDate(),
             genValidationLength1(),
@@ -110,7 +110,7 @@ public enum ER7000PosLtlbDppkDtum implements IObject<KeyValueString> {
     private static SegmentValidation genValidationLength4() {
         return UtilSegmentValidation.genLength("2",
                 UtilMetadata.genPipeRowExcept(getObjects(), new int[] {0, 4, 5, 6, 13}),1, 100);
-    }
+    }*/
 
     /*public static ConditionalRequired genConditionalExist16() {
         return UtilFieldConditional.genAllExistPosAndInReference("N", "M", "16", INVDEP0100000000.key, getRefNumber());

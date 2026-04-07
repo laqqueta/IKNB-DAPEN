@@ -6,7 +6,7 @@ public enum ProgramType {
     PPMPM,
     PPIPK,
     PPIPM,
-    PPMPKPPIPK,
+    PPMPPPIPK,
     ALL,
 
 }

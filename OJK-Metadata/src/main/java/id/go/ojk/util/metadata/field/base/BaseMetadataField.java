@@ -1,7 +1,7 @@
 package id.go.ojk.util.metadata.field.base;
 
 import id.go.ojk.client.model.config.SubmissionField;
-import id.go.ojk.util.FieldBuilder;
+import id.go.ojk.util.FieldUtil;
 import id.go.ojk.util.constants.SectorType;
 
 import java.util.*;
@@ -29,7 +29,7 @@ public abstract class BaseMetadataField<T extends Enum<T> & IBaseFieldMetadata> 
                 .map(e -> {
                     int newNumber = reindexNumber.get(e.getField().getNumber());
                     SubmissionField f = e.getField();
-                    return FieldBuilder.sf(newNumber, f.getCode(), f.getName(), f.getSimpleValidation());
+                    return FieldUtil.sf(newNumber, f.getCode(), f.getName(), f.getSimpleValidation());
                 })
                 .sorted(Comparator.comparingInt(SubmissionField::getNumber))
                 .collect(Collectors.toList());
