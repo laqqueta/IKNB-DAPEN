@@ -43,8 +43,7 @@ public class LbPiut extends BaseMetadata {
         .confRegex(patternAlfaNumeric)));
     fs.add(sf(2, null, "Nama Peserta / Jumlah Peserta", sv(M, 1, 100, all)));
     fs.add(sf(3, null, "Nama Perusahaan", sv(M, 1, 100, all)));
-    fs.add(sf(4, null, "Jumlah Kontrak", sv(M, 1, 16, numeric))
-        .addFieldValidations(ER5413PIUT.genFieldValidationJumlahKontrak()));
+    fs.add(sf(4, null, "Jumlah Kontrak", sv(M, 1, 16, numeric)));
     fs.add(sf(5, null, "Segmen Peserta", sv(M, 1, 10, refTable)
         .confReference(EHeaderMetadataShared.SEGMEN_PESERTA.getObject())
         .confRegex(PATTERN_REFERENCE_1)));

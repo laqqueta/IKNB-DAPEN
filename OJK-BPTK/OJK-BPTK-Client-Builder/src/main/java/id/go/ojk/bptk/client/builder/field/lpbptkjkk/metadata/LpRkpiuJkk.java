@@ -14,7 +14,6 @@ import id.go.ojk.bptk.client.builder.field.lpbptkjkk.reference.EHeaderMetadataLp
 import id.go.ojk.bptk.client.builder.field.lpbptkjkk.reference.ER5904RKPIU;
 import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
-import id.go.ojk.client.module.bpjs.EReportBpjs;
 import id.go.ojk.conf.client.BaseMetadata;
 
 public class LpRkpiuJkk extends BaseMetadata {
@@ -43,19 +42,13 @@ public class LpRkpiuJkk extends BaseMetadata {
     res.addSegmentValidations(ER5904RKPIU.genValidationTotalIuran());
 
     /* -- ANTAR FORM -- */
-    /*
-     * Metadata RKPIU JKK digunakan juga oleh JKM dan JKP,
-     * tapi validasi antar form-nya hanya di JKK
-     */
-    if (form.getReportCode().equals(EReportBpjs.LPBPTKJKK_RUTIN.getReportTypeCode())) {
-      res.addSegmentValidations(ER5904RKPIU.genValidatonFormTotalKelompokUsahaA());
-      res.addSegmentValidations(ER5904RKPIU.genValidatonFormTotalKelompokUsahaB());
-      res.addSegmentValidations(ER5904RKPIU.genValidatonFormTotalJenisKelamin());
-      res.addSegmentValidations(ER5904RKPIU.genValidatonFormTotalKelompokUmur());
-      res.addSegmentValidations(ER5904RKPIU.genValidatonFormTotalKewarganegaraan());
-      res.addSegmentValidations(ER5904RKPIU.genValidatonFormTotalKelompokUpah());
-      res.addSegmentValidations(ER5904RKPIU.genValidatonFormTotalIuran());
-    }
+    res.addSegmentValidations(ER5904RKPIU.genValidatonFormTotalKelompokUsahaA());
+    res.addSegmentValidations(ER5904RKPIU.genValidatonFormTotalKelompokUsahaB());
+    res.addSegmentValidations(ER5904RKPIU.genValidatonFormTotalJenisKelamin());
+    res.addSegmentValidations(ER5904RKPIU.genValidatonFormTotalKelompokUmur());
+    res.addSegmentValidations(ER5904RKPIU.genValidatonFormTotalKewarganegaraan());
+    res.addSegmentValidations(ER5904RKPIU.genValidatonFormTotalKelompokUpah());
+    res.addSegmentValidations(ER5904RKPIU.genValidatonFormTotalIuran());
 
     List<SubmissionField> fs = res.getFields();
     fs.add(sf(0, null, "Flag Detail", sv(M, 3, 3, alfaNumeric).confConstant("D01")));

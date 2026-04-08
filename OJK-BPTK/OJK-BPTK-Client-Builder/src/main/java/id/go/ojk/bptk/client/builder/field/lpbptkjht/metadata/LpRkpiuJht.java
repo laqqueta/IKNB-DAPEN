@@ -2,7 +2,7 @@ package id.go.ojk.bptk.client.builder.field.lpbptkjht.metadata;
 
 import static id.go.ojk.client.model.config.SimpleValidation.patternAlfaNumeric;
 import static id.go.ojk.lib.client.model.config.DataType.alfaNumeric;
-import static id.go.ojk.lib.client.model.config.DataType.numeric;
+import static id.go.ojk.lib.client.model.config.DataType.all2;
 import static id.go.ojk.lib.client.model.config.DataType.refTable;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
 
@@ -33,6 +33,10 @@ public class LpRkpiuJht extends BaseMetadata {
     res.setRequiredPos(ER6105RKPIU.genRequiredPos());
     res.setUniquePos(ER6105RKPIU.genUniquePos());
     res.setSavePos(ER6105RKPIU.genFieldSave());
+    res.setSavePosForm(ER6105RKPIU.genFieldSaveForm());
+
+    res.addSegmentValidations(ER6105RKPIU.genRegexValidationNumeric());
+    res.addSegmentValidations(ER6105RKPIU.genRegexValidationNumericNegative());
 
     res.addSegmentValidations(ER6105RKPIU.genValidationTotalKelompokUsaha());
     res.addSegmentValidations(ER6105RKPIU.genValidationTotalJenisKelamin());
@@ -62,7 +66,9 @@ public class LpRkpiuJht extends BaseMetadata {
     res.addSegmentValidations(ER6105RKPIU.genValidationFormTotalKelompokUmur());
     res.addSegmentValidations(ER6105RKPIU.genValidationFormTotalKewarganegaraan());
     res.addSegmentValidations(ER6105RKPIU.genValidationFormTotalKelompokUpah());
-    res.addSegmentValidations(ER6105RKPIU.genValidationFormTotalIuran());
+
+    // UAT 16: Validasi Total Iuran pindah ke RPIU
+    // res.addSegmentValidations(ER6105RKPIU.genValidationFormTotalIuran());
     res.addSegmentValidations(ER6105RKPIU.genValidationFormTotalRekapDataJHT());
 
     List<SubmissionField> fs = res.getFields();
@@ -70,13 +76,13 @@ public class LpRkpiuJht extends BaseMetadata {
     fs.add(sf(1, null, "Kode Komponen/Baris", sv(M, 15, 20, refTable /*Huruf Angka*/)
         .confRegex(patternAlfaNumeric)
         .confReference(EHeaderMetadataLpbptkjht.R6105RKPIU.getObject())));
-    fs.add(sf(2, null, "Pemberi Kerja Penerima Upah", sv(M, 1, 20, numeric)));
-    fs.add(sf(3, null, "Peserta Penerima Upah", sv(M, 1, 20, numeric)));
-    fs.add(sf(4, null, "Wadah / Mitra Usaha Bukan Penerima Upah", sv(M, 1, 20, numeric)));
-    fs.add(sf(5, null, "Peserta Bukan Penerima Upah", sv(M, 1, 20, numeric)));
-    fs.add(sf(6, null, "Total Pemberi Kerja / Wadah / Proyek", sv(M, 1, 20, numeric))
+    fs.add(sf(2, null, "Pemberi Kerja Penerima Upah", sv(M, 1, 20, all2)));
+    fs.add(sf(3, null, "Peserta Penerima Upah", sv(M, 1, 20, all2)));
+    fs.add(sf(4, null, "Wadah / Mitra Usaha Bukan Penerima Upah", sv(M, 1, 20, all2)));
+    fs.add(sf(5, null, "Peserta Bukan Penerima Upah", sv(M, 1, 20, all2)));
+    fs.add(sf(6, null, "Total Pemberi Kerja / Wadah / Proyek", sv(M, 1, 20, all2))
         .addFieldValidations(ER6105RKPIU.genValidationTotalPemberiKerja()));
-    fs.add(sf(7, null, "Total Peserta", sv(M, 1, 20, numeric))
+    fs.add(sf(7, null, "Total Peserta", sv(M, 1, 20, all2))
         .addFieldValidations(ER6105RKPIU.genValidationTotalPeserta()));
     return res;
   }

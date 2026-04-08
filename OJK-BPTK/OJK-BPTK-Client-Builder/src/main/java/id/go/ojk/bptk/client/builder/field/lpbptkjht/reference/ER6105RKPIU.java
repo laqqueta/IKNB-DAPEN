@@ -140,6 +140,18 @@ public enum ER6105RKPIU implements IObject<KeyValueString> {
     return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 7), getObjects());
   }
 
+  public static String genFieldSaveForm() {
+    return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(6, 7), getObjects());
+  }
+
+  public static SegmentValidation genRegexValidationNumeric() {
+    return UtilSegmentValidation.genRegexNumeric("2|3|4|5|6|7", UtilMetadata.genPipeRow(getObjects(), 0, 45));
+  }
+
+  public static SegmentValidation genRegexValidationNumericNegative() {
+    return UtilSegmentValidation.genRegexNumericNegative("2|3|4|5|6|7", UtilMetadata.genPipeRow(getObjects(), 46, 51));
+  }
+
   public static SegmentValidation genValidationTotalKelompokUsaha() {
     List<IObject<KeyValueString>> listKv = Arrays.asList(RKPIU0301000000, RKPIU0302000000, RKPIU0303000000,
         RKPIU0304000000, RKPIU0305000000, RKPIU0306000000, RKPIU0307000000, RKPIU0308000000, RKPIU0309000000);
@@ -221,47 +233,47 @@ public enum ER6105RKPIU implements IObject<KeyValueString> {
   }
 
   public static SegmentValidation genValidationFormKelompokUsahaA() {
-    return UtilSegmentValidation.genEqualsForm("2", RKPIU0301000000.key, RKPST, "16",
+    return UtilSegmentValidation.genEqualsForm("6", RKPIU0301000000.key, RKPST, "16",
         ER5901RKPST.RKPST0200000000.getKey());
   }
 
   public static SegmentValidation genValidationFormKelompokUsahaB() {
-    return UtilSegmentValidation.genEqualsForm("2", RKPIU0302000000.key, RKPST, "17",
+    return UtilSegmentValidation.genEqualsForm("6", RKPIU0302000000.key, RKPST, "17",
         ER5901RKPST.RKPST0200000000.getKey());
   }
 
   public static SegmentValidation genValidationFormKelompokUsahaC() {
-    return UtilSegmentValidation.genEqualsForm("2", RKPIU0303000000.key, RKPST, "18",
+    return UtilSegmentValidation.genEqualsForm("6", RKPIU0303000000.key, RKPST, "18",
         ER5901RKPST.RKPST0200000000.getKey());
   }
 
   public static SegmentValidation genValidationFormKelompokUsahaD() {
-    return UtilSegmentValidation.genEqualsForm("2", RKPIU0304000000.key, RKPST, "19",
+    return UtilSegmentValidation.genEqualsForm("6", RKPIU0304000000.key, RKPST, "19",
         ER5901RKPST.RKPST0200000000.getKey());
   }
 
   public static SegmentValidation genValidationFormKelompokUsahaE() {
-    return UtilSegmentValidation.genEqualsForm("2", RKPIU0305000000.key, RKPST, "20",
+    return UtilSegmentValidation.genEqualsForm("6", RKPIU0305000000.key, RKPST, "20",
         ER5901RKPST.RKPST0200000000.getKey());
   }
 
   public static SegmentValidation genValidationFormKelompokUsahaF() {
-    return UtilSegmentValidation.genEqualsForm("2", RKPIU0306000000.key, RKPST, "21",
+    return UtilSegmentValidation.genEqualsForm("6", RKPIU0306000000.key, RKPST, "21",
         ER5901RKPST.RKPST0200000000.getKey());
   }
 
   public static SegmentValidation genValidationFormKelompokUsahaG() {
-    return UtilSegmentValidation.genEqualsForm("2", RKPIU0307000000.key, RKPST, "22",
+    return UtilSegmentValidation.genEqualsForm("6", RKPIU0307000000.key, RKPST, "22",
         ER5901RKPST.RKPST0200000000.getKey());
   }
 
   public static SegmentValidation genValidationFormKelompokUsahaH() {
-    return UtilSegmentValidation.genEqualsForm("2", RKPIU0308000000.key, RKPST, "23",
+    return UtilSegmentValidation.genEqualsForm("6", RKPIU0308000000.key, RKPST, "23",
         ER5901RKPST.RKPST0200000000.getKey());
   }
 
   public static SegmentValidation genValidationFormKelompokUsahaI() {
-    return UtilSegmentValidation.genEqualsForm("2", RKPIU0309000000.key, RKPST, "24",
+    return UtilSegmentValidation.genEqualsForm("6", RKPIU0309000000.key, RKPST, "24",
         ER5901RKPST.RKPST0200000000.getKey());
   }
 
@@ -270,8 +282,7 @@ public enum ER6105RKPIU implements IObject<KeyValueString> {
     String selectPosCode = RKPIU0400000000.key;
     int cols[] = { 8, 10 };
     String comparatorColumn = UtilMetadata.genPlusColumn(cols);
-    String errMsg = "Total Kelompok Usaha|Total Pemberi Kerja Penerima Upah + Total Pemberi Kerja / Wadah /Jenis Usaha Bukan Penerima Upah, pada form "
-        + RKPST;
+    String errMsg = "Total Kelompok Usaha|Total Pemberi Kerja Penerima Upah + Total Wadah /Jenis Usaha Bukan Penerima Upah, pada form " + RKPST;
     return UtilSegmentValidation.genEqualsFormColumCalculation(selectColumn, selectPosCode, comparatorColumn,
         ER5901RKPST.RKPST0200000000.getKeyForm(), errMsg, 2);
   }

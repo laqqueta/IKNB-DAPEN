@@ -62,12 +62,18 @@ public class LpRkpstJkk extends BaseMetadata {
         .confRegex(PATTERN_REFERENCE_1)
         .confReference(EHeaderMetadataShared.LOKASI_DATI_1.getObject())
         .confConditionalRequired(ER5901RKPST.genConditionalExistA())));
-    fs.add(sf(8, null, "Pemberi Kerja Penerima Upah", sv(M, 1, 10, numeric)));
-    fs.add(sf(9, null, "Peserta Penerima Upah", sv(M, 1, 10, numeric)));
-    fs.add(sf(10, null, "Pemberi Kerja / Wadah / Jenis Usaha Bukan Penerima Upah", sv(M, 1, 10, numeric)));
-    fs.add(sf(11, null, "Peserta Bukan Penerima Upah", sv(M, 1, 10, numeric)));
-    fs.add(sf(12, null, "Proyek Pekerja Jasa Konstruksi", sv(M, 1, 10, numeric)));
-    fs.add(sf(13, null, "Peserta Pekerja Jasa Konstruksi", sv(M, 1, 10, numeric)));
+    fs.add(sf(8, null, "Pemberi Kerja Penerima Upah", sv(M, 1, 10, numeric))
+        .addFieldValidations(ER5901RKPST.genValidationSegmenPesertaPpu()));
+    fs.add(sf(9, null, "Peserta Penerima Upah", sv(M, 1, 10, numeric))
+        .addFieldValidations(ER5901RKPST.genValidationSegmenPesertaPpu()));
+    fs.add(sf(10, null, "Wadah / Jenis Usaha Bukan Penerima Upah", sv(M, 1, 10, numeric))
+        .addFieldValidations(ER5901RKPST.genValidationSegmenPesertaBpu()));
+    fs.add(sf(11, null, "Peserta Bukan Penerima Upah", sv(M, 1, 10, numeric))
+    .addFieldValidations(ER5901RKPST.genValidationSegmenPesertaBpu()));
+    fs.add(sf(12, null, "Proyek Pekerja Jasa Konstruksi", sv(M, 1, 10, numeric))
+        .addFieldValidations(ER5901RKPST.genValidationSegmenPesertaPjk()));
+    fs.add(sf(13, null, "Peserta Pekerja Jasa Konstruksi", sv(M, 1, 10, numeric))
+        .addFieldValidations(ER5901RKPST.genValidationSegmenPesertaPjk()));
     fs.add(sf(14, null, "Segmen Peserta", sv(C, 1, 8, refTable /*Huruf Angka .*/)
         .confRegex(PATTERN_REFERENCE_4)
         .confReference(EHeaderMetadataShared.SEGMEN_PESERTA_LPP.getObject())

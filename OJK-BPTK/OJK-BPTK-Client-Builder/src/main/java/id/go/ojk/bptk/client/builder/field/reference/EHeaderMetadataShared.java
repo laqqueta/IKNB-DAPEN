@@ -12,7 +12,7 @@ import id.go.ojk.conf.client.field.reference.ER1157LokasiDati1;
 import id.go.ojk.conf.client.field.reference.ER1191SandiBank;
 import id.go.ojk.conf.client.field.reference.ER1192SandiCounterParty;
 import id.go.ojk.conf.client.field.reference.ER1194SandiCounterparty;
-import id.go.ojk.conf.client.field.reference.ER1206LokasiDati2;
+import id.go.ojk.conf.client.field.reference.ER1135LokasiDati2;
 import id.go.ojk.conf.client.field.reference.ER1207JenisKepemilikan;
 import id.go.ojk.conf.client.field.reference.ER1212KategoriSuratBerharga;
 import id.go.ojk.conf.client.field.reference.ER1214KualitasAsetProduktif;
@@ -61,14 +61,14 @@ public enum EHeaderMetadataShared implements IObject<ReferenceMetadata> {
   KATEGORI_SURAT_BERHARGA (ER1212KategoriSuratBerharga.getRefNumber(), ER1212KategoriSuratBerharga.getName(), ER1212KategoriSuratBerharga.getObjects()),
   TUJUAN_KEPEMILIKAN (ER1241TujuanKepemilikan.getRefNumber(), "Tujuan Pemilikan", ER1241TujuanKepemilikan.getObjects()),
   KUALITAS_ASET_PRODUKTIF (ER1214KualitasAsetProduktif.getRefNumber(), ER1214KualitasAsetProduktif.getName(), ER1214KualitasAsetProduktif.getObjects()),
-  HIRARKI_HARGA_PASAR (ER1242HirarkiHargaPasar.getRefNumber(), ER1242HirarkiHargaPasar.getName(), ER1242HirarkiHargaPasar.getObjects()),
+  HIRARKI_HARGA_PASAR (ER1242HirarkiHargaPasar.getRefNumber(), "Hierarki Harga Pasar", ER1242HirarkiHargaPasar.getObjects()),
   STATUS_PEMILIKAN_TANAH_BANGUNAN (ER1245StatusPemilikanTanahBangunan.getRefNumber(), "Status Pemilikan Tanah & Bangunan", ER1245StatusPemilikanTanahBangunan.getObjects()),
   SANDI_BANK (ER1191SandiBank.getRefNumber(), ER1191SandiBank.getName(), ER1191SandiBank.getObjects()),
   PENURUNAN_NILAI (ER1246PenurunanNilai.getRefNumber(), ER1246PenurunanNilai.getName(), ER1246PenurunanNilai.getObjects()),
   GOLONGAN_PIHAK_LAWAN (ER1133GolonganPihakLawan.getRefNumber(), ER1133GolonganPihakLawan.getName(), ER1133GolonganPihakLawan.getObjects()),
   SEKTOR_EKONOMI (ER1124SektorEkonomi.getRefNumber(), ER1124SektorEkonomi.getName(), ER1124SektorEkonomi.getObjects()),
   LOKASI_DATI_1 (ER1157LokasiDati1.getRefNumber(), "Lokasi DATI I", ER1157LokasiDati1.getObjects()),
-  LOKASI_DATI_2 (ER1206LokasiDati2.getRefNumber(), "Lokasi DATI II", ER1206LokasiDati2.getObjects()),
+  LOKASI_DATI_2 (ER1135LokasiDati2.getRefNumber(), "Lokasi DATI II", ER1135LokasiDati2.getObjects()),
   JENIS_PIUTANG_IURAN (ER1219JenisPiutangIuran.getRefNumber(), ER1219JenisPiutangIuran.getName(), ER1219JenisPiutangIuran.getObjects()),
   COUNTER_PARTY (ER1194SandiCounterparty.getRefNumber(), ER1194SandiCounterparty.getName(), ER1194SandiCounterparty.getObjects()),
   COUNTER_PARTY_MAPPING (ER1192SandiCounterParty.getRefNumber(), ER1192SandiCounterParty.getName(), ER1192SandiCounterParty.getObjects()),
@@ -111,7 +111,7 @@ public enum EHeaderMetadataShared implements IObject<ReferenceMetadata> {
 
   public String getDescription() {
     if(number == ER1236SyariahKonvensional.getRefNumber()) {
-      return "Syariah / Konvensional"; // tanda "/" tidak dapat digunakan sebagai nama file
+      return "Syariah/Non Syariah"; // tanda "/" tidak dapat digunakan sebagai nama file
     }
     return name.replaceAll(DESC_REGEX, DESC_REPLACEMENT);
   }

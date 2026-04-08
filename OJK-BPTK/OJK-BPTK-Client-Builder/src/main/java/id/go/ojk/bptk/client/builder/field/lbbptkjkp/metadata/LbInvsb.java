@@ -73,7 +73,7 @@ public class LbInvsb extends BaseMetadata {
     fs.add(sf(14, null, "Tujuan Pemilikan", sv(M, 1, 10, refTable)
         .confReference(EHeaderMetadataShared.TUJUAN_KEPEMILIKAN.getObject())
         .confRegex(PATTERN_REFERENCE_1)));
-    fs.add(sf(15, null, "Syariah/Konvensional", sv(M, 1, 10, refTable)
+    fs.add(sf(15, null, "Syariah/Non Syariah", sv(M, 1, 10, refTable)
         .confReference(EHeaderMetadataShared.SYARIAH_KONVENSIONAL.getObject())
         .confRegex(PATTERN_REFERENCE_1)));
     fs.add(sf(16, null, "Suku Bunga atau Kupon, Tingkat Suku Bunga/Nisbah atau Kupon", sv(M, 1, 6, numericDot))
@@ -94,7 +94,7 @@ public class LbInvsb extends BaseMetadata {
     fs.add(sf(25, null, "Saldo Amortisasi, Biaya Trans", sv(O, 1, 20, numeric)));
     fs.add(sf(26, null, "Saldo Amortisasi, Acc. Interest", sv(O, 1, 20, numeric)));
     fs.add(sf(27, null, "CKPN", sv(O, 1, 20, numeric)));
-    fs.add(sf(28, null, "Hirarki Harga Pasar", sv(M, 1, 10, refTable)
+    fs.add(sf(28, null, "Hierarki Harga Pasar", sv(M, 1, 10, refTable)
         .confReference(EHeaderMetadataShared.HIRARKI_HARGA_PASAR.getObject())
         .confRegex(PATTERN_REFERENCE_1)));
 

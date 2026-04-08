@@ -17,22 +17,22 @@ import lombok.Getter;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ER5403LPAN implements IObject<KeyValueString> {
-  LPAN0200000000("LPAN0200000000", "Aset Neto Tanpa Pembatasan dari Pemberi Sumberdaya, Saldo awal"),
-  LPAN0201000000("LPAN0201000000", "Aset Neto Tanpa Pembatasan dari Pemberi Sumberdaya, Penyesuaian PSAK baru"),
-  LPAN0300000000("LPAN0300000000", "Aset Neto Tanpa Pembatasan dari Pemberi Sumberdaya, Saldo awal setelah penyesuaian"),
-  LPAN0400000000("LPAN0400000000", "Aset Neto Tanpa Pembatasan dari Pemberi Sumberdaya, Surplus (defisit) tahun berjalan"),
-  LPAN0500000000("LPAN0500000000", "Aset Neto Tanpa Pembatasan dari Pemberi Sumberdaya, Aset neto yang dibebaskan dari pembatasan"),
-  LPAN0600000000("LPAN0600000000", "Aset Neto Tanpa Pembatasan dari Pemberi Sumberdaya, Saldo akhir"),
-  LPAN0800000000("LPAN0800000000", "Penghasilan Komperensif Lain, Saldo Awal"),
-  LPAN0900000000("LPAN0900000000", "Penghasilan Komperensif Lain, Penghasilan Komprehensif tahun berjalan"),
-  LPAN1000000000("LPAN1000000000", "Penghasilan Komperensif Lain, Saldo Akhir"),
-  LPAN1100000000("LPAN1100000000", "Penghasilan Komperensif Lain, Jumlah"),
-  LPAN1300000000("LPAN1300000000", "Aset Neto Dengan Pembatasan Dari Pemberi Sumber Daya, Saldo Awal"),
-  LPAN1301000000("LPAN1301000000", "Aset Neto Dengan Pembatasan Dari Pemberi Sumber Daya, Penyesuaian PSAK baru"),
-  LPAN1400000000("LPAN1400000000", "Aset Neto Dengan Pembatasan Dari Pemberi Sumber Daya, Saldo Awal Setelah Penyesuaian"),
-  LPAN1500000000("LPAN1500000000", "Aset Neto Dengan Pembatasan Dari Pemberi Sumber Daya, Surplus (defisit) tahun berjalan"),
-  LPAN1600000000("LPAN1600000000", "Aset Neto Dengan Pembatasan Dari Pemberi Sumber Daya, Aset Neto Yang Dibebaskan Dari Pembatasan"),
-  LPAN1700000000("LPAN1700000000", "Aset Neto Dengan Pembatasan Dari Pemberi Sumber Daya, Saldo akhir"),
+  LPAN0200000000("LPAN0200000000", "Saldo Awal Aset Neto Tanpa Pembatasan dari Pemberi Sumberdaya"),
+  LPAN0201000000("LPAN0201000000", "Penyesuaian PSAK Baru, Aset Neto Tanpa Pembatasan dari Pemberi Sumberdaya"),
+  LPAN0300000000("LPAN0300000000", "Saldo Awal Setelah Penyesuaian, Aset Neto Tanpa Pembatasan dari Pemberi Sumberdaya"),
+  LPAN0400000000("LPAN0400000000", "Surplus (Defisit) Tahun Berjalan, Aset Neto Tanpa Pembatasan dari Pemberi Sumberdaya"),
+  LPAN0500000000("LPAN0500000000", "Aset Neto yang Dibebaskan dari Pembatasan, Aset Neto Tanpa Pembatasan dari Pemberi Sumberdaya"),
+  LPAN0600000000("LPAN0600000000", "Saldo Akhir Aset Neto Tanpa Pembatasan dari Pemberi Sumberdaya"),
+  LPAN0800000000("LPAN0800000000", "Saldo Awal Penghasilan Komperensif Lain"),
+  LPAN0900000000("LPAN0900000000", "Penghasilan Komprehensif Tahun Berjalan, Penghasilan Komperensif Lain"),
+  LPAN1000000000("LPAN1000000000", "Saldo Akhir Penghasilan Komperensif Lain"),
+  LPAN1100000000("LPAN1100000000", "Jumlah Penghasilan Komprehensif Lain"),
+  LPAN1300000000("LPAN1300000000", "Saldo Awal Aset Neto Dengan Pembatasan Dari Pemberi Sumber Daya"),
+  LPAN1301000000("LPAN1301000000", "Penyesuaian PSAK Baru, Aset Neto Dengan Pembatasan Dari Pemberi Sumber Daya"),
+  LPAN1400000000("LPAN1400000000", "Saldo Awal Setelah Penyesuaian, Aset Neto Dengan Pembatasan Dari Pemberi Sumber Daya"),
+  LPAN1500000000("LPAN1500000000", "Surplus (defisit) Tahun Berjalan, Aset Neto Dengan Pembatasan Dari Pemberi Sumber Daya"),
+  LPAN1600000000("LPAN1600000000", "Aset Neto Yang Dibebaskan Dari Pembatasan, Aset Neto Dengan Pembatasan Dari Pemberi Sumber Daya"),
+  LPAN1700000000("LPAN1700000000", "Saldo Akhir Aset Neto Dengan Pembatasan Dari Pemberi Sumber Daya"),
   LPAN1800000000("LPAN1800000000", "Jumlah Aset Neto"),;
 
   @Getter

@@ -13,8 +13,9 @@ import id.go.ojk.conf.client.UtilFieldConditional;
 import id.go.ojk.conf.client.UtilFieldValidation;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
+import id.go.ojk.conf.client.field.reference.ER1135LokasiDati2;
 import id.go.ojk.conf.client.field.reference.ER1157LokasiDati1;
-import id.go.ojk.conf.client.field.reference.ER1206LokasiDati2;
+import id.go.ojk.conf.client.field.reference.ER1249SegmenPeserta;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
 import lombok.AccessLevel;
@@ -92,7 +93,7 @@ public enum ER5901RKPST implements IObject<KeyValueString> {
 
   public static String genFieldSaveForm() {
     return UtilMetadata.genFieldSave(
-        UtilMetadata.genPipeColumn(new int[] { 8, 9, 10, 11, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 28, 33, 47, 50 }),
+        UtilMetadata.genPipeColumn(new int[] { 8, 9, 10, 11, 12, 13, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 28, 33, 47, 50 }),
         getObjects());
   }
 
@@ -143,6 +144,18 @@ public enum ER5901RKPST implements IObject<KeyValueString> {
 
   public static FieldValidation genDati2Validation() {
     return UtilFieldValidation.getEqualsDati2And1(RKPST0100000000.key, 7, ER1157LokasiDati1.getRefNumber(),
-        ER1206LokasiDati2.getRefNumber());
+        ER1135LokasiDati2.getRefNumber());
+  }
+
+  public static FieldValidation genValidationSegmenPesertaPpu() {
+    return UtilFieldValidation.genIfComparatorEquals("14", String.join("|", ER1249SegmenPeserta.getBpuKeys(), ER1249SegmenPeserta.getPjkKeys()), "0");
+  }
+
+  public static FieldValidation genValidationSegmenPesertaBpu() {
+    return UtilFieldValidation.genIfComparatorEquals("14", String.join("|", ER1249SegmenPeserta.getPpuKeys(), ER1249SegmenPeserta.getPjkKeys()), "0");
+  }
+
+  public static FieldValidation genValidationSegmenPesertaPjk() {
+    return UtilFieldValidation.genIfComparatorEquals("14", String.join("|", ER1249SegmenPeserta.getPpuKeys(), ER1249SegmenPeserta.getBpuKeys()), "0");
   }
 }

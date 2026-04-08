@@ -21,6 +21,7 @@ public enum ER1130RupaRupaliabilitas implements IObject<KeyValueString> {
 	R_8 ("RK:e64", "Utang Asuransi"),
 	R_9 ("RK:e65", "Utang Dealer"),
 	R_10 ("RK:e33", "Jenis Rupa-Rupa Liabilitas Lainnya"),
+	R_11 ("RK:e71", "Rekening Antar Kantor"),
 	;
 
 	private String key;

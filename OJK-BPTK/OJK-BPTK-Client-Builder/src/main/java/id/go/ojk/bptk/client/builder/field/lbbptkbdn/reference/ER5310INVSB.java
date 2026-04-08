@@ -96,8 +96,7 @@ public enum ER5310INVSB implements IObject<KeyValueString> {
   }
 
   public static ConditionalRequired genConditionalUnitPenyertaan() {
-//    return UtilFieldConditional.genComparatorHasValue("M", "N", "2", "2007|2011|20111|20112|20113|20114");
-    return UtilFieldConditional.genComparatorHasValue("M", "N", "2", "2007|2011");
+    return UtilFieldConditional.genComparatorHasValue("M", "N", "2", "2007|2011|20111|20112|20113|20114");
   }
 
   public static ConditionalRequired genConditionalBagianPenyertaan() {

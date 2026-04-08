@@ -188,9 +188,9 @@ public enum ER5904RKPIU implements IObject<KeyValueString> {
   public static SegmentValidation genValidatonFormTotalKelompokUsahaA() {
     String selectColumn = "8";
     String selectPosCode = RKPIU0400000000.key;
-    int cols[] = { 8, 10 };
+    int cols[] = { 8, 10, 12 };
     String comparatorColumn = UtilMetadata.genPlusColumn(cols);
-    String errMsg = "Total Kelompok Usaha|Total Pemberi Kerja Penerima Upah + Total Pemberi Kerja / Wadah /Jenis Usaha Bukan Penerima Upah, pada form " + RKPST;
+    String errMsg = "Total Kelompok Usaha|Total Pemberi Kerja Penerima Upah + Total Wadah / Jenis Usaha Bukan Penerima Upah + Total Proyek Pekerja Jasa Konstruksi pada form " + RKPST;
     return UtilSegmentValidation.genEqualsFormColumCalculation(selectColumn, selectPosCode, comparatorColumn,
         ER5901RKPST.RKPST0200000000.getKeyForm(), errMsg, 2);
   }
@@ -198,9 +198,9 @@ public enum ER5904RKPIU implements IObject<KeyValueString> {
   public static SegmentValidation genValidatonFormTotalKelompokUsahaB() {
     String selectColumn = "9";
     String selectPosCode = RKPIU0400000000.key;
-    int cols[] = { 9, 11 };
+    int cols[] = { 9, 11, 13 };
     String comparatorColumn = UtilMetadata.genPlusColumn(cols);
-    String errMsg = "Total Kelompok Usaha|Total Peserta Penerima Upah + Total Peserta Bukan Penerima Upah, pada form " + RKPST;
+    String errMsg = "Total Kelompok Usaha|Total Peserta Penerima Upah + Total Peserta Bukan Penerima Upah pada + Total Peserta Pekerja Jasa Konstruksi pada form " + RKPST;
     return UtilSegmentValidation.genEqualsFormColumCalculation(selectColumn, selectPosCode, comparatorColumn,
         ER5901RKPST.RKPST0200000000.getKeyForm(), errMsg, 2);
   }

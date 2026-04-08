@@ -52,7 +52,7 @@ public enum ER5312SBN implements IObject<KeyValueString> {
   public static SegmentValidation genRowValidation03Bdn() {
     int[] rows = { 18, 31 };
     String comparatorField = UtilMetadata.genPlusRow(ER5301LPK.getObjectsForm(), rows);
-    String fieldName = "SBN, Saldo SAK";
+    String fieldName = "Total Saldo SAK";
     String errMsg = UtilMetadata.genMessage(fieldName, UtilMetadata.genPlusDesc(ER5301LPK.getObjects(), rows) + " pada form LPK");
     return UtilSegmentValidation.genEqualsFormulaForm4("3", SBN0100000000.key, "2", comparatorField, errMsg, 2);
   }
@@ -60,7 +60,7 @@ public enum ER5312SBN implements IObject<KeyValueString> {
   public static SegmentValidation genRowValidation03Jkk() {
     int[] rows = { 8 };
     String comparatorField = UtilMetadata.genPlusRow(ER5401LPK.getObjectsForm(), rows);
-    String fieldName = "SBN, Saldo SAK";
+    String fieldName = "Total Saldo SAK";
     String errMsg = UtilMetadata.genMessage(fieldName,
         UtilMetadata.genPlusDesc(ER5401LPK.getObjects(), rows) + " pada form LPK");
     return UtilSegmentValidation.genEqualsFormulaForm4("3", SBN0100000000.key, "2", comparatorField, errMsg, 2);

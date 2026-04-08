@@ -47,10 +47,6 @@ public enum ER5413PIUT implements IObject<KeyValueString> {
     return UtilMetadata.genFieldSave("13", getObjects());
   }
 
-  public static FieldValidation genFieldValidationJumlahKontrak() {
-    return UtilFieldValidation.genGreaterValue("0");
-  }
-
   /* -- ANTAR FORM -- */
   public static SegmentValidation genRowValidation14() {
     int[] rows = { 1, 2, 3, 4, 5 };

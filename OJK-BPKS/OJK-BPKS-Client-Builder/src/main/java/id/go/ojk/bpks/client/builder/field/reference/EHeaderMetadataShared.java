@@ -8,7 +8,7 @@ import java.util.Map;
 import id.go.ojk.conf.client.field.reference.ER1124SektorEkonomi;
 import id.go.ojk.conf.client.field.reference.ER1133GolonganPihakLawan;
 import id.go.ojk.conf.client.field.reference.ER1191SandiBank;
-import id.go.ojk.conf.client.field.reference.ER1206LokasiDati2;
+import id.go.ojk.conf.client.field.reference.ER1135LokasiDati2;
 import id.go.ojk.conf.client.field.reference.ER1207JenisKepemilikan;
 import id.go.ojk.conf.client.field.reference.ER1208PeringkatSuratBerharga;
 import id.go.ojk.conf.client.field.reference.ER1209JenisProperti;
@@ -59,7 +59,7 @@ public enum EHeaderMetadataShared implements IObject<ReferenceMetadata> {
   PENURUNAN_NILAI (ER1218PenurunanNilai.getRefNumber(), ER1218PenurunanNilai.getName(), ER1218PenurunanNilai.getObjects()),
   GOLONGAN_PIHAK_LAWAN (ER1133GolonganPihakLawan.getRefNumber(), ER1133GolonganPihakLawan.getName(), ER1133GolonganPihakLawan.getObjects()),
   SEKTOR_EKONOMI (ER1124SektorEkonomi.getRefNumber(), ER1124SektorEkonomi.getName(), ER1124SektorEkonomi.getObjects()),
-  LOKASI_DATI_2 (ER1206LokasiDati2.getRefNumber(), "Lokasi Dati II", ER1206LokasiDati2.getObjects()),
+  LOKASI_DATI_2 (ER1135LokasiDati2.getRefNumber(), "Lokasi Dati II", ER1135LokasiDati2.getObjects()),
   JENIS_PIUTANG_IURAN (ER1219JenisPiutangIuran.getRefNumber(), ER1219JenisPiutangIuran.getName(), ER1219JenisPiutangIuran.getObjects()),
   COUNTER_PARTY (ER1220CounterParty.getRefNumber(), ER1220CounterParty.getName(), ER1220CounterParty.getObjects()),
   SEGMEN_KUALITAS (ER1221SegmenKualitas.getRefNumber(), ER1221SegmenKualitas.getName(), ER1221SegmenKualitas.getObjects()),
