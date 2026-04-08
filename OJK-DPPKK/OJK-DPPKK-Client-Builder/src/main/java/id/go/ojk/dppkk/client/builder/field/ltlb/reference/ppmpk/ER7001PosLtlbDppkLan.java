@@ -78,6 +78,8 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
     private final String value;
     private final EnumSet<JenisProgram> jenisProgram;
 
+    private static final String INSP = "INSP";
+
     public KeyValueString getObject() {
         return new KeyValueString(key, value, new String[] {});
     }
@@ -125,5 +127,16 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
                 comparatorForms, comparatorRows,
                 rangeField, criteriaField, sumField, criteriaCondition, sumCriteriaCond,
                 errMsg, criteriaConditionErr, sumConditionErr);
+    }
+
+    public static SegmentValidation genValidatonFormTotalInvestasiC() {
+      String selectColumn = "13";
+      KeyValueString selectPosCode = R_LAN0102000000.getObject();
+      int cols[] = { 4 };
+      String comparatorColumn = UtilMetadata.genPlusColumn(cols);
+      String comparatorPosCode = INSP + ER7013PosLtlbDppkInsp.R_INSP000000.getKey();
+      String errMsg = selectPosCode.getValue() + " | Total Jumlah Investasi pada form " + INSP;
+      return UtilSegmentValidation.genEqualsFormColumCalculation(selectColumn, selectPosCode.getKey(), comparatorColumn,
+          comparatorPosCode, errMsg, 2);
     }
 }

@@ -10,6 +10,7 @@ import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,7 @@ public enum ER7013PosLtlbDppkInsp implements IObject<KeyValueString> {
     R_INSP010000("INSP010000", "Detail"),
     R_INSP000000("INSP000000", "Total");
 
+    @Getter
     private String key;
     private String value;
 
