@@ -9,11 +9,13 @@ import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
+@Getter
 public enum ER7041PosLtlbDppkKasb implements IObject<KeyValueString> {
 
     R_KASB010000("KASB010000", "Detail"),

@@ -30,6 +30,7 @@ public class Ltlb0006LAK extends BaseMetadata {
                 extension, 31, 31);
 
         res.setSavePos(ER7005PosLtlbDppkLak.genFieldSave());
+        res.setSavePosForm(ER7005PosLtlbDppkLak.genFieldSaveForm());
         res.setRequiredPos(ER7005PosLtlbDppkLak.getRequiredPos());
 
 //        ER7005PosLtlbDppkLak.SEGMENT_VALIDATIONS.forEach(res::addSegmentValidations);

@@ -30,6 +30,7 @@ public class Ltlb0042KASB extends BaseMetadata {
                 extension, 0, null);
 
         res.setSavePos(ER7041PosLtlbDppkKasb.genFieldSave());
+        res.setSavePosForm(ER7041PosLtlbDppkKasb.genFieldSave());
         res.setRequiredPos(ER7041PosLtlbDppkKasb.getRequiredPos());
 
         res.addSegmentValidations(ER7041PosLtlbDppkKasb.genValidation());

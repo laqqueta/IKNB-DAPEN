@@ -79,6 +79,8 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
     private final EnumSet<JenisProgram> jenisProgram;
 
     private static final String INSP = "INSP";
+    private static final String KASB = "KASB";
+    private static final String LAK = "LAK";
 
     public KeyValueString getObject() {
         return new KeyValueString(key, value, new String[] {});
@@ -129,7 +131,7 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
                 errMsg, criteriaConditionErr, sumConditionErr);
     }
 
-    public static SegmentValidation genValidatonFormTotalInvestasiC() {
+    public static SegmentValidation genValidatonFormINSP() {
       String selectColumn = "13";
       KeyValueString selectPosCode = R_LAN0102000000.getObject();
       int cols[] = { 4 };
@@ -138,5 +140,27 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
       String errMsg = selectPosCode.getValue() + " | Total Jumlah Investasi pada form " + INSP;
       return UtilSegmentValidation.genEqualsFormColumCalculation(selectColumn, selectPosCode.getKey(), comparatorColumn,
           comparatorPosCode, errMsg, 2);
+    }
+
+    public static SegmentValidation genValidatonFormKASB() {
+      String selectColumn = "13";
+      KeyValueString selectPosCode = R_LAN0103010000.getObject();
+      int cols[] = { 6 };
+      String comparatorColumn = UtilMetadata.genPlusColumn(cols);
+      String comparatorPosCode = KASB + ER7041PosLtlbDppkKasb.R_KASB000000.getKey();
+      String errMsg = selectPosCode.getValue() + " | Total Nominal pada form " + KASB;
+      return UtilSegmentValidation.genEqualsFormColumCalculation(selectColumn, selectPosCode.getKey(), comparatorColumn,
+          comparatorPosCode, errMsg, 2);
+    }
+
+    public static SegmentValidation genValidatonFormLAK() {
+      String selectColumn = "13";
+      KeyValueString selectPosCode = R_LAN0103010000.getObject();
+      int cols[] = { 12 };
+      String comparatorColumn = UtilMetadata.genPlusColumn(cols);
+      KeyValueString comparatorPosCode = ER7005PosLtlbDppkLak.R_LAK0900000000.getObject();
+      String errMsg = selectPosCode.getValue() + " | Total " + comparatorPosCode.getValue() + " pada form " + LAK;
+      return UtilSegmentValidation.genEqualsFormColumCalculation(selectColumn, selectPosCode.getKey(), comparatorColumn,
+          LAK + comparatorPosCode.getKey(), errMsg, 2);
     }
 }

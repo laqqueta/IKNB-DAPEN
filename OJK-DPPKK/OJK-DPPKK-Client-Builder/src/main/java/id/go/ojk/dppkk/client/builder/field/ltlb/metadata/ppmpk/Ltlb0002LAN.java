@@ -36,7 +36,9 @@ public class Ltlb0002LAN extends BaseMetadata {
 
 //        res.addSegmentValidations(ER7001PosLtlbDppkLan.getTestVal());
 
-        res.addSegmentValidations(ER7001PosLtlbDppkLan.genValidatonFormTotalInvestasiC());
+        res.addSegmentValidations(ER7001PosLtlbDppkLan.genValidatonFormINSP());
+        res.addSegmentValidations(ER7001PosLtlbDppkLan.genValidatonFormKASB());
+        res.addSegmentValidations(ER7001PosLtlbDppkLan.genValidatonFormLAK());
 
         List<SubmissionField> fs = res.getFields();
 

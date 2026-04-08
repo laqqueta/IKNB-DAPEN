@@ -9,12 +9,14 @@ import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
+@Getter
 public enum ER7005PosLtlbDppkLak implements IObject<KeyValueString> {
 
     R_LAK0101000000("LAK0101000000", "Penerimaan Bunga/Bagi Hasil"),
@@ -80,6 +82,10 @@ public enum ER7005PosLtlbDppkLak implements IObject<KeyValueString> {
 
     public static String genFieldSave() {
         return UtilMetadata.genFieldSave(pipeColumnValidation, getObjects());
+    }
+
+    public static String genFieldSaveForm() {
+      return UtilMetadata.genFieldSave("12", getObjects());
     }
 
     public static final List<SegmentValidation> SEGMENT_VALIDATIONS = Arrays.asList(
