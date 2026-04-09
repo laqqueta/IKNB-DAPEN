@@ -32,6 +32,7 @@ public class Ltlb0003LPAN extends BaseMetadata {
                 extension, 25,  25);
 
         res.setSavePos(ER7002PosLtlbDppkLpan.genFieldSave(JenisProgram.PPMPK));
+        res.setSavePosForm(ER7002PosLtlbDppkLpan.genFieldSaveForm(JenisProgram.PPMPK));
         res.setRequiredPos(ER7002PosLtlbDppkLpan.getRequiredPos(JenisProgram.PPMPK));
 
 //        ER7002PosLtlbDppkLpan.getPpmpkSegmentValidations()

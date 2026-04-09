@@ -87,6 +87,9 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
     private static final String PKOM = "PKOM";
     private static final String PKAN = "PKAN";
     private static final String ASOL = "ASOL";
+    private static final String NRC = "NRC";
+    private static final String UMPS = "UMPS";
+    private static final String LPAN = "LPAN";
 
     public KeyValueString getObject() {
         return new KeyValueString(key, value, new String[] {});
@@ -216,5 +219,38 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
       String errMsg = selectPosCode.getValue() + " | Total Nilai Buku pada form " + ASOL;
       return UtilSegmentValidation.genEqualsFormColumCalculation(COL_GABUNGAN, selectPosCode.getKey(), comparatorColumn,
           comparatorPosCode, errMsg, 2);
+    }
+
+    public static SegmentValidation genValidatonFormNRC() {
+      KeyValueString selectPosCode = R_LAN0107000000.getObject();
+      int cols[] = { 12 };
+      String comparatorColumn = UtilMetadata.genPlusColumn(cols);
+      KeyValueString comparatorPosCode = ER7003PosLtlbDppkNrc.R_NRC0109000000.getObject();
+      String comparatorPosCodeForm = NRC + comparatorPosCode.getKey();
+      String errMsg = selectPosCode.getValue() + " | Total " + comparatorPosCode.getValue() + " pada form " + NRC;
+      return UtilSegmentValidation.genEqualsFormColumCalculation(COL_GABUNGAN, selectPosCode.getKey(), comparatorColumn,
+          comparatorPosCodeForm, errMsg, 2);
+    }
+
+    public static SegmentValidation genValidatonFormUMPS() {
+      KeyValueString selectPosCode = R_LAN0108020200.getObject();
+      int cols[] = { 4 };
+      String comparatorColumn = UtilMetadata.genPlusColumn(cols);
+      KeyValueString comparatorPosCode = ER7055PosLtlbDppkUmps.R_UMPS000000.getObject();
+      String comparatorPosCodeForm = UMPS + comparatorPosCode.getKey();
+      String errMsg = selectPosCode.getValue() + " | " + comparatorPosCode.getValue() + " pada form " + UMPS;
+      return UtilSegmentValidation.genEqualsFormColumCalculation(COL_GABUNGAN, selectPosCode.getKey(), comparatorColumn,
+          comparatorPosCodeForm, errMsg, 2);
+    }
+    
+    public static SegmentValidation genValidatonFormLPAN() {
+      KeyValueString selectPosCode = R_LAN0111000000.getObject();
+      int cols[] = { 12 };
+      String comparatorColumn = UtilMetadata.genPlusColumn(cols);
+      KeyValueString comparatorPosCode = ER7002PosLtlbDppkLpan.R_LPAN0500000000.getObject();
+      String comparatorPosCodeForm = LPAN + comparatorPosCode.getKey();
+      String errMsg = selectPosCode.getValue() + " | Total " + comparatorPosCode.getValue() + " pada form " + LPAN;
+      return UtilSegmentValidation.genEqualsFormColumCalculation(COL_GABUNGAN, selectPosCode.getKey(), comparatorColumn,
+          comparatorPosCodeForm, errMsg, 2);
     }
 }

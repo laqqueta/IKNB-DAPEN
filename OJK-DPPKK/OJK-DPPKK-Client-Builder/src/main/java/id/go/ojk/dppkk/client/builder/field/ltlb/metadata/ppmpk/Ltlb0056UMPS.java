@@ -31,6 +31,7 @@ public class Ltlb0056UMPS extends BaseMetadata {
                 extension, 0, null);
 
         res.setSavePos(ER7055PosLtlbDppkUmps.genFieldSave());
+        res.setSavePosForm(ER7055PosLtlbDppkUmps.genFieldSaveForm());
         res.setRequiredPos(ER7055PosLtlbDppkUmps.getRequiredPos());
 
         res.addSegmentValidations(ER7055PosLtlbDppkUmps.genValidation());

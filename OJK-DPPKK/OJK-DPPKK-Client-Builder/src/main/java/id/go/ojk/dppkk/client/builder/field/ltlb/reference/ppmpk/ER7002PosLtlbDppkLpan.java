@@ -79,6 +79,10 @@ public enum ER7002PosLtlbDppkLpan implements IObject<KeyValueString> {
         return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 12), getObjects(jenisProgram));
     }
 
+    public static String genFieldSaveForm(JenisProgram jenisProgram) {
+      return UtilMetadata.genFieldSave("12", getObjects(jenisProgram));
+    }
+
     public static String getRequiredPos(JenisProgram jenisProgram) {
         return UtilMetadata.genPipeRow(getObjects(jenisProgram));
     }

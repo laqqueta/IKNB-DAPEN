@@ -32,6 +32,7 @@ public class Ltlb0004NRC extends BaseMetadata {
                 extension, 54, 54);
 
         res.setSavePos(ER7003PosLtlbDppkNrc.genFieldSave(JenisProgram.valueOf(reportCode)));
+        res.setSavePosForm(ER7003PosLtlbDppkNrc.genFieldSaveForm(JenisProgram.valueOf(reportCode)));
         res.setRequiredPos(ER7003PosLtlbDppkNrc.getRequiredPos(JenisProgram.valueOf(reportCode)));
 
         ER7003PosLtlbDppkNrc.getPpmpkSegmentValidations()

@@ -11,6 +11,7 @@ import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,6 +20,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
+@Getter
 public enum ER7003PosLtlbDppkNrc implements IObject<KeyValueString> {
 
     R_NRC0101010000("NRC0101010000", "Deposito on call pada Bank", EnumSet.of(JenisProgram.ALL)),
@@ -101,6 +103,10 @@ public enum ER7003PosLtlbDppkNrc implements IObject<KeyValueString> {
 
     public static String genFieldSave(JenisProgram jenisProgram) {
         return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 12), getObjects(jenisProgram));
+    }
+
+    public static String genFieldSaveForm(JenisProgram jenisProgram) {
+      return UtilMetadata.genFieldSave("12", getObjects(jenisProgram));
     }
 
     public static String getRequiredPos(JenisProgram jenisProgram) {
