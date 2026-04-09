@@ -29,6 +29,7 @@ public class Ltlb0052PKAN extends BaseMetadata {
                 extension, 0, null);
 
         res.setSavePos(ER7051PosLtlbDppkPkan.genFieldSave());
+        res.setSavePosForm(ER7051PosLtlbDppkPkan.genFieldSaveForm());
         res.setRequiredPos(ER7051PosLtlbDppkPkan.getRequiredPos());
 
         res.addSegmentValidations(ER7051PosLtlbDppkPkan.genValidation());

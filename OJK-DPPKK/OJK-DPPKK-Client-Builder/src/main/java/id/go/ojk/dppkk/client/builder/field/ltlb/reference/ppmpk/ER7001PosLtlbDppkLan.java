@@ -78,9 +78,15 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
     private final String value;
     private final EnumSet<JenisProgram> jenisProgram;
 
+    private static final String COL_GABUNGAN = "13";
     private static final String INSP = "INSP";
     private static final String KASB = "KASB";
     private static final String LAK = "LAK";
+    private static final String TNBG = "TNBG";
+    private static final String KNDR = "KNDR";
+    private static final String PKOM = "PKOM";
+    private static final String PKAN = "PKAN";
+    private static final String ASOL = "ASOL";
 
     public KeyValueString getObject() {
         return new KeyValueString(key, value, new String[] {});
@@ -132,35 +138,83 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
     }
 
     public static SegmentValidation genValidatonFormINSP() {
-      String selectColumn = "13";
       KeyValueString selectPosCode = R_LAN0102000000.getObject();
       int cols[] = { 4 };
       String comparatorColumn = UtilMetadata.genPlusColumn(cols);
       String comparatorPosCode = INSP + ER7013PosLtlbDppkInsp.R_INSP000000.getKey();
       String errMsg = selectPosCode.getValue() + " | Total Jumlah Investasi pada form " + INSP;
-      return UtilSegmentValidation.genEqualsFormColumCalculation(selectColumn, selectPosCode.getKey(), comparatorColumn,
+      return UtilSegmentValidation.genEqualsFormColumCalculation(COL_GABUNGAN, selectPosCode.getKey(), comparatorColumn,
           comparatorPosCode, errMsg, 2);
     }
 
     public static SegmentValidation genValidatonFormKASB() {
-      String selectColumn = "13";
       KeyValueString selectPosCode = R_LAN0103010000.getObject();
       int cols[] = { 6 };
       String comparatorColumn = UtilMetadata.genPlusColumn(cols);
       String comparatorPosCode = KASB + ER7041PosLtlbDppkKasb.R_KASB000000.getKey();
       String errMsg = selectPosCode.getValue() + " | Total Nominal pada form " + KASB;
-      return UtilSegmentValidation.genEqualsFormColumCalculation(selectColumn, selectPosCode.getKey(), comparatorColumn,
+      return UtilSegmentValidation.genEqualsFormColumCalculation(COL_GABUNGAN, selectPosCode.getKey(), comparatorColumn,
           comparatorPosCode, errMsg, 2);
     }
 
     public static SegmentValidation genValidatonFormLAK() {
-      String selectColumn = "13";
       KeyValueString selectPosCode = R_LAN0103010000.getObject();
       int cols[] = { 12 };
       String comparatorColumn = UtilMetadata.genPlusColumn(cols);
       KeyValueString comparatorPosCode = ER7005PosLtlbDppkLak.R_LAK0900000000.getObject();
+      String comparatorPosCodeForm = LAK + comparatorPosCode.getKey();
       String errMsg = selectPosCode.getValue() + " | Total " + comparatorPosCode.getValue() + " pada form " + LAK;
-      return UtilSegmentValidation.genEqualsFormColumCalculation(selectColumn, selectPosCode.getKey(), comparatorColumn,
-          LAK + comparatorPosCode.getKey(), errMsg, 2);
+      return UtilSegmentValidation.genEqualsFormColumCalculation(COL_GABUNGAN, selectPosCode.getKey(), comparatorColumn,
+          comparatorPosCodeForm, errMsg, 2);
+    }
+
+    public static SegmentValidation genValidatonFormTNBG() {
+      KeyValueString selectPosCode = R_LAN0104020000.getObject();
+      int cols[] = { 8 };
+      String comparatorColumn = UtilMetadata.genPlusColumn(cols);
+      String comparatorPosCode = TNBG + ER7048PosLtlbDppkTnbg.R_TNBG000000.getKey();
+      String errMsg = selectPosCode.getValue() + " | Total Nilai Buku pada form " + TNBG;
+      return UtilSegmentValidation.genEqualsFormColumCalculation(COL_GABUNGAN, selectPosCode.getKey(), comparatorColumn,
+          comparatorPosCode, errMsg, 2);
+    }
+
+    public static SegmentValidation genValidatonFormKNDR() {
+      KeyValueString selectPosCode = R_LAN0104030000.getObject();
+      int cols[] = { 7 };
+      String comparatorColumn = UtilMetadata.genPlusColumn(cols);
+      String comparatorPosCode = KNDR + ER7049PosLtlbDppkKndr.R_KNDR000000.getKey();
+      String errMsg = selectPosCode.getValue() + " | Total Nilai Buku pada form " + KNDR;
+      return UtilSegmentValidation.genEqualsFormColumCalculation(COL_GABUNGAN, selectPosCode.getKey(), comparatorColumn,
+          comparatorPosCode, errMsg, 2);
+    }
+
+    public static SegmentValidation genValidatonFormPKOM() {
+      KeyValueString selectPosCode = R_LAN0104040000.getObject();
+      int cols[] = { 6 };
+      String comparatorColumn = UtilMetadata.genPlusColumn(cols);
+      String comparatorPosCode = PKOM + ER7050PosLtlbDppkPkom.R_PKOM000000.getKey();
+      String errMsg = selectPosCode.getValue() + " | Total Nilai Buku pada form " + PKOM;
+      return UtilSegmentValidation.genEqualsFormColumCalculation(COL_GABUNGAN, selectPosCode.getKey(), comparatorColumn,
+          comparatorPosCode, errMsg, 2);
+    }
+
+    public static SegmentValidation genValidatonFormPKAN() {
+      KeyValueString selectPosCode = R_LAN0104050000.getObject();
+      int cols[] = { 6 };
+      String comparatorColumn = UtilMetadata.genPlusColumn(cols);
+      String comparatorPosCode = PKAN + ER7051PosLtlbDppkPkan.R_PKAN000000.getKey();
+      String errMsg = selectPosCode.getValue() + " | Total Nilai Buku pada form " + PKAN;
+      return UtilSegmentValidation.genEqualsFormColumCalculation(COL_GABUNGAN, selectPosCode.getKey(), comparatorColumn,
+          comparatorPosCode, errMsg, 2);
+    }
+
+    public static SegmentValidation genValidatonFormASOL() {
+      KeyValueString selectPosCode = R_LAN0104060000.getObject();
+      int cols[] = { 6 };
+      String comparatorColumn = UtilMetadata.genPlusColumn(cols);
+      String comparatorPosCode = ASOL + ER7052PosLtlbDppkAsol.R_ASOL000000.getKey();
+      String errMsg = selectPosCode.getValue() + " | Total Nilai Buku pada form " + ASOL;
+      return UtilSegmentValidation.genEqualsFormColumCalculation(COL_GABUNGAN, selectPosCode.getKey(), comparatorColumn,
+          comparatorPosCode, errMsg, 2);
     }
 }

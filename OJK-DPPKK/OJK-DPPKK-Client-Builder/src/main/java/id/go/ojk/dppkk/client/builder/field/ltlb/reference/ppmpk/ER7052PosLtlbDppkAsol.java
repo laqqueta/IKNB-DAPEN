@@ -11,11 +11,13 @@ import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
+@Getter
 public enum ER7052PosLtlbDppkAsol implements IObject<KeyValueString> {
 
     R_ASOL010000("ASOL010000", "Detail"),
@@ -46,6 +48,10 @@ public enum ER7052PosLtlbDppkAsol implements IObject<KeyValueString> {
 
     public static String genFieldSave() {
         return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(4, 6), getObjects());
+    }
+
+    public static String genFieldSaveForm() {
+      return UtilMetadata.genFieldSave("6", getObjects());
     }
 
     public static String getRequiredPos() {

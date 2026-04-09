@@ -29,6 +29,7 @@ public class Ltlb0049TNBG extends BaseMetadata {
                 extension, 0, null);
 
         res.setSavePos(ER7048PosLtlbDppkTnbg.genFieldSave());
+        res.setSavePosForm(ER7048PosLtlbDppkTnbg.genFieldSaveForm());
         res.setRequiredPos(ER7048PosLtlbDppkTnbg.getRequiredPos());
 
         res.addSegmentValidations(ER7048PosLtlbDppkTnbg.genValidation());

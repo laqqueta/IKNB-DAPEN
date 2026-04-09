@@ -28,6 +28,7 @@ public class Ltlb0050KNDR extends BaseMetadata {
                 extension, 0, null);
 
         res.setSavePos(ER7049PosLtlbDppkKndr.genFieldSave());
+        res.setSavePosForm(ER7049PosLtlbDppkKndr.genFieldSaveForm());
         res.setRequiredPos(ER7049PosLtlbDppkKndr.getRequiredPos());
 
         res.addSegmentValidations(ER7049PosLtlbDppkKndr.genValidation());

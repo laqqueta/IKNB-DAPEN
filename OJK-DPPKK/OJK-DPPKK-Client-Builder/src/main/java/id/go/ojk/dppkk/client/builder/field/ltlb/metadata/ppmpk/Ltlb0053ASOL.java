@@ -29,6 +29,7 @@ public class Ltlb0053ASOL extends BaseMetadata {
                 extension, 0, null);
 
         res.setSavePos(ER7052PosLtlbDppkAsol.genFieldSave());
+        res.setSavePosForm(ER7052PosLtlbDppkAsol.genFieldSaveForm());
         res.setRequiredPos(ER7052PosLtlbDppkAsol.getRequiredPos());
 
         res.addSegmentValidations(ER7052PosLtlbDppkAsol.genValidation());
