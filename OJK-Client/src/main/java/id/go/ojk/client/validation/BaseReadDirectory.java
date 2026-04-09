@@ -124,11 +124,7 @@ public abstract class BaseReadDirectory implements IReadDirectory {
 	}
 
 	protected void setFileChecksum(ReadSubmissionDirModel readDirModel, double progressMultiplier, FileIntegrity fileIntegrity) {
-	  StopWatch sw = new StopWatch();
-	  sw.start();
 	  String checksum = EncryptionUtil.getFileChecksum(readDirModel, progressMultiplier, fileIntegrity.getFile());
-	  sw.stop();
-	  log.info("Checksum completed in {}", Formatter.formatMillis(sw.getTime()));
 	  fileIntegrity.setChecksum(checksum);
 	}
 
