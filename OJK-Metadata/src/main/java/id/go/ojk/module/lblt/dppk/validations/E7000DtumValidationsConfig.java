@@ -8,7 +8,7 @@ import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
 import id.go.ojk.module.lblt.dppk.reference.ER7000PosLtlbDppkDtum;
 import id.go.ojk.util.constants.ProgramType;
-import id.go.ojk.util.metadata.validation.IValidationConverter;
+import id.go.ojk.client.validation.IValidationConverter;
 import id.go.ojk.util.metadata.validation.base.BaseMetadataValidation;
 import id.go.ojk.util.metadata.validation.lblt.ILbltMetadataValidation;
 import id.go.ojk.util.metadata.validation.lblt.LbltMetadataValidation;
@@ -19,6 +19,7 @@ import java.util.function.Supplier;
 
 import static id.go.ojk.util.FieldUtil.programs;
 import static id.go.ojk.util.constants.ProgramType.ALL;
+import static id.go.ojk.util.constants.ProgramType.PPMPK;
 
 @AllArgsConstructor
 public enum E7000DtumValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
@@ -78,6 +79,6 @@ public enum E7000DtumValidationsConfig implements ILbltMetadataValidation, IVali
     }
 
     public static final BaseMetadataValidation<E7000DtumValidationsConfig> METADATA =
-            new LbltMetadataValidation<>(E7000DtumValidationsConfig.class, ALL);
+            new LbltMetadataValidation<>(E7000DtumValidationsConfig.class, PPMPK);
 
 }

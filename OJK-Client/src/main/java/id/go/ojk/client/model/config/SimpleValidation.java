@@ -9,6 +9,8 @@ import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
 import id.go.ojk.client.model.config.validation.conditional.ConditionalRequired;
 import id.go.ojk.client.model.config.validation.conditional.RefConditional;
+import id.go.ojk.client.model.validation.IValidation;
+import id.go.ojk.client.validation.IValidationConverter;
 import id.go.ojk.lib.client.exception.SlikException;
 import id.go.ojk.lib.client.model.config.DataType;
 import id.go.ojk.lib.client.model.config.Regex;
@@ -210,6 +212,11 @@ public class SimpleValidation {
 
     public SimpleValidation confConditionalRequired(ConditionalRequired conditionalRequired) {
         setConditionalRequired(conditionalRequired);
+        return this;
+    }
+
+    public SimpleValidation confConditionalRequired(IValidationConverter validation) {
+        setConditionalRequired(validation.toFieldConditional());
         return this;
     }
 

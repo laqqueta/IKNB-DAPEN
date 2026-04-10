@@ -3,7 +3,9 @@ package id.go.ojk.module.lblt.dppk.field;
 import id.go.ojk.client.model.config.SimpleValidation;
 import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
+import id.go.ojk.lib.client.model.config.UniqueType;
 import id.go.ojk.module.lblt.dppk.form.EFormLaporanBulananTahunan;
+import id.go.ojk.module.lblt.dppk.header.EHeaderMetadataPpmpk;
 import id.go.ojk.util.constants.ExtensionType;
 import id.go.ojk.util.constants.ProgramType;
 import id.go.ojk.util.constants.SectorType;
@@ -17,7 +19,8 @@ import java.util.EnumSet;
 
 import static id.go.ojk.lib.client.model.config.DataType.alfaNumeric;
 import static id.go.ojk.lib.client.model.config.DataType.freeText;
-import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
+import static id.go.ojk.lib.client.model.config.DataType.refTable;
+import static id.go.ojk.lib.client.model.constant.RequiredCondition.O;
 import static id.go.ojk.util.FieldUtil.*;
 import static id.go.ojk.util.constants.ProgramType.PPMPK;
 import static id.go.ojk.util.constants.ProgramType.PPMPM;
@@ -25,17 +28,41 @@ import static id.go.ojk.util.constants.SectorType.KONVENSIONAL;
 import static id.go.ojk.util.constants.SectorType.SYARIAH;
 
 @AllArgsConstructor
-public enum Dppk001Dtum implements ILbltFieldMetadata {
+public enum Dppk0017Ras1 implements ILbltFieldMetadata {
 
-    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
-            sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01"))),
-    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
-            sf(1, null, "Kode Komponen", sv(M, 10, 10, freeText)
+    FLAG(
+            EnumSet.of(KONVENSIONAL, SYARIAH),
+            EnumSet.of(PPMPK, PPMPM),
+            sf(0, null, "Flag", sv(O, 3, 3, alfaNumeric).confConstant("D01"))
+    ),
+    KODE_KOMPONEN(
+            EnumSet.of(KONVENSIONAL, SYARIAH),
+            EnumSet.of(PPMPK, PPMPM),
+            sf(1, null, "Kode Komponen", sv(O, 14, 14, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric)
-                    /*.confReference(EHeaderMetadataPpmpk.R7000Dtum.getObject())*/)),
-    KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
-            sf(2, null, "Keterangan", sv(M, 1, 1000, freeText))),
-
+                    .confReference(EHeaderMetadataPpmpk.R7017Ras1.getObject()))
+                    .confUnique(UniqueType.U)
+    ),
+    MANFAAT_PENSIUN(
+            EnumSet.of(KONVENSIONAL, SYARIAH),
+            EnumSet.of(PPMPK, PPMPM),
+            sf(2, null, "Manfaat Pensiun", sv(O, 1, 18, freeText))
+    ),
+    MANFAAT_PENSIUN_LAINNYA(
+            EnumSet.of(KONVENSIONAL, SYARIAH),
+            EnumSet.of(PPMPK, PPMPM),
+            sf(3, null, "Manfaat Pensiun Lainnya", sv(O, 1, 18, freeText))
+    ),
+    MANFAAT_LAIN(
+            EnumSet.of(KONVENSIONAL, SYARIAH),
+            EnumSet.of(PPMPK, PPMPM),
+            sf(4, null, "Manfaat lain", sv(O, 1, 18, freeText))
+    ),
+    TOTAL(
+            EnumSet.of(KONVENSIONAL, SYARIAH),
+            EnumSet.of(PPMPK, PPMPM),
+            sf(5, null, "Total", sv(O, 1, 18, freeText))
+    ),
     ;
 
     private final EnumSet<SectorType> sectorType;
@@ -57,13 +84,13 @@ public enum Dppk001Dtum implements ILbltFieldMetadata {
         return programType;
     }
 
-    public static final BaseMetadataField<Dppk001Dtum> FIELD_PPMPK = new LbltMetadataField<>(Dppk001Dtum.class, PPMPK);
+    public static final BaseMetadataField<Dppk0017Ras1> FIELD_PPMPK = new LbltMetadataField<>(Dppk0017Ras1.class, PPMPK);
 
     public static SubmissionFormatBuilder getSubmissionFormatConfig(SectorType sectorType, String reportCode) {
-        EFormLaporanBulananTahunan DTUM_FORM = EFormLaporanBulananTahunan.LTLB_DTUM;
+        EFormLaporanBulananTahunan RAS1_FORM = EFormLaporanBulananTahunan.LTLB_RAS_1;
         SubmissionFormatBuilder sfConfig = SubmissionFormatBuilder.builder()
-                .code(DTUM_FORM.getCode())
-                .name(DTUM_FORM.getName())
+                .code(RAS1_FORM.getCode())
+                .name(RAS1_FORM.getName())
                 .extension(ExtensionType.TXT.getExtension())
                 .reportCode(reportCode)
                 .maxRow(null)
@@ -71,7 +98,7 @@ public enum Dppk001Dtum implements ILbltFieldMetadata {
                 .build();
 
         if (sectorType.equals(KONVENSIONAL)) {
-            sfConfig.setMinRow(25);
+            sfConfig.setMinRow(0);
             return sfConfig;
         } else if (sectorType.equals(SYARIAH)) {
             sfConfig.setMinRow(9999);

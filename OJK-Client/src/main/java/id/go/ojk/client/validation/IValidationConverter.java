@@ -1,4 +1,4 @@
-package id.go.ojk.util.metadata.validation;
+package id.go.ojk.client.validation;
 
 import id.go.ojk.client.model.config.validation.conditional.ConditionalRequired;
 import id.go.ojk.client.model.config.validation.field.FieldValidation;

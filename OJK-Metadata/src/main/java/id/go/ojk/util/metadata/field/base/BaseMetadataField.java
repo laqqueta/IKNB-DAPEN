@@ -21,7 +21,7 @@ public abstract class BaseMetadataField<T extends Enum<T> & IBaseFieldMetadata> 
 
     protected List<SubmissionField> reindex(List<T> filtered, Map<Integer, Integer> reindexNumber) {
         if (reindexNumber.size() != filtered.size()) {
-            throw new IllegalArgumentException("reindexNumber size must equal total of enum entries");
+            throw new IllegalArgumentException("reindexNumber size must equal of enum entries");
         }
 
         return filtered.stream()
@@ -39,21 +39,7 @@ public abstract class BaseMetadataField<T extends Enum<T> & IBaseFieldMetadata> 
         return enumValues().stream()
                 .filter(f -> f.getSectorType().contains(filterSectorType))
                 .map(IBaseFieldMetadata::getField)
-                .collect(Collectors.toList());
-    }
-
-    /**
-     * @deprecated Use {@link #getReindexFields(List, Map)} instead.
-     *
-     * @implNote Use this with cautions because of how the fields are not reindex, use
-     *           {@link #getReindexFields(List, Map)} instead if want to filter for specific fields and reindex them
-     *
-     */
-    @Deprecated
-    public List<SubmissionField> getFields(List<Integer> selectedFields) {
-        return enumValues().stream()
-                .map(IBaseFieldMetadata::getField)
-                .filter(field -> selectedFields.contains(field.getNumber()))
+                .sorted(Comparator.comparingInt(SubmissionField::getNumber))
                 .collect(Collectors.toList());
     }
 

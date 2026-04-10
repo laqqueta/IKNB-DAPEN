@@ -5,7 +5,7 @@ import id.go.ojk.client.model.config.validation.field.FieldValidation;
 import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
 import id.go.ojk.client.model.validation.IValidation;
 import id.go.ojk.util.constants.ProgramType;
-import id.go.ojk.util.metadata.validation.IValidationConverter;
+import id.go.ojk.client.validation.IValidationConverter;
 import id.go.ojk.util.metadata.validation.base.BaseMetadataValidation;
 import id.go.ojk.util.metadata.validation.lblt.ILbltMetadataValidation;
 import id.go.ojk.util.metadata.validation.lblt.LbltMetadataValidation;
@@ -14,7 +14,6 @@ import lombok.AllArgsConstructor;
 import java.util.EnumSet;
 import java.util.function.Supplier;
 
-import static id.go.ojk.util.FieldUtil.programs;
 import static id.go.ojk.util.constants.ProgramType.PPMPK;
 
 @AllArgsConstructor

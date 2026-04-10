@@ -11,7 +11,7 @@ import id.go.ojk.conf.client.field.reference.ER1255JenisManfaat;
 import id.go.ojk.module.lblt.dppk.form.EFormLaporanBulananTahunan;
 import id.go.ojk.module.lblt.dppk.reference.ER7001PosLtlbDppkLan;
 import id.go.ojk.util.constants.ProgramType;
-import id.go.ojk.util.metadata.validation.IValidationConverter;
+import id.go.ojk.client.validation.IValidationConverter;
 import id.go.ojk.util.metadata.validation.base.BaseMetadataValidation;
 import id.go.ojk.util.metadata.validation.lblt.ILbltMetadataValidation;
 import id.go.ojk.util.metadata.validation.lblt.LbltMetadataValidation;
@@ -23,6 +23,7 @@ import java.util.function.Supplier;
 import static id.go.ojk.module.lblt.dppk.reference.ER7016PosLtlbDppkSbn.*;
 import static id.go.ojk.util.FieldUtil.programs;
 import static id.go.ojk.util.constants.ProgramType.PPMPK;
+import static id.go.ojk.util.constants.ProgramType.PPMPM;
 
 @AllArgsConstructor
 public enum E7016SbnValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
@@ -32,6 +33,12 @@ public enum E7016SbnValidationsConfig implements ILbltMetadataValidation, IValid
                     UtilMetadata.genMessageTotal(R_SBN000000.value, R_SBN010000.value))),
 
     SG_EQUAL_SBN_RATION(programs(PPMPK),
+            () -> UtilSegmentValidation.genEqualsSbnRatio("9", R_SBN020000.key,
+                    R_SBN000000.key, "10", EFormLaporanBulananTahunan.LTLB_LAN.getCode(),
+                    ER7001PosLtlbDppkLan.R_LAN0102000000.getObject().getKey(), "13",
+                    UtilMetadata.genMessage(R_SBN020000.value, R_SBN020000.value + "/Total Investasi (Gabungan) pada form LAN"), 2)),
+
+    SG_EQUAL_SBN_RATION_1(programs(PPMPM),
             () -> UtilSegmentValidation.genEqualsSbnRatio("9", R_SBN020000.key,
                     R_SBN000000.key, "10", EFormLaporanBulananTahunan.LTLB_LAN.getCode(),
                     ER7001PosLtlbDppkLan.R_LAN0102000000.getObject().getKey(), "13",

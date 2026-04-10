@@ -10,7 +10,7 @@ import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
 import id.go.ojk.conf.client.field.reference.ER1252Pengelolaan;
 import id.go.ojk.util.constants.ProgramType;
-import id.go.ojk.util.metadata.validation.IValidationConverter;
+import id.go.ojk.client.validation.IValidationConverter;
 import id.go.ojk.util.metadata.validation.base.BaseMetadataValidation;
 import id.go.ojk.util.metadata.validation.lblt.ILbltMetadataValidation;
 import id.go.ojk.util.metadata.validation.lblt.LbltMetadataValidation;
@@ -23,11 +23,12 @@ import static id.go.ojk.module.lblt.dppk.reference.ER7037PosLtlbDppkKokb.R_KOKB0
 import static id.go.ojk.module.lblt.dppk.reference.ER7037PosLtlbDppkKokb.R_KOKB010000;
 import static id.go.ojk.util.FieldUtil.programs;
 import static id.go.ojk.util.constants.ProgramType.PPMPK;
+import static id.go.ojk.util.constants.ProgramType.PPMPM;
 
 @AllArgsConstructor
 public enum E7037KokbValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_EQUAL_FORMULA(programs(PPMPK),
+    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM),
             () -> UtilSegmentValidation.genEqualsFormula("6|7|8", R_KOKB000000.key, R_KOKB010000.key,
                     UtilMetadata.genMessageTotal(R_KOKB000000.value, R_KOKB010000.value))),
 
@@ -79,5 +80,8 @@ public enum E7037KokbValidationsConfig implements ILbltMetadataValidation, IVali
 
     public static final BaseMetadataValidation<E7037KokbValidationsConfig> METADATA =
             new LbltMetadataValidation<>(E7037KokbValidationsConfig.class, PPMPK);
+
+    public static final BaseMetadataValidation<E7037KokbValidationsConfig> METADATA_PPMPM =
+            new LbltMetadataValidation<>(E7037KokbValidationsConfig.class, PPMPM);
 
 }

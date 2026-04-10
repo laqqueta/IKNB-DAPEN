@@ -9,7 +9,7 @@ import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
 import id.go.ojk.module.lblt.dppk.reference.ER7011PosLtlbDppkRoism;
 import id.go.ojk.util.constants.ProgramType;
-import id.go.ojk.util.metadata.validation.IValidationConverter;
+import id.go.ojk.client.validation.IValidationConverter;
 import id.go.ojk.util.metadata.validation.base.BaseMetadataValidation;
 import id.go.ojk.util.metadata.validation.lblt.ILbltMetadataValidation;
 import id.go.ojk.util.metadata.validation.lblt.LbltMetadataValidation;

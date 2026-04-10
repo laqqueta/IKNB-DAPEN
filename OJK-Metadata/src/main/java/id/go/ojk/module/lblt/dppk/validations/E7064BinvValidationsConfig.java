@@ -8,7 +8,7 @@ import id.go.ojk.conf.client.UtilFieldConditional;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
 import id.go.ojk.util.constants.ProgramType;
-import id.go.ojk.util.metadata.validation.IValidationConverter;
+import id.go.ojk.client.validation.IValidationConverter;
 import id.go.ojk.util.metadata.validation.base.BaseMetadataValidation;
 import id.go.ojk.util.metadata.validation.lblt.ILbltMetadataValidation;
 import id.go.ojk.util.metadata.validation.lblt.LbltMetadataValidation;
@@ -17,8 +17,6 @@ import lombok.AllArgsConstructor;
 import java.util.EnumSet;
 import java.util.function.Supplier;
 
-import static id.go.ojk.module.lblt.dppk.reference.ER7060PosLtlbDppkPpin.R_PPIN000000;
-import static id.go.ojk.module.lblt.dppk.reference.ER7060PosLtlbDppkPpin.R_PPIN010000;
 import static id.go.ojk.module.lblt.dppk.reference.ER7064PosLtlbDppkBinv.R_BINV000000;
 import static id.go.ojk.module.lblt.dppk.reference.ER7064PosLtlbDppkBinv.R_BINV010000;
 import static id.go.ojk.util.FieldUtil.programs;

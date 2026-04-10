@@ -8,6 +8,7 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
 import id.go.ojk.client.model.config.validation.field.FieldValidation;
+import id.go.ojk.client.validation.IValidationConverter;
 import id.go.ojk.lib.client.model.config.UniqueType;
 import lombok.Getter;
 import lombok.Setter;
@@ -135,14 +136,20 @@ public class SubmissionField {
 	public List<FieldValidation> getFieldValidations() {
 		return fieldValidations;
 	}
+
 	public void setFieldValidations(List<FieldValidation> fieldValidations) {
 		this.fieldValidations = fieldValidations;
 	}
+
 	public SubmissionField addFieldValidations(FieldValidation fieldValidation) {
 		if ( this.fieldValidations == null )
 			this.fieldValidations = new ArrayList<FieldValidation>();
 		this.fieldValidations.add(fieldValidation);
 		return this;
+	}
+
+	public SubmissionField addFieldValidations(IValidationConverter validationConverter) {
+		return addFieldValidations(validationConverter.toFieldValidation());
 	}
 
 }
