@@ -1,5 +1,7 @@
 package id.go.ojk.conf.client;
 
+import org.apache.commons.lang3.StringUtils;
+
 import id.go.ojk.client.model.config.validation.segmen.*;
 import id.go.ojk.client.model.config.validation.segmen.v2.*;
 import lombok.AccessLevel;
@@ -617,6 +619,31 @@ public class UtilSegmentValidation {
         builder.append("&scale=" + scale);
         builder.append("&msgError=" + msgError);
         return new ComparisonFormValidation6(builder.toString());
+    }
+
+    public static SegmentValidation genEqualsFormExpression(String selectField, String selectPosCode, String selectExpr,
+        String comparatorForm, String comparatorField, String comparatorPosCode, String comparatorExpr, String operator,
+        int scale) {
+      return genEqualsFormExpression(selectField, selectPosCode, selectExpr, comparatorForm, comparatorField,
+          comparatorPosCode, comparatorExpr, operator, scale, null);
+    }
+
+    public static SegmentValidation genEqualsFormExpression(String selectField, String selectPosCode, String selectExpr,
+        String comparatorForm, String comparatorField, String comparatorPosCode, String comparatorExpr, String operator,
+        int scale, String msgError) {
+      StringBuilder builder = new StringBuilder("selectField=" + selectField);
+      builder.append("&selectPosCode=" + selectPosCode);
+      builder.append("&selectExpr=" + selectExpr);
+      builder.append("&comparatorForm=" + comparatorForm);
+      builder.append("&comparatorField=" + comparatorField);
+      builder.append("&comparatorPosCode=" + comparatorPosCode);
+      builder.append("&comparatorExpr=" + comparatorExpr);
+      builder.append("&operator=" + operator);
+      builder.append("&scale=" + scale);
+      if (StringUtils.isNotBlank(msgError)) {
+        builder.append("&msgError=" + msgError);
+      }
+      return new ComparisonFormExpressionValidation(builder.toString());
     }
 
     public static SegmentValidation genEqualsFormTotalRowExpectPos(String selectField, String selectPosCode,

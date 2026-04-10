@@ -90,6 +90,7 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
     private static final String NRC = "NRC";
     private static final String UMPS = "UMPS";
     private static final String LPAN = "LPAN";
+    private static final String PST = "PST";
 
     public KeyValueString getObject() {
         return new KeyValueString(key, value, new String[] {});
@@ -242,7 +243,7 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
       return UtilSegmentValidation.genEqualsFormColumCalculation(COL_GABUNGAN, selectPosCode.getKey(), comparatorColumn,
           comparatorPosCodeForm, errMsg, 2);
     }
-    
+
     public static SegmentValidation genValidatonFormLPAN() {
       KeyValueString selectPosCode = R_LAN0111000000.getObject();
       int cols[] = { 12 };
@@ -252,5 +253,15 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
       String errMsg = selectPosCode.getValue() + " | Total " + comparatorPosCode.getValue() + " pada form " + LPAN;
       return UtilSegmentValidation.genEqualsFormColumCalculation(COL_GABUNGAN, selectPosCode.getKey(), comparatorColumn,
           comparatorPosCodeForm, errMsg, 2);
+    }
+
+    public static SegmentValidation genValidatonFormPST() {
+      String selecPosCode = R_LAN0111000000.key;
+      String selectExpr = "> 0";
+      KeyValueString comparator = ER7006PosLtlbDppkPst.R_PST0400000000.getObject();
+      String comparatorExpr = "> 0";
+      String errMsg = R_LAN0111000000.value + "|" + comparator.getValue();
+      return UtilSegmentValidation.genEqualsFormExpression("13", selecPosCode, selectExpr, PST, "5",
+          comparator.getKey(), comparatorExpr, "e", 2, errMsg);
     }
 }

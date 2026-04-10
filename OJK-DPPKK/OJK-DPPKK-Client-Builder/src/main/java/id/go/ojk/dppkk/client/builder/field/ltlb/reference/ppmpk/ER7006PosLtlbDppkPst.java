@@ -11,12 +11,14 @@ import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
+@Getter
 public enum ER7006PosLtlbDppkPst implements IObject<KeyValueString> {
 
     R_PST0100000000("PST0100000000", "(1) Peserta Aktif"),
@@ -60,6 +62,10 @@ public enum ER7006PosLtlbDppkPst implements IObject<KeyValueString> {
 
     public static String genFieldSave() {
         return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 4), getObjects());
+    }
+
+    public static String genFieldSaveForm() {
+      return UtilMetadata.genFieldSave("5", getObjects());
     }
 
     public static int getRefNumber() {
