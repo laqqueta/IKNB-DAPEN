@@ -18,6 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @XStreamAlias("ComparisonFormValidation5")
 @Slf4j
+@Deprecated
 public class ComparisonFormValidation5 extends ComparisonFormValidation {
   private String leftExpr;
   private String rightExpr;
