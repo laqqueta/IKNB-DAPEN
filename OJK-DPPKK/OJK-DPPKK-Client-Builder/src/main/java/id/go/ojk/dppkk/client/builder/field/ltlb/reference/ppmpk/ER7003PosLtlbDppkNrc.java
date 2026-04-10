@@ -91,6 +91,22 @@ public enum ER7003PosLtlbDppkNrc implements IObject<KeyValueString> {
         return new KeyValueString(key, value, new String[] {});
     }
 
+    public KeyValueString getObjectForm() {
+      return new KeyValueString(getKeyForm(), getValue(), new String[] {});
+    }
+
+    public static List<KeyValueString> getObjectsForm() {
+      List<KeyValueString> res = new ArrayList<>();
+      for (ER7003PosLtlbDppkNrc eEnum : ER7003PosLtlbDppkNrc.values()) {
+        res.add(eEnum.getObjectForm());
+      }
+      return res;
+    }
+
+    public String getKeyForm() {
+      return "NRC" + key;
+    }
+
     public static List<KeyValueString> getObjects(JenisProgram jenisProgram) {
         List<KeyValueString> res = new ArrayList<>();
         for (ER7003PosLtlbDppkNrc eEnum : ER7003PosLtlbDppkNrc.values()) {

@@ -1,5 +1,9 @@
 package id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk;
 
+import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.List;
+
 import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
@@ -10,10 +14,6 @@ import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
-
-import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.List;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
@@ -141,6 +141,14 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
                 errMsg, criteriaConditionErr, sumConditionErr);
     }
 
+    public static SegmentValidation genValidatonFormNRC1() {
+      int[] comparatorRows = { 21, 22 };
+      String comparatorField = UtilMetadata.genPlusRow(ER7003PosLtlbDppkNrc.getObjectsForm(), comparatorRows);
+      String plusDesc = UtilMetadata.genPlusDesc(ER7003PosLtlbDppkNrc.getObjects(JenisProgram.PPMPK), comparatorRows);
+      String errMsg = UtilMetadata.genMessage(R_LAN0102000000.value, plusDesc + " pada form " + NRC);
+      return UtilSegmentValidation.genEqualsFormulaForm("13", R_LAN0102000000.key, "12", comparatorField, errMsg, 2);
+    }
+
     public static SegmentValidation genValidatonFormINSP() {
       KeyValueString selectPosCode = R_LAN0102000000.getObject();
       int cols[] = { 4 };
@@ -222,7 +230,7 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
           comparatorPosCode, errMsg, 2);
     }
 
-    public static SegmentValidation genValidatonFormNRC() {
+    public static SegmentValidation genValidatonFormNRC2() {
       KeyValueString selectPosCode = R_LAN0107000000.getObject();
       int cols[] = { 12 };
       String comparatorColumn = UtilMetadata.genPlusColumn(cols);
