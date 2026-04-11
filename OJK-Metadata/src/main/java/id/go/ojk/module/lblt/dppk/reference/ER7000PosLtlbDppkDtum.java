@@ -1,5 +1,6 @@
 package id.go.ojk.module.lblt.dppk.reference;
 
+import id.go.ojk.client.model.IReferenceConfig;
 import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
@@ -72,57 +73,6 @@ public enum ER7000PosLtlbDppkDtum implements IObject<KeyValueString> {
     public static String getRequiredPos() {
         return UtilMetadata.genPipeRowExcept(getObjects(), new int[] { 24, 25, 26 });
     }
-
-    /*public static final List<SegmentValidation> SEGMENT_VALIDATIONS = Arrays.asList(
-            genValidationAll(),
-            genValidationDate(),
-            genValidationLength1(),
-            genValidationLength2(),
-            genValidationLength3(),
-            genValidationLength4()
-    );
-
-    private static SegmentValidation genValidationAll() {
-        return UtilSegmentValidation.genRegexAll("2",
-                UtilMetadata.genPipeRowExcept(getObjects(), new int[] {6, 13}));
-    }
-
-    private static SegmentValidation genValidationDate() {
-        return UtilSegmentValidation.genRegexDate("2",
-                UtilMetadata.genPipeRow(getObjects(), new int[] {6, 13}));
-    }
-
-    private static SegmentValidation genValidationLength1() {
-        return UtilSegmentValidation.genLength("2",
-                UtilMetadata.genPipeRow(getObjects(), new int[] {4, 5}), 1, 20);
-    }
-
-    private static SegmentValidation genValidationLength2() {
-        return UtilSegmentValidation.genLength("2",
-                UtilMetadata.genPipeRow(getObjects(), new int[] {0}),1, 500);
-    }
-
-    private static SegmentValidation genValidationLength3() {
-        return UtilSegmentValidation.genLength("2",
-                UtilMetadata.genPipeRow(getObjects(), new int[] {6, 13}), 8, 10);
-    }
-
-    private static SegmentValidation genValidationLength4() {
-        return UtilSegmentValidation.genLength("2",
-                UtilMetadata.genPipeRowExcept(getObjects(), new int[] {0, 4, 5, 6, 13}),1, 100);
-    }*/
-
-    /*public static ConditionalRequired genConditionalExist16() {
-        return UtilFieldConditional.genAllExistPosAndInReference("N", "M", "16", INVDEP0100000000.key, getRefNumber());
-    }
-
-    public static ConditionalRequired genConditionalExist17() {
-        return UtilFieldConditional.genAllExistPos("N", "M", "15", INVDEP0100000000.key);
-    }
-
-    public static ConditionalRequired genConditionalExistA() {
-        return UtilFieldConditional.genExistPosAndHasReference("M", "N", INVDEP0100000000.key, getRefNumber(), "O");
-    }*/
 
 
 }

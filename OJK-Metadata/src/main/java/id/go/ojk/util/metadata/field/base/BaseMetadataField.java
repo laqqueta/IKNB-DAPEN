@@ -3,6 +3,7 @@ package id.go.ojk.util.metadata.field.base;
 import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.util.FieldUtil;
 import id.go.ojk.util.constants.SectorType;
+import lombok.Getter;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -11,8 +12,11 @@ public abstract class BaseMetadataField<T extends Enum<T> & IBaseFieldMetadata> 
 
     private final Class<T> enumClass;
 
-    public BaseMetadataField(Class<T> enumClass) {
+    private final SectorType sectorType;
+
+    public BaseMetadataField(Class<T> enumClass, SectorType sectorType) {
         this.enumClass = enumClass;
+        this.sectorType = sectorType;
     }
 
     protected List<T> enumValues() {
@@ -35,9 +39,9 @@ public abstract class BaseMetadataField<T extends Enum<T> & IBaseFieldMetadata> 
                 .collect(Collectors.toList());
     }
 
-    public List<SubmissionField> getFields(SectorType filterSectorType) {
+    public List<SubmissionField> getFields() {
         return enumValues().stream()
-                .filter(f -> f.getSectorType().contains(filterSectorType))
+                .filter(f -> f.getSectorTypes().contains(sectorType))
                 .map(IBaseFieldMetadata::getField)
                 .sorted(Comparator.comparingInt(SubmissionField::getNumber))
                 .collect(Collectors.toList());
@@ -53,7 +57,11 @@ public abstract class BaseMetadataField<T extends Enum<T> & IBaseFieldMetadata> 
 
     public List<SubmissionField> getReindexFields(SectorType filterSectorType, Map<Integer, Integer> reindexNumber) {
         return reindex(enumValues().stream()
-                        .filter(f -> f.getSectorType().contains(filterSectorType))
+                        .filter(f -> f.getSectorTypes().contains(filterSectorType))
                         .collect(Collectors.toList()), reindexNumber);
+    }
+
+    protected Class<T> getEnumClass() {
+        return enumClass;
     }
 }

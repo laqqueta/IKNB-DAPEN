@@ -100,7 +100,7 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
         return Integer.parseInt(ER7001PosLtlbDppkLan.class.getSimpleName().substring(2, 6));
     }
 
-    public static String genFieldSave(ProgramType jenisProgram) {
+    public static String getFieldSave(ProgramType jenisProgram) {
         return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 13), getObjects(jenisProgram));
     }
 

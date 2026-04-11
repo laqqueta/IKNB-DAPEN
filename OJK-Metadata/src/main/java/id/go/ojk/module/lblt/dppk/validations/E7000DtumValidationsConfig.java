@@ -65,20 +65,20 @@ public enum E7000DtumValidationsConfig implements ILbltMetadataValidation, IVali
 
     @Override
     public SegmentValidation toSegmentValidation() {
-        return METADATA.toSegmentValidation(this);
+        return VALIDATION_METADATA.toSegmentValidation(this);
     }
 
     @Override
     public FieldValidation toFieldValidation() {
-        return METADATA.toFieldValidation(this);
+        return VALIDATION_METADATA.toFieldValidation(this);
     }
 
     @Override
     public ConditionalRequired toFieldConditional() {
-        return METADATA.toFieldConditional(this);
+        return VALIDATION_METADATA.toFieldConditional(this);
     }
 
-    public static final BaseMetadataValidation<E7000DtumValidationsConfig> METADATA =
+    public static final BaseMetadataValidation<E7000DtumValidationsConfig> VALIDATION_METADATA =
             new LbltMetadataValidation<>(E7000DtumValidationsConfig.class, PPMPK);
 
 }

@@ -41,42 +41,42 @@ public abstract class BaseMetadataValidation<T extends Enum<T> & IBaseMetadataVa
         return (SegmentValidation) referenceValidationEnum.getSupplier().get();
     }
 
-    public FieldValidation toFieldValidation(T referenceValidationEnum) {
-        if (referenceValidationEnum.getSupplier().get() == null) {
+    public FieldValidation toFieldValidation(T fieldValidation) {
+        if (fieldValidation.getSupplier().get() == null) {
             throw new UnsupportedOperationException("Field Validation is null");
         }
 
-        if (!isFieldValidation(referenceValidationEnum)) {
-            throw new UnsupportedOperationException(String.format("%s is not type of FieldValidation Validation", referenceValidationEnum.getSupplier()
+        if (!isFieldValidation(fieldValidation)) {
+            throw new UnsupportedOperationException(String.format("%s is not type of FieldValidation Validation", fieldValidation.getSupplier()
                     .get().getClass().getSimpleName()));
         }
 
-        return (FieldValidation) referenceValidationEnum.getSupplier().get();
+        return (FieldValidation) fieldValidation.getSupplier().get();
     }
 
-    public ConditionalRequired toFieldConditional(T referenceValidationEnum) {
-        if (referenceValidationEnum.getSupplier().get() == null) {
+    public ConditionalRequired toFieldConditional(T fieldConditional) {
+        if (fieldConditional.getSupplier().get() == null) {
             throw new UnsupportedOperationException("Conditional Required Validation is null");
         }
 
-        if (!isFieldConditional(referenceValidationEnum)) {
-            throw new UnsupportedOperationException(String.format("%s is not type of ConditionalRequired Validation", referenceValidationEnum.getSupplier()
+        if (!isFieldConditional(fieldConditional)) {
+            throw new UnsupportedOperationException(String.format("%s is not type of ConditionalRequired Validation", fieldConditional.getSupplier()
                     .get().getClass().getSimpleName()));
         }
 
-        return (ConditionalRequired) referenceValidationEnum.getSupplier().get();
+        return (ConditionalRequired) fieldConditional.getSupplier().get();
    }
 
-    public boolean isSegmentValidation(T referenceValidationEnum) {
+    protected boolean isSegmentValidation(T referenceValidationEnum) {
         return referenceValidationEnum.getSupplier().get() instanceof SegmentValidation;
     }
 
-    public boolean isFieldValidation(T referenceValidationEnum) {
-        return referenceValidationEnum.getSupplier().get() instanceof FieldValidation;
+    protected boolean isFieldValidation(T fieldValidation) {
+        return fieldValidation.getSupplier().get() instanceof FieldValidation;
     }
 
-    public boolean isFieldConditional(T referenceValidationEnum) {
-        return referenceValidationEnum.getSupplier().get() instanceof ConditionalRequired;
+    protected boolean isFieldConditional(T fieldConditional) {
+        return fieldConditional.getSupplier().get() instanceof ConditionalRequired;
     }
 
 }

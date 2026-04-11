@@ -140,7 +140,7 @@ public class SubmissionFormat {
 		setName(builder.getName());
 		setReportCode(builder.getReportCode());
 		setFields(builder.getFields());
-		setExtention(builder.getExtension());
+		setExtention(builder.getExtension().getType());
 		setMinRow(builder.getMinRow());
 		setMaxRow(builder.getMaxRow());
 	}

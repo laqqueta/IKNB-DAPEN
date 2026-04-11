@@ -6,7 +6,7 @@ import id.go.ojk.client.model.config.SubmissionFormatBuilder;
 import id.go.ojk.lib.client.model.config.UniqueType;
 import id.go.ojk.module.lblt.dppk.form.EFormLaporanBulananTahunan;
 import id.go.ojk.module.lblt.dppk.header.EHeaderMetadataPpmpk;
-import id.go.ojk.util.constants.ExtensionType;
+import id.go.ojk.client.constant.ExtensionType;
 import id.go.ojk.util.constants.ProgramType;
 import id.go.ojk.util.constants.SectorType;
 import id.go.ojk.util.metadata.field.base.BaseMetadataField;
@@ -115,7 +115,7 @@ public enum Dppk0008Rekinv implements ILbltFieldMetadata {
     }
 
     @Override
-    public EnumSet<SectorType> getSectorType() {
+    public EnumSet<SectorType> getSectorTypes() {
         return sectorType;
     }
 
@@ -131,7 +131,7 @@ public enum Dppk0008Rekinv implements ILbltFieldMetadata {
         SubmissionFormatBuilder sfConfig = SubmissionFormatBuilder.builder()
                 .code(REKINV_FORM.getCode())
                 .name(REKINV_FORM.getName())
-                .extension(ExtensionType.TXT.getExtension())
+                .extension(ExtensionType.TXT.getType())
                 .reportCode(reportCode)
                 .maxRow(24)
                 .fields(new ArrayList<>())

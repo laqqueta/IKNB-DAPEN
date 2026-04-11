@@ -2,15 +2,19 @@ package id.go.ojk.module.lblt.dppk.field;
 
 import id.go.ojk.client.model.config.SimpleValidation;
 import id.go.ojk.client.model.config.SubmissionField;
+import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
 import id.go.ojk.module.lblt.dppk.form.EFormLaporanBulananTahunan;
 import id.go.ojk.module.lblt.dppk.header.EHeaderMetadataPpmpk;
-import id.go.ojk.util.constants.ExtensionType;
+import id.go.ojk.module.lblt.dppk.reference.ER7000PosLtlbDppkDtum;
+import id.go.ojk.module.lblt.dppk.validations.E7000DtumValidationsConfig;
+import id.go.ojk.client.constant.ExtensionType;
 import id.go.ojk.util.constants.ProgramType;
 import id.go.ojk.util.constants.SectorType;
 import id.go.ojk.util.metadata.field.base.BaseMetadataField;
 import id.go.ojk.util.metadata.field.lblt.ILbltFieldMetadata;
 import id.go.ojk.util.metadata.field.lblt.LbltMetadataField;
+import id.go.ojk.util.metadata.submission.SubmissionConfig;
 import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
@@ -52,7 +56,7 @@ public enum Dppk0000Dtum implements ILbltFieldMetadata {
     }
 
     @Override
-    public EnumSet<SectorType> getSectorType() {
+    public EnumSet<SectorType> getSectorTypes() {
         return sectorType;
     }
 
@@ -61,14 +65,15 @@ public enum Dppk0000Dtum implements ILbltFieldMetadata {
         return programType;
     }
 
-    public static final BaseMetadataField<Dppk0000Dtum> FIELD_PPMPK = new LbltMetadataField<>(Dppk0000Dtum.class, PPMPK);
+    private static final BaseMetadataField<Dppk0000Dtum> FIELD_METADATA = new LbltMetadataField<>(Dppk0000Dtum.class, KONVENSIONAL)
+                    .setProgramType(ProgramType.PPMPK);
 
-    public static SubmissionFormatBuilder getSubmissionFormatConfig(SectorType sectorType, String reportCode) {
+    private static SubmissionFormatBuilder getSubmissionFormatConfig(SectorType sectorType, String reportCode) {
         EFormLaporanBulananTahunan DTUM_FORM = EFormLaporanBulananTahunan.LTLB_DTUM;
         SubmissionFormatBuilder sfConfig = SubmissionFormatBuilder.builder()
                 .code(DTUM_FORM.getCode())
                 .name(DTUM_FORM.getName())
-                .extension(ExtensionType.TXT.getExtension())
+                .extension(ExtensionType.TXT)
                 .reportCode(reportCode)
                 .maxRow(null)
                 .fields(new ArrayList<>())
@@ -84,4 +89,16 @@ public enum Dppk0000Dtum implements ILbltFieldMetadata {
 
         throw new IllegalArgumentException("Unknown sector type: " + sectorType);
     }
+
+    public static SubmissionFormat ppmpkKonvensionalFormMetadata(String reportCode) {
+        return new SubmissionConfig(reportCode)
+                .config()
+                .setRequiredPos(ER7000PosLtlbDppkDtum.getRequiredPos())
+                .setSubmissionFormat(getSubmissionFormatConfig(KONVENSIONAL, reportCode))
+                .setSubmissionField(FIELD_METADATA.getFields())
+                .setSegmentValidations(E7000DtumValidationsConfig.VALIDATION_METADATA)
+                .build()
+                .get();
+    }
+
 }

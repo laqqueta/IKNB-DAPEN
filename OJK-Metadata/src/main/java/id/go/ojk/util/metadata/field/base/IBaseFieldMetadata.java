@@ -7,5 +7,5 @@ import java.util.EnumSet;
 
 public interface IBaseFieldMetadata {
     SubmissionField getField();
-    EnumSet<SectorType> getSectorType();
+    EnumSet<SectorType> getSectorTypes();
 }

@@ -6,8 +6,7 @@ import id.go.ojk.client.model.config.SubmissionFormatBuilder;
 import id.go.ojk.lib.client.model.config.UniqueType;
 import id.go.ojk.module.lblt.dppk.form.EFormLaporanBulananTahunan;
 import id.go.ojk.module.lblt.dppk.header.EHeaderMetadataPpmpk;
-import id.go.ojk.module.lblt.dppk.validations.ppmpk.E7002LpanValidationsConfig;
-import id.go.ojk.util.constants.ExtensionType;
+import id.go.ojk.client.constant.ExtensionType;
 import id.go.ojk.util.constants.ProgramType;
 import id.go.ojk.util.constants.SectorType;
 import id.go.ojk.util.metadata.field.base.BaseMetadataField;
@@ -112,7 +111,7 @@ public enum Dppk0002Lpan implements ILbltFieldMetadata {
     }
 
     @Override
-    public EnumSet<SectorType> getSectorType() {
+    public EnumSet<SectorType> getSectorTypes() {
         return sectorType;
     }
 
@@ -128,7 +127,7 @@ public enum Dppk0002Lpan implements ILbltFieldMetadata {
         SubmissionFormatBuilder sfConfig = SubmissionFormatBuilder.builder()
                 .code(LPAN_FORM.getCode())
                 .name(LPAN_FORM.getName())
-                .extension(ExtensionType.TXT.getExtension())
+                .extension(ExtensionType.TXT.getType())
                 .reportCode(reportCode)
                 .maxRow(25)
                 .fields(new ArrayList<>())

@@ -1,4 +1,4 @@
-package id.go.ojk.util.constants;
+package id.go.ojk.client.constant;
 
 public enum ExtensionType {
 
@@ -14,7 +14,7 @@ public enum ExtensionType {
         this.extension = extension;
     }
 
-    public String getExtension() {
+    public String getType() {
         return extension;
     }
 }
