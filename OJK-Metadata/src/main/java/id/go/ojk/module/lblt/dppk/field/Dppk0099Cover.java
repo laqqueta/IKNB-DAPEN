@@ -8,7 +8,7 @@ import id.go.ojk.util.metadata.submission.SubmissionConfig;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public enum Dppk0069Cover {
+public enum Dppk0099Cover {
 
     ;
 

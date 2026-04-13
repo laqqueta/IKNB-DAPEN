@@ -11,7 +11,6 @@ import id.go.ojk.module.lblt.dppk.validations.E7000DtumValidationsConfig;
 import id.go.ojk.client.constant.ExtensionType;
 import id.go.ojk.util.constants.ProgramType;
 import id.go.ojk.util.constants.SectorType;
-import id.go.ojk.util.metadata.field.base.BaseMetadataField;
 import id.go.ojk.util.metadata.field.lblt.ILbltFieldMetadata;
 import id.go.ojk.util.metadata.field.lblt.LbltMetadataField;
 import id.go.ojk.util.metadata.submission.SubmissionConfig;
@@ -65,8 +64,7 @@ public enum Dppk0000Dtum implements ILbltFieldMetadata {
         return programType;
     }
 
-    private static final BaseMetadataField<Dppk0000Dtum> FIELD_METADATA = new LbltMetadataField<>(Dppk0000Dtum.class, KONVENSIONAL)
-                    .setProgramType(ProgramType.PPMPK);
+    private static final LbltMetadataField<Dppk0000Dtum> FIELD_KONVEN = new LbltMetadataField<>(Dppk0000Dtum.class, KONVENSIONAL);
 
     private static SubmissionFormatBuilder getSubmissionFormatConfig(SectorType sectorType, String reportCode) {
         EFormLaporanBulananTahunan DTUM_FORM = EFormLaporanBulananTahunan.LTLB_DTUM;
@@ -91,11 +89,12 @@ public enum Dppk0000Dtum implements ILbltFieldMetadata {
     }
 
     public static SubmissionFormat ppmpkKonvensionalFormMetadata(String reportCode) {
+        FIELD_KONVEN.setProgramType(ProgramType.PPMPK);
         return new SubmissionConfig(reportCode)
                 .config()
                 .setRequiredPos(ER7000PosLtlbDppkDtum.getRequiredPos())
                 .setSubmissionFormat(getSubmissionFormatConfig(KONVENSIONAL, reportCode))
-                .setSubmissionField(FIELD_METADATA.getFields())
+                .setSubmissionField(FIELD_KONVEN.getFields())
                 .setSegmentValidations(E7000DtumValidationsConfig.VALIDATION_METADATA)
                 .build()
                 .get();

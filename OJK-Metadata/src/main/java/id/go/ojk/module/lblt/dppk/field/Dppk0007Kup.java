@@ -2,15 +2,19 @@ package id.go.ojk.module.lblt.dppk.field;
 
 import id.go.ojk.client.model.config.SimpleValidation;
 import id.go.ojk.client.model.config.SubmissionField;
+import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
 import id.go.ojk.module.lblt.dppk.form.EFormLaporanBulananTahunan;
 import id.go.ojk.module.lblt.dppk.header.EHeaderMetadataPpmpk;
 import id.go.ojk.client.constant.ExtensionType;
+import id.go.ojk.module.lblt.dppk.reference.ER7007PosLtlbDppkKup;
+import id.go.ojk.module.lblt.dppk.validations.ppmpk.E7007KupValidationsConfig;
 import id.go.ojk.util.constants.ProgramType;
 import id.go.ojk.util.constants.SectorType;
 import id.go.ojk.util.metadata.field.base.BaseMetadataField;
 import id.go.ojk.util.metadata.field.lblt.ILbltFieldMetadata;
 import id.go.ojk.util.metadata.field.lblt.LbltMetadataField;
+import id.go.ojk.util.metadata.submission.SubmissionConfig;
 import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
@@ -30,35 +34,35 @@ import static id.go.ojk.util.constants.SectorType.SYARIAH;
 public enum Dppk0007Kup implements ILbltFieldMetadata {
 
     FLAG(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(0, null, "Flag", sv(O, 3, 3, alfaNumeric).confConstant("D01"))
     ),
     KODE_KOMPONEN(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(1, null, "Kode Komponen", sv(O, 13, 13, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric)
                     .confReference(EHeaderMetadataPpmpk.R7007Kup.getObject()))
     ),
     URAIAN_TAMBAHAN(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(2, null, "Uraian Tambahan", sv(O, 1, 100, freeText))
     ),
     NILAI_PROGRAM_MANFAAT_PENSIUN(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(3, null, "Nilai Program Manfaat Pensiun", sv(O, 1, 18, freeText))
     ),
     NILAI_PROGRAM_MANFAAT_PENSIUN_LAINNYA(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(4, null, "Nilai Program Manfaat Pensiun Lainnya", sv(O, 1, 18, freeText))
     ),
     NILAI_PROGRAM_MANFAAT_LAIN(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(5, null, "Nilai Program Manfaat Lain", sv(O, 1, 18, freeText))
     ),
     ;
@@ -82,14 +86,14 @@ public enum Dppk0007Kup implements ILbltFieldMetadata {
         return programType;
     }
 
-    public static final BaseMetadataField<Dppk0007Kup> FIELD_PPMPK = new LbltMetadataField<>(Dppk0007Kup.class, PPMPK);
+    public static final LbltMetadataField<Dppk0007Kup> FIELD_KONVEN = new LbltMetadataField<>(Dppk0007Kup.class, KONVENSIONAL);
 
     public static SubmissionFormatBuilder getSubmissionFormatConfig(SectorType sectorType, String reportCode) {
         EFormLaporanBulananTahunan KUP_FORM = EFormLaporanBulananTahunan.LTLB_KUP;
         SubmissionFormatBuilder sfConfig = SubmissionFormatBuilder.builder()
                 .code(KUP_FORM.getCode())
                 .name(KUP_FORM.getName())
-                .extension(ExtensionType.TXT.getType())
+                .extension(ExtensionType.TXT)
                 .reportCode(reportCode)
                 .maxRow(null)
                 .fields(new ArrayList<>())
@@ -104,5 +108,17 @@ public enum Dppk0007Kup implements ILbltFieldMetadata {
         }
 
         throw new IllegalArgumentException("Unknown sector type: " + sectorType);
+    }
+
+    public static SubmissionFormat ppmpkKonvensionalFormMetadata(String reportCode) {
+        FIELD_KONVEN.setProgramType(ProgramType.PPMPK);
+        return new SubmissionConfig(reportCode)
+                .config()
+                .setRequiredPos(ER7007PosLtlbDppkKup.getRequiredPos(ProgramType.PPMPK))
+                .setSubmissionFormat(getSubmissionFormatConfig(KONVENSIONAL, reportCode))
+                .setSubmissionField(FIELD_KONVEN.getFields())
+                .setSegmentValidations(E7007KupValidationsConfig.VALIDATION_METADATA)
+                .build()
+                .get();
     }
 }

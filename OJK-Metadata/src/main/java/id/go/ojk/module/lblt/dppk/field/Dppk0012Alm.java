@@ -2,16 +2,20 @@ package id.go.ojk.module.lblt.dppk.field;
 
 import id.go.ojk.client.model.config.SimpleValidation;
 import id.go.ojk.client.model.config.SubmissionField;
+import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
 import id.go.ojk.lib.client.model.config.UniqueType;
 import id.go.ojk.module.lblt.dppk.form.EFormLaporanBulananTahunan;
 import id.go.ojk.module.lblt.dppk.header.EHeaderMetadataPpmpk;
 import id.go.ojk.client.constant.ExtensionType;
+import id.go.ojk.module.lblt.dppk.reference.ER7012PosLtlbDppkAlm;
+import id.go.ojk.module.lblt.dppk.validations.ppmpk.E7012AlmValidationsConfig;
 import id.go.ojk.util.constants.ProgramType;
 import id.go.ojk.util.constants.SectorType;
 import id.go.ojk.util.metadata.field.base.BaseMetadataField;
 import id.go.ojk.util.metadata.field.lblt.ILbltFieldMetadata;
 import id.go.ojk.util.metadata.field.lblt.LbltMetadataField;
+import id.go.ojk.util.metadata.submission.SubmissionConfig;
 import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
@@ -31,101 +35,101 @@ import static id.go.ojk.util.constants.SectorType.SYARIAH;
 public enum Dppk0012Alm implements ILbltFieldMetadata {
 
     FLAG(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(0, null, "Flag", sv(O, 3, 3, alfaNumeric).confConstant("D01"))
     ),
     KODE_KOMPONEN(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(1, null, "Kode Komponen", sv(O, 17, 17, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric)
                     .confReference(EHeaderMetadataPpmpk.R7012Alm.getObject()))
                     .confUnique(UniqueType.U)
     ),
     JT_LT_1_TAHUN_RUPIAH(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(2, null, "Jatuh tempo < 1 tahun - Rupiah", sv(O, 1, 18, numeric))
     ),
     JT_LT_1_TAHUN_NON_RUPIAH(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(3, null, "Jatuh tempo < 1 tahun - Non Rupiah", sv(O, 1, 18, numeric))
     ),
     JT_LT_1_TAHUN_TOTAL(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(4, null, "Jatuh tempo < 1 tahun - Total", sv(O, 1, 18, numeric)
                     .confConditionalRequired(E7012AlmValidationsConfig))
                     .addFieldValidations(E7012AlmValidationsConfig)
     ),
     JT_1_5_TAHUN_RUPIAH(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(5, null, "1 tahun <= jatuh tempo < 5 tahun - Rupiah", sv(O, 1, 18, numeric))
     ),
     JT_1_5_TAHUN_NON_RUPIAH(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(6, null, "1 tahun <= jatuh tempo < 5 tahun - Non Rupiah", sv(O, 1, 18, numeric))
     ),
     JT_1_5_TAHUN_TOTAL(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(7, null, "1 tahun <= jatuh tempo < 5 tahun - Total", sv(O, 1, 18, numeric)
                     .confConditionalRequired(E7012AlmValidationsConfig))
                     .addFieldValidations(E7012AlmValidationsConfig)
     ),
     JT_5_10_TAHUN_RUPIAH(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(8, null, "5 tahun <= jatuh tempo < 10 tahun - Rupiah", sv(O, 1, 18, numeric))
     ),
     JT_5_10_TAHUN_NON_RUPIAH(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(9, null, "5 tahun <= jatuh tempo < 10 tahun - Non Rupiah", sv(O, 1, 18, numeric))
     ),
     JT_5_10_TAHUN_TOTAL(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(10, null, "5 tahun <= jatuh tempo < 10 tahun - Total", sv(O, 1, 18, numeric)
                     .confConditionalRequired(E7012AlmValidationsConfig))
                     .addFieldValidations(E7012AlmValidationsConfig)
     ),
     JT_GTE_10_TAHUN_RUPIAH(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(11, null, "Jatuh Tempo >= 10 Tahun - Rupiah", sv(O, 1, 18, numeric))
     ),
     JT_GTE_10_TAHUN_NON_RUPIAH(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(12, null, "Jatuh Tempo >= 10 - Non Rupiah", sv(O, 1, 18, numeric))
     ),
     JT_GTE_10_TAHUN_TOTAL(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(13, null, "Jatuh Tempo >= 10 - Total", sv(O, 1, 18, numeric)
                     .confConditionalRequired(E7012AlmValidationsConfig))
                     .addFieldValidations(E7012AlmValidationsConfig)
     ),
     TOTAL_RUPIAH(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(14, null, "Total - Rupiah", sv(O, 1, 18, numeric))
                     .addFieldValidations(E7012AlmValidationsConfig)
     ),
     TOTAL_NON_RUPIAH(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(15, null, "Total - Non Rupiah", sv(O, 1, 18, numeric))
                     .addFieldValidations(E7012AlmValidationsConfig)
     ),
     TOTAL_TOTAL(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(16, null, "Total - Total", sv(O, 1, 18, numeric)
                     .confConditionalRequired(E7012AlmValidationsConfig))
                     .addFieldValidations(E7012AlmValidationsConfig)
@@ -151,14 +155,14 @@ public enum Dppk0012Alm implements ILbltFieldMetadata {
         return programType;
     }
 
-    public static final BaseMetadataField<Dppk0012Alm> FIELD_PPMPK = new LbltMetadataField<>(Dppk0012Alm.class, PPMPK);
+    public static final LbltMetadataField<Dppk0012Alm> FIELD_KONVEN = new LbltMetadataField<>(Dppk0012Alm.class, KONVENSIONAL);
 
     public static SubmissionFormatBuilder getSubmissionFormatConfig(SectorType sectorType, String reportCode) {
         EFormLaporanBulananTahunan ALM_FORM = EFormLaporanBulananTahunan.LTLB_ALM;
         SubmissionFormatBuilder sfConfig = SubmissionFormatBuilder.builder()
                 .code(ALM_FORM.getCode())
                 .name(ALM_FORM.getName())
-                .extension(ExtensionType.TXT.getType())
+                .extension(ExtensionType.TXT)
                 .reportCode(reportCode)
                 .maxRow(52)
                 .fields(new ArrayList<>())
@@ -173,5 +177,17 @@ public enum Dppk0012Alm implements ILbltFieldMetadata {
         }
 
         throw new IllegalArgumentException("Unknown sector type: " + sectorType);
+    }
+
+    public static SubmissionFormat ppmpkKonvensionalFormMetadata(String reportCode) {
+        FIELD_KONVEN.setProgramType(ProgramType.PPMPK);
+        return new SubmissionConfig(reportCode)
+                .config()
+                .setRequiredPos(ER7012PosLtlbDppkAlm.getRequiredPos(ProgramType.PPMPK))
+                .setSubmissionFormat(getSubmissionFormatConfig(KONVENSIONAL, reportCode))
+                .setSubmissionField(FIELD_KONVEN.getFields())
+                .setSegmentValidations(E7012AlmValidationsConfig.VALIDATION_METADATA)
+                .build()
+                .get();
     }
 }

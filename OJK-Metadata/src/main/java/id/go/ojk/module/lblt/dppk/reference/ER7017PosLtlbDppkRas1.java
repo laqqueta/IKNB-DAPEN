@@ -1,5 +1,6 @@
 package id.go.ojk.module.lblt.dppk.reference;
 
+import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
 import id.go.ojk.util.constants.ProgramType;
@@ -140,5 +141,9 @@ public enum ER7017PosLtlbDppkRas1 implements IObject<KeyValueString> {
 
     public static int getRefNumber() {
         return Integer.parseInt(ER7017PosLtlbDppkRas1.class.getSimpleName().substring(2, 6));
+    }
+
+    public static String getRequiredPos(ProgramType programType) {
+        return UtilMetadata.genPipeRow(getObjects(programType));
     }
 }

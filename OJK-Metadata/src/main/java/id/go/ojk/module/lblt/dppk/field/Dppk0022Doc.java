@@ -2,16 +2,20 @@ package id.go.ojk.module.lblt.dppk.field;
 
 import id.go.ojk.client.model.config.SimpleValidation;
 import id.go.ojk.client.model.config.SubmissionField;
+import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
 import id.go.ojk.module.lblt.dppk.form.EFormLaporanBulananTahunan;
 import id.go.ojk.module.lblt.dppk.header.EHeaderMetadataPpmpk;
 import id.go.ojk.module.lblt.dppk.header.EHeaderMetadataShared;
 import id.go.ojk.client.constant.ExtensionType;
+import id.go.ojk.module.lblt.dppk.reference.ER7022PosLtlbDppkDoc;
+import id.go.ojk.module.lblt.dppk.validations.E7022DocValidationsConfig;
 import id.go.ojk.util.constants.ProgramType;
 import id.go.ojk.util.constants.SectorType;
 import id.go.ojk.util.metadata.field.base.BaseMetadataField;
 import id.go.ojk.util.metadata.field.lblt.ILbltFieldMetadata;
 import id.go.ojk.util.metadata.field.lblt.LbltMetadataField;
+import id.go.ojk.util.metadata.submission.SubmissionConfig;
 import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
@@ -109,14 +113,14 @@ public enum Dppk0022Doc implements ILbltFieldMetadata {
         return programType;
     }
 
-    public static final BaseMetadataField<Dppk0022Doc> FIELD_PPMPK = new LbltMetadataField<>(Dppk0022Doc.class, PPMPK);
+    public static final LbltMetadataField<Dppk0022Doc> FIELD_KONVEN = new LbltMetadataField<>(Dppk0022Doc.class, KONVENSIONAL);
 
     public static SubmissionFormatBuilder getSubmissionFormatConfig(SectorType sectorType, String reportCode) {
         EFormLaporanBulananTahunan DOC_FORM = EFormLaporanBulananTahunan.LTLB_DOC;
         SubmissionFormatBuilder sfConfig = SubmissionFormatBuilder.builder()
                 .code(DOC_FORM.getCode())
                 .name(DOC_FORM.getName())
-                .extension(ExtensionType.TXT.getType())
+                .extension(ExtensionType.TXT)
                 .reportCode(reportCode)
                 .maxRow(null)
                 .fields(new ArrayList<>())
@@ -131,5 +135,17 @@ public enum Dppk0022Doc implements ILbltFieldMetadata {
         }
 
         throw new IllegalArgumentException("Unknown sector type: " + sectorType);
+    }
+
+    public static SubmissionFormat ppmpkKonvensionalFormMetadata(String reportCode) {
+        FIELD_KONVEN.setProgramType(ProgramType.PPMPK);
+        return new SubmissionConfig(reportCode)
+                .config()
+                .setRequiredPos(ER7022PosLtlbDppkDoc.getRequiredPos())
+                .setSubmissionFormat(getSubmissionFormatConfig(KONVENSIONAL, reportCode))
+                .setSubmissionField(FIELD_KONVEN.getFields())
+                .setSegmentValidations(E7022DocValidationsConfig.VALIDATION_METADATA)
+                .build()
+                .get();
     }
 }

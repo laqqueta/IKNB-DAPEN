@@ -11,6 +11,7 @@ import id.go.ojk.conf.client.UtilSegmentValidation;
 import id.go.ojk.conf.client.field.reference.ER1252Pengelolaan;
 import id.go.ojk.util.constants.ProgramType;
 import id.go.ojk.client.validation.IValidationConverter;
+import id.go.ojk.util.metadata.validation.ValidationConverter;
 import id.go.ojk.util.metadata.validation.base.BaseMetadataValidation;
 import id.go.ojk.util.metadata.validation.lblt.ILbltMetadataValidation;
 import id.go.ojk.util.metadata.validation.lblt.LbltMetadataValidation;
@@ -67,20 +68,23 @@ public enum E7031ObsudValidationsConfig implements ILbltMetadataValidation, IVal
 
     @Override
     public SegmentValidation toSegmentValidation() {
-        return METADATA.toSegmentValidation(this);
+        return ValidationConverter
+                .toValidation(this, SegmentValidation.class);
     }
 
     @Override
     public FieldValidation toFieldValidation() {
-        return METADATA.toFieldValidation(this);
+        return ValidationConverter
+                .toValidation(this, FieldValidation.class);
     }
 
     @Override
     public ConditionalRequired toFieldConditional() {
-        return METADATA.toFieldConditional(this);
+        return ValidationConverter
+                .toValidation(this, ConditionalRequired.class);
     }
 
-    public static final BaseMetadataValidation<E7031ObsudValidationsConfig> METADATA =
+    public static final BaseMetadataValidation<E7031ObsudValidationsConfig> VALIDATION_METADATA =
             new LbltMetadataValidation<>(E7031ObsudValidationsConfig.class, PPMPK);
 
 }

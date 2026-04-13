@@ -120,6 +120,10 @@ public abstract class BaseSubmissionConfig extends BaseMetadata {
         public BaseSubmissionConfig build() {
             if (BaseSubmissionConfig.this.submissionFormat == null) throw new IllegalStateException("SubmissionFormat is required");
 
+            if (extensionType.equals(ExtensionType.TXT)) {
+                if (BaseSubmissionConfig.this.submissionFields == null) throw new IllegalStateException("SubmissionField is required for .txt file");
+            }
+
             return BaseSubmissionConfig.this;
         }
     }

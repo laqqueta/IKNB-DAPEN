@@ -1,26 +1,25 @@
 package id.go.ojk.module.lblt.dppk.field;
 
+import id.go.ojk.client.constant.ExtensionType;
 import id.go.ojk.client.model.config.SimpleValidation;
 import id.go.ojk.client.model.config.SubmissionField;
+import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
 import id.go.ojk.module.lblt.dppk.form.EFormLaporanBulananTahunan;
 import id.go.ojk.module.lblt.dppk.header.EHeaderMetadataPpmpk;
-import id.go.ojk.client.constant.ExtensionType;
+import id.go.ojk.module.lblt.dppk.reference.ER7051PosLtlbDppkPkan;
+import id.go.ojk.module.lblt.dppk.validations.E7051PkanValidationsConfig;
 import id.go.ojk.util.constants.ProgramType;
 import id.go.ojk.util.constants.SectorType;
-import id.go.ojk.util.metadata.field.base.BaseMetadataField;
 import id.go.ojk.util.metadata.field.lblt.ILbltFieldMetadata;
 import id.go.ojk.util.metadata.field.lblt.LbltMetadataField;
+import id.go.ojk.util.metadata.submission.SubmissionConfig;
 import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.EnumSet;
 
-import static id.go.ojk.lib.client.model.config.DataType.alfaNumeric;
-import static id.go.ojk.lib.client.model.config.DataType.date;
-import static id.go.ojk.lib.client.model.config.DataType.freeText;
-import static id.go.ojk.lib.client.model.config.DataType.numeric;
-import static id.go.ojk.lib.client.model.config.DataType.refTable;
+import static id.go.ojk.lib.client.model.config.DataType.*;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.C;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
 import static id.go.ojk.util.FieldUtil.*;
@@ -33,56 +32,56 @@ import static id.go.ojk.util.constants.SectorType.SYARIAH;
 public enum Dppk0051Pkan implements ILbltFieldMetadata {
 
     FLAG(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(0, null, "Flag",
                     sv(M, 3, 3, alfaNumeric)
                             .confConstant("D01"))
     ),
     KODE_KOMPONEN(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(1, null, "Kode Komponen",
                     sv(M, 10, 10, refTable)
                             .confRegex(SimpleValidation.patternAlfaNumeric)
                             .confReference(EHeaderMetadataPpmpk.R7051Pkan.getObject()))
     ),
     JENIS_PERALATAN_KANTOR(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(2, null, "Jenis Peralatan Kantor",
                     sv(C, 1, 50, alfaNumeric)
                             .confConditionalRequired(E7051PkanValidationsConfig))
     ),
     TANGGAL_PEROLEHAN(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(3, null, "Tanggal Perolehan",
                     sv(C, 8, 8, date)
                             .confConditionalRequired(E7051PkanValidationsConfig))
     ),
     NILAI_PEROLEHAN(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(4, null, "Nilai Perolehan",
                     sv(M, 1, 18, numeric))
     ),
     AKUMULASI_PENYUSUTAN(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(5, null, "Akumulasi Penyusutan",
                     sv(M, 1, 18, numeric))
     ),
     NILAI_BUKU(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(6, null, "Nilai Buku",
                     sv(M, 1, 18, numeric))
                     .addFieldValidations(E7051PkanValidationsConfig)
     ),
     KETERANGAN(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(7, null, "Keterangan",
                     sv(C, 1, 250, freeText)
                             .confConditionalRequired(E7051PkanValidationsConfig))
@@ -108,14 +107,14 @@ public enum Dppk0051Pkan implements ILbltFieldMetadata {
         return programType;
     }
 
-    public static final BaseMetadataField<Dppk0051Pkan> FIELD_PPMPK = new LbltMetadataField<>(Dppk0051Pkan.class, PPMPK);
+    public static final LbltMetadataField<Dppk0051Pkan> FIELD_KONVEN = new LbltMetadataField<>(Dppk0051Pkan.class, KONVENSIONAL);
 
     public static SubmissionFormatBuilder getSubmissionFormatConfig(SectorType sectorType, String reportCode) {
         EFormLaporanBulananTahunan PKAN_FORM = EFormLaporanBulananTahunan.LTLB_PKAN;
         SubmissionFormatBuilder sfConfig = SubmissionFormatBuilder.builder()
                 .code(PKAN_FORM.getCode())
                 .name(PKAN_FORM.getName())
-                .extension(ExtensionType.TXT.getType())
+                .extension(ExtensionType.TXT)
                 .reportCode(reportCode)
                 .maxRow(null)
                 .fields(new ArrayList<>())
@@ -130,5 +129,17 @@ public enum Dppk0051Pkan implements ILbltFieldMetadata {
         }
 
         throw new IllegalArgumentException("Unknown sector type: " + sectorType);
+    }
+
+    public static SubmissionFormat ppmpkKonvensionalFormMetadata(String reportCode) {
+        FIELD_KONVEN.setProgramType(ProgramType.PPMPK);
+        return new SubmissionConfig(reportCode)
+                .config()
+                .setRequiredPos(ER7051PosLtlbDppkPkan.getRequiredPos())
+                .setSubmissionFormat(getSubmissionFormatConfig(KONVENSIONAL, reportCode))
+                .setSubmissionField(FIELD_KONVEN.getFields())
+                .setSegmentValidations(E7051PkanValidationsConfig.VALIDATION_METADATA)
+                .build()
+                .get();
     }
 }

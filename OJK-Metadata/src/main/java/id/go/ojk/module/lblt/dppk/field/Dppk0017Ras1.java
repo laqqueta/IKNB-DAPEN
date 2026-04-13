@@ -1,25 +1,26 @@
 package id.go.ojk.module.lblt.dppk.field;
 
+import id.go.ojk.client.constant.ExtensionType;
 import id.go.ojk.client.model.config.SimpleValidation;
 import id.go.ojk.client.model.config.SubmissionField;
+import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
 import id.go.ojk.lib.client.model.config.UniqueType;
 import id.go.ojk.module.lblt.dppk.form.EFormLaporanBulananTahunan;
 import id.go.ojk.module.lblt.dppk.header.EHeaderMetadataPpmpk;
-import id.go.ojk.client.constant.ExtensionType;
+import id.go.ojk.module.lblt.dppk.reference.ER7017PosLtlbDppkRas1;
+import id.go.ojk.module.lblt.dppk.validations.ppmpk.E7017Ras1ValidationsConfig;
 import id.go.ojk.util.constants.ProgramType;
 import id.go.ojk.util.constants.SectorType;
-import id.go.ojk.util.metadata.field.base.BaseMetadataField;
 import id.go.ojk.util.metadata.field.lblt.ILbltFieldMetadata;
 import id.go.ojk.util.metadata.field.lblt.LbltMetadataField;
+import id.go.ojk.util.metadata.submission.SubmissionConfig;
 import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.EnumSet;
 
-import static id.go.ojk.lib.client.model.config.DataType.alfaNumeric;
-import static id.go.ojk.lib.client.model.config.DataType.freeText;
-import static id.go.ojk.lib.client.model.config.DataType.refTable;
+import static id.go.ojk.lib.client.model.config.DataType.*;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.O;
 import static id.go.ojk.util.FieldUtil.*;
 import static id.go.ojk.util.constants.ProgramType.PPMPK;
@@ -31,36 +32,36 @@ import static id.go.ojk.util.constants.SectorType.SYARIAH;
 public enum Dppk0017Ras1 implements ILbltFieldMetadata {
 
     FLAG(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(0, null, "Flag", sv(O, 3, 3, alfaNumeric).confConstant("D01"))
     ),
     KODE_KOMPONEN(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(1, null, "Kode Komponen", sv(O, 14, 14, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric)
                     .confReference(EHeaderMetadataPpmpk.R7017Ras1.getObject()))
                     .confUnique(UniqueType.U)
     ),
     MANFAAT_PENSIUN(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(2, null, "Manfaat Pensiun", sv(O, 1, 18, freeText))
     ),
     MANFAAT_PENSIUN_LAINNYA(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(3, null, "Manfaat Pensiun Lainnya", sv(O, 1, 18, freeText))
     ),
     MANFAAT_LAIN(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(4, null, "Manfaat lain", sv(O, 1, 18, freeText))
     ),
     TOTAL(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(5, null, "Total", sv(O, 1, 18, freeText))
     ),
     ;
@@ -84,14 +85,14 @@ public enum Dppk0017Ras1 implements ILbltFieldMetadata {
         return programType;
     }
 
-    public static final BaseMetadataField<Dppk0017Ras1> FIELD_PPMPK = new LbltMetadataField<>(Dppk0017Ras1.class, PPMPK);
+    public static final LbltMetadataField<Dppk0017Ras1> FIELD_KONVEN = new LbltMetadataField<>(Dppk0017Ras1.class, KONVENSIONAL);
 
     public static SubmissionFormatBuilder getSubmissionFormatConfig(SectorType sectorType, String reportCode) {
         EFormLaporanBulananTahunan RAS1_FORM = EFormLaporanBulananTahunan.LTLB_RAS_1;
         SubmissionFormatBuilder sfConfig = SubmissionFormatBuilder.builder()
                 .code(RAS1_FORM.getCode())
                 .name(RAS1_FORM.getName())
-                .extension(ExtensionType.TXT.getType())
+                .extension(ExtensionType.TXT)
                 .reportCode(reportCode)
                 .maxRow(null)
                 .fields(new ArrayList<>())
@@ -106,5 +107,17 @@ public enum Dppk0017Ras1 implements ILbltFieldMetadata {
         }
 
         throw new IllegalArgumentException("Unknown sector type: " + sectorType);
+    }
+
+    public static SubmissionFormat ppmpkKonvensionalFormMetadata(String reportCode) {
+        FIELD_KONVEN.setProgramType(PPMPK);
+        return new SubmissionConfig(reportCode)
+                .config()
+                .setRequiredPos(ER7017PosLtlbDppkRas1.getRequiredPos(PPMPK))
+                .setSubmissionFormat(getSubmissionFormatConfig(KONVENSIONAL, reportCode))
+                .setSubmissionField(FIELD_KONVEN.getFields())
+                .setSegmentValidations(E7017Ras1ValidationsConfig.VALIDATION_METADATA)
+                .build()
+                .get();
     }
 }

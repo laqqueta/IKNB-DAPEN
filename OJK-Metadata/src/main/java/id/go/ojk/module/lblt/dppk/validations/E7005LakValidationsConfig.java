@@ -9,6 +9,7 @@ import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
 import id.go.ojk.util.constants.ProgramType;
 import id.go.ojk.client.validation.IValidationConverter;
+import id.go.ojk.util.metadata.validation.ValidationConverter;
 import id.go.ojk.util.metadata.validation.base.BaseMetadataValidation;
 import id.go.ojk.util.metadata.validation.lblt.ILbltMetadataValidation;
 import id.go.ojk.util.metadata.validation.lblt.LbltMetadataValidation;
@@ -75,20 +76,23 @@ public enum E7005LakValidationsConfig implements ILbltMetadataValidation, IValid
 
     @Override
     public SegmentValidation toSegmentValidation() {
-        return METADATA.toSegmentValidation(this);
+        return ValidationConverter
+                .toValidation(this, SegmentValidation.class);
     }
 
     @Override
     public FieldValidation toFieldValidation() {
-        return METADATA.toFieldValidation(this);
+        return ValidationConverter
+                .toValidation(this, FieldValidation.class);
     }
 
     @Override
     public ConditionalRequired toFieldConditional() {
-        return METADATA.toFieldConditional(this);
+        return ValidationConverter
+                .toValidation(this, ConditionalRequired.class);
     }
 
-    public static final BaseMetadataValidation<E7005LakValidationsConfig> METADATA =
+    public static final BaseMetadataValidation<E7005LakValidationsConfig> VALIDATION_METADATA =
             new LbltMetadataValidation<>(E7005LakValidationsConfig.class, PPMPK);
 
 }

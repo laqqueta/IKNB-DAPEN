@@ -2,16 +2,20 @@ package id.go.ojk.module.lblt.dppk.field;
 
 import id.go.ojk.client.model.config.SimpleValidation;
 import id.go.ojk.client.model.config.SubmissionField;
+import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
 import id.go.ojk.lib.client.model.config.UniqueType;
 import id.go.ojk.module.lblt.dppk.form.EFormLaporanBulananTahunan;
 import id.go.ojk.module.lblt.dppk.header.EHeaderMetadataPpmpk;
 import id.go.ojk.client.constant.ExtensionType;
+import id.go.ojk.module.lblt.dppk.reference.ER7008PosLtlbDppkRekinv;
+import id.go.ojk.module.lblt.dppk.validations.ppmpk.E7008RekinvValidationsConfig;
 import id.go.ojk.util.constants.ProgramType;
 import id.go.ojk.util.constants.SectorType;
 import id.go.ojk.util.metadata.field.base.BaseMetadataField;
 import id.go.ojk.util.metadata.field.lblt.ILbltFieldMetadata;
 import id.go.ojk.util.metadata.field.lblt.LbltMetadataField;
+import id.go.ojk.util.metadata.submission.SubmissionConfig;
 import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
@@ -31,76 +35,76 @@ import static id.go.ojk.util.constants.SectorType.SYARIAH;
 public enum Dppk0008Rekinv implements ILbltFieldMetadata {
 
     FLAG(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(0, null, "Flag", sv(O, 3, 3, alfaNumeric).confConstant("D01"))
     ),
     KODE_KOMPONEN(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(1, null, "Kode Komponen", sv(O, 16, 16, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric)
                     .confReference(EHeaderMetadataPpmpk.R7008Rekinv.getObject()))
                     .confUnique(UniqueType.U)
     ),
     JAN(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(2, null, "Jan", sv(O, 1, 18, numeric))
     ),
     FEB(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(3, null, "Feb", sv(O, 1, 18, numeric))
     ),
     MAR(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(4, null, "Mar", sv(O, 1, 18, numeric))
     ),
     APR(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(5, null, "Apr", sv(O, 1, 18, numeric))
     ),
     MEI(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(6, null, "Mei", sv(O, 1, 18, numeric))
     ),
     JUN(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(7, null, "Jun", sv(O, 1, 18, numeric))
     ),
     JUL(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(8, null, "Jul", sv(O, 1, 18, numeric))
     ),
     AGU(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(9, null, "Agu", sv(O, 1, 18, numeric))
     ),
     SEP(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(10, null, "Sep", sv(O, 1, 18, numeric))
     ),
     OKT(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(11, null, "Okt", sv(O, 1, 18, numeric))
     ),
     NOV(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(12, null, "Nov", sv(O, 1, 18, numeric))
     ),
     DES(
-            EnumSet.of(KONVENSIONAL, SYARIAH),
-            EnumSet.of(PPMPK, PPMPM),
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPMPK, PPMPM),
             sf(13, null, "Des", sv(O, 1, 18, numeric))
     ),
     ;
@@ -124,14 +128,14 @@ public enum Dppk0008Rekinv implements ILbltFieldMetadata {
         return programType;
     }
 
-    public static final BaseMetadataField<Dppk0008Rekinv> FIELD_PPMPK = new LbltMetadataField<>(Dppk0008Rekinv.class, PPMPK);
+    public static final LbltMetadataField<Dppk0008Rekinv> FIELD_KONVEN = new LbltMetadataField<>(Dppk0008Rekinv.class, KONVENSIONAL);
 
     public static SubmissionFormatBuilder getSubmissionFormatConfig(SectorType sectorType, String reportCode) {
         EFormLaporanBulananTahunan REKINV_FORM = EFormLaporanBulananTahunan.LTLB_REKINV;
         SubmissionFormatBuilder sfConfig = SubmissionFormatBuilder.builder()
                 .code(REKINV_FORM.getCode())
                 .name(REKINV_FORM.getName())
-                .extension(ExtensionType.TXT.getType())
+                .extension(ExtensionType.TXT)
                 .reportCode(reportCode)
                 .maxRow(24)
                 .fields(new ArrayList<>())
@@ -146,5 +150,17 @@ public enum Dppk0008Rekinv implements ILbltFieldMetadata {
         }
 
         throw new IllegalArgumentException("Unknown sector type: " + sectorType);
+    }
+
+    public static SubmissionFormat ppmpkKonvensionalFormMetadata(String reportCode) {
+        FIELD_KONVEN.setProgramType(ProgramType.PPMPK);
+        return new SubmissionConfig(reportCode)
+                .config()
+                .setRequiredPos(ER7008PosLtlbDppkRekinv.getRequiredPos())
+                .setSubmissionFormat(getSubmissionFormatConfig(KONVENSIONAL, reportCode))
+                .setSubmissionField(FIELD_KONVEN.getFields())
+                .setSegmentValidations(E7008RekinvValidationsConfig.VALIDATION_METADATA)
+                .build()
+                .get();
     }
 }
