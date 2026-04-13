@@ -6,6 +6,7 @@ import static id.go.ojk.client.model.config.SimpleValidation.patternAlfaNumeric;
 import static id.go.ojk.lib.client.model.config.DataType.alfaNumeric;
 import static id.go.ojk.lib.client.model.config.DataType.all;
 import static id.go.ojk.lib.client.model.config.DataType.numeric;
+import static id.go.ojk.lib.client.model.config.DataType.numericDotNegatif;
 import static id.go.ojk.lib.client.model.config.DataType.refTable;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.C;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
@@ -73,15 +74,15 @@ public class LpRpiuJkp extends BaseMetadata {
     fs.add(sf(13, null, "Kelompok Upah (TK) 5", sv(M, 1, 10, numeric)));
     fs.add(sf(14, null, "Total Kelompok Upah (TK)", sv(M, 1, 10, numeric))
         .addFieldValidations(ER6202RPIU.genValidationTotalKelompokUpah()));
-    fs.add(sf(15, null, "Pembebanan Iuran Rekomposisi Iuran JKK", sv(M, 1, 20, numeric)));
-    fs.add(sf(16, null, "Pembebanan Iuran Rekomposisi Iuran JKM", sv(M, 1, 20, numeric)));
-    fs.add(sf(17, null, "Pembebanan Iuran Pemerintah", sv(M, 1, 20, numeric)));
-    fs.add(sf(18, null, "Total Pembebanan Iuran", sv(M, 1, 20, numeric))
+    fs.add(sf(15, null, "Pembebanan Iuran Rekomposisi Iuran JKK", sv(M, 1, 23, numericDotNegatif)));
+    fs.add(sf(16, null, "Pembebanan Iuran Rekomposisi Iuran JKM", sv(M, 1, 23, numericDotNegatif)));
+    fs.add(sf(17, null, "Pembebanan Iuran Pemerintah", sv(M, 1, 23, numericDotNegatif)));
+    fs.add(sf(18, null, "Total Pembebanan Iuran", sv(M, 1, 23, numericDotNegatif))
         .addFieldValidations(ER6202RPIU.genValidationTotalPembebananIuran()));
-    fs.add(sf(19, null, "Iuran Yang Diterima Rekomposisi Iuran JKK", sv(M, 1, 20, numeric)));
-    fs.add(sf(20, null, "Iuran Yang Diterima Rekomposisi Iuran JKM", sv(M, 1, 20, numeric)));
-    fs.add(sf(21, null, "Iuran Yang Diterima Pemerintah", sv(M, 1, 20, numeric)));
-    fs.add(sf(22, null, "Total Iuran Yang Diterima", sv(M, 1, 20, numeric))
+    fs.add(sf(19, null, "Iuran Yang Diterima Rekomposisi Iuran JKK", sv(M, 1, 23, numericDotNegatif)));
+    fs.add(sf(20, null, "Iuran Yang Diterima Rekomposisi Iuran JKM", sv(M, 1, 23, numericDotNegatif)));
+    fs.add(sf(21, null, "Iuran Yang Diterima Pemerintah", sv(M, 1, 23, numericDotNegatif)));
+    fs.add(sf(22, null, "Total Iuran Yang Diterima", sv(M, 1, 23, numericDotNegatif))
         .addFieldValidations(ER6202RPIU.genValidationIuranYangDiterima()));
     fs.add(sf(23, null, "Target Iuran", sv(M, 1, 20, numeric)));
     return res;
