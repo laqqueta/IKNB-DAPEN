@@ -131,6 +131,26 @@ public enum ER5904RKPIU implements IObject<KeyValueString> {
     return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 9), getObjects());
   }
 
+  public static SegmentValidation genLengthValidation20() {
+    String selectPosCode = UtilMetadata.genPipeRow(getObjects(), 0, 40);
+    return UtilSegmentValidation.genMaxLength(UtilMetadata.genPipeColumn(2, 9), selectPosCode, 20);
+  }
+
+  public static SegmentValidation genLengthValidation23() {
+    String selectPosCode = UtilMetadata.genPipeRow(getObjects(), 41, 45);
+    return UtilSegmentValidation.genMaxLength(UtilMetadata.genPipeColumn(2, 9), selectPosCode, 23);
+  }
+
+  public static SegmentValidation genRegexValidationNumeric() {
+    String selectPosCode = UtilMetadata.genPipeRow(getObjects(), 0, 40);
+    return UtilSegmentValidation.genRegexNumeric(UtilMetadata.genPipeColumn(2, 9), selectPosCode);
+  }
+
+  public static SegmentValidation genRegexValidationNumericDotNegative() {
+    String selectPosCode = UtilMetadata.genPipeRow(getObjects(), 41, 45);
+    return UtilSegmentValidation.genRegexNumericDotNegative(UtilMetadata.genPipeColumn(2, 9), selectPosCode);
+  }
+
   public static SegmentValidation genValidationTotalKelompokUsaha() {
     List<IObject<KeyValueString>> listKv = Arrays.asList(RKPIU0301000000, RKPIU0302000000, RKPIU0303000000,
         RKPIU0304000000, RKPIU0305000000, RKPIU0306000000, RKPIU0307000000, RKPIU0308000000, RKPIU0309000000);
