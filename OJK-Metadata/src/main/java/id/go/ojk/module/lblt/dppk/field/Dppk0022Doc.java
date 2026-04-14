@@ -1,5 +1,6 @@
 package id.go.ojk.module.lblt.dppk.field;
 
+import id.go.ojk.client.constant.ExtensionType;
 import id.go.ojk.client.model.config.SimpleValidation;
 import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
@@ -7,18 +8,15 @@ import id.go.ojk.client.model.config.SubmissionFormatBuilder;
 import id.go.ojk.module.lblt.dppk.form.EFormLaporanBulananTahunan;
 import id.go.ojk.module.lblt.dppk.header.EHeaderMetadataPpmpk;
 import id.go.ojk.module.lblt.dppk.header.EHeaderMetadataShared;
-import id.go.ojk.client.constant.ExtensionType;
 import id.go.ojk.module.lblt.dppk.reference.ER7022PosLtlbDppkDoc;
 import id.go.ojk.module.lblt.dppk.validations.E7022DocValidationsConfig;
 import id.go.ojk.util.constants.ProgramType;
 import id.go.ojk.util.constants.SectorType;
-import id.go.ojk.util.metadata.field.base.BaseMetadataField;
 import id.go.ojk.util.metadata.field.lblt.ILbltFieldMetadata;
 import id.go.ojk.util.metadata.field.lblt.LbltMetadataField;
 import id.go.ojk.util.metadata.submission.SubmissionConfig;
 import lombok.AllArgsConstructor;
 
-import java.util.ArrayList;
 import java.util.EnumSet;
 
 import static id.go.ojk.lib.client.model.config.DataType.*;
@@ -44,53 +42,53 @@ public enum Dppk0022Doc implements ILbltFieldMetadata {
 
     NAMA_BANK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(2, null, "Nama Bank", sv(C, 1, 100, freeText)
-                    .confConditionalRequired(E7022DocValidationsConfig))),
+                    .confConditionalRequired(E7022DocValidationsConfig.CR_EXISTS_DOC000000_O))),
+
+    CABANG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+            sf(3, null, "Cabang", sv(C, 1, 100, freeText)
+                    .confConditionalRequired(E7022DocValidationsConfig.CR_EXISTS_DOC000000_O))),
 
     KODE_BANK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
-            sf(3, null, "Kode Bank", sv(C, 1, 6, refTable)
-                    .confConditionalRequired(E7022DocValidationsConfig)
+            sf(4, null, "Kode Bank", sv(C, 1, 6, refTable)
+                    .confConditionalRequired(E7022DocValidationsConfig.CR_EXISTS_DOC000000_M)
                     .confRegex(SimpleValidation.patternAlfaNumeric)
                     .confReference(EHeaderMetadataShared.R011.getObject()))),
 
-    CABANG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
-            sf(4, null, "Cabang", sv(C, 1, 100, freeText)
-                    .confConditionalRequired(E7022DocValidationsConfig))),
-
     TANGGAL_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(5, null, "Tanggal Perolehan", sv(C, 8, 8, date)
-                    .confConditionalRequired(E7022DocValidationsConfig))),
+                    .confConditionalRequired(E7022DocValidationsConfig.CR_EXISTS_DOC000000_M))),
 
     NILAI_NOMINAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(6, null, "Nilai Nominal", sv(M, 1, 18, numeric))),
 
     JANGKA_WAKTU_HARI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(7, null, "Jangka Waktu (Hari)", sv(C, 1, 3, numeric)
-                    .confConditionalRequired(E7022DocValidationsConfig))),
+                    .confConditionalRequired(E7022DocValidationsConfig.CR_EXISTS_DOC000000_M))),
 
     TINGKAT_BUNGA_NISBAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(8, null, "Tingkat Bunga/Nisbah (%)", sv(C, 4, 6, numericDot)
-                    .confConditionalRequired(E7022DocValidationsConfig))),
+                    .confConditionalRequired(E7022DocValidationsConfig.CR_EXISTS_DOC000000_M))),
 
     MANFAAT_PENSIUN_LAINNYA_LAIN_LCF(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(9, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain/LCF", sv(C, 1, 6, refTable)
-                    .confConditionalRequired(E7022DocValidationsConfig)
+                    .confConditionalRequired(E7022DocValidationsConfig.CR_EXISTS_DOC000000_M)
                     .confRegex(SimpleValidation.patternAlfaNumeric)
                     .confReference(EHeaderMetadataShared.R009.getObject()))),
 
     PENGELOLAAN_SWAKELOLA_KPD(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
-            sf(10, null, "Pengelolaan Swakelola/ KPD, Not gound", sv(C, 1, 6, refTable)
+            sf(10, null, "Pengelolaan Swakelola/ KPD", sv(C, 1, 6, refTable)
                     .confRegex(SimpleValidation.patternAlfa)
-                    .confConditionalRequired(E7022DocValidationsConfig)
+                    .confConditionalRequired(E7022DocValidationsConfig.CR_EXISTS_DOC000000_M)
                     .confReference(EHeaderMetadataShared.R006.getObject()))),
 
     PENGELOLAAN_NAMA_MANAJER_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(11, null, "Pengelolaan Nama Manajer Investasi", sv(C, 1, 250, freeText)
-                    .confConditionalRequired(E7022DocValidationsConfig)
-                    .confConditionalRequired(E7022DocValidationsConfig))),
+                    .confConditionalRequired(E7022DocValidationsConfig.CR_EXISTS_DOC000000_M)
+                    .confConditionalRequired(E7022DocValidationsConfig.CR_EQUAL_EXCEPT_DOC000000))),
 
     KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(12, null, "Keterangan", sv(C, 1, 250, freeText)
-                    .confConditionalRequired(E7022DocValidationsConfig))),
+                    .confConditionalRequired(E7022DocValidationsConfig.CR_EXISTS_DOC000000_O))),
 
     ;
 
@@ -123,7 +121,6 @@ public enum Dppk0022Doc implements ILbltFieldMetadata {
                 .extension(ExtensionType.TXT)
                 .reportCode(reportCode)
                 .maxRow(null)
-                .fields(new ArrayList<>())
                 .build();
 
         if (sectorType.equals(KONVENSIONAL)) {
@@ -142,6 +139,8 @@ public enum Dppk0022Doc implements ILbltFieldMetadata {
         return new SubmissionConfig(reportCode)
                 .config()
                 .setRequiredPos(ER7022PosLtlbDppkDoc.getRequiredPos())
+                .setSavePosForm(ER7022PosLtlbDppkDoc.getSavePosForm())
+                .setSavePos(ER7022PosLtlbDppkDoc.getSavePos())
                 .setSubmissionFormat(getSubmissionFormatConfig(KONVENSIONAL, reportCode))
                 .setSubmissionField(FIELD_KONVEN.getFields())
                 .setSegmentValidations(E7022DocValidationsConfig.VALIDATION_METADATA)

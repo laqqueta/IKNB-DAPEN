@@ -5,7 +5,7 @@ import id.go.ojk.util.metadata.validation.base.IBaseMetadataValidation;
 public class ValidationConverter {
 
     public static <T extends IBaseMetadataValidation, R> boolean isValidation(T validation, Class<R> validationType) {
-        return validationType.isInstance(validation);
+        return validationType.isInstance(validation.getSupplier().get());
     }
 
     public static <T extends IBaseMetadataValidation, R> R toValidation(T validation, Class<R> validationType) {

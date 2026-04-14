@@ -35,9 +35,9 @@ public abstract class BaseSubmissionConfig extends BaseMetadata {
             return submissionFormat;
         }
 
-        List<SubmissionField> fs = submissionFormat.getFields();
-
         setSubmissionConfigs(submissionFormat);
+
+        List<SubmissionField> fs = submissionFormat.getFields();
 
         if (!segmentValidations.isEmpty()) segmentValidations.forEach(submissionFormat::addSegmentValidations);
         if (!submissionFields.isEmpty()) fs.addAll(submissionFields);
@@ -119,10 +119,8 @@ public abstract class BaseSubmissionConfig extends BaseMetadata {
 
         public BaseSubmissionConfig build() {
             if (BaseSubmissionConfig.this.submissionFormat == null) throw new IllegalStateException("SubmissionFormat is required");
+            if (BaseSubmissionConfig.this.submissionFields == null) throw new IllegalStateException("SubmissionField is required for .txt file");
 
-            if (extensionType.equals(ExtensionType.TXT)) {
-                if (BaseSubmissionConfig.this.submissionFields == null) throw new IllegalStateException("SubmissionField is required for .txt file");
-            }
 
             return BaseSubmissionConfig.this;
         }

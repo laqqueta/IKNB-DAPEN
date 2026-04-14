@@ -1,9 +1,10 @@
 package id.go.ojk.client.model.config;
 
-import com.google.common.collect.Lists;
 import id.go.ojk.client.constant.ExtensionType;
-import lombok.*;
+import lombok.Builder;
+import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -16,4 +17,12 @@ public class SubmissionFormatBuilder {
     private ExtensionType extension;
     private Integer minRow;
     private Integer maxRow;
+
+    public List<SubmissionField> getFields() {
+        if (fields == null) {
+            fields = new ArrayList<>();
+        }
+
+        return fields;
+    }
 }

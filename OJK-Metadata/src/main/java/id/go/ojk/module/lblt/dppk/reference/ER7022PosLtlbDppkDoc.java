@@ -1,11 +1,6 @@
 package id.go.ojk.module.lblt.dppk.reference;
 
-import id.go.ojk.client.model.config.validation.conditional.ConditionalRequired;
-import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
-import id.go.ojk.conf.client.UtilFieldConditional;
 import id.go.ojk.conf.client.UtilMetadata;
-import id.go.ojk.conf.client.UtilSegmentValidation;
-import id.go.ojk.conf.client.field.reference.ER1252Pengelolaan;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
 import lombok.AccessLevel;
@@ -43,7 +38,7 @@ public enum ER7022PosLtlbDppkDoc implements IObject<KeyValueString> {
         return Integer.parseInt(ER7022PosLtlbDppkDoc.class.getSimpleName().substring(2, 6));
     }
 
-    public static String genFieldSave() {
+    public static String getSavePos() {
         return UtilMetadata.genFieldSave("6|10", getObjects());
     }
 
@@ -51,7 +46,7 @@ public enum ER7022PosLtlbDppkDoc implements IObject<KeyValueString> {
         return UtilMetadata.genPipeRow(getObjects(), new int[] { 1 });
     }
 
-    public static String getFieldFormSave() {
+    public static String getSavePosForm() {
         return UtilMetadata.genFieldSave("6|9", getObjects());
     }
 
