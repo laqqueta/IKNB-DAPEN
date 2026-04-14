@@ -83,6 +83,7 @@ public enum ER6105RKPIU implements IObject<KeyValueString> {
   private static final String RPIU = EFormLpbptkjht.RPIU.getCode();
   private static final String RDJHT = EFormLpbptkjht.RDJHT.getCode();
   public static final int[] COLS_NON_TOTAL = { 2, 3, 4, 5 };
+  private static final String ALL_COLS = UtilMetadata.genPipeColumn(2, 7);
 
   public static String getName() {
     return ER6105RKPIU.class.getSimpleName().substring(6);
@@ -144,12 +145,27 @@ public enum ER6105RKPIU implements IObject<KeyValueString> {
     return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(6, 7), getObjects());
   }
 
+  public static SegmentValidation genLengthValidation20() {
+    String selectPosCode = UtilMetadata.genPipeRowExcept(getObjects(), new int[] { 41, 42, 43, 44, 45 });
+    return UtilSegmentValidation.genMaxLength(ALL_COLS, selectPosCode, 20);
+  }
+
+  public static SegmentValidation genLengthValidation23() {
+    String selectPosCode = UtilMetadata.genPipeRow(getObjects(), 41, 45);
+    return UtilSegmentValidation.genMaxLength(ALL_COLS, selectPosCode, 23);
+  }
+  
   public static SegmentValidation genRegexValidationNumeric() {
-    return UtilSegmentValidation.genRegexNumeric("2|3|4|5|6|7", UtilMetadata.genPipeRow(getObjects(), 0, 45));
+    return UtilSegmentValidation.genRegexNumeric(ALL_COLS, UtilMetadata.genPipeRow(getObjects(), 0, 40));
   }
 
   public static SegmentValidation genRegexValidationNumericNegative() {
-    return UtilSegmentValidation.genRegexNumericNegative("2|3|4|5|6|7", UtilMetadata.genPipeRow(getObjects(), 46, 51));
+    return UtilSegmentValidation.genRegexNumericNegative(ALL_COLS, UtilMetadata.genPipeRow(getObjects(), 46, 51));
+  }
+
+  public static SegmentValidation genRegexValidationNumericDotNegative() {
+    String selectPosCode = UtilMetadata.genPipeRow(getObjects(), 41, 45);
+    return UtilSegmentValidation.genRegexNumericDotNegative(ALL_COLS, selectPosCode);
   }
 
   public static SegmentValidation genValidationTotalKelompokUsaha() {
@@ -195,12 +211,12 @@ public enum ER6105RKPIU implements IObject<KeyValueString> {
 
   public static FieldValidation genValidationTotalPemberiKerja() {
     int[] cols = { 2, 4 };
-    return UtilFieldValidation.genEqualsFormula(UtilMetadata.genPlusColumn(cols));
+    return UtilFieldValidation.genEqualsFormula(UtilMetadata.genPlusColumn(cols), 2);
   }
 
   public static FieldValidation genValidationTotalPeserta() {
     int[] cols = { 3, 5 };
-    return UtilFieldValidation.genEqualsFormula(UtilMetadata.genPlusColumn(cols));
+    return UtilFieldValidation.genEqualsFormula(UtilMetadata.genPlusColumn(cols), 2);
   }
 
   private static SegmentValidation genPlusValidation(String selectField, IObject<KeyValueString> selectPos,

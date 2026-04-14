@@ -34,8 +34,11 @@ public class LpRkpiuJp extends BaseMetadata {
     res.setUniquePos(ER6305RKPIU.genUniquePos());
     res.setSavePos(ER6305RKPIU.genFieldSave());
 
+    res.addSegmentValidations(ER6305RKPIU.genLengthValidation20());
+    res.addSegmentValidations(ER6305RKPIU.genLengthValidation23());
     res.addSegmentValidations(ER6305RKPIU.genRegexValidationNumeric());
     res.addSegmentValidations(ER6305RKPIU.genRegexValidationNumericNegative());
+    res.addSegmentValidations(ER6305RKPIU.genRegexValidationNumericDotNegative());
 
     res.addSegmentValidations(ER6305RKPIU.genValidationTotalKelompokUsaha());
     res.addSegmentValidations(ER6305RKPIU.genValidationTotalJenisKelamin());
@@ -59,8 +62,8 @@ public class LpRkpiuJp extends BaseMetadata {
     fs.add(sf(1, null, "Kode Komponen/Baris", sv(M, 15, 20, refTable /*Huruf Angka*/)
         .confRegex(patternAlfaNumeric)
         .confReference(EHeaderMetadataLpbptkjp.R6305RKPIU.getObject())));
-    fs.add(sf(2, null, "Pemberi Kerja Penerima Upah", sv(M, 1, 20, all2)));
-    fs.add(sf(3, null, "Peserta Penerima Upah", sv(M, 1, 20, all2)));
+    fs.add(sf(2, null, "Pemberi Kerja Penerima Upah", sv(M, 1, Integer.MAX_VALUE, all2)));
+    fs.add(sf(3, null, "Peserta Penerima Upah", sv(M, 1, Integer.MAX_VALUE, all2)));
     return res;
   }
 }

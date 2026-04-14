@@ -82,6 +82,7 @@ public enum ER6305RKPIU implements IObject<KeyValueString> {
   private static final String RPIU = EFormLpbptkjp.RPIU.getCode();
 
   public static final int[] COLS_NON_TOTAL = { 2, 3 };
+  private static final String ALL_COLS = UtilMetadata.genPipeColumn(2, 3);
 
   public static String getName() {
     return ER6305RKPIU.class.getSimpleName().substring(6);
@@ -136,21 +137,36 @@ public enum ER6305RKPIU implements IObject<KeyValueString> {
   }
 
   public static String genFieldSave() {
-    return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 3), getObjects());
+    return UtilMetadata.genFieldSave(ALL_COLS, getObjects());
+  }
+  
+  public static SegmentValidation genLengthValidation20() {
+    String selectPosCode = UtilMetadata.genPipeRowExcept(getObjects(), new int[] { 41, 42, 43, 44, 45 });
+    return UtilSegmentValidation.genMaxLength(ALL_COLS, selectPosCode, 20);
+  }
+
+  public static SegmentValidation genLengthValidation23() {
+    String selectPosCode = UtilMetadata.genPipeRow(getObjects(), 41, 45);
+    return UtilSegmentValidation.genMaxLength(ALL_COLS, selectPosCode, 23);
   }
 
   public static SegmentValidation genRegexValidationNumeric() {
-    return UtilSegmentValidation.genRegexNumeric("2|3", UtilMetadata.genPipeRow(getObjects(), 0, 45));
+    return UtilSegmentValidation.genRegexNumeric(ALL_COLS, UtilMetadata.genPipeRow(getObjects(), 0, 40));
   }
 
   public static SegmentValidation genRegexValidationNumericNegative() {
-    return UtilSegmentValidation.genRegexNumericNegative("2|3", UtilMetadata.genPipeRow(getObjects(), 46, 51));
+    return UtilSegmentValidation.genRegexNumericNegative(ALL_COLS, UtilMetadata.genPipeRow(getObjects(), 46, 51));
   }
 
   public static SegmentValidation genValidationTotalKelompokUsaha() {
     List<IObject<KeyValueString>> listKv = Arrays.asList(RKPIU0301000000, RKPIU0302000000, RKPIU0303000000,
         RKPIU0304000000, RKPIU0305000000, RKPIU0306000000, RKPIU0307000000, RKPIU0308000000, RKPIU0309000000);
     return genPlusValidation(UtilMetadata.genPipeColumn(COLS_NON_TOTAL), RKPIU0400000000, listKv);
+  }
+
+  public static SegmentValidation genRegexValidationNumericDotNegative() {
+    String selectPosCode = UtilMetadata.genPipeRow(getObjects(), 41, 45);
+    return UtilSegmentValidation.genRegexNumericDotNegative(ALL_COLS, selectPosCode);
   }
 
   public static SegmentValidation genValidationTotalJenisKelamin() {
