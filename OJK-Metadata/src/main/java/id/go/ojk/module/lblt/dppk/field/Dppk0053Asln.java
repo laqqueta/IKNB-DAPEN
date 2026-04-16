@@ -32,70 +32,52 @@ import static id.go.ojk.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0053Asln implements ILbltFieldMetadata {
 
-    FLAG(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(0, null, "Flag",
                     sv(M, 3, 3, alfaNumeric)
                             .confConstant("D01"))
     ),
-    KODE_KOMPONEN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(1, null, "Kode Komponen",
                     sv(M, 10, 10, refTable)
                             .confRegex(SimpleValidation.patternAlfaNumeric)
                             .confReference(EHeaderMetadataPpmpk.R7053Asln.getObject()))
     ),
-    JENIS_ASET_LAIN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    JENIS_ASET_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(2, null, "Jenis Aset Lain",
                     sv(C, 1, 50, alfaNumeric)
-                            .confConditionalRequired(E7053AslnValidationsConfig))
+                            .confConditionalRequired(E7053AslnValidationsConfig.CR_EXISTS_POS_M))
     ),
-    TANGGAL_PEROLEHAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    TANGGAL_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(3, null, "Tanggal Perolehan",
                     sv(C, 8, 8, date)
-                            .confConditionalRequired(E7053AslnValidationsConfig))
+                            .confConditionalRequired(E7053AslnValidationsConfig.CR_EXISTS_POS_M))
     ),
-    TANGGAL_REKLASIFIKASI_MENJADI_ASET_LAIN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    TANGGAL_REKLASIFIKASI_MENJADI_ASET_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(4, null, "Tanggal Reklasifikasi menjadi Aset Lain",
                     sv(C, 8, 8, date)
-                            .confConditionalRequired(E7053AslnValidationsConfig))
+                            .confConditionalRequired(E7053AslnValidationsConfig.CR_EXISTS_POS_M))
     ),
-    NILAI_ASET(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    NILAI_ASET(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(5, null, "Nilai Aset",
                     sv(M, 1, 18, numeric))
     ),
-    PENCATATAN_SEBELUM_MENJADI_ASET_LAIN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    PENCATATAN_SEBELUM_MENJADI_ASET_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(6, null, "Pencatatan Sebelum Menjadi Aset Lain",
                     sv(C, 1, 100, alfaNumeric)
-                            .confConditionalRequired(E7053AslnValidationsConfig))
+                            .confConditionalRequired(E7053AslnValidationsConfig.CR_EXISTS_POS_M))
     ),
-    MANFAAT_PENSIUN_LAINNYA_LAIN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    MANFAAT_PENSIUN_LAINNYA_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(7, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain",
                     sv(C, 1, 6, refTable)
-                            .confConditionalRequired(E7053AslnValidationsConfig)
+                            .confConditionalRequired(E7053AslnValidationsConfig.CR_EXISTS_POS_M)
                             .confRegex(SimpleValidation.patternAlfaNumeric)
                             .confReference(EHeaderMetadataShared.R009.getObject()))
     ),
-    KETERANGAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(8, null, "Keterangan",
                     sv(C, 1, 250, freeText)
-                            .confConditionalRequired(E7053AslnValidationsConfig))
+                            .confConditionalRequired(E7053AslnValidationsConfig.CR_EXISTS_POS_O))
     ),
     ;
 
@@ -146,7 +128,7 @@ public enum Dppk0053Asln implements ILbltFieldMetadata {
         FIELD_KONVEN.setProgramType(ProgramType.PPMPK);
         return new SubmissionConfig(reportCode)
                 .config()
-                .setRequiredPos(ER7053PosLtlbDppkAsln.getRequiredPos())
+                .setReferenceConfigs(ER7053PosLtlbDppkAsln.Configs.REF_CONFIG_PPMPK)
                 .setSubmissionFormat(getSubmissionFormatConfig(KONVENSIONAL, reportCode))
                 .setSubmissionField(FIELD_KONVEN.getFields())
                 .setSegmentValidations(E7053AslnValidationsConfig.VALIDATION_METADATA)

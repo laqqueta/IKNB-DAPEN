@@ -34,10 +34,7 @@ public enum E7055UmpsValidationsConfig implements ILbltMetadataValidation, IVali
     FV_EQUAL_TOTAL(programs(PPMPK),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("2+3", R_UMPS000000.key)),
 
-    CR_EXISTS_POS_1(programs(PPMPK),
-            () -> UtilFieldConditional.genExistPos("N", "M", R_UMPS000000.key)),
-
-    CR_EXISTS_POS_2(programs(PPMPK),
+    CR_EXISTS_POS_O(programs(PPMPK),
             () -> UtilFieldConditional.genExistPos("N", "O", R_UMPS000000.key)),
 
     ;

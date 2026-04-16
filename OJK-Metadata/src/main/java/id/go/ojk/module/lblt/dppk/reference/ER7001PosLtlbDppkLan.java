@@ -1,5 +1,6 @@
 package id.go.ojk.module.lblt.dppk.reference;
 
+import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
@@ -53,13 +54,9 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
     R_LAN0105000000("LAN0105000000", "TOTAL ASET OPERASIONAL", EnumSet.of(ProgramType.ALL)),
     R_LAN0106000000("LAN0106000000", "ASET LAIN-LAIN", EnumSet.of(ProgramType.ALL)),
     R_LAN0107000000("LAN0107000000", "ASET TERSEDIA", EnumSet.of(ProgramType.ALL)),
-
-    R_LAN0108020000("LAN0108020000", "Liabilitas di luar Nilai Kini Aktuarial",
-            EnumSet.of(ProgramType.PPMPM)),
-
+    R_LAN0108020000("LAN0108020000", "Liabilitas di luar Nilai Kini Aktuarial", EnumSet.of(ProgramType.PPMPM)),
     R_LAN0108010000("LAN0108010000", "Liabilitas di luar Liabilitas Manfaat Pensiun",
             EnumSet.of(ProgramType.PPIPM, ProgramType.PPIPK, ProgramType.PPMPK, ProgramType.PPMPPPIPK)),
-
     R_LAN0108020100("LAN0108020100", "Utang Manfaat Pensiun dan Manfaat Lain Jatuh Tempo", EnumSet.of(ProgramType.ALL)),
     R_LAN0108020200("LAN0108020200", "Utang Manfaat Sukarela", EnumSet.of(ProgramType.ALL)),
     R_LAN0108020300("LAN0108020300", "Utang Investasi", EnumSet.of(ProgramType.ALL)),
@@ -69,25 +66,18 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
     R_LAN0108020700("LAN0108020700", "Utang Dana Ta'zir (bagi syariah)", EnumSet.of(ProgramType.ALL)),
     R_LAN0109000000("LAN0109000000", "Total Liabilitas di luar Liabilitas Manfaat Pensiun", EnumSet.of(ProgramType.ALL)),
     R_LAN0110000000("LAN0110000000", "TOTAL LIABILITAS", EnumSet.of(ProgramType.ALL)),
-    R_LAN0111000000("LAN0111000000", "ASET NETO", EnumSet.of(ProgramType.ALL))
-
-    ;
+    R_LAN0111000000("LAN0111000000", "ASET NETO", EnumSet.of(ProgramType.ALL));
 
     final String key;
     final String value;
     final EnumSet<ProgramType> jenisProgram;
 
-    public KeyValueString getObject() {
-        return new KeyValueString(key, value, new String[] {});
-    }
-
     public static List<KeyValueString> getObjects(ProgramType jenisProgram) {
         List<KeyValueString> res = new ArrayList<>();
         for (ER7001PosLtlbDppkLan eEnum : ER7001PosLtlbDppkLan.values()) {
-            if (eEnum.jenisProgram.contains(jenisProgram) || eEnum.jenisProgram.contains(ProgramType.ALL) ) {
+            if (eEnum.jenisProgram.contains(jenisProgram) || eEnum.jenisProgram.contains(ProgramType.ALL)) {
                 res.add(eEnum.getObject());
             }
-
         }
         return res;
     }
@@ -100,11 +90,26 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
         return Integer.parseInt(ER7001PosLtlbDppkLan.class.getSimpleName().substring(2, 6));
     }
 
-    public static String getFieldSave(ProgramType jenisProgram) {
-        return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 13), getObjects(jenisProgram));
+    public KeyValueString getObject() {
+        return new KeyValueString(key, value, new String[]{});
     }
 
-    public static String getRequiredPos(ProgramType jenisProgram) {
-        return UtilMetadata.genPipeRow(getObjects(jenisProgram));
+    public enum Configs implements ReferenceConfig {
+        REF_CONFIG_PPMPK {
+            @Override
+            public String savePos() {
+                ProgramType programType = ProgramType.PPMPK;
+                return UtilMetadata.genFieldSave(
+                        UtilMetadata.genPipeColumn(2, 13),
+                        getObjects(programType)
+                );
+            }
+
+            @Override
+            public String requiredPos() {
+                ProgramType programType = ProgramType.PPMPK;
+                return UtilMetadata.genPipeRow(getObjects(programType));
+            }
+        }
     }
 }

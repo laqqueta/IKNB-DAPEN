@@ -35,52 +35,36 @@ import static id.go.ojk.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0015Inbm implements ILbltFieldMetadata {
 
-    FLAG(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(0, null, "Flag", sv(O, 3, 3, alfaNumeric).confConstant("D01"))
     ),
-    KODE_KOMPONEN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(1, null, "Kode Komponen", sv(O, 10, 10, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric)
                     .confReference(EHeaderMetadataPpmpk.R7015Inbm.getObject()))
     ),
-    NAMA_PIHAK(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    NAMA_PIHAK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(2, null, "Nama Pihak", sv(O, 1, 100, freeText)
-                    .confConditionalRequired(E7015InbmValidationsConfig))
+                    .confConditionalRequired(E7015InbmValidationsConfig.CR_EXIST_POS_M))
     ),
-    INVESTASI_JENIS(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    INVESTASI_JENIS(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(3, null, "Investasi Jenis", sv(O, 1, 100, freeText)
-                    .confConditionalRequired(E7015InbmValidationsConfig))
+                    .confConditionalRequired(E7015InbmValidationsConfig.CR_EXIST_POS_M))
     ),
-    INVESTASI_JUMLAH(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    INVESTASI_JUMLAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(4, null, "Investasi Jumlah", sv(O, 1, 18, numeric))
     ),
-    INVESTASI_PERSENTASE_TERHADAP_TOTAL_INVESTASI(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    INVESTASI_PERSENTASE_TERHADAP_TOTAL_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(5, null, "Investasi Persentase Terhadap Total Investasi", sv(O, 4, 6, numericDot)
-                    .confConditionalRequired(E7015InbmValidationsConfig))
+                    .confConditionalRequired(E7015InbmValidationsConfig.CR_EXIST_POS_M))
     ),
-    KATEGORI_BERMASALAH(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    KATEGORI_BERMASALAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(6, null, "Kategori Bermasalah", sv(O, 1, 250, freeText)
-                    .confConditionalRequired(E7015InbmValidationsConfig))
+                    .confConditionalRequired(E7015InbmValidationsConfig.CR_EXIST_POS_M))
     ),
-    KETERANGAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(7, null, "Keterangan", sv(O, 1, 250, freeText)
-                    .confConditionalRequired(E7015InbmValidationsConfig))
+                    .confConditionalRequired(E7015InbmValidationsConfig.CR_EXIST_POS_O))
     ),
     ;
 
@@ -131,7 +115,7 @@ public enum Dppk0015Inbm implements ILbltFieldMetadata {
         FIELD_KONVEN.setProgramType(ProgramType.PPMPK);
         return new SubmissionConfig(reportCode)
                 .config()
-                .setRequiredPos(ER7015PosLtlbDppkInbm.getRequiredPos())
+                .setReferenceConfigs(ER7015PosLtlbDppkInbm.Configs.REF_CONFIG_PPMPK)
                 .setSubmissionFormat(getSubmissionFormatConfig(KONVENSIONAL, reportCode))
                 .setSubmissionField(FIELD_KONVEN.getFields())
                 .setSegmentValidations(E7015InbmValidationsConfig.VALIDATION_METADATA)

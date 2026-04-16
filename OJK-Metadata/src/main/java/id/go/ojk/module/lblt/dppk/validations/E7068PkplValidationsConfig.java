@@ -7,6 +7,7 @@ import id.go.ojk.client.model.validation.IValidation;
 import id.go.ojk.conf.client.UtilFieldConditional;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
+import id.go.ojk.conf.client.field.reference.ER1255JenisManfaat;
 import id.go.ojk.util.constants.ProgramType;
 import id.go.ojk.client.validation.IValidationConverter;
 import id.go.ojk.util.metadata.validation.ValidationConverter;
@@ -35,6 +36,10 @@ public enum E7068PkplValidationsConfig implements ILbltMetadataValidation, IVali
 
     CR_EXISTS_POS_O(programs(PPMPK),
             () -> UtilFieldConditional.genExistPos("N", "O", R_BOPR000000.key)),
+
+    CR_MANFAAT_LAIN(programs(PPMPK),
+            () -> UtilFieldConditional.genEquals("M", "N", "4",
+            ER1255JenisManfaat.getReferenceIndex(11))),
 
     ;
 

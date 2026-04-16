@@ -31,39 +31,27 @@ import static id.go.ojk.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0006Pst implements ILbltFieldMetadata {
 
-    FLAG(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(0, null, "Flag", sv(O, 3, 3, alfaNumeric).confConstant("D01"))
     ),
-    KODE_KOMPONEN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(1, null, "Kode Komponen", sv(O, 13, 13, refTable)
                     .confReference(EHeaderMetadataPpmpk.R7006Pst.getObject())
                     .confRegex(SimpleValidation.patternAlfaNumeric))
                     .confUnique(UniqueType.U)
     ),
-    MANFAAT_PENSIUN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(2, null, "Manfaat Pensiun", sv(O, 1, 18, numeric))
     ),
-    MANFAAT_PENSIUN_LAINNYA(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    MANFAAT_PENSIUN_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(3, null, "Manfaat Pensiun Lainnya", sv(O, 1, 18, numeric))
     ),
-    MANFAAT_LAIN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    MANFAAT_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(4, null, "Manfaat  lain", sv(O, 1, 18, numeric))
     ),
-    JUMLAH(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    JUMLAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(5, null, "Jumlah", sv(O, 1, 18, numeric))
-                    .addFieldValidations(E7006PstValidationsConfig)
+                    .addFieldValidations(E7006PstValidationsConfig.FV_SUM_ROW)
     ),
     ;
 
@@ -114,7 +102,7 @@ public enum Dppk0006Pst implements ILbltFieldMetadata {
         FIELD_KONVEN.setProgramType(ProgramType.PPMPK);
         return new SubmissionConfig(reportCode)
                 .config()
-                .setRequiredPos(ER7006PosLtlbDppkPst.getRequiredPos())
+                .setReferenceConfigs(ER7006PosLtlbDppkPst.Configs.REF_CONFIG_PPMPK)
                 .setSubmissionFormat(getSubmissionFormatConfig(KONVENSIONAL, reportCode))
                 .setSubmissionField(FIELD_KONVEN.getFields())
                 .setSegmentValidations(E7006PstValidationsConfig.VALIDATION_METADATA)

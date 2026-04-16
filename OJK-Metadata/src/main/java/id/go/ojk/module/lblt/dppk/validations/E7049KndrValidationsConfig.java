@@ -34,10 +34,10 @@ public enum E7049KndrValidationsConfig implements ILbltMetadataValidation, IVali
     FV_EQUAL_NILAI_BUKU(programs(PPMPK),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("5-6", R_KNDR000000.key)),
 
-    CR_EXISTS_POS_1(programs(PPMPK),
+    CR_EXISTS_POS_M(programs(PPMPK),
             () -> UtilFieldConditional.genExistPos("N", "M", R_KNDR000000.key)),
 
-    CR_EXISTS_POS_2(programs(PPMPK),
+    CR_EXISTS_POS_O(programs(PPMPK),
             () -> UtilFieldConditional.genExistPos("N", "O", R_KNDR000000.key)),
 
     ;

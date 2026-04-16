@@ -1,14 +1,9 @@
 package id.go.ojk.module.lblt.dppk.reference;
 
-import id.go.ojk.client.model.config.validation.field.FieldValidation;
-import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
-import id.go.ojk.conf.client.UtilFieldValidation;
+import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.conf.client.UtilMetadata;
-import id.go.ojk.conf.client.UtilSegmentValidation;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
-import id.go.ojk.module.lblt.dppk.form.EFormLaporanBulananTahunan;
-import id.go.ojk.util.constants.ProgramType;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
@@ -43,24 +38,12 @@ public enum ER7009PosLtlbDppkRoi implements IObject<KeyValueString> {
     public final String key;
     public final String value;
 
-    public KeyValueString getObject() {
-        return new KeyValueString(key, value, new String[] {});
-    }
-
     public static List<KeyValueString> getObjects() {
         List<KeyValueString> res = new ArrayList<>();
         for (ER7009PosLtlbDppkRoi eEnum : ER7009PosLtlbDppkRoi.values()) {
             res.add(eEnum.getObject());
         }
         return res;
-    }
-
-    public static String genFieldSave() {
-        return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 11), getObjects());
-    }
-
-    public static String getRequiredPos() {
-        return UtilMetadata.genPipeRow(getObjects());
     }
 
     public static String getName() {
@@ -71,4 +54,24 @@ public enum ER7009PosLtlbDppkRoi implements IObject<KeyValueString> {
         return Integer.parseInt(ER7009PosLtlbDppkRoi.class.getSimpleName().substring(2, 6));
     }
 
+    public KeyValueString getObject() {
+        return new KeyValueString(key, value, new String[]{});
+    }
+
+    public enum Configs implements ReferenceConfig {
+        REF_CONFIG_PPMPK {
+            @Override
+            public String savePos() {
+                return UtilMetadata.genFieldSave(
+                        UtilMetadata.genPipeColumn(2, 11),
+                        getObjects()
+                );
+            }
+
+            @Override
+            public String requiredPos() {
+                return UtilMetadata.genPipeRow(getObjects());
+            }
+        }
+    }
 }

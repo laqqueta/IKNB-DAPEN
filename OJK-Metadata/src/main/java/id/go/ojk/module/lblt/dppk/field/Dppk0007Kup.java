@@ -33,36 +33,24 @@ import static id.go.ojk.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0007Kup implements ILbltFieldMetadata {
 
-    FLAG(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(0, null, "Flag", sv(O, 3, 3, alfaNumeric).confConstant("D01"))
     ),
-    KODE_KOMPONEN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(1, null, "Kode Komponen", sv(O, 13, 13, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric)
                     .confReference(EHeaderMetadataPpmpk.R7007Kup.getObject()))
     ),
-    URAIAN_TAMBAHAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    URAIAN_TAMBAHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(2, null, "Uraian Tambahan", sv(O, 1, 100, freeText))
     ),
-    NILAI_PROGRAM_MANFAAT_PENSIUN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    NILAI_PROGRAM_MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(3, null, "Nilai Program Manfaat Pensiun", sv(O, 1, 18, freeText))
     ),
-    NILAI_PROGRAM_MANFAAT_PENSIUN_LAINNYA(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    NILAI_PROGRAM_MANFAAT_PENSIUN_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(4, null, "Nilai Program Manfaat Pensiun Lainnya", sv(O, 1, 18, freeText))
     ),
-    NILAI_PROGRAM_MANFAAT_LAIN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    NILAI_PROGRAM_MANFAAT_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(5, null, "Nilai Program Manfaat Lain", sv(O, 1, 18, freeText))
     ),
     ;
@@ -114,7 +102,7 @@ public enum Dppk0007Kup implements ILbltFieldMetadata {
         FIELD_KONVEN.setProgramType(ProgramType.PPMPK);
         return new SubmissionConfig(reportCode)
                 .config()
-                .setRequiredPos(ER7007PosLtlbDppkKup.getRequiredPos(ProgramType.PPMPK))
+                .setReferenceConfigs(ER7007PosLtlbDppkKup.Configs.REF_CONFIG_PPMPK)
                 .setSubmissionFormat(getSubmissionFormatConfig(KONVENSIONAL, reportCode))
                 .setSubmissionField(FIELD_KONVEN.getFields())
                 .setSegmentValidations(E7007KupValidationsConfig.VALIDATION_METADATA)

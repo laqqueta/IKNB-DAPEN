@@ -1,5 +1,6 @@
 package id.go.ojk.module.lblt.dppk.reference;
 
+import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
@@ -75,19 +76,14 @@ public enum ER7007PosLtlbDppkKup implements IObject<KeyValueString> {
             EnumSet.of(ProgramType.PPMPM, ProgramType.PPMPK, ProgramType.PPMPPPIPK)),
     ;
 
-
     private final String key;
     private final String value;
     private final EnumSet<ProgramType> jenisProgram;
 
-    public KeyValueString getObject() {
-        return new KeyValueString(key, value, new String[] {});
-    }
-
     public static List<KeyValueString> getObjects(ProgramType jenisProgram) {
         List<KeyValueString> res = new ArrayList<>();
         for (ER7007PosLtlbDppkKup eEnum : ER7007PosLtlbDppkKup.values()) {
-            if (eEnum.jenisProgram.contains(jenisProgram) || eEnum.jenisProgram.contains(ProgramType.ALL) ) {
+            if (eEnum.jenisProgram.contains(jenisProgram) || eEnum.jenisProgram.contains(ProgramType.ALL)) {
                 res.add(eEnum.getObject());
             }
         }
@@ -102,12 +98,29 @@ public enum ER7007PosLtlbDppkKup implements IObject<KeyValueString> {
         return Integer.parseInt(ER7007PosLtlbDppkKup.class.getSimpleName().substring(2, 6));
     }
 
-    public static String genFieldSave(ProgramType jenisProgram) {
-        return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 5), getObjects(jenisProgram));
+    public KeyValueString getObject() {
+        return new KeyValueString(key, value, new String[]{});
     }
 
-    public static String getRequiredPos(ProgramType jenisProgram) {
-        return UtilMetadata.genPipeRowExcept(getObjects(jenisProgram), new int[] { 1,7,9,11 });
-    }
+    public enum Configs implements ReferenceConfig {
+        REF_CONFIG_PPMPK {
+            @Override
+            public String savePos() {
+                ProgramType programType = ProgramType.PPMPK;
+                return UtilMetadata.genFieldSave(
+                        UtilMetadata.genPipeColumn(2, 5),
+                        getObjects(programType)
+                );
+            }
 
+            @Override
+            public String requiredPos() {
+                ProgramType programType = ProgramType.PPMPK;
+                return UtilMetadata.genPipeRowExcept(
+                        getObjects(programType),
+                        new int[]{1, 7, 9, 11}
+                );
+            }
+        }
+    }
 }

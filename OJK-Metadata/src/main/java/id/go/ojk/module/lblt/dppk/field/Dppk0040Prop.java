@@ -31,131 +31,109 @@ import static id.go.ojk.util.constants.SectorType.SYARIAH;
 
 @AllArgsConstructor
 public enum Dppk0040Prop implements ILbltFieldMetadata {
-    FLAG(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(0, null, "Flag",
                     sv(M, 3, 3, alfaNumeric)
                             .confConstant("D01"))),
-    KODE_KOMPONEN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(1, null, "Kode Komponen",
                     sv(M, 10, 10, refTable)
                             .confRegex(SimpleValidation.patternAlfaNumeric)
                             .confReference(EHeaderMetadataPpmpk.R7040Prop.getObject()))),
-    JENIS_OBJEK_TANAH_BANGUNAN_TANAH_BANGUNAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+
+    JENIS_OBJEK_TANAH_BANGUNAN_TANAH_BANGUNAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(2, null, "Jenis Objek (Tanah/Bangunan/Tanah&Bangunan)",
                     sv(C, 1, 8, refTable)
-                            .confConditionalRequired(E7040PropValidationsConfig)
+                            .confConditionalRequired(E7040PropValidationsConfig.CR_EXISTS_POS_M)
                             .confRegex(SimpleValidation.patternNumeric)
                             .confReference(EHeaderMetadataShared.R004.getObject()))),
-    ALAMAT_LENGKAP(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+
+    ALAMAT_LENGKAP(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(3, null, "Alamat Lengkap",
                     sv(C, 1, 250, freeText)
-                            .confConditionalRequired(E7040PropValidationsConfig))),
-    LUAS_M2(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+                            .confConditionalRequired(E7040PropValidationsConfig.CR_EXISTS_POS_M))),
+
+    LUAS_M2(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(4, null, "Luas(m2)",
                     sv(C, 1, 10, numeric)
-                            .confConditionalRequired(E7040PropValidationsConfig))),
-    JENIS_BUKTI_KEPEMILIKAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+                            .confConditionalRequired(E7040PropValidationsConfig.CR_EXISTS_POS_M))),
+
+    JENIS_BUKTI_KEPEMILIKAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(5, null, "Jenis Bukti Kepemilikan",
                     sv(C, 1, 8, refTable)
-                            .confConditionalRequired(E7040PropValidationsConfig)
+                            .confConditionalRequired(E7040PropValidationsConfig.CR_EXISTS_POS_M)
                             .confRegex(SimpleValidation.patternAlfa)
                             .confReference(EHeaderMetadataShared.R016.getObject()))),
-    NOMOR_SURAT_KEPEMILIKAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+
+    NOMOR_SURAT_KEPEMILIKAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(6, null, "Nomor Surat Kepemilikan",
                     sv(C, 1, 20, alfaNumeric)
-                            .confConditionalRequired(E7040PropValidationsConfig))),
-    TANGGAL_PEROLEHAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+                            .confConditionalRequired(E7040PropValidationsConfig.CR_EXISTS_POS_M))),
+
+    TANGGAL_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(7, null, "Tanggal Perolehan",
                     sv(C, 8, 8, date)
-                            .confConditionalRequired(E7040PropValidationsConfig))),
-    NILAI_PEROLEHAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+                            .confConditionalRequired(E7040PropValidationsConfig.CR_EXISTS_POS_M))),
+
+    NILAI_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(8, null, "Nilai Perolehan",
                     sv(M, 1, 18, numeric))),
-    AKUMULASI_PENYUSUTAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+
+    AKUMULASI_PENYUSUTAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(9, null, "Akumulasi Penyusutan",
                     sv(M, 1, 18, numeric))),
-    NILAI_BUKU(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+
+    NILAI_BUKU(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(10, null, "Nilai Buku",
                     sv(M, 1, 18, numeric))
-                    .addFieldValidations(E7040PropValidationsConfig)),
-    NILAI_APPRAISAL_NILAI_WAJAR(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+                    .addFieldValidations(E7040PropValidationsConfig.FV_EQUAL_NILAI_BUKU)),
+    NILAI_APPRAISAL_NILAI_WAJAR(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(11, null, "Nilai Appraisal/ Nilai Wajar",
                     sv(M, 1, 18, numeric))),
-    TANGGAL_APPRAISAL(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+
+    TANGGAL_APPRAISAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(12, null, "Tanggal Appraisal",
                     sv(C, 8, 8, date)
-                            .confConditionalRequired(E7040PropValidationsConfig))),
-    NAMA_PENILAI_PUBLIK_INDEPENDEN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+                            .confConditionalRequired(E7040PropValidationsConfig.CR_EXISTS_POS_M))),
+
+    NAMA_PENILAI_PUBLIK_INDEPENDEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(13, null, "Nama Penilai Publik/Independen",
                     sv(C, 1, 100, freeText)
-                            .confConditionalRequired(E7040PropValidationsConfig))),
-    NAMA_KJPP(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+                            .confConditionalRequired(E7040PropValidationsConfig.CR_EXISTS_POS_M))),
+
+    NAMA_KJPP(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(14, null, "Nama KJPP",
                     sv(C, 1, 100, freeText)
-                            .confConditionalRequired(E7040PropValidationsConfig))),
-    SELISIH_PENILAIAN_INVESTASI_NILAI(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+                            .confConditionalRequired(E7040PropValidationsConfig.CR_EXISTS_POS_M))),
+
+    SELISIH_PENILAIAN_INVESTASI_NILAI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(15, null, "Selisih Penilaian Investasi Nilai",
                     sv(M, 1, 18, numeric))
-                    .addFieldValidations(E7040PropValidationsConfig)),
-    SELISIH_PENILAIAN_INVESTASI_PERSEN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+                    .addFieldValidations(E7040PropValidationsConfig.FV_EQUAL_NILAI_INVESTASI)),
+
+    SELISIH_PENILAIAN_INVESTASI_PERSEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(16, null, "Selisih Penilaian Investasi %",
                     sv(C, 4, 6, numericDot)
-                            .confConditionalRequired(E7040PropValidationsConfig))
-                    .addFieldValidations(E7040PropValidationsConfig)),
-    MANFAAT_PENSIUN_MANFAAT_PENSIUN_LAINNYA_MANFAAT_LAIN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+                            .confConditionalRequired(E7040PropValidationsConfig.CR_EXISTS_POS_M))
+                    .addFieldValidations(E7040PropValidationsConfig.FV_EQUAL_PERSENTASE_INVESTASI)),
+
+    MANFAAT_PENSIUN_MANFAAT_PENSIUN_LAINNYA_MANFAAT_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(17, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain",
                     sv(C, 1, 6, refTable)
-                            .confConditionalRequired(E7040PropValidationsConfig)
+                            .confConditionalRequired(E7040PropValidationsConfig.CR_EXISTS_POS_M)
                             .confRegex(SimpleValidation.patternAlfaNumeric)
                             .confReference(EHeaderMetadataShared.R009.getObject()))),
-    PENDAPATAN_SEWA(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+
+    PENDAPATAN_SEWA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(18, null, "Pendapatan Sewa",
                     sv(C, 1, 18, numeric)
-                            .confConditionalRequired(E7040PropValidationsConfig))),
-    KETERANGAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+                            .confConditionalRequired(E7040PropValidationsConfig.CR_EXISTS_POS_M))),
+
+    KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(19, null, "Keterangan",
                     sv(C, 1, 250, freeText)
-                            .confConditionalRequired(E7040PropValidationsConfig)));
+                            .confConditionalRequired(E7040PropValidationsConfig.CR_EXISTS_POS_O)));
 
     private final EnumSet<SectorType> sectorType;
     private final EnumSet<ProgramType> programType;
@@ -198,7 +176,7 @@ public enum Dppk0040Prop implements ILbltFieldMetadata {
         FIELD_KONVEN.setProgramType(ProgramType.PPMPK);
         return new SubmissionConfig(reportCode)
                 .config()
-                .setRequiredPos(ER7040PosLtlbDppkProp.getRequiredPos())
+                .setReferenceConfigs(ER7040PosLtlbDppkProp.Configs.REF_CONFIG_PPMPK)
                 .setSubmissionFormat(getSubmissionFormatConfig(KONVENSIONAL, reportCode))
                 .setSubmissionField(FIELD_KONVEN.getFields())
                 .setSegmentValidations(E7040PropValidationsConfig.VALIDATION_METADATA)

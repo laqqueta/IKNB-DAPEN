@@ -31,67 +31,49 @@ import static id.go.ojk.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0049Kndr implements ILbltFieldMetadata {
 
-    FLAG(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(0, null, "Flag",
                     sv(M, 3, 3, alfaNumeric)
                             .confConstant("D01"))
     ),
-    KODE_KOMPONEN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(1, null, "Kode Komponen",
                     sv(M, 10, 10, refTable)
                             .confRegex(SimpleValidation.patternAlfaNumeric)
                             .confReference(EHeaderMetadataPpmpk.R7049Kndr.getObject()))
     ),
-    NO_PLAT_KENDARAAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    NO_PLAT_KENDARAAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(2, null, "No Plat Kendaraan",
                     sv(C, 1, 10, alfaNumeric)
-                            .confConditionalRequired(E7049KndrValidationsConfig))
+                            .confConditionalRequired(E7049KndrValidationsConfig.CR_EXISTS_POS_M))
     ),
-    JENIS_KENDARAAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    JENIS_KENDARAAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(3, null, "Jenis Kendaraan",
                     sv(C, 1, 50, alfaNumeric)
-                            .confConditionalRequired(E7049KndrValidationsConfig))
+                            .confConditionalRequired(E7049KndrValidationsConfig.CR_EXISTS_POS_M))
     ),
-    TANGGAL_PEROLEHAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    TANGGAL_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(4, null, "Tanggal Perolehan",
                     sv(C, 8, 8, date)
-                            .confConditionalRequired(E7049KndrValidationsConfig))
+                            .confConditionalRequired(E7049KndrValidationsConfig.CR_EXISTS_POS_M))
     ),
-    NILAI_PEROLEHAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    NILAI_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(5, null, "Nilai Perolehan",
                     sv(M, 1, 18, numeric))
     ),
-    AKUMULASI_PENYUSUTAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    AKUMULASI_PENYUSUTAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(6, null, "Akumulasi Penyusutan",
                     sv(M, 1, 18, numeric))
     ),
-    NILAI_BUKU(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    NILAI_BUKU(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(7, null, "Nilai Buku",
                     sv(M, 1, 18, numeric))
-                    .addFieldValidations(E7049KndrValidationsConfig)
+                    .addFieldValidations(E7049KndrValidationsConfig.FV_EQUAL_NILAI_BUKU)
     ),
-    KETERANGAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(8, null, "Keterangan",
                     sv(C, 1, 250, freeText)
-                            .confConditionalRequired(E7049KndrValidationsConfig))
+                            .confConditionalRequired(E7049KndrValidationsConfig.CR_EXISTS_POS_O))
     ),
     ;
 
@@ -142,7 +124,7 @@ public enum Dppk0049Kndr implements ILbltFieldMetadata {
         FIELD_KONVEN.setProgramType(ProgramType.PPMPK);
         return new SubmissionConfig(reportCode)
                 .config()
-                .setRequiredPos(ER7049PosLtlbDppkKndr.getRequiredPos())
+                .setReferenceConfigs(ER7049PosLtlbDppkKndr.Configs.REF_CONFIG_PPMPK)
                 .setSubmissionFormat(getSubmissionFormatConfig(KONVENSIONAL, reportCode))
                 .setSubmissionField(FIELD_KONVEN.getFields())
                 .setSegmentValidations(E7049KndrValidationsConfig.VALIDATION_METADATA)

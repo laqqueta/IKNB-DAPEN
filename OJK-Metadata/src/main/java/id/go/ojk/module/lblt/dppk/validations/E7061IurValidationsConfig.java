@@ -34,6 +34,9 @@ public enum E7061IurValidationsConfig implements ILbltMetadataValidation, IValid
     CR_EXISTS_POS_M(programs(PPMPK),
             () -> UtilFieldConditional.genExistPos("N", "M", R_IUR000000.key)),
 
+    CR_EXISTS_POS_O(programs(PPMPK),
+            () -> UtilFieldConditional.genExistPos("N", "O", R_IUR000000.key)),
+
     ;
 
     private final EnumSet<ProgramType> programTypes;

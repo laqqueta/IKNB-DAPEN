@@ -34,105 +34,71 @@ import static id.go.ojk.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0012Alm implements ILbltFieldMetadata {
 
-    FLAG(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(0, null, "Flag", sv(O, 3, 3, alfaNumeric).confConstant("D01"))
     ),
-    KODE_KOMPONEN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(1, null, "Kode Komponen", sv(O, 17, 17, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric)
                     .confReference(EHeaderMetadataPpmpk.R7012Alm.getObject()))
                     .confUnique(UniqueType.U)
     ),
-    JT_LT_1_TAHUN_RUPIAH(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    JT_LT_1_TAHUN_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(2, null, "Jatuh tempo < 1 tahun - Rupiah", sv(O, 1, 18, numeric))
     ),
-    JT_LT_1_TAHUN_NON_RUPIAH(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    JT_LT_1_TAHUN_NON_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(3, null, "Jatuh tempo < 1 tahun - Non Rupiah", sv(O, 1, 18, numeric))
     ),
-    JT_LT_1_TAHUN_TOTAL(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    JT_LT_1_TAHUN_TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(4, null, "Jatuh tempo < 1 tahun - Total", sv(O, 1, 18, numeric)
-                    .confConditionalRequired(E7012AlmValidationsConfig))
-                    .addFieldValidations(E7012AlmValidationsConfig)
+                    .confConditionalRequired(E7012AlmValidationsConfig.CR_PERCENTAGE))
+                    .addFieldValidations(E7012AlmValidationsConfig.FV_JTA_EQUAL)
     ),
-    JT_1_5_TAHUN_RUPIAH(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    JT_1_5_TAHUN_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(5, null, "1 tahun <= jatuh tempo < 5 tahun - Rupiah", sv(O, 1, 18, numeric))
     ),
-    JT_1_5_TAHUN_NON_RUPIAH(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    JT_1_5_TAHUN_NON_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(6, null, "1 tahun <= jatuh tempo < 5 tahun - Non Rupiah", sv(O, 1, 18, numeric))
     ),
-    JT_1_5_TAHUN_TOTAL(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    JT_1_5_TAHUN_TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(7, null, "1 tahun <= jatuh tempo < 5 tahun - Total", sv(O, 1, 18, numeric)
-                    .confConditionalRequired(E7012AlmValidationsConfig))
-                    .addFieldValidations(E7012AlmValidationsConfig)
+                    .confConditionalRequired(E7012AlmValidationsConfig.CR_PERCENTAGE))
+                    .addFieldValidations(E7012AlmValidationsConfig.FV_JTB_EQUAL)
     ),
-    JT_5_10_TAHUN_RUPIAH(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    JT_5_10_TAHUN_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(8, null, "5 tahun <= jatuh tempo < 10 tahun - Rupiah", sv(O, 1, 18, numeric))
     ),
-    JT_5_10_TAHUN_NON_RUPIAH(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    JT_5_10_TAHUN_NON_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(9, null, "5 tahun <= jatuh tempo < 10 tahun - Non Rupiah", sv(O, 1, 18, numeric))
     ),
-    JT_5_10_TAHUN_TOTAL(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    JT_5_10_TAHUN_TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(10, null, "5 tahun <= jatuh tempo < 10 tahun - Total", sv(O, 1, 18, numeric)
-                    .confConditionalRequired(E7012AlmValidationsConfig))
-                    .addFieldValidations(E7012AlmValidationsConfig)
+                    .confConditionalRequired(E7012AlmValidationsConfig.CR_PERCENTAGE))
+                    .addFieldValidations(E7012AlmValidationsConfig.FV_JTC_EQUAL)
     ),
-    JT_GTE_10_TAHUN_RUPIAH(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    JT_GTE_10_TAHUN_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(11, null, "Jatuh Tempo >= 10 Tahun - Rupiah", sv(O, 1, 18, numeric))
     ),
-    JT_GTE_10_TAHUN_NON_RUPIAH(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    JT_GTE_10_TAHUN_NON_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(12, null, "Jatuh Tempo >= 10 - Non Rupiah", sv(O, 1, 18, numeric))
     ),
-    JT_GTE_10_TAHUN_TOTAL(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    JT_GTE_10_TAHUN_TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(13, null, "Jatuh Tempo >= 10 - Total", sv(O, 1, 18, numeric)
-                    .confConditionalRequired(E7012AlmValidationsConfig))
-                    .addFieldValidations(E7012AlmValidationsConfig)
+                    .confConditionalRequired(E7012AlmValidationsConfig.CR_PERCENTAGE))
+                    .addFieldValidations(E7012AlmValidationsConfig.FV_JTD_EQUAL)
     ),
-    TOTAL_RUPIAH(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    TOTAL_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(14, null, "Total - Rupiah", sv(O, 1, 18, numeric))
-                    .addFieldValidations(E7012AlmValidationsConfig)
+                    .addFieldValidations(E7012AlmValidationsConfig.FV_TOTAL1_EQUAL)
     ),
-    TOTAL_NON_RUPIAH(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    TOTAL_NON_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(15, null, "Total - Non Rupiah", sv(O, 1, 18, numeric))
-                    .addFieldValidations(E7012AlmValidationsConfig)
+                    .addFieldValidations(E7012AlmValidationsConfig.FV_TOTAL2_EQUAL)
     ),
-    TOTAL_TOTAL(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    TOTAL_TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(16, null, "Total - Total", sv(O, 1, 18, numeric)
-                    .confConditionalRequired(E7012AlmValidationsConfig))
-                    .addFieldValidations(E7012AlmValidationsConfig)
+                    .confConditionalRequired(E7012AlmValidationsConfig.CR_PERCENTAGE))
+                    .addFieldValidations(E7012AlmValidationsConfig.FV_TOTAL3_EQUAL)
     ),
     ;
 
@@ -183,7 +149,7 @@ public enum Dppk0012Alm implements ILbltFieldMetadata {
         FIELD_KONVEN.setProgramType(ProgramType.PPMPK);
         return new SubmissionConfig(reportCode)
                 .config()
-                .setRequiredPos(ER7012PosLtlbDppkAlm.getRequiredPos(ProgramType.PPMPK))
+                .setReferenceConfigs(ER7012PosLtlbDppkAlm.Configs.REF_CONFIG_PPMPK)
                 .setSubmissionFormat(getSubmissionFormatConfig(KONVENSIONAL, reportCode))
                 .setSubmissionField(FIELD_KONVEN.getFields())
                 .setSegmentValidations(E7012AlmValidationsConfig.VALIDATION_METADATA)

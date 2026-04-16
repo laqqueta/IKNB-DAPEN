@@ -1,9 +1,7 @@
 package id.go.ojk.module.lblt.dppk.reference;
 
-import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
+import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.conf.client.UtilMetadata;
-import id.go.ojk.conf.client.UtilSegmentValidation;
-import id.go.ojk.conf.client.field.reference.ER1255JenisManfaat;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
 import id.go.ojk.util.constants.ProgramType;
@@ -73,34 +71,20 @@ public enum ER7003PosLtlbDppkNrc implements IObject<KeyValueString> {
     R_NRC0115070000("NRC0115070000", "Utang Dana Ta'zir (bagi syariah)", EnumSet.of(ProgramType.ALL)),
     R_NRC0116000000("NRC0116000000", "TOTAL LIABILITAS DI LUAR NILAI KINI AKTUARIA", EnumSet.of(ProgramType.PPMPM, ProgramType.PPMPK)),
     R_NRC0117000000("NRC0117000000", "TOTAL LIABILITAS DI LUAR LIABILITAS MANFAAT PENSIUN", EnumSet.of(ProgramType.PPIPM, ProgramType.PPIPK, ProgramType.PPMPPPIPK)),
-    R_NRC0118000000("NRC0118000000", "TOTAL LIABILITAS", EnumSet.of(ProgramType.ALL))
-
-    ;
+    R_NRC0118000000("NRC0118000000", "TOTAL LIABILITAS", EnumSet.of(ProgramType.ALL));
 
     private final String key;
     private final String value;
     private final EnumSet<ProgramType> jenisProgram;
 
-    public KeyValueString getObject() {
-        return new KeyValueString(key, value, new String[] {});
-    }
-
     public static List<KeyValueString> getObjects(ProgramType jenisProgram) {
         List<KeyValueString> res = new ArrayList<>();
         for (ER7003PosLtlbDppkNrc eEnum : ER7003PosLtlbDppkNrc.values()) {
-            if (eEnum.jenisProgram.contains(jenisProgram) || eEnum.jenisProgram.contains(ProgramType.ALL) ) {
+            if (eEnum.jenisProgram.contains(jenisProgram) || eEnum.jenisProgram.contains(ProgramType.ALL)) {
                 res.add(eEnum.getObject());
             }
         }
         return res;
-    }
-
-    public static String genFieldSave(ProgramType jenisProgram) {
-        return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 12), getObjects(jenisProgram));
-    }
-
-    public static String getRequiredPos(ProgramType jenisProgram) {
-        return UtilMetadata.genPipeRow(getObjects(jenisProgram));
     }
 
     public static String getName() {
@@ -111,18 +95,26 @@ public enum ER7003PosLtlbDppkNrc implements IObject<KeyValueString> {
         return Integer.parseInt(ER7003PosLtlbDppkNrc.class.getSimpleName().substring(2, 6));
     }
 
-    public static SegmentValidation genSumIfValidation(String posCode, String rangeField, String criteriaField, String formCode,
-                                                       String formObjects, String errMsg) {
-        String sumField = "2";
-        String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MPL1|MPL2|MPL3||ML1|ML2|ML3|ML4|ML5|ML6");
-        String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MPL1|MPL2|MPL3||ML1|ML2|ML3|ML4|ML5|ML6");
-        String sumCriteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
-        String sumCriteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
-
-        return UtilSegmentValidation.genSumIf(UtilMetadata.genPipeColumn(2, 11), posCode,
-                formCode, formObjects,
-                rangeField, criteriaField, sumField, criteriaCondition, sumCriteriaCondition,
-                errMsg, criteriaConditionErr, sumCriteriaConditionErr);
+    public KeyValueString getObject() {
+        return new KeyValueString(key, value, new String[]{});
     }
 
+    public enum Configs implements ReferenceConfig {
+        REF_CONFIG_PPMPK {
+            @Override
+            public String savePos() {
+                ProgramType programType = ProgramType.PPMPK;
+                return UtilMetadata.genFieldSave(
+                        UtilMetadata.genPipeColumn(2, 12),
+                        getObjects(programType)
+                );
+            }
+
+            @Override
+            public String requiredPos() {
+                ProgramType programType = ProgramType.PPMPK;
+                return UtilMetadata.genPipeRow(getObjects(programType));
+            }
+        }
+    }
 }

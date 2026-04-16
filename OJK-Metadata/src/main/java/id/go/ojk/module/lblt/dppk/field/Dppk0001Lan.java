@@ -32,78 +32,71 @@ import static id.go.ojk.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0001Lan implements ILbltFieldMetadata {
 
-    FLAG(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(0, null, "Flag", sv(O, 3, 3, alfaNumeric).confConstant("D01"))
     ),
-    KODE_KOMPONEN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(1, null, "Kode Komponen",
                     sv(O, 13, 13, refTable)
                             .confRegex(SimpleValidation.patternAlfaNumeric)
                             .confReference(EHeaderMetadataPpmpk.R7001Lan.getObject()))
                     .confUnique(UniqueType.U)
     ),
-    PERSENTASE_INVESTASI(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    PERSENTASE_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(2, null, "Persentase Investasi", sv(O, 4, 6, numericDot))
     ),
-    MANFAAT_PENSIUN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(3, null, "Manfaat Pensiun", sv(O, 1, 18, numeric))
     ),
+    
     MANFAAT_PENSIUN_LAINNYA_MANFAAT_TAMBAHAN(
             sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+            programs(PPMPK),
             sf(4, null, "Manfaat Pensiun Lainnya Manfaat Tambahan", sv(O, 1, 18, numeric))
     ),
     MANFAAT_PENSIUN_LAINNYA_KOMPENSASI_PASCAKERJA(
             sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+            programs(PPMPK),
             sf(5, null, "Manfaat Pensiun Lainnya Kompensasi Pascakerja", sv(O, 1, 18, numeric))
     ),
     MANFAAT_PENSIUN_LAINNYA_LAINNYA(
             sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+            programs(PPMPK),
             sf(6, null, "Manfaat Pensiun Lainnya Lainnya", sv(O, 1, 18, numeric))
     ),
     MANFAAT_LAIN_KOMPENSASI_PASCAKERJA(
             sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+            programs(PPMPK),
             sf(7, null, "Manfaat Lain Kompensasi Pascakerja", sv(O, 1, 18, numeric))
     ),
     MANFAAT_LAIN_KESEHATAN(
             sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+            programs(PPMPK),
             sf(8, null, "Manfaat Lain Kesehatan", sv(O, 1, 18, numeric))
     ),
     MANFAAT_LAIN_SANTUNAN_KEMATIAN(
             sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+            programs(PPMPK),
             sf(9, null, "Manfaat Lain Santunan Kematian", sv(O, 1, 18, numeric))
     ),
     MANFAAT_LAIN_IBADAH_KEAGAMAAN(
             sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+            programs(PPMPK),
             sf(10, null, "Manfaat Lain Ibadah Keagamaan", sv(O, 1, 18, numeric))
     ),
     MANFAAT_LAIN_PENDIDIKAN(
             sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+            programs(PPMPK),
             sf(11, null, "Manfaat Lain Pendidikan", sv(O, 1, 18, numeric))
     ),
     MANFAAT_LAIN_LAINNYA(
             sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+            programs(PPMPK),
             sf(12, null, "Manfaat Lain Lainnya", sv(O, 1, 18, numeric))
     ),
     GABUNGAN(
             sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+            programs(PPMPK),
             sf(13, null, "Gabungan", sv(O, 1, 18, numeric))
     ),
     ;
@@ -155,7 +148,7 @@ public enum Dppk0001Lan implements ILbltFieldMetadata {
         FIELD_METADATA.setProgramType(ProgramType.PPMPK);
         return new SubmissionConfig(reportCode)
                 .config()
-                .setRequiredPos(ER7001PosLtlbDppkLan.getRequiredPos(ProgramType.PPMPK))
+                .setReferenceConfigs(ER7001PosLtlbDppkLan.Configs.REF_CONFIG_PPMPK)
                 .setSubmissionFormat(getSubmissionFormatConfig(KONVENSIONAL, reportCode))
                 .setSubmissionField(FIELD_METADATA.getFields())
                 .setSegmentValidations(E7001LanValidationsConfig.VALIDATION_METADATA)

@@ -8,6 +8,7 @@ import id.go.ojk.conf.client.UtilFieldConditional;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
 import id.go.ojk.conf.client.field.reference.ER1255JenisManfaat;
+import id.go.ojk.conf.client.field.reference.ER1268JenisInvestasi;
 import id.go.ojk.module.lblt.dppk.form.EFormLaporanBulananTahunan;
 import id.go.ojk.module.lblt.dppk.reference.ER7001PosLtlbDppkLan;
 import id.go.ojk.util.constants.ProgramType;
@@ -54,9 +55,17 @@ public enum E7016SbnValidationsConfig implements ILbltMetadataValidation, IValid
     CR_FOR_TOTAL(programs(PPMPK),
             () -> UtilFieldConditional.genExistPos("N", "M", UtilMetadata.genPipeRow(getObjects(), new int[] { 1, 2 }))),
 
-    CR_MANFAAT_LAIN(programs(PPMPK),
-            () -> UtilFieldConditional.genEquals("M", "N", "4",
-                    ER1255JenisManfaat.getReferenceIndex(11))),
+    CR_JENIS_INVESTASI_VALUE_OBLIGASI(programs(PPMPK),
+            () -> UtilFieldConditional.genEquals("M", "N", "2",
+                    ER1268JenisInvestasi.getReferenceIndex(1))),
+
+    CR_JENIS_INVESTASI_VALUE_SBN(programs(PPMPK),
+            () -> UtilFieldConditional.genEquals("M", "N", "2",
+                    ER1268JenisInvestasi.getReferenceIndex(2))),
+
+    CR_JENIS_INVESTASI_VALUE_REKSADANA(programs(PPMPK),
+            () -> UtilFieldConditional.genEquals("M", "N", "2",
+                    ER1268JenisInvestasi.getReferenceIndex(3))),
 
     ;
 

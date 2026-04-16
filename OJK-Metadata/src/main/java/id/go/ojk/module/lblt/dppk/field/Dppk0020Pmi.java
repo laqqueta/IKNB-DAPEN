@@ -32,102 +32,74 @@ import static id.go.ojk.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0020Pmi implements ILbltFieldMetadata {
 
-    FLAG(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(0, null, "Flag",
                     sv(O, 3, 3, alfaNumeric)
                             .confConstant("D01"))
     ),
-    KODE_KOMPONEN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(1, null, "Kode Komponen",
                     sv(O, 9, 9, refTable)
                             .confRegex(SimpleValidation.patternAlfaNumeric)
                             .confReference(EHeaderMetadataPpmpk.R7020Pmi.getObject()))
     ),
-    NAMA_MANAJER_INVESTASI(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    NAMA_MANAJER_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(2, null, "Nama Manajer Investasi",
                     sv(O, 1, 100, freeText)
-                            .confConditionalRequired(E7020PmiValidationsConfig))
+                            .confConditionalRequired(E7020PmiValidationsConfig.CR_EXIST_POS))
     ),
-    NOMOR_KONTRAK(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    NOMOR_KONTRAK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(3, null, "Nomor Kontrak",
                     sv(O, 1, 100, freeText)
-                            .confConditionalRequired(E7020PmiValidationsConfig))
+                            .confConditionalRequired(E7020PmiValidationsConfig.CR_EXIST_POS))
     ),
-    TANGGAL_KONTRAK(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    TANGGAL_KONTRAK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(4, null, "Tanggal Kontrak",
                     sv(O, 8, 8, numeric)
-                            .confConditionalRequired(E7020PmiValidationsConfig))
+                            .confConditionalRequired(E7020PmiValidationsConfig.CR_EXIST_POS))
     ),
-    MASA_PERJANJIAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    MASA_PERJANJIAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(5, null, "Masa Perjanjian",
                     sv(O, 1, 18, numeric)
-                            .confConditionalRequired(E7020PmiValidationsConfig))
+                            .confConditionalRequired(E7020PmiValidationsConfig.CR_EXIST_POS))
     ),
-    JENIS_INVESTASI(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    JENIS_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(6, null, "Jenis Investasi",
                     sv(O, 1, 6, refTable)
                             .confRegex(SimpleValidation.patternAlfaNumeric)
                             .confReference(EHeaderMetadataShared.R022.getObject())
-                            .confConditionalRequired(E7020PmiValidationsConfig))
+                            .confConditionalRequired(E7020PmiValidationsConfig.CR_EXIST_POS))
     ),
-    JUMLAH_NILAI_WAJAR_DANA_KELOLAAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    JUMLAH_NILAI_WAJAR_DANA_KELOLAAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(7, null, "Jumlah Nilai Wajar Dana Kelolaan (Rp)",
                     sv(O, 1, 18, numeric))
     ),
-    NILAI_PEROLEHAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    NILAI_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(8, null, "Nilai Perolehan (yang dikelola Manajer Investasi)",
                     sv(O, 1, 18, numeric))
     ),
-    SELISIH_PENILAIAN_INVESTASI(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    SELISIH_PENILAIAN_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(9, null, "Selisih Penilaian Investasi",
                     sv(O, 1, 18, numeric))
-                    .addFieldValidations(E7020PmiValidationsConfig)
+                    .addFieldValidations(E7020PmiValidationsConfig.FV_PENILAIAN_INVESATSI)
     ),
-    RETURN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    RETURN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(10, null, "Return (%)",
                     sv(O, 4, 6, numericDot)
-                            .confConditionalRequired(E7020PmiValidationsConfig))
+                            .confConditionalRequired(E7020PmiValidationsConfig.CR_EXIST_POS))
     ),
-    TINGKAT_HASIL_INVESTASI_BERSIH(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    TINGKAT_HASIL_INVESTASI_BERSIH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(11, null, "Tingkat Hasil Investasi Bersih (Rp)",
                     sv(O, 1, 18, numeric))
     ),
-    JUMLAH_BIAYA_PENGELOLAAN_YANG_DIBEBANKAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    JUMLAH_BIAYA_PENGELOLAAN_YANG_DIBEBANKAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(12, null, "Jumlah Biaya Pengelolaan yang dibebankan (Rp)",
                     sv(O, 1, 18, numeric))
     ),
-    TERAFILIASI_DENGAN_DANA_PENSIUN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    TERAFILIASI_DENGAN_DANA_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(13, null, "Terafiliasi dengan Dana Pensiun (Ya/Tidak)",
                     sv(O, 1, 10, alfa)
-                            .confConditionalRequired(E7020PmiValidationsConfig))
+                            .confConditionalRequired(E7020PmiValidationsConfig.CR_EXIST_POS))
     ),
     ;
 
@@ -178,7 +150,7 @@ public enum Dppk0020Pmi implements ILbltFieldMetadata {
         FIELD_KONVEN.setProgramType(ProgramType.PPMPK);
         return new SubmissionConfig(reportCode)
                 .config()
-                .setRequiredPos(ER7020PosLtlbDppkPmi.getRequiredPos())
+                .setReferenceConfigs(ER7020PosLtlbDppkPmi.Configs.REF_CONFIG_PPMPK)
                 .setSubmissionFormat(getSubmissionFormatConfig(KONVENSIONAL, reportCode))
                 .setSubmissionField(FIELD_KONVEN.getFields())
                 .setSegmentValidations(E7020PmiValidationsConfig.VALIDATION_METADATA)

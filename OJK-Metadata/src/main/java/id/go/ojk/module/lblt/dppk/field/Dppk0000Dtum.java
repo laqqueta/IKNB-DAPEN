@@ -1,5 +1,6 @@
 package id.go.ojk.module.lblt.dppk.field;
 
+import id.go.ojk.client.constant.ExtensionType;
 import id.go.ojk.client.model.config.SimpleValidation;
 import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
@@ -8,7 +9,6 @@ import id.go.ojk.module.lblt.dppk.form.EFormLaporanBulananTahunan;
 import id.go.ojk.module.lblt.dppk.header.EHeaderMetadataPpmpk;
 import id.go.ojk.module.lblt.dppk.reference.ER7000PosLtlbDppkDtum;
 import id.go.ojk.module.lblt.dppk.validations.E7000DtumValidationsConfig;
-import id.go.ojk.client.constant.ExtensionType;
 import id.go.ojk.util.constants.ProgramType;
 import id.go.ojk.util.constants.SectorType;
 import id.go.ojk.util.metadata.field.lblt.ILbltFieldMetadata;
@@ -35,13 +35,16 @@ public enum Dppk0000Dtum implements ILbltFieldMetadata {
             sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric)
                     .confConstant("D01"))),
 
+
     KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(1, null, "Kode Komponen", sv(M, 10, 10, freeText)
                     .confRegex(SimpleValidation.patternAlfaNumeric)
                     .confReference(EHeaderMetadataPpmpk.R7000Dtum.getObject()))),
 
+
     KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(2, null, "Keterangan", sv(M, 1, 1000, freeText))),
+
 
     ;
 
@@ -92,7 +95,7 @@ public enum Dppk0000Dtum implements ILbltFieldMetadata {
         FIELD_KONVEN.setProgramType(ProgramType.PPMPK);
         return new SubmissionConfig(reportCode)
                 .config()
-                .setRequiredPos(ER7000PosLtlbDppkDtum.getRequiredPos())
+                .setReferenceConfigs(ER7000PosLtlbDppkDtum.Configs.REF_CONFIG_PPMPK)
                 .setSubmissionFormat(getSubmissionFormatConfig(KONVENSIONAL, reportCode))
                 .setSubmissionField(FIELD_KONVEN.getFields())
                 .setSegmentValidations(E7000DtumValidationsConfig.VALIDATION_METADATA)

@@ -32,103 +32,77 @@ import static id.go.ojk.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0025Srdp implements ILbltFieldMetadata {
 
-    FLAG(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(0, null, "Flag",
                     sv(M, 3, 3, alfaNumeric)
                             .confConstant("D01"))
     ),
-    KODE_KOMPONEN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(1, null, "Kode Komponen",
                     sv(M, 10, 10, refTable)
                             .confRegex(SimpleValidation.patternAlfaNumeric)
                             .confReference(EHeaderMetadataPpmpk.R7025Srdp.getObject()))
     ),
-    NAMA_BANK(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    NAMA_BANK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(2, null, "Nama Bank",
                     sv(C, 1, 100, freeText)
-                            .confConditionalRequired(E7025SrdpValidationsConfig))
+                            .confConditionalRequired(E7025SrdpValidationsConfig.CR_EXISTS_SRDP000000_M))
     ),
-    KODE_BANK(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
-            sf(3, null, "Kode Bank",
+    CABANG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+            sf(3, null, "Cabang",
+                    sv(C, 1, 100, freeText)
+                            .confConditionalRequired(E7025SrdpValidationsConfig.CR_EXISTS_SRDP000000_O))
+    ),
+    KODE_BANK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+            sf(4, null, "Kode Bank",
                     sv(C, 1, 6, refTable)
-                            .confConditionalRequired(E7025SrdpValidationsConfig)
+                            .confConditionalRequired(E7025SrdpValidationsConfig.CR_EXISTS_SRDP000000_O)
                             .confRegex(SimpleValidation.patternAlfaNumeric)
                             .confReference(EHeaderMetadataShared.R011.getObject()))
     ),
-    CABANG(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
-            sf(4, null, "Cabang",
-                    sv(C, 1, 100, freeText)
-                            .confConditionalRequired(E7025SrdpValidationsConfig))
-    ),
-    TANGGAL_PEROLEHAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    TANGGAL_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(5, null, "Tanggal Perolehan",
                     sv(C, 8, 8, date)
-                            .confConditionalRequired(E7025SrdpValidationsConfig))
+                            .confConditionalRequired(E7025SrdpValidationsConfig.CR_EXISTS_SRDP000000_M))
     ),
-    NILAI_NOMINAL(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    NILAI_NOMINAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(6, null, "Nilai Nominal",
                     sv(M, 1, 18, numeric))
     ),
-    JANGKA_WAKTU_HARI(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    JANGKA_WAKTU_HARI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(7, null, "Jangka Waktu (Hari)",
                     sv(C, 1, 3, numeric)
-                            .confConditionalRequired(E7025SrdpValidationsConfig))
+                            .confConditionalRequired(E7025SrdpValidationsConfig.CR_EXISTS_SRDP000000_M))
     ),
-    TINGKAT_BUNGA_NISBAH(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    TINGKAT_BUNGA_NISBAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(8, null, "Tingkat Bunga/Nisbah (%)",
                     sv(C, 4, 6, numericDot)
-                            .confConditionalRequired(E7025SrdpValidationsConfig))
+                            .confConditionalRequired(E7025SrdpValidationsConfig.CR_EXISTS_SRDP000000_M))
     ),
-    MANFAAT_PENSIUN_LAINNYA_LAIN_LCF(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    MANFAAT_PENSIUN_LAINNYA_LAIN_LCF(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(9, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain/LCF",
                     sv(C, 1, 6, refTable)
-                            .confConditionalRequired(E7025SrdpValidationsConfig)
+                            .confConditionalRequired(E7025SrdpValidationsConfig.CR_EXISTS_SRDP000000_M)
                             .confRegex(SimpleValidation.patternAlfaNumeric)
                             .confReference(EHeaderMetadataShared.R009.getObject()))
     ),
-    PENGELOLAAN_SWAKELOLA_KPD(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    PENGELOLAAN_SWAKELOLA_KPD(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(10, null, "Pengelolaan Swakelola/ KPD",
                     sv(C, 1, 6, refTable)
-                            .confConditionalRequired(E7025SrdpValidationsConfig)
+                            .confConditionalRequired(E7025SrdpValidationsConfig.CR_EXISTS_SRDP000000_M)
                             .confRegex(SimpleValidation.patternAlfa)
                             .confReference(EHeaderMetadataShared.R006.getObject()))
     ),
-    PENGELOLAAN_NAMA_MANAJER_INVESTASI(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    PENGELOLAAN_NAMA_MANAJER_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(11, null, "Pengelolaan Nama Manajer Investasi",
                     sv(C, 1, 250, freeText)
-                            .confConditionalRequired(E7025SrdpValidationsConfig)
-                            .confConditionalRequired(E7025SrdpValidationsConfig))
+                            .confConditionalRequired(E7025SrdpValidationsConfig.CR_EXISTS_SRDP000000_M)
+                            .confConditionalRequired(E7025SrdpValidationsConfig.CR_EQUAL_NAMA_PENGGUNA))
     ),
-    KETERANGAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(12, null, "Keterangan",
                     sv(C, 1, 250, freeText)
-                            .confConditionalRequired(E7025SrdpValidationsConfig))
+                            .confConditionalRequired(E7025SrdpValidationsConfig.CR_EXISTS_SRDP000000_O))
     ),
     ;
 
@@ -179,7 +153,7 @@ public enum Dppk0025Srdp implements ILbltFieldMetadata {
         FIELD_KONVEN.setProgramType(ProgramType.PPMPK);
         return new SubmissionConfig(reportCode)
                 .config()
-                .setRequiredPos(ER7025PosLtlbDppkSrdp.getRequiredPos())
+                .setReferenceConfigs(ER7025PosLtlbDppkSrdp.Configs.REF_CONFIG_PPMPK)
                 .setSubmissionFormat(getSubmissionFormatConfig(KONVENSIONAL, reportCode))
                 .setSubmissionField(FIELD_KONVEN.getFields())
                 .setSegmentValidations(E7025SrdpValidationsConfig.VALIDATION_METADATA)

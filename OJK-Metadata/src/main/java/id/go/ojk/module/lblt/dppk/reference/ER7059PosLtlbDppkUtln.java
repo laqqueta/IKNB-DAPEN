@@ -1,10 +1,7 @@
 package id.go.ojk.module.lblt.dppk.reference;
 
-import id.go.ojk.client.model.config.validation.conditional.ConditionalRequired;
-import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
-import id.go.ojk.conf.client.UtilFieldConditional;
+import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.conf.client.UtilMetadata;
-import id.go.ojk.conf.client.UtilSegmentValidation;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
 import lombok.AccessLevel;
@@ -22,10 +19,6 @@ public enum ER7059PosLtlbDppkUtln implements IObject<KeyValueString> {
     public final String key;
     public final String value;
 
-    public KeyValueString getObject() {
-        return new KeyValueString(key, value, new String[] {});
-    }
-
     public static List<KeyValueString> getObjects() {
         List<KeyValueString> res = new ArrayList<>();
         for (ER7059PosLtlbDppkUtln eEnum : ER7059PosLtlbDppkUtln.values()) {
@@ -42,11 +35,21 @@ public enum ER7059PosLtlbDppkUtln implements IObject<KeyValueString> {
         return Integer.parseInt(ER7059PosLtlbDppkUtln.class.getSimpleName().substring(2, 6));
     }
 
-    public static String genFieldSave() {
-        return UtilMetadata.genFieldSave("4", getObjects());
+    public KeyValueString getObject() {
+        return new KeyValueString(key, value, new String[]{});
     }
 
-    public static String getRequiredPos() {
-        return UtilMetadata.genPipeRow(getObjects(), new int[] { 1 });
+    public enum Configs implements ReferenceConfig {
+        REF_CONFIG_PPMPK {
+            @Override
+            public String savePos() {
+                return UtilMetadata.genFieldSave("4", getObjects());
+            }
+
+            @Override
+            public String requiredPos() {
+                return UtilMetadata.genPipeRow(getObjects(), new int[]{1});
+            }
+        }
     }
 }

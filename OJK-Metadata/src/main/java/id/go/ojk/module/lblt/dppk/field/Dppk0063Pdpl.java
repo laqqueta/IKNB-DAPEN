@@ -32,58 +32,44 @@ import static id.go.ojk.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0063Pdpl implements ILbltFieldMetadata {
 
-    FLAG(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(0, null, "Flag",
                     sv(M, 3, 3, alfaNumeric)
                             .confConstant("D01"))
     ),
-    KODE_KOMPONEN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(1, null, "Kode Komponen",
                     sv(M, 10, 10, refTable)
                             .confRegex(SimpleValidation.patternAlfaNumeric)
                             .confReference(EHeaderMetadataPpmpk.R7063Pdpl.getObject()))
     ),
-    NAMA_DANA_PENSIUN_YANG_MENGALIHKAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    NAMA_DANA_PENSIUN_YANG_MENGALIHKAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(2, null, "Nama Dana Pensiun yang Mengalihkan",
                     sv(C, 1, 100, freeText)
-                            .confConditionalRequired(E7063PdplValidationsConfig))
+                            .confConditionalRequired(E7063PdplValidationsConfig.CR_EXISTS_POS_M))
     ),
-    JUMLAH(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    JUMLAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(3, null, "Jumlah",
                     sv(M, 1, 18, numeric))
     ),
-    MANFAAT_PENSIUN_LAINNYA_LAIN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    MANFAAT_PENSIUN_LAINNYA_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(4, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain",
                     sv(C, 1, 6, refTable)
-                            .confConditionalRequired(E7063PdplValidationsConfig)
+                            .confConditionalRequired(E7063PdplValidationsConfig.CR_EXISTS_POS_M)
                             .confRegex(SimpleValidation.patternAlfaNumeric)
                             .confReference(EHeaderMetadataShared.R009.getObject()))
     ),
-    RINCIAN_MANFAAT_LAIN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    RINCIAN_MANFAAT_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(5, null, "Rincian Manfaat Lain *)",
                     sv(C, 1, 6, refTable)
-                            .confConditionalRequired(E7063PdplValidationsConfig)
+                            .confConditionalRequired(E7063PdplValidationsConfig.CR_EXISTS_POS_M)
                             .confRegex(SimpleValidation.patternAlfaNumeric)
                             .confReference(EHeaderMetadataShared.R020.getObject()))
     ),
-    KETERANGAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(6, null, "Keterangan",
                     sv(C, 1, 250, freeText)
-                            .confConditionalRequired(E7063PdplValidationsConfig))
+                            .confConditionalRequired(E7063PdplValidationsConfig.CR_EXISTS_POS_O))
     ),
     ;
 
@@ -134,7 +120,7 @@ public enum Dppk0063Pdpl implements ILbltFieldMetadata {
         FIELD_KONVEN.setProgramType(ProgramType.PPMPK);
         return new SubmissionConfig(reportCode)
                 .config()
-                .setRequiredPos(ER7063PosLtlbDppkPdpl.getRequiredPos())
+                .setReferenceConfigs(ER7063PosLtlbDppkPdpl.Configs.REF_CONFIG_PPMPK)
                 .setSubmissionFormat(getSubmissionFormatConfig(KONVENSIONAL, reportCode))
                 .setSubmissionField(FIELD_KONVEN.getFields())
                 .setSegmentValidations(E7063PdplValidationsConfig.VALIDATION_METADATA)

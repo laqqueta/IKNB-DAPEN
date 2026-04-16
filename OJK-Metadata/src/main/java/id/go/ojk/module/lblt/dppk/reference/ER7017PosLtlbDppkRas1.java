@@ -1,5 +1,6 @@
 package id.go.ojk.module.lblt.dppk.reference;
 
+import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
@@ -113,22 +114,16 @@ public enum ER7017PosLtlbDppkRas1 implements IObject<KeyValueString> {
     R_RAS14000000000("RAS14000000000", "Rasio Beban Usaha", EnumSet.of(ProgramType.ALL)),
     R_RAS14010000000("RAS14010000000", "A. Beban Operasional + Beban Investasi", EnumSet.of(ProgramType.ALL)),
     R_RAS14020000000("RAS14020000000", "B. Pendapatan Investasi", EnumSet.of(ProgramType.ALL)),
-    R_RAS14030000000("RAS14030000000", "C. Rasio (A:B)", EnumSet.of(ProgramType.ALL)),
-
-    ;
+    R_RAS14030000000("RAS14030000000", "C. Rasio (A:B)", EnumSet.of(ProgramType.ALL));
 
     public final String key;
     public final String value;
     private final EnumSet<ProgramType> jenisPrograms;
 
-    public KeyValueString getObject() {
-        return new KeyValueString(key, value, new String[] {});
-    }
-
     public static List<KeyValueString> getObjects(ProgramType jenisProgram) {
         List<KeyValueString> res = new ArrayList<>();
         for (ER7017PosLtlbDppkRas1 eEnum : ER7017PosLtlbDppkRas1.values()) {
-            if (eEnum.jenisPrograms.contains(jenisProgram) || eEnum.jenisPrograms.contains(ProgramType.ALL) ) {
+            if (eEnum.jenisPrograms.contains(jenisProgram) || eEnum.jenisPrograms.contains(ProgramType.ALL)) {
                 res.add(eEnum.getObject());
             }
         }
@@ -143,7 +138,17 @@ public enum ER7017PosLtlbDppkRas1 implements IObject<KeyValueString> {
         return Integer.parseInt(ER7017PosLtlbDppkRas1.class.getSimpleName().substring(2, 6));
     }
 
-    public static String getRequiredPos(ProgramType programType) {
-        return UtilMetadata.genPipeRow(getObjects(programType));
+    public KeyValueString getObject() {
+        return new KeyValueString(key, value, new String[]{});
+    }
+
+    public enum Configs implements ReferenceConfig {
+        REF_CONFIG_PPMPK {
+            @Override
+            public String requiredPos() {
+                ProgramType programType = ProgramType.PPMPK;
+                return UtilMetadata.genPipeRow(getObjects(programType));
+            }
+        }
     }
 }

@@ -30,10 +30,10 @@ public enum E7053AslnValidationsConfig implements ILbltMetadataValidation, IVali
             () -> UtilSegmentValidation.genEqualsFormula("5", R_ASLN000000.key, R_ASLN010000.key,
                     UtilMetadata.genMessageTotal(R_ASLN000000.value, R_ASLN010000.value))),
 
-    CR_EXISTS_POS_1(programs(PPMPK),
+    CR_EXISTS_POS_M(programs(PPMPK),
             () -> UtilFieldConditional.genExistPos("N", "M", R_ASLN000000.key)),
 
-    CR_EXISTS_POS_2(programs(PPMPK),
+    CR_EXISTS_POS_O(programs(PPMPK),
             () -> UtilFieldConditional.genExistPos("N", "O", R_ASLN000000.key)),
     ;
 

@@ -31,70 +31,46 @@ import static id.go.ojk.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0010Roiml implements ILbltFieldMetadata {
 
-    FLAG(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(0, null, "Flag", sv(O, 3, 3, alfaNumeric).confConstant("D01"))
     ),
-    KODE_KOMPONEN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(1, null, "Kode Komponen", sv(O, 15, 15, refTable)
                     .confReference(EHeaderMetadataPpmpk.R7010Roiml.getObject())
                     .confRegex(SimpleValidation.patternAlfaNumeric))
                     .confUnique(UniqueType.U)
     ),
-    HASIL_INVESTASI_TEREALISASI_BUNGA_BAGI_HASIL(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    HASIL_INVESTASI_TEREALISASI_BUNGA_BAGI_HASIL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(2, null, "Hasil investasi yang terealisasi Bunga/ Bagi Hasil", sv(O, 1, 18, numeric))
     ),
-    HASIL_INVESTASI_TEREALISASI_DIVIDEN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    HASIL_INVESTASI_TEREALISASI_DIVIDEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(3, null, "Hasil investasi yang terealisasi Dividen", sv(O, 1, 18, numeric))
     ),
-    HASIL_INVESTASI_TEREALISASI_SEWA(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    HASIL_INVESTASI_TEREALISASI_SEWA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(4, null, "Hasil investasi yang terealisasi Sewa", sv(O, 1, 18, numeric))
     ),
-    HASIL_INVESTASI_TEREALISASI_LABA_RUGI_PELEPASAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    HASIL_INVESTASI_TEREALISASI_LABA_RUGI_PELEPASAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(5, null, "Hasil investasi yang terealisasi Laba/Rugi Pelepasan", sv(O, 1, 18, numeric))
     ),
-    HASIL_INVESTASI_TEREALISASI_LAINNYA(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    HASIL_INVESTASI_TEREALISASI_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(6, null, "Hasil investasi yang terealisasi Lainnya", sv(O, 1, 18, numeric))
     ),
-    HASIL_INVESTASI_BELUM_TEREALISASI(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    HASIL_INVESTASI_BELUM_TEREALISASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(7, null, "Hasil Investasi yang Belum Terealisasi", sv(O, 1, 18, numeric))
     ),
-    BEBAN_INVESTASI(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    BEBAN_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(8, null, "Beban Investasi", sv(O, 1, 18, numeric))
     ),
-    HASIL_INVESTASI_BERSIH(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    HASIL_INVESTASI_BERSIH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(9, null, "Hasil investasi bersih", sv(O, 1, 18, numeric))
-                    .addFieldValidations(E7010RoimlValidationsConfig)
+                    .addFieldValidations(E7010RoimlValidationsConfig.FV_FIELD_VALIDATION_1)
     ),
-    RATA_RATA_INVESTASI(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    RATA_RATA_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(10, null, "Rata-rata Investasi", sv(O, 1, 18, numeric))
     ),
-    ROI(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    ROI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(11, null, "ROI", sv(O, 3, 18, numericDot))
-                    .addFieldValidations(E7010RoimlValidationsConfig)
+                    .addFieldValidations(E7010RoimlValidationsConfig.FV_FIELD_VALIDATION_2)
     ),
     ;
 
@@ -145,7 +121,7 @@ public enum Dppk0010Roiml implements ILbltFieldMetadata {
         FIELD_KONVEN.setProgramType(ProgramType.PPMPK);
         return new SubmissionConfig(reportCode)
                 .config()
-                .setRequiredPos(ER7010PosLtlbDppkRoiml.getRequiredPos())
+                .setReferenceConfigs(ER7010PosLtlbDppkRoiml.Configs.REF_CONFIG_PPMPK)
                 .setSubmissionFormat(getSubmissionFormatConfig(KONVENSIONAL, reportCode))
                 .setSubmissionField(FIELD_KONVEN.getFields())
                 .setSegmentValidations(E7010RoimlValidationsConfig.VALIDATION_METADATA)

@@ -31,79 +31,60 @@ import static id.go.ojk.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0016Sbn implements ILbltFieldMetadata {
 
-    FLAG(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(0, null, "Flag", sv(O, 3, 3, alfaNumeric).confConstant("D01"))
     ),
-    KODE_KOMPONEN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(1, null, "Kode Komponen", sv(O, 9, 9, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric)
                     .confReference(EHeaderMetadataPpmpk.R7016Sbn.getObject()))
     ),
-    JENIS_INVESTASI(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    JENIS_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(2, null, "Jenis Investasi", sv(O, 1, 6, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric)
                     .confReference(EHeaderMetadataShared.R022.getObject())
-                    .confConditionalRequired(E7016SbnValidationsConfig))
+                    .confConditionalRequired(E7016SbnValidationsConfig.CR_FOR_TOTAL))
     ),
-    NAMA_JENIS_INVESTASI(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    NAMA_JENIS_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(3, null, "Nama Jenis Investasi", sv(O, 1, 100, freeText)
-                    .confConditionalRequired(E7016SbnValidationsConfig))
+                    .confConditionalRequired(E7016SbnValidationsConfig.CR_FOR_TOTAL))
     ),
-    SERI_EFEK(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    SERI_EFEK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(4, null, "Seri Efek", sv(O, 1, 100, freeText)
-                    .confConditionalRequired(E7016SbnValidationsConfig))
+                    .confConditionalRequired(E7016SbnValidationsConfig.CR_FOR_TOTAL)
+                    .confConditionalRequired(E7016SbnValidationsConfig.CR_JENIS_INVESTASI_VALUE_OBLIGASI))
     ),
-    JENIS_KEPEMILIKAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    JENIS_KEPEMILIKAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(5, null, "Jenis Kepemilikan", sv(O, 1, 100, freeText)
-                    .confConditionalRequired(E7016SbnValidationsConfig))
+                    .confConditionalRequired(E7016SbnValidationsConfig.CR_FOR_TOTAL)
+                    .confConditionalRequired(E7016SbnValidationsConfig.CR_JENIS_INVESTASI_VALUE_OBLIGASI))
     ),
-    RATING(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    RATING(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(6, null, "Rating", sv(O, 1, 100, freeText)
-                    .confConditionalRequired(E7016SbnValidationsConfig))
+                    .confConditionalRequired(E7016SbnValidationsConfig.CR_FOR_TOTAL)
+                    .confConditionalRequired(E7016SbnValidationsConfig.CR_JENIS_INVESTASI_VALUE_OBLIGASI))
     ),
-    MENAJER_INVESTASI(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    MENAJER_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(7, null, "Menajer Investasi", sv(O, 1, 100, freeText)
-                    .confConditionalRequired(E7016SbnValidationsConfig))
+                    .confConditionalRequired(E7016SbnValidationsConfig.CR_FOR_TOTAL)
+                    .confConditionalRequired(E7016SbnValidationsConfig.CR_JENIS_INVESTASI_VALUE_SBN))
     ),
-    NILAI_WAJAR(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    NILAI_WAJAR(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(8, null, "Nilai Wajar", sv(O, 1, 18, numeric)
-                    .confConditionalRequired(E7016SbnValidationsConfig))
+                    .confConditionalRequired(E7016SbnValidationsConfig.CR_FOR_TOTAL))
     ),
-    PERSEN_SBN_DALAM_REKSADANA(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    PERSEN_SBN_DALAM_REKSADANA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(9, null, "% SBN dalam Reksadana", sv(O, 4, 6, numericDot)
-                    .confConditionalRequired(E7016SbnValidationsConfig))
+                    .confConditionalRequired(E7016SbnValidationsConfig.CR_FOR_SBN))
     ),
-    SALDO(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    SALDO(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(10, null, "Saldo", sv(O, 1, 18, numeric)
-                    .confConditionalRequired(E7016SbnValidationsConfig))
+                    .confConditionalRequired(E7016SbnValidationsConfig.CR_FOR_SALDO))
     ),
-    EMITEN_PENERIMA_DANA_PROJECT(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    EMITEN_PENERIMA_DANA_PROJECT(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(11, null, "Emiten Penerima Dana/Project", sv(O, 1, 100, alfa)
-                    .confConditionalRequired(E7016SbnValidationsConfig))
+                    .confConditionalRequired(E7016SbnValidationsConfig.CR_FOR_TOTAL)
+                    .confConditionalRequired(E7016SbnValidationsConfig.CR_JENIS_INVESTASI_VALUE_REKSADANA))
     ),
     ;
 
@@ -154,7 +135,7 @@ public enum Dppk0016Sbn implements ILbltFieldMetadata {
         FIELD_KONVEN.setProgramType(ProgramType.PPMPK);
         return new SubmissionConfig(reportCode)
                 .config()
-                .setRequiredPos(ER7016PosLtlbDppkSbn.getRequiredPos())
+                .setReferenceConfigs(ER7016PosLtlbDppkSbn.Configs.REF_CONFIG_PPMPK)
                 .setSubmissionFormat(getSubmissionFormatConfig(KONVENSIONAL, reportCode))
                 .setSubmissionField(FIELD_KONVEN.getFields())
                 .setSegmentValidations(E7016SbnValidationsConfig.VALIDATION_METADATA)

@@ -32,63 +32,47 @@ import static id.go.ojk.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0047Pill implements ILbltFieldMetadata {
 
-    FLAG(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(0, null, "Flag",
                     sv(M, 3, 3, alfaNumeric)
                             .confConstant("D01"))
     ),
-    KODE_KOMPONEN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(1, null, "Kode Komponen",
                     sv(M, 10, 10, refTable)
                             .confRegex(SimpleValidation.patternAlfaNumeric)
                             .confReference(EHeaderMetadataPpmpk.R7047Pill.getObject()))
     ),
-    JENIS_PIUTANG_LAIN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    JENIS_PIUTANG_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(2, null, "Jenis Piutang Lain",
                     sv(C, 1, 100, alfaNumeric)
-                            .confConditionalRequired(E7047PillValidationsConfig))
+                            .confConditionalRequired(E7047PillValidationsConfig.CR_EXISTS_POS_M))
     ),
-    PIHAK(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    PIHAK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(3, null, "Pihak",
                     sv(C, 1, 100, alfaNumeric)
-                            .confConditionalRequired(E7047PillValidationsConfig))
+                            .confConditionalRequired(E7047PillValidationsConfig.CR_EXISTS_POS_M))
     ),
-    NOMINAL(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    NOMINAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(4, null, "Nominal",
                     sv(M, 1, 18, numeric))
     ),
-    TANGGAL_MUNCUL_PIUTANG(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    TANGGAL_MUNCUL_PIUTANG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(5, null, "Tanggal Muncul Piutang",
                     sv(C, 8, 8, date)
-                            .confConditionalRequired(E7047PillValidationsConfig))
+                            .confConditionalRequired(E7047PillValidationsConfig.CR_EXISTS_POS_M))
     ),
-    MANFAAT_PENSIUN_LAINNYA_LAIN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    MANFAAT_PENSIUN_LAINNYA_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(6, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain",
                     sv(C, 1, 6, refTable)
-                            .confConditionalRequired(E7047PillValidationsConfig)
+                            .confConditionalRequired(E7047PillValidationsConfig.CR_EXISTS_POS_M)
                             .confRegex(SimpleValidation.patternAlfaNumeric)
                             .confReference(EHeaderMetadataShared.R009.getObject()))
     ),
-    KETERANGAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(7, null, "Keterangan",
                     sv(C, 1, 250, freeText)
-                            .confConditionalRequired(E7047PillValidationsConfig))
+                            .confConditionalRequired(E7047PillValidationsConfig.CR_EXISTS_POS_O))
     ),
     ;
 
@@ -139,7 +123,7 @@ public enum Dppk0047Pill implements ILbltFieldMetadata {
         FIELD_KONVEN.setProgramType(ProgramType.PPMPK);
         return new SubmissionConfig(reportCode)
                 .config()
-                .setRequiredPos(ER7047PosLtlbDppkPill.getRequiredPos())
+                .setReferenceConfigs(ER7047PosLtlbDppkPill.Configs.REF_CONFIG_PPMPK)
                 .setSubmissionFormat(getSubmissionFormatConfig(KONVENSIONAL, reportCode))
                 .setSubmissionField(FIELD_KONVEN.getFields())
                 .setSegmentValidations(E7047PillValidationsConfig.VALIDATION_METADATA)

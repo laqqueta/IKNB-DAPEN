@@ -38,10 +38,10 @@ public enum E7015InbmValidationsConfig implements ILbltMetadataValidation, IVali
                     ER7001PosLtlbDppkLan.R_LAN0102000000.getObject().getKey(), "13",
                     UtilMetadata.genMessage(R_INBM010000.value, R_INBM010000.value + "/ Total Investasi (Gabungan) pada form LAN"), 2)),
 
-    CR_FOR_TOTAL(programs(PPMPK),
+    CR_EXIST_POS_M(programs(PPMPK),
             () -> UtilFieldConditional.genExistPos("N", "M", R_INBM000000.key)),
 
-    CR_FOR_TOTAL_OPTIONAL(programs(PPMPK),
+    CR_EXIST_POS_O(programs(PPMPK),
             () -> UtilFieldConditional.genExistPos("N", "O", R_INBM000000.key)),
 
     ;

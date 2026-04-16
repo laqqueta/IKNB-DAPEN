@@ -23,8 +23,7 @@ import java.util.ArrayList;
 import java.util.EnumSet;
 
 import static id.go.ojk.lib.client.model.config.DataType.*;
-import static id.go.ojk.lib.client.model.constant.RequiredCondition.C;
-import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
+import static id.go.ojk.lib.client.model.constant.RequiredCondition.*;
 import static id.go.ojk.util.FieldUtil.*;
 import static id.go.ojk.util.constants.ProgramType.PPMPK;
 import static id.go.ojk.util.constants.ProgramType.PPMPM;
@@ -33,95 +32,78 @@ import static id.go.ojk.util.constants.SectorType.SYARIAH;
 
 @AllArgsConstructor
 public enum Dppk0037Kokb implements ILbltFieldMetadata {
-    FLAG(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(0, null, "Flag",
                     sv(M, 3, 3, alfaNumeric)
                             .confConstant("D01"))),
-    KODE_KOMPONEN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(1, null, "Kode Komponen",
                     sv(M, 10, 10, refTable)
                             .confRegex(SimpleValidation.patternAlfaNumeric)
                             .confReference(EHeaderMetadataPpmpk.R7037Kokb.getObject()))),
-    NAMA_EMITEN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+
+    NAMA_EMITEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(2, null, "Nama Emiten",
                     sv(C, 1, 100, freeText)
-                            .confConditionalRequired(E7037KokbValidationsConfig))),
-    NAMA_PEMBELI(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+                            .confConditionalRequired(E7037KokbValidationsConfig.CR_EXISTS_POS_M))),
+
+    NAMA_PEMBELI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(3, null, "Nama Pembeli",
                     sv(C, 1, 100, freeText)
-                            .confConditionalRequired(E7037KokbValidationsConfig))),
-    TANGGAL_PEROLEHAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+                            .confConditionalRequired(E7037KokbValidationsConfig.CR_EXISTS_POS_M))),
+
+    TANGGAL_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(4, null, "Tanggal Perolehan",
                     sv(C, 8, 8, date)
-                            .confConditionalRequired(E7037KokbValidationsConfig))),
-    JANGKA_WAKTU(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+                            .confConditionalRequired(E7037KokbValidationsConfig.CR_EXISTS_POS_M))),
+
+    JANGKA_WAKTU(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(5, null, "Jangka Waktu",
                     sv(C, 1, 5, numeric)
-                            .confConditionalRequired(E7037KokbValidationsConfig))),
-    NILAI_PEROLEHAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+                            .confConditionalRequired(E7037KokbValidationsConfig.CR_EXISTS_POS_M))),
+
+    NILAI_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(6, null, "Nilai Perolehan",
                     sv(M, 1, 18, numeric))),
-    NILAI_WAJAR(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+
+    NILAI_WAJAR(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(7, null, "Nilai Wajar",
                     sv(M, 1, 18, numeric))),
-    SELISIH_PENILAIAN_INVESTASI_NILAI(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+
+    SELISIH_PENILAIAN_INVESTASI_NILAI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(8, null, "Selisih Penilaian Investasi Nilai",
                     sv(M, 1, 18, numeric))
-                    .addFieldValidations(E7037KokbValidationsConfig)),
-    SELISIH_PENILAIAN_INVESTASI_PERSEN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+                    .addFieldValidations(E7037KokbValidationsConfig.FV_EQUAL_NILAI_INVESTASI)),
+    SELISIH_PENILAIAN_INVESTASI_PERSEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(9, null, "Selisih Penilaian Investasi %",
                     sv(C, 4, 6, numericDot)
-                            .confConditionalRequired(E7037KokbValidationsConfig))
-                    .addFieldValidations(E7037KokbValidationsConfig)),
-    MANFAAT_PENSIUN_MANFAAT_PENSIUN_LAINNYA_MANFAAT_LAIN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+                            .confConditionalRequired(E7037KokbValidationsConfig.CR_EXISTS_POS_M))
+                    .addFieldValidations(E7037KokbValidationsConfig.FV_EQUAL_PERSENTASE_INVESTASI)),
+    MANFAAT_PENSIUN_MANFAAT_PENSIUN_LAINNYA_MANFAAT_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(10, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain",
                     sv(C, 1, 6, refTable)
-                            .confConditionalRequired(E7037KokbValidationsConfig)
+                            .confConditionalRequired(E7037KokbValidationsConfig.CR_EXISTS_POS_M)
                             .confRegex(SimpleValidation.patternAlfaNumeric)
                             .confReference(EHeaderMetadataShared.R009.getObject()))),
-    PENGELOLAAN_SWAKELOLA_KPD(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+
+    PENGELOLAAN_SWAKELOLA_KPD(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(11, null, "Pengelolaan Swakelola/ KPD",
                     sv(C, 1, 6, refTable)
-                            .confConditionalRequired(E7037KokbValidationsConfig)
+                            .confConditionalRequired(E7037KokbValidationsConfig.CR_EXISTS_POS_M)
                             .confRegex(SimpleValidation.patternAlfa)
                             .confReference(EHeaderMetadataShared.R006.getObject()))),
-    PENGELOLAAN_NAMA_MANAJER_INVESTASI(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+
+    PENGELOLAAN_NAMA_MANAJER_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(12, null, "Pengelolaan Nama Manajer Investasi",
                     sv(C, 1, 250, freeText)
-                            .confConditionalRequired(E7037KokbValidationsConfig)
-                            .confConditionalRequired(E7037KokbValidationsConfig))),
-    KETERANGAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+                            .confConditionalRequired(E7037KokbValidationsConfig.CR_EXISTS_POS_M)
+                            .confConditionalRequired(E7037KokbValidationsConfig.CR_NAMA_PENGELOLA))),
+
+    KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(13, null, "Keterangan",
                     sv(O, 1, 250, freeText)
-                            .confConditionalRequired(E7037KokbValidationsConfig)));
+                            .confConditionalRequired(E7037KokbValidationsConfig.CR_EXISTS_POS_O)));
 
     private final EnumSet<SectorType> sectorType;
     private final EnumSet<ProgramType> programType;
@@ -164,7 +146,7 @@ public enum Dppk0037Kokb implements ILbltFieldMetadata {
         FIELD_KONVEN.setProgramType(ProgramType.PPMPK);
         return new SubmissionConfig(reportCode)
                 .config()
-                .setRequiredPos(ER7037PosLtlbDppkKokb.getRequiredPos())
+                .setReferenceConfigs(ER7037PosLtlbDppkKokb.Configs.REF_CONFIG_PPMPK)
                 .setSubmissionFormat(getSubmissionFormatConfig(KONVENSIONAL, reportCode))
                 .setSubmissionField(FIELD_KONVEN.getFields())
                 .setSegmentValidations(E7037KokbValidationsConfig.VALIDATION_METADATA)

@@ -1,5 +1,6 @@
 package id.go.ojk.module.lblt.dppk.reference;
 
+import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
@@ -22,16 +23,10 @@ public enum ER7021PosLtlbDppkTbdsp implements IObject<KeyValueString> {
     R_TBDSP0205000000("TBDSP0205000000", "5. Transaksi lainnya yang tidak sesuai dengan Prinsip Syariah"),
     R_TBDSP0301000000("TBDSP0301000000", "Rincian - Nama Penerima"),
     R_TBDSP0303000000("TBDSP0303000000", "Total Pengguna Tahun Berjalan"),
-    R_TBDSP0400000000("TBDSP0400000000", "D. Saldo Akhir (A+B-C)")
-
-    ;
+    R_TBDSP0400000000("TBDSP0400000000", "D. Saldo Akhir (A+B-C)");
 
     public final String key;
     public final String value;
-
-    public KeyValueString getObject() {
-        return new KeyValueString(key, value, new String[] {});
-    }
 
     public static List<KeyValueString> getObjects() {
         List<KeyValueString> res = new ArrayList<>();
@@ -49,11 +44,21 @@ public enum ER7021PosLtlbDppkTbdsp implements IObject<KeyValueString> {
         return Integer.parseInt(ER7021PosLtlbDppkTbdsp.class.getSimpleName().substring(2, 6));
     }
 
-    public static String genFieldSave() {
-        return UtilMetadata.genFieldSave("3", getObjects());
+    public KeyValueString getObject() {
+        return new KeyValueString(key, value, new String[]{});
     }
 
-    public static String getRequiredPos() {
-        return UtilMetadata.genPipeRowExcept(getObjects(), new int[] { 3, 7 });
+    public enum Configs implements ReferenceConfig {
+        REF_CONFIG_PPMPK {
+            @Override
+            public String savePos() {
+                return UtilMetadata.genFieldSave("3", getObjects());
+            }
+
+            @Override
+            public String requiredPos() {
+                return UtilMetadata.genPipeRowExcept(getObjects(), new int[]{3, 7});
+            }
+        }
     }
 }

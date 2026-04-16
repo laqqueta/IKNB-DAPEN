@@ -1,17 +1,13 @@
 package id.go.ojk.module.lblt.dppk.reference;
 
-import id.go.ojk.client.model.config.validation.field.FieldValidation;
-import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
-import id.go.ojk.conf.client.UtilFieldValidation;
+import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.conf.client.UtilMetadata;
-import id.go.ojk.conf.client.UtilSegmentValidation;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
@@ -40,10 +36,6 @@ public enum ER7006PosLtlbDppkPst implements IObject<KeyValueString> {
     public final String key;
     public final String value;
 
-    public KeyValueString getObject() {
-        return new KeyValueString(key, value, new String[] {});
-    }
-
     public static List<KeyValueString> getObjects() {
         List<KeyValueString> res = new ArrayList<>();
         for (ER7006PosLtlbDppkPst eEnum : ER7006PosLtlbDppkPst.values()) {
@@ -56,18 +48,28 @@ public enum ER7006PosLtlbDppkPst implements IObject<KeyValueString> {
         return ER7006PosLtlbDppkPst.class.getSimpleName().substring(6);
     }
 
-    public static String genFieldSave() {
-        return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 4), getObjects());
-    }
-
     public static int getRefNumber() {
         return Integer.parseInt(ER7006PosLtlbDppkPst.class.getSimpleName().substring(2, 6));
     }
 
-    public static String getRequiredPos() {
-        return UtilMetadata.genPipeRow(getObjects());
+    public KeyValueString getObject() {
+        return new KeyValueString(key, value, new String[]{});
     }
 
+    public enum Configs implements ReferenceConfig {
+        REF_CONFIG_PPMPK {
+            @Override
+            public String requiredPos() {
+                return UtilMetadata.genPipeRow(getObjects());
+            }
 
-
+            @Override
+            public String savePos() {
+                return UtilMetadata.genFieldSave(
+                        UtilMetadata.genPipeColumn(2, 4),
+                        getObjects()
+                );
+            }
+        }
+    }
 }

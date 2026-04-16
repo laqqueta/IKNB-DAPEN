@@ -5,6 +5,7 @@ import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
 import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
+import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.conf.client.BaseMetadata;
 import id.go.ojk.util.metadata.validation.base.BaseMetadataValidation;
 import id.go.ojk.util.metadata.validation.base.IBaseMetadataValidation;
@@ -14,13 +15,9 @@ import java.util.List;
 
 public abstract class BaseSubmissionConfig extends BaseMetadata {
     protected SubmissionFormat submissionFormat;
-    protected String requiredPos = null;
-    protected String uniquePos = null;
-    protected String savePos = null;
-    protected String saveField = null;
-    protected String savePosForm = null;
     protected List<SubmissionField> submissionFields = new ArrayList<>();
     protected List<SegmentValidation> segmentValidations = new ArrayList<>();
+    protected ReferenceConfig referenceConfig;
 
     private final ExtensionType extensionType;
 
@@ -46,80 +43,60 @@ public abstract class BaseSubmissionConfig extends BaseMetadata {
     }
 
     protected void setSubmissionConfigs(SubmissionFormat sf) {
-        if (requiredPos != null) {
-            sf.setRequiredPos(requiredPos);
+        if (referenceConfig.requiredPos() != null) {
+            sf.setRequiredPos(referenceConfig);
         }
 
-        if (savePos != null) {
-            sf.setSavePos(savePos);
+        if (referenceConfig.savePos() != null) {
+            sf.setSavePos(referenceConfig);
         }
 
-        if (saveField != null) {
-            sf.setFieldSavePos(saveField);
+        if (referenceConfig.saveFieldPos() != null) {
+            sf.setFieldSavePos(referenceConfig);
         }
 
-        if (savePosForm != null) {
-            sf.setSavePosForm(savePosForm);
+        if (referenceConfig.savePosForm() != null) {
+            sf.setSavePosForm(referenceConfig);
         }
 
-        if (uniquePos != null) {
-            sf.setUniquePos(uniquePos);
+        if (referenceConfig.uniquePos() != null) {
+            sf.setUniquePos(referenceConfig);
         }
     }
 
-    public Config config() {
-        return new Config();
+    public <T extends Config<T>> Config<T> config() {
+        return new Config<>();
     }
 
-    public class Config {
-        public Config setSubmissionFormat(SubmissionFormat submissionFormat) {
+    public class Config<T extends Config<T>> {
+        public Config<T> setSubmissionFormat(SubmissionFormat submissionFormat) {
             BaseSubmissionConfig.this.submissionFormat = submissionFormat;
             return this;
         }
 
-        public Config setSubmissionFormat(SubmissionFormatBuilder submissionFormatBuilder) {
+        public Config<T> setSubmissionFormat(SubmissionFormatBuilder submissionFormatBuilder) {
             BaseSubmissionConfig.this.submissionFormat = new SubmissionFormat(submissionFormatBuilder);
             return this;
         }
 
-        public Config setRequiredPos(String requiredPos) {
-            BaseSubmissionConfig.this.requiredPos = requiredPos;
-            return this;
-        }
-
-        public Config setUniquePos(String uniquePos) {
-            BaseSubmissionConfig.this.uniquePos = uniquePos;
-            return this;
-        }
-
-        public Config setSavePos(String savePos) {
-            BaseSubmissionConfig.this.savePos = savePos;
-            return this;
-        }
-
-        public Config setSaveField(String saveField) {
-            BaseSubmissionConfig.this.saveField = saveField;
-            return this;
-        }
-
-        public Config setSavePosForm(String savePosForm) {
-            BaseSubmissionConfig.this.savePosForm = savePosForm;
-            return this;
-        }
-
-        public Config setSubmissionField(List<SubmissionField> submissionFields) {
+        public Config<T> setSubmissionField(List<SubmissionField> submissionFields) {
             BaseSubmissionConfig.this.submissionFields = submissionFields;
             return this;
         }
 
-        public <T extends Enum<T> & IBaseMetadataValidation> Config setSegmentValidations(BaseMetadataValidation<T> validationMetadata) {
+        public <C extends ReferenceConfig> Config<T> setReferenceConfigs(C referenceConfigs) {
+            BaseSubmissionConfig.this.referenceConfig = referenceConfigs;
+            return this;
+        }
+
+        public <V extends Enum<V> & IBaseMetadataValidation> Config<T> setSegmentValidations(BaseMetadataValidation<V> validationMetadata) {
             BaseSubmissionConfig.this.segmentValidations = validationMetadata.getSegmentValidations();
             return this;
         }
 
         public BaseSubmissionConfig build() {
             if (BaseSubmissionConfig.this.submissionFormat == null) throw new IllegalStateException("SubmissionFormat is required");
-            if (BaseSubmissionConfig.this.submissionFields == null) throw new IllegalStateException("SubmissionField is required for .txt file");
+            if (BaseSubmissionConfig.this.submissionFields == null && extensionType.equals(ExtensionType.TXT)) throw new IllegalStateException("SubmissionField is required for .txt file");
 
 
             return BaseSubmissionConfig.this;

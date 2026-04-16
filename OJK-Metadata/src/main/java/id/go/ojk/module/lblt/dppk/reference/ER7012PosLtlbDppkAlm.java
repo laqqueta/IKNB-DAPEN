@@ -1,9 +1,6 @@
 package id.go.ojk.module.lblt.dppk.reference;
 
-import id.go.ojk.client.model.config.validation.conditional.ConditionalRequired;
-import id.go.ojk.client.model.config.validation.field.FieldValidation;
-import id.go.ojk.conf.client.UtilFieldConditional;
-import id.go.ojk.conf.client.UtilFieldValidation;
+import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
@@ -87,14 +84,10 @@ public enum ER7012PosLtlbDppkAlm implements IObject<KeyValueString> {
     public final String value;
     private final EnumSet<ProgramType> jenisPrograms;
 
-    public KeyValueString getObject() {
-        return new KeyValueString(key, value, new String[] {});
-    }
-
     public static List<KeyValueString> getObjects(ProgramType jenisProgram) {
         List<KeyValueString> res = new ArrayList<>();
         for (ER7012PosLtlbDppkAlm eEnum : ER7012PosLtlbDppkAlm.values()) {
-            if (eEnum.jenisPrograms.contains(jenisProgram) || eEnum.jenisPrograms.contains(ProgramType.ALL) ) {
+            if (eEnum.jenisPrograms.contains(jenisProgram) || eEnum.jenisPrograms.contains(ProgramType.ALL)) {
                 res.add(eEnum.getObject());
             }
         }
@@ -109,43 +102,26 @@ public enum ER7012PosLtlbDppkAlm implements IObject<KeyValueString> {
         return Integer.parseInt(ER7012PosLtlbDppkAlm.class.getSimpleName().substring(2, 6));
     }
 
-    public static String genFieldSave(ProgramType jenisProgram) {
-        return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 16), getObjects(jenisProgram));
+    public KeyValueString getObject() {
+        return new KeyValueString(key, value, new String[]{});
     }
 
-    public static String getRequiredPos(ProgramType jenisProgram) {
-        return UtilMetadata.genPipeRow(getObjects(jenisProgram));
-    }
+    public enum Configs implements ReferenceConfig {
+        REF_CONFIG_PPMPK {
+            @Override
+            public String savePos() {
+                ProgramType programType = ProgramType.PPMPK;
+                return UtilMetadata.genFieldSave(
+                        UtilMetadata.genPipeColumn(2, 16),
+                        getObjects(programType)
+                );
+            }
 
-    public static FieldValidation genFieldTotal1Validation() {
-        return UtilFieldValidation.genEqualsExceptPosFormula("2+5+8+11", UtilMetadata.genPipeRow(getObjects(ProgramType.PPMPK), new int[] { 20, 31, 37, 38, 39, 40, 48, 49, 50, 51 }));
-    }
-
-    public static FieldValidation genFieldTotal2Validation() {
-        return UtilFieldValidation.genEqualsExceptPosFormula("3+6+9+12", UtilMetadata.genPipeRow(getObjects(ProgramType.PPMPK), new int[] { 20, 31, 37, 38, 39, 40, 48, 49, 50, 51 }));
-    }
-
-    public static FieldValidation genFieldTotal3Validation() {
-        return UtilFieldValidation.genEqualsExceptPosFormula("14+15", UtilMetadata.genPipeRow(getObjects(ProgramType.PPMPK), new int[] { 20, 31, 37, 38, 39, 40, 48, 49, 50, 51 }));
-    }
-
-    public static FieldValidation genFieldJtdValidation() {
-        return UtilFieldValidation.genEqualsExceptPosFormula("11+12", UtilMetadata.genPipeRow(getObjects(ProgramType.PPMPK), new int[] { 20, 31, 37, 38, 39, 40, 48, 49, 50, 51 }));
-    }
-
-    public static FieldValidation genFieldJtcValidation() {
-        return UtilFieldValidation.genEqualsExceptPosFormula("8+9", UtilMetadata.genPipeRow(getObjects(ProgramType.PPMPK), new int[] { 20, 31, 37, 38, 39, 40, 48, 49, 50, 51 }));
-    }
-
-    public static FieldValidation genFieldJtbValidation() {
-        return UtilFieldValidation.genEqualsExceptPosFormula("5+6", UtilMetadata.genPipeRow(getObjects(ProgramType.PPMPK), new int[] { 20, 31, 37, 38, 39, 40, 48, 49, 50, 51 }));
-    }
-
-    public static FieldValidation genFieldJtaValidation() {
-        return UtilFieldValidation.genEqualsExceptPosFormula("2+3", UtilMetadata.genPipeRow(getObjects(ProgramType.PPMPK), new int[] { 20, 31, 37, 38, 39, 40, 48, 49, 50, 51 }));
-    }
-
-    public static ConditionalRequired genConditionForPersentase() {
-        return UtilFieldConditional.genExistPos("N", "M", R_ALM1000000000.key);
+            @Override
+            public String requiredPos() {
+                ProgramType programType = ProgramType.PPMPK;
+                return UtilMetadata.genPipeRow(getObjects(programType));
+            }
+        }
     }
 }

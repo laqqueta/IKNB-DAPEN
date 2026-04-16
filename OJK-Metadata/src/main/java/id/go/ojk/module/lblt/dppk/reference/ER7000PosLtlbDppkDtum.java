@@ -1,16 +1,13 @@
 package id.go.ojk.module.lblt.dppk.reference;
 
-import id.go.ojk.client.model.IReferenceConfig;
-import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
+import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.conf.client.UtilMetadata;
-import id.go.ojk.conf.client.UtilSegmentValidation;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
@@ -42,17 +39,10 @@ public enum ER7000PosLtlbDppkDtum implements IObject<KeyValueString> {
     R_DTUM100500("DTUM100500", "E-mail"),
     R_DTUM100600("DTUM100600", "Susunan Pengurus"),
     R_DTUM110100("DTUM110100", "Susunan Dewan Pengawas"),
-    R_DTUM120100("DTUM120100", "Susunan Dewan Pengawas Syariah")
-
-    ;
-
+    R_DTUM120100("DTUM120100", "Susunan Dewan Pengawas Syariah");
 
     final String key;
     final String value;
-
-    public KeyValueString getObject() {
-        return new KeyValueString(key, value, new String[] {});
-    }
 
     public static List<KeyValueString> getObjects() {
         List<KeyValueString> res = new ArrayList<>();
@@ -70,9 +60,16 @@ public enum ER7000PosLtlbDppkDtum implements IObject<KeyValueString> {
         return Integer.parseInt(ER7000PosLtlbDppkDtum.class.getSimpleName().substring(2, 6));
     }
 
-    public static String getRequiredPos() {
-        return UtilMetadata.genPipeRowExcept(getObjects(), new int[] { 24, 25, 26 });
+    public KeyValueString getObject() {
+        return new KeyValueString(key, value, new String[]{});
     }
 
-
+    public enum Configs implements ReferenceConfig {
+        REF_CONFIG_PPMPK {
+            @Override
+            public String requiredPos() {
+                return UtilMetadata.genPipeRowExcept(getObjects(), new int[]{24, 25, 26});
+            }
+        }
+    }
 }

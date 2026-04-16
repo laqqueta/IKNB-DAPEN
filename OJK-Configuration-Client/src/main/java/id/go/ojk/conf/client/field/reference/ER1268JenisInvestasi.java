@@ -1,12 +1,12 @@
 package id.go.ojk.conf.client.field.reference;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ER1268JenisInvestasi implements IObject<KeyValueString> {
@@ -41,4 +41,17 @@ public enum ER1268JenisInvestasi implements IObject<KeyValueString> {
 	public static int getRefNumber() {
 		return Integer.parseInt(ER1268JenisInvestasi.class.getSimpleName().substring(2, 6));
 	}
+
+	public static String getReferenceIndex(int index) {
+		StringBuilder res = new StringBuilder();
+		ER1268JenisInvestasi[] eEnums = ER1268JenisInvestasi.values();
+		for (int i= 0; i < eEnums.length; i++) {
+			if (i == index) {
+				res.append(eEnums[i].key);
+				break;
+			}
+		}
+		return res.toString();
+	}
+
 }

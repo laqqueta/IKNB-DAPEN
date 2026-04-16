@@ -37,7 +37,7 @@ public enum E7051PkanValidationsConfig implements ILbltMetadataValidation, IVali
     CR_EXISTS_POS_M(programs(PPMPK),
             () -> UtilFieldConditional.genExistPos("N", "M", R_PKAN000000.key)),
 
-    CR_EXISTS_POS_N(programs(PPMPK),
+    CR_EXISTS_POS_O(programs(PPMPK),
             () -> UtilFieldConditional.genExistPos("N", "O", R_PKAN000000.key)),
 
     ;

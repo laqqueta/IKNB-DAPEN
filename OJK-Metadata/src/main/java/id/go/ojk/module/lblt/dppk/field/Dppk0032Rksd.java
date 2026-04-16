@@ -37,84 +37,97 @@ public enum Dppk0032Rksd implements ILbltFieldMetadata {
                     sv(M, 3, 3, alfaNumeric)
                             .confConstant("D01"))),
 
+
     KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(1, null, "Kode Komponen",
                     sv(M, 10, 10, refTable)
                             .confRegex(SimpleValidation.patternAlfaNumeric)
                             .confReference(EHeaderMetadataPpmpk.R7032Rksd.getObject()))),
 
+
     KODE(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(2, null, "Kode",
                     sv(C, 1, 20, alfaNumeric)
-                            .confConditionalRequired(E7032RksdValidationsConfig))),
+                            .confConditionalRequired(E7032RksdValidationsConfig.CR_EXISTS_POS_M))),
+
 
     NAMA_PRODUK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(3, null, "Nama Produk",
                     sv(C, 1, 100, freeText)
-                            .confConditionalRequired(E7032RksdValidationsConfig))),
+                            .confConditionalRequired(E7032RksdValidationsConfig.CR_EXISTS_POS_M))),
+
 
     JENIS_REKSA_DANA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(4, null, "Jenis Reksa Dana *)",
                     sv(C, 1, 6, alfaNumeric)
-                            .confConditionalRequired(E7032RksdValidationsConfig))),
+                            .confConditionalRequired(E7032RksdValidationsConfig.CR_EXISTS_POS_M))),
+
 
     MANAJER_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(5, null, "Manajer Investasi",
                     sv(C, 1, 250, freeText)
-                            .confConditionalRequired(E7032RksdValidationsConfig))),
+                            .confConditionalRequired(E7032RksdValidationsConfig.CR_EXISTS_POS_M))),
+
 
     TANGGAL_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(6, null, "Tanggal Perolehan",
                     sv(C, 8, 8, date)
-                            .confConditionalRequired(E7032RksdValidationsConfig))),
+                            .confConditionalRequired(E7032RksdValidationsConfig.CR_EXISTS_POS_M))),
+
 
     JUMLAH_UNIT(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(7, null, "Jumlah Unit",
                     sv(M, 1, 13, numeric))),
 
+
     NILAI_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(8, null, "Nilai Perolehan",
                     sv(M, 1, 18, numeric))),
+
 
     NILAI_WAJAR(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(9, null, "Nilai Wajar",
                     sv(M, 1, 18, numeric))),
 
+
     SELISIH_PENILAIAN_INVESTASI_NILAI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(10, null, "Selisih Penilaian Investasi Nilai",
                     sv(M, 1, 18, numeric))
-                    .addFieldValidations(E7032RksdValidationsConfig)),
+                    .addFieldValidations(E7032RksdValidationsConfig.FV_EQUAL_NILAI_INVESTASI)),
 
     SELISIH_PENILAIAN_INVESTASI_PERSEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(11, null, "Selisih Penilaian Investasi %",
                     sv(C, 4, 6, numericDot)
-                            .confConditionalRequired(E7032RksdValidationsConfig))
-                    .addFieldValidations(E7032RksdValidationsConfig)),
+                            .confConditionalRequired(E7032RksdValidationsConfig.CR_EXISTS_POS_M))
+                    .addFieldValidations(E7032RksdValidationsConfig.FV_EQUAL_PERSENTASE_INVESTASI)),
 
     MANFAAT_PENSIUN_MANFAAT_PENSIUN_LAINNYA_MANFAAT_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(12, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain",
                     sv(C, 1, 6, refTable)
-                            .confConditionalRequired(E7032RksdValidationsConfig)
+                            .confConditionalRequired(E7032RksdValidationsConfig.CR_EXISTS_POS_M)
                             .confRegex(SimpleValidation.patternAlfaNumeric)
                             .confReference(EHeaderMetadataShared.R009.getObject()))),
+
 
     PENGELOLAAN_SWAKELOLA_KPD(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(13, null, "Pengelolaan Swakelola/ KPD",
                     sv(C, 1, 6, refTable)
-                            .confConditionalRequired(E7032RksdValidationsConfig)
+                            .confConditionalRequired(E7032RksdValidationsConfig.CR_EXISTS_POS_M)
                             .confRegex(SimpleValidation.patternAlfa)
                             .confReference(EHeaderMetadataShared.R006.getObject()))),
+
 
     PENGELOLAAN_NAMA_MANAJER_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(14, null, "Pengelolaan Nama Manajer Investasi",
                     sv(C, 1, 250, freeText)
-                            .confConditionalRequired(E7032RksdValidationsConfig)
-                            .confConditionalRequired(E7032RksdValidationsConfig))),
+                            .confConditionalRequired(E7032RksdValidationsConfig.CR_EXISTS_POS_M)
+                            .confConditionalRequired(E7032RksdValidationsConfig.CR_NAMA_PENGELOLA))),
+
 
     KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(15, null, "Keterangan",
                     sv(C, 1, 250, freeText)
-                            .confConditionalRequired(E7032RksdValidationsConfig)));
+                            .confConditionalRequired(E7032RksdValidationsConfig.CR_EXISTS_POS_O)));
 
     private final EnumSet<SectorType> sectorType;
     private final EnumSet<ProgramType> programType;
@@ -157,7 +170,7 @@ public enum Dppk0032Rksd implements ILbltFieldMetadata {
         FIELD_KONVEN.setProgramType(ProgramType.PPMPK);
         return new SubmissionConfig(reportCode)
                 .config()
-                .setRequiredPos(ER7032PosLtlbDppkRksd.getRequiredPos())
+                .setReferenceConfigs(ER7032PosLtlbDppkRksd.Configs.REF_CONFIG_PPMPK)
                 .setSubmissionFormat(getSubmissionFormatConfig(KONVENSIONAL, reportCode))
                 .setSubmissionField(FIELD_KONVEN.getFields())
                 .setSegmentValidations(E7032RksdValidationsConfig.VALIDATION_METADATA)

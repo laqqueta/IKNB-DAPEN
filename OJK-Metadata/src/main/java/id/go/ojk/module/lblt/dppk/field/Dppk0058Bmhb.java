@@ -23,8 +23,7 @@ import java.util.EnumSet;
 import static id.go.ojk.lib.client.model.config.DataType.*;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.C;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
-import static id.go.ojk.util.FieldUtil.sf;
-import static id.go.ojk.util.FieldUtil.sv;
+import static id.go.ojk.util.FieldUtil.*;
 import static id.go.ojk.util.constants.ProgramType.PPMPK;
 import static id.go.ojk.util.constants.ProgramType.PPMPM;
 import static id.go.ojk.util.constants.SectorType.KONVENSIONAL;
@@ -33,56 +32,42 @@ import static id.go.ojk.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0058Bmhb implements ILbltFieldMetadata {
 
-    FLAG(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(0, null, "Flag",
                     sv(M, 3, 3, alfaNumeric)
                             .confConstant("D01"))
     ),
-    KODE_KOMPONEN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(1, null, "Kode Komponen",
                     sv(M, 10, 10, refTable)
                             .confRegex(SimpleValidation.patternAlfaNumeric)
                             .confReference(EHeaderMetadataPpmpk.R7058Bmhb.getObject()))
     ),
-    RINCIAN_PENDAPATAN_DITERIMA_DI_MUKA(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    RINCIAN_PENDAPATAN_DITERIMA_DI_MUKA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(2, null, "Rincian Pendapatan Diterima Di Muka",
                     sv(C, 1, 100, alfaNumeric)
-                            .confConditionalRequired(E7058BmhbValidationsConfig))
+                            .confConditionalRequired(E7058BmhbValidationsConfig.CR_EXISTS_POS_M))
     ),
-    PIHAK(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    PIHAK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(3, null, "Pihak",
                     sv(C, 1, 100, alfaNumeric)
-                            .confConditionalRequired(E7058BmhbValidationsConfig))
+                            .confConditionalRequired(E7058BmhbValidationsConfig.CR_EXISTS_POS_M))
     ),
-    NILAI(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    NILAI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(4, null, "Nilai",
                     sv(M, 1, 18, numeric))
     ),
-    MANFAAT_PENSIUN_LAINNYA_LAIN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    MANFAAT_PENSIUN_LAINNYA_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(5, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain",
                     sv(C, 1, 6, refTable)
-                            .confConditionalRequired(E7058BmhbValidationsConfig)
+                            .confConditionalRequired(E7058BmhbValidationsConfig.CR_EXISTS_POS_M)
                             .confRegex(SimpleValidation.patternAlfaNumeric)
                             .confReference(EHeaderMetadataShared.R009.getObject()))
     ),
-    KETERANGAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(6, null, "Keterangan",
                     sv(C, 1, 250, freeText)
-                            .confConditionalRequired(E7058BmhbValidationsConfig))
+                            .confConditionalRequired(E7058BmhbValidationsConfig.CR_EXISTS_POS_O))
     ),
     ;
 
@@ -133,7 +118,7 @@ public enum Dppk0058Bmhb implements ILbltFieldMetadata {
         FIELD_KONVEN.setProgramType(ProgramType.PPMPK);
         return new SubmissionConfig(reportCode)
                 .config()
-                .setRequiredPos(ER7058PosLtlbDppkBmhb.getRequiredPos())
+                .setReferenceConfigs(ER7058PosLtlbDppkBmhb.Configs.REF_CONFIG_PPMPK)
                 .setSubmissionFormat(getSubmissionFormatConfig(KONVENSIONAL, reportCode))
                 .setSubmissionField(FIELD_KONVEN.getFields())
                 .setSegmentValidations(E7058BmhbValidationsConfig.VALIDATION_METADATA)

@@ -35,40 +35,30 @@ import static id.go.ojk.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0018Ras2 implements ILbltFieldMetadata {
 
-    FLAG(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(0, null, "Flag", sv(O, 3, 3, alfaNumeric).confConstant("D01"))
     ),
-    KODE_KOMPONEN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(1, null, "Kode Komponen",
                     sv(O, 14, 14, refTable)
                             .confRegex(SimpleValidation.patternAlfaNumeric)
                             .confReference(EHeaderMetadataPpmpk.R7018Ras2.getObject()))
                     .confUnique(UniqueType.U)
     ),
-    REALISASI_TAHUN_SEBELUMNYA(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    REALISASI_TAHUN_SEBELUMNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(2, null, "Realisasi Tahun Sebelumnya",
                     sv(O, 1, 18, numeric)
-                            .confConditionalRequired(E7018Ras2ValidationsConfig))
+                            .confConditionalRequired(E7018Ras2ValidationsConfig.CR_EMPTY_1))
     ),
-    ANGGARAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    ANGGARAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(3, null, "Anggaran",
                     sv(O, 1, 18, all2)
-                            .confConditionalRequired(E7018Ras2ValidationsConfig))
+                            .confConditionalRequired(E7018Ras2ValidationsConfig.CR_EMPTY_2))
     ),
-    REALISASI(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    REALISASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(4, null, "Realisasi",
                     sv(O, 1, 18, all2)
-                            .confConditionalRequired(E7018Ras2ValidationsConfig))
+                            .confConditionalRequired(E7018Ras2ValidationsConfig.CR_EMPTY_2))
     ),
     ;
 
@@ -119,7 +109,7 @@ public enum Dppk0018Ras2 implements ILbltFieldMetadata {
         FIELD_KONVEN.setProgramType(ProgramType.PPMPK);
         return new SubmissionConfig(reportCode)
                 .config()
-                .setRequiredPos(ER7018PosLtlbDppkRas2.getRequiredPos())
+                .setReferenceConfigs(ER7018PosLtlbDppkRas2.Configs.REF_CONFIG_PPMPK)
                 .setSubmissionFormat(getSubmissionFormatConfig(KONVENSIONAL, reportCode))
                 .setSubmissionField(FIELD_KONVEN.getFields())
                 .setSegmentValidations(E7018Ras2ValidationsConfig.VALIDATION_METADATA)

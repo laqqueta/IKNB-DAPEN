@@ -31,46 +31,34 @@ import static id.go.ojk.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0055Umps implements ILbltFieldMetadata {
 
-    FLAG(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(0, null, "Flag",
                     sv(M, 3, 3, alfaNumeric)
                             .confConstant("D01"))
     ),
-    KODE_KOMPONEN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(1, null, "Kode Komponen",
                     sv(M, 10, 10, refTable)
                             .confRegex(SimpleValidation.patternAlfaNumeric)
                             .confReference(EHeaderMetadataPpmpk.R7055Umps.getObject()))
     ),
-    JUMLAH_LTE_1_TAHUN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    JUMLAH_LTE_1_TAHUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(2, null, "Jumlah <= 1 tahun",
                     sv(M, 1, 18, numeric))
     ),
-    JUMLAH_GT_1_TAHUN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    JUMLAH_GT_1_TAHUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(3, null, "Jumlah > 1 tahun",
                     sv(M, 1, 18, numeric))
     ),
-    JUMLAH_TOTAL(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    JUMLAH_TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(4, null, "Jumlah Total",
                     sv(M, 1, 18, numeric))
-                    .addFieldValidations(E7055UmpsValidationsConfig)
+                    .addFieldValidations(E7055UmpsValidationsConfig.FV_EQUAL_TOTAL)
     ),
-    KETERANGAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(5, null, "Keterangan",
                     sv(C, 1, 250, freeText)
-                            .confConditionalRequired(E7055UmpsValidationsConfig))
+                            .confConditionalRequired(E7055UmpsValidationsConfig.CR_EXISTS_POS_O))
     ),
     ;
 
@@ -121,7 +109,7 @@ public enum Dppk0055Umps implements ILbltFieldMetadata {
         FIELD_KONVEN.setProgramType(ProgramType.PPMPK);
         return new SubmissionConfig(reportCode)
                 .config()
-                .setRequiredPos(ER7055PosLtlbDppkUmps.getRequiredPos())
+                .setReferenceConfigs(ER7055PosLtlbDppkUmps.Configs.REF_CONFIG_PPMPK)
                 .setSubmissionFormat(getSubmissionFormatConfig(KONVENSIONAL, reportCode))
                 .setSubmissionField(FIELD_KONVEN.getFields())
                 .setSegmentValidations(E7055UmpsValidationsConfig.VALIDATION_METADATA)

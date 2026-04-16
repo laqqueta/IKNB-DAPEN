@@ -1,5 +1,6 @@
 package id.go.ojk.module.lblt.dppk.reference;
 
+import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
@@ -47,22 +48,14 @@ public enum ER7008PosLtlbDppkRekinv implements IObject<KeyValueString> {
     private final String value;
     private final EnumSet<ProgramType> jenisPrograms;
 
-    public KeyValueString getObject() {
-        return new KeyValueString(key, value, new String[] {});
-    }
-
     public static List<KeyValueString> getObjects(ProgramType jenisProgram) {
         List<KeyValueString> res = new ArrayList<>();
         for (ER7008PosLtlbDppkRekinv eEnum : ER7008PosLtlbDppkRekinv.values()) {
-            if (eEnum.jenisPrograms.contains(jenisProgram) || eEnum.jenisPrograms.contains(ProgramType.ALL) ) {
+            if (eEnum.jenisPrograms.contains(jenisProgram) || eEnum.jenisPrograms.contains(ProgramType.ALL)) {
                 res.add(eEnum.getObject());
             }
         }
         return res;
-    }
-
-    public static String genFieldSave(ProgramType jenisProgram) {
-        return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 13), getObjects(jenisProgram));
     }
 
     public static String getName() {
@@ -73,12 +66,35 @@ public enum ER7008PosLtlbDppkRekinv implements IObject<KeyValueString> {
         return Integer.parseInt(ER7008PosLtlbDppkRekinv.class.getSimpleName().substring(2, 6));
     }
 
-    public static String getRequiredPos(ProgramType jenisProgram) {
-        return UtilMetadata.genPipeRow(getObjects(jenisProgram));
+    public KeyValueString getObject() {
+        return new KeyValueString(key, value, new String[]{});
     }
 
-    public static String genFieldFormSave(ProgramType jenisProgram) {
-        return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 13), getObjects(jenisProgram));
-    }
+    public enum Configs implements ReferenceConfig {
+        REF_CONFIG_PPMPK {
+            @Override
+            public String savePos() {
+                ProgramType programType = ProgramType.PPMPK;
+                return UtilMetadata.genFieldSave(
+                        UtilMetadata.genPipeColumn(2, 13),
+                        getObjects(programType)
+                );
+            }
 
+            @Override
+            public String savePosForm() {
+                ProgramType programType = ProgramType.PPMPK;
+                return UtilMetadata.genFieldSave(
+                        UtilMetadata.genPipeColumn(2, 13),
+                        getObjects(programType)
+                );
+            }
+
+            @Override
+            public String requiredPos() {
+                ProgramType programType = ProgramType.PPMPK;
+                return UtilMetadata.genPipeRow(getObjects(programType));
+            }
+        }
+    }
 }

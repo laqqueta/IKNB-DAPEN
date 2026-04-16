@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.*;
 import java.util.Map.Entry;
 
+import id.go.ojk.client.service.ReferenceConfig;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.net.util.ToBigDecimal;
 import org.apache.commons.net.util.ToStringList;
@@ -320,6 +321,10 @@ public class SubmissionFormat {
 	public void setSavePos(String savePos) {
 		this.savePos = savePos;
 	}
+
+	public void setSavePos(ReferenceConfig referenceConfig) {
+		this.savePos = referenceConfig.savePos();
+	}
 	
 	public String getSavePosForm() {
 		return savePosForm;
@@ -327,6 +332,10 @@ public class SubmissionFormat {
 	
 	public void setSavePosForm(String savePosForm) {
 		this.savePosForm = savePosForm;
+	}
+
+	public void setSavePosForm(ReferenceConfig referenceConfig) {
+		this.savePosForm = referenceConfig.savePosForm();
 	}
 	
 	public String getRequiredPos() {
@@ -336,13 +345,21 @@ public class SubmissionFormat {
 	public void setRequiredPos(String requiredPos) {
 		this.requiredPos = requiredPos;
 	}
-	
+
+	public void setRequiredPos(ReferenceConfig referenceConfig) {
+		this.requiredPos = referenceConfig.requiredPos();
+	}
+
 	public String getFieldSavePos() {
 		return fieldSavePos;
 	}
-	
+
 	public void setFieldSavePos(String fieldSavePos) {
 		this.fieldSavePos = fieldSavePos;
+	}
+
+	public void setFieldSavePos(ReferenceConfig referenceConfig) {
+		this.fieldSavePos = referenceConfig.saveFieldPos();
 	}
 	
 	public Integer getMinRow() {
@@ -957,6 +974,10 @@ public class SubmissionFormat {
 
 	public void setUniquePos(String uniquePos) {
 		this.uniquePos = uniquePos;
+	}
+
+	public void setUniquePos(ReferenceConfig referenceConfig) {
+		this.uniquePos = referenceConfig.uniquePos();
 	}
 	
 	public static void setHeaders(String[] headers) {

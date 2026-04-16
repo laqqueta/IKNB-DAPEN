@@ -11,7 +11,6 @@ import id.go.ojk.module.lblt.dppk.reference.ER7013PosLtlbDppkInsp;
 import id.go.ojk.module.lblt.dppk.validations.E7013InspValidationsConfig;
 import id.go.ojk.util.constants.ProgramType;
 import id.go.ojk.util.constants.SectorType;
-import id.go.ojk.util.metadata.field.base.BaseMetadataField;
 import id.go.ojk.util.metadata.field.lblt.ILbltFieldMetadata;
 import id.go.ojk.util.metadata.field.lblt.LbltMetadataField;
 import id.go.ojk.util.metadata.submission.SubmissionConfig;
@@ -35,52 +34,36 @@ import static id.go.ojk.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0013Insp implements ILbltFieldMetadata {
 
-    FLAG(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(0, null, "Flag", sv(O, 3, 3, alfaNumeric).confConstant("D01"))
     ),
-    KODE_KOMPONEN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(1, null, "Kode Komponen", sv(O, 10, 10, refTable)
                     .confReference(EHeaderMetadataPpmpk.R7013Insp.getObject())
                     .confRegex(SimpleValidation.patternAlfaNumeric))
     ),
-    NAMA_PIHAK(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    NAMA_PIHAK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(2, null, "Nama Pihak", sv(O, 1, 100, freeText)
-                    .confConditionalRequired(E7013InspValidationsConfig))
+                    .confConditionalRequired(E7013InspValidationsConfig.CR_EXIST_POS_M))
     ),
-    INVESTASI_JENIS(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    INVESTASI_JENIS(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(3, null, "Investasi Jenis", sv(O, 1, 100, freeText)
-                    .confConditionalRequired(E7013InspValidationsConfig))
+                    .confConditionalRequired(E7013InspValidationsConfig.CR_EXIST_POS_M))
     ),
-    INVESTASI_JUMLAH(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    INVESTASI_JUMLAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(4, null, "Investasi Jumlah", sv(O, 1, 18, numeric))
     ),
-    INVESTASI_PERSENTASE_TERHADAP_TOTAL_INVESTASI(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    INVESTASI_PERSENTASE_TERHADAP_TOTAL_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(5, null, "Investasi Persentase Terhadap Total Investasi", sv(O, 4, 6, numericDot)
-                    .confConditionalRequired(E7013InspValidationsConfig))
+                    .confConditionalRequired(E7013InspValidationsConfig.CR_EXIST_POS_M))
     ),
-    BATASAN_DALAM_ARAHAN_INVESTASI(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    BATASAN_DALAM_ARAHAN_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(6, null, "Batasan Dalam Arahan Investasi", sv(O, 1, 18, numeric)
-                    .confConditionalRequired(E7013InspValidationsConfig))
+                    .confConditionalRequired(E7013InspValidationsConfig.CR_EXIST_POS_M))
     ),
-    BATASAN_INVESTASI_SESUAI_KETENTUAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPMPM),
+    BATASAN_INVESTASI_SESUAI_KETENTUAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(7, null, "Batasan Investasi Sesuai Ketentuan", sv(O, 1, 18, numeric)
-                    .confConditionalRequired(E7013InspValidationsConfig))
+                    .confConditionalRequired(E7013InspValidationsConfig.CR_EXIST_POS_O))
     ),
     ;
 
@@ -131,7 +114,7 @@ public enum Dppk0013Insp implements ILbltFieldMetadata {
         FIELD_KONVEN.setProgramType(ProgramType.PPMPK);
         return new SubmissionConfig(reportCode)
                 .config()
-                .setRequiredPos(ER7013PosLtlbDppkInsp.getRequiredPos())
+                .setReferenceConfigs(ER7013PosLtlbDppkInsp.Configs.REF_CONFIG_PPMPK)
                 .setSubmissionFormat(getSubmissionFormatConfig(KONVENSIONAL, reportCode))
                 .setSubmissionField(FIELD_KONVEN.getFields())
                 .setSegmentValidations(E7013InspValidationsConfig.VALIDATION_METADATA)
