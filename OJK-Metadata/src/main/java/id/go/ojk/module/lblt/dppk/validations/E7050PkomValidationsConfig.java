@@ -21,6 +21,8 @@ import java.util.function.Supplier;
 
 import static id.go.ojk.module.lblt.dppk.reference.ER7049PosLtlbDppkKndr.R_KNDR000000;
 import static id.go.ojk.module.lblt.dppk.reference.ER7049PosLtlbDppkKndr.R_KNDR010000;
+import static id.go.ojk.module.lblt.dppk.reference.ER7050PosLtlbDppkPkom.R_PKOM000000;
+import static id.go.ojk.module.lblt.dppk.reference.ER7050PosLtlbDppkPkom.R_PKOM010000;
 import static id.go.ojk.util.FieldUtil.programs;
 import static id.go.ojk.util.constants.ProgramType.PPMPK;
 
@@ -28,17 +30,17 @@ import static id.go.ojk.util.constants.ProgramType.PPMPK;
 public enum E7050PkomValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
     SG_EQUAL_FORMULA(programs(PPMPK),
-            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(5, 7), R_KNDR000000.key, R_KNDR010000.key,
-                    UtilMetadata.genMessageTotal(R_KNDR000000.value, R_KNDR010000.value))),
+            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(4, 6), R_PKOM000000.key, R_PKOM010000.key,
+                    UtilMetadata.genMessageTotal(R_PKOM000000.value, R_PKOM010000.value))),
 
     FV_EQUAL_NILAI_BUKU(programs(PPMPK),
-            () -> UtilFieldValidation.genEqualsExceptPosFormula("5-6", R_KNDR000000.key)),
+            () -> UtilFieldValidation.genEqualsExceptPosFormula("5-6", R_PKOM000000.key)),
 
     CR_EXISTS_POS_M(programs(PPMPK),
-            () -> UtilFieldConditional.genExistPos("N", "M", R_KNDR000000.key)),
+            () -> UtilFieldConditional.genExistPos("N", "M", R_PKOM000000.key)),
 
     CR_EXISTS_POS_O(programs(PPMPK),
-            () -> UtilFieldConditional.genExistPos("N", "O", R_KNDR000000.key)),
+            () -> UtilFieldConditional.genExistPos("N", "O", R_PKOM000000.key)),
 
     ;
 

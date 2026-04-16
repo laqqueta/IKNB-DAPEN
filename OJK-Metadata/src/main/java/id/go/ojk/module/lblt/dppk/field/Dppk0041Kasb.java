@@ -48,17 +48,17 @@ public enum Dppk0041Kasb implements ILbltFieldMetadata {
                     sv(C, 1, 100, freeText)
                             .confConditionalRequired(E7041KasbValidationsConfig.CR_EXISTS_POS_O))
     ),
+    CABANG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+            sf(3, null, "Cabang",
+                    sv(C, 1, 100, freeText)
+                            .confConditionalRequired(E7041KasbValidationsConfig.CR_EXISTS_POS_O))
+    ),
     KODE_BANK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
-            sf(3, null, "Kode Bank",
+            sf(4, null, "Kode Bank",
                     sv(C, 1, 6, refTable)
                             .confConditionalRequired(E7041KasbValidationsConfig.CR_EXISTS_POS_M)
                             .confRegex(SimpleValidation.patternAlfaNumeric)
                             .confReference(EHeaderMetadataShared.R011.getObject()))
-    ),
-    CABANG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
-            sf(4, null, "Cabang",
-                    sv(C, 1, 100, freeText)
-                            .confConditionalRequired(E7041KasbValidationsConfig.CR_EXISTS_POS_O))
     ),
     NO_REKENING(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(5, null, "No Rekening",

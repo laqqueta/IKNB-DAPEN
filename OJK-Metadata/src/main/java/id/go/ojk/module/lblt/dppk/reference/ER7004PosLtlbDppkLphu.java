@@ -47,8 +47,8 @@ public enum ER7004PosLtlbDppkLphu implements IObject<KeyValueString> {
 
     ;
 
-    private final String key;
-    private final String value;
+    public final String key;
+    public final String value;
 
     public static List<KeyValueString> getObjects() {
         List<KeyValueString> res = new ArrayList<>();

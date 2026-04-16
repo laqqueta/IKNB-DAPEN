@@ -50,7 +50,7 @@ public enum Dppk0061Iur implements ILbltFieldMetadata {
     ),
     IURAN_JATUH_TEMPO_NORMAL_PESERTA_PERSEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(4, null, "Iuran Jatuh Tempo - Iuran Normal Peserta %",
-                    sv(C, 1, 18, numeric)
+                    sv(C, 4, 18, numericDot)
                             .confConditionalRequired(E7061IurValidationsConfig.CR_EXISTS_POS_M))
     ),
     IURAN_JATUH_TEMPO_NORMAL_PESERTA_JUMLAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
@@ -62,7 +62,7 @@ public enum Dppk0061Iur implements ILbltFieldMetadata {
                             .confConditionalRequired(E7061IurValidationsConfig.CR_EXISTS_POS_M))
     ),
     IURAN_JATUH_TEMPO_NORMAL_PEMBERI_KERJA_JUMLAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
-            sf(7, null, "Iuran Jatuh Tempo - Iuran Normal Pemberi Kerja Jumlah", sv(M, 4, 6, numericDot))
+            sf(7, null, "Iuran Jatuh Tempo - Iuran Normal Pemberi Kerja Jumlah", sv(M, 1, 18, numeric))
     ),
     IURAN_JATUH_TEMPO_SUKARELA_PESERTA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(8, null, "Iuran Jatuh Tempo - Iuran Sukarela Peserta", sv(M, 1, 18, numeric))

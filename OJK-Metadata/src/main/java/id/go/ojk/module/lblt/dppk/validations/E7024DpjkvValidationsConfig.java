@@ -40,10 +40,10 @@ public enum E7024DpjkvValidationsConfig implements ILbltMetadataValidation, IVal
             () -> UtilFieldValidation.genEqualsPercentageExceptPosFormula("8/7", R_DPJKV000000.key)),
 
     CR_EXISTS_DPJKA000000_M(programs(PPMPK),
-            () -> UtilFieldConditional.genExistPos("N", "M", R_DPJKA000000.key)),
+            () -> UtilFieldConditional.genExistPos("N", "M", R_DPJKV000000.key)),
 
     CR_EXISTS_DPJKA000000_O(programs(PPMPK),
-            () -> UtilFieldConditional.genExistPos("N", "O", R_DPJKA000000.key)),
+            () -> UtilFieldConditional.genExistPos("N", "O", R_DPJKV000000.key)),
 
     CR_EQUAL_NAMA_PENGELOLA(programs(PPMPK),
             () -> UtilFieldConditional.genEqualsExceptPos("O", "M", "13",

@@ -318,9 +318,9 @@ public enum E7003NrcValidationsConfig implements ILbltMetadataValidation, IValid
     public static final BaseMetadataValidation<E7003NrcValidationsConfig> VALIDATION_METADATA =
             new LbltMetadataValidation<>(E7003NrcValidationsConfig.class, PPMPK);
 
-    private static SegmentValidation genEqualsForm(String selectField, String comparatorField) {
+    private static SegmentValidation genEqualsForm(String selectField, String formComparatorField) {
         return UtilSegmentValidation.genEqualsForm(selectField, ER7003PosLtlbDppkNrc.R_NRC0104010000.getObject().getKey(),
-                EFormLaporanBulananTahunan.LTLB_LAN.getCode(), comparatorField,
+                EFormLaporanBulananTahunan.LTLB_LAN.getCode(), formComparatorField,
                 ER7003PosLtlbDppkNrc.R_NRC0104010000.getObject().getKey());
     }
 

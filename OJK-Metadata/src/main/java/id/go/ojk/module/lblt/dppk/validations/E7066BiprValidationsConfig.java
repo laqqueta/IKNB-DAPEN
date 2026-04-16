@@ -20,6 +20,8 @@ import java.util.function.Supplier;
 
 import static id.go.ojk.module.lblt.dppk.reference.ER7065PosLtlbDppkBopr.R_BOPR000000;
 import static id.go.ojk.module.lblt.dppk.reference.ER7065PosLtlbDppkBopr.R_BOPR010000;
+import static id.go.ojk.module.lblt.dppk.reference.ER7066PosLtlbDppkBipr.R_BIPR000000;
+import static id.go.ojk.module.lblt.dppk.reference.ER7066PosLtlbDppkBipr.R_BIPR010000;
 import static id.go.ojk.util.FieldUtil.programs;
 import static id.go.ojk.util.constants.ProgramType.PPMPK;
 
@@ -27,14 +29,14 @@ import static id.go.ojk.util.constants.ProgramType.PPMPK;
 public enum E7066BiprValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
     SG_EQUAL_FORMULA(programs(PPMPK),
-            () -> UtilSegmentValidation.genEqualsFormula("3", R_BOPR000000.key, R_BOPR010000.key,
-                    UtilMetadata.genMessageTotal(R_BOPR000000.value, R_BOPR010000.value))),
+            () -> UtilSegmentValidation.genEqualsFormula("3", R_BIPR000000.key, R_BIPR010000.key,
+                    UtilMetadata.genMessageTotal(R_BIPR000000.value, R_BIPR010000.value))),
 
     CR_EXISTS_POS_M(programs(PPMPK),
-            () -> UtilFieldConditional.genExistPos("N", "M", R_BOPR000000.key)),
+            () -> UtilFieldConditional.genExistPos("N", "M", R_BIPR000000.key)),
 
     CR_EXISTS_POS_O(programs(PPMPK),
-            () -> UtilFieldConditional.genExistPos("N", "O", R_BOPR000000.key)),
+            () -> UtilFieldConditional.genExistPos("N", "O", R_BIPR000000.key)),
 
     ;
 

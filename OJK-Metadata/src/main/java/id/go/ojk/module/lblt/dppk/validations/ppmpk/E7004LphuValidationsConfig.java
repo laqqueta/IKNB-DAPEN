@@ -4,16 +4,16 @@ import id.go.ojk.client.model.config.validation.conditional.ConditionalRequired;
 import id.go.ojk.client.model.config.validation.field.FieldValidation;
 import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
 import id.go.ojk.client.model.validation.IValidation;
+import id.go.ojk.client.validation.IValidationConverter;
 import id.go.ojk.conf.client.UtilFieldValidation;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
 import id.go.ojk.conf.client.field.reference.ER1255JenisManfaat;
+import id.go.ojk.conf.client.field.reference.ER1263BebanInvestasi;
+import id.go.ojk.conf.client.field.reference.ER1264BebanOperasinal;
 import id.go.ojk.module.lblt.dppk.form.EFormLaporanBulananTahunan;
-import id.go.ojk.module.lblt.dppk.reference.ER7004PosLtlbDppkLphu;
-import id.go.ojk.module.lblt.dppk.reference.ER7009PosLtlbDppkRoi;
-import id.go.ojk.util.FieldUtil;
+import id.go.ojk.module.lblt.dppk.reference.*;
 import id.go.ojk.util.constants.ProgramType;
-import id.go.ojk.client.validation.IValidationConverter;
 import id.go.ojk.util.metadata.validation.ValidationConverter;
 import id.go.ojk.util.metadata.validation.base.BaseMetadataValidation;
 import id.go.ojk.util.metadata.validation.lblt.ILbltMetadataValidation;
@@ -23,12 +23,84 @@ import lombok.AllArgsConstructor;
 import java.util.EnumSet;
 import java.util.function.Supplier;
 
+import static id.go.ojk.module.lblt.dppk.reference.ER7004PosLtlbDppkLphu.*;
+import static id.go.ojk.util.FieldUtil.programs;
 import static id.go.ojk.util.constants.ProgramType.PPMPK;
 
 @AllArgsConstructor
 public enum E7004LphuValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    FV_EQUALS(FieldUtil.programs(PPMPK),
+    SG_SUM_IF_MULTI_BINV(programs(PPMPK),
+            () -> genValidationSumIfMultiCriteria(UtilMetadata.genPipeRow(ER7004PosLtlbDppkLphu.getObjects(), 6, 7),
+                    EFormLaporanBulananTahunan.LTLB_BINV.getCode(), ER7064PosLtlbDppkBinv.R_BINV010000.getObject().getKey(),
+                    ER1263BebanInvestasi.getPipedReferenceKeys(), ER1263BebanInvestasi.getPipedReferenceKeyValues(),
+                    "BINV|Jumlah|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain|Jenis Beban Investasi")),
+
+    SG_SUM_IF_MULTI_BOPR(programs(PPMPK),
+            () -> genValidationSumIfMultiCriteria(UtilMetadata.genPipeRow(ER7004PosLtlbDppkLphu.getObjects(), 14, 20),
+                    EFormLaporanBulananTahunan.LTLB_BOPR.getCode(), ER7065PosLtlbDppkBopr.R_BOPR010000.getObject().getKey(),
+                    ER1264BebanOperasinal.getPipedReferenceKeys(), ER1264BebanOperasinal.getPipedReferenceKeyValues(),
+                    "BOPR|Jumlah|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain|Jenis Beban Operasional")),
+
+    SG_SUM_IF_PDIN(programs(PPMPK),
+            () -> genValidationSumIf(R_LPHU0604000000.key,
+                    EFormLaporanBulananTahunan.LTLB_PDIN.getCode(), ER7062PosLtlbDppkPdin.R_PDIN010000.getObject().getKey(),
+                    "PDIN|Jumlah|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain")),
+
+    SG_SUM_IF_BIPR(programs(PPMPK),
+            () -> genValidationSumIf(R_LPHU0605000000.key,
+                    EFormLaporanBulananTahunan.LTLB_BIPR.getCode(), ER7066PosLtlbDppkBipr.R_BIPR010000.getObject().getKey(),
+                    "BIPR|Jumlah|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain")),
+
+    SG_SUM_IF_PPH(programs(PPMPK),
+            () -> genValidationSumIf(R_LPHU0800000000.key,
+                    EFormLaporanBulananTahunan.LTLB_PPH.getCode(), ER7067PosLtlbDppkPph.R_PPH010000.getObject().getKey(),
+                    "PPH|Jumlah|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain")),
+    
+    SG_ADDITION_1(programs(PPMPK),
+            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 12), R_LPHU0106000000.key, UtilMetadata.genPlusRow(ER7004PosLtlbDppkLphu.getObjects(), 0, 4),
+                    UtilMetadata.genMessage(R_LPHU0106000000.value, UtilMetadata.genPlusDesc(ER7004PosLtlbDppkLphu.getObjects(), 0, 4)))),
+
+    SG_ADDITION_2(programs(PPMPK),
+            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 12), R_LPHU0300000000.key, UtilMetadata.genPlusRow(ER7004PosLtlbDppkLphu.getObjects(), 6, 11),
+                    UtilMetadata.genMessage(R_LPHU0300000000.value, UtilMetadata.genPlusDesc(ER7004PosLtlbDppkLphu.getObjects(), 6, 11)))),
+
+    SG_ADDITION_3(programs(PPMPK),
+            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 12), R_LPHU0508000000.key, UtilMetadata.genPlusRow(ER7004PosLtlbDppkLphu.getObjects(), 14, 20),
+                    UtilMetadata.genMessage(R_LPHU0508000000.value, UtilMetadata.genPlusDesc(ER7004PosLtlbDppkLphu.getObjects(), 14, 20)))),
+
+    SG_ADDITION_4(programs(PPMPK),
+            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 12), R_LPHU0606000000.key, UtilMetadata.genPlusRow(ER7004PosLtlbDppkLphu.getObjects(), 22, 25) + "-LPHU0605000000",
+                    UtilMetadata.genMessage(R_LPHU0606000000.value, UtilMetadata.genPlusDesc(ER7004PosLtlbDppkLphu.getObjects(), 22, 25) + "-LPHU0605000000"))),
+
+    SG_SUBSTRACTION_1(programs(PPMPK),
+            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 12), R_LPHU0400000000.key, UtilMetadata.genMinusRow(ER7004PosLtlbDppkLphu.getObjects(), new int[]{5, 12}),
+                    UtilMetadata.genMessage(R_LPHU0400000000.value, UtilMetadata.genMinusDesc(ER7004PosLtlbDppkLphu.getObjects(), new int[]{5, 12})))),
+    
+    SG_SUBSTRACTION_2(programs(PPMPK),
+            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 12), R_LPHU0900000000.key, UtilMetadata.genMinusRow(ER7004PosLtlbDppkLphu.getObjects(), new int[]{28, 29}),
+                    UtilMetadata.genMessage(R_LPHU0900000000.value, UtilMetadata.genMinusDesc(ER7004PosLtlbDppkLphu.getObjects(), new int[]{28, 29})))),
+    
+    SG_MIX_ADD_SUB(programs(PPMPK),
+            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 12), R_LPHU0606000000.key, UtilMetadata.genPlusRow(getObjects(), 22, 25) + "-LPHU0605000000",
+                    UtilMetadata.genMessage(R_LPHU0606000000.value, UtilMetadata.genPlusDesc(getObjects(), 22, 25) + "-LPHU0605000000"))),
+    
+    SG_ROW_VALIDATION_8A(programs(PPMPK),
+            () -> genRowValidation(R_LPHU0101000000.key, "2")),
+
+    SG_ROW_VALIDATION_8B(programs(PPMPK),
+            () -> genRowValidation(R_LPHU0102000000.key, "3")),
+
+    SG_ROW_VALIDATION_8C(programs(PPMPK),
+            () -> genRowValidation(R_LPHU0103000000.key, "4")),
+
+    SG_ROW_VALIDATION_8D(programs(PPMPK),
+            () -> genRowValidation(R_LPHU0104000000.key, "5")),
+
+    SG_ROW_VALIDATION_8E(programs(PPMPK),
+            () -> genRowValidation(R_LPHU0105000000.key, "6")),
+    
+    FV_EQUALS(programs(PPMPK),
             () ->  UtilFieldValidation.genEqualsExceptPosFormula(UtilMetadata.genPlusColumn(2, 11),
                     UtilMetadata.genPipeRow(ER7004PosLtlbDppkLphu.getObjects(), new int[]{5, 12, 13, 21, 27, 28, 30}), 2))
 
