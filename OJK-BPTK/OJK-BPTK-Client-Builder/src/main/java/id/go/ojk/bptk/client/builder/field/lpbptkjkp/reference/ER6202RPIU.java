@@ -101,15 +101,15 @@ public enum ER6202RPIU implements IObject<KeyValueString> {
   }
 
   public static FieldValidation genValidationTotalKelompokUpah() {
-    return UtilFieldValidation.genEqualsExceptPosFormula(UtilMetadata.genPlusColumn(9, 13), RPIU0200000000.key);
+    return UtilFieldValidation.genEqualsExceptPosFormula(UtilMetadata.genPlusColumn(9, 13), RPIU0200000000.key, 2);
   }
 
   public static FieldValidation genValidationTotalPembebananIuran() {
-    return UtilFieldValidation.genEqualsExceptPosFormula(UtilMetadata.genPlusColumn(15, 17), RPIU0200000000.key);
+    return UtilFieldValidation.genEqualsExceptPosFormula(UtilMetadata.genPlusColumn(15, 17), RPIU0200000000.key, 2);
   }
 
   public static FieldValidation genValidationIuranYangDiterima() {
-    return UtilFieldValidation.genEqualsExceptPosFormula(UtilMetadata.genPlusColumn(19, 21), RPIU0200000000.key);
+    return UtilFieldValidation.genEqualsExceptPosFormula(UtilMetadata.genPlusColumn(19, 21), RPIU0200000000.key, 2);
   }
 
   public static FieldValidation genDati2Validation() {

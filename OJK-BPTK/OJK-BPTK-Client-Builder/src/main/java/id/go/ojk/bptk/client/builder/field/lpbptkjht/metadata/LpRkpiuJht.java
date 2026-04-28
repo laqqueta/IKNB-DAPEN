@@ -35,8 +35,11 @@ public class LpRkpiuJht extends BaseMetadata {
     res.setSavePos(ER6105RKPIU.genFieldSave());
     res.setSavePosForm(ER6105RKPIU.genFieldSaveForm());
 
+    res.addSegmentValidations(ER6105RKPIU.genLengthValidation20());
+    res.addSegmentValidations(ER6105RKPIU.genLengthValidation23());
     res.addSegmentValidations(ER6105RKPIU.genRegexValidationNumeric());
     res.addSegmentValidations(ER6105RKPIU.genRegexValidationNumericNegative());
+    res.addSegmentValidations(ER6105RKPIU.genRegexValidationNumericDotNegative());
 
     res.addSegmentValidations(ER6105RKPIU.genValidationTotalKelompokUsaha());
     res.addSegmentValidations(ER6105RKPIU.genValidationTotalJenisKelamin());
@@ -76,13 +79,13 @@ public class LpRkpiuJht extends BaseMetadata {
     fs.add(sf(1, null, "Kode Komponen/Baris", sv(M, 15, 20, refTable /*Huruf Angka*/)
         .confRegex(patternAlfaNumeric)
         .confReference(EHeaderMetadataLpbptkjht.R6105RKPIU.getObject())));
-    fs.add(sf(2, null, "Pemberi Kerja Penerima Upah", sv(M, 1, 20, all2)));
-    fs.add(sf(3, null, "Peserta Penerima Upah", sv(M, 1, 20, all2)));
-    fs.add(sf(4, null, "Wadah / Mitra Usaha Bukan Penerima Upah", sv(M, 1, 20, all2)));
-    fs.add(sf(5, null, "Peserta Bukan Penerima Upah", sv(M, 1, 20, all2)));
-    fs.add(sf(6, null, "Total Pemberi Kerja / Wadah / Proyek", sv(M, 1, 20, all2))
+    fs.add(sf(2, null, "Pemberi Kerja Penerima Upah", sv(M, 1, Integer.MAX_VALUE, all2)));
+    fs.add(sf(3, null, "Peserta Penerima Upah", sv(M, 1, Integer.MAX_VALUE, all2)));
+    fs.add(sf(4, null, "Wadah / Mitra Usaha Bukan Penerima Upah", sv(M, 1, Integer.MAX_VALUE, all2)));
+    fs.add(sf(5, null, "Peserta Bukan Penerima Upah", sv(M, 1, Integer.MAX_VALUE, all2)));
+    fs.add(sf(6, null, "Total Pemberi Kerja / Wadah / Proyek", sv(M, 1, Integer.MAX_VALUE, all2))
         .addFieldValidations(ER6105RKPIU.genValidationTotalPemberiKerja()));
-    fs.add(sf(7, null, "Total Peserta", sv(M, 1, 20, all2))
+    fs.add(sf(7, null, "Total Peserta", sv(M, 1, Integer.MAX_VALUE, all2))
         .addFieldValidations(ER6105RKPIU.genValidationTotalPeserta()));
     return res;
   }
