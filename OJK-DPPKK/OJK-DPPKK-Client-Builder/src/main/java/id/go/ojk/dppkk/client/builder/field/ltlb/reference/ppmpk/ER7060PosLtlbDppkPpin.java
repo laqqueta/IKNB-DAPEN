@@ -9,11 +9,13 @@ import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
+@Getter
 public enum ER7060PosLtlbDppkPpin implements IObject<KeyValueString> {
 
     R_PPIN010000("PPIN010000", "Detail"),
@@ -51,7 +53,7 @@ public enum ER7060PosLtlbDppkPpin implements IObject<KeyValueString> {
     }
 
     public static String getFieldFormSave() {
-        return UtilMetadata.genFieldSave("3|5", getObjects());
+        return UtilMetadata.genFieldSave("3|4|5", getObjects());
     }
 
     public static ConditionalRequired genConditionForTotal() {

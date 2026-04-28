@@ -53,6 +53,9 @@ public enum ER7002PosLtlbDppkLpan implements IObject<KeyValueString> {
     private final String value;
     private final EnumSet<JenisProgram> jenisProgram;
 
+    private static final String PPIN = "PPIN";
+    private static final String ROI = "ROI";
+
     public KeyValueString getObject() {
         return new KeyValueString(key, value, new String[] {});
     }
@@ -94,4 +97,23 @@ public enum ER7002PosLtlbDppkLpan implements IObject<KeyValueString> {
                 .collect(Collectors.toList());
     }
 
+    public static SegmentValidation genValidatonFormPPIN() {
+      KeyValueString selectPosCode = R_LPAN0103000000.getObject();
+      String selectColumn = "12";
+      String comparatorColumn = "4";
+      String comparatorPosCode = PPIN + ER7060PosLtlbDppkPpin.R_PPIN000000.getKey();
+      String errMsg = selectPosCode.getValue() + " | Total Peningkatan / Penurunan pada form " + PPIN;
+      return UtilSegmentValidation.genEqualsFormColumCalculation(selectColumn, selectPosCode.getKey(), comparatorColumn,
+        comparatorPosCode, errMsg, 2);
+    }
+
+    public static SegmentValidation genValidatonFormROI() {
+      KeyValueString selectPosCode = R_LPAN0201000000.getObject();
+      String selectColumn = "12";
+      String comparatorColumn = "8";
+      String comparatorPosCode = ROI + ER7009PosLtlbDppkRoi.R_ROI2100000000.getKey();
+      String errMsg = selectPosCode.getValue() + " | Total Beban Investasi pada form " + ROI;
+      return UtilSegmentValidation.genEqualsFormColumCalculation(selectColumn, selectPosCode.getKey(), comparatorColumn,
+        comparatorPosCode, errMsg, 2);
+    }
 }

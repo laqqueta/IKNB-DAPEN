@@ -30,6 +30,7 @@ public class Ltlb0010ROI extends BaseMetadata {
                 extension, 21, 21);
 
         res.setSavePos(ER7009PosLtlbDppkRoi.genFieldSave());
+        res.setSavePosForm(ER7009PosLtlbDppkRoi.genFieldSaveForm());
         res.setRequiredPos(ER7009PosLtlbDppkRoi.getRequiredPos());
 
 //        res.addSegmentValidations(ER7009PosLtlbDppkRoi.genValidationSumPosColEqual());

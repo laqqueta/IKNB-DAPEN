@@ -38,6 +38,9 @@ public class Ltlb0003LPAN extends BaseMetadata {
 //        ER7002PosLtlbDppkLpan.getPpmpkSegmentValidations()
 //                .forEach(res::addSegmentValidations);
 
+        res.addSegmentValidations(ER7002PosLtlbDppkLpan.genValidatonFormPPIN());
+        res.addSegmentValidations(ER7002PosLtlbDppkLpan.genValidatonFormROI());
+
         List<SubmissionField> fs = res.getFields();
 
         fs.add(sf(0, null, "Flag", sv(O, 3, 3, alfaNumeric).confConstant("D01")));
