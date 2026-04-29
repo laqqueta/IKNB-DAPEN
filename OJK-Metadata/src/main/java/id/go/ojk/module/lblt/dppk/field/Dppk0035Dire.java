@@ -19,10 +19,7 @@ import id.go.ojk.util.metadata.field.lblt.LbltMetadataField;
 import id.go.ojk.util.metadata.submission.SubmissionConfig;
 import lombok.AllArgsConstructor;
 
-import java.util.AbstractMap;
-import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -40,32 +37,32 @@ public enum Dppk0035Dire implements ILbltFieldMetadata {
     FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(0, null, "Flag",
                     sv(M, 3, 3, alfaNumeric)
-                    .confConstant("D01"))),
+                            .confConstant("D01"))),
 
     KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(1, null, "Kode Komponen",
                     sv(M, 10, 10, refTable)
-                    .confRegex(SimpleValidation.patternAlfaNumeric))),
+                            .confRegex(SimpleValidation.patternAlfaNumeric))),
 
     KODE(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(2, null, "Kode",
                     sv(C, 1, 20, alfaNumeric)
-                    .confConditionalRequired(E7035DireValidationsConfig.CR_EXISTS_POS_M))),
+                            .confConditionalRequired(E7035DireValidationsConfig.CR_EXISTS_POS_M))),
 
     NAMA_PRODUK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(3, null, "Nama Produk",
                     sv(C, 1, 100, freeText)
-                    .confConditionalRequired(E7035DireValidationsConfig.CR_EXISTS_POS_M))),
+                            .confConditionalRequired(E7035DireValidationsConfig.CR_EXISTS_POS_M))),
 
     MANAJER_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(4, null, "Manajer Investasi",
                     sv(C, 1, 250, freeText)
-                    .confConditionalRequired(E7035DireValidationsConfig.CR_EXISTS_POS_M))),
+                            .confConditionalRequired(E7035DireValidationsConfig.CR_EXISTS_POS_M))),
 
     TANGGAL_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(5, null, "Tanggal Perolehan",
                     sv(C, 8, 8, date)
-                    .confConditionalRequired(E7035DireValidationsConfig.CR_EXISTS_POS_M))),
+                            .confConditionalRequired(E7035DireValidationsConfig.CR_EXISTS_POS_M))),
 
     JUMLAH_UNIT(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(6, null, "Jumlah Unit",
@@ -82,62 +79,47 @@ public enum Dppk0035Dire implements ILbltFieldMetadata {
     SELISIH_PENILAIAN_INVESTASI_NILAI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(9, null, "Selisih Penilaian Investasi Nilai",
                     sv(M, 1, 18, numeric))
-            .addFieldValidations(E7035DireValidationsConfig.FV_EQUAL_NILAI_INVESTASI)),
+                    .addFieldValidations(E7035DireValidationsConfig.FV_EQUAL_NILAI_INVESTASI)),
     SELISIH_PENILAIAN_INVESTASI_PERSEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(10, null, "Selisih Penilaian Investasi %",
                     sv(C, 4, 6, numericDot)
-                    .confConditionalRequired(E7035DireValidationsConfig.CR_EXISTS_POS_M))
-            .addFieldValidations(E7035DireValidationsConfig.FV_EQUAL_PERSENTASE_INVESTASI)),
+                            .confConditionalRequired(E7035DireValidationsConfig.CR_EXISTS_POS_M))
+                    .addFieldValidations(E7035DireValidationsConfig.FV_EQUAL_PERSENTASE_INVESTASI)),
     MANFAAT_PENSIUN_MANFAAT_PENSIUN_LAINNYA_MANFAAT_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(11, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain",
                     sv(C, 1, 6, refTable)
-                    .confConditionalRequired(E7035DireValidationsConfig.CR_EXISTS_POS_M)
-                    .confRegex(SimpleValidation.patternAlfaNumeric)
-                    .confReference(EHeaderMetadataSharedLkbt.R009.getObject()))),
+                            .confConditionalRequired(E7035DireValidationsConfig.CR_EXISTS_POS_M)
+                            .confRegex(SimpleValidation.patternAlfaNumeric)
+                            .confReference(EHeaderMetadataSharedLkbt.R009.getObject()))),
 
     PENGELOLAAN_SWAKELOLA_KPD(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(12, null, "Pengelolaan Swakelola/ KPD",
                     sv(C, 1, 6, refTable)
-                    .confConditionalRequired(E7035DireValidationsConfig.CR_EXISTS_POS_M)
-                    .confRegex(SimpleValidation.patternAlfa)
-                    .confReference(EHeaderMetadataSharedLkbt.R006.getObject()))),
+                            .confConditionalRequired(E7035DireValidationsConfig.CR_EXISTS_POS_M)
+                            .confRegex(SimpleValidation.patternAlfa)
+                            .confReference(EHeaderMetadataSharedLkbt.R006.getObject()))),
 
     PENGELOLAAN_NAMA_MANAJER_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(13, null, "Pengelolaan Nama Manajer Investasi",
                     sv(C, 1, 250, freeText)
-                    .confConditionalRequired(E7035DireValidationsConfig.CR_EXISTS_POS_M)
-                    .confConditionalRequired(E7035DireValidationsConfig.CR_NAMA_PENGELOLA))),
+                            .confConditionalRequired(E7035DireValidationsConfig.CR_EXISTS_POS_M)
+                            .confConditionalRequired(E7035DireValidationsConfig.CR_NAMA_PENGELOLA))),
 
     KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(14, null, "Keterangan",
                     sv(C, 1, 250, freeText)
-                    .confConditionalRequired(E7035DireValidationsConfig.CR_EXISTS_POS_O)));
+                            .confConditionalRequired(E7035DireValidationsConfig.CR_EXISTS_POS_O)));
 
     private final EnumSet<SectorType> sectorType;
     private final EnumSet<ProgramType> programType;
     private final SubmissionField field;
-
-    @Override
-    public SubmissionField getField() {
-        return field;
-    }
-
-    @Override
-    public EnumSet<SectorType> getSectorTypes() {
-        return sectorType;
-    }
-
-    @Override
-    public EnumSet<ProgramType> getProgramType() {
-        return programType;
-    }
 
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7035Dire.getObject()),
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7035Dire.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
-    public static final LbltMetadataField<Dppk0035Dire> FIELD_KONVEN = new LbltMetadataField<>(Dppk0035Dire.class, KONVENSIONAL, KODE_KOMPONEN_HEADERS);
+    public static final LbltMetadataField<Dppk0035Dire> FIELD_KONVEN = new LbltMetadataField<>(Dppk0035Dire.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
 
     public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, String reportCode) {
         EFormLaporanBulananTahunan FORM = EFormLaporanBulananTahunan.LTLB_DIRE;
@@ -169,5 +151,20 @@ public enum Dppk0035Dire implements ILbltFieldMetadata {
                 .setSegmentValidations(E7035DireValidationsConfig.VALIDATION_METADATA)
                 .build()
                 .get();
+    }
+
+    @Override
+    public SubmissionField getField() {
+        return field;
+    }
+
+    @Override
+    public EnumSet<SectorType> getSectorTypes() {
+        return sectorType;
+    }
+
+    @Override
+    public EnumSet<ProgramType> getProgramType() {
+        return programType;
     }
 }

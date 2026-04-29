@@ -95,6 +95,32 @@ public enum ER7008PosLtlbDppkRekinv implements IObject<KeyValueString> {
                 ProgramType programType = ProgramType.PPMPK;
                 return UtilMetadata.genPipeRow(getObjects(programType));
             }
+        },
+
+        REF_CONFIG_PPMPM {
+            @Override
+            public String savePos() {
+                ProgramType programType = ProgramType.PPMPM;
+                return UtilMetadata.genFieldSave(
+                        UtilMetadata.genPipeColumn(2, 13),
+                        getObjects(programType)
+                );
+            }
+
+            @Override
+            public String savePosForm() {
+                ProgramType programType = ProgramType.PPMPM;
+                return UtilMetadata.genFieldSave(
+                        UtilMetadata.genPipeColumn(2, 13),
+                        getObjects(programType)
+                );
+            }
+
+            @Override
+            public String requiredPos() {
+                ProgramType programType = ProgramType.PPMPM;
+                return UtilMetadata.genPipeRow(getObjects(programType));
+            }
         }
     }
 }

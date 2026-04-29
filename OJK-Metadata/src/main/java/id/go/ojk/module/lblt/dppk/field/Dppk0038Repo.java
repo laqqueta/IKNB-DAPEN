@@ -19,10 +19,7 @@ import id.go.ojk.util.metadata.field.lblt.LbltMetadataField;
 import id.go.ojk.util.metadata.submission.SubmissionConfig;
 import lombok.AllArgsConstructor;
 
-import java.util.AbstractMap;
-import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -148,21 +145,12 @@ public enum Dppk0038Repo implements ILbltFieldMetadata {
     private final EnumSet<ProgramType> programType;
     private final SubmissionField field;
 
-    @Override
-    public SubmissionField getField() { return field; }
-
-    @Override
-    public EnumSet<SectorType> getSectorTypes() { return sectorType; }
-
-    @Override
-    public EnumSet<ProgramType> getProgramType() { return programType; }
-
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7038Repo.getObject()),
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7038Repo.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
-    public static final LbltMetadataField<Dppk0038Repo> FIELD_KONVEN = new LbltMetadataField<>(Dppk0038Repo.class, KONVENSIONAL, KODE_KOMPONEN_HEADERS);
+    public static final LbltMetadataField<Dppk0038Repo> FIELD_KONVEN = new LbltMetadataField<>(Dppk0038Repo.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
 
     public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, String reportCode) {
         EFormLaporanBulananTahunan FORM = EFormLaporanBulananTahunan.LTLB_REPO;
@@ -194,5 +182,20 @@ public enum Dppk0038Repo implements ILbltFieldMetadata {
                 .setSegmentValidations(E7038RepoValidationsConfig.VALIDATION_METADATA)
                 .build()
                 .get();
+    }
+
+    @Override
+    public SubmissionField getField() {
+        return field;
+    }
+
+    @Override
+    public EnumSet<SectorType> getSectorTypes() {
+        return sectorType;
+    }
+
+    @Override
+    public EnumSet<ProgramType> getProgramType() {
+        return programType;
     }
 }

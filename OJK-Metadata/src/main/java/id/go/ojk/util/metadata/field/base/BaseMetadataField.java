@@ -14,9 +14,9 @@ public abstract class BaseMetadataField<T extends Enum<T> & IBaseFieldMetadata> 
 
     private final Class<T> enumClass;
 
-    private final SectorType sectorType;
+    private final List<SectorType> sectorType;
 
-    public BaseMetadataField(Class<T> enumClass, SectorType sectorType) {
+    public BaseMetadataField(Class<T> enumClass, List<SectorType> sectorType) {
         this.enumClass = enumClass;
         this.sectorType = sectorType;
     }
@@ -43,7 +43,8 @@ public abstract class BaseMetadataField<T extends Enum<T> & IBaseFieldMetadata> 
 
     protected Stream<SubmissionField> getfilteredFieldStream() {
         return enumValues().stream()
-                .filter(f -> f.getSectorTypes().contains(sectorType))
+                .filter(f -> f.getSectorTypes().stream()
+                        .anyMatch(sectorType::contains))
                 .map(IBaseFieldMetadata::getField);
     }
 

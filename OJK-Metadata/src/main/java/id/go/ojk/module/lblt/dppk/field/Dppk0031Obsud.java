@@ -1,5 +1,6 @@
 package id.go.ojk.module.lblt.dppk.field;
 
+import id.go.ojk.client.constant.ExtensionType;
 import id.go.ojk.client.model.config.SimpleValidation;
 import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
@@ -9,7 +10,6 @@ import id.go.ojk.module.lblt.dppk.form.EFormLaporanBulananTahunan;
 import id.go.ojk.module.lblt.dppk.header.EHeaderMetadataPpmpk;
 import id.go.ojk.module.lblt.dppk.header.EHeaderMetadataPpmpm;
 import id.go.ojk.module.lblt.dppk.header.EHeaderMetadataSharedLkbt;
-import id.go.ojk.client.constant.ExtensionType;
 import id.go.ojk.module.lblt.dppk.reference.ER7031PosLtlbDppkObsud;
 import id.go.ojk.module.lblt.dppk.validations.E7031ObsudValidationsConfig;
 import id.go.ojk.util.constants.ProgramType;
@@ -19,10 +19,7 @@ import id.go.ojk.util.metadata.field.lblt.LbltMetadataField;
 import id.go.ojk.util.metadata.submission.SubmissionConfig;
 import lombok.AllArgsConstructor;
 
-import java.util.AbstractMap;
-import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -157,27 +154,12 @@ public enum Dppk0031Obsud implements ILbltFieldMetadata {
     private final EnumSet<ProgramType> programType;
     private final SubmissionField field;
 
-    @Override
-    public SubmissionField getField() {
-        return field;
-    }
-
-    @Override
-    public EnumSet<SectorType> getSectorTypes() {
-        return sectorType;
-    }
-
-    @Override
-    public EnumSet<ProgramType> getProgramType() {
-        return programType;
-    }
-
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7031Obsud.getObject()),
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7031Obsud.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
-    public static final LbltMetadataField<Dppk0031Obsud> FIELD_KONVEN = new LbltMetadataField<>(Dppk0031Obsud.class, KONVENSIONAL, KODE_KOMPONEN_HEADERS);
+    public static final LbltMetadataField<Dppk0031Obsud> FIELD_KONVEN = new LbltMetadataField<>(Dppk0031Obsud.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
 
     public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, String reportCode) {
         EFormLaporanBulananTahunan OBSUD_FORM = EFormLaporanBulananTahunan.LTLB_OBSUD;
@@ -209,5 +191,20 @@ public enum Dppk0031Obsud implements ILbltFieldMetadata {
                 .setSegmentValidations(E7031ObsudValidationsConfig.VALIDATION_METADATA)
                 .build()
                 .get();
+    }
+
+    @Override
+    public SubmissionField getField() {
+        return field;
+    }
+
+    @Override
+    public EnumSet<SectorType> getSectorTypes() {
+        return sectorType;
+    }
+
+    @Override
+    public EnumSet<ProgramType> getProgramType() {
+        return programType;
     }
 }

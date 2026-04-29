@@ -19,10 +19,7 @@ import id.go.ojk.util.metadata.field.lblt.LbltMetadataField;
 import id.go.ojk.util.metadata.submission.SubmissionConfig;
 import lombok.AllArgsConstructor;
 
-import java.util.AbstractMap;
-import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -48,13 +45,13 @@ public enum Dppk0006Pst implements ILbltFieldMetadata {
     MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(2, null, "Manfaat Pensiun", sv(O, 1, 18, numeric))
     ),
-    MANFAAT_PENSIUN_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    MANFAAT_PENSIUN_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK),
             sf(3, null, "Manfaat Pensiun Lainnya", sv(O, 1, 18, numeric))
     ),
-    MANFAAT_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    MANFAAT_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK),
             sf(4, null, "Manfaat  lain", sv(O, 1, 18, numeric))
     ),
-    JUMLAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    JUMLAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK),
             sf(5, null, "Jumlah", sv(O, 1, 18, numeric))
                     .addFieldValidations(E7006PstValidationsConfig.FV_SUM_ROW)
     ),
@@ -64,27 +61,12 @@ public enum Dppk0006Pst implements ILbltFieldMetadata {
     private final EnumSet<ProgramType> programType;
     private final SubmissionField field;
 
-    @Override
-    public SubmissionField getField() {
-        return field;
-    }
-
-    @Override
-    public EnumSet<SectorType> getSectorTypes() {
-        return sectorType;
-    }
-
-    @Override
-    public EnumSet<ProgramType> getProgramType() {
-        return programType;
-    }
-
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7006Pst.getObject()),
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7006Pst.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
-    public static final LbltMetadataField<Dppk0006Pst> FIELD_KONVEN = new LbltMetadataField<>(Dppk0006Pst.class, KONVENSIONAL, KODE_KOMPONEN_HEADERS);
+    public static final LbltMetadataField<Dppk0006Pst> FIELD_KONVEN = new LbltMetadataField<>(Dppk0006Pst.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
 
     public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, String reportCode) {
         EFormLaporanBulananTahunan PST_FORM = EFormLaporanBulananTahunan.LTLB_PST;
@@ -117,5 +99,20 @@ public enum Dppk0006Pst implements ILbltFieldMetadata {
                 .setSegmentValidations()
                 .build()
                 .get();
+    }
+
+    @Override
+    public SubmissionField getField() {
+        return field;
+    }
+
+    @Override
+    public EnumSet<SectorType> getSectorTypes() {
+        return sectorType;
+    }
+
+    @Override
+    public EnumSet<ProgramType> getProgramType() {
+        return programType;
     }
 }

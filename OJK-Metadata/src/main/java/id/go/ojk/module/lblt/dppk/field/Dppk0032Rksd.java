@@ -19,10 +19,7 @@ import id.go.ojk.util.metadata.field.lblt.LbltMetadataField;
 import id.go.ojk.util.metadata.submission.SubmissionConfig;
 import lombok.AllArgsConstructor;
 
-import java.util.AbstractMap;
-import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -138,21 +135,12 @@ public enum Dppk0032Rksd implements ILbltFieldMetadata {
     private final EnumSet<ProgramType> programType;
     private final SubmissionField field;
 
-    @Override
-    public SubmissionField getField() { return field; }
-
-    @Override
-    public EnumSet<SectorType> getSectorTypes() { return sectorType; }
-
-    @Override
-    public EnumSet<ProgramType> getProgramType() { return programType; }
-
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7032Rksd.getObject()),
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7032Rksd.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
-    public static final LbltMetadataField<Dppk0032Rksd> FIELD_KONVEN = new LbltMetadataField<>(Dppk0032Rksd.class, KONVENSIONAL, KODE_KOMPONEN_HEADERS);
+    public static final LbltMetadataField<Dppk0032Rksd> FIELD_KONVEN = new LbltMetadataField<>(Dppk0032Rksd.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
 
     public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, String reportCode) {
         EFormLaporanBulananTahunan FORM = EFormLaporanBulananTahunan.LTLB_RKSD;
@@ -174,6 +162,7 @@ public enum Dppk0032Rksd implements ILbltFieldMetadata {
 
         throw new IllegalArgumentException("Unknown sector type: " + sectorType);
     }
+
     public static SubmissionFormat ppmpKonvensionalFormMetadata(ProgramType programType) {
         FIELD_KONVEN.setProgramType(programType);
         return new SubmissionConfig(programType.toString())
@@ -184,6 +173,21 @@ public enum Dppk0032Rksd implements ILbltFieldMetadata {
                 .setSegmentValidations(E7032RksdValidationsConfig.VALIDATION_METADATA)
                 .build()
                 .get();
+    }
+
+    @Override
+    public SubmissionField getField() {
+        return field;
+    }
+
+    @Override
+    public EnumSet<SectorType> getSectorTypes() {
+        return sectorType;
+    }
+
+    @Override
+    public EnumSet<ProgramType> getProgramType() {
+        return programType;
     }
 
 }

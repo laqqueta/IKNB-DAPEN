@@ -22,7 +22,7 @@ public class LbltMetadataField<T extends Enum<T> & ILbltFieldMetadata> extends B
 
     private final int KODE_KOMPONEN_FIELD_INDEX = 1; // 0 Based index, Index 0 :: Flag -> Index 1 :: Kode Komponen
 
-    public LbltMetadataField(Class<T> enumClass, SectorType sectorType, Map<ProgramType, ReferenceMetadata> kodeKomponenReferences) {
+    public LbltMetadataField(Class<T> enumClass, List<SectorType> sectorType, Map<ProgramType, ReferenceMetadata> kodeKomponenReferences) {
         super(enumClass, sectorType);
 
         this.kodeKomponenReferences = kodeKomponenReferences;

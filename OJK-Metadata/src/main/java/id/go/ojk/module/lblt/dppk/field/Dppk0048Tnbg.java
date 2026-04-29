@@ -19,10 +19,7 @@ import id.go.ojk.util.metadata.field.lblt.LbltMetadataField;
 import id.go.ojk.util.metadata.submission.SubmissionConfig;
 import lombok.AllArgsConstructor;
 
-import java.util.AbstractMap;
-import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -98,27 +95,12 @@ public enum Dppk0048Tnbg implements ILbltFieldMetadata {
     private final EnumSet<ProgramType> programType;
     private final SubmissionField field;
 
-    @Override
-    public SubmissionField getField() {
-        return field;
-    }
-
-    @Override
-    public EnumSet<SectorType> getSectorTypes() {
-        return sectorType;
-    }
-
-    @Override
-    public EnumSet<ProgramType> getProgramType() {
-        return programType;
-    }
-
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7048Tnbg.getObject()),
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7048Tnbg.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
-    public static final LbltMetadataField<Dppk0048Tnbg> FIELD_KONVEN = new LbltMetadataField<>(Dppk0048Tnbg.class, KONVENSIONAL, KODE_KOMPONEN_HEADERS);
+    public static final LbltMetadataField<Dppk0048Tnbg> FIELD_KONVEN = new LbltMetadataField<>(Dppk0048Tnbg.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
 
     public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, String reportCode) {
         EFormLaporanBulananTahunan TNBG_FORM = EFormLaporanBulananTahunan.LTLB_TNBG;
@@ -150,5 +132,20 @@ public enum Dppk0048Tnbg implements ILbltFieldMetadata {
                 .setSegmentValidations(E7048TnbgValidationsConfig.VALIDATION_METADATA)
                 .build()
                 .get();
+    }
+
+    @Override
+    public SubmissionField getField() {
+        return field;
+    }
+
+    @Override
+    public EnumSet<SectorType> getSectorTypes() {
+        return sectorType;
+    }
+
+    @Override
+    public EnumSet<ProgramType> getProgramType() {
+        return programType;
     }
 }

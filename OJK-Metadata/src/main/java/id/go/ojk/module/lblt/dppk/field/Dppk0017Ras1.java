@@ -18,10 +18,7 @@ import id.go.ojk.util.metadata.field.lblt.LbltMetadataField;
 import id.go.ojk.util.metadata.submission.SubmissionConfig;
 import lombok.AllArgsConstructor;
 
-import java.util.AbstractMap;
-import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -62,27 +59,12 @@ public enum Dppk0017Ras1 implements ILbltFieldMetadata {
     private final EnumSet<ProgramType> programType;
     private final SubmissionField field;
 
-    @Override
-    public SubmissionField getField() {
-        return field;
-    }
-
-    @Override
-    public EnumSet<SectorType> getSectorTypes() {
-        return sectorType;
-    }
-
-    @Override
-    public EnumSet<ProgramType> getProgramType() {
-        return programType;
-    }
-
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7017Ras1.getObject()),
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7017Ras1.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
-    public static final LbltMetadataField<Dppk0017Ras1> FIELD_KONVEN = new LbltMetadataField<>(Dppk0017Ras1.class, KONVENSIONAL, KODE_KOMPONEN_HEADERS);
+    public static final LbltMetadataField<Dppk0017Ras1> FIELD_KONVEN = new LbltMetadataField<>(Dppk0017Ras1.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
 
     public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, String reportCode) {
         EFormLaporanBulananTahunan RAS1_FORM = EFormLaporanBulananTahunan.LTLB_RAS_1;
@@ -105,15 +87,42 @@ public enum Dppk0017Ras1 implements ILbltFieldMetadata {
     }
 
     public static SubmissionFormat ppmpKonvensionalFormMetadata(ProgramType programType) {
-        FIELD_KONVEN.setProgramType(PPMPK);
+        FIELD_KONVEN.setProgramType(programType);
+
         return new SubmissionConfig(programType.toString())
                 .config()
-                .setReferenceConfigs(ER7017PosLtlbDppkRas1.Configs.REF_CONFIG_PPMPK)
+                .setReferenceConfigs(getRefConfigs(programType))
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(KONVENSIONAL, programType.toString()))
                 .setSubmissionField(FIELD_KONVEN.getClearedFields())
                 //                .setSegmentValidations(E7017Ras1ValidationsConfig.VALIDATION_METADATA)
                 .setSegmentValidations()
                 .build()
                 .get();
+    }
+
+    private static ER7017PosLtlbDppkRas1.Configs getRefConfigs(ProgramType programType) {
+        switch (programType) {
+            case PPMPK:
+                return ER7017PosLtlbDppkRas1.Configs.REF_CONFIG_PPMPK;
+            case PPMPM:
+                return ER7017PosLtlbDppkRas1.Configs.REF_CONFIG_PPMPM;
+            default:
+                throw new IllegalStateException();
+        }
+    }
+
+    @Override
+    public SubmissionField getField() {
+        return field;
+    }
+
+    @Override
+    public EnumSet<SectorType> getSectorTypes() {
+        return sectorType;
+    }
+
+    @Override
+    public EnumSet<ProgramType> getProgramType() {
+        return programType;
     }
 }
