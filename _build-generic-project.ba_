@@ -13,3 +13,7 @@ cd ..
 cd .\OJK-Configuration-Client
 call _install.bat
 cd ..
+
+cd .\OJK-Metadata
+call _install.bat
+cd ..

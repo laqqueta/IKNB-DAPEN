@@ -134,8 +134,9 @@ public class ValidationPreHeaderLktb extends BaseValidationPreHeader {
         String code = JenisProgramState.selectedKey.replaceAll("[^A-Za-z]", "");
         boolean res = part.equals(code);
         if (!res) {
+            String programErr = JenisProgramState.detailValue.isEmpty() ? part : JenisProgramState.detailValue;
             JenisProgramState.validationState.setValue(false);
-            result.errors.add(new ValidationError(null, ValidationErrorCode.E03_30_JENIS_PROGRAM, part, JenisProgramState.selectedValue));
+            result.errors.add(new ValidationError(null, ValidationErrorCode.E03_30_JENIS_PROGRAM, programErr, JenisProgramState.selectedValue));
         }
 
         return res;

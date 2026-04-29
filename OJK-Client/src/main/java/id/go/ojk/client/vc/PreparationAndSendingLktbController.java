@@ -75,6 +75,7 @@ public class PreparationAndSendingLktbController extends BasePreparationAndSendi
 
             JenisProgramState.selectedValue = selected.nameProperty().getValue();
             JenisProgramState.selectedKey = selected.idProperty().getValue();
+            JenisProgramState.detailValue = mapReport.get(selected.idProperty().getValue());
             JenisProgramState.validationState.setValue(true);
         });
 

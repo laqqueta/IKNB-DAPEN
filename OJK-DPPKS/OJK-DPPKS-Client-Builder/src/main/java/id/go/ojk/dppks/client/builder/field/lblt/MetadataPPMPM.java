@@ -1,4 +1,4 @@
-package id.go.ojk.dppkk.client.builder.field.ltlb.metadata;
+package id.go.ojk.dppks.client.builder.field.lblt;
 
 import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.module.lblt.dppk.field.*;

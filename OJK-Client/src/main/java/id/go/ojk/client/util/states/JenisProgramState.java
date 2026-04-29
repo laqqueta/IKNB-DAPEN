@@ -6,5 +6,6 @@ import javafx.beans.property.SimpleBooleanProperty;
 public class JenisProgramState {
     public static String selectedValue = "";
     public static String selectedKey = "";
+    public static String detailValue = "";
     public static final BooleanProperty validationState = new SimpleBooleanProperty(false);
 }

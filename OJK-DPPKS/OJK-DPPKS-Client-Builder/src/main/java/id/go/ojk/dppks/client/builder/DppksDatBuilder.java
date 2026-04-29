@@ -19,7 +19,8 @@ public class DppksDatBuilder extends BaseDatBuilder {
 	private static final EReport REPORT_RB = EReport.RB_DPPKS;
 	private static final EReport REPORT_SA = EReport.SA_DPPKS;
 	private static final EReport REPORT_TL = EReport.TL_DPPKS;
-	private static final List<String> DUMMY_USER = Arrays.asList("airdev.test03@gmail.com", "dppksdummy@gmail.com", "apolo.sit008@gmail.com");
+	private static final EReport REPORT_LKTB = EReport.LKTB_DPPKS;
+	private static final List<String> DUMMY_USER = Arrays.asList("airdev.test03@gmail.com", "dppksdummy@gmail.com", "apolo.sit008@gmail.com", "apolo.sit006@gmail.com");
 
 	public static void main(String[] args) {
 		try {
@@ -88,6 +89,7 @@ public class DppksDatBuilder extends BaseDatBuilder {
 		listAppAccess.add(REPORT_RB.getId());
 		listAppAccess.add(REPORT_SA.getId());
 		listAppAccess.add(REPORT_TL.getId());
+		listAppAccess.add(REPORT_LKTB.getId());
 		for (String user : DUMMY_USER) {
 			res.put(user, listAppAccess);
 		}

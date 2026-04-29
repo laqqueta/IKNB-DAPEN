@@ -35,11 +35,5 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>id.go.ojk</groupId>
-			<artifactId>OJK-Metadata</artifactId>
-			<version>1.0</version>
-			<scope>compile</scope>
-		</dependency>
 	</dependencies>
 </project>

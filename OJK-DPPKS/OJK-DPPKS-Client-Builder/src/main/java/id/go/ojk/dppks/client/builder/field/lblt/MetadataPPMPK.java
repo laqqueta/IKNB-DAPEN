@@ -1,4 +1,4 @@
-package id.go.ojk.dppkk.client.builder.field.ltlb.metadata;
+package id.go.ojk.dppks.client.builder.field.lblt;
 
 import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.module.lblt.dppk.field.*;
@@ -11,16 +11,35 @@ import java.util.Arrays;
 import java.util.List;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class MetadataPPMPM {
+public class MetadataPPMPK {
 
     @Getter
     private static final List<SubmissionFormat> metadata = getFormMetadata();
 
     private static List<SubmissionFormat> getFormMetadata() {
-        ProgramType programType = ProgramType.PPMPM;
+
+        ProgramType programType = ProgramType.PPMPK;
 
         return Arrays.asList(
                 Dppk0000Dtum.ppmpKonvensionalFormMetadata(programType),
+                Dppk0001Lan.ppmpKonvensionalFormMetadata(programType),
+                Dppk0002Lpan.ppmpKonvensionalFormMetadata(programType),
+                Dppk0003Nrc.ppmpKonvensionalFormMetadata(programType),
+                Dppk0004Lphu.ppmpKonvensionalFormMetadata(programType),
+                Dppk0005Lak.ppmpKonvensionalFormMetadata(programType),
+                Dppk0006Pst.ppmpKonvensionalFormMetadata(programType),
+                Dppk0007Kup.ppmpKonvensionalFormMetadata(programType),
+                Dppk0008Rekinv.ppmpKonvensionalFormMetadata(programType),
+                Dppk0009Roi.ppmpKonvensionalFormMetadata(programType),
+                Dppk0010Roiml.ppmpKonvensionalFormMetadata(programType),
+                Dppk0011Roism.ppmpKonvensionalFormMetadata(programType),
+                Dppk0012Alm.ppmpKonvensionalFormMetadata(programType),
+                Dppk0013Insp.ppmpKonvensionalFormMetadata(programType),
+                Dppk0014Inpt.ppmpKonvensionalFormMetadata(programType),
+                Dppk0015Inbm.ppmpKonvensionalFormMetadata(programType),
+                Dppk0016Sbn.ppmpKonvensionalFormMetadata(programType),
+                Dppk0017Ras1.ppmpKonvensionalFormMetadata(programType),
+                Dppk0018Ras2.ppmpKonvensionalFormMetadata(programType),
                 Dppk0019Pius.ppmpKonvensionalFormMetadata(programType),
                 Dppk0020Pmi.ppmpKonvensionalFormMetadata(programType),
                 Dppk0021Tbdsp.ppmpKonvensionalFormMetadata(programType),
@@ -74,5 +93,4 @@ public class MetadataPPMPM {
                 Dppk0099Cover.getFormMetadata(programType)
         );
     }
-
 }

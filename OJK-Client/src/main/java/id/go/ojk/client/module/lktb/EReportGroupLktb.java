@@ -9,13 +9,15 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import static id.go.ojk.lib.client.model.config.DataType.numeric;
+
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum EReportGroupLktb implements IObject<ReportGroup> {
     LKD_BULANAN_RUTIN(1, "R", "M", 0, EValidExtension.TXT_PDF, 111),
     LKD_BULANAN_KOREKSI(2, "K", "M", 2, EValidExtension.TXT_PDF, 112),
 
     LKD_TAHUNAN_RUTIN(3, "R", "A", 0, EValidExtension.TXT_PDF, 113),
-    LKD_TAHUNAN_KOREKSI(4, "R", "A", 2, EValidExtension.TXT_PDF, 114),
+    LKD_TAHUNAN_KOREKSI(4, "K", "A", 2, EValidExtension.TXT_PDF, 114),
 
     ;
 
@@ -46,8 +48,26 @@ public enum EReportGroupLktb implements IObject<ReportGroup> {
 
     public static ReportGroup getObjectByCode(int code) {
         ReportGroup res = null;
+        EReportLktb eReportLktb = EReportLktb.getReportGroup(code);
+        int tmpCode;
+
+        if (eReportLktb == null)
+            throw new IllegalStateException();
+
+        String reportType = eReportLktb.getReportTypeCode();
+
+        if (reportType.contains("DPPKS"))
+            tmpCode = code - 10;
+        else if (reportType.contains("DPLKK")) {
+            tmpCode = code - 20;
+        } else if (reportType.contains("DPLKS")) {
+            tmpCode = code - 30;
+        } else {
+            tmpCode = code;
+        }
+
         for (EReportGroupLktb eEnum : EReportGroupLktb.values()) {
-            if (code == eEnum.getCode()) {
+            if (tmpCode == eEnum.getCode()) {
                 res = eEnum.getObject();
                 break;
             }
