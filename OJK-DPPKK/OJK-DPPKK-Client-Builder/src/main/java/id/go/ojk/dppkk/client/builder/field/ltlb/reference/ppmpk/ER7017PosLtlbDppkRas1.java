@@ -1,8 +1,14 @@
 package id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk;
 
+import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.List;
+
 import id.go.ojk.client.model.config.validation.conditional.ConditionalRequired;
+import id.go.ojk.client.model.config.validation.field.FieldValidation;
 import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
 import id.go.ojk.conf.client.UtilFieldConditional;
+import id.go.ojk.conf.client.UtilFieldValidation;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
 import id.go.ojk.dppkk.client.builder.constant.JenisProgram;
@@ -10,10 +16,6 @@ import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
-
-import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.List;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ER7017PosLtlbDppkRas1 implements IObject<KeyValueString> {
@@ -116,6 +118,7 @@ public enum ER7017PosLtlbDppkRas1 implements IObject<KeyValueString> {
         31, 33, 34, 36, 37, 39, 40, 42, 43, 45, 46, 48, 49, 51, 52, 54, 55, 57, 58 };
     public static final int[] PERCENT_ROWS = { 2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35, 38, 41, 44, 47, 50, 53, 56,
         59 };
+    public static final int[] TOTAL_ROWS = { 0, 3 };
 
     public KeyValueString getObject() {
         return new KeyValueString(key, value, new String[] {});
@@ -162,5 +165,18 @@ public enum ER7017PosLtlbDppkRas1 implements IObject<KeyValueString> {
 
     public static SegmentValidation genDecimallValidation() {
       return UtilSegmentValidation.genRegexNumericDotNegative("2|3|4|5", UtilMetadata.genPipeRow(getObjects(JenisProgram.PPMPK), PERCENT_ROWS));
+    }
+
+    public static FieldValidation genFieldValidation06A() {
+      String formula = UtilMetadata.genPlusColumn(2, 4);
+      int[] rows = { 0, 3, 6, 7, 9, 10, 12, 13, 15, 16, 18, 19, 21, 22, 24, 25, 27, 28, 30, 31, 33, 34, 36, 37, 39, 40,
+          45, 46, 51, 52 };
+      return UtilFieldValidation.genEqualsPosFormula(formula, UtilMetadata.genPipeRow(getObjects(JenisProgram.PPMPK), rows));
+    }
+
+    public static FieldValidation genFieldValidation06B() {
+      String formula = UtilMetadata.genPlusColumn(3, 4);
+      int[] rows = { 42, 43, 54, 55 };
+      return UtilFieldValidation.genEqualsPosFormula(formula, UtilMetadata.genPipeRow(getObjects(JenisProgram.PPMPK), rows));
     }
 }
