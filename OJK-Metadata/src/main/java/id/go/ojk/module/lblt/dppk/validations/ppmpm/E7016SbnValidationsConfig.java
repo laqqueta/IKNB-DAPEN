@@ -1,18 +1,17 @@
-package id.go.ojk.module.lblt.dppk.validations;
+package id.go.ojk.module.lblt.dppk.validations.ppmpm;
 
 import id.go.ojk.client.model.config.validation.conditional.ConditionalRequired;
 import id.go.ojk.client.model.config.validation.field.FieldValidation;
 import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
 import id.go.ojk.client.model.validation.IValidation;
+import id.go.ojk.client.validation.IValidationConverter;
 import id.go.ojk.conf.client.UtilFieldConditional;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
-import id.go.ojk.conf.client.field.reference.ER1255JenisManfaat;
 import id.go.ojk.conf.client.field.reference.ER1268JenisInvestasi;
 import id.go.ojk.module.lblt.dppk.form.EFormLaporanBulananTahunan;
 import id.go.ojk.module.lblt.dppk.reference.ER7001PosLtlbDppkLan;
 import id.go.ojk.util.constants.ProgramType;
-import id.go.ojk.client.validation.IValidationConverter;
 import id.go.ojk.util.metadata.validation.ValidationConverter;
 import id.go.ojk.util.metadata.validation.base.BaseMetadataValidation;
 import id.go.ojk.util.metadata.validation.lblt.ILbltMetadataValidation;

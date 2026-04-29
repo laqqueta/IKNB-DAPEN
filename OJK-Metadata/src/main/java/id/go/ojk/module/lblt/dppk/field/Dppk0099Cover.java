@@ -4,6 +4,7 @@ import id.go.ojk.client.constant.ExtensionType;
 import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
 import id.go.ojk.module.lblt.dppk.form.EFormLaporanBulananTahunan;
+import id.go.ojk.util.constants.ProgramType;
 import id.go.ojk.util.metadata.submission.SubmissionConfig;
 import lombok.AllArgsConstructor;
 
@@ -12,7 +13,7 @@ public enum Dppk0099Cover {
 
     ;
 
-    private static SubmissionFormatBuilder getSubmissionFormatConfig(String reportCode) {
+    private static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(String reportCode) {
         EFormLaporanBulananTahunan COVER_FORM = EFormLaporanBulananTahunan.LTLB_COVER;
 
         return SubmissionFormatBuilder.builder()
@@ -26,7 +27,15 @@ public enum Dppk0099Cover {
     public static SubmissionFormat getFormMetadata(String reportCode) {
         return new SubmissionConfig(reportCode, ExtensionType.PDF)
                 .config()
-                .setSubmissionFormat(getSubmissionFormatConfig(reportCode))
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(reportCode))
+                .build()
+                .get();
+    }
+
+    public static SubmissionFormat getFormMetadata(ProgramType programType) {
+        return new SubmissionConfig(programType.toString(), ExtensionType.PDF)
+                .config()
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(programType.toString()))
                 .build()
                 .get();
     }

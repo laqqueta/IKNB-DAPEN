@@ -5,9 +5,11 @@ import id.go.ojk.client.model.config.SimpleValidation;
 import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
+import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.module.lblt.dppk.form.EFormLaporanBulananTahunan;
 import id.go.ojk.module.lblt.dppk.header.EHeaderMetadataPpmpk;
-import id.go.ojk.module.lblt.dppk.header.EHeaderMetadataShared;
+import id.go.ojk.module.lblt.dppk.header.EHeaderMetadataPpmpm;
+import id.go.ojk.module.lblt.dppk.header.EHeaderMetadataSharedLkbt;
 import id.go.ojk.module.lblt.dppk.reference.ER7046PosLtlbDppkPihi;
 import id.go.ojk.module.lblt.dppk.validations.E7046PihiValidationsConfig;
 import id.go.ojk.util.constants.ProgramType;
@@ -17,8 +19,12 @@ import id.go.ojk.util.metadata.field.lblt.LbltMetadataField;
 import id.go.ojk.util.metadata.submission.SubmissionConfig;
 import lombok.AllArgsConstructor;
 
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.EnumSet;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static id.go.ojk.lib.client.model.config.DataType.*;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.C;
@@ -40,15 +46,14 @@ public enum Dppk0046Pihi implements ILbltFieldMetadata {
     KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(1, null, "Kode Komponen",
                     sv(M, 10, 10, refTable)
-                            .confRegex(SimpleValidation.patternAlfaNumeric)
-                            .confReference(EHeaderMetadataPpmpk.R7046Pihi.getObject()))
+                            .confRegex(SimpleValidation.patternAlfaNumeric))
     ),
     JENIS_PIUTANG_HASIL_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(2, null, "Jenis Piutang Hasil Investasi",
                     sv(C, 1, 6, refTable)
                             .confConditionalRequired(E7046PihiValidationsConfig.CR_EXISTS_POS_M)
                             .confRegex(SimpleValidation.patternAlfaNumeric)
-                            .confReference(EHeaderMetadataShared.R021.getObject()))
+                            .confReference(EHeaderMetadataSharedLkbt.R021.getObject()))
     ),
     PIHAK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(3, null, "Pihak",
@@ -64,7 +69,7 @@ public enum Dppk0046Pihi implements ILbltFieldMetadata {
                     sv(C, 1, 6, refTable)
                             .confConditionalRequired(E7046PihiValidationsConfig.CR_EXISTS_POS_M)
                             .confRegex(SimpleValidation.patternAlfaNumeric)
-                            .confReference(EHeaderMetadataShared.R009.getObject()))
+                            .confReference(EHeaderMetadataSharedLkbt.R009.getObject()))
     ),
     KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(6, null, "Keterangan",
@@ -92,9 +97,14 @@ public enum Dppk0046Pihi implements ILbltFieldMetadata {
         return programType;
     }
 
-    public static final LbltMetadataField<Dppk0046Pihi> FIELD_KONVEN = new LbltMetadataField<>(Dppk0046Pihi.class, KONVENSIONAL);
+    private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
+            new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7046Pihi.getObject()),
+            new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7046Pihi.getObject())
+    ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
-    public static SubmissionFormatBuilder getSubmissionFormatConfig(SectorType sectorType, String reportCode) {
+    public static final LbltMetadataField<Dppk0046Pihi> FIELD_KONVEN = new LbltMetadataField<>(Dppk0046Pihi.class, KONVENSIONAL, KODE_KOMPONEN_HEADERS);
+
+    public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, String reportCode) {
         EFormLaporanBulananTahunan PIHI_FORM = EFormLaporanBulananTahunan.LTLB_PIHI;
         SubmissionFormatBuilder sfConfig = SubmissionFormatBuilder.builder()
                 .code(PIHI_FORM.getCode())
@@ -105,23 +115,21 @@ public enum Dppk0046Pihi implements ILbltFieldMetadata {
                 .fields(new ArrayList<>())
                 .build();
 
-        if (sectorType.equals(KONVENSIONAL)) {
+        if (sectorType.equals(KONVENSIONAL) || sectorType.equals(SYARIAH)) {
             sfConfig.setMinRow(0);
             return sfConfig;
-        } else if (sectorType.equals(SYARIAH)) {
-            sfConfig.setMinRow(9999);
-            return sfConfig;
         }
+
 
         throw new IllegalArgumentException("Unknown sector type: " + sectorType);
     }
 
-    public static SubmissionFormat ppmpkKonvensionalFormMetadata(String reportCode) {
-        FIELD_KONVEN.setProgramType(ProgramType.PPMPK);
-        return new SubmissionConfig(reportCode)
+    public static SubmissionFormat ppmpKonvensionalFormMetadata(ProgramType programType) {
+        FIELD_KONVEN.setProgramType(programType);
+        return new SubmissionConfig(programType.toString())
                 .config()
-                .setReferenceConfigs(ER7046PosLtlbDppkPihi.Configs.REF_CONFIG_PPMPK)
-                .setSubmissionFormat(getSubmissionFormatConfig(KONVENSIONAL, reportCode))
+                .setReferenceConfigs(ER7046PosLtlbDppkPihi.Configs.REF_CONFIG_PPMP)
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(KONVENSIONAL, programType.toString()))
                 .setSubmissionField(FIELD_KONVEN.getFields())
                 .setSegmentValidations(E7046PihiValidationsConfig.VALIDATION_METADATA)
                 .build()

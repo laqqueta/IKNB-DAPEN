@@ -5,9 +5,11 @@ import id.go.ojk.client.model.config.SimpleValidation;
 import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
+import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.module.lblt.dppk.form.EFormLaporanBulananTahunan;
 import id.go.ojk.module.lblt.dppk.header.EHeaderMetadataPpmpk;
-import id.go.ojk.module.lblt.dppk.header.EHeaderMetadataShared;
+import id.go.ojk.module.lblt.dppk.header.EHeaderMetadataPpmpm;
+import id.go.ojk.module.lblt.dppk.header.EHeaderMetadataSharedLkbt;
 import id.go.ojk.module.lblt.dppk.reference.ER7039PosLtlbDppkPnyl;
 import id.go.ojk.module.lblt.dppk.validations.E7039PnylValidationsConfig;
 import id.go.ojk.util.constants.ProgramType;
@@ -17,8 +19,12 @@ import id.go.ojk.util.metadata.field.lblt.LbltMetadataField;
 import id.go.ojk.util.metadata.submission.SubmissionConfig;
 import lombok.AllArgsConstructor;
 
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.EnumSet;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static id.go.ojk.lib.client.model.config.DataType.*;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.C;
@@ -40,8 +46,7 @@ public enum Dppk0039Pnyl implements ILbltFieldMetadata {
     KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH),programs(PPMPK, PPMPM),
             sf(1, null, "Kode Komponen",
                     sv(M, 10, 10, refTable)
-                            .confRegex(SimpleValidation.patternAlfaNumeric)
-                            .confReference(EHeaderMetadataPpmpk.R7039Pnyl.getObject()))),
+                            .confRegex(SimpleValidation.patternAlfaNumeric))),
 
 
     NAMA_PERUSAHAAN_1(sectors(KONVENSIONAL, SYARIAH),programs(PPMPK, PPMPM),
@@ -68,7 +73,7 @@ public enum Dppk0039Pnyl implements ILbltFieldMetadata {
             sf(5, null, "Kategori Penyertaan*)",
                     sv(C, 1, 8, refTable)
                             .confRegex(SimpleValidation.patternAlfaNumeric)
-                            .confReference(EHeaderMetadataShared.R019.getObject())
+                            .confReference(EHeaderMetadataSharedLkbt.R019.getObject())
                             .confConditionalRequired(E7039PnylValidationsConfig.CR_EXISTS_POS_M)
                             .confConditionalRequired(E7039PnylValidationsConfig.CR_HAS_VALUE_NAMA_PERUSAHAAN))),
 
@@ -153,7 +158,7 @@ public enum Dppk0039Pnyl implements ILbltFieldMetadata {
             sf(18, null, "Sektor Ekonomi",
                     sv(C, 1, 8, refTable)
                             .confRegex(SimpleValidation.patternAlfaNumeric)
-                            .confReference(EHeaderMetadataShared.R007.getObject())
+                            .confReference(EHeaderMetadataSharedLkbt.R007.getObject())
                             .confConditionalRequired(E7039PnylValidationsConfig.CR_EXISTS_POS_M)
                             .confConditionalRequired(E7039PnylValidationsConfig.CR_HAS_VALUE_NAMA_PERUSAHAAN))),
 
@@ -162,7 +167,7 @@ public enum Dppk0039Pnyl implements ILbltFieldMetadata {
             sf(19, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain",
                     sv(C, 1, 6, refTable)
                             .confRegex(SimpleValidation.patternAlfaNumeric)
-                            .confReference(EHeaderMetadataShared.R009.getObject())
+                            .confReference(EHeaderMetadataSharedLkbt.R009.getObject())
                             .confConditionalRequired(E7039PnylValidationsConfig.CR_EXISTS_POS_M)
                             .confConditionalRequired(E7039PnylValidationsConfig.CR_HAS_VALUE_NAMA_PERUSAHAAN))),
 
@@ -298,9 +303,14 @@ public enum Dppk0039Pnyl implements ILbltFieldMetadata {
     @Override
     public EnumSet<ProgramType> getProgramType() { return programType; }
 
-    public static final LbltMetadataField<Dppk0039Pnyl> FIELD_KONVEN = new LbltMetadataField<>(Dppk0039Pnyl.class, KONVENSIONAL);
+    private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
+            new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7039Pnyl.getObject()),
+            new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7039Pnyl.getObject())
+    ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
-    public static SubmissionFormatBuilder getSubmissionFormatConfig(SectorType sectorType, String reportCode) {
+    public static final LbltMetadataField<Dppk0039Pnyl> FIELD_KONVEN = new LbltMetadataField<>(Dppk0039Pnyl.class, KONVENSIONAL, KODE_KOMPONEN_HEADERS);
+
+    public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, String reportCode) {
         EFormLaporanBulananTahunan FORM = EFormLaporanBulananTahunan.LTLB_PNYL;
         SubmissionFormatBuilder sfConfig = SubmissionFormatBuilder.builder()
                 .code(FORM.getCode())
@@ -311,23 +321,21 @@ public enum Dppk0039Pnyl implements ILbltFieldMetadata {
                 .fields(new ArrayList<>())
                 .build();
 
-        if (sectorType.equals(KONVENSIONAL)) {
+        if (sectorType.equals(KONVENSIONAL) || sectorType.equals(SYARIAH)) {
             sfConfig.setMinRow(0);
             return sfConfig;
-        } else if (sectorType.equals(SYARIAH)) {
-            sfConfig.setMinRow(9999);
-            return sfConfig;
         }
+
 
         throw new IllegalArgumentException("Unknown sector type: " + sectorType);
     }
 
-    public static SubmissionFormat ppmpkKonvensionalFormMetadata(String reportCode) {
-        FIELD_KONVEN.setProgramType(ProgramType.PPMPK);
-        return new SubmissionConfig(reportCode)
+    public static SubmissionFormat ppmpKonvensionalFormMetadata(ProgramType programType) {
+        FIELD_KONVEN.setProgramType(programType);
+        return new SubmissionConfig(programType.toString())
                 .config()
-                .setReferenceConfigs(ER7039PosLtlbDppkPnyl.Configs.REF_CONFIG_PPMPK)
-                .setSubmissionFormat(getSubmissionFormatConfig(KONVENSIONAL, reportCode))
+                .setReferenceConfigs(ER7039PosLtlbDppkPnyl.Configs.REF_CONFIG_PPMP)
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(KONVENSIONAL, programType.toString()))
                 .setSubmissionField(FIELD_KONVEN.getFields())
                 .setSegmentValidations(E7039PnylValidationsConfig.VALIDATION_METADATA)
                 .build()

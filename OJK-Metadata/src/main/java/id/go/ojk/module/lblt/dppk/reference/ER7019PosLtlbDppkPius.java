@@ -31,8 +31,8 @@ public enum ER7019PosLtlbDppkPius implements IObject<KeyValueString> {
         return ER7019PosLtlbDppkPius.class.getSimpleName().substring(6);
     }
 
-    public static int getRefNumber() {
-        return Integer.parseInt(ER7019PosLtlbDppkPius.class.getSimpleName().substring(2, 6));
+    public static int getRefNumber(int referenceNumber) {
+        return referenceNumber;
     }
 
     public KeyValueString getObject() {
@@ -40,7 +40,7 @@ public enum ER7019PosLtlbDppkPius implements IObject<KeyValueString> {
     }
 
     public enum Configs implements ReferenceConfig {
-        REF_CONFIG_PPMPK {
+        REF_CONFIG_PPMP {
             @Override
             public String savePos() {
                 return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 6), getObjects());

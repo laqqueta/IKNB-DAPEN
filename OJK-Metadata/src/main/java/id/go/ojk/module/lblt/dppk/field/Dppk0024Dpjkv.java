@@ -5,9 +5,11 @@ import id.go.ojk.client.model.config.SimpleValidation;
 import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
+import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.module.lblt.dppk.form.EFormLaporanBulananTahunan;
 import id.go.ojk.module.lblt.dppk.header.EHeaderMetadataPpmpk;
-import id.go.ojk.module.lblt.dppk.header.EHeaderMetadataShared;
+import id.go.ojk.module.lblt.dppk.header.EHeaderMetadataPpmpm;
+import id.go.ojk.module.lblt.dppk.header.EHeaderMetadataSharedLkbt;
 import id.go.ojk.module.lblt.dppk.reference.ER7024PosLtlbDppkDpjkv;
 import id.go.ojk.module.lblt.dppk.validations.E7024DpjkvValidationsConfig;
 import id.go.ojk.util.constants.ProgramType;
@@ -17,8 +19,12 @@ import id.go.ojk.util.metadata.field.lblt.LbltMetadataField;
 import id.go.ojk.util.metadata.submission.SubmissionConfig;
 import lombok.AllArgsConstructor;
 
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.EnumSet;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static id.go.ojk.lib.client.model.config.DataType.*;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.C;
@@ -40,8 +46,7 @@ public enum Dppk0024Dpjkv implements ILbltFieldMetadata {
     KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(1, null, "Kode Komponen",
                     sv(M, 11, 11, refTable)
-                            .confRegex(SimpleValidation.patternAlfaNumeric)
-                            .confReference(EHeaderMetadataPpmpk.R7024Dpjkv.getObject()))
+                            .confRegex(SimpleValidation.patternAlfaNumeric))
     ),
     NAMA_BANK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(2, null, "Nama Bank",
@@ -58,7 +63,7 @@ public enum Dppk0024Dpjkv implements ILbltFieldMetadata {
                     sv(C, 1, 6, refTable)
                             .confConditionalRequired(E7024DpjkvValidationsConfig.CR_EXISTS_DPJKA000000_O)
                             .confRegex(SimpleValidation.patternAlfaNumeric)
-                            .confReference(EHeaderMetadataShared.R011.getObject()))
+                            .confReference(EHeaderMetadataSharedLkbt.R011.getObject()))
     ),
     TANGGAL_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(5, null, "Tanggal Perolehan",
@@ -99,14 +104,14 @@ public enum Dppk0024Dpjkv implements ILbltFieldMetadata {
                     sv(C, 1, 6, refTable)
                             .confConditionalRequired(E7024DpjkvValidationsConfig.CR_EXISTS_DPJKA000000_M)
                             .confRegex(SimpleValidation.patternAlfaNumeric)
-                            .confReference(EHeaderMetadataShared.R009.getObject()))
+                            .confReference(EHeaderMetadataSharedLkbt.R009.getObject()))
     ),
     PENGELOLAAN_SWAKELOLA_KPD(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(13, null, "Pengelolaan Swakelola/ KPD",
                     sv(C, 1, 6, refTable)
                             .confRegex(SimpleValidation.patternAlfa)
                             .confConditionalRequired(E7024DpjkvValidationsConfig.CR_EXISTS_DPJKA000000_M)
-                            .confReference(EHeaderMetadataShared.R006.getObject()))
+                            .confReference(EHeaderMetadataSharedLkbt.R006.getObject()))
     ),
     PENGELOLAAN_NAMA_MANAJER_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(14, null, "Pengelolaan Nama Manajer Investasi",
@@ -119,7 +124,7 @@ public enum Dppk0024Dpjkv implements ILbltFieldMetadata {
                     sv(C, 1, 8, refTable)
                             .confConditionalRequired(E7024DpjkvValidationsConfig.CR_EXISTS_DPJKA000000_M)
                             .confRegex(SimpleValidation.PATTERN_REFERENCE_3)
-                            .confReference(EHeaderMetadataShared.R010.getObject()))
+                            .confReference(EHeaderMetadataSharedLkbt.R010.getObject()))
     ),
     KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(16, null, "Keterangan",
@@ -147,9 +152,14 @@ public enum Dppk0024Dpjkv implements ILbltFieldMetadata {
         return programType;
     }
 
-    public static final LbltMetadataField<Dppk0024Dpjkv> FIELD_KONVEN = new LbltMetadataField<>(Dppk0024Dpjkv.class, KONVENSIONAL);
+    private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
+            new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7024Dpjkv.getObject()),
+            new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7024Dpjkv.getObject())
+    ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
-    public static SubmissionFormatBuilder getSubmissionFormatConfig(SectorType sectorType, String reportCode) {
+    public static final LbltMetadataField<Dppk0024Dpjkv> FIELD_KONVEN = new LbltMetadataField<>(Dppk0024Dpjkv.class, KONVENSIONAL, KODE_KOMPONEN_HEADERS);
+
+    public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, String reportCode) {
         EFormLaporanBulananTahunan DPJKV_FORM = EFormLaporanBulananTahunan.LTLB_DPJKV;
         SubmissionFormatBuilder sfConfig = SubmissionFormatBuilder.builder()
                 .code(DPJKV_FORM.getCode())
@@ -160,23 +170,21 @@ public enum Dppk0024Dpjkv implements ILbltFieldMetadata {
                 .fields(new ArrayList<>())
                 .build();
 
-        if (sectorType.equals(KONVENSIONAL)) {
+        if (sectorType.equals(KONVENSIONAL) || sectorType.equals(SYARIAH)) {
             sfConfig.setMinRow(0);
             return sfConfig;
-        } else if (sectorType.equals(SYARIAH)) {
-            sfConfig.setMinRow(9999);
-            return sfConfig;
         }
+
 
         throw new IllegalArgumentException("Unknown sector type: " + sectorType);
     }
 
-    public static SubmissionFormat ppmpkKonvensionalFormMetadata(String reportCode) {
-        FIELD_KONVEN.setProgramType(ProgramType.PPMPK);
-        return new SubmissionConfig(reportCode)
+    public static SubmissionFormat ppmpKonvensionalFormMetadata(ProgramType programType) {
+        FIELD_KONVEN.setProgramType(programType);
+        return new SubmissionConfig(programType.toString())
                 .config()
-                .setReferenceConfigs(ER7024PosLtlbDppkDpjkv.Configs.REF_CONFIG_PPMPK)
-                .setSubmissionFormat(getSubmissionFormatConfig(KONVENSIONAL, reportCode))
+                .setReferenceConfigs(ER7024PosLtlbDppkDpjkv.Configs.REF_CONFIG_PPMP)
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(KONVENSIONAL, programType.toString()))
                 .setSubmissionField(FIELD_KONVEN.getFields())
                 .setSegmentValidations(E7024DpjkvValidationsConfig.VALIDATION_METADATA)
                 .build()

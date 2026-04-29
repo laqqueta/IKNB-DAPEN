@@ -5,10 +5,11 @@ import id.go.ojk.client.model.config.SimpleValidation;
 import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
+import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.module.lblt.dppk.form.EFormLaporanBulananTahunan;
 import id.go.ojk.module.lblt.dppk.header.EHeaderMetadataPpmpk;
+import id.go.ojk.module.lblt.dppk.header.EHeaderMetadataPpmpm;
 import id.go.ojk.module.lblt.dppk.reference.ER7000PosLtlbDppkDtum;
-import id.go.ojk.module.lblt.dppk.validations.E7000DtumValidationsConfig;
 import id.go.ojk.util.constants.ProgramType;
 import id.go.ojk.util.constants.SectorType;
 import id.go.ojk.util.metadata.field.lblt.ILbltFieldMetadata;
@@ -16,8 +17,12 @@ import id.go.ojk.util.metadata.field.lblt.LbltMetadataField;
 import id.go.ojk.util.metadata.submission.SubmissionConfig;
 import lombok.AllArgsConstructor;
 
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.EnumSet;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static id.go.ojk.lib.client.model.config.DataType.alfaNumeric;
 import static id.go.ojk.lib.client.model.config.DataType.freeText;
@@ -36,10 +41,9 @@ public enum Dppk0000Dtum implements ILbltFieldMetadata {
                     .confConstant("D01"))),
 
 
-    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    KODE_KOMPONEN_PPMPK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(1, null, "Kode Komponen", sv(M, 10, 10, freeText)
-                    .confRegex(SimpleValidation.patternAlfaNumeric)
-                    .confReference(EHeaderMetadataPpmpk.R7000Dtum.getObject()))),
+                    .confRegex(SimpleValidation.patternAlfaNumeric))),
 
 
     KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
@@ -67,9 +71,15 @@ public enum Dppk0000Dtum implements ILbltFieldMetadata {
         return programType;
     }
 
-    private static final LbltMetadataField<Dppk0000Dtum> FIELD_KONVEN = new LbltMetadataField<>(Dppk0000Dtum.class, KONVENSIONAL);
+    private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
+                    new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7000Dtum.getObject()),
+                    new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7000Dtum.getObject())
+            ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
-    private static SubmissionFormatBuilder getSubmissionFormatConfig(SectorType sectorType, String reportCode) {
+    private static final LbltMetadataField<Dppk0000Dtum> FIELD_KONVEN = new LbltMetadataField<>
+            (Dppk0000Dtum.class, KONVENSIONAL, KODE_KOMPONEN_HEADERS);
+
+    private static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, String reportCode) {
         EFormLaporanBulananTahunan DTUM_FORM = EFormLaporanBulananTahunan.LTLB_DTUM;
         SubmissionFormatBuilder sfConfig = SubmissionFormatBuilder.builder()
                 .code(DTUM_FORM.getCode())
@@ -80,25 +90,23 @@ public enum Dppk0000Dtum implements ILbltFieldMetadata {
                 .fields(new ArrayList<>())
                 .build();
 
-        if (sectorType.equals(KONVENSIONAL)) {
+        if (sectorType.equals(KONVENSIONAL) || sectorType.equals(SYARIAH)) {
             sfConfig.setMinRow(25);
-            return sfConfig;
-        } else if (sectorType.equals(SYARIAH)) {
-            sfConfig.setMinRow(9999);
             return sfConfig;
         }
 
         throw new IllegalArgumentException("Unknown sector type: " + sectorType);
     }
 
-    public static SubmissionFormat ppmpkKonvensionalFormMetadata(String reportCode) {
-        FIELD_KONVEN.setProgramType(ProgramType.PPMPK);
-        return new SubmissionConfig(reportCode)
+    public static SubmissionFormat ppmpKonvensionalFormMetadata(ProgramType programType) {
+        FIELD_KONVEN.setProgramType(programType);
+        return new SubmissionConfig(programType.toString())
                 .config()
                 .setReferenceConfigs(ER7000PosLtlbDppkDtum.Configs.REF_CONFIG_PPMPK)
-                .setSubmissionFormat(getSubmissionFormatConfig(KONVENSIONAL, reportCode))
-                .setSubmissionField(FIELD_KONVEN.getFields())
-                .setSegmentValidations(E7000DtumValidationsConfig.VALIDATION_METADATA)
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(KONVENSIONAL, programType.toString()))
+                .setSubmissionField(FIELD_KONVEN.getClearedFields())
+//                .setSegmentValidations(E7000DtumValidationsConfig.VALIDATION_METADATA)
+                .setSegmentValidations()
                 .build()
                 .get();
     }

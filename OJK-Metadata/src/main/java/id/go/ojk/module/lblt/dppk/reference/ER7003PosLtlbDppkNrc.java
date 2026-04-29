@@ -91,8 +91,8 @@ public enum ER7003PosLtlbDppkNrc implements IObject<KeyValueString> {
         return ER7003PosLtlbDppkNrc.class.getSimpleName().substring(6);
     }
 
-    public static int getRefNumber() {
-        return Integer.parseInt(ER7003PosLtlbDppkNrc.class.getSimpleName().substring(2, 6));
+    public static int getRefNumber(int referenceNumber) {
+        return referenceNumber;
     }
 
     public KeyValueString getObject() {

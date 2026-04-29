@@ -21,7 +21,7 @@ public class LbltMetadataValidation<T extends Enum<T> & ILbltMetadataValidation>
     @Override
     protected List<T> enumValues() {
         return EnumSet.allOf(enumClass).stream()
-                .filter(e -> e.getProgramTypes().contains(programType))
+                .filter(e -> e.getProgramTypes().contains(programType) || e.getProgramTypes().contains(ProgramType.ALL))
                 .collect(Collectors.toList());
     }
 }

@@ -6,8 +6,10 @@ import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
 import id.go.ojk.lib.client.model.config.UniqueType;
+import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.module.lblt.dppk.form.EFormLaporanBulananTahunan;
 import id.go.ojk.module.lblt.dppk.header.EHeaderMetadataPpmpk;
+import id.go.ojk.module.lblt.dppk.header.EHeaderMetadataPpmpm;
 import id.go.ojk.module.lblt.dppk.reference.ER7006PosLtlbDppkPst;
 import id.go.ojk.module.lblt.dppk.validations.E7006PstValidationsConfig;
 import id.go.ojk.util.constants.ProgramType;
@@ -17,8 +19,12 @@ import id.go.ojk.util.metadata.field.lblt.LbltMetadataField;
 import id.go.ojk.util.metadata.submission.SubmissionConfig;
 import lombok.AllArgsConstructor;
 
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.EnumSet;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static id.go.ojk.lib.client.model.config.DataType.*;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.O;
@@ -36,7 +42,6 @@ public enum Dppk0006Pst implements ILbltFieldMetadata {
     ),
     KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(1, null, "Kode Komponen", sv(O, 13, 13, refTable)
-                    .confReference(EHeaderMetadataPpmpk.R7006Pst.getObject())
                     .confRegex(SimpleValidation.patternAlfaNumeric))
                     .confUnique(UniqueType.U)
     ),
@@ -74,9 +79,14 @@ public enum Dppk0006Pst implements ILbltFieldMetadata {
         return programType;
     }
 
-    public static final LbltMetadataField<Dppk0006Pst> FIELD_KONVEN = new LbltMetadataField<>(Dppk0006Pst.class, KONVENSIONAL);
+    private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
+            new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7006Pst.getObject()),
+            new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7006Pst.getObject())
+    ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
-    public static SubmissionFormatBuilder getSubmissionFormatConfig(SectorType sectorType, String reportCode) {
+    public static final LbltMetadataField<Dppk0006Pst> FIELD_KONVEN = new LbltMetadataField<>(Dppk0006Pst.class, KONVENSIONAL, KODE_KOMPONEN_HEADERS);
+
+    public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, String reportCode) {
         EFormLaporanBulananTahunan PST_FORM = EFormLaporanBulananTahunan.LTLB_PST;
         SubmissionFormatBuilder sfConfig = SubmissionFormatBuilder.builder()
                 .code(PST_FORM.getCode())
@@ -87,25 +97,24 @@ public enum Dppk0006Pst implements ILbltFieldMetadata {
                 .fields(new ArrayList<>())
                 .build();
 
-        if (sectorType.equals(KONVENSIONAL)) {
+        if (sectorType.equals(KONVENSIONAL) || sectorType.equals(SYARIAH)) {
             sfConfig.setMinRow(19);
             return sfConfig;
-        } else if (sectorType.equals(SYARIAH)) {
-            sfConfig.setMinRow(9999);
-            return sfConfig;
         }
+
 
         throw new IllegalArgumentException("Unknown sector type: " + sectorType);
     }
 
-    public static SubmissionFormat ppmpkKonvensionalFormMetadata(String reportCode) {
-        FIELD_KONVEN.setProgramType(ProgramType.PPMPK);
-        return new SubmissionConfig(reportCode)
+    public static SubmissionFormat ppmpKonvensionalFormMetadata(ProgramType programType) {
+        FIELD_KONVEN.setProgramType(programType);
+        return new SubmissionConfig(programType.toString())
                 .config()
                 .setReferenceConfigs(ER7006PosLtlbDppkPst.Configs.REF_CONFIG_PPMPK)
-                .setSubmissionFormat(getSubmissionFormatConfig(KONVENSIONAL, reportCode))
-                .setSubmissionField(FIELD_KONVEN.getFields())
-                .setSegmentValidations(E7006PstValidationsConfig.VALIDATION_METADATA)
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(KONVENSIONAL, programType.toString()))
+                .setSubmissionField(FIELD_KONVEN.getClearedFields())
+                //                .setSegmentValidations(E7006PstValidationsConfig.VALIDATION_METADATA)
+                .setSegmentValidations()
                 .build()
                 .get();
     }

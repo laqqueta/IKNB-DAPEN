@@ -56,7 +56,7 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
     R_LAN0107000000("LAN0107000000", "ASET TERSEDIA", EnumSet.of(ProgramType.ALL)),
     R_LAN0108020000("LAN0108020000", "Liabilitas di luar Nilai Kini Aktuarial", EnumSet.of(ProgramType.PPMPM)),
     R_LAN0108010000("LAN0108010000", "Liabilitas di luar Liabilitas Manfaat Pensiun",
-            EnumSet.of(ProgramType.PPIPM, ProgramType.PPIPK, ProgramType.PPMPK, ProgramType.PPMPPPIPK)),
+            EnumSet.of(ProgramType.PPIPM, ProgramType.PPIPK, ProgramType.PPMPPPIPK)),
     R_LAN0108020100("LAN0108020100", "Utang Manfaat Pensiun dan Manfaat Lain Jatuh Tempo", EnumSet.of(ProgramType.ALL)),
     R_LAN0108020200("LAN0108020200", "Utang Manfaat Sukarela", EnumSet.of(ProgramType.ALL)),
     R_LAN0108020300("LAN0108020300", "Utang Investasi", EnumSet.of(ProgramType.ALL)),
@@ -68,9 +68,9 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
     R_LAN0110000000("LAN0110000000", "TOTAL LIABILITAS", EnumSet.of(ProgramType.ALL)),
     R_LAN0111000000("LAN0111000000", "ASET NETO", EnumSet.of(ProgramType.ALL));
 
-    final String key;
-    final String value;
-    final EnumSet<ProgramType> jenisProgram;
+    public final String key;
+    public final String value;
+    public final EnumSet<ProgramType> jenisProgram;
 
     public static List<KeyValueString> getObjects(ProgramType jenisProgram) {
         List<KeyValueString> res = new ArrayList<>();
@@ -86,8 +86,8 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
         return ER7001PosLtlbDppkLan.class.getSimpleName().substring(6);
     }
 
-    public static int getRefNumber() {
-        return Integer.parseInt(ER7001PosLtlbDppkLan.class.getSimpleName().substring(2, 6));
+    public static int getRefNumber(int referenceNumber) {
+        return referenceNumber;
     }
 
     public KeyValueString getObject() {

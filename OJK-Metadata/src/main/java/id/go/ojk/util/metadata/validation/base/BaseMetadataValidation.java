@@ -27,4 +27,12 @@ public abstract class BaseMetadataValidation<T extends Enum<T> & IBaseMetadataVa
                 .collect(Collectors.toList());
     }
 
+    public List<SegmentValidation> testSegmentValidations(EnumSet<T> filters) {
+        return enumValues().stream()
+                .filter(filters::contains)
+                .filter(v -> ValidationConverter.isValidation(v, SegmentValidation.class))
+                .map(v -> ValidationConverter.toValidation(v, SegmentValidation.class))
+                .collect(Collectors.toList());
+    }
+
 }

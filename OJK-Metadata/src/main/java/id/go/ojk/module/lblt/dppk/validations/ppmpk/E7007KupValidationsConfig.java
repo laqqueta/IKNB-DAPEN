@@ -9,7 +9,7 @@ import id.go.ojk.conf.client.UtilFieldConditional;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
 import id.go.ojk.module.lblt.dppk.form.EFormLaporanBulananTahunan;
-import id.go.ojk.module.lblt.dppk.header.EHeaderMetadataShared;
+import id.go.ojk.module.lblt.dppk.header.EHeaderMetadataSharedLkbt;
 import id.go.ojk.module.lblt.dppk.reference.ER7001PosLtlbDppkLan;
 import id.go.ojk.module.lblt.dppk.reference.ER7007PosLtlbDppkKup;
 import id.go.ojk.util.constants.ProgramType;
@@ -88,7 +88,7 @@ public enum E7007KupValidationsConfig implements ILbltMetadataValidation, IValid
     SG_REF_KODE_PENDANAAN(programs(PPMPK),
             () -> UtilSegmentValidation.genReference("3|4|5",
                     UtilMetadata.genPipeRow(getObjects(ProgramType.PPMPK), new int[]{19}),
-                    EHeaderMetadataShared.R023.getNumber())),
+                    EHeaderMetadataSharedLkbt.R023.getNumber())),
 
     SG_VALIDATION_PROYEKSI_PENDANAAN(programs(PPMPK),
             () -> UtilSegmentValidation.genOperatorProyeksi("3|4|5",

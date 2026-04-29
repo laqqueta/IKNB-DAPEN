@@ -61,8 +61,8 @@ public enum ER7002PosLtlbDppkLpan implements IObject<KeyValueString> {
         return ER7002PosLtlbDppkLpan.class.getSimpleName().substring(6);
     }
 
-    public static int getRefNumber() {
-        return Integer.parseInt(ER7002PosLtlbDppkLpan.class.getSimpleName().substring(2, 6));
+    public static int getRefNumber(int referenceNumber) {
+        return referenceNumber;
     }
 
     public KeyValueString getObject() {

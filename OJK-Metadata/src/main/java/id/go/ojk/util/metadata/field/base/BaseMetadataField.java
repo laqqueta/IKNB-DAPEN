@@ -3,10 +3,12 @@ package id.go.ojk.util.metadata.field.base;
 import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.util.FieldUtil;
 import id.go.ojk.util.constants.SectorType;
-import lombok.Getter;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import static id.go.ojk.lib.client.model.constant.RequiredCondition.O;
 
 public abstract class BaseMetadataField<T extends Enum<T> & IBaseFieldMetadata> {
 
@@ -39,14 +41,30 @@ public abstract class BaseMetadataField<T extends Enum<T> & IBaseFieldMetadata> 
                 .collect(Collectors.toList());
     }
 
-    public List<SubmissionField> getFields() {
+    protected Stream<SubmissionField> getfilteredFieldStream() {
         return enumValues().stream()
                 .filter(f -> f.getSectorTypes().contains(sectorType))
-                .map(IBaseFieldMetadata::getField)
+                .map(IBaseFieldMetadata::getField);
+    }
+
+    public List<SubmissionField> getFields() {
+        return getfilteredFieldStream()
                 .sorted(Comparator.comparingInt(SubmissionField::getNumber))
                 .collect(Collectors.toList());
     }
 
+    // this func is to make all fields Optional and remove any Field Validation & Conditional Required Validation
+    // so use this for testing fields temporarily
+    public List<SubmissionField> getClearedFields() {
+        return getfilteredFieldStream()
+                .peek(field -> {
+                    field.getSimpleValidation().setRequiredCondition(O);
+                    field.getSimpleValidation().setConditionalRequired(null);
+                    field.setFieldValidations(new ArrayList<>());
+                })
+                .sorted(Comparator.comparingInt(SubmissionField::getNumber))
+                .collect(Collectors.toList());
+    }
 
     public List<SubmissionField> getReindexFields(List<Integer> selectedFields, Map<Integer, Integer> reindexNumber) {
         return reindex(enumValues().stream()

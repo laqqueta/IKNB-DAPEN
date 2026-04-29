@@ -49,11 +49,14 @@ public abstract class BaseRowValidation extends MapParamSegmentValidation {
 				isNumeric = true;
 			} else if (c == '.') {
 				if (isDot) return true;
+				if (!isNumeric) return true;
 				isDot = true;
 			} else {
 				return true;
 			}
 		}
+
+		if (isDot && s.charAt(s.length() - 1) == '.') return true;
 
 		return !isNumeric;
 	}

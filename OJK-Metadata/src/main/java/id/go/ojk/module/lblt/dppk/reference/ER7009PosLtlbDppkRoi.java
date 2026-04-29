@@ -50,8 +50,8 @@ public enum ER7009PosLtlbDppkRoi implements IObject<KeyValueString> {
         return ER7009PosLtlbDppkRoi.class.getSimpleName().substring(6);
     }
 
-    public static int getRefNumber() {
-        return Integer.parseInt(ER7009PosLtlbDppkRoi.class.getSimpleName().substring(2, 6));
+    public static int getRefNumber(int referenceNumber) {
+        return referenceNumber;
     }
 
     public KeyValueString getObject() {

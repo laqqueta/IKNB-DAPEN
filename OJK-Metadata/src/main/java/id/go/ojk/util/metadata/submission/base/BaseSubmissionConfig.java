@@ -11,6 +11,7 @@ import id.go.ojk.util.metadata.validation.base.BaseMetadataValidation;
 import id.go.ojk.util.metadata.validation.base.IBaseMetadataValidation;
 
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.List;
 
 public abstract class BaseSubmissionConfig extends BaseMetadata {
@@ -91,6 +92,19 @@ public abstract class BaseSubmissionConfig extends BaseMetadata {
 
         public <V extends Enum<V> & IBaseMetadataValidation> Config<T> setSegmentValidations(BaseMetadataValidation<V> validationMetadata) {
             BaseSubmissionConfig.this.segmentValidations = validationMetadata.getSegmentValidations();
+            return this;
+        }
+
+
+        // for testing some validations
+        public <V extends Enum<V> & IBaseMetadataValidation> Config<T> setSegmentValidations(BaseMetadataValidation<V> validationMetadata, EnumSet<V> testFilters) {
+            BaseSubmissionConfig.this.segmentValidations = validationMetadata.testSegmentValidations(testFilters);
+            return this;
+        }
+
+        // for testing to not use validation segments at all
+        public <V extends Enum<V> & IBaseMetadataValidation> Config<T> setSegmentValidations() {
+            BaseSubmissionConfig.this.segmentValidations = new ArrayList<>();
             return this;
         }
 

@@ -31,8 +31,8 @@ public enum ER7033PosLtlbDppkMtn implements IObject<KeyValueString> {
         return ER7033PosLtlbDppkMtn.class.getSimpleName().substring(6);
     }
 
-    public static int getRefNumber() {
-        return Integer.parseInt(ER7033PosLtlbDppkMtn.class.getSimpleName().substring(2, 6));
+    public static int getRefNumber(int referenceNumber) {
+        return referenceNumber;
     }
 
     public KeyValueString getObject() {
@@ -40,7 +40,7 @@ public enum ER7033PosLtlbDppkMtn implements IObject<KeyValueString> {
     }
 
     public enum Configs implements ReferenceConfig {
-        REF_CONFIG_PPMPK {
+        REF_CONFIG_PPMP {
             @Override
             public String savePos() {
                 return UtilMetadata.genFieldSave("6|11|12|13", getObjects());
@@ -53,7 +53,7 @@ public enum ER7033PosLtlbDppkMtn implements IObject<KeyValueString> {
 
             @Override
             public String savePosForm() {
-                return UtilMetadata.genFieldSave("11|16", getObjects());
+                return UtilMetadata.genFieldSave("11|12|16", getObjects());
             }
         }
     }

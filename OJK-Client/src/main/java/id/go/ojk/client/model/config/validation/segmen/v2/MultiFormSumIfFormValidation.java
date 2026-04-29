@@ -16,7 +16,9 @@ import org.slf4j.LoggerFactory;
 
 import java.math.BigDecimal;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @XStreamAlias("MultiFormSumIfFormValidation")
 public class MultiFormSumIfFormValidation extends BaseSumIf<SumIfBaseParams> {
@@ -97,29 +99,38 @@ public class MultiFormSumIfFormValidation extends BaseSumIf<SumIfBaseParams> {
 
         if (comparatorForms.length != comparatorRows.length) throw new UnsupportedOperationException();
 
+        final String[] key = new String[1];
+        final String[] value = new String[1];
+
+        Map<String, Long> accumulator = new HashMap<>();
+
         for (int i = 0; i < comparatorForms.length; i++) {
             String prefix = comparatorForms[i] + comparatorRows[i].split("-")[0];
-            Map<String, Map<String, String>> formsData = SubmissionFormat.getFormValues(prefix, Character.MAX_VALUE);
+            int finalI = i;
+            SubmissionFormat
+                    .getStreamOfFormSubMap(prefix, Character.MAX_VALUE)
+                    .forEach(entry -> {
+                        if (entry.getValue().get(criteriaFields[finalI]).isEmpty()) return;
 
-            for (Map.Entry<String, Map<String, String>> entry : formsData.entrySet()) {
-                if (entry.getValue().get(criteriaFields[i]).isEmpty()) continue;
+                        key[0] = entry.getValue().get(criteriaFields[finalI]);
+                        if (!mapCriteria.containsKey(key[0])) return;
+                        if (!mapCriteriaStatus.get(key[0])) return;
 
-                String key = entry.getValue().get(criteriaFields[i]);
-                if (!mapCriteria.containsKey(key)) continue;
-                if (!mapCriteriaStatus.get(key)) continue;
+                        value[0] = entry.getValue().get(rangeFields[finalI]);
+                        if (isInvalidNumeric(value[0])) {
+                            mapCriteriaStatus.put(key[0], false);
+                            return;
+                        }
 
-                String value = entry.getValue().get(rangeFields[i]);
-                if (isInvalidNumeric(value)) {
-                    mapCriteriaStatus.put(key, false);
-                    continue;
-                }
+                        if (!mapCriteriaStatus.get(key[0])) return;
 
-                if (!mapCriteriaStatus.get(key)) continue;
-
-                mapCriteria.computeIfPresent(key, (k, v) -> v.add(new BigDecimal(value)));
-            }
-
+                        // mapCriteria.computeIfPresent(key[0], (k, v) -> v.add(new BigDecimal(value[0])));
+                        accumulator.merge(key[0], Long.parseLong(value[0]), Long::sum);
+                    });
         }
+
+        accumulator.forEach((k, v) ->
+                mapCriteria.computeIfPresent(k, (mk, mv) -> mv.add(BigDecimal.valueOf(v))));
 
         return mapCriteria;
     }

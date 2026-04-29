@@ -32,8 +32,8 @@ public enum ER7016PosLtlbDppkSbn implements IObject<KeyValueString> {
         return ER7016PosLtlbDppkSbn.class.getSimpleName().substring(6);
     }
 
-    public static int getRefNumber() {
-        return Integer.parseInt(ER7016PosLtlbDppkSbn.class.getSimpleName().substring(2, 6));
+    public static int getRefNumber(int referenceNumber) {
+        return referenceNumber;
     }
 
     public KeyValueString getObject() {

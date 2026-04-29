@@ -31,8 +31,8 @@ public enum ER7054PosLtlbDppkUmpj implements IObject<KeyValueString> {
         return ER7054PosLtlbDppkUmpj.class.getSimpleName().substring(6);
     }
 
-    public static int getRefNumber() {
-        return Integer.parseInt(ER7054PosLtlbDppkUmpj.class.getSimpleName().substring(2, 6));
+    public static int getRefNumber(int referenceNumber) {
+        return referenceNumber;
     }
 
     public KeyValueString getObject() {
@@ -40,7 +40,7 @@ public enum ER7054PosLtlbDppkUmpj implements IObject<KeyValueString> {
     }
 
     public enum Configs implements ReferenceConfig {
-        REF_CONFIG_PPMPK {
+        REF_CONFIG_PPMP {
             @Override
             public String savePos() {
                 return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 4), getObjects());
@@ -49,6 +49,11 @@ public enum ER7054PosLtlbDppkUmpj implements IObject<KeyValueString> {
             @Override
             public String requiredPos() {
                 return UtilMetadata.genPipeRow(getObjects(), new int[]{1});
+            }
+
+            @Override
+            public String savePosForm() {
+                return UtilMetadata.genFieldSave("4|5", getObjects());
             }
         }
     }
