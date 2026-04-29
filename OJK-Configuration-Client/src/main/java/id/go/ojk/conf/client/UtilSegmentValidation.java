@@ -1050,9 +1050,9 @@ public class UtilSegmentValidation {
     }
 
     public static SegmentValidation genEqualsSbnRatio(String selectField, String selectPosCode,
-                                                            String comparator1RowCode, String comparator1FieldRow,
-                                                            String comparator2Form, String comparator2RowCode, String comparator2FieldRow,
-                                                            String message, int scale) {
+                                                      String comparator1RowCode, String comparator1FieldRow,
+                                                      String comparator2Form, String comparator2RowCode, String comparator2FieldRow,
+                                                      String message, int scale) {
         StringBuilder builder = new StringBuilder("selectField=" + selectField);
         builder.append("&selectPosCode=" + selectPosCode);
         builder.append("&comparator1RowCode=" + comparator1RowCode);
@@ -1291,9 +1291,75 @@ public class UtilSegmentValidation {
         return new SumIfFormValidation(builder.toString());
     }
 
+    public static SegmentValidation genSumIfMultiField(String selectField, String selectPosCode, String comparatorForm, String comparatorRow,
+                                                       String formRangeField, String formCriteriaField, String sumField, String criteriaCondition, String sumCriteriaCondition,
+                                                       String msgError, String conditionError, String sumConditionError) {
+
+        StringBuilder builder = new StringBuilder("selectField=" + selectField);
+        builder.append("&selectPosCode=" + selectPosCode);
+        builder.append("&comparatorForm=" + comparatorForm);
+        builder.append("&comparatorRow=" + comparatorRow);
+        builder.append("&rangeField=" + formRangeField);
+        builder.append("&criteriaField=" + formCriteriaField);
+        builder.append("&sumField=" + sumField);
+        builder.append("&criteriaCondition=" + criteriaCondition);
+        builder.append("&sumCriteriaCondition=" + sumCriteriaCondition);
+        builder.append("&msgError=" + msgError);
+        builder.append("&criteriaConditionError=" + conditionError);
+        builder.append("&sumConditionError=" + sumConditionError);
+        return new SumIfMultiFieldFormValidation(builder.toString());
+    }
+
+
+    public static SegmentValidation genSumIfSpecField(String selectField, String selectPosCode, String comparatorForm, String comparatorRow,
+                                                      String formRangeField, String formCriteriaField, String sumField, String specField, String condSpec, String criteriaCondition, String sumCriteriaCondition,
+                                                      String msgError, String conditionError, String sumConditionError) {
+
+        StringBuilder builder = new StringBuilder("selectField=" + selectField);
+        builder.append("&selectPosCode=" + selectPosCode);
+        builder.append("&comparatorForm=" + comparatorForm);
+        builder.append("&comparatorRow=" + comparatorRow);
+        builder.append("&rangeField=" + formRangeField);
+        builder.append("&criteriaField=" + formCriteriaField);
+        builder.append("&sumField=" + sumField);
+        builder.append("&fieldSpec=" + specField);
+        builder.append("&conditionSpec=" + condSpec);
+        builder.append("&criteriaCondition=" + criteriaCondition);
+        builder.append("&sumCriteriaCondition=" + sumCriteriaCondition);
+        builder.append("&msgError=" + msgError);
+        builder.append("&criteriaConditionError=" + conditionError);
+        builder.append("&sumConditionError=" + sumConditionError);
+        return new SumIfMultiSpecFieldFormValidation(builder.toString());
+    }
+
+    public static SegmentValidation genSumIfSpecForm(String selectField, String selectPosCode, String comparatorForm, String comparatorRow,
+                                                     String formRangeField, String formCriteriaField, String sumField, String specField, String condSpec,
+                                                     String criteriaSpecField, String formSpec, String formRowSpec, String criteriaCondition, String sumCriteriaCondition,
+                                                     String msgError, String conditionError, String sumConditionError) {
+
+        StringBuilder builder = new StringBuilder("selectField=" + selectField);
+        builder.append("&selectPosCode=" + selectPosCode);
+        builder.append("&comparatorForm=" + comparatorForm);
+        builder.append("&comparatorRow=" + comparatorRow);
+        builder.append("&rangeField=" + formRangeField);
+        builder.append("&criteriaField=" + formCriteriaField);
+        builder.append("&sumField=" + sumField);
+        builder.append("&fieldSpec=" + specField);
+        builder.append("&conditionSpec=" + condSpec);
+        builder.append("&criteriaSpecField=" + criteriaSpecField);
+        builder.append("&formSpec=" + formSpec);
+        builder.append("&formRowSpec=" + formRowSpec);
+        builder.append("&criteriaCondition=" + criteriaCondition);
+        builder.append("&sumCriteriaCondition=" + sumCriteriaCondition);
+        builder.append("&msgError=" + msgError);
+        builder.append("&criteriaConditionError=" + conditionError);
+        builder.append("&sumConditionError=" + sumConditionError);
+        return new SumIfMultiSpecFormFormValidation(builder.toString());
+    }
+
     public static SegmentValidation genMultiFormSumIf(String selectField, String selectPosCode, String comparatorForm, String comparatorRow,
-                                             String formRangeField, String formCriteriaField, String sumField, String criteriaCondition, String sumCriteriaCondition,
-                                             String msgError, String conditionError, String sumConditionError) {
+                                                      String formRangeField, String formCriteriaField, String sumField, String criteriaCondition, String sumCriteriaCondition,
+                                                      String msgError, String conditionError, String sumConditionError) {
 
         StringBuilder builder = new StringBuilder("selectField=" + selectField);
         builder.append("&selectPosCode=" + selectPosCode);
@@ -1311,8 +1377,8 @@ public class UtilSegmentValidation {
     }
 
     public static SegmentValidation genMultiCriteriaSumIf(String selectField, String selectPosCode, String comparatorForm, String comparatorRow,
-                                             String formRangeField, String formCriteriaField, String sumField, String criteriaCondition, String sumCriteriaCondition,
-                                             String msgError, String conditionError, String sumConditionError, String key) {
+                                                          String formRangeField, String formCriteriaField, String sumField, String criteriaCondition, String sumCriteriaCondition,
+                                                          String msgError, String conditionError, String sumConditionError, String key) {
 
         StringBuilder builder = new StringBuilder("selectField=" + selectField);
         builder.append("&selectPosCode=" + selectPosCode);
@@ -1328,6 +1394,28 @@ public class UtilSegmentValidation {
         builder.append("&sumConditionError=" + sumConditionError);
         builder.append("&criteriaAsKey=" + key);
         return new SumIfMultiCriteriaFormValidation(builder.toString());
+    }
+
+    public static SegmentValidation genMultiSpecFieldCriteriaSumIf(String selectField, String selectPosCode, String comparatorForm, String comparatorRow,
+                                                          String formRangeField, String formCriteriaField, String sumField, String fieldSpec, String conditionSpec, String criteriaCondition, String sumCriteriaCondition,
+                                                          String msgError, String conditionError, String sumConditionError, String key) {
+
+        StringBuilder builder = new StringBuilder("selectField=" + selectField);
+        builder.append("&selectPosCode=" + selectPosCode);
+        builder.append("&comparatorForm=" + comparatorForm);
+        builder.append("&comparatorRow=" + comparatorRow);
+        builder.append("&rangeField=" + formRangeField);
+        builder.append("&criteriaField=" + formCriteriaField);
+        builder.append("&sumField=" + sumField);
+        builder.append("&fieldSpec=" + fieldSpec);
+        builder.append("&conditionSpec=" + conditionSpec);
+        builder.append("&criteriaCondition=" + criteriaCondition);
+        builder.append("&sumCriteriaCondition=" + sumCriteriaCondition);
+        builder.append("&msgError=" + msgError);
+        builder.append("&criteriaConditionError=" + conditionError);
+        builder.append("&sumConditionError=" + sumConditionError);
+        builder.append("&criteriaAsKey=" + key);
+        return new SumIfMultiSpecFieldCriteriaFormValidation(builder.toString());
     }
 
     public static SegmentValidation genGeoMeanInvestasi(String selectField, String selectPosCode,
