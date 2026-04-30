@@ -19,7 +19,7 @@ import id.go.ojk.lib.client.model.constant.Comparation;
 import id.go.ojk.lib.client.model.validation.ValidationErrorCode;
 import lombok.extern.slf4j.Slf4j;
 
-@XStreamAlias("EqualsFormConditionalValidation")
+@XStreamAlias("ComparisonFormExpressionValidation")
 @Slf4j
 /*
  * Use case:
