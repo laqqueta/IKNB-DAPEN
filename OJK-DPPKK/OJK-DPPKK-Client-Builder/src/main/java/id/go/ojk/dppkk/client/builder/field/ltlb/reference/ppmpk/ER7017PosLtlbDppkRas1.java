@@ -1,6 +1,7 @@
 package id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.List;
 
@@ -143,7 +144,7 @@ public enum ER7017PosLtlbDppkRas1 implements IObject<KeyValueString> {
     }
 
     public static String genFieldSave() {
-      return UtilMetadata.genFieldSave("2", getObjects(JenisProgram.PPMPK));
+      return UtilMetadata.genFieldSave("2|3|4|5", getObjects(JenisProgram.PPMPK));
     }
 
     public static String genRequiredPos() {
@@ -159,24 +160,46 @@ public enum ER7017PosLtlbDppkRas1 implements IObject<KeyValueString> {
       return UtilFieldConditional.genExistPosAndHasReference("N", "M", refPosCode, getRefNumber(), "O");
     }
 
-    public static SegmentValidation genIntegerValidation() {
+    public static SegmentValidation genValidationTypeInteger() {
       return UtilSegmentValidation.genRegexNumericNegative("2|3|4|5", UtilMetadata.genPipeRow(getObjects(JenisProgram.PPMPK), INT_ROWS));
     }
 
-    public static SegmentValidation genDecimallValidation() {
+    public static SegmentValidation genValidationTypeDecimal() {
       return UtilSegmentValidation.genRegexNumericDotNegative("2|3|4|5", UtilMetadata.genPipeRow(getObjects(JenisProgram.PPMPK), PERCENT_ROWS));
     }
 
-    public static FieldValidation genFieldValidation06A() {
+    public static FieldValidation genValidationFieldTotal01() {
       String formula = UtilMetadata.genPlusColumn(2, 4);
       int[] rows = { 0, 3, 6, 7, 9, 10, 12, 13, 15, 16, 18, 19, 21, 22, 24, 25, 27, 28, 30, 31, 33, 34, 36, 37, 39, 40,
           45, 46, 51, 52 };
       return UtilFieldValidation.genEqualsPosFormula(formula, UtilMetadata.genPipeRow(getObjects(JenisProgram.PPMPK), rows));
     }
 
-    public static FieldValidation genFieldValidation06B() {
+    public static FieldValidation genValidationFieldTotal02() {
       String formula = UtilMetadata.genPlusColumn(3, 4);
       int[] rows = { 42, 43, 54, 55 };
       return UtilFieldValidation.genEqualsPosFormula(formula, UtilMetadata.genPipeRow(getObjects(JenisProgram.PPMPK), rows));
+    }
+
+    public static List<SegmentValidation> genAllValidationRatioAB() {
+      List<SegmentValidation> validations = new ArrayList<>();
+      List<IObject<KeyValueString>> ratios = Arrays.asList(R_RAS10103000000, R_RAS10203000000, R_RAS10303000000,
+          R_RAS10503000000, R_RAS10703000000, R_RAS10803000000, R_RAS10903000000, R_RAS11003000000, R_RAS11103000000,
+          R_RAS11203000000, R_RAS11303000000, R_RAS11403000000, R_RAS11503000000, R_RAS11603000000, R_RAS11703000000,
+          R_RAS11803000000, R_RAS11903000000, R_RAS12030000000, R_RAS13030000000, R_RAS14030000000);
+
+      for (int i = 0; i < ratios.size(); i++) {
+        int rowA = i * 3;
+        int rowB = rowA + 1;
+        validations.add(genValidationRatioAB(ratios.get(i), rowA, rowB));
+      }
+      return validations;
+    }
+
+    private static SegmentValidation genValidationRatioAB(IObject<KeyValueString> posCode, int rowA, int rowB) {
+      String errMsg = "Rasio (A:B)|'" + getObjects(JenisProgram.PPMPK).get(rowA).getValue() + "' : '"
+          + getObjects(JenisProgram.PPMPK).get(rowB).getValue() + "'";
+      return UtilSegmentValidation.genEqualsRatio(UtilMetadata.genPipeColumn(2, 5), posCode.getObject().getKey(),
+          UtilMetadata.genPipeRow(getObjects(JenisProgram.PPMPK), new int[] { rowA, rowB }), errMsg);
     }
 }

@@ -32,8 +32,10 @@ public class Ltlb0018RAS1 extends BaseMetadata {
         res.setUniquePos(ER7017PosLtlbDppkRas1.genUniquePos());
         res.setSavePos(ER7017PosLtlbDppkRas1.genFieldSave());
 
-        res.addSegmentValidations(ER7017PosLtlbDppkRas1.genIntegerValidation());
-        res.addSegmentValidations(ER7017PosLtlbDppkRas1.genDecimallValidation());
+        res.addSegmentValidations(ER7017PosLtlbDppkRas1.genValidationTypeInteger());
+        res.addSegmentValidations(ER7017PosLtlbDppkRas1.genValidationTypeDecimal());
+
+        ER7017PosLtlbDppkRas1.genAllValidationRatioAB().forEach(res::addSegmentValidations);
 
         List<SubmissionField> fs = res.getFields();
         fs.add(sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01")));
@@ -46,8 +48,8 @@ public class Ltlb0018RAS1 extends BaseMetadata {
         fs.add(sf(4, null, "Manfaat lain", sv(M, 1, 18, all2)));
         fs.add(sf(5, null, "Total", sv(C, 1, 18, all2)
             .confConditionalRequired(ER7017PosLtlbDppkRas1.genConditionalTotalMustEmpty()))
-            .addFieldValidations(ER7017PosLtlbDppkRas1.genFieldValidation06A())
-            .addFieldValidations(ER7017PosLtlbDppkRas1.genFieldValidation06B()));
+            .addFieldValidations(ER7017PosLtlbDppkRas1.genValidationFieldTotal01())
+            .addFieldValidations(ER7017PosLtlbDppkRas1.genValidationFieldTotal02()));
         return res;
     }
 }
