@@ -19,21 +19,21 @@ import id.go.ojk.lib.client.model.constant.Comparation;
 import id.go.ojk.lib.client.model.validation.ValidationErrorCode;
 import lombok.extern.slf4j.Slf4j;
 
-@XStreamAlias("ComparisonFormExpressionValidation")
+@XStreamAlias("ComparisonFormConditionalExpressionValidation")
 @Slf4j
 /*
  * Use case:
  * If A in form 1 is <expr1>,then SUM(A:C) in form 2 must [eq atau neq> <expr2>
  */
-public class ComparisonFormExpressionValidation extends ComparisonFormValidation {
+public class ComparisonFormConditionalExpressionValidation extends ComparisonFormValidation {
   private String selectExpr;
   private String comparatorExpr;
 
-  public ComparisonFormExpressionValidation() {
+  public ComparisonFormConditionalExpressionValidation() {
     super();
   }
 
-  public ComparisonFormExpressionValidation(String parameter) {
+  public ComparisonFormConditionalExpressionValidation(String parameter) {
     super(parameter);
   }
   
@@ -41,7 +41,7 @@ public class ComparisonFormExpressionValidation extends ComparisonFormValidation
     public ComparisonFormValidation initialized() {
       super.initialized();
       selectExpr = getStringParameter("selectExpr");
-      comparatorExpr = getStringParameter("selectExpr");
+      comparatorExpr = getStringParameter("comparatorExpr");
       return this;
     }
 

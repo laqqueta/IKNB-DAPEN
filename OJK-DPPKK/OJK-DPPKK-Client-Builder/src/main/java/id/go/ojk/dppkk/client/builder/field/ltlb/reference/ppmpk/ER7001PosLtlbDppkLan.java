@@ -269,7 +269,7 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
       KeyValueString comparator = ER7006PosLtlbDppkPst.R_PST0400000000.getObject();
       String comparatorExpr = "> 0";
       String errMsg = R_LAN0111000000.value + "|" + comparator.getValue();
-      return UtilSegmentValidation.genEqualsFormExpression("13", selecPosCode, selectExpr, PST, "5",
+      return UtilSegmentValidation.genEqualsFormConditionalExpression("13", selecPosCode, selectExpr, PST, "5",
           comparator.getKey(), comparatorExpr, "e", 2, errMsg);
     }
 }
