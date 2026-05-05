@@ -62,7 +62,7 @@ public enum ER7009PosLtlbDppkRoi implements IObject<KeyValueString> {
     }
 
     public static String genFieldSaveForm() {
-      return UtilMetadata.genFieldSave("8", getObjects());
+      return UtilMetadata.genFieldSave("8|10", getObjects());
     }
 
     public static String getRequiredPos() {

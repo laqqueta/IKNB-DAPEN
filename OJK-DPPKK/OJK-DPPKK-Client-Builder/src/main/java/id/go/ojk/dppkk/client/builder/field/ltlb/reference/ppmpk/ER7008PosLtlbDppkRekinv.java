@@ -1,23 +1,23 @@
 package id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk;
 
-import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
-import id.go.ojk.conf.client.UtilMetadata;
-import id.go.ojk.conf.client.UtilSegmentValidation;
-import id.go.ojk.dppkk.client.builder.constant.JenisProgram;
-import id.go.ojk.dppkk.client.builder.field.ltlb.reference.validations.ppmpk.EKupValidationsConfig;
-import id.go.ojk.dppkk.client.builder.field.ltlb.reference.validations.ppmpk.ERekinvValidationsConfig;
-import id.go.ojk.lib.client.IObject;
-import id.go.ojk.lib.client.model.KeyValueString;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
+import id.go.ojk.conf.client.UtilMetadata;
+import id.go.ojk.dppkk.client.builder.constant.JenisProgram;
+import id.go.ojk.dppkk.client.builder.field.ltlb.reference.validations.ppmpk.ERekinvValidationsConfig;
+import id.go.ojk.lib.client.IObject;
+import id.go.ojk.lib.client.model.KeyValueString;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
+@Getter
 public enum ER7008PosLtlbDppkRekinv implements IObject<KeyValueString> {
 
     R_REKINV0100000000("REKINV0100000000", "Deposito on call pada Bank", EnumSet.of(JenisProgram.ALL)),

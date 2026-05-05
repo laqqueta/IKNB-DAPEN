@@ -37,6 +37,10 @@ public class Ltlb0018RAS1 extends BaseMetadata {
 
         ER7017PosLtlbDppkRas1.genAllValidationRatioAB().forEach(res::addSegmentValidations);
 
+        /* -- ANTAR FORM -- */
+        res.addSegmentValidations(ER7017PosLtlbDppkRas1.genRowValidation03());
+        res.addSegmentValidations(ER7017PosLtlbDppkRas1.genRowValidation06());
+
         List<SubmissionField> fs = res.getFields();
         fs.add(sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01")));
         fs.add(sf(1, null, "Kode Komponen", sv(M, 14, 14, refTable)

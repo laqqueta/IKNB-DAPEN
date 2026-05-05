@@ -121,6 +121,9 @@ public enum ER7017PosLtlbDppkRas1 implements IObject<KeyValueString> {
         59 };
     public static final int[] TOTAL_ROWS = { 0, 3 };
 
+    private static final String ROI = "ROI";
+    private static final String REKINV = "REKINV";
+
     public KeyValueString getObject() {
         return new KeyValueString(key, value, new String[] {});
     }
@@ -202,4 +205,21 @@ public enum ER7017PosLtlbDppkRas1 implements IObject<KeyValueString> {
       return UtilSegmentValidation.genEqualsRatio(UtilMetadata.genPipeColumn(2, 5), posCode.getObject().getKey(),
           UtilMetadata.genPipeRow(getObjects(JenisProgram.PPMPK), new int[] { rowA, rowB }), errMsg);
     }
+
+    /* -- ANTAR FORM -- */
+
+    public static SegmentValidation genRowValidation03() {
+      String selectPosCode = R_RAS10102000000.key;
+      String comparatorPosCode = ER7009PosLtlbDppkRoi.R_ROI2100000000.getKey();
+      return UtilSegmentValidation.genEqualsForm("5", selectPosCode, ROI, "10", comparatorPosCode);
+    }
+
+    public static SegmentValidation genRowValidation06() {
+      KeyValueString comparator = ER7008PosLtlbDppkRekinv.R_REKINV2200000000.getObject();
+      String comparatorField = UtilMetadata.genPipeColumn(2, 13);
+      String comparatorExpr = "/13";
+      String errMsg = "'" + R_RAS10202000000.value + "' harus sama dengan rata-rata '" + ER7008PosLtlbDppkRekinv.R_REKINV2200000000.getValue() + "' pada form " + REKINV;
+      return UtilSegmentValidation.genEqualsFormExpression("5", R_RAS10202000000.key, null, REKINV, comparatorField,
+          comparator.getKey(), comparatorExpr, "e", 2, errMsg);
+    } 
 }

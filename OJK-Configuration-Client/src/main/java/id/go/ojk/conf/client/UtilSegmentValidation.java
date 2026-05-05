@@ -646,6 +646,28 @@ public class UtilSegmentValidation {
       return new ComparisonFormConditionalExpressionValidation(builder.toString());
     }
 
+    public static SegmentValidation genEqualsFormExpression(String selectField, String selectPosCode, String selectExpr,
+        String comparatorForm, String comparatorField, String comparatorPosCode, String comparatorExpr, String operator,
+        int scale, String msgError) {
+      StringBuilder builder = new StringBuilder("selectField=" + selectField);
+      builder.append("&selectPosCode=" + selectPosCode);
+      if (StringUtils.isNotBlank(selectExpr)) {
+        builder.append("&selectExpr=" + selectExpr);
+      }
+      builder.append("&comparatorForm=" + comparatorForm);
+      builder.append("&comparatorField=" + comparatorField);
+      builder.append("&comparatorPosCode=" + comparatorPosCode);
+      if (StringUtils.isNotBlank(comparatorExpr)) {
+        builder.append("&comparatorExpr=" + comparatorExpr);
+      }
+      builder.append("&operator=" + operator);
+      builder.append("&scale=" + scale);
+      if (StringUtils.isNotBlank(msgError)) {
+        builder.append("&msgError=" + msgError);
+      }
+      return new ComparisonFormExpressionValidation(builder.toString());
+    }
+
     public static SegmentValidation genEqualsFormTotalRowExpectPos(String selectField, String selectPosCode,
                                                                    String comparatorForm, String expectPos, String msgError) {
         StringBuilder builder = new StringBuilder("selectField=" + selectField);
