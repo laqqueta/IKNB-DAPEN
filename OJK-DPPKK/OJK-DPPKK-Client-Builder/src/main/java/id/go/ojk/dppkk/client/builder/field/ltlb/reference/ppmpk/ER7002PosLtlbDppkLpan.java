@@ -14,11 +14,13 @@ import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
+@Getter
 public enum ER7002PosLtlbDppkLpan implements IObject<KeyValueString> {
 
     R_LPAN0101010000("LPAN0101010000", "Bunga/Bagi Hasil", EnumSet.of(JenisProgram.ALL)),
@@ -60,6 +62,22 @@ public enum ER7002PosLtlbDppkLpan implements IObject<KeyValueString> {
         return new KeyValueString(key, value, new String[] {});
     }
 
+    public String getKeyForm() {
+      return "LPAN" + key;
+    }
+    
+    public KeyValueString getObjectForm() {
+      return new KeyValueString(getKeyForm(), getValue(), new String[] {});
+    }
+
+    public static List<KeyValueString> getObjectsForm() {
+      List<KeyValueString> res = new ArrayList<>();
+      for (ER7002PosLtlbDppkLpan eEnum : ER7002PosLtlbDppkLpan.values()) {
+        res.add(eEnum.getObjectForm());
+      }
+      return res;
+    }
+
     public static List<KeyValueString> getObjects(JenisProgram jenisProgram) {
         List<KeyValueString> res = new ArrayList<>();
         for (ER7002PosLtlbDppkLpan eEnum : ER7002PosLtlbDppkLpan.values()) {
@@ -83,7 +101,7 @@ public enum ER7002PosLtlbDppkLpan implements IObject<KeyValueString> {
     }
 
     public static String genFieldSaveForm(JenisProgram jenisProgram) {
-      return UtilMetadata.genFieldSave("12", getObjects(jenisProgram));
+      return UtilMetadata.genFieldSave("2|12", getObjects(jenisProgram));
     }
 
     public static String getRequiredPos(JenisProgram jenisProgram) {

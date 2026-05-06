@@ -9,11 +9,13 @@ import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
+@Getter
 public enum ER7010PosLtlbDppkRoiml implements IObject<KeyValueString> {
 
     R_ROIML0100000000("ROIML0100000000", "Deposito on call pada Bank"),
@@ -63,6 +65,10 @@ public enum ER7010PosLtlbDppkRoiml implements IObject<KeyValueString> {
 
     public static String genFieldSave() {
         return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 11), getObjects());
+    }
+
+    public static String genFieldSaveForm() {
+      return UtilMetadata.genFieldSave("10", getObjects());
     }
 
     public static String getRequiredPos() {

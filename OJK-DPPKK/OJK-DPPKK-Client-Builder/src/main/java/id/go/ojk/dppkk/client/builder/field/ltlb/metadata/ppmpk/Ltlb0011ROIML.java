@@ -30,6 +30,7 @@ public class Ltlb0011ROIML extends BaseMetadata {
                 extension, 21, 21);
 
         res.setSavePos(ER7010PosLtlbDppkRoiml.genFieldSave());
+        res.setSavePosForm(ER7010PosLtlbDppkRoiml.genFieldSaveForm());
         res.setRequiredPos(ER7010PosLtlbDppkRoiml.getRequiredPos());
 
 //        res.addSegmentValidations(ER7010PosLtlbDppkRoiml.genValidationSumPosColEqual());

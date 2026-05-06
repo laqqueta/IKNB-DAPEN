@@ -122,7 +122,9 @@ public enum ER7017PosLtlbDppkRas1 implements IObject<KeyValueString> {
     public static final int[] TOTAL_ROWS = { 0, 3 };
 
     private static final String ROI = "ROI";
+    private static final String ROIML = "ROIML";
     private static final String REKINV = "REKINV";
+    private static final String LPAN = "LPAN";
 
     public KeyValueString getObject() {
         return new KeyValueString(key, value, new String[] {});
@@ -171,14 +173,14 @@ public enum ER7017PosLtlbDppkRas1 implements IObject<KeyValueString> {
       return UtilSegmentValidation.genRegexNumericDotNegative("2|3|4|5", UtilMetadata.genPipeRow(getObjects(JenisProgram.PPMPK), PERCENT_ROWS));
     }
 
-    public static FieldValidation genValidationFieldTotal01() {
+    public static FieldValidation genFieldValidation06A() {
       String formula = UtilMetadata.genPlusColumn(2, 4);
       int[] rows = { 0, 3, 6, 7, 9, 10, 12, 13, 15, 16, 18, 19, 21, 22, 24, 25, 27, 28, 30, 31, 33, 34, 36, 37, 39, 40,
           45, 46, 51, 52 };
       return UtilFieldValidation.genEqualsPosFormula(formula, UtilMetadata.genPipeRow(getObjects(JenisProgram.PPMPK), rows));
     }
 
-    public static FieldValidation genValidationFieldTotal02() {
+    public static FieldValidation genFieldValidation06B() {
       String formula = UtilMetadata.genPlusColumn(3, 4);
       int[] rows = { 42, 43, 54, 55 };
       return UtilFieldValidation.genEqualsPosFormula(formula, UtilMetadata.genPipeRow(getObjects(JenisProgram.PPMPK), rows));
@@ -206,20 +208,97 @@ public enum ER7017PosLtlbDppkRas1 implements IObject<KeyValueString> {
           UtilMetadata.genPipeRow(getObjects(JenisProgram.PPMPK), new int[] { rowA, rowB }), errMsg);
     }
 
-    /* -- ANTAR FORM -- */
+    public static FieldValidation genFieldValidation03A() {
+      String formula = UtilMetadata.genMinusColumn(new int[] {5, 3, 4});
+      int[] rows = { 1, 4 };
+      return UtilFieldValidation.genEqualsPosFormula(formula, UtilMetadata.genPipeRow(getObjects(JenisProgram.PPMPK), rows));
+    }
 
-    public static SegmentValidation genRowValidation03() {
+    /* -- ANTAR FORM -- */
+    public static SegmentValidation genRowValidation02A() {
+      int[] rows = { 5, 6 };
+      int row3 = 14;
+
+      String comparatorField = UtilMetadata.genPlusRow(ER7002PosLtlbDppkLpan.getObjectsForm(), rows);
+      comparatorField = comparatorField + "-" + ER7002PosLtlbDppkLpan.getObjectsForm().get(row3).getKey();
+      String comparatorDesc = UtilMetadata.genPlusDesc(ER7002PosLtlbDppkLpan.getObjectsForm(), rows);
+      comparatorDesc = comparatorDesc + "-'" + ER7002PosLtlbDppkLpan.getObjectsForm().get(row3).getValue()+"'";
+
+      String errMsg =  UtilMetadata.genMessage(R_RAS10101000000.value, comparatorDesc + " pada form " + LPAN);
+      return UtilSegmentValidation.genEqualsFormulaForm("2", R_RAS10101000000.key, "2", comparatorField, errMsg, 2);
+    }
+
+    public static SegmentValidation genRowValidation02B() {
+      //=SUM(LPAN!G16:I17)-SUM(LPAN!G27:I27)
+      return null;
+    }
+
+    public static SegmentValidation genRowValidation02C() {
+      //=SUM(LPAN!G16:I17)-SUM(LPAN!G27:I27)
+      return null;
+    }
+
+    public static SegmentValidation genRowValidation03A() {
+      String selectPosCode = R_RAS10102000000.key;
+      String comparatorPosCode = ER7010PosLtlbDppkRoiml.R_ROIML2100000000.getKey();
+      return UtilSegmentValidation.genEqualsForm("4", selectPosCode, ROIML, "10", comparatorPosCode);
+    }
+
+    public static SegmentValidation genRowValidation03B() {
       String selectPosCode = R_RAS10102000000.key;
       String comparatorPosCode = ER7009PosLtlbDppkRoi.R_ROI2100000000.getKey();
       return UtilSegmentValidation.genEqualsForm("5", selectPosCode, ROI, "10", comparatorPosCode);
     }
 
-    public static SegmentValidation genRowValidation06() {
+    public static SegmentValidation genRowValidation05A() {
+      // =(LPAN!F16+LPAN!F17+LPAN!F23)-(LPAN!F27+LPAN!F28+LPAN!F29)
+      int[] rows1 = { 5, 6, 11 };
+      int[] rows2 = { 14, 15, 16 };
+      String plus = UtilMetadata.genPlusRow(ER7002PosLtlbDppkLpan.getObjectsForm(), rows1);
+      String minus = UtilMetadata.genMinusRow(ER7002PosLtlbDppkLpan.getObjectsForm(), rows2);
+      String plusDesc1 = UtilMetadata.genPlusDesc(ER7002PosLtlbDppkLpan.getObjectsForm(), rows1);
+      String plusDesc2 = UtilMetadata.genPlusDesc(ER7002PosLtlbDppkLpan.getObjectsForm(), rows2);
+
+      String comparatorField = plus + "-" + minus;
+      String comparatorDesc = "(" + plusDesc1 + ") - (" + plusDesc2 + ")";
+      String errMsg =  UtilMetadata.genMessage(R_RAS10201000000.value, comparatorDesc + " pada form " + LPAN);
+      return UtilSegmentValidation.genEqualsFormulaForm("2", R_RAS10201000000.key, "2", comparatorField, errMsg, 2);
+    }
+
+    public static SegmentValidation genRowValidation05B() {
+      //=SUM(LPAN!G16:I17)+SUM(LPAN!G23:I23)-SUM(LPAN!G27:I29)
+      return null;
+    }
+
+    public static SegmentValidation genRowValidation05C() {
+      //=SUM(LPAN!J16:O17)+SUM(LPAN!J23:O23)-SUM(LPAN!J27:O29)
+      return null;
+    }
+
+    public static SegmentValidation genRowValidation06A() {
+      KeyValueString comparator = ER7008PosLtlbDppkRekinv.R_REKINV2400000000.getObject();
+      String comparatorField = UtilMetadata.genPipeColumn(2, 13);
+      String comparatorExpr = "/12";
+      String errMsg = "'" + R_RAS10202000000.value + "' harus sama dengan rata-rata '" + comparator.getValue() + "' pada form " + REKINV;
+      return UtilSegmentValidation.genEqualsFormExpression("3", R_RAS10202000000.key, null, REKINV, comparatorField,
+          comparator.getKey(), comparatorExpr, "e", 2, errMsg);
+    }
+
+    public static SegmentValidation genRowValidation06B() {
+      KeyValueString comparator = ER7008PosLtlbDppkRekinv.R_REKINV2300000000.getObject();
+      String comparatorField = UtilMetadata.genPipeColumn(2, 13);
+      String comparatorExpr = "/12";
+      String errMsg = "'" + R_RAS10202000000.value + "' harus sama dengan rata-rata '" + comparator.getValue() + "' pada form " + REKINV;
+      return UtilSegmentValidation.genEqualsFormExpression("4", R_RAS10202000000.key, null, REKINV, comparatorField,
+          comparator.getKey(), comparatorExpr, "e", 2, errMsg);
+    }
+
+    public static SegmentValidation genRowValidation06C() {
       KeyValueString comparator = ER7008PosLtlbDppkRekinv.R_REKINV2200000000.getObject();
       String comparatorField = UtilMetadata.genPipeColumn(2, 13);
-      String comparatorExpr = "/13";
-      String errMsg = "'" + R_RAS10202000000.value + "' harus sama dengan rata-rata '" + ER7008PosLtlbDppkRekinv.R_REKINV2200000000.getValue() + "' pada form " + REKINV;
+      String comparatorExpr = "/12";
+      String errMsg = "'" + R_RAS10202000000.value + "' harus sama dengan rata-rata '" + comparator.getValue() + "' pada form " + REKINV;
       return UtilSegmentValidation.genEqualsFormExpression("5", R_RAS10202000000.key, null, REKINV, comparatorField,
           comparator.getKey(), comparatorExpr, "e", 2, errMsg);
-    } 
+    }
 }

@@ -38,8 +38,17 @@ public class Ltlb0018RAS1 extends BaseMetadata {
         ER7017PosLtlbDppkRas1.genAllValidationRatioAB().forEach(res::addSegmentValidations);
 
         /* -- ANTAR FORM -- */
-        res.addSegmentValidations(ER7017PosLtlbDppkRas1.genRowValidation03());
-        res.addSegmentValidations(ER7017PosLtlbDppkRas1.genRowValidation06());
+        res.addSegmentValidations(ER7017PosLtlbDppkRas1.genRowValidation02A());
+//        res.addSegmentValidations(ER7017PosLtlbDppkRas1.genRowValidation02B());
+//        res.addSegmentValidations(ER7017PosLtlbDppkRas1.genRowValidation02C());
+        res.addSegmentValidations(ER7017PosLtlbDppkRas1.genRowValidation03A());
+        res.addSegmentValidations(ER7017PosLtlbDppkRas1.genRowValidation03B());
+        res.addSegmentValidations(ER7017PosLtlbDppkRas1.genRowValidation05A());
+//        res.addSegmentValidations(ER7017PosLtlbDppkRas1.genRowValidation05B());
+//        res.addSegmentValidations(ER7017PosLtlbDppkRas1.genRowValidation05C());
+        res.addSegmentValidations(ER7017PosLtlbDppkRas1.genRowValidation06A());
+        res.addSegmentValidations(ER7017PosLtlbDppkRas1.genRowValidation06B());
+        res.addSegmentValidations(ER7017PosLtlbDppkRas1.genRowValidation06C());
 
         List<SubmissionField> fs = res.getFields();
         fs.add(sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01")));
@@ -47,13 +56,14 @@ public class Ltlb0018RAS1 extends BaseMetadata {
             .confRegex(SimpleValidation.patternAlfaNumeric)
             .confReference(EHeaderMetadataPpmpk.R7017Ras1.getObject()))
             .confUnique(UniqueType.U));
-        fs.add(sf(2, null, "Manfaat Pensiun", sv(M, 1, 18, all2)));
+        fs.add(sf(2, null, "Manfaat Pensiun", sv(M, 1, 18, all2))
+            .addFieldValidations(ER7017PosLtlbDppkRas1.genFieldValidation03A()));
         fs.add(sf(3, null, "Manfaat Pensiun Lainnya", sv(M, 1, 18, all2)));
         fs.add(sf(4, null, "Manfaat lain", sv(M, 1, 18, all2)));
         fs.add(sf(5, null, "Total", sv(C, 1, 18, all2)
             .confConditionalRequired(ER7017PosLtlbDppkRas1.genConditionalTotalMustEmpty()))
-            .addFieldValidations(ER7017PosLtlbDppkRas1.genValidationFieldTotal01())
-            .addFieldValidations(ER7017PosLtlbDppkRas1.genValidationFieldTotal02()));
+            .addFieldValidations(ER7017PosLtlbDppkRas1.genFieldValidation06A())
+            .addFieldValidations(ER7017PosLtlbDppkRas1.genFieldValidation06B()));
         return res;
     }
 }
