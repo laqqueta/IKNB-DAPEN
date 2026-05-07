@@ -125,6 +125,7 @@ public enum ER7017PosLtlbDppkRas1 implements IObject<KeyValueString> {
     private static final String ROIML = "ROIML";
     private static final String REKINV = "REKINV";
     private static final String LPAN = "LPAN";
+    private static final String LAN = "LAN";
 
     public KeyValueString getObject() {
         return new KeyValueString(key, value, new String[] {});
@@ -228,16 +229,6 @@ public enum ER7017PosLtlbDppkRas1 implements IObject<KeyValueString> {
       return UtilSegmentValidation.genEqualsFormulaForm("2", R_RAS10101000000.key, "2", comparatorField, errMsg, 2);
     }
 
-    public static SegmentValidation genRowValidation02B() {
-      //=SUM(LPAN!G16:I17)-SUM(LPAN!G27:I27)
-      return null;
-    }
-
-    public static SegmentValidation genRowValidation02C() {
-      //=SUM(LPAN!G16:I17)-SUM(LPAN!G27:I27)
-      return null;
-    }
-
     public static SegmentValidation genRowValidation03A() {
       String selectPosCode = R_RAS10102000000.key;
       String comparatorPosCode = ER7010PosLtlbDppkRoiml.R_ROIML2100000000.getKey();
@@ -265,16 +256,6 @@ public enum ER7017PosLtlbDppkRas1 implements IObject<KeyValueString> {
       return UtilSegmentValidation.genEqualsFormulaForm("2", R_RAS10201000000.key, "2", comparatorField, errMsg, 2);
     }
 
-    public static SegmentValidation genRowValidation05B() {
-      //=SUM(LPAN!G16:I17)+SUM(LPAN!G23:I23)-SUM(LPAN!G27:I29)
-      return null;
-    }
-
-    public static SegmentValidation genRowValidation05C() {
-      //=SUM(LPAN!J16:O17)+SUM(LPAN!J23:O23)-SUM(LPAN!J27:O29)
-      return null;
-    }
-
     public static SegmentValidation genRowValidation06A() {
       KeyValueString comparator = ER7008PosLtlbDppkRekinv.R_REKINV2400000000.getObject();
       String comparatorField = UtilMetadata.genPipeColumn(2, 13);
@@ -300,5 +281,85 @@ public enum ER7017PosLtlbDppkRas1 implements IObject<KeyValueString> {
       String errMsg = "'" + R_RAS10202000000.value + "' harus sama dengan rata-rata '" + comparator.getValue() + "' pada form " + REKINV;
       return UtilSegmentValidation.genEqualsFormExpression("5", R_RAS10202000000.key, null, REKINV, comparatorField,
           comparator.getKey(), comparatorExpr, "e", 2, errMsg);
+    }
+
+    public static SegmentValidation genRowValidation08A() {
+      String selectPosCode = R_RAS10301000000.key;
+      String comparatorPosCode = ER7002PosLtlbDppkLpan.R_LPAN0202000000.getKey();
+      return UtilSegmentValidation.genEqualsForm("2", selectPosCode, LPAN, "2", comparatorPosCode);
+    }
+
+    public static SegmentValidation genRowValidation09A() {
+      //=LPAN!F16+LPAN!F23
+      KeyValueString posCode = R_RAS10302000000.getObject();
+      int[] rows = { 5, 11 };
+      String comparatorField = UtilMetadata.genPlusRow(ER7002PosLtlbDppkLpan.getObjectsForm(), rows);
+      String comparatorDesc = UtilMetadata.genPlusDesc(ER7002PosLtlbDppkLpan.getObjectsForm(), rows);
+      String errMsg = UtilMetadata.genMessage(posCode.getValue(), comparatorDesc + " pada form " + LPAN);
+      return UtilSegmentValidation.genEqualsFormulaForm("2", posCode.getKey(), "2", comparatorField, errMsg, 2);
+    }
+
+    public static SegmentValidation genRowValidation11A() {
+      String selectPosCode = R_RAS10501000000.key;
+      String comparatorPosCode = ER7002PosLtlbDppkLpan.R_LPAN0202000000.getKey();
+      return UtilSegmentValidation.genEqualsForm("2", selectPosCode, LPAN, "2", comparatorPosCode);
+    }
+
+    public static SegmentValidation genRowValidation12A() {
+      String selectPosCode = R_RAS10502000000.key;
+      String comparatorPosCode = ER7001PosLtlbDppkLan.R_LAN0107000000.getKey();
+      return UtilSegmentValidation.genEqualsForm("2", selectPosCode, LAN, "3", comparatorPosCode);
+    }
+
+    public static SegmentValidation genRowValidation15A() {
+      //=SUM(LPAN!F19:F22)
+      KeyValueString posCode = R_RAS10702000000.getObject();
+      List<KeyValueString> objectsForm = ER7002PosLtlbDppkLpan.getObjectsForm();
+      int[] rows = { 7, 8, 9, 10 };
+      String comparatorField = UtilMetadata.genPlusRow(objectsForm, rows);
+      String comparatorDesc = UtilMetadata.genPlusDesc(objectsForm, rows);
+      String errMsg = UtilMetadata.genMessage(posCode.getValue(), comparatorDesc + " pada form " + LPAN);
+      return UtilSegmentValidation.genEqualsFormulaForm("2", posCode.getKey(), "2", comparatorField, errMsg, 2);
+    }
+
+    public static SegmentValidation genRowValidation17A() {
+      String selectPosCode = R_RAS10801000000.key;
+      String comparatorPosCode = ER7001PosLtlbDppkLan.R_LAN0102000000.getKey();
+      return UtilSegmentValidation.genEqualsForm("2", selectPosCode, LAN, "3", comparatorPosCode);
+    }
+
+    public static SegmentValidation genRowValidation18A() {
+      String selectPosCode = R_RAS10802000000.key;
+      String comparatorPosCode = ER7001PosLtlbDppkLan.R_LAN0111000000.getKey();
+      return UtilSegmentValidation.genEqualsForm("2", selectPosCode, LAN, "3", comparatorPosCode);
+    }
+
+    public static SegmentValidation genRowValidation20A() {
+      //=SUM(LAN!G39:G40)
+      KeyValueString posCode = R_RAS10901000000.getObject();
+      List<KeyValueString> objectsForm = ER7001PosLtlbDppkLan.getObjectsForm();
+      int[] rows = { 27, 28 };
+      String comparatorField = UtilMetadata.genPlusRow(objectsForm, rows);
+      String comparatorDesc = UtilMetadata.genPlusDesc(objectsForm, rows);
+      String errMsg = UtilMetadata.genMessage(posCode.getValue(), comparatorDesc + " pada form " + LAN);
+      return UtilSegmentValidation.genEqualsFormulaForm("2", posCode.getKey(), "3", comparatorField, errMsg, 2);
+    }
+
+    public static SegmentValidation genRowValidation21A() {
+      String selectPosCode = R_RAS10902000000.key;
+      String comparatorPosCode = ER7001PosLtlbDppkLan.R_LAN0102000000.getKey();
+      return UtilSegmentValidation.genEqualsForm("2", selectPosCode, LAN, "3", comparatorPosCode);
+    }
+
+    public static SegmentValidation genRowValidation23A() {
+      String selectPosCode = R_RAS11001000000.key;
+      String comparatorPosCode = ER7001PosLtlbDppkLan.R_LAN0102000000.getKey();
+      return UtilSegmentValidation.genEqualsForm("2", selectPosCode, LAN, "3", comparatorPosCode);
+    }
+
+    public static SegmentValidation genRowValidation26A() {
+      String selectPosCode = R_RAS11101000000.key;
+      String comparatorPosCode = ER7002PosLtlbDppkLpan.R_LPAN0103000000.getKey();
+      return UtilSegmentValidation.genEqualsForm("2", selectPosCode, LPAN, "2", comparatorPosCode);
     }
 }

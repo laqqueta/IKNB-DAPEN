@@ -14,8 +14,10 @@ import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
+@Getter
 public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
 
     R_LAN0101010000("LAN0101010000", "Deposito on call pada Bank", EnumSet.of(JenisProgram.ALL)),
@@ -96,6 +98,14 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
         return new KeyValueString(key, value, new String[] {});
     }
 
+    public String getKeyForm() {
+      return "LAN" + key;
+    }
+
+    public KeyValueString getObjectForm() {
+      return new KeyValueString(getKeyForm(), getValue(), new String[] {});
+    }
+
     public static List<KeyValueString> getObjects(JenisProgram jenisProgram) {
         List<KeyValueString> res = new ArrayList<>();
         for (ER7001PosLtlbDppkLan eEnum : ER7001PosLtlbDppkLan.values()) {
@@ -105,6 +115,14 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
 
         }
         return res;
+    }
+
+    public static List<KeyValueString> getObjectsForm() {
+      List<KeyValueString> res = new ArrayList<>();
+      for (ER7001PosLtlbDppkLan eEnum : ER7001PosLtlbDppkLan.values()) {
+        res.add(eEnum.getObjectForm());
+      }
+      return res;
     }
 
     public static String getName() {
