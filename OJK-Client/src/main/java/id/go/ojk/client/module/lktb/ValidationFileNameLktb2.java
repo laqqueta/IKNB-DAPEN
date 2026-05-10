@@ -4,6 +4,7 @@ import id.go.ojk.client.model.ReportInfo;
 import id.go.ojk.client.model.ValidFile;
 import id.go.ojk.client.model.bind.ProgressPreparationAndSending;
 import id.go.ojk.client.module.ValidationFileName2;
+import id.go.ojk.client.util.states.JenisProgramState;
 import id.go.ojk.client.vc.ReadSubmissionDirController.ReadSubmissionDirModel;
 import id.go.ojk.lib.client.model.MonthDate;
 
@@ -55,9 +56,11 @@ public class ValidationFileNameLktb2 extends ValidationFileName2 {
         } else {
           lastValidPeriod = part;
           res = true;
+          JenisProgramState.periodePelaporan = Integer.parseInt(month);
         }
       }
     }
+
     return res;
   }
 }

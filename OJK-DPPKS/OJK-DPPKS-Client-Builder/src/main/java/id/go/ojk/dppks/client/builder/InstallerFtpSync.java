@@ -15,7 +15,7 @@ public class InstallerFtpSync {
 		
 		if (StringUtils.isNoneEmpty(enviType, ftpServer, appFtpFolder)) {
 			AppUploaderFtp.setEnvi(enviType);
-			AppUploaderFtp.sendClientExeToFtp(ftpServer, appFtpFolder);
+//			AppUploaderFtp.sendClientExeToFtp(ftpServer, appFtpFolder);
 		} else {
 			log.error("EnviType or ftpServer or appFtpFolder is empty!!!");
 		}

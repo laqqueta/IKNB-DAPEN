@@ -30,8 +30,8 @@ public class Ltlb0014INSP extends BaseMetadata {
         res.setRequiredPos(ER7013PosLtlbDppkInsp.getRequiredPos());
         res.setSavePos(ER7013PosLtlbDppkInsp.genFieldSave());
 
-//        res.addSegmentValidations(ER7013PosLtlbDppkInsp.genValidation());
-//        res.addSegmentValidations(ER7013PosLtlbDppkInsp.genRowValidation());
+        res.addSegmentValidations(ER7013PosLtlbDppkInsp.genValidation());
+        res.addSegmentValidations(ER7013PosLtlbDppkInsp.genRowValidation());
 
         List<SubmissionField> fs = res.getFields();
 

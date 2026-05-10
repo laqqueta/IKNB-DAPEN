@@ -1,8 +1,11 @@
 package id.go.ojk.client.model.config.validation.segmen.v2.base;
 
+import id.go.ojk.client.model.config.validation.UtilValidation;
 import id.go.ojk.client.model.config.validation.segmen.MapParamSegmentValidation;
+import id.go.ojk.client.model.validation.ValidationResult;
 import org.apache.commons.lang3.StringUtils;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
@@ -58,6 +61,6 @@ public abstract class BaseRowValidation extends MapParamSegmentValidation {
 
 		if (isDot && s.charAt(s.length() - 1) == '.') return true;
 
-		return !isNumeric;
+		return false;
 	}
 }

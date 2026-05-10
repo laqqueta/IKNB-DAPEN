@@ -123,22 +123,6 @@ public enum ER7004PosLtlbDppkLphu implements IObject<KeyValueString> {
                 "BOPR|Jumlah|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain|Jenis Beban Operasional");
     }
 
-    private static SegmentValidation genValidationSumIfMultiCriteria(String row, String formComparator, String comparatorRow, String additionalCriteria, String additionalCriteriaErr, String errMsg) {
-        String sumField = "2";
-        String comparatorRangeField = "3";
-        String comparatorCriteriaField = "4|2";
-        String criteriaKey = "0";
-        String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3|ML1|ML2|ML3|ML4|ML5|ML6") + "$" + additionalCriteria;
-        String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3|ML1|ML2|ML3|ML4|ML5|ML6") + "$" + additionalCriteriaErr;
-        String sumCriteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
-        String sumCriteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
-
-        return UtilSegmentValidation.genMultiCriteriaSumIf(UtilMetadata.genPipeColumn(2, 11), row,
-                formComparator, comparatorRow,
-                comparatorRangeField, comparatorCriteriaField, sumField, criteriaCondition, sumCriteriaCondition,
-                errMsg, criteriaConditionErr, sumCriteriaConditionErr, criteriaKey);
-    }
-
     private static SegmentValidation genValidationSumIfFormPdin() {
         return genValidationSumIf(R_LPHU0604000000.key,
                 EFormLaporanTahunanLaporanBulanan.LTLB_PDIN.getCode(), ER7062PosLtlbDppkPdin.R_PDIN010000.getObject().getKey(),
@@ -155,21 +139,6 @@ public enum ER7004PosLtlbDppkLphu implements IObject<KeyValueString> {
         return genValidationSumIf(R_LPHU0800000000.key,
                 EFormLaporanTahunanLaporanBulanan.LTLB_PPH.getCode(), ER7067PosLtlbDppkPph.R_PPH010000.getObject().getKey(),
                 "PPH|Jumlah|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain");
-    }
-
-    private static SegmentValidation genValidationSumIf(String row, String comparatorForm, String comparatorRow, String errMsg) {
-        String sumField = "2";
-        String rangeField = "3";
-        String criteriaField = "4";
-        String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3|ML1|ML2|ML3|ML4|ML5|ML6");
-        String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3|ML1|ML2|ML3|ML4|ML5|ML6");
-        String sumCriteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
-        String sumCriteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
-
-        return UtilSegmentValidation.genSumIf(UtilMetadata.genPipeColumn(2, 11), row,
-                comparatorForm, comparatorRow,
-                rangeField, criteriaField, sumField, criteriaCondition, sumCriteriaCondition,
-                errMsg, criteriaConditionErr, sumCriteriaConditionErr);
     }
 
     private static SegmentValidation genValidationSegment1() {
@@ -231,6 +200,37 @@ public enum ER7004PosLtlbDppkLphu implements IObject<KeyValueString> {
         return UtilSegmentValidation.genEqualsForm("2", posCode,
                 EFormLaporanTahunanLaporanBulanan.LTLB_ROI.getCode(), comparatorField,
                 ER7009PosLtlbDppkRoi.R_ROI2100000000.getObject().getKey());
+    }
+
+    private static SegmentValidation genValidationSumIf(String row, String comparatorForm, String comparatorRow, String errMsg) {
+        String sumField = "2";
+        String rangeField = "3";
+        String criteriaField = "4";
+        String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3|ML1|ML2|ML3|ML4|ML5|ML6");
+        String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3|ML1|ML2|ML3|ML4|ML5|ML6");
+        String sumCriteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
+        String sumCriteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
+
+        return UtilSegmentValidation.genSumIf(UtilMetadata.genPipeColumn(2, 11), row,
+                comparatorForm, comparatorRow,
+                rangeField, criteriaField, sumField, criteriaCondition, sumCriteriaCondition,
+                errMsg, criteriaConditionErr, sumCriteriaConditionErr);
+    }
+
+    private static SegmentValidation genValidationSumIfMultiCriteria(String row, String formComparator, String comparatorRow, String additionalCriteria, String additionalCriteriaErr, String errMsg) {
+        String sumField = "2";
+        String comparatorRangeField = "3";
+        String comparatorCriteriaField = "4|2";
+        String criteriaKey = "0";
+        String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3|ML1|ML2|ML3|ML4|ML5|ML6") + "$" + additionalCriteria;
+        String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3|ML1|ML2|ML3|ML4|ML5|ML6") + "$" + additionalCriteriaErr;
+        String sumCriteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
+        String sumCriteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
+
+        return UtilSegmentValidation.genMultiCriteriaSumIf(UtilMetadata.genPipeColumn(2, 11), row,
+                formComparator, comparatorRow,
+                comparatorRangeField, comparatorCriteriaField, sumField, criteriaCondition, sumCriteriaCondition,
+                errMsg, criteriaConditionErr, sumCriteriaConditionErr, criteriaKey);
     }
 
     public static FieldValidation genFieldValidation1() {

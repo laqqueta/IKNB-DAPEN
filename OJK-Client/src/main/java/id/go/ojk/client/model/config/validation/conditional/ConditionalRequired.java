@@ -7,7 +7,9 @@ import id.go.ojk.lib.client.model.Tupple2;
 import id.go.ojk.lib.client.model.constant.RequiredCondition;
 import id.go.ojk.lib.client.service.context.ApplicationContext;
 
-public interface ConditionalRequired extends IValidation {
+import java.io.Serializable;
+
+public interface ConditionalRequired extends IValidation, Serializable {
 
 	ConditionalRequired setParameter(String parameter);
 	

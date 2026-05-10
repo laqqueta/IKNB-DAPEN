@@ -17,6 +17,8 @@ import java.util.function.Supplier;
 
 import static id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk.ER7007PosLtlbDppkKup.*;
 
+// DONE
+
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum EKupValidationsConfig {
 
@@ -49,8 +51,7 @@ public enum EKupValidationsConfig {
     
     SG_VALIDATION_PROYEKSI_PENDANAAN(() -> UtilSegmentValidation.genOperatorProyeksi("3|4|5", R_KUP0209000000.getObject().getKey(),
             String.format("%1$s<%2$s|%1$s>%3$s", R_KUP0200000200.getObject().getKey(), R_KUP0206000000.getObject().getKey(), R_KUP0207000000.getObject().getKey()),
-            "III|I", "II",
-            "msgErr", "defaultValueErr"),() -> null)
+            "III|I", "II"),() -> null)
     
     
     ;

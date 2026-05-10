@@ -34,8 +34,6 @@ public class Ltlb0002LAN extends BaseMetadata {
         res.setSavePosForm(ER7001PosLtlbDppkLan.genFieldSave(JenisProgram.PPMPK));
         res.setRequiredPos(ER7001PosLtlbDppkLan.getRequiredPos(JenisProgram.PPMPK));
 
-//        res.addSegmentValidations(ER7001PosLtlbDppkLan.getTestVal());
-
         List<SubmissionField> fs = res.getFields();
 
         fs.add(sf(0, null, "Flag", sv(O, 3, 3, alfaNumeric).confConstant("D01")));

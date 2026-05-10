@@ -1,15 +1,9 @@
 package id.go.ojk.client.model.config;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
-
 import id.go.ojk.client.model.config.validation.conditional.ConditionalRequired;
 import id.go.ojk.client.model.config.validation.conditional.RefConditional;
-import id.go.ojk.client.model.validation.IValidation;
 import id.go.ojk.client.validation.IValidationConverter;
 import id.go.ojk.lib.client.exception.SlikException;
 import id.go.ojk.lib.client.model.config.DataType;
@@ -19,8 +13,13 @@ import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @XStreamAlias("simpleValidation")
-public class SimpleValidation {
+public class SimpleValidation implements Serializable {
 
     public static Regex patternAll = new Regex("[\\w[ @#$%^&*(){}\\[\\]<=>~\\-\\+`'\".,:;|\\\\\\/?!]]+", "huruf, angka, spasi dan karakter @#$%^&*(){}[]<=>~_-+`'\".,:;\\/?!");
     public static Regex patternAll2 = new Regex("[^\\n]+", "semua karakter kecuali Enter");

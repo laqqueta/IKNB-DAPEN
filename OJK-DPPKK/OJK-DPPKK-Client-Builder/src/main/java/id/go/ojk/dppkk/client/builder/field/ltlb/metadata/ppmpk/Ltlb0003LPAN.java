@@ -34,9 +34,6 @@ public class Ltlb0003LPAN extends BaseMetadata {
         res.setSavePos(ER7002PosLtlbDppkLpan.genFieldSave(JenisProgram.PPMPK));
         res.setRequiredPos(ER7002PosLtlbDppkLpan.getRequiredPos(JenisProgram.PPMPK));
 
-//        ER7002PosLtlbDppkLpan.getPpmpkSegmentValidations()
-//                .forEach(res::addSegmentValidations);
-
         List<SubmissionField> fs = res.getFields();
 
         fs.add(sf(0, null, "Flag", sv(O, 3, 3, alfaNumeric).confConstant("D01")));

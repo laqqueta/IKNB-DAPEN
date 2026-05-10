@@ -12,6 +12,8 @@ import java.util.function.Supplier;
 
 import static id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk.ER7008PosLtlbDppkRekinv.*;
 
+// DONE
+
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ERekinvValidationsConfig {
 
