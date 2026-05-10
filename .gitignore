@@ -34,3 +34,4 @@ jvm/
 *.isl
 *.pdf
 *.txt
+/log/ojkclient.log

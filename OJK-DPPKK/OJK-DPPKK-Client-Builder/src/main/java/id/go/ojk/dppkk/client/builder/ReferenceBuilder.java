@@ -12,7 +12,6 @@ import id.go.ojk.conf.client.BaseReferenceBuilder;
 import id.go.ojk.conf.client.field.reference.EConfig;
 import id.go.ojk.dppkk.client.builder.field.rb.reference.EHeaderMetadataRb;
 import id.go.ojk.dppkk.client.builder.field.rb.uus.reference.EHeaderMetadataRbUus;
-import id.go.ojk.dppkk.client.builder.field.reference.EHeaderMetadataShared;
 import id.go.ojk.dppkk.client.builder.field.sa.reference.EHeaderMetadataSa;
 import id.go.ojk.dppkk.client.builder.field.sa.uus.reference.EHeaderMetadataSaUus;
 import id.go.ojk.dppkk.client.builder.field.setup.EMessage;
@@ -21,9 +20,9 @@ import id.go.ojk.lib.client.model.KeyValueString;
 import id.go.ojk.lib.client.model.reference.ReferenceHeader;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.lib.client.model.validation.ValidationErrorCode;
-import id.go.ojk.module.lblt.dppk.header.EHeaderMetadataPpmpk;
-import id.go.ojk.module.lblt.dppk.header.EHeaderMetadataPpmpm;
-import id.go.ojk.module.lblt.dppk.header.EHeaderMetadataSharedLkbt;
+import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpk;
+import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpm;
+import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataSharedLkbt;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
