@@ -127,8 +127,10 @@ public enum Dppk0009Roi implements ILbltFieldMetadata {
                 .config()
                 .setReferenceConfigs(ER7009PosLtlbDppkRoi.Configs.REF_CONFIG)
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(KONVENSIONAL, programType.toString()))
-                .setSubmissionField(FIELD_KONVEN.getFields(metadataValidation.getFieldValidations()))
-                .setSegmentValidations(metadataValidation)
+                .setSubmissionField(FIELD_KONVEN.getClearedFields())
+                .setSegmentValidations()
+//                .setSubmissionField(FIELD_KONVEN.getFields(metadataValidation.getFieldValidations()))
+//                .setSegmentValidations(metadataValidation)
                 .build()
                 .get();
     }
