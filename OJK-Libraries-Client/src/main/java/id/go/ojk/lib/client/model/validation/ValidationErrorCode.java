@@ -231,8 +231,11 @@ public class ValidationErrorCode {
     public static final ValidationErrorCode E03_29_DEVIATION_CALCULATION= bvec("03",	"29",	"Validasi Formula",		"Perhitungan Deviasi = ('%s' - '%s') / '%s'");
 
 	// Dapen 2026
-	public static final ValidationErrorCode E03_30_JENIS_PROGRAM		= bvec("03", 	"30", 	"Header - Jenis Program",		"Error di Kolom 9 'Jenis Program'. Jenis Program '%1$s' tidak sesuai dengan pilihan Program '%2$s'.");
+	public static final ValidationErrorCode E03_30_JENIS_PROGRAM		= bvec("03", 	"30", 	"Header - Jenis Program",		"Error di Kolom 9 'Jenis Program'. Jenis Program '%1$s' tidak sesuai dengan Program yang dipilih '%2$s'.");
 	public static final ValidationErrorCode E03_31_JENIS_PROGRAM_NOT_EXISTS	= bvec("03", 	"31", 	"Header - Jenis Program",		"Error di Kolom 9 'Jenis Program'. Jenis Program '%1$s' Tidak Terdaftar.");
+	public static final ValidationErrorCode E03_32_EQUAL_PENISUN 				= bvec("03",	"32",	"Sama Dengan",						"Program Pensiun harus diisi '%1$s' karena Jenis Program yang dipilih adalah '%2$s'");
+	public static final ValidationErrorCode E03_33_ROW_COUNT 				= bvec("03",	"33",	"Kesalahan",						"Jumlah baris '%1$s' minimal %2$s");
+	public static final ValidationErrorCode E03_04_EQUAL_FORM 				= bvec("03",	"34",	"Sama Dengan",						"nilai harus sama dengan %1$s pada form %2$s");
 
 	//-Tidak digunakan
 	public static final ValidationErrorCode E03_00_HEADER 				= bvec("03",	"00",	"Header",							"Header tidak valid, %1$s");

@@ -38,11 +38,12 @@ public class SumIfMultiCriteriaFormValidation extends BaseSumIf<SumIfMultiCriter
 
     /*
     * Note:
-    * the multi criteria conditions only support row based,
+    * the multi criteria conditions are only support row based,
     * there is no support for column based
     *
     * also only support 1 additional criteria (not sure about this)
-    * just test with multiple criteria if curious
+    *
+    * need to additional testing for multi criteria support
     *
     * */
 
@@ -54,10 +55,6 @@ public class SumIfMultiCriteriaFormValidation extends BaseSumIf<SumIfMultiCriter
 
         if (selectRowCodes.contains(currentRowCode)) {
             final Logger logger = LoggerFactory.getLogger(SumIfMultiCriteriaFormValidation.class);
-
-            if (comparatorForm.toLowerCase().contains("prop")) {
-                System.out.println("dbg");
-            }
 
             String[] arrRangeFields = StringUtils.split(rangeField, "|");
             String[] arrColumn = StringUtils.split(selectField, "|");
@@ -125,34 +122,43 @@ public class SumIfMultiCriteriaFormValidation extends BaseSumIf<SumIfMultiCriter
         for (String s : param.getCriteriaConditions()) mapCriteriaStatus.putIfAbsent(s, true);
 
         String prefix = comparatorForm + comparatorRow.split("-")[0];
-        Map<String, Map<String, String>> formsData = SubmissionFormat.getFormValues(prefix, Character.MAX_VALUE);
 
-        outer:
-        for (Map.Entry<String, Map<String, String>> entry : formsData.entrySet()) {
-            if (entry.getValue().get(criteriaFields[criteriaAsKey]).isEmpty()) continue;
+        final String[] key = new String[1];
+        final String[] value = new String[1];
+        final String[] criteriaPrioVal = new String[1];
 
-            String key = entry.getValue().get(criteriaFields[criteriaAsKey]);
-            if (!mapCriteria.containsKey(key)) continue;
-            if (!mapCriteriaStatus.get(key)) continue;
+        Map<String, Long> accumulator = new HashMap<>();
 
-            for (int i = 0; i < criteriaFields.length; i++) {
-                if (i != criteriaAsKey) {
-                    String prior = entry.getValue().get(criteriaFields[i]);
-                    if (!prior.equalsIgnoreCase(param.getAdditionalCriteria())) continue outer;
-                }
-            }
+        SubmissionFormat
+                .getStreamOfFormSubMap(prefix, Character.MAX_VALUE)
+                .forEach(entry -> {
+                    if (entry.getValue().get(criteriaFields[criteriaAsKey]).isEmpty()) return;
 
-            String value = entry.getValue().get(param.getRangeField());
-            if (this.isInvalidNumeric(value)) {
-                mapCriteriaStatus.put(key, false);
-                continue;
-            }
+                    key[0] = entry.getValue().get(criteriaFields[criteriaAsKey]);
+                    if (!mapCriteria.containsKey(key[0])) return;
+                    if (!mapCriteriaStatus.get(key[0])) return;
 
-            if (!mapCriteriaStatus.get(key)) continue;
+                    for (int i = 0; i < criteriaFields.length; i++) {
+                        if (i != criteriaAsKey) {
+                            criteriaPrioVal[0] = entry.getValue().get(criteriaFields[i]);
+                            if (!criteriaPrioVal[0].equalsIgnoreCase(param.getAdditionalCriteria())) return;
+                        }
+                    }
 
-            mapCriteria.computeIfPresent(key, (k, v) -> v.add(new BigDecimal(value)));
-        }
+                    value[0] = entry.getValue().get(param.getRangeField());
+                    if (this.isInvalidNumeric(value[0])) {
+                        mapCriteriaStatus.put(key[0], false);
+                        return;
+                    }
 
+                    if (!mapCriteriaStatus.get(key[0])) return;
+
+                    // mapCriteria.computeIfPresent(key[0], (k, v) -> v.add(new BigDecimal(value[0])));
+                    accumulator.merge(key[0], Long.parseLong(value[0]), Long::sum);
+                });
+
+        accumulator.forEach((k, v) ->
+                mapCriteria.computeIfPresent(k, (mk, mv) -> mv.add(BigDecimal.valueOf(v))));
 
         return mapCriteria;
     }

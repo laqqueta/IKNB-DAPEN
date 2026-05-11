@@ -22,8 +22,6 @@ public class OperatorComparationValidation extends BaseRowValidation {
     private String operatorComparation;
     private String comparationValue;
     private String defaultValue;
-    private String msgError;
-    private String defaultValueErr;
 
     private String formCode = "";
 
@@ -40,8 +38,6 @@ public class OperatorComparationValidation extends BaseRowValidation {
         operatorComparation = getStringParameter("operatorComparation");
         comparationValue = getStringParameter("comparationValue");
         defaultValue = getStringParameter("defaultValue");
-        defaultValueErr = getStringParameter("defaultValueErr");
-        msgError = getStringParameter("msgError");
 
         return this;
     }
@@ -55,7 +51,7 @@ public class OperatorComparationValidation extends BaseRowValidation {
         if (selectRowCodes.contains(currentRowCode)) {
             String[] fields = StringUtils.split(selectField, "|");
             String[] arrOperatorComparations = StringUtils.split(operatorComparation, "|");
-            LinkedList<String> comparations = Arrays.stream(StringUtils.split(comparationValue, "|"))
+            List<String> comparations = Arrays.stream(StringUtils.split(comparationValue, "|"))
                     .collect(Collectors.toCollection(LinkedList::new));
 
             comparations.add(defaultValue);
@@ -71,17 +67,14 @@ public class OperatorComparationValidation extends BaseRowValidation {
                     validationResult.errors.add(new ValidationError(submissionField,
                             ValidationErrorCode.E50_26_FORMULA_CONDITIONVALUE,
                             String.join(" atau ", comparations)));
-                    return;
-                }
-
-                if (!selectValue.equals(comparatorValue)) {
+                } else if (!selectValue.equals(comparatorValue)) {
                     int errIdx = comparations.indexOf(comparatorValue);
                     List<SubmissionField> subsFields = submissionFormat.getFields();
                     SubmissionField submissionField = subsFields.get(Integer.parseInt(idxField));
                     logger.error("{}>{}?{}", parameter, selectValue, comparatorValue);
                     validationResult.errors.add(new ValidationError(submissionField,
                             ValidationErrorCode.E50_25_FORMULA_CONDITION,
-                            comparatorValue, operationComparatorMsg(arrOperatorComparations[errIdx])));
+                            comparatorValue, operationComparatorMsg(arrOperatorComparations[errIdx], idxField)));
                 }
             }
         }
@@ -145,7 +138,7 @@ public class OperatorComparationValidation extends BaseRowValidation {
         }
     }
 
-    private String operationComparatorMsg(String operation) {
+    private String operationComparatorMsg(String operation, String field) {
         Pattern pattern = Pattern.compile("(.*?)(>=|<=|==|!=|>|<)(.*)");
         Matcher matcher = pattern.matcher(operation);
 
@@ -154,7 +147,7 @@ public class OperatorComparationValidation extends BaseRowValidation {
             String op = matcher.group(2);
             String right = matcher.group(3).trim();
 
-            return String.format("baris %1$s %2$s baris %3$s", left, op, right);
+            return String.format("kolom %4$s baris %1$s %2$s kolom %4$s baris %3$s", left, op, right, field);
         }
 
         return null;

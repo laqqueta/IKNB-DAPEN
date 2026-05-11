@@ -1,8 +1,9 @@
 package id.go.ojk.lib.client.model.config;
 
+import java.io.Serializable;
 import java.util.regex.Pattern;
 
-public class Regex {
+public class Regex implements Serializable {
 	private String pattern;
 	private String desc;
 	private final Pattern patternObject;

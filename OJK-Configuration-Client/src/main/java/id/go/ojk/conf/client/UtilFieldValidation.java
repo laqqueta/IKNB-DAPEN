@@ -104,7 +104,7 @@ public class UtilFieldValidation {
   }
 
 	public static FieldValidation genEqualsPosFormulaFixedValue(String fieldFormula, String refPosCode, String fixedValue) {
-		return genEqualsPosFormulaFixedValue(fieldFormula, fixedValue, refPosCode,0);
+		return genEqualsPosFormulaFixedValue(fieldFormula, fixedValue, refPosCode,2);
 	}
 
 	/**
@@ -308,6 +308,10 @@ public class UtilFieldValidation {
 	public static FieldValidation genEquals(String fieldComparator) {
 		StringBuilder builder = new StringBuilder("fieldComparator=" + fieldComparator);
 		return new EqualsValidation(builder.toString());
+	}
+
+	public static FieldValidation genEqualsJenisProgram(String selectPosCode) {
+        return new EqualsJenisProgramValidation("selectPosCode=" + selectPosCode);
 	}
 
 	public static FieldValidation genGreaterValue(String valueComparator) {

@@ -33,10 +33,10 @@ public enum EReportLktb {
     LTDPLKK_RUTIN("LTDPLKK", EReportGroupLktb.LKD_TAHUNAN_RUTIN, 133, EReport.LKTB_DPLKK),
     LTDPLKK_KOREKSI("LTDPLKK", EReportGroupLktb.LKD_TAHUNAN_KOREKSI, 134, EReport.LKTB_DPLKK),
 
-    LBDPLKS_RUTIN("LBDPLKK", EReportGroupLktb.LKD_BULANAN_RUTIN, 141, EReport.LKTB_DPLKS),
+    LBDPLKS_RUTIN("LBDPLKS", EReportGroupLktb.LKD_BULANAN_RUTIN, 141, EReport.LKTB_DPLKS),
     LBDPLKS_KOREKSI("LBDPLKS", EReportGroupLktb.LKD_BULANAN_KOREKSI, 142, EReport.LKTB_DPLKS),
-    LTDPLKS_RUTIN("LTDPLKK", EReportGroupLktb.LKD_TAHUNAN_RUTIN, 143, EReport.LKTB_DPLKS),
-    LTDPLKS_KOREKSI("LTDPLKK", EReportGroupLktb.LKD_TAHUNAN_KOREKSI, 144, EReport.LKTB_DPLKS),
+    LTDPLKS_RUTIN("LTDPLKS", EReportGroupLktb.LKD_TAHUNAN_RUTIN, 143, EReport.LKTB_DPLKS), 
+    LTDPLKS_KOREKSI("LTDPLKS", EReportGroupLktb.LKD_TAHUNAN_KOREKSI, 144, EReport.LKTB_DPLKS),
     ;
 
     @Getter
@@ -61,6 +61,30 @@ public enum EReportLktb {
             }
         }
         return res;
+    }
+
+    public static ReportInfo getUploadReportInfo(String reportCode, int reportMenuCode) {
+        ReportInfo res = new ReportInfo();
+        for (EReportLktb eEnum : EReportLktb.values()) {
+            EReport eReport = eEnum.getReport();
+            if (eReport.getCode().equals(reportCode) && eEnum.reportGroupCode == reportMenuCode) {
+                res.setId(eEnum.name());
+                res.setReport(eReport);
+                res.setReportTypeCode(eEnum.getReportTypeCode());
+                res.setReportGroup(eEnum.reportGroup.getObjectForSending());
+                break;
+            }
+        }
+        return res;
+    }
+
+    public static EReportLktb getReportGroup(int reportGroupCode) {
+        for (EReportLktb e : EReportLktb.values()) {
+            if (e.getReportGroupCode() == reportGroupCode)
+                return e;
+        }
+
+        return null;
     }
 
 }

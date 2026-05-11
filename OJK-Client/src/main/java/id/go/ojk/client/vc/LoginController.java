@@ -75,8 +75,8 @@ public class LoginController extends BaseDialogController {
 //		}
 
 		// SET Username & password untuk devel
-//		userNameTextField.setText(TestEnvironment.loginDialogUser);
-//		passwordField.setText(TestEnvironment.loginDialogPassword);
+		userNameTextField.setText("apolo.sit006@gmail.com");
+		passwordField.setText("apolo.sit006@gmail.com");
 
 		userNameTextField.disableProperty().bind(inProgressProperty);
 		passwordField.disableProperty().bind(inProgressProperty);

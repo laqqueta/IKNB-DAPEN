@@ -16,6 +16,8 @@ import java.util.function.Supplier;
 
 import static id.go.ojk.dppkk.client.builder.field.ltlb.reference.ppmpk.ER7002PosLtlbDppkLpan.*;
 
+// DONE
+
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ELpanValidationsConfig {
 

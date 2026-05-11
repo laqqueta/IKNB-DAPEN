@@ -7,6 +7,7 @@ import id.go.ojk.client.util.AlertUtil;
 import id.go.ojk.client.util.states.JenisProgramState;
 import id.go.ojk.lib.client.model.config.ConfigString;
 import id.go.ojk.lib.client.vc.object.ReportValue;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -76,12 +77,22 @@ public class PreparationAndSendingLktbController extends BasePreparationAndSendi
             JenisProgramState.selectedValue = selected.nameProperty().getValue();
             JenisProgramState.selectedKey = selected.idProperty().getValue();
             JenisProgramState.validationState.setValue(true);
+
+            if (JenisProgramState.selectedKey.equalsIgnoreCase("PPMP-K") || JenisProgramState.selectedKey.equalsIgnoreCase("PPMP-M")) {
+                JenisProgramState.program = "PPMP";
+            } else if (JenisProgramState.selectedKey.equalsIgnoreCase("PPIP-K") || JenisProgramState.selectedKey.equalsIgnoreCase("PPIP-M")) {
+                JenisProgramState.program = "PPIP";
+            } else {
+                JenisProgramState.program = "DPLK";
+            }
         });
 
         JenisProgramState.validationState.addListener(e -> {
-            if (!JenisProgramState.validationState.getValue()) {
-                cbxReport.requestFocus();
-            }
+            Platform.runLater(() -> {
+                if (!JenisProgramState.validationState.getValue()) {
+                    cbxReport.requestFocus();
+                }
+            });
         });
     }
 

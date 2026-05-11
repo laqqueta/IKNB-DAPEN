@@ -14,6 +14,8 @@ import lombok.AllArgsConstructor;
 
 import java.util.function.Supplier;
 
+//DONE
+
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum EAlmValidationsConfig {
 

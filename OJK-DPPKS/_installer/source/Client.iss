@@ -3,8 +3,8 @@
 [Setup]
 AppId=DPPKSClient
 AppName=DPPKS Client
-AppVersion=3.3.3
-AppVerName=DPPKS-Client 3.3.3
+AppVersion=4.1.5
+AppVerName=DPPKS-Client 4.1.5
 AppPublisher=OJK
 AppComments=OJK DPPKS Client
 AppCopyright=Copyright (C) 2020

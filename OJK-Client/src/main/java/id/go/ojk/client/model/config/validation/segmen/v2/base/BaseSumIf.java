@@ -14,7 +14,7 @@ public abstract class BaseSumIf<T extends SumIfBaseParams> extends BaseRowValida
 
     protected String comparatorForm;
     protected String comparatorRow;
-    protected String rangeField;
+    protected String rangeField; // The field should be part of sum SUMIF formula [SUM(SUMIF...)]
     protected String criteriaField;
     protected String criteriaCondition;
     protected String sumCriteriaCondition;

@@ -15,8 +15,12 @@ public class ConfigConstant {
 //	public static final String URL_SUBMISSTION_DEV = "http://127.0.0.1:8991/api";
 //	public static final String URL_AUTH_DEV = "http://127.0.0.1:8992/api";
 
-	public static final String URL_SUBMISSTION_DEV = "http://157.15.77.140:8901/api";
-	public static final String URL_AUTH_DEV = "http://157.15.77.140:8900/api";
+//	public static final String URL_SUBMISSTION_DEV = "http://157.15.77.140:8901/api";
+//	public static final String URL_AUTH_DEV = "http://157.15.77.140:8900/api";
+
+	// DAPEN DEV
+	public static final String URL_SUBMISSTION_DEV = "http://157.15.77.140:6300/upload-api-DAPEN/api";
+	public static final String URL_AUTH_DEV = "http://157.15.77.140:6300/auth-api-DAPEN/api";
 
 //	public static final String URL_SUBMISSTION_DEV = "http://10.224.60.57:8981/api";
 //	public static final String URL_AUTH_DEV = "http://10.224.60.57:8980/api";
