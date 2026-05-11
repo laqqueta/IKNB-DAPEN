@@ -46,6 +46,17 @@ public enum EReportGroupLktb implements IObject<ReportGroup> {
         return res;
     }
 
+    public ReportGroup getObjectForSending() {
+        ReportGroup res = new ReportGroup();
+        res.setMenuCode(menuCode);
+        res.setId(name());
+        res.setPeriod(period);
+        res.setDeliveryCode(deliveryCode);
+        res.setRevisionCode(-1);
+        res.setValidExtension(validExtension);
+        return res;
+    }
+
     public static ReportGroup getObjectByCode(int code) {
         ReportGroup res = null;
         EReportLktb eReportLktb = EReportLktb.getReportGroup(code);

@@ -578,7 +578,7 @@ public class FtpService extends BaseService {
 			ReportInfo reportInfo = EReportTpp.getReportInfo(reportCode, reportFormGroupCode);
 			res.append(genReportPath(reportInfo));
 		} else if (EReport.isLktb(reportCode)) {
-			ReportInfo reportInfo = EReportLktb.getReportInfo(reportCode, reportFormGroupCode);
+			ReportInfo reportInfo = EReportLktb.getUploadReportInfo(reportCode, reportFormGroupCode);
 			res.append(genReportPath(reportInfo));
 		} else if (EReport.isBpjsKs(reportCode) || EReport.isBpjsTk(reportCode)) {
 		  	ReportInfo reportInfo = EReportBpjs.getReportInfo(reportCode, reportFormGroupCode);

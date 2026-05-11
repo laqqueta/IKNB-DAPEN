@@ -403,7 +403,7 @@ public class ServiceUpload {
 		} else if (EReport.isTpp(reportCode)) {
 			return EReportTpp.getReportInfo(reportCode, reportFormGroupCode);
 		} else if (EReport.isLktb(reportCode)) {
-			return EReportLktb.getReportInfo(reportCode, reportFormGroupCode);
+			return EReportLktb.getUploadReportInfo(reportCode, reportFormGroupCode);
 		} else if (EReport.isBpjsKs(reportCode) || EReport.isBpjsTk(reportCode)) {
       		return EReportBpjs.getReportInfo(reportCode, reportFormGroupCode);
     	}

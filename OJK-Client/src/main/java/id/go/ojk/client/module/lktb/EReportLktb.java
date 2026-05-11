@@ -63,6 +63,21 @@ public enum EReportLktb {
         return res;
     }
 
+    public static ReportInfo getUploadReportInfo(String reportCode, int reportMenuCode) {
+        ReportInfo res = new ReportInfo();
+        for (EReportLktb eEnum : EReportLktb.values()) {
+            EReport eReport = eEnum.getReport();
+            if (eReport.getCode().equals(reportCode) && eEnum.reportGroupCode == reportMenuCode) {
+                res.setId(eEnum.name());
+                res.setReport(eReport);
+                res.setReportTypeCode(eEnum.getReportTypeCode());
+                res.setReportGroup(eEnum.reportGroup.getObjectForSending());
+                break;
+            }
+        }
+        return res;
+    }
+
     public static EReportLktb getReportGroup(int reportGroupCode) {
         for (EReportLktb e : EReportLktb.values()) {
             if (e.getReportGroupCode() == reportGroupCode)
