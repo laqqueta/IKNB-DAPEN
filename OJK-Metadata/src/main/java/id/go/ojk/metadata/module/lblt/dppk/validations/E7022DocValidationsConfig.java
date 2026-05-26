@@ -43,8 +43,8 @@ public enum E7022DocValidationsConfig implements ILbltMetadataValidation, IValid
             () -> UtilFieldConditional.genExistPos("N", "O", R_DOC000000.key)),
 
     CR_EQUAL_EXCEPT_DOC000000(programs(PPMPK, PPMPM), validationFields(11),
-            () -> UtilFieldConditional.genExistPosAndComparatorHasValue("O", "M", "N",
-                    R_DOC010000.key, "10", ER1252Pengelolaan.getReferenceIndex(0))),
+            () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("N", "M", "N",
+                    R_DOC010000.key, "10", ER1252Pengelolaan.getReferenceIndex(0), ER1252Pengelolaan.getReferenceValueIndex(0))),
 
     ;
 

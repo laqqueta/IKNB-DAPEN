@@ -62,10 +62,12 @@ public enum ER7010PosLtlbDppkRoiml implements IObject<KeyValueString> {
         REF_CONFIG {
             @Override
             public String savePos() {
-                return UtilMetadata.genFieldSave(
-                        UtilMetadata.genPipeColumn(2, 11),
-                        getObjects()
-                );
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 11),getObjects());
+            }
+
+            @Override
+            public String savePosForm() {
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 11),getObjects());
             }
 
             @Override

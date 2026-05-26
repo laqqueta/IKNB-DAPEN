@@ -27,30 +27,18 @@ public enum ER7017PosLtlbDppkRas1 implements IObject<KeyValueString> {
     R_RAS10301000000("RAS10301000000", "A. Beban Operasional", EnumSet.of(ProgramType.ALL)),
     R_RAS10302000000("RAS10302000000", "B. Pendapatan Investasi + Pendapatan di luar Investasi", EnumSet.of(ProgramType.ALL)),
     R_RAS10303000000("RAS10303000000", "C. Rasio (A:B)", EnumSet.of(ProgramType.ALL)),
-//    R_RAS10400000000("RAS10400000000", "Rasio Kecukupan Dana (RKD)",
-//            EnumSet.of(ProgramType.PPMPM)),
-    R_RAS10401000000("RAS10401000000", "A. Kekayaan Untuk Pendanaan (KUP)",
-            EnumSet.of(ProgramType.PPMPM)),
-    R_RAS10402000000("RAS10402000000", "B. Nilai Kini Aktuarial (NKA)",
-            EnumSet.of(ProgramType.PPMPM)),
-    R_RAS10403000000("RAS10403000000", "C. Rasio (A:B)",
-            EnumSet.of(ProgramType.PPMPM)),
-//    R_RAS10500000000("RAS10500000000", "Rasio beban operasional terhadap aset tersedia",
-//            EnumSet.of(ProgramType.PPIPM, ProgramType.PPIPK, ProgramType.PPMPK, ProgramType.PPMPPPIPK)),
-    R_RAS10501000000("RAS10501000000", "A. Beban Operasional",
-            EnumSet.of(ProgramType.PPIPM, ProgramType.PPIPK, ProgramType.PPMPK, ProgramType.PPMPPPIPK)),
-    R_RAS10502000000("RAS10502000000", "B. Total Aset Tersedia",
-            EnumSet.of(ProgramType.PPIPM, ProgramType.PPIPK, ProgramType.PPMPK, ProgramType.PPMPPPIPK)),
-    R_RAS10503000000("RAS10503000000", "C. Rasio (A:B)",
-            EnumSet.of(ProgramType.PPIPM, ProgramType.PPIPK, ProgramType.PPMPK, ProgramType.PPMPPPIPK)),
-//    R_RAS10600000000("RAS10600000000", "Rasio Kekayaan Untuk Pendanaan terhadap Liabilitas Solvabilitas (Rasio Solvabilitas)",
-//            EnumSet.of(ProgramType.PPMPM)),
-    R_RAS10601000000("RAS10601000000", "A. Kekayaan Untuk Pendanaan (KUP)",
-            EnumSet.of(ProgramType.PPMPM)),
-    R_RAS10602000000("RAS10602000000", "B. Liabilitas Solvabilitas",
-            EnumSet.of(ProgramType.PPMPM)),
-    R_RAS10603000000("RAS10603000000", "C. Rasio (A:B)",
-            EnumSet.of(ProgramType.PPMPM)),
+//    R_RAS10400000000("RAS10400000000", "Rasio Kecukupan Dana (RKD)", EnumSet.of(ProgramType.PPMPM)),
+    R_RAS10401000000("RAS10401000000", "A. Beban Operasional", EnumSet.of(ProgramType.PPMPM)),
+    R_RAS10402000000("RAS10402000000", "B. Nilai Kini Aktuarial (NKA)", EnumSet.of(ProgramType.PPMPM)),
+    R_RAS10403000000("RAS10403000000", "C. Rasio (A:B)", EnumSet.of(ProgramType.PPMPM)),
+//    R_RAS10500000000("RAS10500000000", "Rasio beban operasional terhadap aset tersedia", EnumSet.of(ProgramType.PPIPM, ProgramType.PPIPK, ProgramType.PPMPK, ProgramType.PPMPPPIPK)),
+    R_RAS10501000000("RAS10501000000", "A. Beban Operasional", EnumSet.of(ProgramType.PPIPM, ProgramType.PPIPK, ProgramType.PPMPK, ProgramType.PPMPPPIPK)),
+    R_RAS10502000000("RAS10502000000", "B. Total Aset Tersedia", EnumSet.of(ProgramType.PPIPM, ProgramType.PPIPK, ProgramType.PPMPK, ProgramType.PPMPPPIPK)),
+    R_RAS10503000000("RAS10503000000", "C. Rasio (A:B)", EnumSet.of(ProgramType.PPIPM, ProgramType.PPIPK, ProgramType.PPMPK, ProgramType.PPMPPPIPK)),
+//    R_RAS10600000000("RAS10600000000", "Rasio Kekayaan Untuk Pendanaan terhadap Liabilitas Solvabilitas (Rasio Solvabilitas)", EnumSet.of(ProgramType.PPMPM)),
+    R_RAS10601000000("RAS10601000000", "A. Kekayaan Untuk Pendanaan (KUP)", EnumSet.of(ProgramType.PPMPM)),
+    R_RAS10602000000("RAS10602000000", "B. Liabilitas Solvabilitas", EnumSet.of(ProgramType.PPMPM)),
+    R_RAS10603000000("RAS10603000000", "C. Rasio (A:B)", EnumSet.of(ProgramType.PPMPM)),
 //    R_RAS10700000000("RAS10700000000", "Rasio Umur Piutang Iuran (RUPI)", EnumSet.of(ProgramType.ALL)),
     R_RAS10701000000("RAS10701000000", "A. Piutang Iuran (LAN) x Jumlah Bulan Berjalan", EnumSet.of(ProgramType.ALL)),
     R_RAS10702000000("RAS10702000000", "B. Iuran Jatuh Tempo (LPAN)", EnumSet.of(ProgramType.ALL)),
@@ -156,15 +144,16 @@ public enum ER7017PosLtlbDppkRas1 implements IObject<KeyValueString> {
         },
 
         REF_CONFIG_PPMPM {
+            private final ProgramType programType = ProgramType.PPMPM;
+
             @Override
             public String requiredPos() {
-                ProgramType programType = ProgramType.PPMPM;
                 return UtilMetadata.genPipeRow(getObjects(programType));
             }
 
             @Override
             public String savePos() {
-                return UtilMetadata.genFieldSave("2|3|4|5", getObjects(ProgramType.PPMPK));
+                return UtilMetadata.genFieldSave("2|3|4|5", getObjects(programType));
             }
         },
     }

@@ -15,6 +15,8 @@ import java.util.List;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ER7003PosLtlbDppkNrc implements IObject<KeyValueString> {
 
+//    R_NRC0100000000("NRC0100000000", "ASET", EnumSet.of(ProgramType.ALL)),
+//    R_NRC0101000000("NRC0101000000", "INVESTASI (Nilai Historis)", EnumSet.of(ProgramType.ALL)),
     R_NRC0101010000("NRC0101010000", "Deposito on call pada Bank", EnumSet.of(ProgramType.ALL)),
     R_NRC0101020000("NRC0101020000", "Deposito Berjangka pada Bank", EnumSet.of(ProgramType.ALL)),
     R_NRC0101030000("NRC0101030000", "Sertifikat Deposito pada Bank", EnumSet.of(ProgramType.ALL)),
@@ -38,17 +40,20 @@ public enum ER7003PosLtlbDppkNrc implements IObject<KeyValueString> {
     R_NRC0101210000("NRC0101210000", "Akumulasi Penyusutan Bangunan", EnumSet.of(ProgramType.ALL)),
     R_NRC0102000000("NRC0102000000", "TOTAL INVESTASI", EnumSet.of(ProgramType.ALL)),
     R_NRC0103000000("NRC0103000000", "SELISIH PENILAIAN INVESTASI", EnumSet.of(ProgramType.ALL)),
+//    R_NRC0104000000("NRC0104000000", "ASET LANCAR DI LUAR INVESTASI", EnumSet.of(ProgramType.ALL)),
     R_NRC0104010000("NRC0104010000", "Kas dan Bank", EnumSet.of(ProgramType.ALL)),
-    R_NRC0104020100("NRC0104020100", "- Iuran Normal Pemberi Kerja", EnumSet.of(ProgramType.ALL)),
-    R_NRC0104020200("NRC0104020200", "- Iuran Normal Peserta", EnumSet.of(ProgramType.ALL)),
-    R_NRC0104020300("NRC0104020300", "- Iuran Sukarela Peserta", EnumSet.of(ProgramType.ALL)),
-    R_NRC0104020400("NRC0104020400", "- Iuran Tambahan", EnumSet.of(ProgramType.PPMPM, ProgramType.PPMPK)),
+//    R_NRC0104020000("NRC0104020000", "Piutang Iuran", EnumSet.of(ProgramType.ALL)),
+    R_NRC0104020100("NRC0104020100", "Iuran Normal Pemberi Kerja", EnumSet.of(ProgramType.ALL)),
+    R_NRC0104020200("NRC0104020200", "Iuran Normal Peserta", EnumSet.of(ProgramType.ALL)),
+    R_NRC0104020300("NRC0104020300", "Iuran Sukarela Peserta", EnumSet.of(ProgramType.ALL)),
+    R_NRC0104020400("NRC0104020400", "Iuran Tambahan", EnumSet.of(ProgramType.PPMPM, ProgramType.PPMPK)),
     R_NRC0104030000("NRC0104030000", "Piutang Bunga Keterlambatan Iuran", EnumSet.of(ProgramType.ALL)),
     R_NRC0104040000("NRC0104040000", "Beban Dibayar di Muka", EnumSet.of(ProgramType.ALL)),
     R_NRC0104050000("NRC0104050000", "Piutang Investasi", EnumSet.of(ProgramType.ALL)),
     R_NRC0104060000("NRC0104060000", "Piutang Hasil Investasi", EnumSet.of(ProgramType.ALL)),
     R_NRC0104070000("NRC0104070000", "Piutang Lain-Lain", EnumSet.of(ProgramType.ALL)),
     R_NRC0105000000("NRC0105000000", "TOTAL ASET LANCAR DI LUAR INVESTASI", EnumSet.of(ProgramType.ALL)),
+//    R_NRC0106000000("NRC0106000000", "ASET OPERASIONAL", EnumSet.of(ProgramType.ALL)),
     R_NRC0106010000("NRC0106010000", "Tanah dan Bangunan", EnumSet.of(ProgramType.ALL)),
     R_NRC0106020000("NRC0106020000", "Kendaraan", EnumSet.of(ProgramType.ALL)),
     R_NRC0106030000("NRC0106030000", "Peralatan Komputer", EnumSet.of(ProgramType.ALL)),
@@ -58,9 +63,11 @@ public enum ER7003PosLtlbDppkNrc implements IObject<KeyValueString> {
     R_NRC0107000000("NRC0107000000", "TOTAL ASET OPERASIONAL", EnumSet.of(ProgramType.ALL)),
     R_NRC0108000000("NRC0108000000", "ASET LAIN-LAIN", EnumSet.of(ProgramType.ALL)),
     R_NRC0109000000("NRC0109000000", "TOTAL ASET", EnumSet.of(ProgramType.ALL)),
+//    R_NRC0110000000("NRC0110000000", "LIABILITAS", EnumSet.of(ProgramType.ALL)),
     R_NRC0111000000("NRC0111000000", "NILAI KINI AKTUARIAL", EnumSet.of(ProgramType.PPMPM, ProgramType.PPMPK)),
     R_NRC0112000000("NRC0112000000", "SELISIH NILAI KINI AKTUARIAL", EnumSet.of(ProgramType.PPMPM, ProgramType.PPMPK)),
     R_NRC0113000000("NRC0113000000", "LIABILITAS MANFAAT PENSIUN", EnumSet.of(ProgramType.PPIPM, ProgramType.PPIPK, ProgramType.PPMPPPIPK)),
+//    R_NRC0114000000("NRC0114000000", "LIABILITAS DI LUAR NILAI KINI AKTUARIAL", EnumSet.of(ProgramType.PPMPM, ProgramType.PPMPK)),
     R_NRC0115000000("NRC0115000000", "LIABILITAS DI LUAR LIABILITAS MANFAAT PENSIUN", EnumSet.of(ProgramType.PPIPM, ProgramType.PPIPK, ProgramType.PPMPPPIPK)),
     R_NRC0115010000("NRC0115010000", "Utang Manfaat Pensiun dan Manfaat Lain Jatuh Tempo", EnumSet.of(ProgramType.ALL)),
     R_NRC0115020000("NRC0115020000", "Utang Manfaat Sukarela", EnumSet.of(ProgramType.ALL)),
@@ -69,12 +76,12 @@ public enum ER7003PosLtlbDppkNrc implements IObject<KeyValueString> {
     R_NRC0115050000("NRC0115050000", "Beban yang Masih Harus Dibayar", EnumSet.of(ProgramType.ALL)),
     R_NRC0115060000("NRC0115060000", "Utang Lain-Lain", EnumSet.of(ProgramType.ALL)),
     R_NRC0115070000("NRC0115070000", "Utang Dana Ta'zir (bagi syariah)", EnumSet.of(ProgramType.ALL)),
-    R_NRC0116000000("NRC0116000000", "TOTAL LIABILITAS DI LUAR NILAI KINI AKTUARIA", EnumSet.of(ProgramType.PPMPM, ProgramType.PPMPK)),
+    R_NRC0116000000("NRC0116000000", "TOTAL LIABILITAS DI LUAR NILAI KINI AKTUARIAL", EnumSet.of(ProgramType.PPMPM, ProgramType.PPMPK)),
     R_NRC0117000000("NRC0117000000", "TOTAL LIABILITAS DI LUAR LIABILITAS MANFAAT PENSIUN", EnumSet.of(ProgramType.PPIPM, ProgramType.PPIPK, ProgramType.PPMPPPIPK)),
     R_NRC0118000000("NRC0118000000", "TOTAL LIABILITAS", EnumSet.of(ProgramType.ALL));
 
-    private final String key;
-    private final String value;
+    public final String key;
+    public final String value;
     private final EnumSet<ProgramType> jenisProgram;
 
     public static List<KeyValueString> getObjects(ProgramType jenisProgram) {
@@ -131,15 +138,15 @@ public enum ER7003PosLtlbDppkNrc implements IObject<KeyValueString> {
             public String savePos() {
                 ProgramType programType = ProgramType.PPMPM;
                 return UtilMetadata.genFieldSave(
-                        UtilMetadata.genPipeColumn(2, 12),
+                        "2",
                         getObjects(programType)
                 );
             }
 
             @Override
             public String savePosForm() {
-                ProgramType programType = ProgramType.PPMPK;
-                return UtilMetadata.genFieldSave("2|3",
+                ProgramType programType = ProgramType.PPMPM;
+                return UtilMetadata.genFieldSave("2",
                         getObjects(programType)
                 );
             }

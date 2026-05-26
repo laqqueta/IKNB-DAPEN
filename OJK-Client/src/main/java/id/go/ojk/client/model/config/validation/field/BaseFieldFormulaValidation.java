@@ -1,6 +1,7 @@
 package id.go.ojk.client.model.config.validation.field;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.math.RoundingMode;
 
 import javax.script.ScriptEngine;
@@ -33,6 +34,83 @@ public abstract class BaseFieldFormulaValidation extends MapParamFieldValidation
 	};
 
 	protected BigDecimal arithmeticOperation(String formula, String[] fieldValues) {
+		Logger logger = LoggerFactory.getLogger(BaseFieldFormulaValidation.class);
+		BigDecimal res = BigDecimal.ZERO;
+		try {
+			String[] formulaSplit = formula.split("(?<=[-+/*])|(?=[-+/*])");
+			if (formulaSplit != null) {
+				int length = formulaSplit.length;
+				String valueOperator = "+";
+				for (int i = 0; i < length; i++) {
+					String value = formulaSplit[i];
+					if (StringUtils.isNumeric(value)) {
+						String fieldValue = UtilValidation.getArray(fieldValues, Integer.valueOf(value), "0");
+						BigDecimal tmp = UtilValidation.toBigDecimal(fieldValue, "0");
+						if (valueOperator.equals("+")) {
+							res = res.add(tmp);
+						} else if (valueOperator.equals("-")) {
+							res = res.subtract(tmp);
+						} else if (valueOperator.equals("*")) {
+							res = res.multiply(tmp);
+						} else if (valueOperator.equals("/")) {
+							if (tmp == BigDecimal.ZERO) {
+								res = BigDecimal.ZERO;
+							} else {
+								res = res.divide(tmp);
+							}
+						}
+					} else {
+						valueOperator = value;
+					}
+				}
+			}
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			res = null;
+		}
+		return res;
+	}
+
+	protected BigDecimal arithmeticOperationDivMathContext(String formula, String[] fieldValues, int scale) {
+		Logger logger = LoggerFactory.getLogger(BaseFieldFormulaValidation.class);
+		BigDecimal res = BigDecimal.ZERO;
+		try {
+			String[] formulaSplit = formula.split("(?<=[-+/*])|(?=[-+/*])");
+			if (formulaSplit != null) {
+				int length = formulaSplit.length;
+				String valueOperator = "+";
+				for (int i = 0; i < length; i++) {
+					String value = formulaSplit[i];
+					if (StringUtils.isNumeric(value)) {
+						String fieldValue = UtilValidation.getArray(fieldValues, Integer.valueOf(value), "0");
+						BigDecimal tmp = UtilValidation.toBigDecimal(fieldValue, "0");
+						if (valueOperator.equals("+")) {
+							res = res.add(tmp);
+						} else if (valueOperator.equals("-")) {
+							res = res.subtract(tmp);
+						} else if (valueOperator.equals("*")) {
+							res = res.multiply(tmp);
+						} else if (valueOperator.equals("/")) {
+							if (tmp == BigDecimal.ZERO) {
+								res = BigDecimal.ZERO;
+							} else {
+								res = res.divide(tmp, MathContext.DECIMAL64);
+							}
+						}
+					} else {
+						valueOperator = value;
+					}
+				}
+			}
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			res = null;
+		}
+		return res;
+	}
+
+
+	protected BigDecimal arithmeticOperationDivRounded(String formula, String[] fieldValues) {
 		Logger logger = LoggerFactory.getLogger(BaseFieldFormulaValidation.class);
 		BigDecimal res = BigDecimal.ZERO;
 		try {

@@ -1,9 +1,9 @@
 package id.go.ojk.conf.client;
 
-import java.util.List;
-import java.util.StringJoiner;
+import java.util.*;
 import java.util.stream.IntStream;
 
+import id.go.ojk.conf.client.dto.FormulaParserData;
 import org.apache.commons.lang3.StringUtils;
 
 import id.go.ojk.lib.client.IObject;
@@ -281,6 +281,164 @@ public class UtilMetadata {
 
         }
         return res.append(")").toString();
+    }
+
+    public static FormulaParserData genFormulaParserFormatter(List<KeyValueString> listKv, int[] operationPos, int[] fields, String[] posOperand, String[] fieldOperand, String form) {
+        StringBuilder formula = new StringBuilder("(");
+        StringBuilder message = new StringBuilder();
+
+        if (fields.length == 2 && fieldOperand.length != 1 || operationPos.length == 2 && posOperand.length != 1) throw new IllegalStateException();
+        if (fields.length > 2 && fieldOperand.length+1 != fields.length || operationPos.length > 2 && posOperand.length+1 != operationPos.length) throw new IllegalStateException();
+
+        for (int i = 0; i < operationPos.length; i++) {
+            KeyValueString kv = listKv.get(operationPos[i]);
+            formula.append(form)
+                    .append("#")
+                    .append(kv.getKey()).append("[");
+
+            if (fields.length > 1) message.append("(");
+            message.append("'")
+                    .append(kv.getValue()).append("' ");
+
+            for (int k = 0; k < fields.length; k++) {
+                formula.append(fields[k]);
+                message.append("Kolom ").append(fields[k]+1);
+                if (k < fields.length - 1) {
+                    formula.append(fieldOperand[k]);
+                    message.append(fieldOperand[k]);
+                }
+            }
+
+            formula.append("]");
+            if (fields.length > 1) message.append(")");
+
+            if (i < operationPos.length - 1) {
+                formula.append(posOperand[i]);
+                message.append(" ").append(posOperand[i]).append(" ");
+            }
+        }
+
+        return new FormulaParserData(formula.append(")").toString(), message.toString());
+    }
+
+    public static FormulaParserData genFormulaParserFormatterDetailed(List<KeyValueString> listKv, int[] operationPos, int[] fields, String[] posOperand, String[] fieldOperand, String[] fieldNames, String form) {
+        StringBuilder formula = new StringBuilder("(");
+        StringBuilder message = new StringBuilder();
+
+        if (fields.length == 2 && fieldOperand.length != 1 || operationPos.length == 2 && posOperand.length != 1) throw new IllegalStateException();
+        if (fields.length > 2 && fieldOperand.length+1 != fields.length || operationPos.length > 2 && posOperand.length+1 != operationPos.length) throw new IllegalStateException();
+        if (fields.length != fieldNames.length) throw new IllegalStateException();
+
+        for (int i = 0; i < operationPos.length; i++) {
+            KeyValueString kv = listKv.get(operationPos[i]);
+            formula.append(form)
+                    .append("#")
+                    .append(kv.getKey()).append("[");
+
+            if (fields.length > 1) message.append("(");
+            message.append("'")
+                    .append(kv.getValue()).append("' ");
+
+            for (int k = 0; k < fields.length; k++) {
+                formula.append(fields[k]);
+                message.append("Kolom '").append(fieldNames[k]).append("'");
+                if (k < fields.length - 1) {
+                    formula.append(fieldOperand[k]);
+                    message.append(fieldOperand[k]);
+                }
+            }
+
+            formula.append("]");
+            if (fields.length > 1) message.append(")");
+
+            if (i < operationPos.length - 1) {
+                formula.append(posOperand[i]);
+                message.append(" ").append(posOperand[i]).append(" ");
+            }
+        }
+
+        return new FormulaParserData(formula.append(")").toString(), message.toString());
+    }
+
+    // Single Row & Column usage
+    public static FormulaParserData genFormulaParserFormatter(KeyValueString listKv, int[] fields, String form) {
+        return genFormulaParserFormatter(Collections.singletonList(listKv), new int[] {0}, fields, new String[]{}, new String[]{}, form);
+    }
+
+    public static FormulaParserData genFormulaParserFormatter(KeyValueString listKv, String fields, String form) {
+        int[] arrField = Arrays.stream(StringUtils.split(fields, "|"))
+                .mapToInt(Integer::valueOf)
+                .toArray();
+
+        return genFormulaParserFormatter(Collections.singletonList(listKv), new int[] {0}, arrField, new String[]{}, new String[]{}, form);
+    }
+
+    public static FormulaParserData genFormulaParserFormatter(KeyValueString listKv, String fields, String fieldOperands, String form) {
+        int[] arrField = Arrays.stream(StringUtils.split(fields, "|"))
+                .mapToInt(Integer::valueOf)
+                .toArray();
+
+        String[] arrInnerOps = StringUtils.split(fieldOperands, "|");
+
+        return genFormulaParserFormatter(Collections.singletonList(listKv), new int[] {0}, arrField, new String[]{}, arrInnerOps, form);
+    }
+
+    public static FormulaParserData genFormulaParserFormatterDetailed(KeyValueString listKv, int[] fields, String[] fieldNames, String form) {
+        return genFormulaParserFormatterDetailed(Collections.singletonList(listKv), new int[]{0}, fields, new String[]{}, new String[]{}, fieldNames, form);
+    }
+
+    public static FormulaParserData genFormulaParserFormatterDetailed(KeyValueString listKv, String fields, String fieldNames, String form) {
+        int[] arrField = Arrays.stream(StringUtils.split(fields, "|"))
+                .mapToInt(Integer::valueOf)
+                .toArray();
+
+        String[] arrFieldNames = StringUtils.split(fieldNames, "|");
+
+        return genFormulaParserFormatterDetailed(Collections.singletonList(listKv), new int[]{0}, arrField, new String[]{}, new String[]{}, arrFieldNames, form);
+    }
+
+    public static FormulaParserData genFormulaParserFormatterDetailed(KeyValueString listKv, String fields, String fieldOperands, String fieldNames, String form) {
+        int[] arrField = Arrays.stream(StringUtils.split(fields, "|"))
+                .mapToInt(Integer::valueOf)
+                .toArray();
+
+        String[] arrInnerOps = StringUtils.split(fieldOperands, "|");
+        String[] arrFieldNames = StringUtils.split(fieldNames, "|");
+
+        return genFormulaParserFormatterDetailed(Collections.singletonList(listKv), new int[]{0}, arrField, new String[]{}, arrInnerOps, arrFieldNames, form);
+    }
+
+    // Single/Multi Row & Column usage
+    public static FormulaParserData genFormulaParserFormatter(List<KeyValueString> listKv, String operationPos, String fields, String posOperands, String fieldOperands, String form) {
+        int[] arrSelectPos = Arrays.stream(StringUtils.split(operationPos, "|"))
+                .mapToInt(Integer::valueOf)
+                .toArray();
+
+        int[] arrField = Arrays.stream(StringUtils.split(fields, "|"))
+                .mapToInt(Integer::valueOf)
+                .toArray();
+
+        String[] arrOuterOps = StringUtils.split(posOperands, "|");
+        String[] arrInnerOps = StringUtils.split(fieldOperands, "|");
+
+        return genFormulaParserFormatter(listKv, arrSelectPos, arrField, arrOuterOps, arrInnerOps, form);
+    }
+
+    public static FormulaParserData genFormulaParserFormatterDetailed(List<KeyValueString> listKv, String operationPos, String fields, String posOperands, String fieldOperands, String fieldNames, String form) {
+        int[] arrSelectPos = Arrays.stream(StringUtils.split(operationPos, "|"))
+                .mapToInt(Integer::valueOf)
+                .toArray();
+
+        int[] arrField = Arrays.stream(StringUtils.split(fields, "|"))
+                .mapToInt(Integer::valueOf)
+                .toArray();
+
+        String[] arrFieldNames = StringUtils.split(fieldNames, "|");
+
+        String[] arrOuterOps = StringUtils.split(posOperands, "|");
+        String[] arrInnerOps = StringUtils.split(fieldOperands, "|");
+
+        return genFormulaParserFormatterDetailed(listKv, arrSelectPos, arrField, arrOuterOps, arrInnerOps, arrFieldNames, form);
     }
 
     public static String genDelimitedDescByPosCode(List<KeyValueString> listKv, String selectPosCode) {

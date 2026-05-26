@@ -46,8 +46,8 @@ public enum E7029ObliValidationsConfig implements ILbltMetadataValidation, IVali
             () -> UtilFieldValidation.genDateGreaterEquals("5")),
 
     CR_NAMA_PENGELOLA(programs(PPMPK, PPMPM), validationFields(19),
-            () -> UtilFieldConditional.genExistPosAndComparatorHasValue("O", "M", "N",
-                    R_OBLI010000.key, "18", ER1252Pengelolaan.getReferenceIndex(0))),
+            () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("N", "M", "N",
+                    R_OBLI010000.key, "18", ER1252Pengelolaan.getReferenceIndex(0), ER1252Pengelolaan.getReferenceValueIndex(0))),
 
     CR_EXISTS_POS_M(programs(PPMPK, PPMPM), validationFields(2,3,4,5,7,8,9,10,14,15,16,17,18),
             () -> UtilFieldConditional.genExistPos("N", "M", R_OBLI000000.key)),

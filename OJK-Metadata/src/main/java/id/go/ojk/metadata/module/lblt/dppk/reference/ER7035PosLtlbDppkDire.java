@@ -53,7 +53,7 @@ public enum ER7035PosLtlbDppkDire implements IObject<KeyValueString> {
 
             @Override
             public String savePosForm() {
-                return UtilMetadata.genFieldSave("7|8|11", getObjects());
+                return UtilMetadata.genFieldSave("7|8|11|16", getObjects());
             }
         }
     }

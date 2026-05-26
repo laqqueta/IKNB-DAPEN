@@ -45,8 +45,8 @@ public enum E7037KokbValidationsConfig implements ILbltMetadataValidation, IVali
             () -> UtilFieldValidation.genEqualsPercentageExceptPosFormula("8/6", R_KOKB000000.key)),
 
     CR_NAMA_PENGELOLA(programs(PPMPK, PPMPM), validationFields(12),
-            () -> UtilFieldConditional.genExistPosAndComparatorHasValue("O", "M", "N",
-                    R_KOKB010000.key, "11", ER1252Pengelolaan.getReferenceIndex(0))),
+            () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("N", "M", "N",
+                    R_KOKB010000.key, "11", ER1252Pengelolaan.getReferenceIndex(0), ER1252Pengelolaan.getReferenceValueIndex(0))),
 
     CR_EXISTS_POS_M(programs(PPMPK, PPMPM), validationFields(2, 3, 4, 5, 9, 10, 11),
             () -> UtilFieldConditional.genExistPos("N", "M", R_KOKB000000.key)),

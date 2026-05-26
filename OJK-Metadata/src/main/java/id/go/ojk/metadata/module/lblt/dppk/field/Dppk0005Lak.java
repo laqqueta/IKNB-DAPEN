@@ -5,19 +5,23 @@ import id.go.ojk.client.model.config.SimpleValidation;
 import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
+import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.lib.client.model.config.UniqueType;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.metadata.module.lblt.dppk.EFormLaporanBulananTahunan;
+import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpipk;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpk;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpm;
 import id.go.ojk.metadata.module.lblt.dppk.reference.ER7005PosLtlbDppkLak;
-import id.go.ojk.metadata.module.lblt.dppk.validations.E7005LakValidationsConfig;
+import id.go.ojk.metadata.module.lblt.dppk.validations.ppmpk.E7005LakKValidationsConfig;
+import id.go.ojk.metadata.module.lblt.dppk.validations.ppmpm.E7005LakMMValidationsConfig;
 import id.go.ojk.metadata.util.constants.ProgramType;
 import id.go.ojk.metadata.util.constants.SectorType;
 import id.go.ojk.metadata.field.lblt.ILbltFieldMetadata;
 import id.go.ojk.metadata.field.lblt.LbltMetadataField;
 import id.go.ojk.metadata.submission.SubmissionConfig;
 import id.go.ojk.metadata.validation.base.BaseMetadataValidation;
+import id.go.ojk.metadata.validation.lblt.ILbltMetadataValidation;
 import lombok.AllArgsConstructor;
 
 import java.util.*;
@@ -26,56 +30,76 @@ import java.util.stream.Stream;
 
 import static id.go.ojk.lib.client.model.config.DataType.*;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
-import static id.go.ojk.lib.client.model.constant.RequiredCondition.O;
 import static id.go.ojk.metadata.util.FieldUtil.*;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
+import static id.go.ojk.metadata.util.constants.ProgramType.*;
 import static id.go.ojk.metadata.util.constants.SectorType.KONVENSIONAL;
 import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 
 @AllArgsConstructor
 public enum Dppk0005Lak implements ILbltFieldMetadata {
 
-    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01"))),
 
-    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(1, null, "Kode Komponen", sv(M, 13, 13, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric))
                     .confUnique(UniqueType.U)),
 
-    AKUMULASI_MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    AKUMULASI_MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(2, null, "Akumulasi s.d DD-MM-YYYY Manfaat Pensiun", sv(M, 1, 18, all2))),
 
-    AKUMULASI_MANFAAT_PENSIUN_LAINNYA_MANFAAT_TAMBAHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK),
+    AKUMULASI_MANFAAT_PENSIUN_LAINNYA_MANFAAT_TAMBAHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
             sf(3, null, "Akumulasi s.d DD-MM-YYYY Manfaat Pensiun Lainnya Manfaat Tambahan", sv(M, 1, 18, all2))),
 
-    AKUMULASI_MANFAAT_PENSIUN_LAINNYA_KOMPENSASI_PASCAKERJA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK),
+    AKUMULASI_MANFAAT_PENSIUN_LAINNYA_KOMPENSASI_PASCAKERJA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
             sf(4, null, "Akumulasi s.d DD-MM-YYYY Manfaat Pensiun Lainnya Kompensasi Pascakerja", sv(M, 1, 18, all2))),
 
-    AKUMULASI_MANFAAT_PENSIUN_LAINNYA_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK),
+    AKUMULASI_MANFAAT_PENSIUN_LAINNYA_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
             sf(5, null, "Akumulasi s.d DD-MM-YYYY Manfaat Pensiun Lainnya Lainnya", sv(M, 1, 18, all2))),
 
-    AKUMULASI_MANFAAT_LAIN_KOMPENSASI_PASCAKERJA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK),
+    AKUMULASI_MANFAAT_LAIN_KOMPENSASI_PASCAKERJA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
             sf(6, null, "Akumulasi s.d DD-MM-YYYY Manfaat Lain Kompensasi Pascakerja", sv(M, 1, 18, all2))),
 
-    AKUMULASI_MANFAAT_LAIN_KESEHATAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK),
+    AKUMULASI_MANFAAT_LAIN_KESEHATAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
             sf(7, null, "Akumulasi s.d DD-MM-YYYY Manfaat Lain Kesehatan", sv(M, 1, 18, all2))),
 
-    AKUMULASI_MANFAAT_LAIN_SANTUNAN_KEMATIAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK),
+    AKUMULASI_MANFAAT_LAIN_SANTUNAN_KEMATIAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
             sf(8, null, "Akumulasi s.d DD-MM-YYYY Manfaat Lain Santunan Kematian", sv(M, 1, 18, all2))),
 
-    AKUMULASI_MANFAAT_LAIN_IBADAH_KEAGAMAAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK),
+    AKUMULASI_MANFAAT_LAIN_IBADAH_KEAGAMAAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
             sf(9, null, "Akumulasi s.d DD-MM-YYYY Manfaat Lain Ibadah Keagamaan", sv(M, 1, 18, all2))),
 
-    AKUMULASI_MANFAAT_LAIN_PENDIDIKAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK),
+    AKUMULASI_MANFAAT_LAIN_PENDIDIKAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
             sf(10, null, "Akumulasi s.d DD-MM-YYYY Manfaat Lain Pendidikan", sv(M, 1, 18, all2))),
 
-    AKUMULASI_MANFAAT_LAIN_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK),
+    AKUMULASI_MANFAAT_LAIN_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
             sf(11, null, "Akumulasi s.d DD-MM-YYYY Manfaat Lain Lainnya", sv(M, 1, 18, all2))),
 
-    AKUMULASI_GABUNGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK),
+    AKUMULASI_GABUNGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
             sf(12, null, "Akumulasi s.d DD-MM-YYYY Gabungan", sv(M, 1, 18, all2))),
+
+    UUS_MANFAAT_PENSIUN(
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPIPK),
+            sf(13, null, "UUS - Manfaat Pensiun", sv(M, 1, 18, all2))
+    ),
+
+    UUS_MANFAAT_PENSIUN_LAINNYA(
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPIPK),
+            sf(14, null, "UUS - Manfaat Pensiun Lainnya", sv(M, 1, 18, all2))
+    ),
+    UUS_MANFAAT_LAIN(
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPIPK),
+            sf(15, null, "UUS - Manfaat Lain", sv(M, 1, 18, all2))
+    ),
+    TOTAL(
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPIPK),
+            sf(16, null, "Total", sv(M, 1, 18, all2))
+    ),
     ;
 
     private final EnumSet<SectorType> sectorType;
@@ -84,10 +108,11 @@ public enum Dppk0005Lak implements ILbltFieldMetadata {
 
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7005Lak.getObject()),
-            new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7005Lak.getObject())
+            new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7005Lak.getObject()),
+            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7005Lak.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
-    public static final LbltMetadataField<Dppk0005Lak> FIELD_KONVEN = new LbltMetadataField<>(Dppk0005Lak.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
+    public static final LbltMetadataField<Dppk0005Lak> FIELD_METADATA = new LbltMetadataField<>(Dppk0005Lak.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
 
     public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, String reportCode) {
         EFormLaporanBulananTahunan LAK_FORM = EFormLaporanBulananTahunan.LTLB_LAK;
@@ -110,29 +135,32 @@ public enum Dppk0005Lak implements ILbltFieldMetadata {
     }
 
     public static SubmissionFormat formMetadata(ProgramType programType) {
-        FIELD_KONVEN.setProgramType(programType);
+        FIELD_METADATA.setProgramType(programType);
 
-        BaseMetadataValidation<E7005LakValidationsConfig> metadataValidation;
+        BaseMetadataValidation<? extends ILbltMetadataValidation> metadataValidation = null;
+        ReferenceConfig referenceConfig = null;
 
         switch (programType) {
             case PPMPK:
-                metadataValidation = E7005LakValidationsConfig.VALIDATION_METADATA_PPMPK;
+                metadataValidation = E7005LakKValidationsConfig.VALIDATION_METADATA_PPMPK;
+                referenceConfig = ER7005PosLtlbDppkLak.Configs.REF_CONFIG_PPMPK;
                 break;
             case PPMPM:
-                metadataValidation = E7005LakValidationsConfig.VALIDATION_METADATA_PPMPM;
+                metadataValidation = E7005LakMMValidationsConfig.VALIDATION_METADATA_PPMPM;
+                referenceConfig = ER7005PosLtlbDppkLak.Configs.REF_CONFIG_PPMPM;
                 break;
+            //default:
+            //throw new IllegalStateException();
             default:
-                throw new IllegalStateException();
+                break;
         }
 
         return new SubmissionConfig(programType.toString())
                 .config()
-                .setReferenceConfigs(ER7005PosLtlbDppkLak.Configs.REF_CONFIG_PPMP)
+                .setReferenceConfigs(referenceConfig)
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(KONVENSIONAL, programType.toString()))
-                .setSubmissionField(FIELD_KONVEN.getClearedFields())
-                .setSegmentValidations()
-//                .setSubmissionField(FIELD_KONVEN.getFields(metadataValidation.getFieldValidations()))
-//                .setSegmentValidations(metadataValidation)
+                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                .setSegmentValidations(metadataValidation)
                 .build()
                 .get();
     }

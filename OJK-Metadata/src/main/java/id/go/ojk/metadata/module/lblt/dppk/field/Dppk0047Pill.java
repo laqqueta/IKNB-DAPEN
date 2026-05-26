@@ -7,6 +7,7 @@ import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.metadata.module.lblt.dppk.EFormLaporanBulananTahunan;
+import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpipk;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpk;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpm;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataSharedLkbt;
@@ -28,51 +29,50 @@ import static id.go.ojk.lib.client.model.config.DataType.*;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.C;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
 import static id.go.ojk.metadata.util.FieldUtil.*;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
+import static id.go.ojk.metadata.util.constants.ProgramType.*;
 import static id.go.ojk.metadata.util.constants.SectorType.KONVENSIONAL;
 import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 
 @AllArgsConstructor
 public enum Dppk0047Pill implements ILbltFieldMetadata {
 
-    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(0, null, "Flag",
                     sv(M, 3, 3, alfaNumeric)
                             .confConstant("D01"))
     ),
-    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(1, null, "Kode Komponen",
                     sv(M, 10, 10, refTable)
                             .confRegex(SimpleValidation.patternAlfaNumeric))
     ),
-    JENIS_PIUTANG_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    JENIS_PIUTANG_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(2, null, "Jenis Piutang Lain",
                     sv(C, 1, 100, alfaNumeric)
                             /*.confConditionalRequired(E7047PillValidationsConfig.CR_EXISTS_POS_M)*/)
     ),
-    PIHAK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    PIHAK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(3, null, "Pihak",
                     sv(C, 1, 100, alfaNumeric)
                             /*.confConditionalRequired(E7047PillValidationsConfig.CR_EXISTS_POS_M)*/)
     ),
-    NOMINAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    NOMINAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(4, null, "Nominal",
                     sv(M, 1, 18, numeric))
     ),
-    TANGGAL_MUNCUL_PIUTANG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    TANGGAL_MUNCUL_PIUTANG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(5, null, "Tanggal Muncul Piutang",
                     sv(C, 8, 8, date)
                             /*.confConditionalRequired(E7047PillValidationsConfig.CR_EXISTS_POS_M)*/)
     ),
-    MANFAAT_PENSIUN_LAINNYA_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    MANFAAT_PENSIUN_LAINNYA_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(6, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain",
                     sv(C, 1, 6, refTable)
                             /*.confConditionalRequired(E7047PillValidationsConfig.CR_EXISTS_POS_M)*/
                             .confRegex(SimpleValidation.patternAlfaNumeric)
                             .confReference(EHeaderMetadataSharedLkbt.R009.getObject()))
     ),
-    KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(7, null, "Keterangan",
                     sv(C, 1, 250, freeText)
                             /*.confConditionalRequired(E7047PillValidationsConfig.CR_EXISTS_POS_O)*/)
@@ -85,10 +85,11 @@ public enum Dppk0047Pill implements ILbltFieldMetadata {
 
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7047Pill.getObject()),
-            new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7047Pill.getObject())
+            new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7047Pill.getObject()),
+new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7047Pill.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
-    public static final LbltMetadataField<Dppk0047Pill> FIELD_KONVEN = new LbltMetadataField<>(Dppk0047Pill.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
+    public static final LbltMetadataField<Dppk0047Pill> FIELD_METADATA = new LbltMetadataField<>(Dppk0047Pill.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
 
     public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, String reportCode) {
         EFormLaporanBulananTahunan PILL_FORM = EFormLaporanBulananTahunan.LTLB_PILL;
@@ -111,9 +112,9 @@ public enum Dppk0047Pill implements ILbltFieldMetadata {
     }
 
     public static SubmissionFormat formMetadata(ProgramType programType) {
-        FIELD_KONVEN.setProgramType(programType);
+        FIELD_METADATA.setProgramType(programType);
 
-                BaseMetadataValidation<E7047PillValidationsConfig> metadataValidation;
+                BaseMetadataValidation<E7047PillValidationsConfig> metadataValidation = null;
 
         switch (programType) {
             case PPMPK:
@@ -122,15 +123,17 @@ public enum Dppk0047Pill implements ILbltFieldMetadata {
             case PPMPM:
                 metadataValidation = E7047PillValidationsConfig.VALIDATION_METADATA_PPMPM;
                 break;
-            default:
-                throw new IllegalStateException();
+            //default:
+                //throw new IllegalStateException();
+default:
+                break;
         }
 
         return new SubmissionConfig(programType.toString())
                 .config()
                 .setReferenceConfigs(ER7047PosLtlbDppkPill.Configs.REF_CONFIG_PPMP)
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(KONVENSIONAL, programType.toString()))
-                .setSubmissionField(FIELD_KONVEN.getFields(metadataValidation.getFieldValidations()))
+                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
                 .setSegmentValidations(metadataValidation)
                 .build()
                 .get();

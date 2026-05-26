@@ -14,6 +14,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static id.go.ojk.client.model.config.SimpleValidation.patternAll2;
+import static id.go.ojk.lib.client.model.config.DataType.all2;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.C;
 
 public abstract class BaseMetadataField<T extends Enum<T> & IBaseFieldMetadata> {
@@ -32,16 +34,14 @@ public abstract class BaseMetadataField<T extends Enum<T> & IBaseFieldMetadata> 
     }
 
     protected List<SubmissionField> reindex(List<SubmissionField> filtered, Map<Integer, Integer> reindexNumber) {
-        if (reindexNumber.size() != filtered.size()) {
-            throw new IllegalArgumentException("reindexNumber size must equal of enum entries");
-        }
-
         return filtered.stream()
-                .filter(e -> reindexNumber.containsKey(e.getNumber()))
-                .map(e -> {
-                    int newNumber = reindexNumber.get(e.getNumber());
-                    SubmissionField f = e;
-                    return FieldUtil.sf(newNumber, f.getCode(), f.getName(), f.getSimpleValidation());
+                .peek(f -> {
+                    if (reindexNumber.containsKey(f.getNumber())) {
+                        int num = reindexNumber.get(f.getNumber());
+                        String pref = num < 10 ? "0" : "";
+                        f.setNumber(num);
+                        f.setCode("F" + pref + num);
+                    }
                 })
                 .sorted(Comparator.comparingInt(SubmissionField::getNumber))
                 .collect(Collectors.toList());
@@ -95,22 +95,36 @@ public abstract class BaseMetadataField<T extends Enum<T> & IBaseFieldMetadata> 
 
                     field.getSimpleValidation().setRequiredCondition(RequiredCondition.O);
                     field.getSimpleValidation().setConditionalRequired(null);
+                    field.getSimpleValidation().setDataType(all2);
+                    field.getSimpleValidation().setRegex(patternAll2.c());
+                    field.getSimpleValidation().setMaxLength(999);
+                    field.getSimpleValidation().setMinLength(1);
                     field.setFieldValidations(new ArrayList<>());
                 })
                 .sorted(Comparator.comparingInt(SubmissionField::getNumber))
                 .collect(Collectors.toList());
     }
 
-    public List<SubmissionField> getReindexFields(List<Integer> selectedFields, Map<Integer, Integer> reindexNumber) {
-        return reindex(getFields().stream()
-                .filter(f -> selectedFields.contains(f.getNumber()))
+    public List<SubmissionField> getReindexClearedFields(Map<Integer, Integer> reindexNumber) {
+        return reindex(getfilteredFieldStream()
+                .map(SerializationUtils::clone)
+                .peek(field -> {
+                    if (field.getNumber() == 0 || field.getNumber() == 1) return;
+
+                    field.getSimpleValidation().setRequiredCondition(RequiredCondition.O);
+                    field.getSimpleValidation().setConditionalRequired(null);
+                    field.setFieldValidations(new ArrayList<>());
+                })
+                .sorted(Comparator.comparingInt(SubmissionField::getNumber))
                 .collect(Collectors.toList()), reindexNumber);
     }
 
-    public <V extends IBaseMetadataValidation> List<SubmissionField> getReindexFields(List<Integer> selectedFields, Map<Integer, Integer> reindexNumber, Map<Integer, List<V>> fieldValidations) {
-        return reindex(getFields(fieldValidations).stream()
-                .filter(f -> selectedFields.contains(f.getNumber()))
-                .collect(Collectors.toList()), reindexNumber);
+    public List<SubmissionField> getReindexFields(Map<Integer, Integer> reindexNumber) {
+        return reindex(getFields(), reindexNumber);
+    }
+
+    public <V extends IBaseMetadataValidation> List<SubmissionField> getReindexFields(Map<Integer, Integer> reindexNumber, Map<Integer, List<V>> fieldValidations) {
+        return reindex(getFields(fieldValidations), reindexNumber);
     }
 
     protected Class<T> getEnumClass() {

@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.math.RoundingMode;
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -98,18 +99,15 @@ public class GeoMeanInvestasiFormValidation extends BaseRowValidation {
             if (!isNegative) positiveCount++;
             else value = BigDecimal.ONE;
 
-            p = p.multiply(value);
+            p = p.multiply(value, MathContext.DECIMAL64);
         }
 
         BigDecimal exponent = BigDecimal.ONE.divide(
-                BigDecimal.valueOf(positiveCount),
-                3,
-                RoundingMode.HALF_UP
-        );
+                BigDecimal.valueOf(positiveCount), 4, RoundingMode.HALF_UP);
 
         return BigDecimal.valueOf(
                         Math.pow(p.doubleValue(), exponent.doubleValue()))
-                .setScale(2, RoundingMode.CEILING);
+                .setScale(2, RoundingMode.HALF_UP);
     }
 
     private BigDecimal getCurrentValue(ValidationResult validationResult, String idxField) {

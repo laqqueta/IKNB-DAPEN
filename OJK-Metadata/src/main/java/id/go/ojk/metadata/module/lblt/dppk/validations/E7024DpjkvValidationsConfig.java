@@ -51,8 +51,8 @@ public enum E7024DpjkvValidationsConfig implements ILbltMetadataValidation, IVal
             () -> UtilFieldConditional.genExistPos("N", "O", R_DPJKV000000.key)),
 
     CR_EQUAL_NAMA_PENGELOLA(programs(PPMPK, PPMPM), validationFields(14),
-            () -> UtilFieldConditional.genExistPosAndComparatorHasValue("O", "M", "N",
-                    R_DPJKV010000.key, "13", ER1252Pengelolaan.getReferenceIndex(0))),
+            () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("N", "M", "N",
+                    R_DPJKV010000.key, "13", ER1252Pengelolaan.getReferenceIndex(0), ER1252Pengelolaan.getReferenceValueIndex(0))),
 
     ;
 

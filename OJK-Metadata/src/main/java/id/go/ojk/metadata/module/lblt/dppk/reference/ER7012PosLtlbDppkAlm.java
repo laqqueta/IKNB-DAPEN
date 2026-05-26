@@ -76,7 +76,7 @@ public enum ER7012PosLtlbDppkAlm implements IObject<KeyValueString> {
     R_ALM0908000000("ALM0908000000", "Total Liabilitas Diluar Liabilitas Manfaat Pensiun", EnumSet.of(ProgramType.ALL)),
     R_ALM1000000000("ALM1000000000", "H. Total Liabilitas (F+G)", EnumSet.of(ProgramType.ALL)),
     R_ALM1100000000("ALM1100000000", "I. Selisih Total Aset dan Total Liabilitas (E-H)", EnumSet.of(ProgramType.ALL)),
-    R_ALM1200000000("ALM1200000000", "J. Persentase (%) Rasio Kecukupan Dana", EnumSet.of(ProgramType.ALL)),
+    R_ALM1200000000("ALM1200000000", "J. Persentase (%) Rasio Kecukupan Dana", EnumSet.of(ProgramType.PPMPM, ProgramType.PPMPK, ProgramType.PPMPPPIPK)),
 
     ;
 

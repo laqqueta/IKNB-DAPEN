@@ -72,7 +72,7 @@ public class RatioValidation extends BaseFormulaValidation {
 		if (res != null) {
 			res = res.setScale(roundFull ? 0 : 2, RoundingMode.HALF_UP);
 		}
-		logger.debug("formula=" + formula + ";seq=" + seq + ";result=" + (res != null ? res : "null"));
+//		logger.debug("formula=" + formula + ";seq=" + seq + ";result=" + (res != null ? res : "null"));
 		return res;
 	}
 	

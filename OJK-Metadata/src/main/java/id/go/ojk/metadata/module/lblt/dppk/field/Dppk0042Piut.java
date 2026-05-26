@@ -7,6 +7,7 @@ import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.metadata.module.lblt.dppk.EFormLaporanBulananTahunan;
+import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpipk;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpk;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpm;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataSharedLkbt;
@@ -22,60 +23,60 @@ import lombok.AllArgsConstructor;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static id.go.ojk.lib.client.model.config.DataType.*;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.C;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
 import static id.go.ojk.metadata.util.FieldUtil.*;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
+import static id.go.ojk.metadata.util.constants.ProgramType.*;
 import static id.go.ojk.metadata.util.constants.SectorType.KONVENSIONAL;
 import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 
 @AllArgsConstructor
 public enum Dppk0042Piut implements ILbltFieldMetadata {
 
-    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(0, null, "Flag",
                     sv(M, 3, 3, alfaNumeric)
                             .confConstant("D01"))
     ),
-    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(1, null, "Kode Komponen",
                     sv(M, 10, 10, refTable)
                             .confRegex(SimpleValidation.patternAlfaNumeric))
     ),
-    NAMA_PEMBERI_KERJA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    NAMA_PEMBERI_KERJA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(2, null, "Nama Pemberi Kerja(Pendiri/Mitra Pendiri)",
                     sv(C, 1, 100, freeText)
-                            /*.confConditionalRequired(E7042PiutValidationsConfig.CR_EXISTS_POS_M)*/)
+                    /*.confConditionalRequired(E7042PiutValidationsConfig.CR_EXISTS_POS_M)*/)
     ),
-    PIUTANG_IURAN_PEMBERI_KERJA_LTE_1_BULAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    PIUTANG_IURAN_PEMBERI_KERJA_LTE_1_BULAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(3, null, "Piutang Iuran Pemberi Kerja Usia Piutang <=1 Bulan",
                     sv(M, 1, 18, numeric))
     ),
-    PIUTANG_IURAN_PEMBERI_KERJA_GT_1_BULAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    PIUTANG_IURAN_PEMBERI_KERJA_GT_1_BULAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(4, null, "Piutang Iuran Pemberi Kerja Usia Piutang >1 Bulan",
                     sv(M, 1, 18, numeric))
     ),
-    PIUTANG_IURAN_PEMBERI_KERJA_TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    PIUTANG_IURAN_PEMBERI_KERJA_TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(5, null, "Piutang Iuran Pemberi Kerja Total",
                     sv(M, 1, 18, numeric))
-                    /*.addFieldValidations(E7042PiutValidationsConfig.FV_EQUAL_PEMBERI_KERJA)*/
+            /*.addFieldValidations(E7042PiutValidationsConfig.FV_EQUAL_PEMBERI_KERJA)*/
     ),
-    PIUTANG_IURAN_PESERTA_LTE_1_BULAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    PIUTANG_IURAN_PESERTA_LTE_1_BULAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(6, null, "Piutang Iuran Peserta Usia Piutang <=1 Bulan",
                     sv(M, 1, 18, numeric))
     ),
-    PIUTANG_IURAN_PESERTA_GT_1_BULAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    PIUTANG_IURAN_PESERTA_GT_1_BULAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(7, null, "Piutang Iuran Peserta Usia Piutang >1 Bulan",
                     sv(M, 1, 18, numeric))
     ),
-    PIUTANG_IURAN_PESERTA_TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    PIUTANG_IURAN_PESERTA_TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(8, null, "Piutang Iuran Peserta Total",
                     sv(M, 1, 18, numeric))
-                    /*.addFieldValidations(E7042PiutValidationsConfig.FV_EQUAL_PESERTA)*/
+            /*.addFieldValidations(E7042PiutValidationsConfig.FV_EQUAL_PESERTA)*/
     ),
     PIUTANG_IURAN_TAMBAHAN_LTE_1_BULAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(9, null, "Piutang Iuran Tambahan Usia Piutang <=1 Bulan",
@@ -88,23 +89,23 @@ public enum Dppk0042Piut implements ILbltFieldMetadata {
     PIUTANG_IURAN_TAMBAHAN_TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(11, null, "Piutang Iuran Tambahan Total",
                     sv(M, 1, 18, numeric))
-                    /*.addFieldValidations(E7042PiutValidationsConfig.FV_EQUAL_TAMBAHAN)*/
+            /*.addFieldValidations(E7042PiutValidationsConfig.FV_EQUAL_TAMBAHAN)*/
     ),
-    PIUTANG_IURAN_SUKARELA_PESERTA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    PIUTANG_IURAN_SUKARELA_PESERTA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(12, null, "Piutang Iuran Sukarela Peserta",
                     sv(M, 1, 18, numeric))
     ),
-    MANFAAT_PENSIUN_LAINNYA_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    MANFAAT_PENSIUN_LAINNYA_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(13, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain",
                     sv(C, 1, 6, refTable)
                             /*.confConditionalRequired(E7042PiutValidationsConfig.CR_EXISTS_POS_M)*/
                             .confRegex(SimpleValidation.patternAlfaNumeric)
                             .confReference(EHeaderMetadataSharedLkbt.R009.getObject()))
     ),
-    KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(14, null, "Keterangan",
                     sv(C, 1, 250, freeText)
-                            /*.confConditionalRequired(E7042PiutValidationsConfig.CR_EXISTS_POS_O)*/)
+                    /*.confConditionalRequired(E7042PiutValidationsConfig.CR_EXISTS_POS_O)*/)
     ),
     ;
 
@@ -114,10 +115,11 @@ public enum Dppk0042Piut implements ILbltFieldMetadata {
 
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7042Piut.getObject()),
-            new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7042Piut.getObject())
+            new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7042Piut.getObject()),
+            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7042Piut.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
-    public static final LbltMetadataField<Dppk0042Piut> FIELD_KONVEN = new LbltMetadataField<>(Dppk0042Piut.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
+    public static final LbltMetadataField<Dppk0042Piut> FIELD_METADATA = new LbltMetadataField<>(Dppk0042Piut.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
 
     public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, String reportCode) {
         EFormLaporanBulananTahunan PIUT_FORM = EFormLaporanBulananTahunan.LTLB_PIUT;
@@ -140,9 +142,10 @@ public enum Dppk0042Piut implements ILbltFieldMetadata {
     }
 
     public static SubmissionFormat formMetadata(ProgramType programType) {
-        FIELD_KONVEN.setProgramType(programType);
+        FIELD_METADATA.setProgramType(programType);
 
-                BaseMetadataValidation<E7042PiutValidationsConfig> metadataValidation;
+        BaseMetadataValidation<E7042PiutValidationsConfig> metadataValidation = null;
+        List<SubmissionField> submissionFields = FIELD_METADATA.getClearedFields();
 
         switch (programType) {
             case PPMPK:
@@ -151,15 +154,23 @@ public enum Dppk0042Piut implements ILbltFieldMetadata {
             case PPMPM:
                 metadataValidation = E7042PiutValidationsConfig.VALIDATION_METADATA_PPMPM;
                 break;
+            case PPIPK:
+                int[] originalIndex = {12, 13, 14};
+                int[] newIndex = {9,10,11};
+                submissionFields = FIELD_METADATA.getReindexClearedFields(
+                        IntStream.range(0, originalIndex.length)
+                                .boxed()
+                                .collect(Collectors.toMap(i -> originalIndex[i], i -> newIndex[i])));
+                break;
             default:
                 throw new IllegalStateException();
         }
 
         return new SubmissionConfig(programType.toString())
                 .config()
-                .setReferenceConfigs(ER7042PosLtlbDppkPiut.Configs.REF_CONFIG_PPMP)
+                .setReferenceConfigs(ER7042PosLtlbDppkPiut.Configs.REF_CONFIG)
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(KONVENSIONAL, programType.toString()))
-                .setSubmissionField(FIELD_KONVEN.getFields(metadataValidation.getFieldValidations()))
+                .setSubmissionField(submissionFields)
                 .setSegmentValidations(metadataValidation)
                 .build()
                 .get();

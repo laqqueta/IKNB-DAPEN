@@ -69,9 +69,6 @@ public class FormulaParserPeriodePelaporanFormValidation extends BaseRowValidati
 		final Logger logger = LoggerFactory.getLogger(FormulaParserPeriodePelaporanFormValidation.class);
 
 		for (int i = 0; i < fields.length; i++) {
-			if (fields[i].equalsIgnoreCase("2") && comparatorForm.equalsIgnoreCase("LAN")) {
-				System.out.println("asd");
-			}
 			ParsedFormula parsed = parse(operations[i]);
 			StringBuilder errorBuilder = new StringBuilder();
 			BigDecimal selectValue = getCurrentValue(validationResult, fields[i]);
@@ -86,7 +83,7 @@ public class FormulaParserPeriodePelaporanFormValidation extends BaseRowValidati
 				errorBuilder.append(" * periode bulan pelaporan");
 
 				validationResult.errors.add(new ValidationError(submissionField,
-						ValidationErrorCode.E03_04_EQUAL_FORM, errorBuilder, comparatorForm ));
+						ValidationErrorCode.E03_34_EQUAL_FORM, errorBuilder, comparatorForm ));
 
 			}
 		}

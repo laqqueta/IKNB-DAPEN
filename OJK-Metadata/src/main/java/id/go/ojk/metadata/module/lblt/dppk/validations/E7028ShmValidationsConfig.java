@@ -45,8 +45,8 @@ public enum E7028ShmValidationsConfig implements ILbltMetadataValidation, IValid
             () -> UtilFieldValidation.genEqualsPercentageExceptPosFormula("8/6", R_SHM000000.key)),
 
     CR_NAMA_PENGELOLA(programs(PPMPK, PPMPM), validationFields(13),
-            () -> UtilFieldConditional.genExistPosAndComparatorHasValue("O", "M", "N",
-                    R_SHM010000.key, "12", ER1252Pengelolaan.getReferenceIndex(0))),
+            () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("N", "M", "N",
+                    R_SHM010000.key, "12", ER1252Pengelolaan.getReferenceIndex(0), ER1252Pengelolaan.getReferenceValueIndex(0))),
 
     CR_EXISTS_POS_O(programs(PPMPK, PPMPM), validationFields(14),
             () -> UtilFieldConditional.genExistPos("N", "M", R_SHM000000.key)),

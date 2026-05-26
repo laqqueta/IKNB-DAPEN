@@ -7,15 +7,17 @@ import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
 import id.go.ojk.lib.client.model.config.UniqueType;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
+import id.go.ojk.metadata.field.lblt.ILbltFieldMetadata;
+import id.go.ojk.metadata.field.lblt.LbltMetadataField;
 import id.go.ojk.metadata.module.lblt.dppk.EFormLaporanBulananTahunan;
+import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpipk;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpk;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpm;
 import id.go.ojk.metadata.module.lblt.dppk.reference.ER7008PosLtlbDppkRekinv;
+import id.go.ojk.metadata.module.lblt.dppk.validations.E7008RekinvValidationsConfig;
+import id.go.ojk.metadata.submission.SubmissionConfig;
 import id.go.ojk.metadata.util.constants.ProgramType;
 import id.go.ojk.metadata.util.constants.SectorType;
-import id.go.ojk.metadata.field.lblt.ILbltFieldMetadata;
-import id.go.ojk.metadata.field.lblt.LbltMetadataField;
-import id.go.ojk.metadata.submission.SubmissionConfig;
 import id.go.ojk.metadata.validation.base.BaseMetadataValidation;
 import id.go.ojk.metadata.validation.base.IBaseMetadataValidation;
 import lombok.AllArgsConstructor;
@@ -26,60 +28,56 @@ import java.util.stream.Stream;
 
 import static id.go.ojk.lib.client.model.config.DataType.*;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
-import static id.go.ojk.lib.client.model.constant.RequiredCondition.O;
-import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpk.E7008RekinvValidationsConfig.VALIDATION_METADATA_PPMPK;
-import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpm.E7008RekinvValidationsConfig.VALIDATION_METADATA_PPMPM;
 import static id.go.ojk.metadata.util.FieldUtil.*;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
+import static id.go.ojk.metadata.util.constants.ProgramType.*;
 import static id.go.ojk.metadata.util.constants.SectorType.KONVENSIONAL;
 import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 
 @AllArgsConstructor
 public enum Dppk0008Rekinv implements ILbltFieldMetadata {
 
-    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01"))
     ),
-    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(1, null, "Kode Komponen", sv(M, 16, 16, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric))
                     .confUnique(UniqueType.U)
     ),
-    JAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    JAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(2, null, "Jan", sv(M, 1, 18, numeric))
     ),
-    FEB(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    FEB(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(3, null, "Feb", sv(M, 1, 18, numeric))
     ),
-    MAR(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    MAR(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(4, null, "Mar", sv(M, 1, 18, numeric))
     ),
-    APR(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    APR(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(5, null, "Apr", sv(M, 1, 18, numeric))
     ),
-    MEI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    MEI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(6, null, "Mei", sv(M, 1, 18, numeric))
     ),
-    JUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    JUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(7, null, "Jun", sv(M, 1, 18, numeric))
     ),
-    JUL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    JUL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(8, null, "Jul", sv(M, 1, 18, numeric))
     ),
-    AGU(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    AGU(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(9, null, "Agu", sv(M, 1, 18, numeric))
     ),
-    SEP(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    SEP(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(10, null, "Sep", sv(M, 1, 18, numeric))
     ),
-    OKT(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    OKT(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(11, null, "Okt", sv(M, 1, 18, numeric))
     ),
-    NOV(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    NOV(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(12, null, "Nov", sv(M, 1, 18, numeric))
     ),
-    DES(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    DES(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(13, null, "Des", sv(M, 1, 18, numeric))
     ),
     ;
@@ -90,10 +88,11 @@ public enum Dppk0008Rekinv implements ILbltFieldMetadata {
 
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7008Rekinv.getObject()),
-            new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7008Rekinv.getObject())
+            new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7008Rekinv.getObject()),
+            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7008Rekinv.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
-    public static final LbltMetadataField <Dppk0008Rekinv> METADATA_FIELD =
+    public static final LbltMetadataField<Dppk0008Rekinv> FIELD_METADATA =
             new LbltMetadataField<>(Dppk0008Rekinv.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
 
     public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, String reportCode) {
@@ -116,11 +115,11 @@ public enum Dppk0008Rekinv implements ILbltFieldMetadata {
     }
 
     public static SubmissionFormat formMetadata(ProgramType programType) {
-        METADATA_FIELD.setProgramType(programType);
+        FIELD_METADATA.setProgramType(programType);
 
         SubmissionFormatBuilder submissionFormatBuilder = getPpmpSubmissionFormatConfig(KONVENSIONAL, programType.toString());
         ER7008PosLtlbDppkRekinv.Configs referenceConfig;
-        BaseMetadataValidation<? extends IBaseMetadataValidation> metadataValidation;
+        BaseMetadataValidation<? extends IBaseMetadataValidation> metadataValidation = null;
 
         int minMaxRow;
 
@@ -128,15 +127,19 @@ public enum Dppk0008Rekinv implements ILbltFieldMetadata {
             case PPMPK:
                 minMaxRow = 24;
                 referenceConfig = ER7008PosLtlbDppkRekinv.Configs.REF_CONFIG_PPMPK;
-                metadataValidation = VALIDATION_METADATA_PPMPK;
+                metadataValidation = E7008RekinvValidationsConfig.VALIDATION_METADATA_PPMPK;
                 break;
             case PPMPM:
                 minMaxRow = 22;
                 referenceConfig = ER7008PosLtlbDppkRekinv.Configs.REF_CONFIG_PPMPM;
-                metadataValidation = VALIDATION_METADATA_PPMPM;
+                metadataValidation = E7008RekinvValidationsConfig.VALIDATION_METADATA_PPMPM;
                 break;
+            //default:
+            //throw new IllegalStateException();
             default:
-                throw new IllegalStateException();
+                minMaxRow = 24;
+                referenceConfig = null;
+                break;
         }
 
         submissionFormatBuilder.setMinRow(minMaxRow);
@@ -146,7 +149,7 @@ public enum Dppk0008Rekinv implements ILbltFieldMetadata {
                 .config()
                 .setReferenceConfigs(referenceConfig)
                 .setSubmissionFormat(submissionFormatBuilder)
-                .setSubmissionField(METADATA_FIELD.getFields(metadataValidation.getFieldValidations()))
+                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
                 .setSegmentValidations(metadataValidation)
                 .build()
                 .get();

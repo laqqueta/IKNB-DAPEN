@@ -48,8 +48,8 @@ public enum E7034EbaValidationsConfig implements ILbltMetadataValidation, IValid
             () -> UtilFieldValidation.genDateGreaterEquals("5")),
 
     CR_NAMA_PENGELOLA(programs(PPMPK, PPMPM), validationFields(18),
-            () -> UtilFieldConditional.genExistPosAndComparatorHasValue("O", "M", "N",
-                    R_EBA010000.key, "17", ER1252Pengelolaan.getReferenceIndex(0))),
+            () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("N", "M", "N",
+                    R_EBA010000.key, "17", ER1252Pengelolaan.getReferenceIndex(0), ER1252Pengelolaan.getReferenceValueIndex(0))),
 
     CR_EXISTS_POS_M(programs(PPMPK, PPMPM), validationFields(2, 3, 4, 5, 7, 8, 9, 10, 15, 16, 17),
             () -> UtilFieldConditional.genExistPos("N", "M", R_EBA000000.key)),

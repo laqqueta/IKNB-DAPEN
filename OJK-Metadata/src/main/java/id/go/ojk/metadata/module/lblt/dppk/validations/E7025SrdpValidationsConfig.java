@@ -45,8 +45,8 @@ public enum E7025SrdpValidationsConfig implements ILbltMetadataValidation, IVali
             () -> UtilFieldConditional.genExistPos("N", "O", R_SRDP000000.key)),
 
     CR_EQUAL_NAMA_PENGGUNA(programs(PPMPK, PPMPM), validationFields(11),
-            () -> UtilFieldConditional.genExistPosAndComparatorHasValue("O", "M", "N",
-                    R_SRDP010000.key, "12", ER1252Pengelolaan.getReferenceIndex(0))),
+            () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("N", "M", "N",
+                    R_SRDP010000.key, "10", ER1252Pengelolaan.getReferenceIndex(0), ER1252Pengelolaan.getReferenceValueIndex(0))),
 
     ;
 

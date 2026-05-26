@@ -47,8 +47,8 @@ public enum E7068PkplValidationsConfig implements ILbltMetadataValidation, IVali
 //                    ER1255JenisManfaat.getReferenceIndex(11))),
 
     CR_MANFAAT_LAIN(programs(PPMPK, PPMPM), validationFields(5),
-            () -> UtilFieldConditional.genExistPosAndComparatorHasValue("M", "N", "N",
-                    R_PKPL010000.key, "4", ER1255JenisManfaat.getReferenceIndex(11))),
+            () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("M", "O", "N",
+                    R_PKPL010000.key, "4", ER1255JenisManfaat.getReferenceIndex(11), ER1255JenisManfaat.getReferenceValueIndex(11))),
 
     ;
 

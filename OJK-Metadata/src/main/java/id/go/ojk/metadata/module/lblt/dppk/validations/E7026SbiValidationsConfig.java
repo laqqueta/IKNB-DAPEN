@@ -48,8 +48,8 @@ public enum E7026SbiValidationsConfig implements ILbltMetadataValidation, IValid
             () -> UtilFieldValidation.genDateGreaterEquals("3")),
 
     CR_NAMA_PENGELOLA(programs(PPMPK, PPMPM), validationFields(13),
-            () -> UtilFieldConditional.genExistPosAndComparatorHasValue("O", "M", "N",
-                    R_SBI010000.key, "12", ER1252Pengelolaan.getReferenceIndex(0))),
+            () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("N", "M", "N",
+                    R_SBI010000.key, "12", ER1252Pengelolaan.getReferenceIndex(0), ER1252Pengelolaan.getReferenceValueIndex(0))),
 
     CR_EXISTS_POS_M(programs(PPMPK, PPMPM), validationFields(2, 3, 5, 6, 10, 11, 12),
             () -> UtilFieldConditional.genExistPos("N", "M", R_SBI000000.key)),

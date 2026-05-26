@@ -5,19 +5,17 @@ import id.go.ojk.client.model.config.SimpleValidation;
 import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
-import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
 import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
+import id.go.ojk.metadata.field.lblt.ILbltFieldMetadata;
+import id.go.ojk.metadata.field.lblt.LbltMetadataField;
 import id.go.ojk.metadata.module.lblt.dppk.EFormLaporanBulananTahunan;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpk;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpm;
 import id.go.ojk.metadata.module.lblt.dppk.reference.ER7007PosLtlbDppkKup;
-import id.go.ojk.metadata.module.lblt.dppk.validations.ppmpk.E7007KupValidationsConfig;
+import id.go.ojk.metadata.submission.SubmissionConfig;
 import id.go.ojk.metadata.util.constants.ProgramType;
 import id.go.ojk.metadata.util.constants.SectorType;
-import id.go.ojk.metadata.field.lblt.ILbltFieldMetadata;
-import id.go.ojk.metadata.field.lblt.LbltMetadataField;
-import id.go.ojk.metadata.submission.SubmissionConfig;
 import id.go.ojk.metadata.validation.base.BaseMetadataValidation;
 import id.go.ojk.metadata.validation.base.IBaseMetadataValidation;
 import lombok.AllArgsConstructor;
@@ -27,9 +25,10 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static id.go.ojk.lib.client.model.config.DataType.*;
-import static id.go.ojk.lib.client.model.constant.RequiredCondition.*;
-import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpk.E7007KupValidationsConfig.VALIDATION_METADATA_PPMPK;
-import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpm.E7007KupValidationsConfig.VALIDATION_METADATA_PPMPM;
+import static id.go.ojk.lib.client.model.constant.RequiredCondition.C;
+import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
+import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpk.E7007KupKValidationsConfig.VALIDATION_METADATA_PPMPK;
+import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpm.E7007KupMValidationsConfig.VALIDATION_METADATA_PPMPM;
 import static id.go.ojk.metadata.util.FieldUtil.*;
 import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
 import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
@@ -69,7 +68,7 @@ public enum Dppk0007Kup implements ILbltFieldMetadata {
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7007Kup.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
-    public static final LbltMetadataField<Dppk0007Kup> FIELD_KONVEN = new LbltMetadataField<>(Dppk0007Kup.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
+    public static final LbltMetadataField<Dppk0007Kup> FIELD_METADATA = new LbltMetadataField<>(Dppk0007Kup.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
 
     public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, String reportCode) {
         EFormLaporanBulananTahunan KUP_FORM = EFormLaporanBulananTahunan.LTLB_KUP;
@@ -92,10 +91,10 @@ public enum Dppk0007Kup implements ILbltFieldMetadata {
     }
 
     public static SubmissionFormat formMetadata(ProgramType programType) {
-        FIELD_KONVEN.setProgramType(programType);
+        FIELD_METADATA.setProgramType(programType);
 
-        BaseMetadataValidation<? extends IBaseMetadataValidation> metadataValidation;
-        ReferenceConfig referenceConfig;
+        BaseMetadataValidation<? extends IBaseMetadataValidation> metadataValidation = null;
+        ReferenceConfig referenceConfig = null;
 
         switch (programType) {
             case PPMPK:
@@ -106,18 +105,18 @@ public enum Dppk0007Kup implements ILbltFieldMetadata {
                 metadataValidation = VALIDATION_METADATA_PPMPM;
                 referenceConfig = ER7007PosLtlbDppkKup.Configs.REF_CONFIG_PPMPM;
                 break;
-            default:
-                throw new IllegalStateException();
+            //default:
+                //throw new IllegalStateException();
+default:
+                break;
         }
 
         return new SubmissionConfig(programType.toString())
                 .config()
                 .setReferenceConfigs(referenceConfig)
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(KONVENSIONAL, programType.toString()))
-                .setSubmissionField(FIELD_KONVEN.getClearedFields())
-                .setSegmentValidations()
-//                .setSubmissionField(FIELD_KONVEN.getFields(metadataValidation.getFieldValidations()))
-//                .setSegmentValidations(metadataValidation)
+                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                .setSegmentValidations(metadataValidation)
                 .build()
                 .get();
     }

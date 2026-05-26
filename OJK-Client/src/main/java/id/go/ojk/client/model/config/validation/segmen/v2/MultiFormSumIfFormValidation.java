@@ -102,7 +102,7 @@ public class MultiFormSumIfFormValidation extends BaseSumIf<SumIfBaseParams> {
         final String[] key = new String[1];
         final String[] value = new String[1];
 
-        Map<String, Long> accumulator = new HashMap<>();
+        Map<String, BigDecimal> accumulator = new HashMap<>();
 
         for (int i = 0; i < comparatorForms.length; i++) {
             String prefix = comparatorForms[i] + comparatorRows[i].split("-")[0];
@@ -125,12 +125,12 @@ public class MultiFormSumIfFormValidation extends BaseSumIf<SumIfBaseParams> {
                         if (!mapCriteriaStatus.get(key[0])) return;
 
                         // mapCriteria.computeIfPresent(key[0], (k, v) -> v.add(new BigDecimal(value[0])));
-                        accumulator.merge(key[0], Long.parseLong(value[0]), Long::sum);
+                        accumulator.merge(key[0], new BigDecimal(value[0]), BigDecimal::add);
                     });
         }
 
         accumulator.forEach((k, v) ->
-                mapCriteria.computeIfPresent(k, (mk, mv) -> mv.add(BigDecimal.valueOf(v))));
+                mapCriteria.computeIfPresent(k, (mk, mv) -> mv.add(v)));
 
         return mapCriteria;
     }

@@ -8,10 +8,10 @@ import id.go.ojk.client.model.config.SubmissionFormatBuilder;
 import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.metadata.module.lblt.dppk.EFormLaporanBulananTahunan;
+import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpipk;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpk;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpm;
 import id.go.ojk.metadata.module.lblt.dppk.reference.ER7015PosLtlbDppkInbm;
-import id.go.ojk.metadata.module.lblt.dppk.validations.ppmpk.E7015InbmValidationsConfig;
 import id.go.ojk.metadata.util.constants.ProgramType;
 import id.go.ojk.metadata.util.constants.SectorType;
 import id.go.ojk.metadata.field.lblt.ILbltFieldMetadata;
@@ -28,44 +28,43 @@ import java.util.stream.Stream;
 import static id.go.ojk.lib.client.model.config.DataType.*;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.*;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.C;
-import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpk.E7015InbmValidationsConfig.VALIDATION_METADATA_PPMPK;
-import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpm.E7015InbmValidationsConfig.VALIDATION_METADATA_PPMPM;
+import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpk.E7015InbmKValidationsConfig.VALIDATION_METADATA_PPMPK;
+import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpm.E7015InbmMValidationsConfig.VALIDATION_METADATA_PPMPM;
 import static id.go.ojk.metadata.util.FieldUtil.*;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
+import static id.go.ojk.metadata.util.constants.ProgramType.*;
 import static id.go.ojk.metadata.util.constants.SectorType.KONVENSIONAL;
 import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 
 @AllArgsConstructor
 public enum Dppk0015Inbm implements ILbltFieldMetadata {
 
-    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01"))
     ),
-    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(1, null, "Kode Komponen", sv(M, 10, 10, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric))
     ),
-    NAMA_PIHAK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    NAMA_PIHAK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(2, null, "Nama Pihak", sv(C, 1, 100, freeText)
                     /*.confConditionalRequired(E7015InbmValidationsConfig.CR_EXIST_POS_M)*/)
     ),
-    INVESTASI_JENIS(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    INVESTASI_JENIS(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(3, null, "Investasi Jenis", sv(C, 1, 100, freeText)
                     /*.confConditionalRequired(E7015InbmValidationsConfig.CR_EXIST_POS_M)*/)
     ),
-    INVESTASI_JUMLAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    INVESTASI_JUMLAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(4, null, "Investasi Jumlah", sv(M, 1, 18, numeric))
     ),
-    INVESTASI_PERSENTASE_TERHADAP_TOTAL_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    INVESTASI_PERSENTASE_TERHADAP_TOTAL_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(5, null, "Investasi Persentase Terhadap Total Investasi", sv(C, 4, 6, numericDot)
                     /*.confConditionalRequired(E7015InbmValidationsConfig.CR_EXIST_POS_M)*/)
     ),
-    KATEGORI_BERMASALAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    KATEGORI_BERMASALAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(6, null, "Kategori Bermasalah", sv(C, 1, 250, freeText)
                     /*.confConditionalRequired(E7015InbmValidationsConfig.CR_EXIST_POS_M)*/)
     ),
-    KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(7, null, "Keterangan", sv(C, 1, 250, freeText)
                     /*.confConditionalRequired(E7015InbmValidationsConfig.CR_EXIST_POS_O)*/)
     ),
@@ -77,10 +76,11 @@ public enum Dppk0015Inbm implements ILbltFieldMetadata {
 
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7015Inbm.getObject()),
-            new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7015Inbm.getObject())
+            new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7015Inbm.getObject()),
+            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7015Inbm.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
-    public static final LbltMetadataField<Dppk0015Inbm> FIELD_KONVEN = new LbltMetadataField<>(Dppk0015Inbm.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
+    public static final LbltMetadataField<Dppk0015Inbm> FIELD_METADATA = new LbltMetadataField<>(Dppk0015Inbm.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
 
     public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, String reportCode) {
         EFormLaporanBulananTahunan INBM_FORM = EFormLaporanBulananTahunan.LTLB_INBM;
@@ -103,10 +103,10 @@ public enum Dppk0015Inbm implements ILbltFieldMetadata {
     }
 
     public static SubmissionFormat formMetadata(ProgramType programType) {
-        FIELD_KONVEN.setProgramType(programType);
+        FIELD_METADATA.setProgramType(programType);
 
-        BaseMetadataValidation<? extends ILbltMetadataValidation> metadataValidation;
-        ReferenceConfig referenceConfig;
+        BaseMetadataValidation<? extends ILbltMetadataValidation> metadataValidation = null;
+        ReferenceConfig referenceConfig = null;
 
         switch (programType) {
             case PPMPK:
@@ -117,15 +117,17 @@ public enum Dppk0015Inbm implements ILbltFieldMetadata {
                 metadataValidation = VALIDATION_METADATA_PPMPM;
                 referenceConfig = ER7015PosLtlbDppkInbm.Configs.REF_CONFIG_PPMPK_PPMPM;
                 break;
+            //default:
+            //throw new IllegalStateException();
             default:
-                throw new IllegalStateException();
+                break;
         }
 
         return new SubmissionConfig(programType.toString())
                 .config()
                 .setReferenceConfigs(referenceConfig)
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(KONVENSIONAL, programType.toString()))
-                .setSubmissionField(FIELD_KONVEN.getFields(metadataValidation.getFieldValidations()))
+                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
                 .setSegmentValidations(metadataValidation)
                 .build()
                 .get();

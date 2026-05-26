@@ -7,12 +7,14 @@ import id.go.ojk.client.model.config.SubmissionFormatBuilder;
 import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
 import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.conf.client.BaseMetadata;
+import id.go.ojk.metadata.validation.ValidationConverter;
 import id.go.ojk.metadata.validation.base.BaseMetadataValidation;
 import id.go.ojk.metadata.validation.base.IBaseMetadataValidation;
 
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public abstract class BaseSubmissionConfig extends BaseMetadata {
     protected SubmissionFormat submissionFormat;
@@ -44,6 +46,8 @@ public abstract class BaseSubmissionConfig extends BaseMetadata {
     }
 
     protected void setSubmissionConfigs(SubmissionFormat sf) {
+        if (referenceConfig == null) return;
+
         if (referenceConfig.requiredPos() != null) {
             sf.setRequiredPos(referenceConfig);
         }
@@ -95,8 +99,17 @@ public abstract class BaseSubmissionConfig extends BaseMetadata {
             return this;
         }
 
-        public Config<T> setSegmentValidations(List<SegmentValidation> segmentValidations) {
-            BaseSubmissionConfig.this.segmentValidations = segmentValidations;
+        public <V extends Enum<V> & IBaseMetadataValidation> Config<T> setSegmentValidations(List<V> segmentValidations) {
+            BaseSubmissionConfig.this.segmentValidations = segmentValidations.stream()
+                    .map(v -> ValidationConverter.toValidation(v, SegmentValidation.class))
+                    .collect(Collectors.toList());
+
+            return this;
+        }
+
+        public Config<T> additionalSegmentValidations(List<SegmentValidation> segmentValidations) {
+            BaseSubmissionConfig.this.segmentValidations.addAll(segmentValidations) ;
+
             return this;
         }
 

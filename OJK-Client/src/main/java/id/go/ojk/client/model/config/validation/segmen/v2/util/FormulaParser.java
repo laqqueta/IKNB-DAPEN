@@ -117,7 +117,7 @@ public class FormulaParser {
 
     public static void main(String[] args) {
         String formula =
-                "(ROWXXX000001[1])";
+                "(ROW#ROWXXX000001[1])";
 
         System.out.println("Formula: " + formula);
         System.out.println();

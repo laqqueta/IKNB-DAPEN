@@ -47,6 +47,11 @@ public enum ER7013PosLtlbDppkInsp implements IObject<KeyValueString> {
             }
 
             @Override
+            public String savePosForm() {
+                return UtilMetadata.genFieldSave("4", getObjects());
+            }
+
+            @Override
             public String requiredPos() {
                 return UtilMetadata.genPipeRow(getObjects(), new int[]{1});
             }
@@ -55,6 +60,11 @@ public enum ER7013PosLtlbDppkInsp implements IObject<KeyValueString> {
         REF_CONFIG_PPIPK_PPIPM {
             @Override
             public String savePos() {
+                return UtilMetadata.genFieldSave("4", getObjects());
+            }
+
+            @Override
+            public String savePosForm() {
                 return UtilMetadata.genFieldSave("4", getObjects());
             }
 

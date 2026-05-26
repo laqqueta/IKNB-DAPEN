@@ -45,8 +45,8 @@ public enum E7032RksdValidationsConfig implements ILbltMetadataValidation, IVali
             () -> UtilFieldValidation.genEqualsPercentageExceptPosFormula("10/8", R_RKSD000000.key)),
 
     CR_NAMA_PENGELOLA(programs(PPMPK, PPMPM), validationFields(14),
-            () -> UtilFieldConditional.genExistPosAndComparatorHasValue("O", "M", "N",
-                    R_RKSD010000.key, "13", ER1252Pengelolaan.getReferenceIndex(0))),
+            () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("N", "M", "N",
+                    R_RKSD010000.key, "13", ER1252Pengelolaan.getReferenceIndex(0), ER1252Pengelolaan.getReferenceValueIndex(0))),
 
     CR_EXISTS_POS_M(programs(PPMPK, PPMPM), validationFields(2, 3, 4, 5, 6, 11, 12, 13),
             () -> UtilFieldConditional.genExistPos("N", "M", R_RKSD000000.key)),

@@ -7,6 +7,7 @@ import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.metadata.module.lblt.dppk.EFormLaporanBulananTahunan;
+import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpipk;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpk;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpm;
 import id.go.ojk.metadata.module.lblt.dppk.reference.ER7051PosLtlbDppkPkan;
@@ -27,51 +28,50 @@ import static id.go.ojk.lib.client.model.config.DataType.*;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.C;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
 import static id.go.ojk.metadata.util.FieldUtil.*;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
+import static id.go.ojk.metadata.util.constants.ProgramType.*;
 import static id.go.ojk.metadata.util.constants.SectorType.KONVENSIONAL;
 import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 
 @AllArgsConstructor
 public enum Dppk0051Pkan implements ILbltFieldMetadata {
 
-    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(0, null, "Flag",
                     sv(M, 3, 3, alfaNumeric)
                             .confConstant("D01"))
     ),
-    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(1, null, "Kode Komponen",
                     sv(M, 10, 10, refTable)
                             .confRegex(SimpleValidation.patternAlfaNumeric))
     ),
-    JENIS_PERALATAN_KANTOR(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    JENIS_PERALATAN_KANTOR(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(2, null, "Jenis Peralatan Kantor",
                     sv(C, 1, 50, alfaNumeric)
-                            /*.confConditionalRequired(E7051PkanValidationsConfig.CR_EXISTS_POS_M)*/)
+                    /*.confConditionalRequired(E7051PkanValidationsConfig.CR_EXISTS_POS_M)*/)
     ),
-    TANGGAL_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    TANGGAL_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(3, null, "Tanggal Perolehan",
                     sv(C, 8, 8, date)
-                            /*.confConditionalRequired(E7051PkanValidationsConfig.CR_EXISTS_POS_M)*/)
+                    /*.confConditionalRequired(E7051PkanValidationsConfig.CR_EXISTS_POS_M)*/)
     ),
-    NILAI_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    NILAI_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(4, null, "Nilai Perolehan",
                     sv(M, 1, 18, numeric))
     ),
-    AKUMULASI_PENYUSUTAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    AKUMULASI_PENYUSUTAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(5, null, "Akumulasi Penyusutan",
                     sv(M, 1, 18, numeric))
     ),
-    NILAI_BUKU(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    NILAI_BUKU(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(6, null, "Nilai Buku",
                     sv(M, 1, 18, numeric))
-                    /*.addFieldValidations(E7051PkanValidationsConfig.FV_EQUAL_NILAI_BUKU)*/
+            /*.addFieldValidations(E7051PkanValidationsConfig.FV_EQUAL_NILAI_BUKU)*/
     ),
-    KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(7, null, "Keterangan",
                     sv(C, 1, 250, freeText)
-                            /*.confConditionalRequired(E7051PkanValidationsConfig.CR_EXISTS_POS_O)*/)
+                    /*.confConditionalRequired(E7051PkanValidationsConfig.CR_EXISTS_POS_O)*/)
     ),
     ;
 
@@ -81,10 +81,11 @@ public enum Dppk0051Pkan implements ILbltFieldMetadata {
 
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7051Pkan.getObject()),
-            new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7051Pkan.getObject())
+            new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7051Pkan.getObject()),
+            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7051Pkan.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
-    public static final LbltMetadataField<Dppk0051Pkan> FIELD_KONVEN = new LbltMetadataField<>(Dppk0051Pkan.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
+    public static final LbltMetadataField<Dppk0051Pkan> FIELD_METADATA = new LbltMetadataField<>(Dppk0051Pkan.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
 
     public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, String reportCode) {
         EFormLaporanBulananTahunan PKAN_FORM = EFormLaporanBulananTahunan.LTLB_PKAN;
@@ -107,9 +108,9 @@ public enum Dppk0051Pkan implements ILbltFieldMetadata {
     }
 
     public static SubmissionFormat formMetadata(ProgramType programType) {
-        FIELD_KONVEN.setProgramType(programType);
+        FIELD_METADATA.setProgramType(programType);
 
-                BaseMetadataValidation<E7051PkanValidationsConfig> metadataValidation;
+        BaseMetadataValidation<E7051PkanValidationsConfig> metadataValidation = null;
 
         switch (programType) {
             case PPMPK:
@@ -118,15 +119,17 @@ public enum Dppk0051Pkan implements ILbltFieldMetadata {
             case PPMPM:
                 metadataValidation = E7051PkanValidationsConfig.VALIDATION_METADATA_PPMPM;
                 break;
+            //default:
+            //throw new IllegalStateException();
             default:
-                throw new IllegalStateException();
+                break;
         }
 
         return new SubmissionConfig(programType.toString())
                 .config()
                 .setReferenceConfigs(ER7051PosLtlbDppkPkan.Configs.REF_CONFIG_PPMP)
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(KONVENSIONAL, programType.toString()))
-                .setSubmissionField(FIELD_KONVEN.getFields(metadataValidation.getFieldValidations()))
+                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
                 .setSegmentValidations(metadataValidation)
                 .build()
                 .get();

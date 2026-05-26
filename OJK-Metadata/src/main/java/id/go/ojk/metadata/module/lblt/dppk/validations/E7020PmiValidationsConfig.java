@@ -32,14 +32,14 @@ import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
 @AllArgsConstructor
 public enum E7020PmiValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_EQUAL_FORMULA(programs(PPMPK),
+    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM),
             () -> UtilSegmentValidation.genEqualsFormula("7|8|9|11|12", R_PMI000000.key, R_PMI010000.key,
                     UtilMetadata.genMessageTotal(R_PMI000000.value, R_PMI010000.value))),
 
-    FV_PENILAIAN_INVESATSI(programs(PPMPK), validationFields(9),
+    FV_PENILAIAN_INVESATSI(programs(PPMPK, PPMPM), validationFields(9),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("7-8", R_PMI000000.key)),
 
-    CR_EXIST_POS(programs(PPMPK), validationFields(2,3,4,5,6,10,13),
+    CR_EXIST_POS(programs(PPMPK, PPMPM), validationFields(2,3,4,5,6,10,13),
             () -> UtilFieldConditional.genExistPos("N", "M", R_PMI000000.key)),
 
     ;

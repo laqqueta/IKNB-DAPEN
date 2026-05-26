@@ -114,7 +114,7 @@ public abstract class BaseSumIf<T extends SumIfBaseParams> extends BaseRowValida
         String[] errs = StringUtils.split(errorData, "|");
 
         if (errs.length == 0) return errorData;
-        return String.join(" / ", errs);
+        return String.join(" & ", errs);
     }
 
 }

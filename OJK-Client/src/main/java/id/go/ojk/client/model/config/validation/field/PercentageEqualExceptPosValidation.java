@@ -69,7 +69,7 @@ public class PercentageEqualExceptPosValidation extends BaseFieldFormulaValidati
 
 	@Override
 	protected BigDecimal arithmeticOperation(String formula, String[] fields) {
-		BigDecimal res = super.arithmeticOperation(formula, fields);
+		BigDecimal res = super.arithmeticOperationDivRounded(formula, fields);
 		if (res != null) {
 			res = res.multiply(BigDecimal.valueOf(100));
 			res = res.setScale(scale);

@@ -90,7 +90,7 @@ public class MetadataPPMPK {
                 Dppk0066Bipr.formMetadata(programType),
                 Dppk0067Pph.formMetadata(programType),
                 Dppk0068Pkpl.formMetadata(programType),
-                Dppk0099Cover.getFormMetadata(programType)
+                Dppk9999Cover.getFormMetadata(programType)
         );
     }
 }

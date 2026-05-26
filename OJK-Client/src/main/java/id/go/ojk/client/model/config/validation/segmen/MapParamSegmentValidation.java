@@ -1,22 +1,16 @@
 package id.go.ojk.client.model.config.validation.segmen;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
+import id.go.ojk.client.constant.EMacro;
+import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.validation.segmen.v2.util.constant.MessageType;
+import id.go.ojk.lib.client.CollectionUtil;
 import id.go.ojk.lib.client.model.constant.Operator;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import id.go.ojk.client.constant.EMacro;
-import id.go.ojk.client.model.config.SubmissionFormat;
-import id.go.ojk.lib.client.CollectionUtil;
+import java.math.BigDecimal;
+import java.util.*;
 
 public abstract class MapParamSegmentValidation extends BaseSegmentValidation {
 	protected Map<String, String> parameterMap = new HashMap<>();

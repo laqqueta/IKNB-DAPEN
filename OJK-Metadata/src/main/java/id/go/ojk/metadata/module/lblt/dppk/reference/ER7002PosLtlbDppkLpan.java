@@ -100,8 +100,15 @@ public enum ER7002PosLtlbDppkLpan implements IObject<KeyValueString> {
             @Override
             public String savePos() {
                 ProgramType programType = ProgramType.PPMPM;
-                return UtilMetadata.genFieldSave(
-                        UtilMetadata.genPipeColumn(2, 12),
+                return UtilMetadata.genFieldSave("2",
+                        getObjects(programType)
+                );
+            }
+
+            @Override
+            public String savePosForm() {
+                ProgramType programType = ProgramType.PPMPM;
+                return UtilMetadata.genFieldSave("2",
                         getObjects(programType)
                 );
             }

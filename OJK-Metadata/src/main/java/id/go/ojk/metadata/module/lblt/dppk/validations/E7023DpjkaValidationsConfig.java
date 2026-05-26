@@ -44,8 +44,8 @@ public enum E7023DpjkaValidationsConfig implements ILbltMetadataValidation, IVal
             () -> UtilFieldConditional.genExistPos("N", "O", R_DPJKA000000.key)),
 
     CR_EQUAL_EXCEPT_DPJKA000000(programs(PPMPK, PPMPM), validationFields(11),
-            () -> UtilFieldConditional.genExistPosAndComparatorHasValue("O", "M", "N",
-                    R_DPJKA010000.key, "10", ER1252Pengelolaan.getReferenceIndex(0)));
+            () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("N", "M", "N",
+                    R_DPJKA010000.key, "10", ER1252Pengelolaan.getReferenceIndex(0), ER1252Pengelolaan.getReferenceValueIndex(0)));
 
     private final EnumSet<ProgramType> programTypes;
     private List<Integer> fieldIndexes;

@@ -47,6 +47,11 @@ public enum ER7055PosLtlbDppkUmps implements IObject<KeyValueString> {
             }
 
             @Override
+            public String savePosForm() {
+                return UtilMetadata.genFieldSave("4", getObjects());
+            }
+
+            @Override
             public String requiredPos() {
                 return UtilMetadata.genPipeRow(getObjects());
             }

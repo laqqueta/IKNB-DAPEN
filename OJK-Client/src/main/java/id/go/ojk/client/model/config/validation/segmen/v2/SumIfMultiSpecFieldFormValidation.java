@@ -79,12 +79,26 @@ public class SumIfMultiSpecFieldFormValidation extends BaseSumIf<SumIfBaseParams
                     SubmissionField submissionField = fields.get(Integer.parseInt(idxField));
                     logger.error("{}>{}?{}", parameter, selectValue, condsValue);
 
-                    String condError = idxField.equals(sumField) ?
-                            slashFormatError(sumConditionError) :
-                            condErrors[i - 1];
+                    String condError = "";
+                    String colErr = "";
 
-                    String colErr = specConds.contains(conds[i + (-1)]) ? msgErrors[2] : msgErrors[1];
+                    if (idxField.equals(sumField)) {
+                        condError = slashFormatError(sumConditionError);
+                        colErr = msgErrors[1];
+                    } else if (i > 0) {
+                        condError = condErrors[i - 1];
+                        colErr = msgErrors[1];
 
+                        if (specConds.contains(conds[i])) {
+                            colErr = msgErrors[2];
+                        }
+                    }
+
+//                    String condError = idxField.equals(sumField) ?
+//                            slashFormatError(sumConditionError) :
+//                            condErrors[i - 1];
+
+//                    String colErr = specConds.contains(conds[i + (-1)]) ? msgErrors[2] : msgErrors[1];
 
                     validationResult.errors.add(new ValidationError(submissionField,
                             ValidationErrorCode.E50_21_FORMULA_SUMIF,
@@ -109,7 +123,7 @@ public class SumIfMultiSpecFieldFormValidation extends BaseSumIf<SumIfBaseParams
         final String[] key = new String[1];
         final String[] value = new String[1];
 
-        Map<String, Long> accumulator = new HashMap<>();
+        Map<String, BigDecimal> accumulator = new HashMap<>();
 
         SubmissionFormat
                 .getStreamOfFormSubMap(prefix, Character.MAX_VALUE)
@@ -134,11 +148,11 @@ public class SumIfMultiSpecFieldFormValidation extends BaseSumIf<SumIfBaseParams
                     if (!mapCriteriaStatus.get(key[0])) return;
 
                     // mapCriteria.computeIfPresent(key[0], (k, v) -> v.add(new BigDecimal(value[0])));
-                    accumulator.merge(key[0], Long.parseLong(value[0]), Long::sum);
+                    accumulator.merge(key[0], new BigDecimal(value[0]), BigDecimal::add);
                 });
 
         accumulator.forEach((k, v) ->
-                mapCriteria.computeIfPresent(k, (mk, mv) -> mv.add(BigDecimal.valueOf(v))));
+                mapCriteria.computeIfPresent(k, (mk, mv) -> mv.add(v)));
 
         return mapCriteria;
     }

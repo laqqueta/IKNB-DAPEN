@@ -66,6 +66,18 @@ public enum ER1255JenisManfaat implements IObject<KeyValueString> {
         return res.toString();
 	}
 
+	public static String getReferenceValueIndex(int index) {
+		StringBuilder res = new StringBuilder();
+		ER1255JenisManfaat[] eEnums = ER1255JenisManfaat.values();
+		for (int i= 0; i < eEnums.length; i++) {
+			if (i == index) {
+				res.append(ER1255JenisManfaat.values()[i].value);
+				break;
+			}
+		}
+		return res.toString();
+	}
+
 	public static String getPipedReferenceKeys(String filter) {
 		List<String> filters = Arrays.stream(StringUtils.split(filter, "|"))
 				.collect(Collectors.toList());

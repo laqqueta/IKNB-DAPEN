@@ -17,7 +17,7 @@ public enum EFormLaporanBulananTahunan {
 	LTLB_REKINV("REKINV", "Form Rekap Investasi"),
 	LTLB_ROI("ROI", "Form Laporan Hasil Investasi"),
 	LTLB_ROI_ML("ROIML", "Form Laporan Hasil Investasi Manfaat Lain"),
-	LTLB_ROI_S_M("ROISM", "Form Laporan Hasil Investasi Iuran Sukarela"),
+	LTLB_ROI_SM("ROISM", "Form Laporan Hasil Investasi Iuran Sukarela"),
 	LTLB_ALM("ALM", "Form Rekapitulasi Aset dan Liabilitas"),
 	LTLB_INSP("INSP", "Form Rincian Investasi Pada Satu Pihak"),
 	LTLB_INPT("INPT", "Form Rincian Investasi Pada Pihak Terafiliasi"),
@@ -75,6 +75,15 @@ public enum EFormLaporanBulananTahunan {
 	LTLB_BIPR("BIPR", "Form Rincian Beban Di Luar Investasi dan Operasional"),
 	LTLB_PPH("PPH", "Form Rincian Pajak Penghasilan"),
 	LTLB_PKPL("PKPL", "Form Rincian Pengalihan Dana Ke Dana Pensiun Lain"),
+
+	/* PPIP Form */
+
+	LTLB_ROI_MPL("ROIMPL", "Form Laporan Hasil Investasi Manfaat Pensiun Lainnya"),
+	LTLB_PINV("PINV", "Form Laporan Paket Investigasi"),
+	LTLB_PINVS("PINVS", "Form Laporan Paket Investigasi Syariah"),
+	LTLB_MPBK("MPBK", "Form Laporan Investasi Manfaat Pensiun Berkala"),
+	LTLB_PMBK("PMBK", "Form Laporan Pengelolaan Manfaat Pensiun Berkala"),
+
 	LTLB_COVER("COVER", "LAPORAN BULANAN / LAPORAN KEUANGAN TAHUNAN DATA ELEKTRONIK DANA PENSIUN PEMBERI KERJA PROGRAM PENSIUN IURAN PASTI"),
 
 	;

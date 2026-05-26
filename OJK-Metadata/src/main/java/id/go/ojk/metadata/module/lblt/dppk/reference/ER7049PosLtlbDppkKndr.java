@@ -43,7 +43,12 @@ public enum ER7049PosLtlbDppkKndr implements IObject<KeyValueString> {
         REF_CONFIG_PPMP {
             @Override
             public String savePos() {
-                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(5, 7), getObjects());
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(4, 7), getObjects());
+            }
+
+            @Override
+            public String savePosForm() {
+                return UtilMetadata.genFieldSave("4|5|6|7", getObjects());
             }
 
             @Override

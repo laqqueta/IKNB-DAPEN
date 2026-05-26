@@ -77,6 +77,14 @@ public class UtilFieldValidation {
 		return new FormulaPosValidation(builder.toString());
 	}
 
+	public static FieldValidation genEqualsPosFormula3(String fieldFormula, int scale, String refPosCode) {
+		StringBuilder builder = new StringBuilder("comparatorFormula=" + fieldFormula);
+		builder.append("&scale=" + scale);
+		builder.append("&refPosCode=" + refPosCode);
+		builder.append("&operator=e");
+		return new FormulaPosValidation3(builder.toString());
+	}
+
 	public static FieldValidation genEqualsPosFormula(String fieldFormula, String refPosCode) {
 		return genEqualsPosFormula(fieldFormula, 0, refPosCode);
 	}

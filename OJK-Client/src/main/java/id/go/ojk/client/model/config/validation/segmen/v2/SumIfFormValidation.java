@@ -66,9 +66,14 @@ public class SumIfFormValidation extends BaseSumIf<SumIfBaseParams> {
             for (int i = 0; i < arrColumn.length; i++) {
                 String idxField = arrColumn[i];
                 BigDecimal selectValue = getCurrentValue(validationResult, idxField);
-                BigDecimal condsValue = idxField.equals(sumField) ?
-                        formulaData.getSum() :
-                        formulaData.getMappedData().get(conds[i + (-1)]);
+                BigDecimal condsValue;
+
+                if (sumField != null & idxField.equals(sumField)) {
+                    condsValue = formulaData.getSum();
+                } else {
+                    if (sumField == null) condsValue = formulaData.getMappedData().get(conds[i]);
+                    else condsValue = formulaData.getMappedData().get(conds[i + (-1)]);
+                }
 
                 if (selectValue.compareTo(condsValue) != 0) {
                     String[] msgErrors = StringUtils.split(msgError, "|");
@@ -76,9 +81,14 @@ public class SumIfFormValidation extends BaseSumIf<SumIfBaseParams> {
                     SubmissionField submissionField = fields.get(Integer.parseInt(idxField));
                     logger.error("{}>{}?{}", parameter, selectValue, condsValue);
 
-                    String condError = idxField.equals(sumField) ?
-                            slashFormatError(sumConditionError) :
-                            condErrors[i-1];
+                    String condError;
+
+                    if (sumField != null & idxField.equals(sumField)) {
+                        condError = slashFormatError(sumConditionError);
+                    } else {
+                        if (sumField == null) condError = condErrors[i];
+                        else condError = condErrors[i-1];
+                    }
 
                     String[] arrMultiRangeFieldErr = new String[0];
                     if (multiRangeFieldErr != null) {
@@ -110,7 +120,7 @@ public class SumIfFormValidation extends BaseSumIf<SumIfBaseParams> {
         final String[] key = new String[1];
         final String[] value = new String[1];
 
-        Map<String, Long> accumulator = new HashMap<>();
+        Map<String, BigDecimal> accumulator = new HashMap<>();
 
         SubmissionFormat
                 .getStreamOfFormSubMap(prefix, Character.MAX_VALUE)
@@ -130,11 +140,11 @@ public class SumIfFormValidation extends BaseSumIf<SumIfBaseParams> {
                     if (!mapCriteriaStatus.get(key[0])) return;
 
                     // mapCriteria.computeIfPresent(key[0], (k, v) -> v.add(new BigDecimal(value[0])));
-                    accumulator.merge(key[0], Long.parseLong(value[0]), Long::sum);
+                    accumulator.merge(key[0], new BigDecimal(value[0]), BigDecimal::add);
                 });
 
         accumulator.forEach((k, v) ->
-                mapCriteria.computeIfPresent(k, (mk, mv) -> mv.add(BigDecimal.valueOf(v))));
+                mapCriteria.computeIfPresent(k, (mk, mv) -> mv.add(v)));
 
         return mapCriteria;
     }

@@ -28,6 +28,7 @@ public class FormulaParserFormValidation extends BaseRowValidation {
 	protected String comparatorForm;
 	protected String operationForm;
 	protected MessageType messageType;
+	protected String fieldErrorMessage; // unused
 	protected int scale;
 
 	public FormulaParserFormValidation() {
@@ -44,6 +45,7 @@ public class FormulaParserFormValidation extends BaseRowValidation {
 		comparatorForm = getStringParameter("comparatorForm");
 		operationForm = getStringParameter("operationForm");
 		messageType = getMessageTypeParameter("messageType");
+		fieldErrorMessage = getStringParameter("fieldErrorMessage");
 		scale = getIntParameter("scale");
 
 		return this;
@@ -69,14 +71,14 @@ public class FormulaParserFormValidation extends BaseRowValidation {
 			ParsedFormula parsed = parse(operations[i]);
 			StringBuilder errorBuilder = new StringBuilder();
 			BigDecimal selectValue = getCurrentValue(validationResult, fields[i]);
-			BigDecimal result = calculateFormula(parsed, errorBuilder);
+			BigDecimal result = calculateFormula(parsed, errorBuilder, submissionFormat.getFields());
 
 			if(selectValue.compareTo(result) != 0) {
 				List<SubmissionField> field = submissionFormat.getFields();
 				SubmissionField submissionField = field.get(Integer.parseInt(fields[i]));
-				logger.error("{}>{}?{}", parameter, selectValue, result);
+				logger.error("{}>{}?{} :: Ops {}", parameter, selectValue, result, i);
 				validationResult.errors.add(new ValidationError(submissionField,
-						ValidationErrorCode.E03_04_EQUAL_FORM, errorBuilder, comparatorForm ));
+						ValidationErrorCode.E03_34_EQUAL_FORM, errorBuilder, comparatorForm ));
 
 			}
 		}
@@ -86,10 +88,16 @@ public class FormulaParserFormValidation extends BaseRowValidation {
 		return UtilValidation.toBigDecimal(validationResult.getColumn(Integer.parseInt(idxField)));
 	}
 
-	private BigDecimal calculateFormula(FormulaParser.ParsedFormula parsed, StringBuilder errBuilder) {
+	private BigDecimal calculateFormula(FormulaParser.ParsedFormula parsed, StringBuilder errBuilder, List<SubmissionField> sf) {
 		BigDecimal formulaResult = BigDecimal.ZERO;
 		Map<String, String> formValue;
 		boolean isMultipleGroups = false;
+
+		String[] fieldMessageErrors = new String[]{};
+		if (fieldErrorMessage != null) {
+			 fieldMessageErrors = StringUtils.split(fieldErrorMessage, "|");
+		}
+
 		int ctr = 0;
 
 		for (FormulaParser.Group g : parsed.getGroups()) {

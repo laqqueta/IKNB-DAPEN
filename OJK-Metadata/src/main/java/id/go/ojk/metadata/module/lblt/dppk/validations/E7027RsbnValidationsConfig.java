@@ -48,8 +48,8 @@ public enum E7027RsbnValidationsConfig implements ILbltMetadataValidation, IVali
             () -> UtilFieldValidation.genDateGreaterEquals("3")),
 
     CR_NAMA_PENGELOLA(programs(PPMPK, PPMPM), validationFields(14),
-            () -> UtilFieldConditional.genExistPosAndComparatorHasValue("O", "M", "N",
-                    R_RSBN010000.key, "13", ER1252Pengelolaan.getReferenceIndex(0))),
+            () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("N", "M", "N",
+                    R_RSBN010000.key, "13", ER1252Pengelolaan.getReferenceIndex(0), ER1252Pengelolaan.getReferenceValueIndex(0))),
 
     CR_EXISTS_POS_M(programs(PPMPK, PPMPM), validationFields(2, 3, 5, 6, 10, 11, 12, 13),
             () -> UtilFieldConditional.genExistPos("N", "M", R_RSBN000000.key)),

@@ -8,6 +8,7 @@ import id.go.ojk.conf.client.UtilFieldValidation;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
 import id.go.ojk.metadata.module.lblt.dppk.EFormLaporanBulananTahunan;
+import id.go.ojk.metadata.module.lblt.dppk.field.Dppk0009Roi;
 import id.go.ojk.metadata.module.lblt.dppk.reference.ER7008PosLtlbDppkRekinv;
 import id.go.ojk.metadata.module.lblt.dppk.reference.ER7009PosLtlbDppkRoi;
 import id.go.ojk.metadata.util.constants.ProgramType;
@@ -33,15 +34,16 @@ import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
 @AllArgsConstructor
 public enum E7009RoiValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    FV_FIELD_VALIDATION_1(programs(PPMPK), validationFields(9),
+    FV_FIELD_VALIDATION_1(programs(PPMPK, PPMPM), validationFields(9),
             () -> UtilFieldValidation.genEqualsFormula(UtilMetadata.genPlusColumn(2, 7) + "-8")),
 
-    FV_FIELD_VALIDATION_2(programs(PPMPK), validationFields(11),
-            () -> UtilFieldValidation.genEqualsExceptPosFormula("9/10", R_ROI2100000000.key, 2)),
+    FV_FIELD_VALIDATION_2(programs(PPMPK, PPMPM), validationFields(Dppk0009Roi.ROI),
+            () -> UtilFieldValidation.genEqualsPosFormula3("9/10", 2,
+                    UtilMetadata.genPipeRowExcept(ER7009PosLtlbDppkRoi.getObjects(), new int[] { 20 }))),
 
-    SG_GEO_MEAN(programs(PPMPK),
+    SG_GEO_MEAN(programs(PPMPK, PPMPM),
             () -> {
-                String errMsg = UtilMetadata.genDelimitedColumn(2, 13, "*") + "|3|14|" + "REKINV kode baris ";
+                String errMsg = UtilMetadata.genDelimitedColumn(2, 13, "*") + "|3|14|" + "REKINV baris ";
                 String formRow = UtilMetadata.genPipeRow(ER7008PosLtlbDppkRekinv.getObjects(ProgramType.PPMPK), 0, 19);
                 return UtilSegmentValidation.genGeoMeanInvestasi("10",
                         UtilMetadata.genPipeRow(ER7009PosLtlbDppkRoi.getObjects(), 0, 19),
@@ -49,7 +51,7 @@ public enum E7009RoiValidationsConfig implements ILbltMetadataValidation, IValid
                         UtilMetadata.genPipeColumn(2, 13), errMsg, formRow);
             }),
 
-    SG_SUM_POS_COL_EQUAL(programs(PPMPK),
+    SG_SUM_POS_COL_EQUAL(programs(PPMPK, PPMPM),
             () -> UtilSegmentValidation.genEqualsFormula(
                     UtilMetadata.genPipeColumn(new int[] { 2, 3, 4, 5, 6, 7, 8, 10, 11}), R_ROI2100000000.key,
                     UtilMetadata.genPlusRow(ER7009PosLtlbDppkRoi.getObjects(), 0, 19),

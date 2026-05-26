@@ -8,6 +8,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
@@ -74,6 +75,11 @@ public enum ER7000PosLtlbDppkDtum implements IObject<KeyValueString> {
             @Override
             public String savePos() {
                 return UtilMetadata.genFieldSave("0", getObjects());
+            }
+
+            @Override
+            public String savePosForm() {
+                return UtilMetadata.genFieldSave("2", Collections.singletonList(R_DTUM080700.getObject()));
             }
         }
     }

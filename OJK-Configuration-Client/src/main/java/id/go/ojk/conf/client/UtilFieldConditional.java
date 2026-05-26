@@ -128,6 +128,29 @@ public class UtilFieldConditional {
 		return new ConditionalPosAndComparatorHasValue(builder.toString());
 	}
 
+	public static ConditionalRequired genExistPosAndComparatorHasValue2(String trueCondition, String falseCondition, String posFalseCondition,
+	                                                                   String refPosCode, String comparatorField, String comparatorValue) {
+		StringBuilder builder = new StringBuilder("trueCondition=" + trueCondition);
+		builder.append("&falseCondition=" + falseCondition);
+		builder.append("&posFalseCondition=" + posFalseCondition);
+		builder.append("&refPosCode=" + refPosCode);
+		builder.append("&comparatorField=" + comparatorField);
+		builder.append("&comparatorValue=" + comparatorValue);
+		return new ConditionalPosAndComparatorHasValue3(builder.toString());
+	}
+
+	public static ConditionalRequired genExistPosAndComparatorHasValue2(String trueCondition, String falseCondition, String posFalseCondition,
+	                                                                    String refPosCode, String comparatorField, String comparatorValue, String comparatorTrueValue) {
+		StringBuilder builder = new StringBuilder("trueCondition=" + trueCondition);
+		builder.append("&falseCondition=" + falseCondition);
+		builder.append("&posFalseCondition=" + posFalseCondition);
+		builder.append("&refPosCode=" + refPosCode);
+		builder.append("&comparatorField=" + comparatorField);
+		builder.append("&comparatorValue=" + comparatorValue);
+		builder.append("&comparatorTrueValue=" + comparatorTrueValue);
+		return new ConditionalPosAndComparatorHasValue3(builder.toString());
+	}
+
 	public static ConditionalRequired genExistPosAndComparatorHasValueDapenVer(String trueCondition, String falseCondition, String posFalseCondition,
 	                                                                   String refPosCode, String comparatorField, String comparatorValue) {
 		StringBuilder builder = new StringBuilder("trueCondition=" + trueCondition);

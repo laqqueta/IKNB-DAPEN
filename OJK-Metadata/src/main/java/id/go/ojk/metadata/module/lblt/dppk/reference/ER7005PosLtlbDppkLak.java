@@ -4,7 +4,6 @@ import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
-import id.go.ojk.metadata.util.constants.ProgramType;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
@@ -70,7 +69,7 @@ public enum ER7005PosLtlbDppkLak implements IObject<KeyValueString> {
     }
 
     public enum Configs implements ReferenceConfig {
-        REF_CONFIG_PPMP {
+        REF_CONFIG_PPMPK {
             @Override
             public String requiredPos() {
                 return UtilMetadata.genPipeRow(getObjects());
@@ -87,9 +86,26 @@ public enum ER7005PosLtlbDppkLak implements IObject<KeyValueString> {
             @Override
             public String savePosForm() {
                 return UtilMetadata.genFieldSave(
-                        UtilMetadata.genPipeColumn(2, 11),
+                        UtilMetadata.genPipeColumn(2, 12),
                         getObjects()
                 );
+            }
+        },
+
+        REF_CONFIG_PPMPM {
+            @Override
+            public String requiredPos() {
+                return UtilMetadata.genPipeRow(getObjects());
+            }
+
+            @Override
+            public String savePos() {
+                return UtilMetadata.genFieldSave("2",getObjects());
+            }
+
+            @Override
+            public String savePosForm() {
+                return UtilMetadata.genFieldSave("2", getObjects());
             }
         }
     }

@@ -647,6 +647,24 @@ public class UtilSegmentValidation {
       return new ComparisonFormConditionalExpressionValidation(builder.toString());
     }
 
+    public static SegmentValidation genEqualsFormConditionalExpression2(String selectField, String selectPosCode, String selectExpr,
+                                                                       String comparatorForm, String comparatorField, String comparatorPosCode, String comparatorExpr, String operator,
+                                                                       int scale, String msgError) {
+        StringBuilder builder = new StringBuilder("selectField=" + selectField);
+        builder.append("&selectPosCode=" + selectPosCode);
+        builder.append("&selectExpr=" + selectExpr);
+        builder.append("&comparatorForm=" + comparatorForm);
+        builder.append("&comparatorField=" + comparatorField);
+        builder.append("&comparatorPosCode=" + comparatorPosCode);
+        builder.append("&comparatorExpr=" + comparatorExpr);
+        builder.append("&operator=" + operator);
+        builder.append("&scale=" + scale);
+        if (StringUtils.isNotBlank(msgError)) {
+            builder.append("&msgError=" + msgError);
+        }
+        return new ComparisonFormConditionalExpressionValidationDppk(builder.toString());
+    }
+
     public static SegmentValidation genEqualsFormExpression(String selectField, String selectPosCode, String selectExpr,
         String comparatorForm, String comparatorField, String comparatorPosCode, String comparatorExpr, String operator,
         int scale, String msgError) {
@@ -852,6 +870,19 @@ public class UtilSegmentValidation {
         return new ComparisonFormulaFormValidation(builder.toString());
     }
 
+    public static SegmentValidation genEqualsFormulaFormV2(String selectField, String selectPosCode, String comparatorForm,
+                                                         String comparatorField, String comparatorPosCode, String msgError, int scale) {
+        StringBuilder builder = new StringBuilder("selectField=" + selectField);
+        builder.append("&selectPosCode=" + selectPosCode);
+        builder.append("&comparatorField=" + comparatorField);
+        builder.append("&comparatorForm=" + comparatorForm);
+        builder.append("&comparatorPosCode=" + comparatorPosCode);
+        builder.append("&operator=e");
+        builder.append("&scale=" + scale);
+        builder.append("&msgError=" + msgError);
+        return new ComparisonFormulaFormValidationV2(builder.toString());
+    }
+
     public static SegmentValidation genEqualsFormColumCalculation(String selectField, String selectPosCode,
                                                                   String comparatorColumn, String comparatorRowCode, String message, int scale) {
         StringBuilder builder = new StringBuilder("selectField=" + selectField);
@@ -955,6 +986,11 @@ public class UtilSegmentValidation {
         return genEqualsFormula(selectField, selectPosCode, comparatorPosCode, msgError, 2);
     }
 
+    public static SegmentValidation genEqualsFormula2(String selectField, String selectPosCode, String comparatorPosCode,
+                                                     String msgError) {
+        return genEqualsFormula(selectField, selectPosCode, comparatorPosCode, msgError, 0);
+    }
+
     public static SegmentValidation genEqualsFormula(String selectField, String selectPosCode, String comparatorPosCode,
                                                      String msgError, int scale) {
         StringBuilder builder = new StringBuilder("selectField=" + selectField);
@@ -964,6 +1000,17 @@ public class UtilSegmentValidation {
         builder.append("&scale=" + scale);
         builder.append("&msgError=" + msgError);
         return new ComparisonFormulaValidation(builder.toString());
+    }
+
+    public static SegmentValidation genEqualsFormulaLan(String selectField, String selectPosCode, String comparatorPosCode,
+                                                     String msgError, int scale) {
+        StringBuilder builder = new StringBuilder("selectField=" + selectField);
+        builder.append("&selectPosCode=" + selectPosCode);
+        builder.append("&comparatorPosCode=" + comparatorPosCode);
+        builder.append("&operator=e");
+        builder.append("&scale=" + scale);
+        builder.append("&msgError=" + msgError);
+        return new ComparisonFormulaValidation4(builder.toString());
     }
 
     public static SegmentValidation genEqualsFormula(String selectField, String selectPosCode, String comparatorField,
@@ -1335,6 +1382,22 @@ public class UtilSegmentValidation {
     }
 
     public static SegmentValidation genSumIf(String selectField, String selectPosCode, String comparatorForm, String comparatorRow,
+                                             String formRangeField, String formCriteriaField, String criteriaCondition,
+                                             String msgError, String conditionError) {
+
+        StringBuilder builder = new StringBuilder("selectField=" + selectField);
+        builder.append("&selectPosCode=" + selectPosCode);
+        builder.append("&comparatorForm=" + comparatorForm);
+        builder.append("&comparatorRow=" + comparatorRow);
+        builder.append("&rangeField=" + formRangeField);
+        builder.append("&criteriaField=" + formCriteriaField);
+        builder.append("&criteriaCondition=" + criteriaCondition);
+        builder.append("&msgError=" + msgError);
+        builder.append("&criteriaConditionError=" + conditionError);
+        return new SumIfFormValidation(builder.toString());
+    }
+
+    public static SegmentValidation genSumIf(String selectField, String selectPosCode, String comparatorForm, String comparatorRow,
                                              String formRangeField, String formCriteriaField, String sumField, String criteriaCondition, String sumCriteriaCondition,
                                              String msgError, String conditionError, String sumConditionError, String multiRangeFieldErr) {
 
@@ -1512,7 +1575,7 @@ public class UtilSegmentValidation {
         return new PosMinDataCountValidation(builder.toString());
     }
 
-    public static SegmentValidation genRas1ComparationValidation(String selectFields, String selectPosCodes, String comparatorForm, String operationForm, MessageType messageType) {
+    public static SegmentValidation genFormulaParserValidation(String selectFields, String selectPosCodes, String comparatorForm, String operationForm, MessageType messageType) {
 
         String sb = "selectField=" + selectFields +
                         "&selectPosCode=" + selectPosCodes +
@@ -1524,7 +1587,71 @@ public class UtilSegmentValidation {
         return new FormulaParserFormValidation(sb);
     }
 
-    public static SegmentValidation genSumEqualPeriodePelaporan(String selectFields, String selectPosCodes, String comparatorForm, String operationForm, MessageType messageType) {
+    public static SegmentValidation genFormulaParserValidationV2(String selectFields, String selectPosCodes, String formulaOperation, String formulaOperationErr, int scale) {
+
+        String sb = "selectField=" + selectFields +
+                "&selectPosCode=" + selectPosCodes +
+                "&formulaOperation=" + formulaOperation +
+                "&formulaOperationErr=" + formulaOperationErr +
+                "&scale=" + scale;
+
+        return new FormulaParserValidation(sb);
+    }
+
+    public static SegmentValidation genFormulaParserValidationV2PeriodePelaporan(String selectFields, String selectPosCodes, String formulaOperation, String formulaOperationErr, int scale) {
+
+        String sb = "selectField=" + selectFields +
+                "&selectPosCode=" + selectPosCodes +
+                "&formulaOperation=" + formulaOperation +
+                "&formulaOperationErr=" + formulaOperationErr +
+                "&scale=" + scale;
+
+        return new FormulaParserPeriodePelaporanValidation(sb);
+    }
+
+    public static SegmentValidation genFormulaParserValidationV2PeriodeAudit(String selectFields, String selectPosCodes, String formulaOperation, String formulaOperationErr, String auditRow, String auditCol, String comparatorForm, int scale) {
+
+        String sb = "selectField=" + selectFields +
+                "&selectPosCode=" + selectPosCodes +
+                "&formulaOperation=" + formulaOperation +
+                "&auditRow=" + auditRow +
+                "&auditCol=" + auditCol +
+                "&formComparator=" + comparatorForm +
+                "&formulaOperationErr=" + formulaOperationErr +
+                "&scale=" + scale;
+
+        return new FormulaParserTanggalAuditValidation(sb);
+    }
+
+    public static SegmentValidation genFormulaParserAvgValidation(String selectFields, String selectPosCodes, String formulaOperation, String formulaOperationErr, int division, int scale) {
+
+        String sb = "selectField=" + selectFields +
+                "&selectPosCode=" + selectPosCodes +
+                "&formulaOperation=" + formulaOperation +
+                "&formulaOperationErr=" + formulaOperationErr +
+                "&avgDivision=" + division +
+                "&scale=" + scale;
+
+        return new FormulaParserAvgValidation(sb);
+    }
+
+    public static SegmentValidation genFormulaParserValidationV2(String selectFields, String selectPosCodes, String formulaOperation, String formulaOperationErr) {
+        return genFormulaParserValidationV2(selectFields, selectPosCodes, formulaOperation, formulaOperationErr, 2);
+    }
+
+    public static SegmentValidation genFormulaParserValidationV2(String selectFields, String selectPosCodes, String comparatorForm, String operationForm, String operationErrMsg) {
+
+        String sb = "selectField=" + selectFields +
+                "&selectPosCode=" + selectPosCodes +
+                "&comparatorForm=" + comparatorForm +
+                "&operationForm=" + operationForm +
+                "&operationErrMsg=" + operationErrMsg +
+                "&scale=" + 2;
+
+        return new FormulaParserFormValidationFixed(sb);
+    }
+
+    public static SegmentValidation genFormulaParserValidationPeriodPelaporan(String selectFields, String selectPosCodes, String comparatorForm, String operationForm, MessageType messageType) {
 
         String sb = "selectField=" + selectFields +
                 "&selectPosCode=" + selectPosCodes +
@@ -1534,5 +1661,47 @@ public class UtilSegmentValidation {
                 "&scale=" + 2;
 
         return new FormulaParserPeriodePelaporanFormValidation(sb);
+    }
+
+    public static SegmentValidation genFormulaParserAlmValidation(String selectFields, String selectPosCodes, String comparatorForm,
+                                                                  String operationForm, MessageType messageType, String fieldErrorMessages,
+                                                                  String rowErrorMessages) {
+        String sb = "selectField=" + selectFields +
+                "&selectPosCode=" + selectPosCodes +
+                "&comparatorForm=" + comparatorForm +
+                "&operationForm=" + operationForm +
+                "&messageType=" + messageType.toString() +
+                "&fieldErrorMessage=" + fieldErrorMessages +
+                "&rowErrorMessage=" + rowErrorMessages +
+                "&scale=" + 2;
+
+        return new FormulaParserFormAlmDppkValidation(sb);
+    }
+
+    public static SegmentValidation genFormulaParserMultiFormValidation(String selectFields, String selectPosCodes, String comparatorForm,
+                                                                  String operationForm, MessageType messageType, String fieldErrorMessages,
+                                                                  String rowErrorMessages) {
+        String sb = "selectField=" + selectFields +
+                "&selectPosCode=" + selectPosCodes +
+                "&comparatorForm=" + comparatorForm +
+                "&operationForm=" + operationForm +
+                "&messageType=" + messageType.toString() +
+                "&fieldErrorMessage=" + fieldErrorMessages +
+                "&rowErrorMessage=" + rowErrorMessages +
+                "&scale=" + 2;
+
+        return new FormulaParserMultiFormDppkValidation(sb);
+    }
+
+    public static SegmentValidation genSumEqualRekinvPeriodePelaporan(String selectFields, String selectPosCodes, String comparatorForm, String operationForm, MessageType messageType) {
+
+        String sb = "selectField=" + selectFields +
+                "&selectPosCode=" + selectPosCodes +
+                "&comparatorForm=" + comparatorForm +
+                "&operationForm=" + operationForm +
+                "&messageType=" + messageType.toString() +
+                "&scale=" + 2;
+
+        return new RekinvPeriodePelaporanFormValidation(sb);
     }
 }

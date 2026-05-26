@@ -45,8 +45,8 @@ public enum E7036DnfraValidationsConfig implements ILbltMetadataValidation, IVal
             () -> UtilFieldValidation.genEqualsPercentageExceptPosFormula("9/7", R_DNFRA000000.key)),
 
     CR_NAMA_PENGELOLA(programs(PPMPK, PPMPM), validationFields(13),
-            () -> UtilFieldConditional.genExistPosAndComparatorHasValue("O", "M", "N",
-                    R_DNFRA010000.key, "12", ER1252Pengelolaan.getReferenceIndex(0))),
+            () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("N", "M", "N",
+                    R_DNFRA010000.key, "12", ER1252Pengelolaan.getReferenceIndex(0), ER1252Pengelolaan.getReferenceValueIndex(0))),
 
     CR_EXISTS_POS_M(programs(PPMPK, PPMPM), validationFields(2, 3, 4, 5, 10, 11, 12),
             () -> UtilFieldConditional.genExistPos("N", "M", R_DNFRA000000.key)),

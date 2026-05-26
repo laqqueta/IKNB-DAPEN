@@ -9,10 +9,10 @@ import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.lib.client.model.config.UniqueType;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.metadata.module.lblt.dppk.EFormLaporanBulananTahunan;
+import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpipk;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpk;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpm;
 import id.go.ojk.metadata.module.lblt.dppk.reference.ER7001PosLtlbDppkLan;
-import id.go.ojk.metadata.module.lblt.dppk.validations.ppmpk.E7001LanValidationsConfig;
 import id.go.ojk.metadata.util.constants.ProgramType;
 import id.go.ojk.metadata.util.constants.SectorType;
 import id.go.ojk.metadata.field.lblt.ILbltFieldMetadata;
@@ -29,84 +29,105 @@ import java.util.stream.Stream;
 import static id.go.ojk.lib.client.model.config.DataType.*;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.C;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
-import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpk.E7001LanValidationsConfig.VALIDATION_METADATA_PPMPK;
-import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpm.E7001LanValidationsConfig.VALIDATION_METADATA_PPMPM;
+import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpk.E7001LanKValidationsConfig.VALIDATION_METADATA_PPMPK;
+import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpm.E7001LanMValidationsConfig.VALIDATION_METADATA_PPMPM;
 import static id.go.ojk.metadata.util.FieldUtil.*;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
+import static id.go.ojk.metadata.util.constants.ProgramType.*;
 import static id.go.ojk.metadata.util.constants.SectorType.KONVENSIONAL;
 import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 
 @AllArgsConstructor
 public enum Dppk0001Lan implements ILbltFieldMetadata {
 
-    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01"))
     ),
-    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(1, null, "Kode Komponen",
                     sv(M, 13, 13, refTable)
                             .confRegex(SimpleValidation.patternAlfaNumeric))
                     .confUnique(UniqueType.U)
     ),
-    PERSENTASE_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    PERSENTASE_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(2, null, "Persentase Investasi",
                     sv(C, 4, 6, numericDot))
     ),
-    MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(3, null, "Manfaat Pensiun", sv(M, 1, 18, numeric))
     ),
 
     MANFAAT_PENSIUN_LAINNYA_MANFAAT_TAMBAHAN(
             sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK),
+            programs(PPMPK, PPIPK),
             sf(4, null, "Manfaat Pensiun Lainnya Manfaat Tambahan", sv(M, 1, 18, numeric))
     ),
     MANFAAT_PENSIUN_LAINNYA_KOMPENSASI_PASCAKERJA(
             sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK),
+            programs(PPMPK, PPIPK),
             sf(5, null, "Manfaat Pensiun Lainnya Kompensasi Pascakerja", sv(M, 1, 18, numeric))
     ),
     MANFAAT_PENSIUN_LAINNYA_LAINNYA(
             sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK),
+            programs(PPMPK, PPIPK),
             sf(6, null, "Manfaat Pensiun Lainnya Lainnya", sv(M, 1, 18, numeric))
     ),
     MANFAAT_LAIN_KOMPENSASI_PASCAKERJA(
             sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK),
+            programs(PPMPK, PPIPK),
             sf(7, null, "Manfaat Lain Kompensasi Pascakerja", sv(M, 1, 18, numeric))
     ),
     MANFAAT_LAIN_KESEHATAN(
             sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK),
+            programs(PPMPK, PPIPK),
             sf(8, null, "Manfaat Lain Kesehatan", sv(M, 1, 18, numeric))
     ),
     MANFAAT_LAIN_SANTUNAN_KEMATIAN(
             sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK),
+            programs(PPMPK, PPIPK),
             sf(9, null, "Manfaat Lain Santunan Kematian", sv(M, 1, 18, numeric))
     ),
     MANFAAT_LAIN_IBADAH_KEAGAMAAN(
             sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK),
+            programs(PPMPK, PPIPK),
             sf(10, null, "Manfaat Lain Ibadah Keagamaan", sv(M, 1, 18, numeric))
     ),
     MANFAAT_LAIN_PENDIDIKAN(
             sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK),
+            programs(PPMPK, PPIPK),
             sf(11, null, "Manfaat Lain Pendidikan", sv(M, 1, 18, numeric))
     ),
     MANFAAT_LAIN_LAINNYA(
             sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK),
+            programs(PPMPK, PPIPK),
             sf(12, null, "Manfaat Lain Lainnya", sv(M, 1, 18, numeric))
     ),
     GABUNGAN(
             sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK),
+            programs(PPMPK, PPIPK),
             sf(13, null, "Gabungan", sv(M, 1, 18, numeric))
     ),
+    UUS_MANFAAT_PENSIUN(
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPIPK),
+            sf(14, null, "UUS - Manfaat Pensiun", sv(M, 1, 18, all2))
+    ),
+
+    UUS_MANFAAT_PENSIUN_LAINNYA(
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPIPK),
+            sf(15, null, "UUS - Manfaat Pensiun Lainnya", sv(M, 1, 18, all2))
+    ),
+    UUS_MANFAAT_LAIN(
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPIPK),
+            sf(16, null, "UUS - Manfaat Lain", sv(M, 1, 18, all2))
+    ),
+    TOTAL(
+            sectors(KONVENSIONAL, SYARIAH),
+            programs(PPIPK),
+            sf(17, null, "Total", sv(M, 1, 18, all2))
+    ),
+
     ;
 
     private final EnumSet<SectorType> sectorType;
@@ -115,7 +136,8 @@ public enum Dppk0001Lan implements ILbltFieldMetadata {
 
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7001Lan.getObject()),
-            new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7001Lan.getObject())
+            new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7001Lan.getObject()),
+            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7001Lan.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0001Lan> FIELD_METADATA = new LbltMetadataField<>(Dppk0001Lan.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
@@ -142,8 +164,8 @@ public enum Dppk0001Lan implements ILbltFieldMetadata {
     public static SubmissionFormat formMetadata(ProgramType programType) {
         FIELD_METADATA.setProgramType(programType);
 
-        BaseMetadataValidation<? extends ILbltMetadataValidation> metadataValidation;
-        ReferenceConfig referenceConfig;
+        BaseMetadataValidation<? extends ILbltMetadataValidation> metadataValidation = null;
+        ReferenceConfig referenceConfig = null;
 
         switch (programType) {
             case PPMPK:
@@ -154,6 +176,9 @@ public enum Dppk0001Lan implements ILbltFieldMetadata {
                 metadataValidation = VALIDATION_METADATA_PPMPM;
                 referenceConfig = ER7001PosLtlbDppkLan.Configs.REF_CONFIG_PPMPM;
                 break;
+            case PPIPK:
+                referenceConfig = ER7001PosLtlbDppkLan.Configs.REF_CONFIG_PPIPK;
+                break;
             default:
                 throw new IllegalStateException();
         }
@@ -162,10 +187,10 @@ public enum Dppk0001Lan implements ILbltFieldMetadata {
                 .config()
                 .setReferenceConfigs(referenceConfig)
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(KONVENSIONAL, programType.toString()))
-                .setSubmissionField(FIELD_METADATA.getClearedFields())
-                .setSegmentValidations()
-//                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-//                .setSegmentValidations(metadataValidation, E7001LanValidationsConfig.testValidation)
+                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                .setSegmentValidations(metadataValidation)
+//                .setSubmissionField(FIELD_METADATA.getClearedFields())
+//                .setSegmentValidations()
                 .build()
                 .get();
     }

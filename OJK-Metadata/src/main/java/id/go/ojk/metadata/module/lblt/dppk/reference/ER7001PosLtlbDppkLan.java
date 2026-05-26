@@ -54,9 +54,6 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
     R_LAN0105000000("LAN0105000000", "TOTAL ASET OPERASIONAL", EnumSet.of(ProgramType.ALL)),
     R_LAN0106000000("LAN0106000000", "ASET LAIN-LAIN", EnumSet.of(ProgramType.ALL)),
     R_LAN0107000000("LAN0107000000", "ASET TERSEDIA", EnumSet.of(ProgramType.ALL)),
-    R_LAN0108020000("LAN0108020000", "Liabilitas di luar Nilai Kini Aktuarial", EnumSet.of(ProgramType.PPMPM)),
-    R_LAN0108010000("LAN0108010000", "Liabilitas di luar Liabilitas Manfaat Pensiun",
-            EnumSet.of(ProgramType.PPIPM, ProgramType.PPIPK, ProgramType.PPMPPPIPK)),
     R_LAN0108020100("LAN0108020100", "Utang Manfaat Pensiun dan Manfaat Lain Jatuh Tempo", EnumSet.of(ProgramType.ALL)),
     R_LAN0108020200("LAN0108020200", "Utang Manfaat Sukarela", EnumSet.of(ProgramType.ALL)),
     R_LAN0108020300("LAN0108020300", "Utang Investasi", EnumSet.of(ProgramType.ALL)),
@@ -145,6 +142,32 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
                 ProgramType programType = ProgramType.PPMPM;
                 return UtilMetadata.genPipeRow(getObjects(programType));
             }
-        }
+        },
+
+        REF_CONFIG_PPIPK {
+            @Override
+            public String savePos() {
+                ProgramType programType = ProgramType.PPMPK;
+                return UtilMetadata.genFieldSave(
+                        UtilMetadata.genPipeColumn(2, 17),
+                        getObjects(programType)
+                );
+            }
+
+            @Override
+            public String savePosForm() {
+                ProgramType programType = ProgramType.PPMPK;
+                return UtilMetadata.genFieldSave(
+                        UtilMetadata.genPipeColumn(2, 17),
+                        getObjects(programType)
+                );
+            }
+
+            @Override
+            public String requiredPos() {
+                ProgramType programType = ProgramType.PPMPK;
+                return UtilMetadata.genPipeRow(getObjects(programType));
+            }
+        },
     }
 }

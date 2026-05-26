@@ -1,0 +1,220 @@
+package id.go.ojk.client.model.config.validation.segmen.v2;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import id.go.ojk.client.model.bind.ProgressPreparationAndSending.SubmissionData;
+import id.go.ojk.client.model.config.SubmissionField;
+import id.go.ojk.client.model.config.SubmissionFormat;
+import id.go.ojk.client.model.config.validation.UtilValidation;
+import id.go.ojk.client.model.config.validation.segmen.v2.base.BaseRowValidation;
+import id.go.ojk.client.model.config.validation.segmen.v2.util.FormulaParser;
+import id.go.ojk.client.model.config.validation.segmen.v2.util.constant.MessageType;
+import id.go.ojk.client.model.validation.ValidationError;
+import id.go.ojk.client.model.validation.ValidationResult;
+import id.go.ojk.lib.client.model.validation.ValidationErrorCode;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.Collectors;
+
+import static id.go.ojk.client.model.config.validation.segmen.v2.util.FormulaParser.ParsedFormula;
+import static id.go.ojk.client.model.config.validation.segmen.v2.util.FormulaParser.parse;
+
+@XStreamAlias("FormulaParserMultiFormDppkValidation")
+public class FormulaParserMultiFormDppkValidation extends BaseRowValidation {
+	protected String comparatorForm;
+	protected String operationForm;
+	protected MessageType messageType;
+	protected String fieldError;
+	protected String rowError;
+	protected int scale;
+
+	public FormulaParserMultiFormDppkValidation() {
+		super();
+	}
+
+	public FormulaParserMultiFormDppkValidation(String parameter) {
+		super(parameter);
+	}
+
+	@Override
+	public FormulaParserMultiFormDppkValidation initialized() {
+		super.initialized();
+		comparatorForm = getStringParameter("comparatorForm");
+		operationForm = getStringParameter("operationForm");
+		messageType = getMessageTypeParameter("messageType");
+		fieldError = getStringParameter("fieldErrorMessage");
+		rowError = getStringParameter("rowErrorMessage");
+		scale = getIntParameter("scale");
+
+		return this;
+	}
+
+	@Override
+	public void validate(SubmissionData submissionData, SubmissionFormat submissionFormat, ValidationResult validationResult) {
+		String currentRowCode = validationResult.getColumn(1);
+		List<String> selectRowCodes = Arrays.stream(StringUtils.split(selectPosCode, "|"))
+				.collect(Collectors.toList());
+
+		if (!selectRowCodes.contains(currentRowCode)) return;
+
+		String[] fields = StringUtils.split(selectField, "|");
+		String[] operations = StringUtils.split(operationForm, "|");
+
+		if (fields.length != operations.length)
+			throw new IllegalStateException();
+
+		final Logger logger = LoggerFactory.getLogger(FormulaParserMultiFormDppkValidation.class);
+
+		for (int i = 0; i < fields.length; i++) {
+			ParsedFormula parsed = parse(operations[i]);
+			StringBuilder errorBuilder = new StringBuilder();
+			BigDecimal selectValue = getCurrentValue(validationResult, fields[i]);
+			BigDecimal result = calculateFormula(parsed, errorBuilder);
+
+			if(selectValue.compareTo(result) != 0) {
+				List<SubmissionField> field = submissionFormat.getFields();
+				SubmissionField submissionField = field.get(Integer.parseInt(fields[i]));
+				logger.error("{}>{}?{}", parameter, selectValue, result);
+				validationResult.errors.add(new ValidationError(submissionField,
+						ValidationErrorCode.E11_07_EQUAL, errorBuilder ));
+
+			}
+		}
+	}
+
+	private BigDecimal getCurrentValue(ValidationResult validationResult, String idxField) {
+		return UtilValidation.toBigDecimal(validationResult.getColumn(Integer.parseInt(idxField)));
+	}
+
+	private BigDecimal calculateFormula(ParsedFormula parsed, StringBuilder errBuilder) {
+		BigDecimal formulaResult = BigDecimal.ZERO;
+		boolean isMultipleGroups = false;
+
+		String[] fieldErrorMessages = new String[]{};
+		String[] rowErrorMessages = new String[] {};
+
+		if (fieldError != null) fieldErrorMessages = StringUtils.split(fieldError, "|");
+		if (rowError != null) rowErrorMessages = StringUtils.split(rowError, "|");
+		String[] comparatorForms = StringUtils.split(comparatorForm, "|");
+
+
+		int ctr = 0;
+		int rowIdx = 0;
+		int innerCtr = 0;
+
+		for (FormulaParser.Group g : parsed.getGroups()) {
+			BigDecimal groupTotal = BigDecimal.ZERO;
+
+			if (!g.getOperator().isEmpty()) operatorMessageBuilder(errBuilder, g.getOperator());
+			if (parsed.getGroups().size() > 1 && g.getTokens().size() > 1) {
+				errBuilder.append("( ");
+				isMultipleGroups = true;
+			}
+
+			for (FormulaParser.RowToken t : g.getTokens()) {
+				AtomicReference<BigDecimal> rowTotal = new AtomicReference<>(BigDecimal.ZERO);
+
+				if (!t.getOperator().isEmpty()) errBuilder
+						.append(" ")
+						.append(t.getOperator())
+						.append(" ");
+
+				if (messageType == MessageType.SIMPLE) errBuilder.append("total Penjumlahan ");
+
+				errBuilder.append("baris '");
+
+				if (rowErrorMessages.length > 0) errBuilder.append(rowErrorMessages[rowIdx]).append("' ");
+
+
+				if (comparatorForms.length != g.getTokens().size()) throw new IllegalStateException();
+
+				for (int i = 0; i < t.getOperands().size(); i++) {
+					FormulaParser.Operand o = t.getOperands().get(i);
+					String prefix = comparatorForms[rowIdx] + t.getRowCode();
+					SubmissionFormat.getStreamOfFormSubMap(comparatorForms[rowIdx] + t.getRowCode(), Character.MAX_VALUE)
+							.forEach(v -> {
+								BigDecimal fieldValue;
+								if (isInvalidNumeric(v.getValue().get(o.getField()))) fieldValue = BigDecimal.ZERO;
+								else fieldValue = new BigDecimal(v.getValue().get(o.getField()));
+
+								rowTotal.set(calculateOperand(rowTotal.get(), fieldValue, o.getOperator()));
+							});
+
+					if (!o.getOperator().isEmpty() && messageType == MessageType.DETAIL) errBuilder
+							.append(o.getOperator());
+
+					errBuilder.append("kolom '");
+
+					if (fieldErrorMessages.length > 0) errBuilder.append(fieldErrorMessages[innerCtr++]).append("'");
+					else errBuilder.append(o.getField());
+
+                    errBuilder.append(" Form ").append(comparatorForms[rowIdx]);
+
+					if (messageType == MessageType.SIMPLE) {
+						if (t.getOperands().size() > 1 && i < t.getOperands().size() - 1) {
+							errBuilder.append(",");
+						} else if (t.getOperands().size() == 1) {
+							errBuilder.append("&");
+						}
+					}
+				}
+				groupTotal = calculateOperand(groupTotal, rowTotal.get(), t.getOperator());
+				rowIdx++;
+			}
+
+			if (isMultipleGroups) errBuilder.append(" )");
+			if (++ctr % 2 == 0 && isMultipleGroups) errBuilder.append("\n");
+
+			isMultipleGroups = false;
+
+			formulaResult = calculateOperand(formulaResult, groupTotal, g.getOperator());
+		}
+
+		return formulaResult;
+	}
+
+	private BigDecimal calculateOperand(BigDecimal value, BigDecimal tmpVal, String operator) {
+		if (operator.isEmpty()) {
+			value = tmpVal;
+		} else {
+			switch (operator) {
+				case "+":
+					value = value.add(tmpVal);
+					break;
+				case "-":
+					value = value.subtract(tmpVal);
+					break;
+				case "*":
+					value = value.multiply(tmpVal);
+					break;
+				default:
+					throw new UnsupportedOperationException();
+			}
+		}
+
+		return value
+				.setScale(scale, RoundingMode.HALF_UP);
+	}
+
+	private void operatorMessageBuilder(StringBuilder sb, String operator) {
+		switch (operator) {
+			case "+":
+				sb.append(" + ");
+				break;
+			case "-":
+				sb.append(" - ");
+				break;
+			case "*":
+				sb.append(" * ");
+				break;
+			default:
+				throw new UnsupportedOperationException();
+		}
+	}
+}
