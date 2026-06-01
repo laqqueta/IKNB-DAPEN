@@ -27,24 +27,23 @@ import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7025PosLtlbDppkSrd
 import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7025PosLtlbDppkSrdp.R_SRDP010000;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
+import static id.go.ojk.metadata.util.constants.ProgramType.*;
 
 @RequiredArgsConstructor
 @AllArgsConstructor
 public enum E7025SrdpValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_EQUAL_SRDP000000_SRDP010000(programs(PPMPK, PPMPM),
+    SG_EQUAL_SRDP000000_SRDP010000(programs(PPMPK, PPMPM, PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula("6", R_SRDP000000.key, R_SRDP010000.key,
                     UtilMetadata.genMessageTotal(R_SRDP000000.value, R_SRDP010000.value))),
 
-    CR_EXISTS_SRDP000000_M(programs(PPMPK, PPMPM), validationFields(2, 5, 7, 8, 9, 10),
+    CR_EXISTS_SRDP000000_M(programs(PPMPK, PPMPM, PPIPK), validationFields(2, 5, 7, 8, 9, 10),
             () -> UtilFieldConditional.genExistPos("N", "M", R_SRDP000000.key)),
 
-    CR_EXISTS_SRDP000000_O(programs(PPMPK, PPMPM), validationFields(3, 4, 12),
+    CR_EXISTS_SRDP000000_O(programs(PPMPK, PPMPM, PPIPK), validationFields(3, 4, 12),
             () -> UtilFieldConditional.genExistPos("N", "O", R_SRDP000000.key)),
 
-    CR_EQUAL_NAMA_PENGGUNA(programs(PPMPK, PPMPM), validationFields(11),
+    CR_EQUAL_NAMA_PENGGUNA(programs(PPMPK, PPMPM, PPIPK), validationFields(11),
             () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("N", "M", "N",
                     R_SRDP010000.key, "10", ER1252Pengelolaan.getReferenceIndex(0), ER1252Pengelolaan.getReferenceValueIndex(0))),
 
@@ -93,5 +92,11 @@ public enum E7025SrdpValidationsConfig implements ILbltMetadataValidation, IVali
 
     public static final BaseMetadataValidation<E7025SrdpValidationsConfig> VALIDATION_METADATA_PPMPM =
             new LbltMetadataValidation<>(E7025SrdpValidationsConfig.class, PPMPM);
+
+    public static final BaseMetadataValidation<E7025SrdpValidationsConfig> VALIDATION_METADATA_PPIPK =
+            new LbltMetadataValidation<>(E7025SrdpValidationsConfig.class, PPIPK);
+
+    public static final BaseMetadataValidation<E7025SrdpValidationsConfig> VALIDATION_METADATA_PPIPM =
+            new LbltMetadataValidation<>(E7025SrdpValidationsConfig.class, PPIPM);
 
 }

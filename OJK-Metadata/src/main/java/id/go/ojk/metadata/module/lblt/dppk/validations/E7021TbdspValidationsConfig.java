@@ -24,29 +24,28 @@ import java.util.function.Supplier;
 import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7021PosLtlbDppkTbdsp.*;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
+import static id.go.ojk.metadata.util.constants.ProgramType.*;
 
 @RequiredArgsConstructor
 @AllArgsConstructor
 public enum E7021TbdspValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_SUM_MITRA(programs(PPMPK, PPMPM),
+    SG_SUM_MITRA(programs(PPMPK, PPMPM, PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula("3", R_TBDSP0202020000.key, R_TBDSP0202010000.key,
                     UtilMetadata.genMessageTotal(R_TBDSP0202020000.value, R_TBDSP0202010000.value))),
 
-    SG_SUM_PENERIMA(programs(PPMPK, PPMPM),
+    SG_SUM_PENERIMA(programs(PPMPK, PPMPM, PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula("3", R_TBDSP0303000000.key, R_TBDSP0301000000.key,
                     UtilMetadata.genMessageTotal(R_TBDSP0303000000.value, R_TBDSP0301000000.value))),
 
-    SG_SALDO_AKHIR(programs(PPMPK, PPMPM),
+    SG_SALDO_AKHIR(programs(PPMPK, PPMPM, PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula("3", R_TBDSP0400000000.key, UtilMetadata.genPlusRow(getObjects(), new int[]{0, 3, 8}),
                     UtilMetadata.genMessageTotal(R_TBDSP0400000000.value, UtilMetadata.genPlusDesc(getObjects(), new int[]{0, 3, 8})))),
 
-    CR_EMPTY_1(programs(PPMPK, PPMPM), validationFields(Dppk0021Tbdsp.URAIAN),
+    CR_EMPTY_1(programs(PPMPK, PPMPM, PPIPK), validationFields(Dppk0021Tbdsp.URAIAN),
             () -> UtilFieldConditional.genExistPos("N", "M", UtilMetadata.genPipeRowExcept(getObjects(), new int[]{3, 8}))),
 
-    CR_EMPTY_2(programs(PPMPK, PPMPM), validationFields(Dppk0021Tbdsp.KETERANGAN),
+    CR_EMPTY_2(programs(PPMPK, PPMPM, PPIPK), validationFields(Dppk0021Tbdsp.KETERANGAN),
             () -> UtilFieldConditional.genExistPos("N", "O", R_TBDSP0400000000.key)),
 
     ;
@@ -94,5 +93,11 @@ public enum E7021TbdspValidationsConfig implements ILbltMetadataValidation, IVal
 
     public static final BaseMetadataValidation<E7021TbdspValidationsConfig> VALIDATION_METADATA_PPMPM =
             new LbltMetadataValidation<>(E7021TbdspValidationsConfig.class, PPMPM);
+
+    public static final BaseMetadataValidation<E7021TbdspValidationsConfig> VALIDATION_METADATA_PPIPK =
+            new LbltMetadataValidation<>(E7021TbdspValidationsConfig.class, PPIPK);
+
+    public static final BaseMetadataValidation<E7021TbdspValidationsConfig> VALIDATION_METADATA_PPIPM =
+            new LbltMetadataValidation<>(E7021TbdspValidationsConfig.class, PPIPM);
 
 }

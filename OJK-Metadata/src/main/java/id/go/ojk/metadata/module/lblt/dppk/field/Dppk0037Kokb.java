@@ -7,11 +7,9 @@ import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.metadata.module.lblt.dppk.EFormLaporanBulananTahunan;
-import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpipk;
-import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpk;
-import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpm;
-import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataSharedLkbt;
+import id.go.ojk.metadata.module.lblt.dppk.header.*;
 import id.go.ojk.metadata.module.lblt.dppk.reference.ER7037PosLtlbDppkKokb;
+import id.go.ojk.metadata.module.lblt.dppk.validations.E7036DnfraValidationsConfig;
 import id.go.ojk.metadata.module.lblt.dppk.validations.E7037KokbValidationsConfig;
 import id.go.ojk.metadata.util.constants.ProgramType;
 import id.go.ojk.metadata.util.constants.SectorType;
@@ -94,9 +92,7 @@ public enum Dppk0037Kokb implements ILbltFieldMetadata {
 
     KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(13, null, "Keterangan",
-                    sv(O, 1, 250, freeText)))
-
-    ;
+                    sv(O, 1, 250, freeText)));
 
     private final EnumSet<SectorType> sectorType;
     private final EnumSet<ProgramType> programType;
@@ -105,7 +101,8 @@ public enum Dppk0037Kokb implements ILbltFieldMetadata {
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7037Kokb.getObject()),
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7037Kokb.getObject()),
-new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7037Kokb.getObject())
+            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7037Kokb.getObject()),
+            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7037Kokb.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0037Kokb> FIELD_METADATA = new LbltMetadataField<>(Dppk0037Kokb.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
@@ -130,10 +127,10 @@ new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7037Kokb.getObject())
         throw new IllegalArgumentException("Unknown sector type: " + sectorType);
     }
 
-    public static SubmissionFormat formMetadata(ProgramType programType) {
+    public static SubmissionFormat formMetadata(SectorType sectorType, ProgramType programType) {
         FIELD_METADATA.setProgramType(programType);
 
-                BaseMetadataValidation<E7037KokbValidationsConfig> metadataValidation = null;
+        BaseMetadataValidation<E7037KokbValidationsConfig> metadataValidation = null;
 
         switch (programType) {
             case PPMPK:
@@ -142,16 +139,20 @@ new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7037Kokb.getObject())
             case PPMPM:
                 metadataValidation = E7037KokbValidationsConfig.VALIDATION_METADATA_PPMPM;
                 break;
-            //default:
-                //throw new IllegalStateException();
-default:
+            case PPIPK:
+                metadataValidation = E7037KokbValidationsConfig.VALIDATION_METADATA_PPIPK;
                 break;
+            case PPIPM:
+                metadataValidation = E7037KokbValidationsConfig.VALIDATION_METADATA_PPIPM;
+                break;
+            default:
+                throw new IllegalStateException();
         }
 
         return new SubmissionConfig(programType.toString())
                 .config()
                 .setReferenceConfigs(ER7037PosLtlbDppkKokb.Configs.REF_CONFIG_PPMP)
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(KONVENSIONAL, programType.toString()))
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
                 .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
                 .setSegmentValidations(metadataValidation)
                 .build()

@@ -40,7 +40,7 @@ public enum ER7022PosLtlbDppkDoc implements IObject<KeyValueString> {
     }
 
     public enum Configs implements ReferenceConfig {
-        REF_CONFIG_PPMP {
+        REF_CONFIG {
             @Override
             public String requiredPos() {
                 return UtilMetadata.genPipeRow(getObjects(), new int[]{1});
@@ -56,10 +56,6 @@ public enum ER7022PosLtlbDppkDoc implements IObject<KeyValueString> {
                 return UtilMetadata.genFieldSave("6|9", getObjects());
             }
         }
-    }
-
-    public static void main(String[] args) {
-        System.out.println(ER7022PosLtlbDppkDoc.getRefNumber(7022));
     }
 
 }

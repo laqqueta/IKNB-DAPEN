@@ -24,22 +24,26 @@ import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7061PosLtlbDppkIur
 import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7061PosLtlbDppkIur.R_IUR010000;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
+import static id.go.ojk.metadata.util.constants.ProgramType.*;
 
 @RequiredArgsConstructor
 @AllArgsConstructor
 public enum E7061IurValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM),
+    SG_EQUAL_FORMULA_1(programs(PPMPK, PPMPM),
             () -> UtilSegmentValidation.genEqualsFormula(
                     UtilMetadata.genPipeColumnExcept(5, 16, new int[] { 6 }), R_IUR000000.key, R_IUR010000.key,
                     UtilMetadata.genMessageTotal(R_IUR000000.value, R_IUR010000.value))),
 
-    CR_EXISTS_POS_M(programs(PPMPK, PPMPM), validationFields(2, 3, 4, 6, 17),
+    SG_EQUAL_FORMULA_2(programs(PPIPK),
+            () -> UtilSegmentValidation.genEqualsFormula(
+                    UtilMetadata.genPipeColumnExcept(5, 12, new int[] { 6 }), R_IUR000000.key, R_IUR010000.key,
+                    UtilMetadata.genMessageTotal(R_IUR000000.value, R_IUR010000.value))),
+
+    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK), validationFields(2, 3, 4, 6, 17),
             () -> UtilFieldConditional.genExistPos("N", "M", R_IUR000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM), validationFields(18),
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK), validationFields(18),
             () -> UtilFieldConditional.genExistPos("N", "O", R_IUR000000.key)),
 
     ;
@@ -87,5 +91,11 @@ public enum E7061IurValidationsConfig implements ILbltMetadataValidation, IValid
 
     public static final BaseMetadataValidation<E7061IurValidationsConfig> VALIDATION_METADATA_PPMPM =
             new LbltMetadataValidation<>(E7061IurValidationsConfig.class, PPMPM);
+
+    public static final BaseMetadataValidation<E7061IurValidationsConfig> VALIDATION_METADATA_PPIPK =
+            new LbltMetadataValidation<>(E7061IurValidationsConfig.class, PPIPK);
+
+    public static final BaseMetadataValidation<E7061IurValidationsConfig> VALIDATION_METADATA_PPIPM =
+            new LbltMetadataValidation<>(E7061IurValidationsConfig.class, PPIPM);
 
 }

@@ -24,21 +24,20 @@ import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7064PosLtlbDppkBin
 import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7064PosLtlbDppkBinv.R_BINV010000;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
+import static id.go.ojk.metadata.util.constants.ProgramType.*;
 
 @RequiredArgsConstructor
 @AllArgsConstructor
 public enum E7064BinvValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM),
+    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM, PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula("3", R_BINV000000.key, R_BINV010000.key,
                     UtilMetadata.genMessageTotal(R_BINV000000.value, R_BINV010000.value))),
 
-    CR_EXISTS_POS_M(programs(PPMPK, PPMPM), validationFields(2,4),
+    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK), validationFields(2,4),
             () -> UtilFieldConditional.genExistPos("N", "M", R_BINV000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM), validationFields(5),
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK), validationFields(5),
             () -> UtilFieldConditional.genExistPos("N", "O", R_BINV000000.key)),
 
     ;
@@ -86,5 +85,11 @@ public enum E7064BinvValidationsConfig implements ILbltMetadataValidation, IVali
 
     public static final BaseMetadataValidation<E7064BinvValidationsConfig> VALIDATION_METADATA_PPMPM =
             new LbltMetadataValidation<>(E7064BinvValidationsConfig.class, PPMPM);
+
+    public static final BaseMetadataValidation<E7064BinvValidationsConfig> VALIDATION_METADATA_PPIPK =
+            new LbltMetadataValidation<>(E7064BinvValidationsConfig.class, PPIPK);
+
+    public static final BaseMetadataValidation<E7064BinvValidationsConfig> VALIDATION_METADATA_PPIPM =
+            new LbltMetadataValidation<>(E7064BinvValidationsConfig.class, PPIPM);
 
 }

@@ -8,6 +8,7 @@ import id.go.ojk.client.model.config.SubmissionFormatBuilder;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.metadata.module.lblt.dppk.EFormLaporanBulananTahunan;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpipk;
+import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpipm;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpk;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpm;
 import id.go.ojk.metadata.module.lblt.dppk.reference.ER7000PosLtlbDppkDtum;
@@ -58,7 +59,8 @@ public enum Dppk0000Dtum implements ILbltFieldMetadata {
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7000Dtum.getObject()),
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7000Dtum.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7000Dtum.getObject())
+            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7000Dtum.getObject()),
+            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7000Dtum.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     private static final LbltMetadataField<Dppk0000Dtum> FIELD_METADATA = new LbltMetadataField<>
@@ -83,7 +85,7 @@ public enum Dppk0000Dtum implements ILbltFieldMetadata {
         throw new IllegalArgumentException("Unknown sector type: " + sectorType);
     }
 
-    public static SubmissionFormat formMetadata(ProgramType programType) {
+    public static SubmissionFormat formMetadata(SectorType sectorType, ProgramType programType) {
         FIELD_METADATA.setProgramType(programType);
 
         BaseMetadataValidation<E7000DtumValidationsConfig> metadataValidation = null;
@@ -95,14 +97,20 @@ public enum Dppk0000Dtum implements ILbltFieldMetadata {
             case PPMPM:
                 metadataValidation = E7000DtumValidationsConfig.VALIDATION_METADATA_PPMPM;
                 break;
+            case PPIPK:
+                metadataValidation = E7000DtumValidationsConfig.VALIDATION_METADATA_PPIPK;
+                break;
+            case PPIPM:
+                metadataValidation = E7000DtumValidationsConfig.VALIDATION_METADATA_PPIPM;
+                break;
             default:
                 throw new IllegalStateException();
         }
 
         return new SubmissionConfig(programType.toString())
                 .config()
-                .setReferenceConfigs(ER7000PosLtlbDppkDtum.Configs.REF_CONFIG_PPMPK)
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(KONVENSIONAL, programType.toString()))
+                .setReferenceConfigs(ER7000PosLtlbDppkDtum.Configs.REF_CONFIG)
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
                 .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
                 .setSegmentValidations(metadataValidation)
                 .build()

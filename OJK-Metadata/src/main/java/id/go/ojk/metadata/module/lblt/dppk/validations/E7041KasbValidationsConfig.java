@@ -24,21 +24,20 @@ import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7041PosLtlbDppkKas
 import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7041PosLtlbDppkKasb.R_KASB010000;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
+import static id.go.ojk.metadata.util.constants.ProgramType.*;
 
 @RequiredArgsConstructor
 @AllArgsConstructor
 public enum E7041KasbValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM),
+    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM, PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula("6", R_KASB000000.key, R_KASB010000.key,
                     UtilMetadata.genMessageTotal(R_KASB000000.value, R_KASB010000.value))),
 
-    CR_EXISTS_POS_M(programs(PPMPK, PPMPM), validationFields(4,5,7),
+    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK), validationFields(4,5,7),
             () -> UtilFieldConditional.genExistPos("N", "M", R_KASB000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM), validationFields(2,3,8),
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK), validationFields(2,3,8),
             () -> UtilFieldConditional.genExistPos("N", "O", R_KASB000000.key)),
 
     ;
@@ -86,5 +85,11 @@ public enum E7041KasbValidationsConfig implements ILbltMetadataValidation, IVali
 
     public static final BaseMetadataValidation<E7041KasbValidationsConfig> VALIDATION_METADATA_PPMPM =
             new LbltMetadataValidation<>(E7041KasbValidationsConfig.class, PPMPM);
+
+    public static final BaseMetadataValidation<E7041KasbValidationsConfig> VALIDATION_METADATA_PPIPK =
+            new LbltMetadataValidation<>(E7041KasbValidationsConfig.class, PPIPK);
+
+    public static final BaseMetadataValidation<E7041KasbValidationsConfig> VALIDATION_METADATA_PPIPM =
+            new LbltMetadataValidation<>(E7041KasbValidationsConfig.class, PPIPM);
 
 }

@@ -7,11 +7,9 @@ import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.metadata.module.lblt.dppk.EFormLaporanBulananTahunan;
-import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpipk;
-import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpk;
-import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpm;
-import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataSharedLkbt;
+import id.go.ojk.metadata.module.lblt.dppk.header.*;
 import id.go.ojk.metadata.module.lblt.dppk.reference.ER7046PosLtlbDppkPihi;
+import id.go.ojk.metadata.module.lblt.dppk.validations.E7045PiuiValidationsConfig;
 import id.go.ojk.metadata.module.lblt.dppk.validations.E7046PihiValidationsConfig;
 import id.go.ojk.metadata.util.constants.ProgramType;
 import id.go.ojk.metadata.util.constants.SectorType;
@@ -56,7 +54,7 @@ public enum Dppk0046Pihi implements ILbltFieldMetadata {
     PIHAK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(3, null, "Pihak",
                     sv(C, 1, 100, alfaNumeric)
-                            /*.confConditionalRequired(E7046PihiValidationsConfig.CR_EXISTS_POS_M)*/)
+                    /*.confConditionalRequired(E7046PihiValidationsConfig.CR_EXISTS_POS_M)*/)
     ),
     NOMINAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(4, null, "Nominal",
@@ -72,7 +70,7 @@ public enum Dppk0046Pihi implements ILbltFieldMetadata {
     KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(6, null, "Keterangan",
                     sv(C, 1, 250, freeText)
-                            /*.confConditionalRequired(E7046PihiValidationsConfig.CR_EXISTS_POS_O)*/)
+                    /*.confConditionalRequired(E7046PihiValidationsConfig.CR_EXISTS_POS_O)*/)
     ),
     ;
 
@@ -83,7 +81,8 @@ public enum Dppk0046Pihi implements ILbltFieldMetadata {
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7046Pihi.getObject()),
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7046Pihi.getObject()),
-new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7046Pihi.getObject())
+            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7046Pihi.getObject()),
+            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7046Pihi.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0046Pihi> FIELD_METADATA = new LbltMetadataField<>(Dppk0046Pihi.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
@@ -108,10 +107,10 @@ new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7046Pihi.getObject())
         throw new IllegalArgumentException("Unknown sector type: " + sectorType);
     }
 
-    public static SubmissionFormat formMetadata(ProgramType programType) {
+    public static SubmissionFormat formMetadata(SectorType sectorType, ProgramType programType) {
         FIELD_METADATA.setProgramType(programType);
 
-                BaseMetadataValidation<E7046PihiValidationsConfig> metadataValidation = null;
+        BaseMetadataValidation<E7046PihiValidationsConfig> metadataValidation = null;
 
         switch (programType) {
             case PPMPK:
@@ -120,16 +119,21 @@ new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7046Pihi.getObject())
             case PPMPM:
                 metadataValidation = E7046PihiValidationsConfig.VALIDATION_METADATA_PPMPM;
                 break;
-            //default:
-                //throw new IllegalStateException();
-default:
+            case PPIPK:
+                metadataValidation = E7046PihiValidationsConfig.VALIDATION_METADATA_PPIPK;
                 break;
+            case PPIPM:
+                metadataValidation = E7046PihiValidationsConfig.VALIDATION_METADATA_PPIPM;
+                break;
+            default:
+                throw new IllegalStateException();
+
         }
 
         return new SubmissionConfig(programType.toString())
                 .config()
                 .setReferenceConfigs(ER7046PosLtlbDppkPihi.Configs.REF_CONFIG_PPMP)
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(KONVENSIONAL, programType.toString()))
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
                 .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
                 .setSegmentValidations(metadataValidation)
                 .build()

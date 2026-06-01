@@ -7,10 +7,7 @@ import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.metadata.module.lblt.dppk.EFormLaporanBulananTahunan;
-import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpipk;
-import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpk;
-import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpm;
-import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataSharedLkbt;
+import id.go.ojk.metadata.module.lblt.dppk.header.*;
 import id.go.ojk.metadata.module.lblt.dppk.reference.ER7043PosLtlbDppkPiub;
 import id.go.ojk.metadata.module.lblt.dppk.validations.E7043PiubValidationsConfig;
 import id.go.ojk.metadata.util.constants.ProgramType;
@@ -85,7 +82,8 @@ public enum Dppk0043Piub implements ILbltFieldMetadata {
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7043Piub.getObject()),
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7043Piub.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7043Piub.getObject())
+            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7043Piub.getObject()),
+            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7043Piub.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0043Piub> FIELD_METADATA = new LbltMetadataField<>(Dppk0043Piub.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
@@ -110,25 +108,30 @@ public enum Dppk0043Piub implements ILbltFieldMetadata {
         throw new IllegalArgumentException("Unknown sector type: " + sectorType);
     }
 
-    public static SubmissionFormat formMetadata(ProgramType programType) {
+    public static SubmissionFormat formMetadata(SectorType sectorType, ProgramType programType) {
         FIELD_METADATA.setProgramType(programType);
 
         BaseMetadataValidation<E7043PiubValidationsConfig> metadataValidation = null;
-        List<SubmissionField> submissionFields = FIELD_METADATA.getClearedFields();
+        List<SubmissionField> submissionFields = null;
+
+        List<Integer> usedFieldIdx = Arrays.asList(0, 1, 2, 3, 4, 6, 7);
 
         switch (programType) {
             case PPMPK:
                 metadataValidation = E7043PiubValidationsConfig.VALIDATION_METADATA_PPMPK;
+                submissionFields = FIELD_METADATA.getFields(metadataValidation.getFieldValidations());
                 break;
             case PPMPM:
                 metadataValidation = E7043PiubValidationsConfig.VALIDATION_METADATA_PPMPM;
+                submissionFields = FIELD_METADATA.getFields(metadataValidation.getFieldValidations());
                 break;
             case PPIPK:
-                int[] originalIndex = {6, 7};
-                int[] newIndex = {5, 6};
-                submissionFields = FIELD_METADATA.getReindexClearedFields(IntStream.range(0, originalIndex.length)
-                        .boxed()
-                        .collect(Collectors.toMap(i -> originalIndex[i], i -> newIndex[i])));
+                metadataValidation = E7043PiubValidationsConfig.VALIDATION_METADATA_PPIPK;
+                submissionFields = FIELD_METADATA.getReindexFields(usedFieldIdx, metadataValidation.getFieldValidations());
+                break;
+            case PPIPM:
+                metadataValidation = E7043PiubValidationsConfig.VALIDATION_METADATA_PPIPM;
+                submissionFields = FIELD_METADATA.getReindexFields(usedFieldIdx, metadataValidation.getFieldValidations());
                 break;
             default:
                 throw new IllegalStateException();
@@ -137,7 +140,7 @@ public enum Dppk0043Piub implements ILbltFieldMetadata {
         return new SubmissionConfig(programType.toString())
                 .config()
                 .setReferenceConfigs(ER7043PosLtlbDppkPiub.Configs.REF_CONFIG_PPMP)
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(KONVENSIONAL, programType.toString()))
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
                 .setSubmissionField(submissionFields)
                 .setSegmentValidations(metadataValidation)
                 .build()

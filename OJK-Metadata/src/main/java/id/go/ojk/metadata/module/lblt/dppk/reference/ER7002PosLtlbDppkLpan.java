@@ -120,12 +120,4 @@ public enum ER7002PosLtlbDppkLpan implements IObject<KeyValueString> {
             }
         }
     }
-
-    public static void main(String[] args) {
-        ER7002PosLtlbDppkLpan[] vals = ER7002PosLtlbDppkLpan.values();
-
-        for (int i = 0; i < vals.length; i++) {
-            System.out.println(i + " >> " + vals[i]);
-        }
-    }
 }

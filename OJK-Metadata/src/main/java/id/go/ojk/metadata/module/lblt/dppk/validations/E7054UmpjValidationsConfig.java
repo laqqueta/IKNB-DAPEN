@@ -25,24 +25,23 @@ import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7054PosLtlbDppkUmp
 import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7054PosLtlbDppkUmpj.R_UMPJ010000;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
+import static id.go.ojk.metadata.util.constants.ProgramType.*;
 
 @RequiredArgsConstructor
 @AllArgsConstructor
 public enum E7054UmpjValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM),
+    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM, PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 4), R_UMPJ000000.key, R_UMPJ010000.key,
                     UtilMetadata.genMessageTotal(R_UMPJ000000.value, R_UMPJ010000.value))),
 
-    FV_EQUAL_TOTAL(programs(PPMPK, PPMPM), validationFields(4),
+    FV_EQUAL_TOTAL(programs(PPMPK, PPMPM, PPIPK), validationFields(4),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("2+3", R_UMPJ000000.key)),
 
-    CR_EXISTS_POS_M(programs(PPMPK, PPMPM), validationFields(5),
+    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK), validationFields(5),
             () -> UtilFieldConditional.genExistPos("N", "M", R_UMPJ000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM), validationFields(6),
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK), validationFields(6),
             () -> UtilFieldConditional.genExistPos("N", "O", R_UMPJ000000.key)),
 
     ;
@@ -90,5 +89,11 @@ public enum E7054UmpjValidationsConfig implements ILbltMetadataValidation, IVali
 
     public static final BaseMetadataValidation<E7054UmpjValidationsConfig> VALIDATION_METADATA_PPMPM =
             new LbltMetadataValidation<>(E7054UmpjValidationsConfig.class, PPMPM);
+
+    public static final BaseMetadataValidation<E7054UmpjValidationsConfig> VALIDATION_METADATA_PPIPK =
+            new LbltMetadataValidation<>(E7054UmpjValidationsConfig.class, PPIPK);
+
+    public static final BaseMetadataValidation<E7054UmpjValidationsConfig> VALIDATION_METADATA_PPIPM =
+            new LbltMetadataValidation<>(E7054UmpjValidationsConfig.class, PPIPM);
 
 }

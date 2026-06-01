@@ -24,21 +24,20 @@ import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7066PosLtlbDppkBip
 import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7066PosLtlbDppkBipr.R_BIPR010000;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
+import static id.go.ojk.metadata.util.constants.ProgramType.*;
 
 @RequiredArgsConstructor
 @AllArgsConstructor
 public enum E7066BiprValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM),
+    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM, PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula("3", R_BIPR000000.key, R_BIPR010000.key,
                     UtilMetadata.genMessageTotal(R_BIPR000000.value, R_BIPR010000.value))),
 
-    CR_EXISTS_POS_M(programs(PPMPK, PPMPM), validationFields(2,4),
+    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK), validationFields(2,4),
             () -> UtilFieldConditional.genExistPos("N", "M", R_BIPR000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM), validationFields(5),
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK), validationFields(5),
             () -> UtilFieldConditional.genExistPos("N", "O", R_BIPR000000.key)),
 
     ;
@@ -86,5 +85,11 @@ public enum E7066BiprValidationsConfig implements ILbltMetadataValidation, IVali
 
     public static final BaseMetadataValidation<E7066BiprValidationsConfig> VALIDATION_METADATA_PPMPM =
             new LbltMetadataValidation<>(E7066BiprValidationsConfig.class, PPMPM);
+
+    public static final BaseMetadataValidation<E7066BiprValidationsConfig> VALIDATION_METADATA_PPIPK =
+            new LbltMetadataValidation<>(E7066BiprValidationsConfig.class, PPIPK);
+
+    public static final BaseMetadataValidation<E7066BiprValidationsConfig> VALIDATION_METADATA_PPIPM =
+            new LbltMetadataValidation<>(E7066BiprValidationsConfig.class, PPIPM);
 
 }

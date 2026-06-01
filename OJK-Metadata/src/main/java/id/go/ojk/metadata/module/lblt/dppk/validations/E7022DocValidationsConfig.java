@@ -25,24 +25,23 @@ import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7022PosLtlbDppkDoc
 import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7022PosLtlbDppkDoc.R_DOC010000;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
+import static id.go.ojk.metadata.util.constants.ProgramType.*;
 
 @RequiredArgsConstructor
 @AllArgsConstructor
 public enum E7022DocValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_EQUAL_DOC000000_DOC010000(programs(PPMPK, PPMPM),
+    SG_EQUAL_DOC000000_DOC010000(programs(PPMPK, PPMPM, PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula("6", R_DOC000000.key, R_DOC010000.key,
                     UtilMetadata.genMessageTotal(R_DOC000000.value, R_DOC010000.value))),
 
-    CR_EXISTS_DOC000000_M(programs(PPMPK, PPMPM), validationFields(2, 4, 5, 7, 8, 9, 10),
+    CR_EXISTS_DOC000000_M(programs(PPMPK, PPMPM, PPIPK), validationFields(2, 4, 5, 7, 8, 9, 10),
             () -> UtilFieldConditional.genExistPos("N", "M", R_DOC000000.key)),
 
-    CR_EXISTS_DOC000000_O(programs(PPMPK, PPMPM), validationFields(3, 12),
+    CR_EXISTS_DOC000000_O(programs(PPMPK, PPMPM, PPIPK), validationFields(3, 12),
             () -> UtilFieldConditional.genExistPos("N", "O", R_DOC000000.key)),
 
-    CR_EQUAL_EXCEPT_DOC000000(programs(PPMPK, PPMPM), validationFields(11),
+    CR_EQUAL_EXCEPT_DOC000000(programs(PPMPK, PPMPM, PPIPK), validationFields(11),
             () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("N", "M", "N",
                     R_DOC010000.key, "10", ER1252Pengelolaan.getReferenceIndex(0), ER1252Pengelolaan.getReferenceValueIndex(0))),
 
@@ -91,4 +90,10 @@ public enum E7022DocValidationsConfig implements ILbltMetadataValidation, IValid
 
     public static final BaseMetadataValidation<E7022DocValidationsConfig> VALIDATION_METADATA_PPMPM =
             new LbltMetadataValidation<>(E7022DocValidationsConfig.class, PPMPM);
+
+    public static final BaseMetadataValidation<E7022DocValidationsConfig> VALIDATION_METADATA_PPIPK =
+            new LbltMetadataValidation<>(E7022DocValidationsConfig.class, PPIPK);
+
+    public static final BaseMetadataValidation<E7022DocValidationsConfig> VALIDATION_METADATA_PPIPM =
+            new LbltMetadataValidation<>(E7022DocValidationsConfig.class, PPIPM);
 }

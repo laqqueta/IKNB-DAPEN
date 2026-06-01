@@ -330,7 +330,7 @@ public enum E7012AlmMValidationsConfig implements ILbltMetadataValidation, IVali
     FV_TOTAL1_EQUAL(programs(PPMPM), validationFields(14),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("2+5+8+11",
                     UtilMetadata.genPipeRow(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPMPM),
-                            new int[]{20, 31, 37, 38, 40, 48, 49, 50, 51}))),
+                            new int[]{20, 31, 37, 38, 39, 40, 48, 49, 50, 51}))),
 
     FV_TOTAL2_EQUAL(programs(PPMPM), validationFields(15),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("3+6+9+12",

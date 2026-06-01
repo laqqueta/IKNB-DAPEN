@@ -25,24 +25,23 @@ import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7049PosLtlbDppkKnd
 import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7049PosLtlbDppkKndr.R_KNDR010000;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
+import static id.go.ojk.metadata.util.constants.ProgramType.*;
 
 @RequiredArgsConstructor
 @AllArgsConstructor
 public enum E7049KndrValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM),
+    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM, PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(5, 7), R_KNDR000000.key, R_KNDR010000.key,
                     UtilMetadata.genMessageTotal(R_KNDR000000.value, R_KNDR010000.value))),
 
-    FV_EQUAL_NILAI_BUKU(programs(PPMPK, PPMPM), validationFields(7),
+    FV_EQUAL_NILAI_BUKU(programs(PPMPK, PPMPM, PPIPK), validationFields(7),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("5-6", R_KNDR000000.key)),
 
-    CR_EXISTS_POS_M(programs(PPMPK, PPMPM), validationFields(2,3,4),
+    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK), validationFields(2,3,4),
             () -> UtilFieldConditional.genExistPos("N", "M", R_KNDR000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM), validationFields(8),
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK), validationFields(8),
             () -> UtilFieldConditional.genExistPos("N", "O", R_KNDR000000.key)),
 
     ;
@@ -90,5 +89,11 @@ public enum E7049KndrValidationsConfig implements ILbltMetadataValidation, IVali
 
     public static final BaseMetadataValidation<E7049KndrValidationsConfig> VALIDATION_METADATA_PPMPM =
             new LbltMetadataValidation<>(E7049KndrValidationsConfig.class, PPMPM);
+
+    public static final BaseMetadataValidation<E7049KndrValidationsConfig> VALIDATION_METADATA_PPIPK =
+            new LbltMetadataValidation<>(E7049KndrValidationsConfig.class, PPIPK);
+
+    public static final BaseMetadataValidation<E7049KndrValidationsConfig> VALIDATION_METADATA_PPIPM =
+            new LbltMetadataValidation<>(E7049KndrValidationsConfig.class, PPIPM);
 
 }

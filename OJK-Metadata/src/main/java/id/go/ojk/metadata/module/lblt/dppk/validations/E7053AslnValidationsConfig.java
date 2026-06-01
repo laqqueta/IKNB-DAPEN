@@ -24,21 +24,20 @@ import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7053PosLtlbDppkAsl
 import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7053PosLtlbDppkAsln.R_ASLN010000;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
+import static id.go.ojk.metadata.util.constants.ProgramType.*;
 
 @RequiredArgsConstructor
 @AllArgsConstructor
 public enum E7053AslnValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM),
+    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM, PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula("5", R_ASLN000000.key, R_ASLN010000.key,
                     UtilMetadata.genMessageTotal(R_ASLN000000.value, R_ASLN010000.value))),
 
-    CR_EXISTS_POS_M(programs(PPMPK, PPMPM), validationFields(2, 3, 4, 6, 7),
+    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK), validationFields(2, 3, 4, 6, 7),
             () -> UtilFieldConditional.genExistPos("N", "M", R_ASLN000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM), validationFields(8),
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK), validationFields(8),
             () -> UtilFieldConditional.genExistPos("N", "O", R_ASLN000000.key)),
     ;
 
@@ -85,5 +84,11 @@ public enum E7053AslnValidationsConfig implements ILbltMetadataValidation, IVali
 
     public static final BaseMetadataValidation<E7053AslnValidationsConfig> VALIDATION_METADATA_PPMPM =
             new LbltMetadataValidation<>(E7053AslnValidationsConfig.class, PPMPM);
+
+    public static final BaseMetadataValidation<E7053AslnValidationsConfig> VALIDATION_METADATA_PPIPK =
+            new LbltMetadataValidation<>(E7053AslnValidationsConfig.class, PPIPK);
+
+    public static final BaseMetadataValidation<E7053AslnValidationsConfig> VALIDATION_METADATA_PPIPM =
+            new LbltMetadataValidation<>(E7053AslnValidationsConfig.class, PPIPM);
 
 }

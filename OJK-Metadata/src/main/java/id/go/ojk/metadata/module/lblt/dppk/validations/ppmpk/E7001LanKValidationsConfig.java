@@ -200,10 +200,10 @@ public enum E7001LanKValidationsConfig implements ILbltMetadataValidation, IVali
                         UtilMetadata.genPipeColumn(3, 12), UtilMetadata.genPipeRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.PPMPK), 22, 24),
                         EFormLaporanBulananTahunan.LTLB_PIUT.getCode(),
                         ER7042PosLtlbDppkPiut.R_PIUT010000.getObject().getKey(),
-                        "5|8|9", "13", "3", criteriaCondition, sumCriteriaCondition,
+                        "5|8|12", "13", "3", criteriaCondition, sumCriteriaCondition,
                         "PIUT|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain",
                         criteriaConditionErr, sumCriteriaConditionErr,
-                        "Piutang Iuran Peserta Total|Piutang Iuran Pemberi Kerja Total|Piutang Iuran Tambahan Total");
+                        "Piutang Iuran Peserta - Total|Piutang Iuran Pemberi Kerja - Total|Piutang Iuran Sukarela Peserta");
             }),
 
     SG_SUMIF_LAN0103060000(FieldUtil.programs(PPMPK), () -> {

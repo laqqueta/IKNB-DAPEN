@@ -22,14 +22,13 @@ import java.util.function.Supplier;
 import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7019PosLtlbDppkPius.R_PIUS0000000000;
 import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7019PosLtlbDppkPius.R_PIUS0100000000;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
+import static id.go.ojk.metadata.util.constants.ProgramType.*;
 
 @RequiredArgsConstructor
 @AllArgsConstructor
 public enum E7019PiusValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM),
+    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM, PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula(
                     UtilMetadata.genPipeColumn(2, 6), R_PIUS0000000000.key, R_PIUS0100000000.key,
                     UtilMetadata.genMessageTotal(R_PIUS0000000000.value, R_PIUS0100000000.value))),
@@ -79,5 +78,11 @@ public enum E7019PiusValidationsConfig implements ILbltMetadataValidation, IVali
 
     public static final BaseMetadataValidation<E7019PiusValidationsConfig> VALIDATION_METADATA_PPMPM =
             new LbltMetadataValidation<>(E7019PiusValidationsConfig.class, PPMPM);
+
+    public static final BaseMetadataValidation<E7019PiusValidationsConfig> VALIDATION_METADATA_PPIPK =
+            new LbltMetadataValidation<>(E7019PiusValidationsConfig.class, PPIPK);
+
+    public static final BaseMetadataValidation<E7019PiusValidationsConfig> VALIDATION_METADATA_PPIPM =
+            new LbltMetadataValidation<>(E7019PiusValidationsConfig.class, PPIPM);
 
 }

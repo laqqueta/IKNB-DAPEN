@@ -105,4 +105,11 @@ public enum E7000DtumValidationsConfig implements ILbltMetadataValidation, IVali
     public static final BaseMetadataValidation<E7000DtumValidationsConfig> VALIDATION_METADATA_PPMPM =
             new LbltMetadataValidation<>(E7000DtumValidationsConfig.class, PPMPM);
 
+    public static final BaseMetadataValidation<E7000DtumValidationsConfig> VALIDATION_METADATA_PPIPK =
+            new LbltMetadataValidation<>(E7000DtumValidationsConfig.class, PPIPK);
+
+    public static final BaseMetadataValidation<E7000DtumValidationsConfig> VALIDATION_METADATA_PPIPM =
+            new LbltMetadataValidation<>(E7000DtumValidationsConfig.class, PPIPM);
+
+
 }

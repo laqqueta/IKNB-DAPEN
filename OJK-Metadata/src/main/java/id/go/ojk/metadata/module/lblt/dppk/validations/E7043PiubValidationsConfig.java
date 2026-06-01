@@ -24,21 +24,24 @@ import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7043PosLtlbDppkPiu
 import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7043PosLtlbDppkPiub.R_PIUB010000;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
+import static id.go.ojk.metadata.util.constants.ProgramType.*;
 
 @RequiredArgsConstructor
 @AllArgsConstructor
 public enum E7043PiubValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM),
+    SG_EQUAL_FORMULA_1(programs(PPMPK, PPMPM),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(3, 5), R_PIUB000000.key, R_PIUB010000.key,
                     UtilMetadata.genMessageTotal(R_PIUB000000.value, R_PIUB010000.value))),
 
-    CR_EXISTS_POS_M(programs(PPMPK, PPMPM), validationFields(2, 6),
+    SG_EQUAL_FORMULA_2(programs(PPIPK),
+            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(3, 4), R_PIUB000000.key, R_PIUB010000.key,
+                    UtilMetadata.genMessageTotal(R_PIUB000000.value, R_PIUB010000.value))),
+
+    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK), validationFields(2, 6),
             () -> UtilFieldConditional.genExistPos("N", "M", R_PIUB000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM), validationFields(7),
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK), validationFields(7),
             () -> UtilFieldConditional.genExistPos("N", "O", R_PIUB000000.key)),
 
     ;
@@ -86,5 +89,11 @@ public enum E7043PiubValidationsConfig implements ILbltMetadataValidation, IVali
 
     public static final BaseMetadataValidation<E7043PiubValidationsConfig> VALIDATION_METADATA_PPMPM =
             new LbltMetadataValidation<>(E7043PiubValidationsConfig.class, PPMPM);
+
+    public static final BaseMetadataValidation<E7043PiubValidationsConfig> VALIDATION_METADATA_PPIPK =
+            new LbltMetadataValidation<>(E7043PiubValidationsConfig.class, PPIPK);
+
+    public static final BaseMetadataValidation<E7043PiubValidationsConfig> VALIDATION_METADATA_PPIPM =
+            new LbltMetadataValidation<>(E7043PiubValidationsConfig.class, PPIPM);
 
 }

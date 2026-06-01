@@ -47,19 +47,19 @@ public enum Dppk0102Pinv implements ILbltFieldMetadata {
 
     PAKET_A(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
             sf(2, null, "Paket Konvensional - Paket A",
-                    sv(M, 1, 18, all2))),
+                    sv(M, 1, 18, numeric))),
 
     PAKET_B(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
             sf(3, null, "Paket Konvensional - Paket B",
-                    sv(M, 1, 18, all2))),
+                    sv(M, 1, 18, numeric))),
 
     PAKET_C(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
             sf(4, null, "Paket Konvensional - Paket C",
-                    sv(M, 1, 18, all2))),
+                    sv(M, 1, 18, numeric))),
 
     PAKET_D(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
             sf(5, null, "Paket Konvensional - Paket D",
-                    sv(M, 1, 18, all2))),
+                    sv(M, 1, 18, numeric))),
 
     ;
 
@@ -94,7 +94,7 @@ public enum Dppk0102Pinv implements ILbltFieldMetadata {
         throw new IllegalArgumentException("Unknown sector type: " + sectorType);
     }
 
-    public static SubmissionFormat formMetadata(ProgramType programType) {
+    public static SubmissionFormat formMetadata(SectorType sectorType, ProgramType programType) {
         FIELD_METADATA.setProgramType(programType);
 
         BaseMetadataValidation<E7102PinvValidationsConfig> metadataValidation = null;
@@ -106,16 +106,14 @@ public enum Dppk0102Pinv implements ILbltFieldMetadata {
             case PPIPM:
                 metadataValidation = E7102PinvValidationsConfig.VALIDATION_METADATA_PPIPM;
                 break;
-            //default:
-                //throw new IllegalStateException();
-default:
-                break;
+            default:
+                throw new IllegalStateException();
         }
 
         return new SubmissionConfig(programType.toString())
                 .config()
                 .setReferenceConfigs(ER7102PosLtlbDppkPinv.Configs.REF_CONFIG_PPIP)
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(KONVENSIONAL, programType.toString()))
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
                 .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
                 .setSegmentValidations(metadataValidation)
                 .build()

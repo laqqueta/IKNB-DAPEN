@@ -27,31 +27,30 @@ import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7038PosLtlbDppkRep
 import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7038PosLtlbDppkRepo.R_REPO010000;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
+import static id.go.ojk.metadata.util.constants.ProgramType.*;
 
 @RequiredArgsConstructor
 @AllArgsConstructor
 public enum E7038RepoValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM),
+    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM, PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula("5|10|11|13|14|15", R_REPO000000.key, R_REPO010000.key,
                     UtilMetadata.genMessageTotal(R_REPO000000.value, R_REPO010000.value))),
 
-    FV_EQUAL_NILAI_INVESTASI(programs(PPMPK, PPMPM), validationFields(15),
+    FV_EQUAL_NILAI_INVESTASI(programs(PPMPK, PPMPM, PPIPK), validationFields(15),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("14-10", R_REPO000000.key)),
 
-    FV_EQUAL_PERSENTASE_INVESTASI(programs(PPMPK, PPMPM), validationFields(16),
+    FV_EQUAL_PERSENTASE_INVESTASI(programs(PPMPK, PPMPM, PPIPK), validationFields(16),
             () -> UtilFieldValidation.genEqualsPercentageExceptPosFormula("15/10", R_REPO000000.key)),
 
-    CR_NAMA_PENGELOLA(programs(PPMPK, PPMPM), validationFields(19),
+    CR_NAMA_PENGELOLA(programs(PPMPK, PPMPM, PPIPK), validationFields(19),
             () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("N", "M", "N",
                     R_REPO010000.key, "18", ER1252Pengelolaan.getReferenceIndex(0), ER1252Pengelolaan.getReferenceValueIndex(0))),
 
-    CR_EXISTS_POS_M(programs(PPMPK, PPMPM), validationFields(2, 3, 4, 6, 7, 8, 9, 12, 16, 17, 18),
+    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK), validationFields(2, 3, 4, 6, 7, 8, 9, 12, 16, 17, 18),
             () -> UtilFieldConditional.genExistPos("N", "M", R_REPO000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM), validationFields(20),
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK), validationFields(20),
             () -> UtilFieldConditional.genExistPos("N", "O", R_REPO000000.key)),
 
     ;
@@ -99,5 +98,11 @@ public enum E7038RepoValidationsConfig implements ILbltMetadataValidation, IVali
 
     public static final BaseMetadataValidation<E7038RepoValidationsConfig> VALIDATION_METADATA_PPMPM =
             new LbltMetadataValidation<>(E7038RepoValidationsConfig.class, PPMPM);
+
+    public static final BaseMetadataValidation<E7038RepoValidationsConfig> VALIDATION_METADATA_PPIPK =
+            new LbltMetadataValidation<>(E7038RepoValidationsConfig.class, PPIPK);
+
+    public static final BaseMetadataValidation<E7038RepoValidationsConfig> VALIDATION_METADATA_PPIPM =
+            new LbltMetadataValidation<>(E7038RepoValidationsConfig.class, PPIPM);
 
 }

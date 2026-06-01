@@ -188,10 +188,10 @@ public enum E7001LanMValidationsConfig implements ILbltMetadataValidation, IVali
                         "3", UtilMetadata.genPipeRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.PPMPM), 22, 24),
                         EFormLaporanBulananTahunan.LTLB_PIUT.getCode(),
                         ER7042PosLtlbDppkPiut.R_PIUT010000.getObject().getKey(),
-                        "5|8|9", "13", "3", criteriaCondition, sumCriteriaCondition,
+                        "5|8|12", "13", "3", criteriaCondition, sumCriteriaCondition,
                         "PIUT|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain",
                         criteriaConditionErr, sumCriteriaConditionErr,
-                        "Piutang Iuran Peserta Total|Piutang Iuran Pemberi Kerja Total|Piutang Iuran Tambahan Total");
+                        "Piutang Iuran Peserta - Total|Piutang Iuran Pemberi Kerja - Total|Piutang Iuran Sukarela Peserta");
             }),
 
     SG_SUMIF_LAN0103060000(FieldUtil.programs(PPMPM), () -> {
@@ -490,18 +490,6 @@ public enum E7001LanMValidationsConfig implements ILbltMetadataValidation, IVali
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LPAN.getCode();
         String comparatorColumn = UtilMetadata.genPlusColumn(cols);
         KeyValueString comparatorPosCode = ER7002PosLtlbDppkLpan.R_LPAN0500000000.getObject();
-        String comparatorPosCodeForm = comparatorForm + comparatorPosCode.getKey();
-        String errMsg = selectPosCode.getValue() + " | Total " + comparatorPosCode.getValue() + " pada form " + comparatorForm;
-        return UtilSegmentValidation.genEqualsFormColumCalculation("3", selectPosCode.getKey(), comparatorColumn,
-                comparatorPosCodeForm, errMsg, 2);
-    }),
-
-    GEN_VALIDATON_FORM_ALM(programs(PPMPM), () -> {
-        KeyValueString selectPosCode = R_LAN0111000000.getObject();
-        int[] cols = { 18 };
-        String comparatorForm = EFormLaporanBulananTahunan.LTLB_ALM.getCode();
-        String comparatorColumn = UtilMetadata.genPlusColumn(cols);
-        KeyValueString comparatorPosCode = ER7012PosLtlbDppkAlm.R_ALM0500000000.getObject();
         String comparatorPosCodeForm = comparatorForm + comparatorPosCode.getKey();
         String errMsg = selectPosCode.getValue() + " | Total " + comparatorPosCode.getValue() + " pada form " + comparatorForm;
         return UtilSegmentValidation.genEqualsFormColumCalculation("3", selectPosCode.getKey(), comparatorColumn,

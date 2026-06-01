@@ -66,7 +66,7 @@ public enum ER7000PosLtlbDppkDtum implements IObject<KeyValueString> {
     }
 
     public enum Configs implements ReferenceConfig {
-        REF_CONFIG_PPMPK {
+        REF_CONFIG {
             @Override
             public String requiredPos() {
                 return UtilMetadata.genPipeRowExcept(getObjects(), new int[]{24, 25, 26});

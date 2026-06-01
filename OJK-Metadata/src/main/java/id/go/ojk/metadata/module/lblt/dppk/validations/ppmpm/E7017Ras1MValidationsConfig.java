@@ -236,7 +236,7 @@ public enum E7017Ras1MValidationsConfig implements ILbltMetadataValidation, IVal
     // RAS11001000000
     SG_MULTI_SUM_RAS11001000000(programs(PPMPM), () -> {
         FormulaParserData ops = multiFormulaFormatter(new FormulaParserData[]{
-                genFormulaParserFormatterDetailed(ER7001PosLtlbDppkLan.R_LAN0102000000.getObject(), "2", "Manfaat Pensiun", "LAN"),
+                genFormulaParserFormatterDetailed(ER7001PosLtlbDppkLan.R_LAN0102000000.getObject(), "3", "Manfaat Pensiun", "LAN"),
                 genFormulaParserFormatterDetailed(ER7017PosLtlbDppkRas1.R_RAS10901000000.getObject(), "2", "Manfaat Pensiun", "RAS1")
         }, "-");
 
@@ -285,7 +285,7 @@ public enum E7017Ras1MValidationsConfig implements ILbltMetadataValidation, IVal
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
         List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPMPM);
 
-        FormulaParserData operation = genFormulaParserFormatter(formObject, "0|1|2|48", "3",
+        FormulaParserData operation = genFormulaParserFormatter(formObject, "0|1|2|21", "3",
                 "+|+|+", "", comparatorForm);
         String err = "sama dengan Total baris " + operation.getErrMessage()
                 .replaceAll("Kolom 4 | Kolom 4", "") + " pada Form LAN kolom 'Manfaat Pensiun'";
@@ -295,13 +295,13 @@ public enum E7017Ras1MValidationsConfig implements ILbltMetadataValidation, IVal
 
     // RAS11302000000
     SG_MULTI_SUM_RAS11302000000(programs(PPMPM), () -> {
-        String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
-        List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPMPM);
-
-        FormulaParserData operation = genFormulaParserFormatter(formObject, "14|15|17", "3",
+        String comparatorForm = EFormLaporanBulananTahunan.LTLB_LPAN.getCode();
+        List<KeyValueString> formObject = ER7002PosLtlbDppkLpan.getObjects(PPMPM);
+        // (LPAN!F27+LPAN!F28+LPAN!F30)
+        FormulaParserData operation = genFormulaParserFormatter(formObject, "14|15|17", "2",
                 "+|+", "", comparatorForm);
         String err = "sama dengan Total baris (" + operation.getErrMessage()
-                .replaceAll("Kolom 4 | Kolom 4", "") + ") * Periode Laporan Berjalan; pada Form LAN kolom 'Manfaat Pensiun'";
+                .replaceAll("Kolom 4 | Kolom 4", "") + ") * Periode Laporan Berjalan; pada Form LPAN kolom 'Manfaat Pensiun'";
 
         return UtilSegmentValidation.genFormulaParserValidationV2PeriodePelaporan("2", R_RAS11302000000.key, operation.getFormula(), err, 0);
     }),
@@ -431,14 +431,14 @@ public enum E7017Ras1MValidationsConfig implements ILbltMetadataValidation, IVal
 
     SG_MULTI_SUM_RAS13010000000(programs(PPMPM), () -> {
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_ALM.getCode();
-        FormulaParserData ops = genFormulaParserFormatterDetailed(ER7012PosLtlbDppkAlm.R_ALM0600000000.getObject(), "4", "Jatuh tempo < 1 tahun - Total", comparatorForm);
+        FormulaParserData ops = genFormulaParserFormatterDetailed(ER7012PosLtlbDppkAlm.R_ALM1000000000.getObject(), "4", "Jatuh tempo < 1 tahun - Total", comparatorForm);
         String err = "sama dengan baris " + ops.getErrMessage() + " pada form ALM";
         return UtilSegmentValidation.genFormulaParserValidationV2("2", R_RAS13010000000.key, ops.getFormula(), err);
     }),
 
     SG_MULTI_SUM_RAS13020000000(programs(PPMPM), () -> {
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_ALM.getCode();
-        FormulaParserData ops = genFormulaParserFormatterDetailed(ER7012PosLtlbDppkAlm.R_ALM0600000000.getObject(), "16", "Total - Total", comparatorForm);
+        FormulaParserData ops = genFormulaParserFormatterDetailed(ER7012PosLtlbDppkAlm.R_ALM1000000000.getObject(), "16", "Total - Total", comparatorForm);
         String err = "sama dengan baris " + ops.getErrMessage() + " pada form ALM";
         return UtilSegmentValidation.genFormulaParserValidationV2("2", R_RAS13020000000.key, ops.getFormula(), err);
     }),
@@ -471,32 +471,60 @@ public enum E7017Ras1MValidationsConfig implements ILbltMetadataValidation, IVal
     /* Update Pak Yahya :: Segment Validation */
 
     SG_NUMERIC(programs(PPMPM), () -> {
-        int[] EXCEPT_ROW = { 2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35, 36, 37, 38, 41, 44, 46, 48, 47, 50, 53, 56,
+        int[] EXCEPT_ROW = { 1, 2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35, 36, 37, 38, 41, 44, 46, 48, 47, 49, 50, 53, 56,
                 59, 62 };
 
         return UtilSegmentValidation.genRegexNumeric("2|3|4|5",
                 UtilMetadata.genPipeRowExcept(getObjects(PPMPM), EXCEPT_ROW));
     }),
 
-    SG_NUMERIC_2(programs(PPMPM), () -> {
-        int[] EXCEPT_ROW = { 36, 37, 46, 48 };
-
-        return UtilSegmentValidation.genRegexNumeric("3|4|5",
-                UtilMetadata.genPipeRow(getObjects(PPMPM), EXCEPT_ROW));
-    }),
-
     SG_NUMERIC_DOT(programs(PPMPM), () -> {
-        int[] PERCENT_ROWS = { 2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35, 38, 41, 44, 47, 50, 53, 56,
+        int[] PERCENT_ROWS = { 2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35, 41, 44, 53, 56,
                 59, 62 };
 
         return UtilSegmentValidation.genRegexNumericDot("2|3|4|5",
                 UtilMetadata.genPipeRow(getObjects(PPMPM), PERCENT_ROWS));
     }),
 
+    SG_NUMERIC_2(programs(PPMPM), () -> {
+        int[] EXCEPT_ROW = { 36, 37, 46, 48, 49 };
+
+        return UtilSegmentValidation.genRegexNumeric("3|4|5",
+                UtilMetadata.genPipeRow(getObjects(PPMPM), EXCEPT_ROW));
+    }),
+
     SG_NUMERIC_NEGATIVE(programs(PPMPM), () -> {
-        int[] PERCENT_ROWS = { 36, 37, 46, 48 };
+        int[] PERCENT_ROWS = { 36, 37, 46, 48, 49 };
 
         return UtilSegmentValidation.genRegexNumericNegative("2",
+                UtilMetadata.genPipeRow(getObjects(PPMPM), PERCENT_ROWS));
+    }),
+
+    SG_NUMERIC_DOT_2(programs(PPMPM), () -> {
+        int[] PERCENT_ROWS = { 38, 47, 50 };
+
+        return UtilSegmentValidation.genRegexNumericDot("3|4|5",
+                UtilMetadata.genPipeRow(getObjects(PPMPM), PERCENT_ROWS));
+    }),
+
+    SG_NUMERIC_DOT_NEGATIVE(programs(PPMPM), () -> {
+        int[] PERCENT_ROWS = { 38, 47, 50 };
+
+        return UtilSegmentValidation.genRegexNumericDotNegative("2",
+                UtilMetadata.genPipeRow(getObjects(PPMPM), PERCENT_ROWS));
+    }),
+
+    SG_NUMERIC_DOT_3(programs(PPMPM), () -> {
+        int[] PERCENT_ROWS = { 1 };
+
+        return UtilSegmentValidation.genRegexNumericDot("2|5",
+                UtilMetadata.genPipeRow(getObjects(PPMPM), PERCENT_ROWS));
+    }),
+
+    SG_NUMERIC_3(programs(PPMPM), () -> {
+        int[] PERCENT_ROWS = { 1 };
+
+        return UtilSegmentValidation.genRegexNumeric("3|4",
                 UtilMetadata.genPipeRow(getObjects(PPMPM), PERCENT_ROWS));
     }),
 
@@ -504,9 +532,15 @@ public enum E7017Ras1MValidationsConfig implements ILbltMetadataValidation, IVal
 
     FV_TOTAL_EQUAL_1(programs(PPMPM), validationFields(Dppk0017Ras1.TOTAL), () -> {
         String formula = UtilMetadata.genPlusColumn(2, 4);
-        int[] rows = {0, 1, 3, 4, 6, 7, 9, 10, 12, 13, 15, 16, 18, 19, 21, 22, 24, 25, 27, 28, 30, 31, 33, 34, 36, 37, 39, 40,
+        int[] rows = {0, 3, 4, 6, 7, 9, 10, 12, 13, 15, 16, 18, 19, 21, 22, 24, 25, 27, 28, 30, 31, 33, 34, 36, 37, 39, 40,
                 42, 43, 48, 49, 54, 55};
         return UtilFieldValidation.genEqualsPosFormula(formula, UtilMetadata.genPipeRow(getObjects(PPMPM), rows));
+    }),
+
+    FV_TOTAL_EQUAL_1A(programs(PPMPM), validationFields(Dppk0017Ras1.TOTAL), () -> {
+        String formula = UtilMetadata.genPlusColumn(2, 4);
+        int[] rows = {1};
+        return UtilFieldValidation.genEqualsPosFormula(formula, 2, UtilMetadata.genPipeRow(getObjects(PPMPM), rows));
     }),
 
     FV_TOTAL_EQUAL_2(programs(PPMPM), validationFields(Dppk0017Ras1.TOTAL), () -> {

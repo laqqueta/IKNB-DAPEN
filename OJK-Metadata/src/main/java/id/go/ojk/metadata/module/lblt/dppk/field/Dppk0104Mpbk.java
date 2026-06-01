@@ -5,7 +5,6 @@ import id.go.ojk.client.model.config.SimpleValidation;
 import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
-import id.go.ojk.lib.client.model.config.UniqueType;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.metadata.field.lblt.ILbltFieldMetadata;
 import id.go.ojk.metadata.field.lblt.LbltMetadataField;
@@ -46,59 +45,59 @@ public enum Dppk0104Mpbk implements ILbltFieldMetadata {
 
     NAMA_BANK(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
             sf(2, null, "Nama Bank/Nomor Seri SBN",
-                    sv(M, 1, 999, all2))),
+                    sv(C, 1, 100, alfaNumericSpace))),
 
     DEPOSITO_NOMOR_BILYET(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
             sf(3, null, "Deposito - Nomor Bilyet",
-                    sv(M, 1, 999, all2))),
+                    sv(C, 1, 50, alfaNumeric))),
 
     DEPOSITO_NOMINAL(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
             sf(4, null, "Deposito - Nominal",
-                    sv(M, 1, 999, all2))),
+                    sv(M, 1, 18, numeric))),
 
     DEPOSITO_TANGGAL_JATUH_TEMPO(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
             sf(5, null, "Deposito - Tanggal Jatuh Tempo",
-                    sv(M, 1, 999, all2))),
+                    sv(C, 8, 8, date))),
 
     SERTIFIKAT_DEPOSITO_NOMOR_BILYET(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
             sf(6, null, "Sertifikat Deposito - Nomor Bilyet",
-                    sv(M, 1, 999, all2))),
+                    sv(C, 1, 50, alfaNumeric))),
 
     SERTIFIKAT_DEPOSITO_NOMINAL(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
             sf(7, null, "Sertifikat Deposito - Nominal",
-                    sv(M, 1, 999, all2))),
+                    sv(M, 1, 18, numeric))),
 
     SERTIFIKAT_DEPOSITO_TANGGAL_JATUH_TEMPO(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
             sf(8, null, "Sertifikat Deposito - Tanggal Jatuh Tempo",
-                    sv(M, 1, 999, all2))),
+                    sv(C, 8, 8, date))),
 
     SBI_NILAI_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
             sf(9, null, "SBI - Nilai Perolehan",
-                    sv(M, 1, 999, all2))),
+                    sv(C, 1, 18, numeric))),
 
     SBI_NILAI_WAJAR(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
             sf(10, null, "SBI - Nilai Wajar",
-                    sv(M, 1, 999, all2))),
+                    sv(C, 1, 18, numeric))),
 
     SBI_TANGGAL_JATUH_TEMPO(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
             sf(11, null, "SBI - Tanggal Jatuh Tempo",
-                    sv(M, 1, 999, all2))),
+                    sv(C, 8, 8, date))),
 
     SBN_NILAI_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
             sf(12, null, "SBN - Nilai Perolehan",
-                    sv(M, 1, 999, all2))),
+                    sv(C, 1, 18, numeric))),
 
     SBN_NILAI_WAJAR(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
             sf(13, null, "SBN - Nilai Wajar",
-                    sv(M, 1, 999, all2))),
+                    sv(C, 1, 18, numeric))),
 
     SBN_TANGGAL_JATUH_TEMPO(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
             sf(14, null, "SBN - Tanggal Jatuh Tempo",
-                    sv(M, 1, 999, all2))),
+                    sv(C, 8, 8, date))),
 
     TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
             sf(15, null, "TOTAL",
-                    sv(M, 1, 999, all2))),
+                    sv(M, 1, 18, numeric))),
 
     ;
 
@@ -133,7 +132,7 @@ public enum Dppk0104Mpbk implements ILbltFieldMetadata {
         throw new IllegalArgumentException("Unknown sector type: " + sectorType);
     }
 
-    public static SubmissionFormat formMetadata(ProgramType programType) {
+    public static SubmissionFormat formMetadata(SectorType sectorType, ProgramType programType) {
         FIELD_METADATA.setProgramType(programType);
 
         BaseMetadataValidation<E7104MpbkValidationsConfig> metadataValidation = null;
@@ -145,16 +144,14 @@ public enum Dppk0104Mpbk implements ILbltFieldMetadata {
             case PPIPM:
                 metadataValidation = E7104MpbkValidationsConfig.VALIDATION_METADATA_PPIPM;
                 break;
-            //default:
-                //throw new IllegalStateException();
-default:
-                break;
+            default:
+                throw new IllegalStateException();
         }
 
         return new SubmissionConfig(programType.toString())
                 .config()
                 .setReferenceConfigs(ER7104PosLtlbDppkMpbk.Configs.REF_CONFIG_PPIP)
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(KONVENSIONAL, programType.toString()))
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
                 .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
                 .setSegmentValidations(metadataValidation)
                 .build()

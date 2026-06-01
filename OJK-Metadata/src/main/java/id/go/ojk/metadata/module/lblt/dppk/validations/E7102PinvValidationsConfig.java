@@ -5,6 +5,10 @@ import id.go.ojk.client.model.config.validation.field.FieldValidation;
 import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
 import id.go.ojk.client.model.validation.IValidation;
 import id.go.ojk.client.validation.IValidationConverter;
+import id.go.ojk.conf.client.UtilMetadata;
+import id.go.ojk.conf.client.UtilSegmentValidation;
+import id.go.ojk.metadata.module.lblt.dppk.reference.ER7001PosLtlbDppkLan;
+import id.go.ojk.metadata.module.lblt.dppk.reference.ER7102PosLtlbDppkPinv;
 import id.go.ojk.metadata.util.constants.ProgramType;
 import id.go.ojk.metadata.validation.ValidationConverter;
 import id.go.ojk.metadata.validation.base.BaseMetadataValidation;
@@ -17,12 +21,41 @@ import java.util.EnumSet;
 import java.util.List;
 import java.util.function.Supplier;
 
-import static id.go.ojk.metadata.util.constants.ProgramType.PPIPK;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPIPM;
+import static id.go.ojk.metadata.util.FieldUtil.programs;
+import static id.go.ojk.metadata.util.constants.ProgramType.*;
 
 @AllArgsConstructor
 @RequiredArgsConstructor
 public enum E7102PinvValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
+
+    SG_EQUALS_FORMULA_1(programs(PPIPK),
+            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 5),
+                    ER7102PosLtlbDppkPinv.R_PINV0101200000.getObject().getKey(),
+                    UtilMetadata.genPlusRow(ER7102PosLtlbDppkPinv.getObjects(), 0, 18),
+                    UtilMetadata.genMessage(ER7102PosLtlbDppkPinv.R_PINV0101200000.getObject().getValue(),
+                            UtilMetadata.genPlusDesc(ER7102PosLtlbDppkPinv.getObjects(), 0, 18)))),
+
+
+    SG_EQUALS_FORMULA_2(programs(PPIPK),
+            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 5),
+                    ER7102PosLtlbDppkPinv.R_PINV0102060000.getObject().getKey(),
+                    UtilMetadata.genPlusRow(ER7102PosLtlbDppkPinv.getObjects(), 20, 24),
+                    UtilMetadata.genMessage(ER7102PosLtlbDppkPinv.R_PINV0102060000.getObject().getValue(),
+                            UtilMetadata.genPlusDesc(ER7102PosLtlbDppkPinv.getObjects(), 20, 24)))),
+
+    SG_EQUALS_FORMULA_3(programs(PPIPK),
+            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 5),
+                    ER7102PosLtlbDppkPinv.R_PINV0103070000.getObject().getKey(),
+                    UtilMetadata.genPlusRow(ER7102PosLtlbDppkPinv.getObjects(), 26, 31),
+                    UtilMetadata.genMessage(ER7102PosLtlbDppkPinv.R_PINV0103070000.getObject().getValue(),
+                            UtilMetadata.genPlusDesc(ER7102PosLtlbDppkPinv.getObjects(), 26, 31)))),
+
+    SG_EQUALS_FORMULA_4(programs(PPIPK),
+            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 5),
+                    ER7102PosLtlbDppkPinv.R_PINV0104000000.getObject().getKey(),
+                    UtilMetadata.genPlusRow(ER7102PosLtlbDppkPinv.getObjects(), new int[] {19, 25}) + "-PINV0103070000",
+                    UtilMetadata.genMessage(ER7102PosLtlbDppkPinv.R_PINV0104000000.getObject().getValue(),
+                            UtilMetadata.genPlusDesc(ER7102PosLtlbDppkPinv.getObjects(), new int[] {19, 25}) + "-'Total Liabilitas Di Luar Kewajiban Manfaat Pensiun'"))),
 
 
     ;

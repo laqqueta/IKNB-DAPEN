@@ -25,8 +25,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static id.go.ojk.lib.client.model.config.DataType.*;
-import static id.go.ojk.lib.client.model.constant.RequiredCondition.C;
-import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
+import static id.go.ojk.lib.client.model.constant.RequiredCondition.*;
 import static id.go.ojk.metadata.util.FieldUtil.*;
 import static id.go.ojk.metadata.util.constants.ProgramType.PPIPK;
 import static id.go.ojk.metadata.util.constants.ProgramType.PPIPM;
@@ -46,27 +45,27 @@ public enum Dppk0105Pmbk implements ILbltFieldMetadata {
 
     JUMLAH_PESERTA_MP_BERKALA(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
             sf(2, null, "Jumlah Peserta MP Berkala",
-                    sv(C, 1, 18, all2))),
+                    sv(M, 1, 18, numeric))),
 
     JUMLAH_PEMBAYARAN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
             sf(3, null, "Jumlah Pembayaran",
-                    sv(C, 1, 18, all2))),
+                    sv(M, 1, 18, numeric))),
 
     AKUMULASI_DANA_SALDO(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
             sf(4, null, "Akumulasi Dana Manfaat Berkala - Saldo Peserta",
-                    sv(C, 1, 18, all2))),
+                    sv(M, 1, 18, numeric))),
 
     AKUMULASI_DANA_TOTAL_PENGEMBANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
             sf(5, null, "Akumulasi Dana Manfaat Berkala - Hasil Pengembangan",
-                    sv(C, 1, 18, all2))),
+                    sv(M, 1, 18, numeric))),
 
     AKUMULASI_DANA_TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
             sf(6, null, "Akumulasi Dana Manfaat Berkala - Total",
-                    sv(C, 1, 18, all2))),
+                    sv(M, 1, 18, numeric))),
 
     KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
             sf(7, null, "Keterangan",
-                    sv(C, 1, 256, all2))),
+                    sv(O, 1, 256, freeText))),
 
     ;
 
@@ -101,7 +100,7 @@ public enum Dppk0105Pmbk implements ILbltFieldMetadata {
         throw new IllegalArgumentException("Unknown sector type: " + sectorType);
     }
 
-    public static SubmissionFormat formMetadata(ProgramType programType) {
+    public static SubmissionFormat formMetadata(SectorType sectorType, ProgramType programType) {
         FIELD_METADATA.setProgramType(programType);
 
         BaseMetadataValidation<E7105PmbkValidationsConfig> metadataValidation = null;
@@ -113,16 +112,14 @@ public enum Dppk0105Pmbk implements ILbltFieldMetadata {
             case PPIPM:
                 metadataValidation = E7105PmbkValidationsConfig.VALIDATION_METADATA_PPIPM;
                 break;
-            //default:
-                //throw new IllegalStateException();
-default:
-                break;
+            default:
+                throw new IllegalStateException();
         }
 
         return new SubmissionConfig(programType.toString())
                 .config()
                 .setReferenceConfigs(ER7105PosLtlbDppkPmbk.Configs.REF_CONFIG_PPIP)
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(KONVENSIONAL, programType.toString()))
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
                 .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
                 .setSegmentValidations(metadataValidation)
                 .build()

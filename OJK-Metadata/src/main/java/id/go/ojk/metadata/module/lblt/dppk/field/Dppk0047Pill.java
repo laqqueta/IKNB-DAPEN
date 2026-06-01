@@ -7,11 +7,9 @@ import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.metadata.module.lblt.dppk.EFormLaporanBulananTahunan;
-import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpipk;
-import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpk;
-import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpm;
-import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataSharedLkbt;
+import id.go.ojk.metadata.module.lblt.dppk.header.*;
 import id.go.ojk.metadata.module.lblt.dppk.reference.ER7047PosLtlbDppkPill;
+import id.go.ojk.metadata.module.lblt.dppk.validations.E7045PiuiValidationsConfig;
 import id.go.ojk.metadata.module.lblt.dppk.validations.E7047PillValidationsConfig;
 import id.go.ojk.metadata.util.constants.ProgramType;
 import id.go.ojk.metadata.util.constants.SectorType;
@@ -49,12 +47,12 @@ public enum Dppk0047Pill implements ILbltFieldMetadata {
     JENIS_PIUTANG_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(2, null, "Jenis Piutang Lain",
                     sv(C, 1, 100, alfaNumeric)
-                            /*.confConditionalRequired(E7047PillValidationsConfig.CR_EXISTS_POS_M)*/)
+                    /*.confConditionalRequired(E7047PillValidationsConfig.CR_EXISTS_POS_M)*/)
     ),
     PIHAK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(3, null, "Pihak",
                     sv(C, 1, 100, alfaNumeric)
-                            /*.confConditionalRequired(E7047PillValidationsConfig.CR_EXISTS_POS_M)*/)
+                    /*.confConditionalRequired(E7047PillValidationsConfig.CR_EXISTS_POS_M)*/)
     ),
     NOMINAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(4, null, "Nominal",
@@ -63,7 +61,7 @@ public enum Dppk0047Pill implements ILbltFieldMetadata {
     TANGGAL_MUNCUL_PIUTANG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(5, null, "Tanggal Muncul Piutang",
                     sv(C, 8, 8, date)
-                            /*.confConditionalRequired(E7047PillValidationsConfig.CR_EXISTS_POS_M)*/)
+                    /*.confConditionalRequired(E7047PillValidationsConfig.CR_EXISTS_POS_M)*/)
     ),
     MANFAAT_PENSIUN_LAINNYA_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(6, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain",
@@ -75,7 +73,7 @@ public enum Dppk0047Pill implements ILbltFieldMetadata {
     KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
             sf(7, null, "Keterangan",
                     sv(C, 1, 250, freeText)
-                            /*.confConditionalRequired(E7047PillValidationsConfig.CR_EXISTS_POS_O)*/)
+                    /*.confConditionalRequired(E7047PillValidationsConfig.CR_EXISTS_POS_O)*/)
     ),
     ;
 
@@ -86,7 +84,8 @@ public enum Dppk0047Pill implements ILbltFieldMetadata {
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7047Pill.getObject()),
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7047Pill.getObject()),
-new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7047Pill.getObject())
+            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7047Pill.getObject()),
+            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7047Pill.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0047Pill> FIELD_METADATA = new LbltMetadataField<>(Dppk0047Pill.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
@@ -111,10 +110,10 @@ new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7047Pill.getObject())
         throw new IllegalArgumentException("Unknown sector type: " + sectorType);
     }
 
-    public static SubmissionFormat formMetadata(ProgramType programType) {
+    public static SubmissionFormat formMetadata(SectorType sectorType, ProgramType programType) {
         FIELD_METADATA.setProgramType(programType);
 
-                BaseMetadataValidation<E7047PillValidationsConfig> metadataValidation = null;
+        BaseMetadataValidation<E7047PillValidationsConfig> metadataValidation = null;
 
         switch (programType) {
             case PPMPK:
@@ -123,16 +122,20 @@ new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7047Pill.getObject())
             case PPMPM:
                 metadataValidation = E7047PillValidationsConfig.VALIDATION_METADATA_PPMPM;
                 break;
-            //default:
-                //throw new IllegalStateException();
-default:
+            case PPIPK:
+                metadataValidation = E7047PillValidationsConfig.VALIDATION_METADATA_PPIPK;
                 break;
+            case PPIPM:
+                metadataValidation = E7047PillValidationsConfig.VALIDATION_METADATA_PPIPM;
+                break;
+            default:
+                throw new IllegalStateException();
         }
 
         return new SubmissionConfig(programType.toString())
                 .config()
                 .setReferenceConfigs(ER7047PosLtlbDppkPill.Configs.REF_CONFIG_PPMP)
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(KONVENSIONAL, programType.toString()))
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
                 .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
                 .setSegmentValidations(metadataValidation)
                 .build()

@@ -27,34 +27,33 @@ import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7033PosLtlbDppkMtn
 import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7033PosLtlbDppkMtn.R_MTN010000;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
+import static id.go.ojk.metadata.util.constants.ProgramType.*;
 
 @RequiredArgsConstructor
 @AllArgsConstructor
 public enum E7033MtnValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM),
+    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM, PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula("6|11|12|13", R_MTN000000.key, R_MTN010000.key,
                     UtilMetadata.genMessageTotal(R_MTN000000.value, R_MTN010000.value))),
 
-    FV_EQUAL_NILAI_INVESTASI(programs(PPMPK, PPMPM), validationFields(13),
+    FV_EQUAL_NILAI_INVESTASI(programs(PPMPK, PPMPM, PPIPK), validationFields(13),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("12-11", R_MTN000000.key)),
 
-    FV_EQUAL_PERSENTASE_INVESTASI(programs(PPMPK, PPMPM), validationFields(14),
+    FV_EQUAL_PERSENTASE_INVESTASI(programs(PPMPK, PPMPM, PPIPK), validationFields(14),
             () -> UtilFieldValidation.genEqualsPercentageExceptPosFormula("13/11", R_MTN000000.key)),
 
-    FV_DATE_GREATER(programs(PPMPK, PPMPM), validationFields(8),
+    FV_DATE_GREATER(programs(PPMPK, PPMPM, PPIPK), validationFields(8),
             () -> UtilFieldValidation.genDateGreaterEquals("5")),
 
-    CR_NAMA_PENGELOLA(programs(PPMPK, PPMPM), validationFields(18),
+    CR_NAMA_PENGELOLA(programs(PPMPK, PPMPM, PPIPK), validationFields(18),
             () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("N", "M", "N",
                     R_MTN010000.key, "17", ER1252Pengelolaan.getReferenceIndex(0), ER1252Pengelolaan.getReferenceValueIndex(0))),
 
-    CR_EXISTS_POS_M(programs(PPMPK, PPMPM), validationFields(2, 3, 4, 5, 7, 8, 9, 10, 14, 15, 16, 17),
+    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK), validationFields(2, 3, 4, 5, 7, 8, 9, 10, 14, 15, 16, 17),
             () -> UtilFieldConditional.genExistPos("N", "M", R_MTN000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM), validationFields(19),
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK), validationFields(19),
             () -> UtilFieldConditional.genExistPos("N", "O", R_MTN000000.key)),
 
     ;
@@ -102,5 +101,11 @@ public enum E7033MtnValidationsConfig implements ILbltMetadataValidation, IValid
 
     public static final BaseMetadataValidation<E7033MtnValidationsConfig> VALIDATION_METADATA_PPMPM =
             new LbltMetadataValidation<>(E7033MtnValidationsConfig.class, PPMPM);
+
+    public static final BaseMetadataValidation<E7033MtnValidationsConfig> VALIDATION_METADATA_PPIPK =
+            new LbltMetadataValidation<>(E7033MtnValidationsConfig.class, PPIPK);
+
+    public static final BaseMetadataValidation<E7033MtnValidationsConfig> VALIDATION_METADATA_PPIPM =
+            new LbltMetadataValidation<>(E7033MtnValidationsConfig.class, PPIPM);
 
 }

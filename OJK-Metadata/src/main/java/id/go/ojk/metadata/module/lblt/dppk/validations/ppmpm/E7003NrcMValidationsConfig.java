@@ -239,16 +239,16 @@ public enum E7003NrcMValidationsConfig implements ILbltMetadataValidation, IVali
     SG_EQUALS_FORMULA_2(programs(PPMPM),
             () -> UtilSegmentValidation.genEqualsFormula("2",
                     ER7003PosLtlbDppkNrc.R_NRC0105000000.getObject().getKey(),
-                    UtilMetadata.genPlusRow(ER7003PosLtlbDppkNrc.getObjects(ProgramType.PPMPM), 23, 31),
+                    UtilMetadata.genPlusRow(ER7003PosLtlbDppkNrc.getObjects(ProgramType.PPMPM), 23, 32),
                     UtilMetadata.genMessage(ER7003PosLtlbDppkNrc.R_NRC0105000000.getObject().getValue(),
                             UtilMetadata.genPlusDesc(ER7003PosLtlbDppkNrc.getObjects(ProgramType.PPMPM), 23, 32)))),
 
     SG_EQUALS_FORMULA_3(programs(PPMPM),
             () -> UtilSegmentValidation.genEqualsFormula("2",
                     ER7003PosLtlbDppkNrc.R_NRC0107000000.getObject().getKey(),
-                    UtilMetadata.genPlusRow(ER7003PosLtlbDppkNrc.getObjects(ProgramType.PPMPM), 34, 39),
+                    UtilMetadata.genPlusRow(ER7003PosLtlbDppkNrc.getObjects(PPMPM), 34, 38) + "-NRC0106060000",
                     UtilMetadata.genMessage(ER7003PosLtlbDppkNrc.R_NRC0107000000.getObject().getValue(),
-                            UtilMetadata.genPlusDesc(ER7003PosLtlbDppkNrc.getObjects(ProgramType.PPMPM), 34, 39)))),
+                            UtilMetadata.genPlusDesc(ER7003PosLtlbDppkNrc.getObjects(PPMPM), 34, 38) + "-'Akumulasi Penyusutan'"))),
 
     SG_EQUALS_FORMULA_5(programs(PPMPM),
             () -> UtilSegmentValidation.genEqualsFormula("2",
@@ -309,7 +309,7 @@ public enum E7003NrcMValidationsConfig implements ILbltMetadataValidation, IVali
 //
     GEN_VALIDATON_FORM_LAK(programs(PPMPM), () -> {
         KeyValueString selectPosCode = R_NRC0104010000.getObject();
-        int[] cols = {12};
+        int[] cols = {2};
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAK.getCode();
         String comparatorColumn = UtilMetadata.genPlusColumn(cols);
         KeyValueString comparatorPosCode = ER7005PosLtlbDppkLak.R_LAK0900000000.getObject();

@@ -258,12 +258,12 @@ public enum E7003NrcKValidationsConfig implements ILbltMetadataValidation, IVali
     SG_EQUALS_FORMULA_2(programs(PPMPK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 12),
                     ER7003PosLtlbDppkNrc.R_NRC0105000000.getObject().getKey(),
-                    UtilMetadata.genPlusRow(ER7003PosLtlbDppkNrc.getObjects(ProgramType.PPMPK), 23, 31),
+                    UtilMetadata.genPlusRow(ER7003PosLtlbDppkNrc.getObjects(ProgramType.PPMPK), 23, 32),
                     UtilMetadata.genMessage(ER7003PosLtlbDppkNrc.R_NRC0105000000.getObject().getValue(),
                             UtilMetadata.genPlusDesc(ER7003PosLtlbDppkNrc.getObjects(ProgramType.PPMPK), 23, 32)))),
 
     SG_EQUALS_FORMULA_3(programs(PPMPK),
-            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 12),
+            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 11),
                     ER7003PosLtlbDppkNrc.R_NRC0107000000.getObject().getKey(),
                     UtilMetadata.genPlusRow(ER7003PosLtlbDppkNrc.getObjects(ProgramType.PPMPK), 34, 39),
                     UtilMetadata.genMessage(ER7003PosLtlbDppkNrc.R_NRC0107000000.getObject().getValue(),
@@ -282,6 +282,13 @@ public enum E7003NrcKValidationsConfig implements ILbltMetadataValidation, IVali
                     UtilMetadata.genPlusRow(ER7003PosLtlbDppkNrc.getObjects(ProgramType.PPMPK), new int[]{43, 44, 52}),
                     UtilMetadata.genMessage(ER7003PosLtlbDppkNrc.R_NRC0118000000.getObject().getValue(),
                             UtilMetadata.genPlusDesc(ER7003PosLtlbDppkNrc.getObjects(ProgramType.PPMPK), new int[]{43, 44, 52})))),
+
+    SG_EQUALS_GABUNGAN(programs(PPMPK),
+            () -> UtilSegmentValidation.genEqualsFormula("12",
+                    ER7003PosLtlbDppkNrc.R_NRC0107000000.getObject().getKey(),
+                    UtilMetadata.genPlusRow(ER7003PosLtlbDppkNrc.getObjects(ProgramType.PPMPK), 34, 38) + "-NRC0106060000",
+                    UtilMetadata.genMessage(ER7003PosLtlbDppkNrc.R_NRC0107000000.getObject().getValue(),
+                            UtilMetadata.genPlusDesc(ER7003PosLtlbDppkNrc.getObjects(ProgramType.PPMPK), 34, 38) + "-'Akumulasi Penyusutan'"))),
 
     SG_FIELD_TOTAL_7(programs(PPMPK), () -> genTotalValidation(R_NRC0106010000.key,
             EFormLaporanBulananTahunan.LTLB_TNBG,

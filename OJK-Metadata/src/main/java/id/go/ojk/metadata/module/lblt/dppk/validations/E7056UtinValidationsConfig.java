@@ -24,21 +24,20 @@ import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7056PosLtlbDppkUti
 import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7056PosLtlbDppkUtin.R_UTIN010000;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
+import static id.go.ojk.metadata.util.constants.ProgramType.*;
 
 @RequiredArgsConstructor
 @AllArgsConstructor
 public enum E7056UtinValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM),
+    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM, PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula("4", R_UTIN000000.key, R_UTIN010000.key,
                     UtilMetadata.genMessageTotal(R_UTIN000000.value, R_UTIN010000.value))),
 
-    CR_EXISTS_POS_M(programs(PPMPK, PPMPM), validationFields(2,3,5),
+    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK), validationFields(2,3,5),
             () -> UtilFieldConditional.genExistPos("N", "M", R_UTIN000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM), validationFields(6),
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK), validationFields(6),
             () -> UtilFieldConditional.genExistPos("N", "O", R_UTIN000000.key)),
 
     ;
@@ -86,5 +85,11 @@ public enum E7056UtinValidationsConfig implements ILbltMetadataValidation, IVali
 
     public static final BaseMetadataValidation<E7056UtinValidationsConfig> VALIDATION_METADATA_PPMPM =
             new LbltMetadataValidation<>(E7056UtinValidationsConfig.class, PPMPM);
+
+    public static final BaseMetadataValidation<E7056UtinValidationsConfig> VALIDATION_METADATA_PPIPK =
+            new LbltMetadataValidation<>(E7056UtinValidationsConfig.class, PPIPK);
+
+    public static final BaseMetadataValidation<E7056UtinValidationsConfig> VALIDATION_METADATA_PPIPM =
+            new LbltMetadataValidation<>(E7056UtinValidationsConfig.class, PPIPM);
 
 }

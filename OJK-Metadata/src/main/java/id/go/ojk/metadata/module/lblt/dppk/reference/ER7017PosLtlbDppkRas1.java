@@ -9,6 +9,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.EnumSet;
 import java.util.List;
 
@@ -149,6 +150,12 @@ public enum ER7017PosLtlbDppkRas1 implements IObject<KeyValueString> {
             @Override
             public String requiredPos() {
                 return UtilMetadata.genPipeRow(getObjects(programType));
+            }
+
+            @Override
+            public String savePosForm() {
+                return UtilMetadata.genFieldSave("2",
+                        Collections.singletonList(R_RAS10901000000.getObject()));
             }
 
             @Override

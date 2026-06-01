@@ -27,31 +27,30 @@ import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7037PosLtlbDppkKok
 import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7037PosLtlbDppkKokb.R_KOKB010000;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
+import static id.go.ojk.metadata.util.constants.ProgramType.*;
 
 @RequiredArgsConstructor
 @AllArgsConstructor
 public enum E7037KokbValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM),
+    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM, PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula("6|7|8", R_KOKB000000.key, R_KOKB010000.key,
                     UtilMetadata.genMessageTotal(R_KOKB000000.value, R_KOKB010000.value))),
 
-    FV_EQUAL_NILAI_INVESTASI(programs(PPMPK, PPMPM), validationFields(8),
+    FV_EQUAL_NILAI_INVESTASI(programs(PPMPK, PPMPM, PPIPK), validationFields(8),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("7-6", R_KOKB000000.key)),
 
-    FV_EQUAL_PERSENTASE_INVESTASI(programs(PPMPK, PPMPM), validationFields(9),
+    FV_EQUAL_PERSENTASE_INVESTASI(programs(PPMPK, PPMPM, PPIPK), validationFields(9),
             () -> UtilFieldValidation.genEqualsPercentageExceptPosFormula("8/6", R_KOKB000000.key)),
 
-    CR_NAMA_PENGELOLA(programs(PPMPK, PPMPM), validationFields(12),
+    CR_NAMA_PENGELOLA(programs(PPMPK, PPMPM, PPIPK), validationFields(12),
             () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("N", "M", "N",
                     R_KOKB010000.key, "11", ER1252Pengelolaan.getReferenceIndex(0), ER1252Pengelolaan.getReferenceValueIndex(0))),
 
-    CR_EXISTS_POS_M(programs(PPMPK, PPMPM), validationFields(2, 3, 4, 5, 9, 10, 11),
+    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK), validationFields(2, 3, 4, 5, 9, 10, 11),
             () -> UtilFieldConditional.genExistPos("N", "M", R_KOKB000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM), validationFields(13),
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK), validationFields(13),
             () -> UtilFieldConditional.genExistPos("N", "O", R_KOKB000000.key)),
 
     ;
@@ -99,5 +98,11 @@ public enum E7037KokbValidationsConfig implements ILbltMetadataValidation, IVali
 
     public static final BaseMetadataValidation<E7037KokbValidationsConfig> VALIDATION_METADATA_PPMPM =
             new LbltMetadataValidation<>(E7037KokbValidationsConfig.class, PPMPM);
+
+    public static final BaseMetadataValidation<E7037KokbValidationsConfig> VALIDATION_METADATA_PPIPK =
+            new LbltMetadataValidation<>(E7037KokbValidationsConfig.class, PPIPK);
+
+    public static final BaseMetadataValidation<E7037KokbValidationsConfig> VALIDATION_METADATA_PPIPM =
+            new LbltMetadataValidation<>(E7037KokbValidationsConfig.class, PPIPM);
 
 }

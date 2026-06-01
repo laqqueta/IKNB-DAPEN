@@ -45,17 +45,17 @@ public enum ER7104PosLtlbDppkMpbk implements IObject<KeyValueString> {
         REF_CONFIG_PPIP {
             @Override
             public String savePos() {
-                return UtilMetadata.genFieldSave("3", getObjects());
+                return UtilMetadata.genFieldSave("4|7|15", getObjects());
             }
 
-            @Override
-            public String savePosForm() {
-                return UtilMetadata.genFieldSave("3|4", getObjects());
-            }
+//            @Override
+//            public String savePosForm() {
+//                return UtilMetadata.genFieldSave("3|4", getObjects());
+//            }
 
             @Override
             public String requiredPos() {
-                return UtilMetadata.genPipeRow(getObjects(), new int[]{1});
+                return UtilMetadata.genPipeRow(getObjects(), new int[]{ 1 });
             }
         }
     }

@@ -105,7 +105,7 @@ public enum Dppk0101Roimpl implements ILbltFieldMetadata {
         throw new IllegalArgumentException("Unknown sector type: " + sectorType);
     }
 
-    public static SubmissionFormat formMetadata(ProgramType programType) {
+    public static SubmissionFormat formMetadata(SectorType sectorType, ProgramType programType) {
         FIELD_METADATA.setProgramType(programType);
 
         BaseMetadataValidation<? extends ILbltMetadataValidation> metadataValidation = null;
@@ -119,7 +119,7 @@ public enum Dppk0101Roimpl implements ILbltFieldMetadata {
         return new SubmissionConfig(programType.toString())
                 .config()
                 .setReferenceConfigs(ER7101PosLtlbDppkRoimpl.Configs.REF_CONFIG_PPIP)
-                .setSubmissionFormat(getPpipSubmissionFormatConfig(KONVENSIONAL, programType.toString()))
+                .setSubmissionFormat(getPpipSubmissionFormatConfig(sectorType, programType.toString()))
                 .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
                 .setSegmentValidations(metadataValidation)
                 .build()

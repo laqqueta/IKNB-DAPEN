@@ -11,6 +11,7 @@ import id.go.ojk.metadata.validation.base.IBaseMetadataValidation;
 import org.apache.commons.lang3.SerializationUtils;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -33,15 +34,15 @@ public abstract class BaseMetadataField<T extends Enum<T> & IBaseFieldMetadata> 
         return new ArrayList<>(EnumSet.allOf(enumClass));
     }
 
-    protected List<SubmissionField> reindex(List<SubmissionField> filtered, Map<Integer, Integer> reindexNumber) {
+    protected List<SubmissionField> reindex(List<SubmissionField> filtered, List<Integer> reindexNumber) {
+        AtomicInteger idx = new AtomicInteger(0);
         return filtered.stream()
+                .filter(f -> reindexNumber.contains(f.getNumber()))
                 .peek(f -> {
-                    if (reindexNumber.containsKey(f.getNumber())) {
-                        int num = reindexNumber.get(f.getNumber());
-                        String pref = num < 10 ? "0" : "";
-                        f.setNumber(num);
-                        f.setCode("F" + pref + num);
-                    }
+                    int num = idx.getAndIncrement();
+                    String pref = num < 10 ? "0" : "";
+                    f.setNumber(num);
+                    f.setCode("F" + pref + num);
                 })
                 .sorted(Comparator.comparingInt(SubmissionField::getNumber))
                 .collect(Collectors.toList());
@@ -105,7 +106,7 @@ public abstract class BaseMetadataField<T extends Enum<T> & IBaseFieldMetadata> 
                 .collect(Collectors.toList());
     }
 
-    public List<SubmissionField> getReindexClearedFields(Map<Integer, Integer> reindexNumber) {
+    public List<SubmissionField> getReindexClearedFields(List<Integer> reindexNumber) {
         return reindex(getfilteredFieldStream()
                 .map(SerializationUtils::clone)
                 .peek(field -> {
@@ -119,11 +120,11 @@ public abstract class BaseMetadataField<T extends Enum<T> & IBaseFieldMetadata> 
                 .collect(Collectors.toList()), reindexNumber);
     }
 
-    public List<SubmissionField> getReindexFields(Map<Integer, Integer> reindexNumber) {
+    public List<SubmissionField> getReindexFields(List<Integer> reindexNumber) {
         return reindex(getFields(), reindexNumber);
     }
 
-    public <V extends IBaseMetadataValidation> List<SubmissionField> getReindexFields(Map<Integer, Integer> reindexNumber, Map<Integer, List<V>> fieldValidations) {
+    public <V extends IBaseMetadataValidation> List<SubmissionField> getReindexFields(List<Integer> reindexNumber, Map<Integer, List<V>> fieldValidations) {
         return reindex(getFields(fieldValidations), reindexNumber);
     }
 

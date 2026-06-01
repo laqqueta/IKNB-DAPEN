@@ -24,36 +24,35 @@ import java.util.function.Supplier;
 import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7018PosLtlbDppkRas2.*;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
+import static id.go.ojk.metadata.util.constants.ProgramType.*;
 
 @RequiredArgsConstructor
 @AllArgsConstructor
 public enum E7018Ras2ValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_NUMERIC_DOT(programs(PPMPK, PPMPM),
+    SG_NUMERIC_DOT(programs(PPMPK, PPMPM, PPIPK),
             () -> UtilSegmentValidation.genRegexNumericDot("3|4",
                     UtilMetadata.genPipeRow(ER7018PosLtlbDppkRas2.getObjects(), new int[]{6}))),
 
-    SG_NUMERIC(programs(PPMPK, PPMPM),
+    SG_NUMERIC(programs(PPMPK, PPMPM, PPIPK),
             () -> UtilSegmentValidation.genRegexNumeric("3|4",
                     UtilMetadata.genPipeRowExcept(ER7018PosLtlbDppkRas2.getObjects(), new int[]{6}))),
 
-    SG_SUM_COL(programs(PPMPK, PPMPM),
+    SG_SUM_COL(programs(PPMPK, PPMPM, PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula("3|4", R_RAS20102000000.key, UtilMetadata.genPlusRow(ER7018PosLtlbDppkRas2.getObjects(), 1, 4),
                     UtilMetadata.genMessageTotal(R_RAS20102000000.value, UtilMetadata.genPlusDesc(ER7018PosLtlbDppkRas2.getObjects(), 1, 4)))),
 
-    SG_RASIO(programs(PPMPK, PPMPM),
+    SG_RASIO(programs(PPMPK, PPMPM, PPIPK),
             () -> UtilSegmentValidation.genEqualsRatio2(
                     "3|4", R_RAS20103000000.key, R_RAS20102000000.key,
                     "3|4", R_RAS20100000000.key, "2",
                     UtilMetadata.genMessage(R_RAS20103000000.value,
                             UtilMetadata.genDevideDesc(ER7018PosLtlbDppkRas2.getObjects(), new int[]{5, 0})), 2)),
 
-    CR_EMPTY_1(programs(PPMPK, PPMPM), validationFields(2),
+    CR_EMPTY_1(programs(PPMPK, PPMPM, PPIPK), validationFields(2),
             () -> UtilFieldConditional.genExistPos("N", "M", UtilMetadata.genPipeRow(ER7018PosLtlbDppkRas2.getObjects(), 1, 6))),
 
-    CR_EMPTY_2(programs(PPMPK, PPMPM), validationFields(3, 4),
+    CR_EMPTY_2(programs(PPMPK, PPMPM, PPIPK), validationFields(3, 4),
             () -> UtilFieldConditional.genExistPos("N", "M", UtilMetadata.genPipeRow(ER7018PosLtlbDppkRas2.getObjects(), new int[]{0}))),
 
     ;
@@ -101,5 +100,12 @@ public enum E7018Ras2ValidationsConfig implements ILbltMetadataValidation, IVali
 
     public static final BaseMetadataValidation<E7018Ras2ValidationsConfig> VALIDATION_METADATA_PPMPM =
             new LbltMetadataValidation<>(E7018Ras2ValidationsConfig.class, PPMPM);
+
+    public static final BaseMetadataValidation<E7018Ras2ValidationsConfig> VALIDATION_METADATA_PPIPK =
+            new LbltMetadataValidation<>(E7018Ras2ValidationsConfig.class, PPIPK);
+
+    public static final BaseMetadataValidation<E7018Ras2ValidationsConfig> VALIDATION_METADATA_PPIPM =
+            new LbltMetadataValidation<>(E7018Ras2ValidationsConfig.class, PPIPM);
+
 
 }

@@ -25,30 +25,33 @@ import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7042PosLtlbDppkPiu
 import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7042PosLtlbDppkPiut.R_PIUT010000;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
+import static id.go.ojk.metadata.util.constants.ProgramType.*;
 
 @RequiredArgsConstructor
 @AllArgsConstructor
 public enum E7042PiutValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM),
+    SG_EQUAL_FORMULA_1(programs(PPMPK, PPMPM),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(3, 12), R_PIUT000000.key, R_PIUT010000.key,
                     UtilMetadata.genMessageTotal(R_PIUT000000.value, R_PIUT010000.value))),
 
-    FV_EQUAL_PEMBERI_KERJA(programs(PPMPK, PPMPM), validationFields(5),
+    SG_EQUAL_FORMULA_2(programs(PPIPK),
+            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(3, 9), R_PIUT000000.key, R_PIUT010000.key,
+                    UtilMetadata.genMessageTotal(R_PIUT000000.value, R_PIUT010000.value))),
+
+    FV_EQUAL_PEMBERI_KERJA(programs(PPMPK, PPMPM, PPIPK), validationFields(5),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("3+4", R_PIUT000000.key)),
 
-    FV_EQUAL_PESERTA(programs(PPMPK, PPMPM), validationFields(8),
+    FV_EQUAL_PESERTA(programs(PPMPK, PPMPM, PPIPK), validationFields(8),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("6+7", R_PIUT000000.key)),
 
-    FV_EQUAL_TAMBAHAN(programs(PPMPK, PPMPM), validationFields(11),
+    FV_EQUAL_TAMBAHAN(programs(PPMPK, PPMPM, PPIPK), validationFields(11),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("9+10", R_PIUT000000.key)),
 
-    CR_EXISTS_POS_M(programs(PPMPK, PPMPM), validationFields(2,13),
+    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK), validationFields(2,13),
             () -> UtilFieldConditional.genExistPos("N", "M", R_PIUT000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM), validationFields(14),
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK), validationFields(14),
             () -> UtilFieldConditional.genExistPos("N", "O", R_PIUT000000.key)),
 
     ;
@@ -96,5 +99,11 @@ public enum E7042PiutValidationsConfig implements ILbltMetadataValidation, IVali
 
     public static final BaseMetadataValidation<E7042PiutValidationsConfig> VALIDATION_METADATA_PPMPM =
             new LbltMetadataValidation<>(E7042PiutValidationsConfig.class, PPMPM);
+
+    public static final BaseMetadataValidation<E7042PiutValidationsConfig> VALIDATION_METADATA_PPIPK =
+            new LbltMetadataValidation<>(E7042PiutValidationsConfig.class, PPIPK);
+
+    public static final BaseMetadataValidation<E7042PiutValidationsConfig> VALIDATION_METADATA_PPIPM =
+            new LbltMetadataValidation<>(E7042PiutValidationsConfig.class, PPIPM);
 
 }

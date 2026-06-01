@@ -7,10 +7,7 @@ import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.metadata.module.lblt.dppk.EFormLaporanBulananTahunan;
-import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpipk;
-import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpk;
-import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpm;
-import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataSharedLkbt;
+import id.go.ojk.metadata.module.lblt.dppk.header.*;
 import id.go.ojk.metadata.module.lblt.dppk.reference.ER7036PosLtlbDppkDnfra;
 import id.go.ojk.metadata.module.lblt.dppk.validations.E7036DnfraValidationsConfig;
 import id.go.ojk.metadata.util.constants.ProgramType;
@@ -107,7 +104,8 @@ public enum Dppk0036Dnfra implements ILbltFieldMetadata {
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7036Dnfra.getObject()),
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7036Dnfra.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7036Dnfra.getObject())
+            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7036Dnfra.getObject()),
+            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7036Dnfra.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0036Dnfra> FIELD_METADATA = new LbltMetadataField<>(Dppk0036Dnfra.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
@@ -132,7 +130,7 @@ public enum Dppk0036Dnfra implements ILbltFieldMetadata {
         throw new IllegalArgumentException("Unknown sector type: " + sectorType);
     }
 
-    public static SubmissionFormat formMetadata(ProgramType programType) {
+    public static SubmissionFormat formMetadata(SectorType sectorType, ProgramType programType) {
         FIELD_METADATA.setProgramType(programType);
 
         BaseMetadataValidation<E7036DnfraValidationsConfig> metadataValidation = null;
@@ -144,16 +142,20 @@ public enum Dppk0036Dnfra implements ILbltFieldMetadata {
             case PPMPM:
                 metadataValidation = E7036DnfraValidationsConfig.VALIDATION_METADATA_PPMPM;
                 break;
-            //default:
-            //throw new IllegalStateException();
-            default:
+            case PPIPK:
+                metadataValidation = E7036DnfraValidationsConfig.VALIDATION_METADATA_PPIPK;
                 break;
+            case PPIPM:
+                metadataValidation = E7036DnfraValidationsConfig.VALIDATION_METADATA_PPIPM;
+                break;
+            default:
+                throw new IllegalStateException();
         }
 
         return new SubmissionConfig(programType.toString())
                 .config()
                 .setReferenceConfigs(ER7036PosLtlbDppkDnfra.Configs.REF_CONFIG_PPMP)
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(KONVENSIONAL, programType.toString()))
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
                 .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
                 .setSegmentValidations(metadataValidation)
                 .build()

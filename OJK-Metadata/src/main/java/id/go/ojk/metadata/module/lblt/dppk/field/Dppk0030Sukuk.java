@@ -7,10 +7,7 @@ import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.metadata.module.lblt.dppk.EFormLaporanBulananTahunan;
-import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpipk;
-import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpk;
-import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpm;
-import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataSharedLkbt;
+import id.go.ojk.metadata.module.lblt.dppk.header.*;
 import id.go.ojk.metadata.module.lblt.dppk.reference.ER7030PosLtlbDppkSukuk;
 import id.go.ojk.metadata.module.lblt.dppk.validations.E7030SukukValidationsConfig;
 import id.go.ojk.metadata.util.constants.ProgramType;
@@ -140,7 +137,8 @@ public enum Dppk0030Sukuk implements ILbltFieldMetadata {
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7030Sukuk.getObject()),
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7030Sukuk.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7030Sukuk.getObject())
+            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7030Sukuk.getObject()),
+            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7030Sukuk.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0030Sukuk> FIELD_METADATA = new LbltMetadataField<>(Dppk0030Sukuk.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
@@ -165,7 +163,7 @@ public enum Dppk0030Sukuk implements ILbltFieldMetadata {
         throw new IllegalArgumentException("Unknown sector type: " + sectorType);
     }
 
-    public static SubmissionFormat formMetadata(ProgramType programType) {
+    public static SubmissionFormat formMetadata(SectorType sectorType, ProgramType programType) {
         FIELD_METADATA.setProgramType(programType);
 
         BaseMetadataValidation<E7030SukukValidationsConfig> metadataValidation = null;
@@ -177,16 +175,20 @@ public enum Dppk0030Sukuk implements ILbltFieldMetadata {
             case PPMPM:
                 metadataValidation = E7030SukukValidationsConfig.VALIDATION_METADATA_PPMPM;
                 break;
-            //default:
-            //throw new IllegalStateException();
-            default:
+            case PPIPK:
+                metadataValidation = E7030SukukValidationsConfig.VALIDATION_METADATA_PPIPK;
                 break;
+            case PPIPM:
+                metadataValidation = E7030SukukValidationsConfig.VALIDATION_METADATA_PPIPM;
+                break;
+            default:
+                throw new IllegalStateException();
         }
 
         return new SubmissionConfig(programType.toString())
                 .config()
-                .setReferenceConfigs(ER7030PosLtlbDppkSukuk.Configs.REF_CONFIG_PPMP)
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(KONVENSIONAL, programType.toString()))
+                .setReferenceConfigs(ER7030PosLtlbDppkSukuk.Configs.REF_CONFIG)
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
                 .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
                 .setSegmentValidations(metadataValidation)
                 .build()
