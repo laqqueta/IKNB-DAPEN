@@ -40,7 +40,7 @@ public enum E7016SbnMValidationsConfig implements ILbltMetadataValidation, IVali
             () -> UtilSegmentValidation.genEqualsSbnRatio("9", R_SBN020000.key,
                     R_SBN000000.key, "10", EFormLaporanBulananTahunan.LTLB_LAN.getCode(),
                     ER7001PosLtlbDppkLan.R_LAN0102000000.getObject().getKey(), "3",
-                    UtilMetadata.genMessage(R_SBN020000.value, R_SBN020000.value + "/ Piutang Investasi pada form LAN"), 2)),
+                    UtilMetadata.genMessage(R_SBN020000.value, R_SBN020000.value + " / Baris 'TOTAL INVESTASI' (Piutang Investasi) pada form LAN"), 2)),
 
     CR_FOR_SALDO(programs(PPMPM), validationFields(10),
             () -> UtilFieldConditional.genExistPos("M", "N", UtilMetadata.genPipeRow(getObjects(), new int[]{0, 1}))),

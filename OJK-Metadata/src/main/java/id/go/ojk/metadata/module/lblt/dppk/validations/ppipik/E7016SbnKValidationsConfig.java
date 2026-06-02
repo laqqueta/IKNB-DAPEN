@@ -1,4 +1,4 @@
-package id.go.ojk.metadata.module.lblt.dppk.validations.ppmpk;
+package id.go.ojk.metadata.module.lblt.dppk.validations.ppipik;
 
 import id.go.ojk.client.model.config.validation.conditional.ConditionalRequired;
 import id.go.ojk.client.model.config.validation.field.FieldValidation;
@@ -26,52 +26,53 @@ import java.util.function.Supplier;
 import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7016PosLtlbDppkSbn.*;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
+import static id.go.ojk.metadata.util.constants.ProgramType.PPIPK;
 import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
 
 @AllArgsConstructor
 @RequiredArgsConstructor
 public enum E7016SbnKValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_EQUAL_FORMULA(programs(PPMPK),
+    SG_EQUAL_FORMULA(programs(PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula("10", R_SBN000000.key, R_SBN010000.key,
                     UtilMetadata.genMessageTotal(R_SBN000000.value, R_SBN010000.value))),
 
-    SG_EQUAL_SBN_RATION(programs(PPMPK),
+    SG_EQUAL_SBN_RATION(programs(PPIPK),
             () -> UtilSegmentValidation.genEqualsSbnRatio("9", R_SBN020000.key,
                     R_SBN000000.key, "10", EFormLaporanBulananTahunan.LTLB_LAN.getCode(),
                     ER7001PosLtlbDppkLan.R_LAN0102000000.getObject().getKey(), "13",
                     UtilMetadata.genMessage(R_SBN020000.value, R_SBN020000.value + " / Baris 'TOTAL INVESTASI' (Gabungan) pada form LAN"), 2)),
 
-    CR_FOR_SALDO(programs(PPMPK), validationFields(10),
+    CR_FOR_SALDO(programs(PPIPK), validationFields(10),
             () -> UtilFieldConditional.genExistPos("M", "N", UtilMetadata.genPipeRow(getObjects(), new int[]{0, 1}))),
 
-    CR_FOR_SBN(programs(PPMPK), validationFields(9),
+    CR_FOR_SBN(programs(PPIPK), validationFields(9),
             () -> UtilFieldConditional.genExistPos("M", "N", UtilMetadata.genPipeRow(getObjects(), new int[]{0, 2}))),
 
-    CR_FOR_TOTAL(programs(PPMPK), validationFields(2, 3, 8),
+    CR_FOR_TOTAL(programs(PPIPK), validationFields(2, 3, 8),
             () -> UtilFieldConditional.genExistPos("N", "M", UtilMetadata.genPipeRow(getObjects(), new int[]{1, 2}))),
 
-//    CR_JENIS_INVESTASI_VALUE_OBLIGASI(programs(PPMPK),
+//    CR_JENIS_INVESTASI_VALUE_OBLIGASI(programs(PPIPK),
 //            () -> UtilFieldConditional.genEquals("M", "N", "2",
 //                    ER1268JenisInvestasi.getReferenceIndex(1))),
 
-    CR_JENIS_INVESTASI_VALUE_OBLIGASI(programs(PPMPK), validationFields(4, 5, 6),
+    CR_JENIS_INVESTASI_VALUE_OBLIGASI(programs(PPIPK), validationFields(4, 5, 6),
             () -> UtilFieldConditional.genExistPosAndComparatorHasValueDapenVer("O", "M", "N",
                     R_SBN010000.key, "2", ER1268JenisInvestasi.getReferenceIndex(1))),
 
-//    CR_JENIS_INVESTASI_VALUE_SBN(programs(PPMPK),
+//    CR_JENIS_INVESTASI_VALUE_SBN(programs(PPIPK),
 //            () -> UtilFieldConditional.genEquals("M", "N", "2",
 //                    ER1268JenisInvestasi.getReferenceIndex(2))),
 
-    CR_JENIS_INVESTASI_VALUE_SBN(programs(PPMPK), validationFields(7),
+    CR_JENIS_INVESTASI_VALUE_SBN(programs(PPIPK), validationFields(7),
             () -> UtilFieldConditional.genExistPosAndComparatorHasValueDapenVer("O", "M", "N",
                     R_SBN010000.key, "2", ER1268JenisInvestasi.getReferenceIndex(2) + "|" + ER1268JenisInvestasi.getReferenceIndex(3))),
 
-//    CR_JENIS_INVESTASI_VALUE_REKSADANA(programs(PPMPK),
+//    CR_JENIS_INVESTASI_VALUE_REKSADANA(programs(PPIPK),
 //            () -> UtilFieldConditional.genEquals("M", "N", "2",
 //                    ER1268JenisInvestasi.getReferenceIndex(3))),
 
-    CR_JENIS_INVESTASI_VALUE_REKSADANA(programs(PPMPK), validationFields(11),
+    CR_JENIS_INVESTASI_VALUE_REKSADANA(programs(PPIPK), validationFields(11),
             () -> UtilFieldConditional.genExistPosAndComparatorHasValueDapenVer("O", "M", "N",
                     R_SBN010000.key, "2", ER1268JenisInvestasi.getReferenceIndex(3))),
 
@@ -114,7 +115,7 @@ public enum E7016SbnKValidationsConfig implements ILbltMetadataValidation, IVali
                 .toValidation(this, ConditionalRequired.class);
     }
 
-    public static final BaseMetadataValidation<E7016SbnKValidationsConfig> VALIDATION_METADATA_PPMPK =
-            new LbltMetadataValidation<>(E7016SbnKValidationsConfig.class, PPMPK);
+    public static final BaseMetadataValidation<E7016SbnKValidationsConfig> VALIDATION_METADATA_PPIPK =
+            new LbltMetadataValidation<>(E7016SbnKValidationsConfig.class, PPIPK);
 
 }

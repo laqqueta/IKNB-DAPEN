@@ -28,6 +28,7 @@ import java.util.stream.Stream;
 
 import static id.go.ojk.lib.client.model.config.DataType.*;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.*;
+import static id.go.ojk.metadata.module.lblt.dppk.validations.ppipik.E7016SbnKValidationsConfig.VALIDATION_METADATA_PPIPK;
 import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpk.E7016SbnKValidationsConfig.VALIDATION_METADATA_PPMPK;
 import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpm.E7016SbnMValidationsConfig.VALIDATION_METADATA_PPMPM;
 import static id.go.ojk.metadata.util.FieldUtil.*;
@@ -137,20 +138,20 @@ public enum Dppk0016Sbn implements ILbltFieldMetadata {
                 referenceConfig = ER7016PosLtlbDppkSbn.Configs.REF_CONFIG_PPMPK_PPMPM;
                 metadataValidation = VALIDATION_METADATA_PPMPM;
                 break;
-            //default:
-            //throw new IllegalStateException();
-            default:
+            case PPIPK:
+                referenceConfig = ER7016PosLtlbDppkSbn.Configs.REF_CONFIG_PPIPK_PPIPM;
+                metadataValidation = VALIDATION_METADATA_PPIPK;
                 break;
+            default:
+                throw new IllegalStateException();
         }
 
         return new SubmissionConfig(programType.toString())
                 .config()
                 .setReferenceConfigs(referenceConfig)
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(KONVENSIONAL, programType.toString()))
-//                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-//                .setSegmentValidations(metadataValidation)
-                .setSubmissionField(FIELD_METADATA.getClearedFields())
-                .setSegmentValidations()
+                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                .setSegmentValidations(metadataValidation)
                 .build()
                 .get();
     }

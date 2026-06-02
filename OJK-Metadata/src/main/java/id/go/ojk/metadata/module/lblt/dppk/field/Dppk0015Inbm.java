@@ -28,6 +28,7 @@ import java.util.stream.Stream;
 import static id.go.ojk.lib.client.model.config.DataType.*;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.*;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.C;
+import static id.go.ojk.metadata.module.lblt.dppk.validations.ppipik.E7015InbmKValidationsConfig.VALIDATION_METADATA_PPIPK;
 import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpk.E7015InbmKValidationsConfig.VALIDATION_METADATA_PPMPK;
 import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpm.E7015InbmMValidationsConfig.VALIDATION_METADATA_PPMPM;
 import static id.go.ojk.metadata.util.FieldUtil.*;
@@ -117,20 +118,20 @@ public enum Dppk0015Inbm implements ILbltFieldMetadata {
                 metadataValidation = VALIDATION_METADATA_PPMPM;
                 referenceConfig = ER7015PosLtlbDppkInbm.Configs.REF_CONFIG_PPMPK_PPMPM;
                 break;
-            //default:
-            //throw new IllegalStateException();
-            default:
+            case PPIPK:
+                metadataValidation = VALIDATION_METADATA_PPIPK;
+                referenceConfig = ER7015PosLtlbDppkInbm.Configs.REF_CONFIG_PPIPK_PPIPM;
                 break;
+            default:
+                throw new IllegalStateException();
         }
 
         return new SubmissionConfig(programType.toString())
                 .config()
                 .setReferenceConfigs(referenceConfig)
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(KONVENSIONAL, programType.toString()))
-//                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-//                .setSegmentValidations(metadataValidation)
-                .setSubmissionField(FIELD_METADATA.getClearedFields())
-                .setSegmentValidations()
+                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                .setSegmentValidations(metadataValidation)
                 .build()
                 .get();
     }

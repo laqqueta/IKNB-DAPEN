@@ -40,7 +40,7 @@ public enum E7015InbmMValidationsConfig implements ILbltMetadataValidation, IVal
             () -> UtilSegmentValidation.genEqualsInvestasiRatio("5", R_INBM010000.key,
                     R_INBM010000.key, "4", EFormLaporanBulananTahunan.LTLB_LAN.getCode(),
                     ER7001PosLtlbDppkLan.R_LAN0102000000.getObject().getKey(), "3",
-                    UtilMetadata.genMessage(R_INBM010000.value, R_INBM010000.value + "/ Piutang Investasi pada form LAN"), 2)),
+                    UtilMetadata.genMessage(R_INBM010000.value, R_INBM010000.value + " / Baris 'TOTAL INVESTASI' (Piutang Investasi) pada form LAN"), 2)),
 
     CR_EXIST_POS_M(programs(PPMPM), validationFields(2,3,5,6),
             () -> UtilFieldConditional.genExistPos("N", "M", R_INBM000000.key)),
