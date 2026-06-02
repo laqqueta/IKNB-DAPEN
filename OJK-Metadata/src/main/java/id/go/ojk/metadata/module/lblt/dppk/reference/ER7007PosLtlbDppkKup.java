@@ -162,11 +162,4 @@ public enum ER7007PosLtlbDppkKup implements IObject<KeyValueString> {
         }
     }
 
-    public static void main(String[] args) {
-        ER7007PosLtlbDppkKup[] vals = ER7007PosLtlbDppkKup.values();
-
-        for (int i = 0; i < vals.length; i++) {
-            System.out.println(i + " >> " + vals[i]);
-        }
-    }
 }

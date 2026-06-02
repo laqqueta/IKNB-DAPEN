@@ -31,7 +31,7 @@ import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7012PosLtlbDppkAlm
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
 import static id.go.ojk.metadata.util.constants.ProgramType.PPIPK;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
+import static id.go.ojk.metadata.util.constants.ProgramType.PPIPK;
 
 @AllArgsConstructor
 @RequiredArgsConstructor
@@ -40,51 +40,51 @@ public enum E7012AlmKValidationsConfig implements ILbltMetadataValidation, IVali
     SG_EQUAL_FORMULA_1(programs(PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 16),
                     ER7012PosLtlbDppkAlm.R_ALM0121000000.getObject().getKey(),
-                    UtilMetadata.genPlusRow(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPMPK), 0, 19),
+                    UtilMetadata.genPlusRow(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPIPK), 0, 19),
                     UtilMetadata.genMessage(ER7012PosLtlbDppkAlm.R_ALM0121000000.getObject().getValue(),
-                            UtilMetadata.genPlusDesc(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPMPK), 0, 19)))),
+                            UtilMetadata.genPlusDesc(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPIPK), 0, 19)))),
 
     SG_EQUAL_FORMULA_2(programs(PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 16),
                     ER7012PosLtlbDppkAlm.R_ALM0211000000.getObject().getKey(),
-                    UtilMetadata.genPlusRow(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPMPK), 21, 30),
+                    UtilMetadata.genPlusRow(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPIPK), 21, 30),
                     UtilMetadata.genMessage(ER7012PosLtlbDppkAlm.R_ALM0211000000.getObject().getValue(),
-                            UtilMetadata.genPlusDesc(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPMPK), 21, 30)))),
+                            UtilMetadata.genPlusDesc(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPIPK), 21, 30)))),
 
     SG_EQUAL_FORMULA_3(programs(PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 16),
                     ER7012PosLtlbDppkAlm.R_ALM0306000000.getObject().getKey(),
-                    UtilMetadata.genPlusRow(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPMPK), 32, 36),
+                    UtilMetadata.genPlusRow(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPIPK), 32, 36),
                     UtilMetadata.genMessage(ER7012PosLtlbDppkAlm.R_ALM0306000000.getObject().getValue(),
-                            UtilMetadata.genPlusDesc(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPMPK), 32, 36)))),
+                            UtilMetadata.genPlusDesc(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPIPK), 32, 36)))),
 
     SG_EQUAL_FORMULA_4(programs(PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 16),
                     ER7012PosLtlbDppkAlm.R_ALM0908000000.getObject().getKey(),
-                    UtilMetadata.genPlusRow(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPMPK), 41, 47),
+                    UtilMetadata.genPlusRow(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPIPK), 41, 47),
                     UtilMetadata.genMessage(ER7012PosLtlbDppkAlm.R_ALM0908000000.getObject().getValue(),
-                            UtilMetadata.genPlusDesc(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPMPK), 41, 47)))),
+                            UtilMetadata.genPlusDesc(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPIPK), 41, 47)))),
 
     SG_EQUAL_FORMULA_5(programs(PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula("16",
                     ER7012PosLtlbDppkAlm.R_ALM0500000000.getObject().getKey(),
-                    UtilMetadata.genPlusRow(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPMPK), new int[]{20, 31, 37, 38}),
+                    UtilMetadata.genPlusRow(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPIPK), new int[]{20, 31, 37, 38}),
                     UtilMetadata.genMessage(ER7012PosLtlbDppkAlm.R_ALM0500000000.getObject().getValue(),
-                            UtilMetadata.genPlusDesc(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPMPK), new int[]{20, 31, 37, 38})))),
+                            UtilMetadata.genPlusDesc(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPIPK), new int[]{20, 31, 37, 38})))),
 
     SG_EQUAL_FORMULA_6(programs(PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula("16",
                     ER7012PosLtlbDppkAlm.R_ALM1000000000.getObject().getKey(),
-                    UtilMetadata.genPlusRow(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPMPK), new int[]{40, 48}),
+                    UtilMetadata.genPlusRow(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPIPK), new int[]{40, 48}),
                     UtilMetadata.genMessage(ER7012PosLtlbDppkAlm.R_ALM1000000000.getObject().getValue(),
-                            UtilMetadata.genPlusDesc(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPMPK), new int[]{40, 48})))),
+                            UtilMetadata.genPlusDesc(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPIPK), new int[]{40, 48})))),
 
     SG_EQUAL_FORMULA_7(programs(PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula("16",
-                    ER7012PosLtlbDppkAlm.R_ALM0900000000.getObject().getKey(),
-                    UtilMetadata.genMinusRow(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPMPK), new int[]{39, 49}),
-                    UtilMetadata.genMessage(ER7012PosLtlbDppkAlm.R_ALM0900000000.getObject().getValue(),
-                            UtilMetadata.genMinusDesc(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPMPK), new int[]{39, 49})))),
+                    ER7012PosLtlbDppkAlm.R_ALM1100000000.getObject().getKey(),
+                    UtilMetadata.genMinusRow(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPIPK), new int[]{39, 49}),
+                    UtilMetadata.genMessage(ER7012PosLtlbDppkAlm.R_ALM1100000000.getObject().getValue(),
+                            UtilMetadata.genMinusDesc(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPIPK), new int[]{39, 49})))),
 
     SG_FIELD_TOTAL_1(programs(PPIPK), () -> genTotalValidation(R_ALM0101000000.key,
             EFormLaporanBulananTahunan.LTLB_DOC,
@@ -327,41 +327,38 @@ public enum E7012AlmKValidationsConfig implements ILbltMetadataValidation, IVali
 
     FV_TOTAL1_EQUAL(programs(PPIPK), validationFields(14),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("2+5+8+11",
-                    UtilMetadata.genPipeRow(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPMPK),
-                            new int[]{20, 31, 37, 38, 39, 40, 48, 49, 50, 51}))),
+                    UtilMetadata.genPipeRow(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPIPK),
+                            new int[]{20, 31, 37, 39, 38, 40, 48, 49, 50}))),
 
     FV_TOTAL2_EQUAL(programs(PPIPK), validationFields(15),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("3+6+9+12",
-                    UtilMetadata.genPipeRow(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPMPK),
-                            new int[]{20, 31, 37, 38, 39, 40, 48, 49, 50, 51}))),
+                    UtilMetadata.genPipeRow(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPIPK),
+                            new int[]{20, 31, 37, 39, 38, 40, 48, 49, 50}))),
 
     FV_TOTAL3_EQUAL(programs(PPIPK), validationFields(16),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("14+15",
-                    UtilMetadata.genPipeRow(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPMPK),
-                            new int[]{20, 31, 37, 38, 39, 40, 48, 49, 50, 51}))),
+                    UtilMetadata.genPipeRow(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPIPK),
+                            new int[]{20, 31, 37, 39, 38, 40, 48, 49, 50}))),
 
     FV_JTD_EQUAL(programs(PPIPK), validationFields(13),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("11+12",
-                    UtilMetadata.genPipeRow(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPMPK),
-                            new int[]{20, 31, 37, 38, 39, 40, 48, 49, 50, 51}))),
+                    UtilMetadata.genPipeRow(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPIPK),
+                            new int[]{20, 31, 37, 39, 38, 40, 48, 49, 50}))),
 
     FV_JTC_EQUAL(programs(PPIPK), validationFields(10),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("8+9",
-                    UtilMetadata.genPipeRow(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPMPK),
-                            new int[]{20, 31, 37, 38, 39, 40, 48, 49, 50, 51}))),
+                    UtilMetadata.genPipeRow(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPIPK),
+                            new int[]{20, 31, 37, 39, 38, 40, 48, 49, 50}))),
 
     FV_JTB_EQUAL(programs(PPIPK), validationFields(7),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("5+6",
-                    UtilMetadata.genPipeRow(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPMPK),
-                            new int[]{20, 31, 37, 38, 39, 40, 48, 49, 50, 51}))),
+                    UtilMetadata.genPipeRow(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPIPK),
+                            new int[]{20, 31, 37, 39, 38, 40, 48, 49, 50}))),
 
     FV_JTA_EQUAL(programs(PPIPK), validationFields(4),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("2+3",
-                    UtilMetadata.genPipeRow(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPMPK),
-                            new int[]{20, 31, 37, 38, 39, 40, 48, 49, 50, 51}))),
-
-    CR_PERCENTAGE(programs(PPIPK), validationFields(4, 7, 10, 13, 16),
-            () -> UtilFieldConditional.genExistPos("N", "M", ER7012PosLtlbDppkAlm.R_ALM1200000000.getObject().getKey()))
+                    UtilMetadata.genPipeRow(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPIPK),
+                            new int[]{20, 31, 37, 39, 38, 40, 48, 49, 50}))),
 
     ;
 

@@ -430,9 +430,4 @@ public enum E7012AlmMValidationsConfig implements ILbltMetadataValidation, IVali
                 errMsg, criteriaConditionErr);
     }
 
-    public static void main(String[] args) {
-        System.out.println(UtilMetadata.genPipeRow(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPMPM),
-                new int[]{20, 31, 37, 38, 40, 48, 51}));
-    }
-
 }

@@ -64,8 +64,8 @@ public enum ER7012PosLtlbDppkAlm implements IObject<KeyValueString> {
             EnumSet.of(ProgramType.PPIPM, ProgramType.PPIPK)),
     //    R_ALM0800000000("ALM0800000000", "G. Liabilitas di Luar Nilai Kini Aktuarial",
 //            EnumSet.of(ProgramType.PPMPM, ProgramType.PPMPK)),
-    R_ALM0900000000("ALM0900000000", "G. Liabilitas di Luar Liabilitas Manfaat Pensiun",
-            EnumSet.of(ProgramType.PPIPM, ProgramType.PPIPK, ProgramType.PPMPPPIPK)),
+//    R_ALM0900000000("ALM0900000000", "G. Liabilitas di Luar Liabilitas Manfaat Pensiun",
+//            EnumSet.of(ProgramType.PPIPM, ProgramType.PPIPK, ProgramType.PPMPPPIPK)),
     R_ALM0901000000("ALM0901000000", "Utang Manfaat Pensiun dan Manfaat Lain Jatuh Tempo", EnumSet.of(ProgramType.ALL)),
     R_ALM0902000000("ALM0902000000", "Utang Manfaat Sukarela", EnumSet.of(ProgramType.ALL)),
     R_ALM0903000000("ALM0903000000", "Utang Investasi", EnumSet.of(ProgramType.ALL)),
@@ -108,62 +108,60 @@ public enum ER7012PosLtlbDppkAlm implements IObject<KeyValueString> {
 
     public enum Configs implements ReferenceConfig {
         REF_CONFIG_PPMPK {
+            private final ProgramType programType = ProgramType.PPMPK;
+
             @Override
             public String savePos() {
-                ProgramType programType = ProgramType.PPMPK;
-                return UtilMetadata.genFieldSave(
-                        UtilMetadata.genPipeColumn(2, 16),
-                        getObjects(programType)
-                );
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 16), getObjects(programType));
             }
 
             @Override
             public String savePosForm() {
-                ProgramType programType = ProgramType.PPMPK;
-                return UtilMetadata.genFieldSave(
-                        UtilMetadata.genPipeColumn(2, 16),
-                        getObjects(programType)
-                );
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 16), getObjects(programType));
             }
 
             @Override
             public String requiredPos() {
-                ProgramType programType = ProgramType.PPMPK;
                 return UtilMetadata.genPipeRow(getObjects(programType));
             }
         },
 
         REF_CONFIG_PPMPM {
+            private final ProgramType programType = ProgramType.PPMPM;
+
             @Override
             public String savePos() {
-                ProgramType programType = ProgramType.PPMPM;
-                return UtilMetadata.genFieldSave(
-                        UtilMetadata.genPipeColumn(2, 16),
-                        getObjects(programType)
-                );
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 16), getObjects(programType));
             }
 
             @Override
             public String savePosForm() {
-                ProgramType programType = ProgramType.PPMPM;
-                return UtilMetadata.genFieldSave(
-                        UtilMetadata.genPipeColumn(2, 16),
-                        getObjects(programType));
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 16),getObjects(programType));
             }
 
             @Override
             public String requiredPos() {
-                ProgramType programType = ProgramType.PPMPM;
                 return UtilMetadata.genPipeRow(getObjects(programType));
             }
-        }
-    }
+        },
 
-    public static void main(String[] args) {
-//        20, 31, 37, 38
-        List<KeyValueString> valsPPMPM = getObjects(ProgramType.PPMPM);
+        REF_CONFIG_PPIPK {
+            private final ProgramType programType = ProgramType.PPIPK;
 
-        System.out.println(valsPPMPM.get(20).getKey() + " - " + valsPPMPM.get(31).getKey() + " - " +
-                valsPPMPM.get(37).getKey() + " - " + valsPPMPM.get(38).getKey() + " - ");
+            @Override
+            public String savePos() {
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 16), getObjects(programType));
+            }
+
+            @Override
+            public String savePosForm() {
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 16), getObjects(programType));
+            }
+
+            @Override
+            public String requiredPos() {
+                return UtilMetadata.genPipeRow(getObjects(programType));
+            }
+        },
     }
 }

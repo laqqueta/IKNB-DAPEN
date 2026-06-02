@@ -195,13 +195,4 @@ public enum Dppk0061Iur implements ILbltFieldMetadata {
         return programType;
     }
 
-    public static void main(String[] args) {
-        Dppk0061Iur[] vals = Dppk0061Iur.values();
-
-        for (Dppk0061Iur val : vals) {
-            if (val.programType.contains(PPIPK)) {
-                System.out.println(val.getField().getNumber() + " -> " + val.getField().getName());
-            }
-        }
-    }
 }

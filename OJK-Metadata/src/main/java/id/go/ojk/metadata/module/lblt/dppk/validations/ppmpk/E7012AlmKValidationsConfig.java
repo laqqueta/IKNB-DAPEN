@@ -81,9 +81,9 @@ public enum E7012AlmKValidationsConfig implements ILbltMetadataValidation, IVali
 
     SG_EQUAL_FORMULA_7(programs(PPMPK),
             () -> UtilSegmentValidation.genEqualsFormula("16",
-                    ER7012PosLtlbDppkAlm.R_ALM0900000000.getObject().getKey(),
+                    ER7012PosLtlbDppkAlm.R_ALM1100000000.getObject().getKey(),
                     UtilMetadata.genMinusRow(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPMPK), new int[]{39, 49}),
-                    UtilMetadata.genMessage(ER7012PosLtlbDppkAlm.R_ALM0900000000.getObject().getValue(),
+                    UtilMetadata.genMessage(ER7012PosLtlbDppkAlm.R_ALM1100000000.getObject().getValue(),
                             UtilMetadata.genMinusDesc(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPMPK), new int[]{39, 49})))),
 
     SG_FIELD_TOTAL_1(programs(PPMPK), () -> genTotalValidation(R_ALM0101000000.key,

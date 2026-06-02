@@ -217,11 +217,4 @@ public enum Dppk0002Lpan implements ILbltFieldMetadata {
         return programType;
     }
 
-    public static void main(String[] args) {
-        Map<Integer, String> fvMap = Arrays.stream(Dppk0002Lpan.values())
-                .map(Dppk0002Lpan::getField)
-                .collect(Collectors.toMap(SubmissionField::getNumber, SubmissionField::getName));
-
-        System.out.println(fvMap.toString());
-    }
 }

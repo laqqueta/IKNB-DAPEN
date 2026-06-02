@@ -70,10 +70,7 @@ public enum ER7006PosLtlbDppkPst implements IObject<KeyValueString> {
 
             @Override
             public String savePos() {
-                return UtilMetadata.genFieldSave(
-                        UtilMetadata.genPipeColumn(2, 4),
-                        getObjects()
-                );
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 4),getObjects());
             }
         },
 
