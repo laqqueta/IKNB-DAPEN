@@ -44,30 +44,33 @@ public enum E7009RoiValidationsConfig implements ILbltMetadataValidation, IValid
             () -> {
                 String errMsg = UtilMetadata.genDelimitedColumn(2, 13, "*") + "|3|14|" + "REKINV baris ";
                 String formRow = UtilMetadata.genPipeRow(ER7008PosLtlbDppkRekinv.getObjects(ProgramType.PPMPK), 0, 19);
+                String formRowDesc = UtilMetadata.genDelimitedDesc(ER7008PosLtlbDppkRekinv.getObjects(ProgramType.PPMPK), 0, 19, "|");
                 return UtilSegmentValidation.genGeoMeanInvestasi("10",
                         UtilMetadata.genPipeRow(ER7009PosLtlbDppkRoi.getObjects(), 0, 19),
                         EFormLaporanBulananTahunan.LTLB_REKINV.getCode(), formRow,
-                        UtilMetadata.genPipeColumn(2, 13), errMsg, formRow);
+                        UtilMetadata.genPipeColumn(2, 13), errMsg, formRowDesc);
             }),
 
     SG_GEO_MEAN_PPMPM(programs(PPMPM),
             () -> {
                 String errMsg = UtilMetadata.genDelimitedColumn(2, 13, "*") + "|3|14|" + "REKINV baris ";
                 String formRow = UtilMetadata.genPipeRow(ER7008PosLtlbDppkRekinv.getObjects(PPMPM), 0, 19);
+                String formRowDesc = UtilMetadata.genDelimitedDesc(ER7008PosLtlbDppkRekinv.getObjects(PPMPM), 0, 19, "|");
                 return UtilSegmentValidation.genGeoMeanInvestasi("10",
                         UtilMetadata.genPipeRow(ER7009PosLtlbDppkRoi.getObjects(), 0, 19),
                         EFormLaporanBulananTahunan.LTLB_REKINV.getCode(), formRow,
-                        UtilMetadata.genPipeColumn(2, 13), errMsg, formRow);
+                        UtilMetadata.genPipeColumn(2, 13), errMsg, formRowDesc);
             }),
 
-    SG_GEO_MEAN_PPIPK(programs(PPMPM),
+    SG_GEO_MEAN_PPIPK(programs(PPIPK),
             () -> {
                 String errMsg = UtilMetadata.genDelimitedColumn(2, 13, "*") + "|3|14|" + "REKINV baris ";
                 String formRow = UtilMetadata.genPipeRow(ER7008PosLtlbDppkRekinv.getObjects(PPIPK), 0, 19);
+                String formRowDesc = UtilMetadata.genDelimitedDesc(ER7008PosLtlbDppkRekinv.getObjects(PPIPK), 0, 19, "|");
                 return UtilSegmentValidation.genGeoMeanInvestasi("10",
                         UtilMetadata.genPipeRow(ER7009PosLtlbDppkRoi.getObjects(), 0, 19),
                         EFormLaporanBulananTahunan.LTLB_REKINV.getCode(), formRow,
-                        UtilMetadata.genPipeColumn(2, 13), errMsg, formRow);
+                        UtilMetadata.genPipeColumn(2, 13), errMsg, formRowDesc);
             }),
 
     SG_SUM_POS_COL_EQUAL(programs(PPMPK, PPMPM, PPIPK),
