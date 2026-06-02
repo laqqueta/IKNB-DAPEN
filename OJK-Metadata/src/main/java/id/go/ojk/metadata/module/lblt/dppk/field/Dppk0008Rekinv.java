@@ -114,11 +114,11 @@ public enum Dppk0008Rekinv implements ILbltFieldMetadata {
         throw new IllegalArgumentException("Unknown sector type: " + sectorType);
     }
 
-    public static SubmissionFormat formMetadata(ProgramType programType) {
+    public static SubmissionFormat formMetadata(SectorType sectorType, ProgramType programType) {
         FIELD_METADATA.setProgramType(programType);
 
-        SubmissionFormatBuilder submissionFormatBuilder = getPpmpSubmissionFormatConfig(KONVENSIONAL, programType.toString());
-        ER7008PosLtlbDppkRekinv.Configs referenceConfig;
+        SubmissionFormatBuilder submissionFormatBuilder = getPpmpSubmissionFormatConfig(sectorType, programType.toString());
+        ER7008PosLtlbDppkRekinv.Configs referenceConfig = null;
         BaseMetadataValidation<? extends IBaseMetadataValidation> metadataValidation = null;
 
         int minMaxRow;
@@ -134,12 +134,13 @@ public enum Dppk0008Rekinv implements ILbltFieldMetadata {
                 referenceConfig = ER7008PosLtlbDppkRekinv.Configs.REF_CONFIG_PPMPM;
                 metadataValidation = E7008RekinvValidationsConfig.VALIDATION_METADATA_PPMPM;
                 break;
-            //default:
-            //throw new IllegalStateException();
-            default:
+            case PPIPK:
                 minMaxRow = 24;
-                referenceConfig = null;
+                referenceConfig = ER7008PosLtlbDppkRekinv.Configs.REF_CONFIG_PPIPK;
+                metadataValidation = E7008RekinvValidationsConfig.VALIDATION_METADATA_PPIPK;
                 break;
+            default:
+                throw new IllegalStateException();
         }
 
         submissionFormatBuilder.setMinRow(minMaxRow);

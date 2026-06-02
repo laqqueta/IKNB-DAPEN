@@ -92,12 +92,12 @@ public enum Dppk0101Roimpl implements ILbltFieldMetadata {
                 .name(form.getName())
                 .extension(ExtensionType.TXT)
                 .reportCode(reportCode)
-                .maxRow(null)
+                .maxRow(21)
                 .fields(new ArrayList<>())
                 .build();
 
         if (sectorType.equals(KONVENSIONAL) || sectorType.equals(SYARIAH)) {
-            sfConfig.setMinRow(0);
+            sfConfig.setMinRow(21);
             return sfConfig;
         }
 

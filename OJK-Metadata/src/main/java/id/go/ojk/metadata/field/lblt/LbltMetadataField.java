@@ -21,7 +21,7 @@ public class LbltMetadataField<T extends Enum<T> & ILbltFieldMetadata> extends B
     @Getter
     private ProgramType programType;
 
-    private Map<ProgramType, ReferenceMetadata> kodeKomponenReferences;
+    private final Map<ProgramType, ReferenceMetadata> kodeKomponenReferences;
 
     private final int KODE_KOMPONEN_FIELD_INDEX = 1; // 0 Based index, Index 0 :: Flag -> Index 1 :: Kode Komponen
 

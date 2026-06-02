@@ -22,8 +22,7 @@ import java.util.function.Supplier;
 
 import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7008PosLtlbDppkRekinv.R_REKINV2100000000;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
+import static id.go.ojk.metadata.util.constants.ProgramType.*;
 
 @AllArgsConstructor
 @RequiredArgsConstructor
@@ -31,17 +30,24 @@ public enum E7008RekinvValidationsConfig implements ILbltMetadataValidation, IVa
 
     SG_SUM_POS_EQUAL_PPMPK(programs(PPMPK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 13),
-            R_REKINV2100000000.getObject().getKey(),
-            UtilMetadata.genPlusRow(ER7008PosLtlbDppkRekinv.getObjects(ProgramType.PPMPK), 0, 19),
-            UtilMetadata.genMessage(R_REKINV2100000000.getObject().getValue(),
-                    UtilMetadata.genPlusRow(ER7008PosLtlbDppkRekinv.getObjects(ProgramType.PPMPK), 0, 19)))),
+                    R_REKINV2100000000.getObject().getKey(),
+                    UtilMetadata.genPlusRow(ER7008PosLtlbDppkRekinv.getObjects(ProgramType.PPMPK), 0, 19),
+                    UtilMetadata.genMessage(R_REKINV2100000000.getObject().getValue(),
+                            UtilMetadata.genPlusRow(ER7008PosLtlbDppkRekinv.getObjects(ProgramType.PPMPK), 0, 19)))),
 
     SG_SUM_POS_EQUAL_PPMPM(programs(PPMPM),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 13),
                     R_REKINV2100000000.getObject().getKey(),
                     UtilMetadata.genPlusRow(ER7008PosLtlbDppkRekinv.getObjects(PPMPM), 0, 19),
                     UtilMetadata.genMessage(R_REKINV2100000000.getObject().getValue(),
-                            UtilMetadata.genPlusRow(ER7008PosLtlbDppkRekinv.getObjects(PPMPM), 0, 19))))
+                            UtilMetadata.genPlusRow(ER7008PosLtlbDppkRekinv.getObjects(PPMPM), 0, 19)))),
+
+    SG_SUM_POS_EQUAL_PPIPK(programs(PPIPK),
+            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 13),
+                    R_REKINV2100000000.getObject().getKey(),
+                    UtilMetadata.genPlusRow(ER7008PosLtlbDppkRekinv.getObjects(ProgramType.PPIPK), 0, 19),
+                    UtilMetadata.genMessage(R_REKINV2100000000.getObject().getValue(),
+                            UtilMetadata.genPlusRow(ER7008PosLtlbDppkRekinv.getObjects(ProgramType.PPIPK), 0, 19)))),
 
     ;
 
@@ -87,5 +93,8 @@ public enum E7008RekinvValidationsConfig implements ILbltMetadataValidation, IVa
 
     public static final BaseMetadataValidation<E7008RekinvValidationsConfig> VALIDATION_METADATA_PPMPM =
             new LbltMetadataValidation<>(E7008RekinvValidationsConfig.class, PPMPM);
+
+    public static final BaseMetadataValidation<E7008RekinvValidationsConfig> VALIDATION_METADATA_PPIPK =
+            new LbltMetadataValidation<>(E7008RekinvValidationsConfig.class, PPIPK);
 
 }

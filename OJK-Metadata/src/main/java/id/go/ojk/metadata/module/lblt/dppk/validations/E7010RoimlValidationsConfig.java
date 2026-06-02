@@ -24,27 +24,19 @@ import java.util.function.Supplier;
 import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7010PosLtlbDppkRoiml.R_ROIML2100000000;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
+import static id.go.ojk.metadata.util.constants.ProgramType.*;
 
 @RequiredArgsConstructor
 @AllArgsConstructor
 public enum E7010RoimlValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    FV_FIELD_VALIDATION_1(programs(PPMPK), validationFields(9),
+    FV_FIELD_VALIDATION_1(programs(PPMPK, PPIPK), validationFields(9),
             () -> UtilFieldValidation.genEqualsFormula(UtilMetadata.genPlusColumn(2, 7) + "-8")),
 
-    FV_FIELD_VALIDATION_2(programs(PPMPK), validationFields(11),
+    FV_FIELD_VALIDATION_2(programs(PPMPK, PPIPK), validationFields(11),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("9/10", R_ROIML2100000000.key)),
 
-    SG_SUM_POS_COL_EQUAL(programs(PPMPK),
-            () -> UtilSegmentValidation.genEqualsFormula(
-                    UtilMetadata.genPipeColumn(new int[] { 2, 3, 4, 5, 6, 7, 8, 10, 11}), R_ROIML2100000000.key,
-                    UtilMetadata.genPlusRow(ER7010PosLtlbDppkRoiml.getObjects(), 0, 19),
-                    UtilMetadata.genMessage(R_ROIML2100000000.value,
-                            UtilMetadata.genPlusDesc(ER7010PosLtlbDppkRoiml.getObjects(), 0, 19)))),
-
-    SG_SUM_POS_COL_EQUAL_PPMPM(programs(PPMPM),
+    SG_SUM_POS_COL_EQUAL(programs(PPMPK, PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula(
                     UtilMetadata.genPipeColumn(new int[] { 2, 3, 4, 5, 6, 7, 8, 10, 11}), R_ROIML2100000000.key,
                     UtilMetadata.genPlusRow(ER7010PosLtlbDppkRoiml.getObjects(), 0, 19),
@@ -95,5 +87,8 @@ public enum E7010RoimlValidationsConfig implements ILbltMetadataValidation, IVal
 
     public static final BaseMetadataValidation<E7010RoimlValidationsConfig> VALIDATION_METADATA_PPMPM =
             new LbltMetadataValidation<>(E7010RoimlValidationsConfig.class, PPMPM);
+
+    public static final BaseMetadataValidation<E7010RoimlValidationsConfig> VALIDATION_METADATA_PPIPK =
+            new LbltMetadataValidation<>(E7010RoimlValidationsConfig.class, PPIPK);
 
 }

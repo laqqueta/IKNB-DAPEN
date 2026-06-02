@@ -59,13 +59,11 @@ public enum ER7011PosLtlbDppkRoism implements IObject<KeyValueString> {
     }
 
     public enum Configs implements ReferenceConfig {
-        REF_CONFIG_PPMP {
+        REF_CONFIG {
+
             @Override
             public String savePos() {
-                return UtilMetadata.genFieldSave(
-                        UtilMetadata.genPipeColumn(2, 11),
-                        getObjects()
-                );
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 11),getObjects());
             }
 
             @Override
@@ -73,20 +71,5 @@ public enum ER7011PosLtlbDppkRoism implements IObject<KeyValueString> {
                 return UtilMetadata.genPipeRow(getObjects());
             }
         },
-
-        REF_CONFIG_PPIP {
-            @Override
-            public String savePos() {
-                return UtilMetadata.genFieldSave(
-                        UtilMetadata.genPipeColumn(2, 11),
-                        getObjects()
-                );
-            }
-
-            @Override
-            public String requiredPos() {
-                return UtilMetadata.genPipeRow(getObjects());
-            }
-        }
     }
 }

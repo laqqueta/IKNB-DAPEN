@@ -50,7 +50,7 @@ public enum Dppk0017Ras1 implements ILbltFieldMetadata {
                     .confRegex(SimpleValidation.patternAlfaNumeric))
                     .confUnique(UniqueType.U)
     ),
-    MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK),
+    MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
             sf(2, null, "Manfaat Pensiun", sv(M, 1, 18, freeText))
     ),
     MANFAAT_PENSIUN_PPMPM(sectors(KONVENSIONAL, SYARIAH), programs(PPMPM),
@@ -130,11 +130,11 @@ public enum Dppk0017Ras1 implements ILbltFieldMetadata {
                 .config()
                 .setReferenceConfigs(referenceConfig)
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(KONVENSIONAL, programType.toString()))
-                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-                .setSegmentValidations(metadataValidation)
-                .additionalSegmentValidations(addsSegment)
-//                .setSubmissionField(FIELD_METADATA.getClearedFields())
-//                .setSegmentValidations()
+//                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+//                .setSegmentValidations(metadataValidation)
+//                .additionalSegmentValidations(addsSegment)
+                .setSubmissionField(FIELD_METADATA.getClearedFields())
+                .setSegmentValidations()
                 .build()
                 .get();
     }

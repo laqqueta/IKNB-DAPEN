@@ -108,7 +108,7 @@ public enum Dppk0009Roi implements ILbltFieldMetadata {
         throw new IllegalArgumentException("Unknown sector type: " + sectorType);
     }
 
-    public static SubmissionFormat formMetadata(ProgramType programType) {
+    public static SubmissionFormat formMetadata(SectorType sectorType, ProgramType programType) {
         FIELD_METADATA.setProgramType(programType);
 
         BaseMetadataValidation<E7009RoiValidationsConfig> metadataValidation = null;
@@ -120,6 +120,9 @@ public enum Dppk0009Roi implements ILbltFieldMetadata {
             case PPMPM:
                 metadataValidation = E7009RoiValidationsConfig.VALIDATION_METADATA_PPMPM;
                 break;
+            case PPIPK:
+                metadataValidation = E7009RoiValidationsConfig.VALIDATION_METADATA_PPIPK;
+                break;
             default:
                 throw new IllegalStateException();
         }
@@ -127,7 +130,7 @@ public enum Dppk0009Roi implements ILbltFieldMetadata {
         return new SubmissionConfig(programType.toString())
                 .config()
                 .setReferenceConfigs(ER7009PosLtlbDppkRoi.Configs.REF_CONFIG)
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(KONVENSIONAL, programType.toString()))
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
                 .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
                 .setSegmentValidations(metadataValidation)
                 .build()

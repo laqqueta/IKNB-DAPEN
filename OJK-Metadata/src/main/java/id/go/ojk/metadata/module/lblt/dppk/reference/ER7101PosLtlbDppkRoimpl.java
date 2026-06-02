@@ -4,6 +4,7 @@ import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
+import id.go.ojk.metadata.module.lblt.dppk.field.Dppk0101Roimpl;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
@@ -64,17 +65,18 @@ public enum ER7101PosLtlbDppkRoimpl implements IObject<KeyValueString> {
         REF_CONFIG_PPIP {
             @Override
             public String savePos() {
-                return UtilMetadata.genFieldSave("3", getObjects());
+                return UtilMetadata.genFieldSave(
+                        UtilMetadata.genPipeColumn(2, 11), getObjects());
             }
 
             @Override
             public String savePosForm() {
-                return UtilMetadata.genFieldSave("3|4", getObjects());
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 11), getObjects());
             }
 
             @Override
             public String requiredPos() {
-                return UtilMetadata.genPipeRow(getObjects(), new int[]{1});
+                return UtilMetadata.genPipeRow(getObjects());
             }
         }
     }

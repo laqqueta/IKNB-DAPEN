@@ -27,21 +27,20 @@ import java.util.function.Supplier;
 import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7009PosLtlbDppkRoi.R_ROI2100000000;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
+import static id.go.ojk.metadata.util.constants.ProgramType.*;
 
 @RequiredArgsConstructor
 @AllArgsConstructor
 public enum E7009RoiValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    FV_FIELD_VALIDATION_1(programs(PPMPK, PPMPM), validationFields(9),
+    FV_FIELD_VALIDATION_1(programs(PPMPK, PPMPM, PPIPK), validationFields(9),
             () -> UtilFieldValidation.genEqualsFormula(UtilMetadata.genPlusColumn(2, 7) + "-8")),
 
-    FV_FIELD_VALIDATION_2(programs(PPMPK, PPMPM), validationFields(Dppk0009Roi.ROI),
+    FV_FIELD_VALIDATION_2(programs(PPMPK, PPMPM, PPIPK), validationFields(Dppk0009Roi.ROI),
             () -> UtilFieldValidation.genEqualsPosFormula3("9/10", 2,
                     UtilMetadata.genPipeRowExcept(ER7009PosLtlbDppkRoi.getObjects(), new int[] { 20 }))),
 
-    SG_GEO_MEAN(programs(PPMPK, PPMPM),
+    SG_GEO_MEAN_PPMPK(programs(PPMPK),
             () -> {
                 String errMsg = UtilMetadata.genDelimitedColumn(2, 13, "*") + "|3|14|" + "REKINV baris ";
                 String formRow = UtilMetadata.genPipeRow(ER7008PosLtlbDppkRekinv.getObjects(ProgramType.PPMPK), 0, 19);
@@ -51,7 +50,27 @@ public enum E7009RoiValidationsConfig implements ILbltMetadataValidation, IValid
                         UtilMetadata.genPipeColumn(2, 13), errMsg, formRow);
             }),
 
-    SG_SUM_POS_COL_EQUAL(programs(PPMPK, PPMPM),
+    SG_GEO_MEAN_PPMPM(programs(PPMPM),
+            () -> {
+                String errMsg = UtilMetadata.genDelimitedColumn(2, 13, "*") + "|3|14|" + "REKINV baris ";
+                String formRow = UtilMetadata.genPipeRow(ER7008PosLtlbDppkRekinv.getObjects(PPMPM), 0, 19);
+                return UtilSegmentValidation.genGeoMeanInvestasi("10",
+                        UtilMetadata.genPipeRow(ER7009PosLtlbDppkRoi.getObjects(), 0, 19),
+                        EFormLaporanBulananTahunan.LTLB_REKINV.getCode(), formRow,
+                        UtilMetadata.genPipeColumn(2, 13), errMsg, formRow);
+            }),
+
+    SG_GEO_MEAN_PPIPK(programs(PPMPM),
+            () -> {
+                String errMsg = UtilMetadata.genDelimitedColumn(2, 13, "*") + "|3|14|" + "REKINV baris ";
+                String formRow = UtilMetadata.genPipeRow(ER7008PosLtlbDppkRekinv.getObjects(PPIPK), 0, 19);
+                return UtilSegmentValidation.genGeoMeanInvestasi("10",
+                        UtilMetadata.genPipeRow(ER7009PosLtlbDppkRoi.getObjects(), 0, 19),
+                        EFormLaporanBulananTahunan.LTLB_REKINV.getCode(), formRow,
+                        UtilMetadata.genPipeColumn(2, 13), errMsg, formRow);
+            }),
+
+    SG_SUM_POS_COL_EQUAL(programs(PPMPK, PPMPM, PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula(
                     UtilMetadata.genPipeColumn(new int[] { 2, 3, 4, 5, 6, 7, 8, 10, 11}), R_ROI2100000000.key,
                     UtilMetadata.genPlusRow(ER7009PosLtlbDppkRoi.getObjects(), 0, 19),
@@ -101,5 +120,8 @@ public enum E7009RoiValidationsConfig implements ILbltMetadataValidation, IValid
 
     public static final BaseMetadataValidation<E7009RoiValidationsConfig> VALIDATION_METADATA_PPMPM =
             new LbltMetadataValidation<>(E7009RoiValidationsConfig.class, PPMPM);
+
+    public static final BaseMetadataValidation<E7009RoiValidationsConfig> VALIDATION_METADATA_PPIPK =
+            new LbltMetadataValidation<>(E7009RoiValidationsConfig.class, PPIPK);
 
 }
