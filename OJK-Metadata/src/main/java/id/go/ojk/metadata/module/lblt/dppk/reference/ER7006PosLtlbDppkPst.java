@@ -57,7 +57,7 @@ public enum ER7006PosLtlbDppkPst implements IObject<KeyValueString> {
     }
 
     public enum Configs implements ReferenceConfig {
-        REF_CONFIG_PPMPK {
+        REF_CONFIG_PPMPK_PPIPK {
             @Override
             public String requiredPos() {
                 return UtilMetadata.genPipeRow(getObjects());
@@ -89,6 +89,6 @@ public enum ER7006PosLtlbDppkPst implements IObject<KeyValueString> {
             public String savePos() {
                 return UtilMetadata.genFieldSave("2",getObjects());
             }
-        }
+        },
     }
 }

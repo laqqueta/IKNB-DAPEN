@@ -30,6 +30,9 @@ import java.util.stream.Stream;
 
 import static id.go.ojk.lib.client.model.config.DataType.*;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
+import static id.go.ojk.metadata.module.lblt.dppk.validations.ppipik.E7006PstKValidationsConfig.VALIDATION_METADATA_PPIPK;
+import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpk.E7006PstKValidationsConfig.VALIDATION_METADATA_PPMPK;
+import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpm.E7006PstMValidationsConfig.VALIDATION_METADATA_PPMPM;
 import static id.go.ojk.metadata.util.FieldUtil.*;
 import static id.go.ojk.metadata.util.constants.ProgramType.*;
 import static id.go.ojk.metadata.util.constants.SectorType.KONVENSIONAL;
@@ -92,7 +95,7 @@ public enum Dppk0006Pst implements ILbltFieldMetadata {
         throw new IllegalArgumentException("Unknown sector type: " + sectorType);
     }
 
-    public static SubmissionFormat formMetadata(ProgramType programType) {
+    public static SubmissionFormat formMetadata(SectorType sectorType, ProgramType programType) {
         FIELD_METADATA.setProgramType(programType);
 
         BaseMetadataValidation<? extends ILbltMetadataValidation> metadataValidation = null;
@@ -100,27 +103,27 @@ public enum Dppk0006Pst implements ILbltFieldMetadata {
 
         switch (programType) {
             case PPMPK:
-                metadataValidation = E7006PstKValidationsConfig.VALIDATION_METADATA_PPMPK;
-                referenceConfig = ER7006PosLtlbDppkPst.Configs.REF_CONFIG_PPMPK;
+                metadataValidation = VALIDATION_METADATA_PPMPK;
+                referenceConfig = ER7006PosLtlbDppkPst.Configs.REF_CONFIG_PPMPK_PPIPK;
                 break;
             case PPMPM:
-                metadataValidation = E7006PstMValidationsConfig.VALIDATION_METADATA_PPMPM;
+                metadataValidation = VALIDATION_METADATA_PPMPM;
                 referenceConfig = ER7006PosLtlbDppkPst.Configs.REF_CONFIG_PPMPM;
                 break;
-            //default:
-            //throw new IllegalStateException();
-            default:
+            case PPIPK:
+                metadataValidation = VALIDATION_METADATA_PPIPK;
+                referenceConfig = ER7006PosLtlbDppkPst.Configs.REF_CONFIG_PPMPK_PPIPK;
                 break;
+            default:
+                throw new IllegalStateException();
         }
 
         return new SubmissionConfig(programType.toString())
                 .config()
                 .setReferenceConfigs(referenceConfig)
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(KONVENSIONAL, programType.toString()))
-//                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-//                .setSegmentValidations(metadataValidation)
-                .setSubmissionField(FIELD_METADATA.getClearedFields())
-                .setSegmentValidations()
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
+                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                .setSegmentValidations(metadataValidation)
                 .build()
                 .get();
     }

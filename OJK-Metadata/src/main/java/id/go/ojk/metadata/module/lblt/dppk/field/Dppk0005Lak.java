@@ -30,6 +30,9 @@ import java.util.stream.Stream;
 
 import static id.go.ojk.lib.client.model.config.DataType.*;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
+import static id.go.ojk.metadata.module.lblt.dppk.validations.ppipik.E7005LakKValidationsConfig.VALIDATION_METADATA_PPIPK;
+import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpk.E7005LakKValidationsConfig.VALIDATION_METADATA_PPMPK;
+import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpm.E7005LakMMValidationsConfig.VALIDATION_METADATA_PPMPM;
 import static id.go.ojk.metadata.util.FieldUtil.*;
 import static id.go.ojk.metadata.util.constants.ProgramType.*;
 import static id.go.ojk.metadata.util.constants.SectorType.KONVENSIONAL;
@@ -79,27 +82,18 @@ public enum Dppk0005Lak implements ILbltFieldMetadata {
     AKUMULASI_GABUNGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
             sf(12, null, "Akumulasi s.d DD-MM-YYYY Gabungan", sv(M, 1, 18, all2))),
 
-    UUS_MANFAAT_PENSIUN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPIPK),
-            sf(13, null, "UUS - Manfaat Pensiun", sv(M, 1, 18, all2))
-    ),
+    UUS_MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK),
+            sf(13, null, "UUS - Manfaat Pensiun", sv(M, 1, 18, all2))),
 
-    UUS_MANFAAT_PENSIUN_LAINNYA(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPIPK),
-            sf(14, null, "UUS - Manfaat Pensiun Lainnya", sv(M, 1, 18, all2))
-    ),
-    UUS_MANFAAT_LAIN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPIPK),
-            sf(15, null, "UUS - Manfaat Lain", sv(M, 1, 18, all2))
-    ),
-    TOTAL(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPIPK),
-            sf(16, null, "Total", sv(M, 1, 18, all2))
-    ),
+    UUS_MANFAAT_PENSIUN_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK),
+            sf(14, null, "UUS - Manfaat Pensiun Lainnya", sv(M, 1, 18, all2))),
+
+    UUS_MANFAAT_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK),
+            sf(15, null, "UUS - Manfaat Lain", sv(M, 1, 18, all2))),
+
+    TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK),
+            sf(16, null, "Total", sv(M, 1, 18, all2))),
+
     ;
 
     private final EnumSet<SectorType> sectorType;
@@ -134,7 +128,7 @@ public enum Dppk0005Lak implements ILbltFieldMetadata {
         throw new IllegalArgumentException("Unknown sector type: " + sectorType);
     }
 
-    public static SubmissionFormat formMetadata(ProgramType programType) {
+    public static SubmissionFormat formMetadata(SectorType sectorType, ProgramType programType) {
         FIELD_METADATA.setProgramType(programType);
 
         BaseMetadataValidation<? extends ILbltMetadataValidation> metadataValidation = null;
@@ -142,27 +136,28 @@ public enum Dppk0005Lak implements ILbltFieldMetadata {
 
         switch (programType) {
             case PPMPK:
-                metadataValidation = E7005LakKValidationsConfig.VALIDATION_METADATA_PPMPK;
+                metadataValidation = VALIDATION_METADATA_PPMPK;
                 referenceConfig = ER7005PosLtlbDppkLak.Configs.REF_CONFIG_PPMPK;
                 break;
             case PPMPM:
-                metadataValidation = E7005LakMMValidationsConfig.VALIDATION_METADATA_PPMPM;
+                metadataValidation = VALIDATION_METADATA_PPMPM;
                 referenceConfig = ER7005PosLtlbDppkLak.Configs.REF_CONFIG_PPMPM;
                 break;
-            //default:
-            //throw new IllegalStateException();
-            default:
+            case PPIPK:
+                metadataValidation = VALIDATION_METADATA_PPIPK;
+                referenceConfig = ER7005PosLtlbDppkLak.Configs.REF_CONFIG_PPIPK;
                 break;
+            default:
+                throw new IllegalStateException();
+
         }
 
         return new SubmissionConfig(programType.toString())
                 .config()
                 .setReferenceConfigs(referenceConfig)
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(KONVENSIONAL, programType.toString()))
-//                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-//                .setSegmentValidations(metadataValidation)
-                .setSubmissionField(FIELD_METADATA.getClearedFields())
-                .setSegmentValidations()
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
+                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                .setSegmentValidations(metadataValidation)
                 .build()
                 .get();
     }

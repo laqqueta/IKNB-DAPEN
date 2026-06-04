@@ -335,7 +335,7 @@ public enum E7001LanMValidationsConfig implements ILbltMetadataValidation, IVali
                     ER7001PosLtlbDppkLan.R_LAN0111000000.getObject().getKey(),
                     UtilMetadata.genMinusRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.PPMPM), new int[]{38, 47}),
                     UtilMetadata.genMessage(ER7001PosLtlbDppkLan.R_LAN0111000000.getObject().getValue(),
-                            UtilMetadata.genMinusRow(ER7003PosLtlbDppkNrc.getObjects(ProgramType.PPMPM), new int[]{38, 47})))),
+                            UtilMetadata.genMinusDesc(ER7003PosLtlbDppkNrc.getObjects(ProgramType.PPMPM), new int[]{38, 47})))),
 
     SG_EQUALS_FORMULA_5(programs(PPMPM),
             () -> UtilSegmentValidation.genEqualsFormula("3",
@@ -560,7 +560,7 @@ public enum E7001LanMValidationsConfig implements ILbltMetadataValidation, IVali
                                                           String formCode, String formObjects, String errMsg) {
         String sumField = "3";
         String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
-        String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MPL1|MPL2|MPL3||ML1|ML2|ML3|ML4|ML5|ML6");
+        String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MPL1|MPL2|MPL3|ML1|ML2|ML3|ML4|ML5|ML6");
         String sumCriteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
         String sumCriteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
         String specCondition = ER1255JenisManfaat.getPipedReferenceKeys("MPL2|MPL3|ML2|ML3|ML4|ML5|ML6");

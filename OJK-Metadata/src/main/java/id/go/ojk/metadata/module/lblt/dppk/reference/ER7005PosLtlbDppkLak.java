@@ -77,18 +77,12 @@ public enum ER7005PosLtlbDppkLak implements IObject<KeyValueString> {
 
             @Override
             public String savePos() {
-                return UtilMetadata.genFieldSave(
-                        UtilMetadata.genPipeColumn(2, 11),
-                        getObjects()
-                );
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 11),getObjects());
             }
 
             @Override
             public String savePosForm() {
-                return UtilMetadata.genFieldSave(
-                        UtilMetadata.genPipeColumn(2, 12),
-                        getObjects()
-                );
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 12),getObjects());
             }
         },
 
@@ -107,6 +101,23 @@ public enum ER7005PosLtlbDppkLak implements IObject<KeyValueString> {
             public String savePosForm() {
                 return UtilMetadata.genFieldSave("2", getObjects());
             }
-        }
+        },
+
+        REF_CONFIG_PPIPK {
+            @Override
+            public String requiredPos() {
+                return UtilMetadata.genPipeRow(getObjects());
+            }
+
+            @Override
+            public String savePos() {
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 16),getObjects());
+            }
+
+            @Override
+            public String savePosForm() {
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 16),getObjects());
+            }
+        },
     }
 }

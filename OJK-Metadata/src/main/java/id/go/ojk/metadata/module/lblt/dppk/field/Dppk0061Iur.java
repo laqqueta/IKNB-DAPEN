@@ -5,6 +5,7 @@ import id.go.ojk.client.model.config.SimpleValidation;
 import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
+import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.metadata.module.lblt.dppk.EFormLaporanBulananTahunan;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpipk;
@@ -146,6 +147,7 @@ public enum Dppk0061Iur implements ILbltFieldMetadata {
 
         BaseMetadataValidation<E7061IurValidationsConfig> metadataValidation = null;
         List<SubmissionField> submissionFields = null;
+        ReferenceConfig referenceConfig = null;
 
         List<Integer> usedFieldIdx = Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 13, 14, 15, 17, 18);
 
@@ -153,18 +155,22 @@ public enum Dppk0061Iur implements ILbltFieldMetadata {
             case PPMPK:
                 metadataValidation = E7061IurValidationsConfig.VALIDATION_METADATA_PPMPK;
                 submissionFields = FIELD_METADATA.getFields(metadataValidation.getFieldValidations());
+                referenceConfig = ER7061PosLtlbDppkIur.Configs.REF_CONFIG_PPMP;
                 break;
             case PPMPM:
                 metadataValidation = E7061IurValidationsConfig.VALIDATION_METADATA_PPMPM;
                 submissionFields = FIELD_METADATA.getFields(metadataValidation.getFieldValidations());
+                referenceConfig = ER7061PosLtlbDppkIur.Configs.REF_CONFIG_PPMP;
                 break;
             case PPIPK:
                 metadataValidation = E7061IurValidationsConfig.VALIDATION_METADATA_PPIPK;
                 submissionFields = FIELD_METADATA.getReindexFields(usedFieldIdx, metadataValidation.getFieldValidations());
+                referenceConfig = ER7061PosLtlbDppkIur.Configs.REF_CONFIG_PPIP;
                 break;
             case PPIPM:
                 metadataValidation = E7061IurValidationsConfig.VALIDATION_METADATA_PPIPM;
                 submissionFields = FIELD_METADATA.getReindexFields(usedFieldIdx, metadataValidation.getFieldValidations());
+                referenceConfig = ER7061PosLtlbDppkIur.Configs.REF_CONFIG_PPIP;
                 break;
             default:
                 throw new IllegalStateException();
@@ -172,7 +178,7 @@ public enum Dppk0061Iur implements ILbltFieldMetadata {
 
         return new SubmissionConfig(programType.toString())
                 .config()
-                .setReferenceConfigs(ER7061PosLtlbDppkIur.Configs.REF_CONFIG_PPMP)
+                .setReferenceConfigs(referenceConfig)
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
                 .setSubmissionField(submissionFields)
                 .setSegmentValidations(metadataValidation)

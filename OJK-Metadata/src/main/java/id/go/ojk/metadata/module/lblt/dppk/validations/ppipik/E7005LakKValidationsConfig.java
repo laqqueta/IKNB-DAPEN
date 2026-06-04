@@ -30,43 +30,42 @@ import static id.go.ojk.metadata.util.constants.ProgramType.*;
 public enum E7005LakKValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
     SG_SUM_POS_COL_EQUAL_1(programs(PPIPK),
-            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 11), R_LAK0200000000.key,
+            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 16), R_LAK0200000000.key,
                     UtilMetadata.genPlusRow(getObjects(), 0, 6),
                     UtilMetadata.genMessage(R_LAK0200000000.value, UtilMetadata.genPlusDesc(getObjects(), 0, 6)))),
 
     SG_SUM_POS_COL_EQUAL_2(programs(PPIPK),
-            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 11), R_LAK0400000000.key,
+            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumnExcept(2, 16, new int[]{ 12 }), R_LAK0400000000.key,
                     UtilMetadata.genPlusRow(getObjects(), 8, 17),
                     UtilMetadata.genMessage(R_LAK0400000000.value, UtilMetadata.genPlusDesc(getObjects(), 8, 17)))),
 
     SG_SUM_POS_COL_EQUAL_3(programs(PPIPK),
-            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 11), R_LAK0600000000.key,
+            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumnExcept(2, 16, new int[]{ 12 }), R_LAK0600000000.key,
                     UtilMetadata.genPlusRow(getObjects(), 19, 26),
                     UtilMetadata.genMessage(R_LAK0600000000.value, UtilMetadata.genPlusDesc(getObjects(), 19, 26)))),
 
     SG_SUM_POS_COL_EQUAL_4(programs(PPIPK),
-            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 11), R_LAK0700000000.key,
+            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumnExcept(2, 16, new int[]{ 12 }), R_LAK0700000000.key,
                     UtilMetadata.genPlusRow(getObjects(), new int[]{7, 18, 27}),
                     UtilMetadata.genMessage(R_LAK0700000000.value, UtilMetadata.genPlusDesc(getObjects(), new int[]{7, 18, 27})))),
 
     SG_SUM_POS_COL_EQUAL_5(programs(PPIPK),
-            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 11), R_LAK0900000000.key,
+            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumnExcept(2, 16, new int[]{ 12 }), R_LAK0900000000.key,
                     UtilMetadata.genPlusRow(getObjects(), new int[]{28, 29}),
                     UtilMetadata.genMessage(R_LAK0900000000.value, UtilMetadata.genPlusDesc(getObjects(), new int[]{28, 29})))),
 
     SG_NEG_NUM(programs(PPIPK),
             () -> UtilSegmentValidation.genRegexNumericNegative(
-                    UtilMetadata.genPipeColumn(2, 11),
-                    UtilMetadata.genPipeRowExcept(getObjects(), new int[]{7, 18, 27, 28, 29, 30}))),
+                    UtilMetadata.genPipeColumn(2, 15),
+                    UtilMetadata.genPipeRow(getObjects()))),
 
-    SG_POV_NUM(programs(PPMPM),
-            () -> UtilSegmentValidation.genRegexNumericNegative(
-                    UtilMetadata.genPipeColumn(2, 11),
-                    UtilMetadata.genPipeRow(getObjects(), new int[]{7, 18, 27, 28, 29, 30}))),
-
-    FV_SUM_ROW(programs(PPIPK), validationFields(12),
+    FV_SUM_COL_1(programs(PPIPK), validationFields(12),
             () -> UtilFieldValidation.genEqualsExceptPosFormula(
                     UtilMetadata.genPlusColumn(2, 11), R_LAK0200000000.key)),
+
+    FV_SUM_COL_2(programs(PPIPK), validationFields(16),
+            () -> UtilFieldValidation.genEqualsExceptPosFormula(
+                    UtilMetadata.genPlusColumn(12, 15), R_LAK0200000000.key)),
 
     ;
 
