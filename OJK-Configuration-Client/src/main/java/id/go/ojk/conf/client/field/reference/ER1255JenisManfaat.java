@@ -1,8 +1,6 @@
 package id.go.ojk.conf.client.field.reference;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import id.go.ojk.lib.client.IObject;
@@ -78,13 +76,13 @@ public enum ER1255JenisManfaat implements IObject<KeyValueString> {
 		return res.toString();
 	}
 
-	public static String getPipedReferenceKeys(String filter) {
-		List<String> filters = Arrays.stream(StringUtils.split(filter, "|"))
-				.collect(Collectors.toList());
+	public static String getPipedReferenceKeyValues(String filter) {
+		Map<String, KeyValueString> map = ER1255JenisManfaat.getObjects()
+				.stream()
+				.collect(Collectors.toMap(KeyValueString::getKey, e2 -> e2));
 
-		List<String> keys = Arrays.stream(ER1255JenisManfaat.values())
-				.filter(k -> filters.contains(k.key))
-				.map(k -> k.key + "|")
+		List<String> keys = Arrays.stream(StringUtils.split(filter, "|"))
+				.map(k -> map.get(k).getKey() + " - " + map.get(k).getValue() + "|")
 				.collect(Collectors.toList());
 
 		// remove last pipe
@@ -94,13 +92,13 @@ public enum ER1255JenisManfaat implements IObject<KeyValueString> {
 		return String.join("", keys);
 	}
 
-	public static String getPipedReferenceKeyValues(String filter) {
-		List<String> filters = Arrays.stream(StringUtils.split(filter, "|"))
-				.collect(Collectors.toList());
+	public static String getPipedReferenceKeys(String filter) {
+        Map<String, KeyValueString> map = ER1255JenisManfaat.getObjects()
+				.stream()
+				.collect(Collectors.toMap(KeyValueString::getKey, e2 -> e2));
 
-		List<String> keys = Arrays.stream(ER1255JenisManfaat.values())
-				.filter(k -> filters.contains(k.key))
-				.map(k -> k.key + " - " + k.value + "|")
+		List<String> keys = Arrays.stream(StringUtils.split(filter, "|"))
+				.map(k -> map.get(k).getKey() + "|")
 				.collect(Collectors.toList());
 
 		// remove last pipe
