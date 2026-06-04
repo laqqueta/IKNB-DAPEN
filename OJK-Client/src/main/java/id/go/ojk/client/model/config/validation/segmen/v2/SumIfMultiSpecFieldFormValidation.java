@@ -18,7 +18,7 @@ import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@XStreamAlias("SumIfMultiFieldFormValidation")
+@XStreamAlias("SumIfMultiSpecFieldFormValidation")
 public class SumIfMultiSpecFieldFormValidation extends BaseSumIf<SumIfBaseParams> {
 
     private String fieldSpec;
@@ -89,7 +89,7 @@ public class SumIfMultiSpecFieldFormValidation extends BaseSumIf<SumIfBaseParams
                         condError = condErrors[i - 1];
                         colErr = msgErrors[1];
 
-                        if (specConds.contains(conds[i])) {
+                        if (specConds.contains(conds[i-1])) {
                             colErr = msgErrors[2];
                         }
                     }

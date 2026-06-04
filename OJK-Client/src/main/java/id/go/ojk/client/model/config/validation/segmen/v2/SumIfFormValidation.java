@@ -72,7 +72,9 @@ public class SumIfFormValidation extends BaseSumIf<SumIfBaseParams> {
                     condsValue = formulaData.getSum();
                 } else {
                     if (sumField == null) condsValue = formulaData.getMappedData().get(conds[i]);
-                    else condsValue = formulaData.getMappedData().get(conds[i + (-1)]);
+                    else {
+                        condsValue = formulaData.getMappedData().get(conds[i + (-1)]);
+                    }
                 }
 
                 if (selectValue.compareTo(condsValue) != 0) {

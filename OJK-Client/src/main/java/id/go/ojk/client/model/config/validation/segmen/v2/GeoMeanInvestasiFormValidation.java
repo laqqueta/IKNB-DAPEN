@@ -116,7 +116,7 @@ public class GeoMeanInvestasiFormValidation extends BaseRowValidation {
     }
 
     private String getComparatorMsg(String comparatorFormula) {
-        StringBuilder res = new StringBuilder();
+        StringBuilder res = new StringBuilder("(");
         String[] formulaSplit = comparatorFormula.split("(?<=[-+/*])|(?=[-+/*])");
         int len = formulaSplit.length;
         for (int i = 0; i < len; i++) {
@@ -129,6 +129,6 @@ public class GeoMeanInvestasiFormValidation extends BaseRowValidation {
             }
             res.append(tmp);
         }
-        return res.toString();
+        return res.append(")").toString();
     }
 }
