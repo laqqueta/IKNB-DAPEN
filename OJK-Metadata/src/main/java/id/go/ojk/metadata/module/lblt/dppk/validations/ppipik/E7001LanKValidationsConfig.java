@@ -601,10 +601,6 @@ public enum E7001LanKValidationsConfig implements ILbltMetadataValidation, IVali
     public static final BaseMetadataValidation<E7001LanKValidationsConfig> VALIDATION_METADATA_PPIPK =
             new LbltMetadataValidation<>(E7001LanKValidationsConfig.class, PPIPK);
 
-    public static final List<E7001LanKValidationsConfig> testValidations = Arrays.asList(
-            SG_SUMIF_LAN0101040000
-    );
-
     private static SegmentValidation sumIfValidationHelper(String posCode, String rangeField, String criteriaField, String formCode,
                                                            String formObjects, String errMsg) {
         String sumField = "3";
