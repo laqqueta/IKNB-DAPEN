@@ -61,10 +61,6 @@ public class SumIfMultiSpecFieldCriteriaFormValidation extends BaseSumIf<SumIfMu
         if (selectRowCodes.contains(currentRowCode)) {
             final Logger logger = LoggerFactory.getLogger(SumIfMultiSpecFieldCriteriaFormValidation.class);
 
-            if (currentRowCode.equalsIgnoreCase("LAN0101180000")) {
-                System.out.println("debug");
-            }
-
             String[] arrRangeFields = StringUtils.split(rangeField, "|");
             String[] arrColumn = StringUtils.split(selectField, "|");
             String[] criterias = StringUtils.split(criteriaCondition, "$");
