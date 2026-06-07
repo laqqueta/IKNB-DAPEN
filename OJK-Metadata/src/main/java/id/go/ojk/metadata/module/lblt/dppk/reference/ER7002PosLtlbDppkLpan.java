@@ -49,6 +49,7 @@ public enum ER7002PosLtlbDppkLpan implements IObject<KeyValueString> {
 
     public static List<KeyValueString> getObjects(ProgramType jenisProgram) {
         List<KeyValueString> res = new ArrayList<>();
+
         for (ER7002PosLtlbDppkLpan eEnum : ER7002PosLtlbDppkLpan.values()) {
             if (eEnum.jenisProgram.contains(jenisProgram) || eEnum.jenisProgram.contains(ProgramType.ALL)) {
                 res.add(eEnum.getObject());
@@ -71,53 +72,60 @@ public enum ER7002PosLtlbDppkLpan implements IObject<KeyValueString> {
 
     public enum Configs implements ReferenceConfig {
         REF_CONFIG_PPMPK {
+            private final ProgramType ppmpkProgram = ProgramType.PPMPK;
+
             @Override
             public String savePos() {
-                ProgramType programType = ProgramType.PPMPK;
-                return UtilMetadata.genFieldSave(
-                        UtilMetadata.genPipeColumn(2, 12),
-                        getObjects(programType)
-                );
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 12), getObjects(ppmpkProgram));
             }
 
             @Override
             public String savePosForm() {
-                ProgramType programType = ProgramType.PPMPK;
-                return UtilMetadata.genFieldSave(
-                        UtilMetadata.genPipeColumn(2, 12),
-                        getObjects(programType)
-                );
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 12),getObjects(ppmpkProgram));
             }
 
             @Override
             public String requiredPos() {
-                ProgramType programType = ProgramType.PPMPK;
-                return UtilMetadata.genPipeRow(getObjects(programType));
+                return UtilMetadata.genPipeRow(getObjects(ppmpkProgram));
             }
         },
 
         REF_CONFIG_PPMPM {
+            private final ProgramType ppmpmProgram = ProgramType.PPMPM;
+
             @Override
             public String savePos() {
-                ProgramType programType = ProgramType.PPMPM;
-                return UtilMetadata.genFieldSave("2",
-                        getObjects(programType)
-                );
+                return UtilMetadata.genFieldSave("2", getObjects(ppmpmProgram));
             }
 
             @Override
             public String savePosForm() {
-                ProgramType programType = ProgramType.PPMPM;
-                return UtilMetadata.genFieldSave("2",
-                        getObjects(programType)
-                );
+                return UtilMetadata.genFieldSave("2", getObjects(ppmpmProgram));
             }
 
             @Override
             public String requiredPos() {
-                ProgramType programType = ProgramType.PPMPM;
-                return UtilMetadata.genPipeRow(getObjects(programType));
+                return UtilMetadata.genPipeRow(getObjects(ppmpmProgram));
             }
-        }
+        },
+
+        REF_CONFIG_PPIPK {
+            private final ProgramType ppikProgram = ProgramType.PPIPK;
+
+            @Override
+            public String savePos() {
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 16), getObjects(ppikProgram));
+            }
+
+            @Override
+            public String savePosForm() {
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 16), getObjects(ppikProgram));
+            }
+
+            @Override
+            public String requiredPos() {
+                return UtilMetadata.genPipeRow(getObjects(ppikProgram));
+            }
+        },
     }
 }

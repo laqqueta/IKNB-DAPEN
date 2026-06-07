@@ -74,11 +74,7 @@ public enum ER7004PosLtlbDppkLphu implements IObject<KeyValueString> {
         REF_CONFIG_PPMPK {
             @Override
             public String savePos() {
-                return UtilMetadata.genFieldSave(
-                        UtilMetadata.genPipeColumn(2, 12),
-                        getObjects()
-                );
-            }
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 12),getObjects());}
 
             @Override
             public String requiredPos() {
@@ -91,6 +87,17 @@ public enum ER7004PosLtlbDppkLphu implements IObject<KeyValueString> {
             public String savePos() {
                 return UtilMetadata.genFieldSave("2",getObjects());
             }
+
+            @Override
+            public String requiredPos() {
+                return UtilMetadata.genPipeRow(getObjects());
+            }
+        },
+
+        REF_CONFIG_PPIPK {
+            @Override
+            public String savePos() {
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 16),getObjects());}
 
             @Override
             public String requiredPos() {

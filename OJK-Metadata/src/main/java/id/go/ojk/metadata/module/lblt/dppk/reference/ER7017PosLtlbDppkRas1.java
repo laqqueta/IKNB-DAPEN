@@ -133,14 +133,16 @@ public enum ER7017PosLtlbDppkRas1 implements IObject<KeyValueString> {
 
     public enum Configs implements ReferenceConfig {
         REF_CONFIG_PPMPK {
+            private final ProgramType programType = ProgramType.PPMPK;
+
             @Override
             public String requiredPos() {
-                return UtilMetadata.genPipeRow(getObjects(ProgramType.PPMPK));
+                return UtilMetadata.genPipeRow(getObjects(programType));
             }
 
             @Override
             public String savePos() {
-                return UtilMetadata.genFieldSave("2|3|4|5", getObjects(ProgramType.PPMPK));
+                return UtilMetadata.genFieldSave("2|3|4|5", getObjects(programType));
             }
         },
 
@@ -156,6 +158,20 @@ public enum ER7017PosLtlbDppkRas1 implements IObject<KeyValueString> {
             public String savePosForm() {
                 return UtilMetadata.genFieldSave("2",
                         Collections.singletonList(R_RAS10901000000.getObject()));
+            }
+
+            @Override
+            public String savePos() {
+                return UtilMetadata.genFieldSave("2|3|4|5", getObjects(programType));
+            }
+        },
+
+        REF_CONFIG_PPIPK {
+            private final ProgramType programType = ProgramType.PPIPK;
+
+            @Override
+            public String requiredPos() {
+                return UtilMetadata.genPipeRow(getObjects(programType));
             }
 
             @Override

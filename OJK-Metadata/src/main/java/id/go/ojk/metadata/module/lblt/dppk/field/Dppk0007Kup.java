@@ -90,7 +90,7 @@ public enum Dppk0007Kup implements ILbltFieldMetadata {
         throw new IllegalArgumentException("Unknown sector type: " + sectorType);
     }
 
-    public static SubmissionFormat formMetadata(ProgramType programType) {
+    public static SubmissionFormat formMetadata(SectorType sectorType, ProgramType programType) {
         FIELD_METADATA.setProgramType(programType);
 
         BaseMetadataValidation<? extends IBaseMetadataValidation> metadataValidation = null;
@@ -105,16 +105,14 @@ public enum Dppk0007Kup implements ILbltFieldMetadata {
                 metadataValidation = VALIDATION_METADATA_PPMPM;
                 referenceConfig = ER7007PosLtlbDppkKup.Configs.REF_CONFIG_PPMPM;
                 break;
-            //default:
-                //throw new IllegalStateException();
-default:
-                break;
+            default:
+                throw new IllegalStateException();
         }
 
         return new SubmissionConfig(programType.toString())
                 .config()
                 .setReferenceConfigs(referenceConfig)
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(KONVENSIONAL, programType.toString()))
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
                 .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
                 .setSegmentValidations(metadataValidation)
                 .build()

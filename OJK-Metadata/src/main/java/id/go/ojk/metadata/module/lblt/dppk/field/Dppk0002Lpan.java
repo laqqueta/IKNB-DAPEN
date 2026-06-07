@@ -28,6 +28,7 @@ import java.util.stream.Stream;
 
 import static id.go.ojk.lib.client.model.config.DataType.*;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
+import static id.go.ojk.metadata.module.lblt.dppk.validations.ppipik.E7002LpanKValidationsConfig.VALIDATION_METADATA_PPIPK;
 import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpk.E7002LpanKValidationsConfig.VALIDATION_METADATA_PPMPK;
 import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpm.E7002LpanMValidationsConfig.VALIDATION_METADATA_PPMPM;
 import static id.go.ojk.metadata.util.FieldUtil.*;
@@ -104,23 +105,23 @@ public enum Dppk0002Lpan implements ILbltFieldMetadata {
     UUS_MANFAAT_PENSIUN(
             sectors(KONVENSIONAL, SYARIAH),
             programs(PPIPK),
-            sf(13, null, "UUS - Manfaat Pensiun", sv(M, 1, 18, all2))
+            sf(13, null, "UUS - Manfaat Pensiun", sv(M, 1, 18, numericNegatif))
     ),
 
     UUS_MANFAAT_PENSIUN_LAINNYA(
             sectors(KONVENSIONAL, SYARIAH),
             programs(PPIPK),
-            sf(14, null, "UUS - Manfaat Pensiun Lainnya", sv(M, 1, 18, all2))
+            sf(14, null, "UUS - Manfaat Pensiun Lainnya", sv(M, 1, 18, numericNegatif))
     ),
     UUS_MANFAAT_LAIN(
             sectors(KONVENSIONAL, SYARIAH),
             programs(PPIPK),
-            sf(15, null, "UUS - Manfaat Lain", sv(M, 1, 18, all2))
+            sf(15, null, "UUS - Manfaat Lain", sv(M, 1, 18, numericNegatif))
     ),
     TOTAL(
             sectors(KONVENSIONAL, SYARIAH),
             programs(PPIPK),
-            sf(16, null, "Total", sv(M, 1, 18, all2))
+            sf(16, null, "Total", sv(M, 1, 18, numericNegatif))
     ),
     ;
 
@@ -168,7 +169,7 @@ public enum Dppk0002Lpan implements ILbltFieldMetadata {
         throw new IllegalArgumentException("Unknown sector type: " + sectorType);
     }
 
-    public static SubmissionFormat formMetadata(ProgramType programType) {
+    public static SubmissionFormat formMetadata(SectorType sectorType, ProgramType programType) {
         FIELD_METADATA.setProgramType(programType);
 
         BaseMetadataValidation<? extends ILbltMetadataValidation> metadataValidation = null;
@@ -183,21 +184,21 @@ public enum Dppk0002Lpan implements ILbltFieldMetadata {
                 metadataValidation = VALIDATION_METADATA_PPMPM;
                 referenceConfig = ER7002PosLtlbDppkLpan.Configs.REF_CONFIG_PPMPM;
                 break;
-            //default:
-            //throw new IllegalStateException();
-            default:
+            case PPIPK:
+                metadataValidation = VALIDATION_METADATA_PPIPK;
+                referenceConfig = ER7002PosLtlbDppkLpan.Configs.REF_CONFIG_PPIPK;
                 break;
+            default:
+                throw new IllegalStateException();
         }
 
 
         return new SubmissionConfig(programType.toString())
                 .config()
                 .setReferenceConfigs(referenceConfig)
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(KONVENSIONAL, programType.toString()))
-//                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-//                .setSegmentValidations(metadataValidation)
-                .setSubmissionField(FIELD_METADATA.getClearedFields())
-                .setSegmentValidations()
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
+                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                .setSegmentValidations(metadataValidation)
                 .build()
                 .get();
     }

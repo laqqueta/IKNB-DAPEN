@@ -13,6 +13,7 @@ import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpipk;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpk;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpm;
 import id.go.ojk.metadata.module.lblt.dppk.reference.ER7003PosLtlbDppkNrc;
+import id.go.ojk.metadata.submission.base.BaseSubmissionConfig;
 import id.go.ojk.metadata.util.constants.ProgramType;
 import id.go.ojk.metadata.util.constants.SectorType;
 import id.go.ojk.metadata.field.lblt.ILbltFieldMetadata;
@@ -28,6 +29,7 @@ import java.util.stream.Stream;
 
 import static id.go.ojk.lib.client.model.config.DataType.*;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
+import static id.go.ojk.metadata.module.lblt.dppk.validations.ppipik.E7003NrcKValidationsConfig.VALIDATION_METADATA_PPIPK;
 import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpk.E7003NrcKValidationsConfig.VALIDATION_METADATA_PPMPK;
 import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpm.E7003NrcMValidationsConfig.VALIDATION_METADATA_PPMPM;
 import static id.go.ojk.metadata.util.FieldUtil.*;
@@ -139,7 +141,7 @@ public enum Dppk0003Nrc implements ILbltFieldMetadata {
     public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, String reportCode) {
         EFormLaporanBulananTahunan NRC_FORM = EFormLaporanBulananTahunan.LTLB_NERACA;
 
-        int minRow=0, maxRow=0;
+        int minRow = 0, maxRow = 0;
 
         if (FIELD_METADATA.getProgramType().equals(PPMPK) || FIELD_METADATA.getProgramType().equals(PPMPM)) {
             minRow = 54;
@@ -167,36 +169,47 @@ public enum Dppk0003Nrc implements ILbltFieldMetadata {
         throw new IllegalArgumentException("Unknown sector type: " + sectorType);
     }
 
-    public static SubmissionFormat formMetadata(ProgramType programType) {
+    public static SubmissionFormat formMetadata(SectorType sectorType, ProgramType programType) {
         FIELD_METADATA.setProgramType(programType);
 
         BaseMetadataValidation<? extends ILbltMetadataValidation> metadataValidation = null;
         ReferenceConfig referenceConfig = null;
+        BaseSubmissionConfig.Config<? extends BaseSubmissionConfig.Config<?>> submssionConfig =
+                new SubmissionConfig(programType.toString()).config();
+
 
         switch (programType) {
             case PPMPK:
                 metadataValidation = VALIDATION_METADATA_PPMPK;
                 referenceConfig = ER7003PosLtlbDppkNrc.Configs.REF_CONFIG_PPMPK;
+                submssionConfig
+                        .setReferenceConfigs(referenceConfig)
+                        .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
+                        .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                        .setSegmentValidations(metadataValidation);
                 break;
             case PPMPM:
                 metadataValidation = VALIDATION_METADATA_PPMPM;
                 referenceConfig = ER7003PosLtlbDppkNrc.Configs.REF_CONFIG_PPMPM;
+                submssionConfig
+                        .setReferenceConfigs(referenceConfig)
+                        .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
+                        .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                        .setSegmentValidations(metadataValidation);
                 break;
-            //default:
-            //throw new IllegalStateException();
+            case PPIPK:
+                metadataValidation = VALIDATION_METADATA_PPIPK;
+                referenceConfig = ER7003PosLtlbDppkNrc.Configs.REF_CONFIG_PPIPK;
+                submssionConfig
+                        .setReferenceConfigs(referenceConfig)
+                        .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
+                        .setSubmissionField(FIELD_METADATA.getClearedFields())
+                        .setSegmentValidations();
             default:
-                break;
+                throw new IllegalStateException();
         }
 
-        return new SubmissionConfig(programType.toString())
-                .config()
-                .setReferenceConfigs(referenceConfig)
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(KONVENSIONAL, programType.toString()))
-//                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-//                .setSegmentValidations(metadataValidation)
-                .setSubmissionField(FIELD_METADATA.getClearedFields())
-                .setSegmentValidations()
-                .build()
+        return submssionConfig.build()
                 .get();
     }
 
