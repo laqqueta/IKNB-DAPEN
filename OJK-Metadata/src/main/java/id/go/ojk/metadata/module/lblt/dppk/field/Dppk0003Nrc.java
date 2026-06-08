@@ -13,6 +13,7 @@ import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpipk;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpk;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpm;
 import id.go.ojk.metadata.module.lblt.dppk.reference.ER7003PosLtlbDppkNrc;
+import id.go.ojk.metadata.module.lblt.dppk.validations.ppipik.E7003NrcKValidationsConfig;
 import id.go.ojk.metadata.submission.base.BaseSubmissionConfig;
 import id.go.ojk.metadata.util.constants.ProgramType;
 import id.go.ojk.metadata.util.constants.SectorType;
@@ -203,8 +204,10 @@ public enum Dppk0003Nrc implements ILbltFieldMetadata {
                 submssionConfig
                         .setReferenceConfigs(referenceConfig)
                         .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
-                        .setSubmissionField(FIELD_METADATA.getClearedFields())
-                        .setSegmentValidations();
+                        .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                        .setSegmentValidations(metadataValidation)
+                        .additionalSegmentValidations(E7003NrcKValidationsConfig.additionalSegmentLan());
+                break;
             default:
                 throw new IllegalStateException();
         }

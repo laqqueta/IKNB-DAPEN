@@ -68,7 +68,7 @@ public enum ER7003PosLtlbDppkNrc implements IObject<KeyValueString> {
     R_NRC0112000000("NRC0112000000", "SELISIH NILAI KINI AKTUARIAL", EnumSet.of(ProgramType.PPMPM, ProgramType.PPMPK)),
     R_NRC0113000000("NRC0113000000", "LIABILITAS MANFAAT PENSIUN", EnumSet.of(ProgramType.PPIPM, ProgramType.PPIPK, ProgramType.PPMPPPIPK)),
 //    R_NRC0114000000("NRC0114000000", "LIABILITAS DI LUAR NILAI KINI AKTUARIAL", EnumSet.of(ProgramType.PPMPM, ProgramType.PPMPK)),
-    R_NRC0115000000("NRC0115000000", "LIABILITAS DI LUAR LIABILITAS MANFAAT PENSIUN", EnumSet.of(ProgramType.PPIPM, ProgramType.PPIPK, ProgramType.PPMPPPIPK)),
+//    R_NRC0115000000("NRC0115000000", "LIABILITAS DI LUAR LIABILITAS MANFAAT PENSIUN", EnumSet.of(ProgramType.PPIPM, ProgramType.PPIPK, ProgramType.PPMPPPIPK)),
     R_NRC0115010000("NRC0115010000", "Utang Manfaat Pensiun dan Manfaat Lain Jatuh Tempo", EnumSet.of(ProgramType.ALL)),
     R_NRC0115020000("NRC0115020000", "Utang Manfaat Sukarela", EnumSet.of(ProgramType.ALL)),
     R_NRC0115030000("NRC0115030000", "Utang Investasi", EnumSet.of(ProgramType.ALL)),

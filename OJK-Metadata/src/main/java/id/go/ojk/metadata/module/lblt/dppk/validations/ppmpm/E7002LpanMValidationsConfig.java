@@ -27,6 +27,7 @@ import java.util.function.Supplier;
 import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7002PosLtlbDppkLpan.*;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
+import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
 import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
 
 @AllArgsConstructor
@@ -38,10 +39,22 @@ public enum E7002LpanMValidationsConfig implements ILbltMetadataValidation, IVal
                     EFormLaporanBulananTahunan.LTLB_PPIN.getCode(), ER7060PosLtlbDppkPpin.R_PPIN010000.getObject().getKey(),
                     "PPIN|Peningkatan/Penurunan|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain")),
 
-    SG_SUMIF_IUR(programs(PPMPM),
-            () -> genSumIfValidation(UtilMetadata.genPipeRow(ER7002PosLtlbDppkLpan.getObjects(ProgramType.PPMPM), 7, 10), "6|5|7|8", "17",
-                    EFormLaporanBulananTahunan.LTLB_IUR.getCode(), ER7061PosLtlbDppkIur.R_IUR010000.getObject().getKey(),
-                    "IUR|Iuran Jatuh Tempo - Iuran Normal Pemberi Kerja Jumlah|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain")),
+    SG_SUMIF_IUR(programs(PPMPK),
+            () -> {
+                String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
+                String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
+                String sumCriteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
+                String sumCriteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
+                return UtilSegmentValidation.genSumIf(
+                        "2", UtilMetadata.genPipeRow(ER7002PosLtlbDppkLpan.getObjects(PPMPK), 7, 10),
+                        EFormLaporanBulananTahunan.LTLB_IUR.getCode(),
+                        ER7061PosLtlbDppkIur.R_IUR010000.getObject().getKey(),
+                        "6|5|7|8", "17", "2", criteriaCondition, sumCriteriaCondition,
+                        "IUR|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain",
+                        criteriaConditionErr, sumCriteriaConditionErr,
+                        "Iuran Jatuh Tempo - Iuran Normal Peserta Pemberi Kerja %|Iuran Jatuh Tempo - Iuran Normal Peserta Jumlah|" +
+                                "Iuran Jatuh Tempo - Iuran Normal Pemberi Kerja Jumlah|Iuran Jatuh Tempo - Iuran Sukarela Peserta");
+            }),
 
     SG_SUMIF_PDIN(programs(PPMPM),
             () -> genSumIfValidation(R_LPAN0105000000.getObject().getKey(), "3", "4",

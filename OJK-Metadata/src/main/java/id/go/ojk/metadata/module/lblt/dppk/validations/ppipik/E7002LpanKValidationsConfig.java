@@ -29,7 +29,6 @@ import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7002PosLtlbDppkLpa
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
 import static id.go.ojk.metadata.util.constants.ProgramType.PPIPK;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPIPK;
 
 @AllArgsConstructor
 @RequiredArgsConstructor
@@ -51,7 +50,7 @@ public enum E7002LpanKValidationsConfig implements ILbltMetadataValidation, IVal
                         EFormLaporanBulananTahunan.LTLB_IUR.getCode(),
                         ER7061PosLtlbDppkIur.R_IUR010000.getObject().getKey(),
                         "6|5|7", "13", "2", criteriaCondition, sumCriteriaCondition,
-                        "PIUT|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain",
+                        "IUR|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain",
                         criteriaConditionErr, sumCriteriaConditionErr,
                         "Iuran Jatuh Tempo - Iuran Normal Pemberi Kerja %|Iuran Jatuh Tempo - Iuran Normal Peserta Jumlah|Iuran Jatuh Tempo - Iuran Normal Pemberi Kerja Jumlah");
             }
