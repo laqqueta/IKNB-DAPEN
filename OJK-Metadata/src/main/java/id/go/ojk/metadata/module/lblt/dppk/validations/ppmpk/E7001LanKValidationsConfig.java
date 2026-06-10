@@ -369,14 +369,14 @@ public enum E7001LanKValidationsConfig implements ILbltMetadataValidation, IVali
                             UtilMetadata.genMinusDesc(ER7001PosLtlbDppkLan.getObjects(ProgramType.PPMPK), new int[]{38, 47})))),
 
     SG_EQUALS_FORMULA_5(programs(PPMPK),
-            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(3, 16),
+            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(3, 13),
                     ER7001PosLtlbDppkLan.R_LAN0109000000.getObject().getKey(),
                     UtilMetadata.genPlusRow(ER7001PosLtlbDppkLan.getObjects(PPMPK), 39, 45),
                     UtilMetadata.genMessage(ER7001PosLtlbDppkLan.R_LAN0109000000.getObject().getValue(),
                             UtilMetadata.genPlusDesc(ER7001PosLtlbDppkLan.getObjects(PPMPK), 39, 45)))),
 
     SG_EQUALS_FORMULA_6(programs(PPMPK),
-            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(3, 16),
+            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(3, 13),
                     ER7001PosLtlbDppkLan.R_LAN0110000000.getObject().getKey(),
                     ER7001PosLtlbDppkLan.R_LAN0109000000.getObject().getKey(),
                     UtilMetadata.genMessage(ER7001PosLtlbDppkLan.R_LAN0110000000.getObject().getValue(),

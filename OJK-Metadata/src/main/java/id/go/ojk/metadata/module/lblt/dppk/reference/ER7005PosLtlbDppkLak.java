@@ -38,7 +38,7 @@ public enum ER7005PosLtlbDppkLak implements IObject<KeyValueString> {
     R_LAK0504000000("LAK0504000000", "Penerimaan Bunga Keterlambatan Iuran"),
     R_LAK0505000000("LAK0505000000", "Penerimaan Pengalihan Dana dari Dana Pensiun Lain"),
     R_LAK0506000000("LAK0506000000", "Pembayaran Pengalihan Dana ke Dana Pensiun Lain"),
-    R_LAK0507000000("LAK0507000000", "Pembayaran Manfaat Pensiun & Manfaat Lain"),
+    R_LAK0507000000("LAK0507000000", "Pembayaran Manfaat Pensiun dan Manfaat Lain"),
     R_LAK0508000000("LAK0508000000", "Pembayaran Pengalihan Dana ke Balai Harta Peninggalan"),
     R_LAK0600000000("LAK0600000000", "Arus Kas Bersih dari Aktivitas Pendanaan"),
     R_LAK0700000000("LAK0700000000", "KENAIKAN (PENURUNAN) KAS BERSIH"),

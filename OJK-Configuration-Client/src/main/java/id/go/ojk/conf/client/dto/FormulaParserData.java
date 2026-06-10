@@ -13,7 +13,10 @@ public class FormulaParserData {
     private String formula;
 
     @Getter
-    @Setter
     private String errMessage;
 
+    public FormulaParserData setErrMessage(String errMessage) {
+        this.errMessage = errMessage;
+        return this;
+    }
 }

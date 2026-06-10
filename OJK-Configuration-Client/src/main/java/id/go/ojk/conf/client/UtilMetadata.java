@@ -360,6 +360,65 @@ public class UtilMetadata {
         return new FormulaParserData(formula.append(")").toString(), message.toString());
     }
 
+    public static FormulaParserData genFormulaParser(List<KeyValueString> listKv, String operationPos, String fields, String[] fieldNames, FormulaParserMessageOption option, String form) {
+        StringBuilder formula = new StringBuilder("(");
+        StringBuilder message = new StringBuilder();
+
+        String[] fieldOperand = fields.split("\\d+");
+        String[] posOperand = operationPos.split("\\d+");
+
+        String[] arrFields = fields.split("\\D+");
+        String[] arrOperationPos = operationPos.split("\\D+");
+
+        for (int i = 0; i < arrOperationPos.length; i++) {
+            if (i > 0) {
+                formula.append(posOperand[i]);
+                message.append(" ").append(posOperand[i]).append(" ");
+            }
+
+            KeyValueString kv = listKv.get(Integer.parseInt(arrOperationPos[i]));
+            formula.append(form)
+                    .append("#")
+                    .append(kv.getKey()).append("[");
+
+//            if (arrFields.length > 1) message.append("(");
+            message.append("'")
+                    .append(kv.getValue()).append("'");
+
+            for (int k = 0; k < arrFields.length; k++) {
+                if (k > 0) {
+                    formula.append(fieldOperand[k]);
+                    if (!option.equals(FormulaParserMessageOption.NONE)) {
+                        message.append(" ").append(fieldOperand[k]).append(" ");
+                    }
+                }
+
+                formula.append(arrFields[k]);
+
+                if (option.equals(FormulaParserMessageOption.FIELD_DETAILED)) {
+                    message.append(" Kolom '").append(fieldNames[k]).append("'");
+                } else if (option.equals(FormulaParserMessageOption.FIELD_SIMPLE)) {
+                    message.append(" Kolom '").append(arrFields[k]).append("'");
+                }
+            }
+
+            formula.append("]");
+//            if (arrFields.length > 1) message.append(")");
+        }
+
+        return new FormulaParserData(formula.append(")").toString(), message.toString());
+    }
+
+    public static FormulaParserData genFormulaParser(List<KeyValueString> listKv, String operationPos, String fields, String form) {
+        return genFormulaParser(listKv, operationPos, fields, new String[]{}, FormulaParserMessageOption.NONE, form);
+    }
+
+    public static <T extends IObject<KeyValueString>> FormulaParserData genFormulaParser(List<KeyValueString> listKv, String operationPos, String fields, String fieldNames, String form) {
+        String[] arrFieldNames = StringUtils.split(fieldNames, "|");
+        return genFormulaParser(listKv, operationPos, fields, arrFieldNames, FormulaParserMessageOption.FIELD_DETAILED, form);
+    }
+
+
     // Single Row & Column usage
     public static FormulaParserData genFormulaParserFormatter(KeyValueString listKv, int[] fields, String form) {
         return genFormulaParserFormatter(Collections.singletonList(listKv), new int[] {0}, fields, new String[]{}, new String[]{}, form);

@@ -262,13 +262,6 @@ public enum E7003NrcKValidationsConfig implements ILbltMetadataValidation, IVali
                     UtilMetadata.genMessage(ER7003PosLtlbDppkNrc.R_NRC0105000000.getObject().getValue(),
                             UtilMetadata.genPlusDesc(ER7003PosLtlbDppkNrc.getObjects(ProgramType.PPMPK), 23, 32)))),
 
-    SG_EQUALS_FORMULA_3(programs(PPMPK),
-            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 11),
-                    ER7003PosLtlbDppkNrc.R_NRC0107000000.getObject().getKey(),
-                    UtilMetadata.genPlusRow(ER7003PosLtlbDppkNrc.getObjects(ProgramType.PPMPK), 34, 39),
-                    UtilMetadata.genMessage(ER7003PosLtlbDppkNrc.R_NRC0107000000.getObject().getValue(),
-                            UtilMetadata.genPlusDesc(ER7003PosLtlbDppkNrc.getObjects(ProgramType.PPMPK), 34, 39)))),
-
     SG_EQUALS_FORMULA_5(programs(PPMPK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 12),
                     ER7003PosLtlbDppkNrc.R_NRC0109000000.getObject().getKey(),
@@ -284,7 +277,7 @@ public enum E7003NrcKValidationsConfig implements ILbltMetadataValidation, IVali
                             UtilMetadata.genPlusDesc(ER7003PosLtlbDppkNrc.getObjects(ProgramType.PPMPK), new int[]{43, 44, 52})))),
 
     SG_EQUALS_GABUNGAN(programs(PPMPK),
-            () -> UtilSegmentValidation.genEqualsFormula("12",
+            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 12),
                     ER7003PosLtlbDppkNrc.R_NRC0107000000.getObject().getKey(),
                     UtilMetadata.genPlusRow(ER7003PosLtlbDppkNrc.getObjects(ProgramType.PPMPK), 34, 38) + "-NRC0106060000",
                     UtilMetadata.genMessage(ER7003PosLtlbDppkNrc.R_NRC0107000000.getObject().getValue(),

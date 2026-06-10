@@ -33,6 +33,7 @@ import java.util.stream.Stream;
 import static id.go.ojk.lib.client.model.config.DataType.*;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.C;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
+import static id.go.ojk.metadata.module.lblt.dppk.validations.ppipik.E7017Ras1KValidationsConfig.VALIDATION_METADATA_PPIPK;
 import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpk.E7017Ras1KValidationsConfig.VALIDATION_METADATA_PPMPK;
 import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpm.E7017Ras1MValidationsConfig.VALIDATION_METADATA_PPMPM;
 import static id.go.ojk.metadata.util.FieldUtil.*;
@@ -136,7 +137,7 @@ public enum Dppk0017Ras1 implements ILbltFieldMetadata {
                         .additionalSegmentValidations(additionalSegment);
                 break;
             case PPIPK:
-                metadataValidation = VALIDATION_METADATA_PPMPM;
+                metadataValidation = VALIDATION_METADATA_PPIPK;
                 referenceConfig = ER7017PosLtlbDppkRas1.Configs.REF_CONFIG_PPIPK;
                 additionalSegment = id.go.ojk.metadata.module.lblt.dppk.validations.ppipik.E7017Ras1KValidationsConfig.genAllValidationRatioAB();
                 submssionConfig

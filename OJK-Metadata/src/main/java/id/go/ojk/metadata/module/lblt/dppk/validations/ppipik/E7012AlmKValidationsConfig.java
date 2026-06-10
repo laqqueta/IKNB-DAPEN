@@ -269,17 +269,17 @@ public enum E7012AlmKValidationsConfig implements ILbltMetadataValidation, IVali
     SG_FIELD_TOTAL_37(programs(PPIPK), () -> genTotalValidation(R_ALM0205000000.key,
             EFormLaporanBulananTahunan.LTLB_PIUT,
             ER7042PosLtlbDppkPiut.getObjects(),
-            "12", "Piutang Iuran Sukarela Peserta - Total", "Total")),
+            "9", "Piutang Iuran Sukarela Peserta - Total", "Total")),
 
     SG_FIELD_TOTAL_ALM0202000000(programs(PPIPK), () -> {
         String selectField = "16";
         String selectPosCode = R_ALM0202000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_PIUT.getCode();
 
-        String operationForm = genFormulaFormatter(ER7042PosLtlbDppkPiut.getObjects(), "0", "5|8|12");
+        String operationForm = genFormulaFormatter(ER7042PosLtlbDppkPiut.getObjects(), "0", "5|8|9");
 
         return UtilSegmentValidation.genFormulaParserAlmValidation(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL,
-                "Piutang Iuran Pemberi Kerja - Total|Piutang Iuran Peserta - Total|Piutang Iuran Sukarela Peserta - Total", "Total");
+                "Piutang Iuran Pemberi Kerja - Total|Piutang Iuran Peserta - Total|Piutang Iuran Sukarela Peserta", "Total");
     }),
 
     SG_FIELD_TOTAL_ALM0206000000(programs(PPIPK), () -> {

@@ -38,7 +38,7 @@ public enum ER7012PosLtlbDppkAlm implements IObject<KeyValueString> {
     R_ALM0120000000("ALM0120000000", "Tanah dan Bangunan di Indonesia", EnumSet.of(ProgramType.ALL)),
     R_ALM0121000000("ALM0121000000", "Total Investasi", EnumSet.of(ProgramType.ALL)),
     //    R_ALM0200000000("ALM0200000000", "B. Aset Lancar di Luar Investasi", EnumSet.of(ProgramType.ALL)),
-    R_ALM0201000000("ALM0201000000", "Kas & Bank", EnumSet.of(ProgramType.ALL)),
+    R_ALM0201000000("ALM0201000000", "Kas dan Bank", EnumSet.of(ProgramType.ALL)),
     R_ALM0202000000("ALM0202000000", "Piutang Iuran", EnumSet.of(ProgramType.ALL)),
     R_ALM0203000000("ALM0203000000", "Iuran Normal Pemberi Kerja", EnumSet.of(ProgramType.ALL)),
     R_ALM0204000000("ALM0204000000", "Iuran Normal Peserta", EnumSet.of(ProgramType.ALL)),

@@ -203,7 +203,7 @@ public enum E7003NrcKValidationsConfig implements ILbltMetadataValidation, IVali
                         UtilMetadata.genPipeColumnExcept(2, 15, new int[] {12}), R_NRC0101210000.key,
                         EFormLaporanBulananTahunan.LTLB_PROP.getCode(),
                         ER7040PosLtlbDppkProp.R_PROP010000.getObject().getKey(),
-                        "9", "17|2", "2", criteriaCondition, sumCriteriaCondition,
+                        "8", "17|2", "2", criteriaCondition, sumCriteriaCondition,
                         "PROP|Nilai Perolehan|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain|Jenis Objek (Tanah/Bangunan/Tanah&Bangunan)",
                         criteriaConditionErr, sumCriteriaConditionErr, "0");
             }),
@@ -276,9 +276,9 @@ public enum E7003NrcKValidationsConfig implements ILbltMetadataValidation, IVali
     SG_EQUALS_FORMULA_3(programs(PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 16),
                     ER7003PosLtlbDppkNrc.R_NRC0107000000.getObject().getKey(),
-                    UtilMetadata.genPlusRow(ER7003PosLtlbDppkNrc.getObjects(ProgramType.PPIPK), 33, 38),
+                    UtilMetadata.genPlusRow(ER7003PosLtlbDppkNrc.getObjects(ProgramType.PPIPK), 33, 37) + "-NRC0106060000",
                     UtilMetadata.genMessage(ER7003PosLtlbDppkNrc.R_NRC0107000000.getObject().getValue(),
-                            UtilMetadata.genPlusDesc(ER7003PosLtlbDppkNrc.getObjects(ProgramType.PPIPK), 33, 38)))),
+                            UtilMetadata.genPlusDesc(ER7003PosLtlbDppkNrc.getObjects(ProgramType.PPIPK), 33, 37) + "-'Akumulasi Penyusutan'"))),
 
     SG_EQUALS_FORMULA_5(programs(PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 16),
@@ -346,7 +346,7 @@ public enum E7003NrcKValidationsConfig implements ILbltMetadataValidation, IVali
 
     GEN_VALIDATON_FORM_LAK(programs(PPIPK), () -> {
         KeyValueString selectPosCode = R_NRC0104010000.getObject();
-        int[] cols = {12};
+        int[] cols = {16};
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAK.getCode();
         String comparatorColumn = UtilMetadata.genPlusColumn(cols);
         KeyValueString comparatorPosCode = ER7005PosLtlbDppkLak.R_LAK0900000000.getObject();

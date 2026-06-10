@@ -113,8 +113,8 @@ public enum E7002LpanKValidationsConfig implements ILbltMetadataValidation, IVal
 
     SG_EQUAL_FORMULA_5(programs(PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 16),
-                    R_LPAN0500000000.getObject().getKey(), UtilMetadata.genMinusRow(getObjects(ProgramType.PPIPK), new int[]{21, 20}),
-                    UtilMetadata.genMessage(R_LPAN0500000000.getObject().getValue(), UtilMetadata.genMinusDesc(getObjects(ProgramType.PPIPK), new int[]{21, 20})))),
+                    R_LPAN0500000000.getObject().getKey(), UtilMetadata.genMinusRow(getObjects(ProgramType.PPIPK), new int[]{22, 21}),
+                    UtilMetadata.genMessage(R_LPAN0500000000.getObject().getValue(), UtilMetadata.genMinusDesc(getObjects(ProgramType.PPIPK), new int[]{22, 21})))),
 
     SG_EQUAL_FORMULA_ROI_1(programs(PPIPK),
             () -> genRowValidation(R_LPAN0101010000.getObject().getKey(), "2")),

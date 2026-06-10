@@ -34,7 +34,7 @@ import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7017PosLtlbDppkRas
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
 import static id.go.ojk.metadata.util.constants.ProgramType.PPIPK;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
+import static id.go.ojk.metadata.util.constants.ProgramType.PPIPK;
 
 @AllArgsConstructor
 @RequiredArgsConstructor
@@ -45,7 +45,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String selectPosCode = R_RAS10101000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LPAN.getCode();
 
-        List<KeyValueString> formObject = ER7002PosLtlbDppkLpan.getObjects(PPMPK);
+        List<KeyValueString> formObject = ER7002PosLtlbDppkLpan.getObjects(PPIPK);
 
         String formulaField2 = genFormulaFormatter(formObject, new int[]{5}, new int[]{2})
                 + "+" + genFormulaFormatter(formObject, new int[]{6}, new int[]{2})
@@ -79,7 +79,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String selectPosCode = R_RAS10201000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LPAN.getCode();
 
-        List<KeyValueString> formObject = ER7002PosLtlbDppkLpan.getObjects(PPMPK);
+        List<KeyValueString> formObject = ER7002PosLtlbDppkLpan.getObjects(PPIPK);
 
         String formulaField2 = genFormulaFormatter(formObject, new int[]{5, 6, 11}, new int[]{2}) + "-" +
                 genFormulaFormatter(formObject, new int[]{14, 15, 16}, new int[]{2});
@@ -130,7 +130,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String selectPosCode = R_RAS10301000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LPAN.getCode();
 
-        List<KeyValueString> formObject = ER7002PosLtlbDppkLpan.getObjects(PPMPK);
+        List<KeyValueString> formObject = ER7002PosLtlbDppkLpan.getObjects(PPIPK);
 
         String formulaField2 = genFormulaFormatter(formObject, new int[]{15}, new int[]{2});
         String formulaField3 = genFormulaFormatter(formObject, new int[]{15}, new int[]{3, 4, 5});
@@ -146,7 +146,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String selectPosCode = R_RAS10302000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LPAN.getCode();
 
-        List<KeyValueString> formObject = ER7002PosLtlbDppkLpan.getObjects(PPMPK);
+        List<KeyValueString> formObject = ER7002PosLtlbDppkLpan.getObjects(PPIPK);
 
         String formulaField2 = genFormulaFormatter(formObject, new int[]{5}, new int[]{2}) + "+" +
                 genFormulaFormatter(formObject, new int[]{11}, new int[]{2});
@@ -166,7 +166,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String selectPosCode = R_RAS10501000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LPAN.getCode();
 
-        List<KeyValueString> formObject = ER7002PosLtlbDppkLpan.getObjects(PPMPK);
+        List<KeyValueString> formObject = ER7002PosLtlbDppkLpan.getObjects(PPIPK);
 
         String formulaField2 = genFormulaFormatter(formObject, new int[]{15}, new int[]{2});
         String formulaField3 = genFormulaFormatter(formObject, new int[]{15}, new int[]{3, 4, 5});
@@ -182,7 +182,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String selectPosCode = R_RAS10502000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
 
-        List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPMPK);
+        List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPIPK);
 
         String formulaField2 = genFormulaFormatter(formObject, new int[]{38}, new int[]{3});
         String formulaField3 = genFormulaFormatter(formObject, new int[]{38}, new int[]{4, 5, 6});
@@ -198,7 +198,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String selectPosCode = R_RAS10701000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
 
-        List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPMPK);
+        List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPIPK);
 
         String formulaField2 = genFormulaFormatter(formObject, "22|23|24", "3");
         String formulaField3 = genFormulaFormatter(formObject, "22|23|24", "4|5|6");
@@ -214,7 +214,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String selectPosCode = R_RAS10702000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LPAN.getCode();
 
-        List<KeyValueString> formObject = ER7002PosLtlbDppkLpan.getObjects(PPMPK);
+        List<KeyValueString> formObject = ER7002PosLtlbDppkLpan.getObjects(PPIPK);
 
         String formulaField2 = genFormulaFormatter(formObject, new int[]{7, 8, 9, 10}, new int[]{2});
         String formulaField3 = genFormulaFormatter(formObject, new int[]{7, 8, 9}, new int[]{3, 4, 5});
@@ -230,7 +230,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String selectPosCode = R_RAS10801000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
 
-        List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPMPK);
+        List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPIPK);
 
         String formulaField2 = genFormulaFormatter(formObject, new int[]{20}, new int[]{3});
         String formulaField3 = genFormulaFormatter(formObject, new int[]{20}, new int[]{4, 5, 6});
@@ -246,7 +246,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String selectPosCode = R_RAS10802000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
 
-        List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPMPK);
+        List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPIPK);
 
         String formulaField2 = genFormulaFormatter(formObject, new int[]{48}, new int[]{3});
         String formulaField3 = genFormulaFormatter(formObject, new int[]{48}, new int[]{4, 5, 6});
@@ -262,7 +262,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String selectPosCode = R_RAS10901000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
 
-        List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPMPK);
+        List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPIPK);
 
         String formulaField2 = genFormulaFormatter(formObject, new int[]{27, 28}, new int[]{3});
         String formulaField3 = genFormulaFormatter(formObject, new int[]{27, 28}, new int[]{4, 5, 6});
@@ -278,7 +278,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String selectPosCode = R_RAS10902000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
 
-        List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPMPK);
+        List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPIPK);
 
         String formulaField2 = genFormulaFormatter(formObject, new int[]{20}, new int[]{3});
         String formulaField3 = genFormulaFormatter(formObject, new int[]{20}, new int[]{4, 5, 6});
@@ -294,7 +294,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String selectPosCode = R_RAS11001000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
 
-        List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPMPK);
+        List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPIPK);
 
         String formulaField2 = genFormulaFormatter(formObject, new int[]{20}, new int[]{3});
         String formulaField3 = genFormulaFormatter(formObject, new int[]{20}, new int[]{4, 5, 6});
@@ -310,7 +310,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String selectPosCode = R_RAS11101000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LPAN.getCode();
 
-        List<KeyValueString> formObject = ER7002PosLtlbDppkLpan.getObjects(PPMPK);
+        List<KeyValueString> formObject = ER7002PosLtlbDppkLpan.getObjects(PPIPK);
 
         String formulaField2 = genFormulaFormatter(formObject, new int[]{6}, new int[]{2});
         String formulaField3 = genFormulaFormatter(formObject, new int[]{6}, new int[]{3, 4, 5});
@@ -326,7 +326,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String selectPosCode = R_RAS11102000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LPAN.getCode();
 
-        List<KeyValueString> formObject = ER7002PosLtlbDppkLpan.getObjects(PPMPK);
+        List<KeyValueString> formObject = ER7002PosLtlbDppkLpan.getObjects(PPIPK);
 
         String formulaField2 = genFormulaFormatter(formObject, new int[]{5, 6}, new int[]{2});
         String formulaField3 = genFormulaFormatter(formObject, new int[]{5, 6}, new int[]{3, 4, 5});
@@ -342,7 +342,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String selectPosCode = R_RAS11201000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_NERACA.getCode();
 
-        List<KeyValueString> formObject = ER7003PosLtlbDppkNrc.getObjects(PPMPK);
+        List<KeyValueString> formObject = ER7003PosLtlbDppkNrc.getObjects(PPIPK);
 
         String formulaField2 = genFormulaFormatter(formObject, new int[]{22}, new int[]{2}); // ??
         String formulaField3 = genFormulaFormatter(formObject, new int[]{22}, new int[]{3, 4, 5});
@@ -358,7 +358,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String selectPosCode = R_RAS11202000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
 
-        List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPMPK);
+        List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPIPK);
 
         String formulaField2 = genFormulaFormatter(formObject, new int[]{48}, new int[]{3}); // ??
         String formulaField3 = genFormulaFormatter(formObject, new int[]{48}, new int[]{4, 5, 6});
@@ -374,7 +374,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String selectPosCode = R_RAS11301000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
 
-        List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPMPK);
+        List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPIPK);
 
         String formulaField2 = genFormulaFormatter(formObject, "0|1|2", "3")
                 + "+" + genFormulaFormatter(formObject, "21", "3");
@@ -395,7 +395,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String selectPosCode = R_RAS11302000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LPAN.getCode();
 
-        List<KeyValueString> formObject = ER7002PosLtlbDppkLpan.getObjects(PPMPK);
+        List<KeyValueString> formObject = ER7002PosLtlbDppkLpan.getObjects(PPIPK);
 
         String formulaField2 = genFormulaFormatter(formObject, "14|15|17", "2");
         String formulaField3 = genFormulaFormatter(formObject, "14|15", "3|4|5") + "+" +
@@ -484,7 +484,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String selectPosCode = R_RAS11501000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
 
-        List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPMPK);
+        List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPIPK);
 
         String formulaField2 = genFormulaFormatter(formObject, "22|23|24", "3");
         String formulaField3 = genFormulaFormatter(formObject, "22|23|24", "4|5|6");
@@ -500,7 +500,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String selectPosCode = R_RAS11502000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
 
-        List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPMPK);
+        List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPIPK);
 
         String formulaField2 = genFormulaFormatter(formObject, "48", "3");
         String formulaField3 = genFormulaFormatter(formObject, "48", "4|5|6");
@@ -516,7 +516,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String selectPosCode = R_RAS11601000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
 
-        List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPMPK);
+        List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPIPK);
 
         String formulaField2 = genFormulaFormatter(formObject, "22", "3");
         String formulaField3 = genFormulaFormatter(formObject, "22", "4|5|6");
@@ -532,7 +532,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String selectField = "2";
         String selectPosCode = R_RAS11701000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_ALM.getCode();
-        String operationForm = genFormulaFormatter(ER7012PosLtlbDppkAlm.getObjects(PPMPK), "49", "7|10|13");
+        String operationForm = genFormulaFormatter(ER7012PosLtlbDppkAlm.getObjects(PPIPK), "49", "7|10|13");
 
         return UtilSegmentValidation.genFormulaParserValidation(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL);
     }),
@@ -595,7 +595,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String selectPosCode = R_RAS11902000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_KUP.getCode();
 
-        List<KeyValueString> formObject = ER7007PosLtlbDppkKup.getObjects(PPMPK);
+        List<KeyValueString> formObject = ER7007PosLtlbDppkKup.getObjects(PPIPK);
 
         String formulaField2 = genFormulaFormatter(formObject, "17", "3");
         String formulaField3 = genFormulaFormatter(formObject, "17", "4");
@@ -610,7 +610,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String selectField = "2";
         String selectPosCode = R_RAS12010000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_ALM.getCode();
-        String operationForm = genFormulaFormatter(ER7012PosLtlbDppkAlm.getObjects(PPMPK), "39", "4");
+        String operationForm = genFormulaFormatter(ER7012PosLtlbDppkAlm.getObjects(PPIPK), "39", "4");
 
         return UtilSegmentValidation.genFormulaParserValidation(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL);
     }),
@@ -619,7 +619,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String selectField = "2";
         String selectPosCode = R_RAS12020000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_ALM.getCode();
-        String operationForm = genFormulaFormatter(ER7012PosLtlbDppkAlm.getObjects(PPMPK), "39", "16");
+        String operationForm = genFormulaFormatter(ER7012PosLtlbDppkAlm.getObjects(PPIPK), "39", "16");
 
         return UtilSegmentValidation.genFormulaParserValidation(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL);
     }),
@@ -628,7 +628,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String selectField = "2";
         String selectPosCode = R_RAS13010000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_ALM.getCode();
-        String operationForm = genFormulaFormatter(ER7012PosLtlbDppkAlm.getObjects(PPMPK), "49", "4");
+        String operationForm = genFormulaFormatter(ER7012PosLtlbDppkAlm.getObjects(PPIPK), "49", "4");
 
         return UtilSegmentValidation.genFormulaParserValidation(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL);
     }),
@@ -637,7 +637,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String selectField = "2";
         String selectPosCode = R_RAS13020000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_ALM.getCode();
-        String operationForm = genFormulaFormatter(ER7012PosLtlbDppkAlm.getObjects(PPMPK), "49", "16");
+        String operationForm = genFormulaFormatter(ER7012PosLtlbDppkAlm.getObjects(PPIPK), "49", "16");
 
         return UtilSegmentValidation.genFormulaParserValidation(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL);
     }),
@@ -647,7 +647,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String selectPosCode = R_RAS14010000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LPAN.getCode();
 
-        List<KeyValueString> formObject = ER7002PosLtlbDppkLpan.getObjects(PPMPK);
+        List<KeyValueString> formObject = ER7002PosLtlbDppkLpan.getObjects(PPIPK);
 
         String formulaField2 = genFormulaFormatter(formObject, "14|15", "2");
         String formulaField3 = genFormulaFormatter(formObject, "14|15", "3|4|5");
@@ -663,7 +663,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String selectPosCode = R_RAS14020000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LPAN.getCode();
 
-        List<KeyValueString> formObject = ER7002PosLtlbDppkLpan.getObjects(PPMPK);
+        List<KeyValueString> formObject = ER7002PosLtlbDppkLpan.getObjects(PPIPK);
 
         String formulaField2 = genFormulaFormatter(formObject, "5|6", "2");
         String formulaField3 = genFormulaFormatter(formObject, "5|6", "3|4|5");
@@ -681,28 +681,28 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
                 31, 36, 37, 39, 40, 42, 48, 49, 51, 52, 54, 55, 57, 58};
 
         return UtilSegmentValidation.genRegexNumeric("2|3|4|5",
-                UtilMetadata.genPipeRow(getObjects(PPMPK), INT_ROWS));
+                UtilMetadata.genPipeRow(getObjects(PPIPK), INT_ROWS));
     }),
 
     SG_NUMERIC_NUMERIC_2(programs(PPIPK), () -> {
         int[] INT_ROWS = {43};
 
         return UtilSegmentValidation.genRegexNumeric("3|4",
-                UtilMetadata.genPipeRow(getObjects(PPMPK), INT_ROWS));
+                UtilMetadata.genPipeRow(getObjects(PPIPK), INT_ROWS));
     }),
 
     SG_NUMERIC_NEGATIVE(programs(PPIPK), () -> {
         int[] INT_ROWS = {33, 34, 45, 46};
 
         return UtilSegmentValidation.genRegexNumericNegative("2|3|4|5",
-                UtilMetadata.genPipeRow(getObjects(PPMPK), INT_ROWS));
+                UtilMetadata.genPipeRow(getObjects(PPIPK), INT_ROWS));
     }),
 
     SG_NUMERIC_NEGATIVE_2(programs(PPIPK), () -> {
         int[] INT_ROWS = {43};
 
         return UtilSegmentValidation.genRegexNumericNegative("2|5",
-                UtilMetadata.genPipeRow(getObjects(PPMPK), INT_ROWS));
+                UtilMetadata.genPipeRow(getObjects(PPIPK), INT_ROWS));
     }),
 
     SG_NUMERIC_DOT(programs(PPIPK), () -> {
@@ -710,41 +710,35 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
                 59};
 
         return UtilSegmentValidation.genRegexNumericDot("2|3|4|5",
-                UtilMetadata.genPipeRow(getObjects(PPMPK), PERCENT_ROWS));
+                UtilMetadata.genPipeRow(getObjects(PPIPK), PERCENT_ROWS));
     }),
 
     SG_NUMERIC_DOT_RAS10102000000(programs(PPIPK), () -> {
         int[] PERCENT_ROWS = {1};
 
         return UtilSegmentValidation.genRegexNumericDotNegative("2|5",
-                UtilMetadata.genPipeRow(getObjects(PPMPK), PERCENT_ROWS));
+                UtilMetadata.genPipeRow(getObjects(PPIPK), PERCENT_ROWS));
     }),
 
     /* Update Pak Yahya :: Field Validation */
 
-    FV_MANFAAT_PENSIUN_1(programs(PPIPK), validationFields(Dppk0017Ras1.MANFAAT_PENSIUN), () -> {
+    FV_MANFAAT_PENSIUN(programs(PPIPK), validationFields(Dppk0017Ras1.MANFAAT_PENSIUN), () -> {
         String formula = UtilMetadata.genMinusColumn(new int[]{5, 3, 4});
-        int[] rows = {4};
-        return UtilFieldValidation.genEqualsPosFormula(formula, UtilMetadata.genPipeRow(getObjects(PPMPK), rows));
-    }),
-
-    FV_MANFAAT_PENSIUN_2(programs(PPIPK), validationFields(Dppk0017Ras1.MANFAAT_PENSIUN), () -> {
-        String formula = UtilMetadata.genMinusColumn(new int[]{5, 3, 4});
-        int[] rows = {1};
-        return UtilFieldValidation.genEqualsPosFormula(formula, 2, UtilMetadata.genPipeRow(getObjects(PPMPK), rows));
+        int[] rows = {1, 4};
+        return UtilFieldValidation.genEqualsPosFormula(formula, UtilMetadata.genPipeRow(getObjects(PPIPK), rows));
     }),
 
     FV_TOTAL_EQUAL_1(programs(PPIPK), validationFields(Dppk0017Ras1.TOTAL), () -> {
         String formula = UtilMetadata.genPlusColumn(2, 4);
         int[] rows = {0, 3, 6, 7, 9, 10, 12, 13, 15, 16, 18, 19, 21, 22, 24, 25, 27, 28, 30, 31, 33, 34, 36, 37, 39, 40,
                 45, 46, 51, 52};
-        return UtilFieldValidation.genEqualsPosFormula(formula, UtilMetadata.genPipeRow(getObjects(PPMPK), rows));
+        return UtilFieldValidation.genEqualsPosFormula(formula, UtilMetadata.genPipeRow(getObjects(PPIPK), rows));
     }),
 
     FV_TOTAL_EQUAL_2(programs(PPIPK), validationFields(Dppk0017Ras1.TOTAL), () -> {
         String formula = UtilMetadata.genPlusColumn(3, 4);
         int[] rows = {42, 43, 54, 55};
-        return UtilFieldValidation.genEqualsPosFormula(formula, UtilMetadata.genPipeRow(getObjects(PPMPK), rows));
+        return UtilFieldValidation.genEqualsPosFormula(formula, UtilMetadata.genPipeRow(getObjects(PPIPK), rows));
     }),
 
     CR_TOTAL_EMPTY(programs(PPIPK), validationFields(Dppk0017Ras1.TOTAL), () -> {
@@ -794,10 +788,10 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
             new LbltMetadataValidation<>(E7017Ras1KValidationsConfig.class, PPIPK);
 
     private static SegmentValidation genValidationRatioAB(IObject<KeyValueString> posCode, int rowA, int rowB) {
-        String errMsg = "Rasio (A:B)|'" + getObjects(PPMPK).get(rowA).getValue() + "' : '"
-                + getObjects(PPMPK).get(rowB).getValue() + "'";
+        String errMsg = "Rasio (A:B)|'" + getObjects(PPIPK).get(rowA).getValue() + "' : '"
+                + getObjects(PPIPK).get(rowB).getValue() + "'";
         return UtilSegmentValidation.genEqualsRatio(UtilMetadata.genPipeColumn(2, 5), posCode.getObject().getKey(),
-                UtilMetadata.genPipeRow(getObjects(PPMPK), new int[]{rowA, rowB}), errMsg);
+                UtilMetadata.genPipeRow(getObjects(PPIPK), new int[]{rowA, rowB}), errMsg);
     }
 
     public static List<SegmentValidation> genAllValidationRatioAB() {

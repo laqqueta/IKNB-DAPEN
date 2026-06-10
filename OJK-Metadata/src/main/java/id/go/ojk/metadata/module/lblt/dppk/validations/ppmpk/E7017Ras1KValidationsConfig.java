@@ -3,15 +3,14 @@ package id.go.ojk.metadata.module.lblt.dppk.validations.ppmpk;
 import id.go.ojk.client.model.config.validation.conditional.ConditionalRequired;
 import id.go.ojk.client.model.config.validation.field.FieldValidation;
 import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
-import id.go.ojk.client.model.config.validation.segmen.v2.util.constant.MessageType;
 import id.go.ojk.client.model.validation.IValidation;
 import id.go.ojk.client.validation.IValidationConverter;
 import id.go.ojk.conf.client.UtilFieldConditional;
 import id.go.ojk.conf.client.UtilFieldValidation;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
+import id.go.ojk.conf.client.dto.FormulaParserData;
 import id.go.ojk.lib.client.IObject;
-import id.go.ojk.lib.client.model.KeyValue;
 import id.go.ojk.lib.client.model.KeyValueString;
 import id.go.ojk.metadata.module.lblt.dppk.EFormLaporanBulananTahunan;
 import id.go.ojk.metadata.module.lblt.dppk.field.Dppk0017Ras1;
@@ -23,6 +22,7 @@ import id.go.ojk.metadata.validation.lblt.ILbltMetadataValidation;
 import id.go.ojk.metadata.validation.lblt.LbltMetadataValidation;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,7 +30,7 @@ import java.util.EnumSet;
 import java.util.List;
 import java.util.function.Supplier;
 
-import static id.go.ojk.conf.client.UtilMetadata.genFormulaFormatter;
+import static id.go.ojk.conf.client.UtilMetadata.genFormulaParser;
 import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7017PosLtlbDppkRas1.*;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
@@ -41,23 +41,19 @@ import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
 public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
     SG_MULTI_SUM_RAS10101000000(programs(PPMPK), () -> {
-        String selectField = "2|3|4";
-        String selectPosCode = R_RAS10101000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LPAN.getCode();
-
         List<KeyValueString> formObject = ER7002PosLtlbDppkLpan.getObjects(PPMPK);
 
-        String formulaField2 = genFormulaFormatter(formObject, new int[]{5}, new int[]{2})
-                + "+" + genFormulaFormatter(formObject, new int[]{6}, new int[]{2})
-                + "-" + genFormulaFormatter(formObject, new int[]{14}, new int[]{2});
-        String formulaField3 = genFormulaFormatter(formObject, new int[]{5, 6}, new int[]{3, 4, 5})
-                + "-" + genFormulaFormatter(formObject, new int[]{14}, new int[]{3, 4, 5});
-        String formulaField4 = genFormulaFormatter(formObject, new int[]{5, 6}, new int[]{6, 7, 8, 9, 10, 11})
-                + "-" + genFormulaFormatter(formObject, new int[]{14}, new int[]{6, 7, 8, 9, 10, 11});
+        FormulaParserData operation2 = genFormulaParser(formObject, "5+6-14", "2", comparatorForm);
+        FormulaParserData operation3 = genFormulaParser(formObject, "5+6-14", "3+4+5", comparatorForm);
+        FormulaParserData operation4 = genFormulaParser(formObject, "5+6-14", "6+7+8+9+10+11", comparatorForm);
 
-        String operationForm = formulaField2 + "|" + formulaField3 + "|" + formulaField4;
+        String operationForm = operation2.getFormula() + "|" + operation3.getFormula() + "|" + operation4.getFormula();
+        String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LPAN" + "|" +
+                "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LPAN" + "|" +
+                "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LPAN";
 
-        return UtilSegmentValidation.genFormulaParserValidation(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL);
+        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS10101000000.key, operationForm, operationFormErr);
     }),
 
     SG_RAS10102000000_A(programs(PPMPK), () -> {
@@ -75,24 +71,32 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
     }),
 
     SG_MULTI_SUM_RAS10201000000(programs(PPMPK), () -> {
-        String selectField = "2|3|4";
-        String selectPosCode = R_RAS10201000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LPAN.getCode();
-
         List<KeyValueString> formObject = ER7002PosLtlbDppkLpan.getObjects(PPMPK);
 
-        String formulaField2 = genFormulaFormatter(formObject, new int[]{5, 6, 11}, new int[]{2}) + "-" +
-                genFormulaFormatter(formObject, new int[]{14, 15, 16}, new int[]{2});
-        String formulaField3 = genFormulaFormatter(formObject, new int[]{5, 6}, new int[]{3, 4, 5}) + "+" +
-                genFormulaFormatter(formObject, new int[]{11}, new int[]{3, 4, 5}) + "-" +
-                genFormulaFormatter(formObject, new int[]{14, 15, 16}, new int[]{3, 4, 5});
-        String formulaField4 = genFormulaFormatter(formObject, new int[]{5, 6}, new int[]{6, 7, 8, 9, 10, 11}) + "+" +
-                genFormulaFormatter(formObject, new int[]{11}, new int[]{6, 7, 8, 9, 10, 11}) + "-" +
-                genFormulaFormatter(formObject, new int[]{14, 15, 16}, new int[]{6, 7, 8, 9, 10, 11});
+        FormulaParserData operation2 = multiFormulaFormatter(new FormulaParserData[]{
+                genFormulaParser(formObject, "5+6+11", "2", comparatorForm),
+                genFormulaParser(formObject, "14+15-16", "2", comparatorForm)
+        }, "-");
 
-        String operationForm = formulaField2 + "|" + formulaField3 + "|" + formulaField4;
+        FormulaParserData operation3 = multiFormulaFormatter(new FormulaParserData[]{
+                genFormulaParser(formObject, "5+6", "3+4+5", comparatorForm),
+                genFormulaParser(formObject, "11", "3+4+5", comparatorForm),
+                genFormulaParser(formObject, "14+15+16", "3+4+5", comparatorForm)
+        }, "+#-");
 
-        return UtilSegmentValidation.genFormulaParserValidation(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL);
+        FormulaParserData operation4 = multiFormulaFormatter(new FormulaParserData[]{
+                genFormulaParser(formObject, "5+6", "6+7+8+9+10+11", comparatorForm),
+                genFormulaParser(formObject, "11", "6+7+8+9+10+11", comparatorForm),
+                genFormulaParser(formObject, "14+15+16", "6+7+8+9+10+11", comparatorForm)
+        }, "+#-");
+
+        String operationForm = operation2.getFormula() + "|" + operation3.getFormula() + "|" + operation4.getFormula();
+        String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LPAN" + "|" +
+                "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LPAN" + "|" +
+                "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LPAN";
+
+        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS10201000000.key, operationForm, operationFormErr);
     }),
 
     SG_AVG_REKINV_RAS10202000000_A(programs(PPMPK), () -> {
@@ -126,552 +130,486 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
     }),
 
     SG_MULTI_SUM_RAS10301000000(programs(PPMPK), () -> {
-        String selectField = "2|3|4";
-        String selectPosCode = R_RAS10301000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LPAN.getCode();
-
         List<KeyValueString> formObject = ER7002PosLtlbDppkLpan.getObjects(PPMPK);
 
-        String formulaField2 = genFormulaFormatter(formObject, new int[]{15}, new int[]{2});
-        String formulaField3 = genFormulaFormatter(formObject, new int[]{15}, new int[]{3, 4, 5});
-        String formulaField4 = genFormulaFormatter(formObject, new int[]{15}, new int[]{6, 7, 8, 9, 10, 11});
+        FormulaParserData operation2 = genFormulaParser(formObject, "15", "2", comparatorForm);
+        FormulaParserData operation3 = genFormulaParser(formObject, "15", "3+4+5", comparatorForm);
+        FormulaParserData operation4 = genFormulaParser(formObject, "15", "6+7+8+9+10+11", comparatorForm);
 
-        String operationForm = formulaField2 + "|" + formulaField3 + "|" + formulaField4;
+        String operationForm = operation2.getFormula() + "|" + operation3.getFormula() + "|" + operation4.getFormula();
+        String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LPAN" + "|" +
+                "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LPAN" + "|" +
+                "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LPAN";
 
-        return UtilSegmentValidation.genFormulaParserValidation(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL);
+        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS10301000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS10302000000(programs(PPMPK), () -> {
-        String selectField = "2|3|4";
-        String selectPosCode = R_RAS10302000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LPAN.getCode();
-
         List<KeyValueString> formObject = ER7002PosLtlbDppkLpan.getObjects(PPMPK);
 
-        String formulaField2 = genFormulaFormatter(formObject, new int[]{5}, new int[]{2}) + "+" +
-                genFormulaFormatter(formObject, new int[]{11}, new int[]{2});
-        String formulaField3 = genFormulaFormatter(formObject, new int[]{5}, new int[]{3, 4, 5}) + "+" +
-                genFormulaFormatter(formObject, new int[]{11}, new int[]{3, 4, 5});
-        String formulaField4 = genFormulaFormatter(formObject, new int[]{5}, new int[]{6, 7, 8, 9, 10, 11}) + "+" +
-                genFormulaFormatter(formObject, new int[]{11}, new int[]{6, 7, 8, 9, 10, 11});
+        FormulaParserData operation2 = genFormulaParser(formObject, "5+11", "2", comparatorForm);
+        FormulaParserData operation3 = genFormulaParser(formObject, "5+11", "3+4+5", comparatorForm);
+        FormulaParserData operation4 = genFormulaParser(formObject, "5+11", "6+7+8+9+10+11", comparatorForm);
 
-        String operationForm = formulaField2 + "|" + formulaField3 + "|" +
-                formulaField4;
+        String operationForm = operation2.getFormula() + "|" + operation3.getFormula() + "|" + operation4.getFormula();
+        String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LPAN" + "|" +
+                "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LPAN" + "|" +
+                "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LPAN";
 
-        return UtilSegmentValidation.genFormulaParserValidation(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL);
+        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS10302000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS10501000000(programs(PPMPK), () -> {
-        String selectField = "2|3|4";
-        String selectPosCode = R_RAS10501000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LPAN.getCode();
-
         List<KeyValueString> formObject = ER7002PosLtlbDppkLpan.getObjects(PPMPK);
 
-        String formulaField2 = genFormulaFormatter(formObject, new int[]{15}, new int[]{2});
-        String formulaField3 = genFormulaFormatter(formObject, new int[]{15}, new int[]{3, 4, 5});
-        String formulaField4 = genFormulaFormatter(formObject, new int[]{15}, new int[]{6, 7, 8, 9, 10, 11});
+        FormulaParserData operation2 = genFormulaParser(formObject, "15", "2", comparatorForm);
+        FormulaParserData operation3 = genFormulaParser(formObject, "15", "3+4+5", comparatorForm);
+        FormulaParserData operation4 = genFormulaParser(formObject, "15", "6+7+8+9+10+11", comparatorForm);
 
-        String operationForm = formulaField2 + "|" + formulaField3 + "|" + formulaField4;
+        String operationForm = operation2.getFormula() + "|" + operation3.getFormula() + "|" + operation4.getFormula();
+        String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LPAN" + "|" +
+                "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LPAN" + "|" +
+                "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LPAN";
 
-        return UtilSegmentValidation.genFormulaParserValidation(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL);
+        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS10501000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS10502000000(programs(PPMPK), () -> {
-        String selectField = "2|3|4";
-        String selectPosCode = R_RAS10502000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
-
         List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPMPK);
 
-        String formulaField2 = genFormulaFormatter(formObject, new int[]{38}, new int[]{3});
-        String formulaField3 = genFormulaFormatter(formObject, new int[]{38}, new int[]{4, 5, 6});
-        String formulaField4 = genFormulaFormatter(formObject, new int[]{38}, new int[]{7, 8, 9, 10, 11, 12});
+        FormulaParserData operation2 = genFormulaParser(formObject, "38", "3", comparatorForm);
+        FormulaParserData operation3 = genFormulaParser(formObject, "38", "4+5+6", comparatorForm);
+        FormulaParserData operation4 = genFormulaParser(formObject, "38", "7+8+9+10+11+12", comparatorForm);
 
-        String operationForm = formulaField2 + "|" + formulaField3 + "|" + formulaField4;
+        String operationForm = operation2.getFormula() + "|" + operation3.getFormula() + "|" + operation4.getFormula();
+        String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LAN" + "|" +
+                "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LAN" + "|" +
+                "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LAN";
 
-        return UtilSegmentValidation.genFormulaParserValidation(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL);
+        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS10502000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS10701000000(programs(PPMPK), () -> {
-        String selectField = "2|3|4";
-        String selectPosCode = R_RAS10701000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
-
         List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPMPK);
 
-        String formulaField2 = genFormulaFormatter(formObject, "22|23|24", "3");
-        String formulaField3 = genFormulaFormatter(formObject, "22|23|24", "4|5|6");
-        String formulaField4 = genFormulaFormatter(formObject, "22|23|24", "7|8|9|10|11|12");
+        FormulaParserData operation2 = genFormulaParser(formObject, "22+23+24", "3", comparatorForm);
+        FormulaParserData operation3 = genFormulaParser(formObject, "22+23+24", "4+5+6", comparatorForm);
+        FormulaParserData operation4 = genFormulaParser(formObject, "22+23+24", "7+8+9+10+11+12", comparatorForm);
 
-        String operationForm = formulaField2 + "|" + formulaField3 + "|" + formulaField4;
+        String operationForm = operation2.getFormula() + "|" + operation3.getFormula() + "|" + operation4.getFormula();
+        String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LAN" + "|" +
+                "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LAN" + "|" +
+                "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LAN";
 
-        return UtilSegmentValidation.genFormulaParserValidationPeriodPelaporan(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL);
+        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS10701000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS10702000000(programs(PPMPK), () -> {
-        String selectField = "2|3|4";
-        String selectPosCode = R_RAS10702000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LPAN.getCode();
-
         List<KeyValueString> formObject = ER7002PosLtlbDppkLpan.getObjects(PPMPK);
 
-        String formulaField2 = genFormulaFormatter(formObject, new int[]{7, 8, 9, 10}, new int[]{2});
-        String formulaField3 = genFormulaFormatter(formObject, new int[]{7, 8, 9}, new int[]{3, 4, 5});
-        String formulaField4 = genFormulaFormatter(formObject, new int[]{7, 8, 9, 10}, new int[]{6, 7, 8, 9, 10, 11});
+        FormulaParserData operation2 = genFormulaParser(formObject, "7+8+9+10", "2", comparatorForm);
+        FormulaParserData operation3 = genFormulaParser(formObject, "7+8+9", "3+4+5", comparatorForm);
+        FormulaParserData operation4 = genFormulaParser(formObject, "7+8+9+10", "6+7+8+9+10+11", comparatorForm);
 
-        String operationForm = formulaField2 + "|" + formulaField3 + "|" + formulaField4;
+        String operationForm = operation2.getFormula() + "|" + operation3.getFormula() + "|" + operation4.getFormula();
+        String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LPAN" + "|" +
+                "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LPAN" + "|" +
+                "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LPAN";
 
-        return UtilSegmentValidation.genFormulaParserValidation(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL);
+        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS10702000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS10801000000(programs(PPMPK), () -> {
-        String selectField = "2|3|4";
-        String selectPosCode = R_RAS10801000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
-
         List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPMPK);
 
-        String formulaField2 = genFormulaFormatter(formObject, new int[]{20}, new int[]{3});
-        String formulaField3 = genFormulaFormatter(formObject, new int[]{20}, new int[]{4, 5, 6});
-        String formulaField4 = genFormulaFormatter(formObject, new int[]{20}, new int[]{7, 8, 9, 10, 11, 12});
+        FormulaParserData operation2 = genFormulaParser(formObject, "20", "2", comparatorForm);
+        FormulaParserData operation3 = genFormulaParser(formObject, "20", "3+4+5", comparatorForm);
+        FormulaParserData operation4 = genFormulaParser(formObject, "20", "6+7+8+9+10+11", comparatorForm);
 
-        String operationForm = formulaField2 + "|" + formulaField3 + "|" + formulaField4;
+        String operationForm = operation2.getFormula() + "|" + operation3.getFormula() + "|" + operation4.getFormula();
+        String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LPAN" + "|" +
+                "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LPAN" + "|" +
+                "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LPAN";
 
-        return UtilSegmentValidation.genFormulaParserValidation(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL);
+        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS10801000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS10802000000(programs(PPMPK), () -> {
-        String selectField = "2|3|4";
-        String selectPosCode = R_RAS10802000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
-
         List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPMPK);
 
-        String formulaField2 = genFormulaFormatter(formObject, new int[]{48}, new int[]{3});
-        String formulaField3 = genFormulaFormatter(formObject, new int[]{48}, new int[]{4, 5, 6});
-        String formulaField4 = genFormulaFormatter(formObject, new int[]{48}, new int[]{7, 8, 9, 10, 11, 12});
+        FormulaParserData operation2 = genFormulaParser(formObject, "48", "3", comparatorForm);
+        FormulaParserData operation3 = genFormulaParser(formObject, "48", "4+5+6", comparatorForm);
+        FormulaParserData operation4 = genFormulaParser(formObject, "48", "7+8+9+10+11+12", comparatorForm);
 
-        String operationForm = formulaField2 + "|" + formulaField3 + "|" + formulaField4;
+        String operationForm = operation2.getFormula() + "|" + operation3.getFormula() + "|" + operation4.getFormula();
+        String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LAN" + "|" +
+                "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LAN" + "|" +
+                "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LAN";
 
-        return UtilSegmentValidation.genFormulaParserValidation(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL);
+        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS10802000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS10901000000(programs(PPMPK), () -> {
-        String selectField = "2|3|4";
-        String selectPosCode = R_RAS10901000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
-
         List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPMPK);
 
-        String formulaField2 = genFormulaFormatter(formObject, new int[]{27, 28}, new int[]{3});
-        String formulaField3 = genFormulaFormatter(formObject, new int[]{27, 28}, new int[]{4, 5, 6});
-        String formulaField4 = genFormulaFormatter(formObject, new int[]{27, 28}, new int[]{7, 8, 9, 10, 11, 12});
+        FormulaParserData operation2 = genFormulaParser(formObject, "27+28", "3", comparatorForm);
+        FormulaParserData operation3 = genFormulaParser(formObject, "27+28", "4+5+6", comparatorForm);
+        FormulaParserData operation4 = genFormulaParser(formObject, "27+28", "7+8+9+10+11+12", comparatorForm);
 
-        String operationForm = formulaField2 + "|" + formulaField3 + "|" + formulaField4;
+        String operationForm = operation2.getFormula() + "|" + operation3.getFormula() + "|" + operation4.getFormula();
+        String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LAN" + "|" +
+                "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LAN" + "|" +
+                "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LAN";
 
-        return UtilSegmentValidation.genFormulaParserValidation(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL);
+        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS10901000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS10902000000(programs(PPMPK), () -> {
-        String selectField = "2|3|4";
-        String selectPosCode = R_RAS10902000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
-
         List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPMPK);
 
-        String formulaField2 = genFormulaFormatter(formObject, new int[]{20}, new int[]{3});
-        String formulaField3 = genFormulaFormatter(formObject, new int[]{20}, new int[]{4, 5, 6});
-        String formulaField4 = genFormulaFormatter(formObject, new int[]{20}, new int[]{7, 8, 9, 10, 11, 12});
+        FormulaParserData operation2 = genFormulaParser(formObject, "20", "3", comparatorForm);
+        FormulaParserData operation3 = genFormulaParser(formObject, "20", "4+5+6", comparatorForm);
+        FormulaParserData operation4 = genFormulaParser(formObject, "20", "7+8+9+10+11+12", comparatorForm);
 
-        String operationForm = formulaField2 + "|" + formulaField3 + "|" + formulaField4;
+        String operationForm = operation2.getFormula() + "|" + operation3.getFormula() + "|" + operation4.getFormula();
+        String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LAN" + "|" +
+                "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LAN" + "|" +
+                "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LAN";
 
-        return UtilSegmentValidation.genFormulaParserValidation(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL);
+        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS10902000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS11001000000(programs(PPMPK), () -> {
-        String selectField = "2|3|4";
-        String selectPosCode = R_RAS11001000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
-
         List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPMPK);
 
-        String formulaField2 = genFormulaFormatter(formObject, new int[]{20}, new int[]{3});
-        String formulaField3 = genFormulaFormatter(formObject, new int[]{20}, new int[]{4, 5, 6});
-        String formulaField4 = genFormulaFormatter(formObject, new int[]{20}, new int[]{7, 8, 9, 10, 11, 12});
+        FormulaParserData operation2 = genFormulaParser(formObject, "20", "3", comparatorForm);
+        FormulaParserData operation3 = genFormulaParser(formObject, "20", "4+5+6", comparatorForm);
+        FormulaParserData operation4 = genFormulaParser(formObject, "20", "7+8+9+10+11+12", comparatorForm);
 
-        String operationForm = formulaField2 + "|" + formulaField3 + "|" + formulaField4;
+        String operationForm = operation2.getFormula() + "|" + operation3.getFormula() + "|" + operation4.getFormula();
+        String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LAN" + "|" +
+                "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LAN" + "|" +
+                "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LAN";
 
-        return UtilSegmentValidation.genFormulaParserValidation(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL);
+        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS11001000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS11101000000(programs(PPMPK), () -> {
-        String selectField = "2|3|4";
-        String selectPosCode = R_RAS11101000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LPAN.getCode();
-
         List<KeyValueString> formObject = ER7002PosLtlbDppkLpan.getObjects(PPMPK);
 
-        String formulaField2 = genFormulaFormatter(formObject, new int[]{6}, new int[]{2});
-        String formulaField3 = genFormulaFormatter(formObject, new int[]{6}, new int[]{3, 4, 5});
-        String formulaField4 = genFormulaFormatter(formObject, new int[]{6}, new int[]{6, 7, 8, 9, 10, 11});
+        FormulaParserData operation2 = genFormulaParser(formObject, "6", "2", comparatorForm);
+        FormulaParserData operation3 = genFormulaParser(formObject, "6", "3+4+5", comparatorForm);
+        FormulaParserData operation4 = genFormulaParser(formObject, "6", "6+7+8+9+10+11", comparatorForm);
 
-        String operationForm = formulaField2 + "|" + formulaField3 + "|" + formulaField4;
+        String operationForm = operation2.getFormula() + "|" + operation3.getFormula() + "|" + operation4.getFormula();
+        String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LPAN" + "|" +
+                "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LPAN" + "|" +
+                "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LPAN";
 
-        return UtilSegmentValidation.genFormulaParserValidation(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL);
+        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS11101000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS11102000000(programs(PPMPK), () -> {
-        String selectField = "2|3|4";
-        String selectPosCode = R_RAS11102000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LPAN.getCode();
-
         List<KeyValueString> formObject = ER7002PosLtlbDppkLpan.getObjects(PPMPK);
 
-        String formulaField2 = genFormulaFormatter(formObject, new int[]{5, 6}, new int[]{2});
-        String formulaField3 = genFormulaFormatter(formObject, new int[]{5, 6}, new int[]{3, 4, 5});
-        String formulaField4 = genFormulaFormatter(formObject, new int[]{5, 6}, new int[]{6, 7, 8, 9, 10, 11});
+        FormulaParserData operation2 = genFormulaParser(formObject, "5+6", "2", comparatorForm);
+        FormulaParserData operation3 = genFormulaParser(formObject, "5+6", "3+4+5", comparatorForm);
+        FormulaParserData operation4 = genFormulaParser(formObject, "5+6", "6+7+8+9+10+11", comparatorForm);
 
-        String operationForm = formulaField2 + "|" + formulaField3 + "|" + formulaField4;
+        String operationForm = operation2.getFormula() + "|" + operation3.getFormula() + "|" + operation4.getFormula();
+        String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LPAN" + "|" +
+                "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LPAN" + "|" +
+                "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LPAN";
 
-        return UtilSegmentValidation.genFormulaParserValidation(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL);
+        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS11102000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS11201000000(programs(PPMPK), () -> {
-        String selectField = "2|3|4";
-        String selectPosCode = R_RAS11201000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_NERACA.getCode();
-
         List<KeyValueString> formObject = ER7003PosLtlbDppkNrc.getObjects(PPMPK);
 
-        String formulaField2 = genFormulaFormatter(formObject, new int[]{22}, new int[]{2}); // ??
-        String formulaField3 = genFormulaFormatter(formObject, new int[]{22}, new int[]{3, 4, 5});
-        String formulaField4 = genFormulaFormatter(formObject, new int[]{22}, new int[]{6, 7, 8, 9, 10, 11});
+        FormulaParserData operation2 = genFormulaParser(formObject, "22", "2", comparatorForm);
+        FormulaParserData operation3 = genFormulaParser(formObject, "22", "3+4+5", comparatorForm);
+        FormulaParserData operation4 = genFormulaParser(formObject, "22", "6+7+8+9+10+11", comparatorForm);
 
-        String operationForm = formulaField2 + "|" + formulaField3 + "|" + formulaField4;
+        String operationForm = operation2.getFormula() + "|" + operation3.getFormula() + "|" + operation4.getFormula();
+        String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form NRC" + "|" +
+                "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form NRC" + "|" +
+                "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form NRC";
 
-        return UtilSegmentValidation.genFormulaParserValidation(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL);
+        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS11201000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS11202000000(programs(PPMPK), () -> {
-        String selectField = "2|3|4";
-        String selectPosCode = R_RAS11202000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
-
         List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPMPK);
 
-        String formulaField2 = genFormulaFormatter(formObject, new int[]{48}, new int[]{3}); // ??
-        String formulaField3 = genFormulaFormatter(formObject, new int[]{48}, new int[]{4, 5, 6});
-        String formulaField4 = genFormulaFormatter(formObject, new int[]{48}, new int[]{7, 8, 9, 10, 11, 12});
+        FormulaParserData operation2 = genFormulaParser(formObject, "48", "3", comparatorForm);
+        FormulaParserData operation3 = genFormulaParser(formObject, "48", "4+5+6", comparatorForm);
+        FormulaParserData operation4 = genFormulaParser(formObject, "48", "7+8+9+10+11+12", comparatorForm);
 
-        String operationForm = formulaField2 + "|" + formulaField3 + "|" + formulaField4;
+        String operationForm = operation2.getFormula() + "|" + operation3.getFormula() + "|" + operation4.getFormula();
+        String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LAN" + "|" +
+                "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LAN" + "|" +
+                "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LAN";
 
-        return UtilSegmentValidation.genFormulaParserValidation(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL);
+        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS11202000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS11301000000(programs(PPMPK), () -> {
-        String selectField = "2|3|4";
-        String selectPosCode = R_RAS11301000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
-
         List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPMPK);
 
-        String formulaField2 = genFormulaFormatter(formObject, "0|1|2", "3")
-                + "+" + genFormulaFormatter(formObject, "21", "3");
-        String formulaField3 = genFormulaFormatter(formObject, "0|1|2", "4|5|6")
-                + "+" + genFormulaFormatter(formObject, "21", "4|5|6");
-        String formulaField4 = genFormulaFormatter(formObject, "0|1|2", "7|8|9|10|11|12")
-                + "+" + genFormulaFormatter(formObject, "21", "7|8|9|10|11|12");
-        ;
+        FormulaParserData operation2 = genFormulaParser(formObject, "0+1+2+21", "3", comparatorForm);
+        FormulaParserData operation3 = genFormulaParser(formObject, "0+1+2+21", "4+5+6", comparatorForm);
+        FormulaParserData operation4 = genFormulaParser(formObject, "0+1+2+21", "7+8+9+10+11+12", comparatorForm);
 
-        String operationForm = formulaField2 + "|" + formulaField3 + "|" + formulaField4;
+        String operationForm = operation2.getFormula() + "|" + operation3.getFormula() + "|" + operation4.getFormula();
+        String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LAN" + "|" +
+                "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LAN" + "|" +
+                "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LAN";
 
-        return UtilSegmentValidation.genFormulaParserValidation(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL);
+        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS11301000000.key, operationForm, operationFormErr);
     }),
 
     //RAS11302000000
     SG_MULTI_SUM_RAS11302000000(programs(PPMPK), () -> {
-        String selectField = "2|3|4";
-        String selectPosCode = R_RAS11302000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LPAN.getCode();
-
         List<KeyValueString> formObject = ER7002PosLtlbDppkLpan.getObjects(PPMPK);
 
-        String formulaField2 = genFormulaFormatter(formObject, "14|15|17", "2");
-        String formulaField3 = genFormulaFormatter(formObject, "14|15", "3|4|5") + "+" +
-                genFormulaFormatter(formObject, "17", "3|4|5");
-        String formulaField4 = genFormulaFormatter(formObject, "14|15", "6|7|8|9|10|11") + "+" +
-                genFormulaFormatter(formObject, "17", "6|7|8|9|10|11");
+        FormulaParserData operation2 = genFormulaParser(formObject, "14+15+17", "2", comparatorForm);
+        FormulaParserData operation3 = genFormulaParser(formObject, "14+15+17", "3+4+5", comparatorForm);
+        FormulaParserData operation4 = genFormulaParser(formObject, "14+15+17", "6+7+8+9+10+11", comparatorForm);
 
-        String operationForm = formulaField2 + "|" + formulaField3 + "|" + formulaField4;
+        String operationForm = operation2.getFormula() + "|" + operation3.getFormula() + "|" + operation4.getFormula();
+        String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LPAN" + "|" +
+                "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LPAN" + "|" +
+                "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LPAN";
 
-        return UtilSegmentValidation.genFormulaParserValidation(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL);
+        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS11302000000.key, operationForm, operationFormErr);
     }),
 
     //RAS11401000000
     SG_MULTI_SUM_RAS11401000000(programs(PPMPK), () -> {
-        String selectField = "2|3|4";
-        String selectPosCode = R_RAS11401000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAK.getCode();
-
         List<KeyValueString> formObject = ER7005PosLtlbDppkLak.getObjects();
 
-        String formulaField2 = genFormulaFormatter(formObject, "0|1|2|3|4", "2") + "+" +
-                genFormulaFormatter(formObject, "9", "2") + "+" +
-                genFormulaFormatter(formObject, "11", "2") + "+" +
-                genFormulaFormatter(formObject, "13", "2") + "+" +
-                genFormulaFormatter(formObject, "15", "2") + "+" +
-                genFormulaFormatter(formObject, "19|20|21|22|23", "2");
+        String rowOperation = UtilMetadata.genPlusColumn(new int[] {0, 1, 2, 3, 4, 9, 11, 13, 15, 19, 20, 21, 22, 23});
 
-        String formulaField3 = genFormulaFormatter(formObject, "0|1|2|3|4", "3|4|5") + "+" +
-                genFormulaFormatter(formObject, "9", "3|4|5") + "+" +
-                genFormulaFormatter(formObject, "11", "3|4|5") + "+" +
-                genFormulaFormatter(formObject, "13", "3|4|5") + "+" +
-                genFormulaFormatter(formObject, "15", "3|4|5") + "+" +
-                genFormulaFormatter(formObject, "19|20|21|22|23", "3|4|5");
+        FormulaParserData operation2 = genFormulaParser(formObject, rowOperation, "2", comparatorForm);
+        FormulaParserData operation3 = genFormulaParser(formObject, rowOperation, "3+4+5", comparatorForm);
+        FormulaParserData operation4 = genFormulaParser(formObject, rowOperation, "6+7+8+9+10+11", comparatorForm);
 
-        String formulaField4 = genFormulaFormatter(formObject, "0|1|2|3|4", "6|7|8|9|10|11") + "+" +
-                genFormulaFormatter(formObject, "9", "6|7|8|9|10|11") + "+" +
-                genFormulaFormatter(formObject, "11", "6|7|8|9|10|11") + "+" +
-                genFormulaFormatter(formObject, "13", "6|7|8|9|10|11") + "+" +
-                genFormulaFormatter(formObject, "15", "6|7|8|9|10|11") + "+" +
-                genFormulaFormatter(formObject, "19|20|21|22|23", "6|7|8|9|10|11");
+        String operationForm = operation2.getFormula() + "|" + operation3.getFormula() + "|" + operation4.getFormula();
+        String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LAK" + "|" +
+                "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LAK" + "|" +
+                "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LAK";
 
-        String operationForm = formulaField2 + "|" + formulaField3 + "|" + formulaField4;
-
-        return UtilSegmentValidation.genFormulaParserValidation(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL);
+        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS11401000000.key, operationForm, operationFormErr);
     }),
 
     //RAS11402000000
     SG_MULTI_SUM_RAS11402000000(programs(PPMPK), () -> {
-        String selectField = "2|3|4";
-        String selectPosCode = R_RAS11402000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAK.getCode();
-
         List<KeyValueString> formObject = ER7005PosLtlbDppkLak.getObjects();
 
-        String formulaField2 = genFormulaFormatter(formObject, "5|6", "2") + "+" +
-                genFormulaFormatter(formObject, "8", "2") + "+" +
-                genFormulaFormatter(formObject, "10", "2") + "+" +
-                genFormulaFormatter(formObject, "12", "2") + "+" +
-                genFormulaFormatter(formObject, "14", "2") + "+" +
-                genFormulaFormatter(formObject, "16|17", "2") + "+" +
-                genFormulaFormatter(formObject, "24|25|26", "2");
+        String rowOperation = UtilMetadata.genPlusColumn(new int[] {5, 6, 8, 10, 12, 14, 16, 17, 24, 25, 26});
 
-        String formulaField3 = genFormulaFormatter(formObject, "5|6", "3|4|5") + "+" +
-                genFormulaFormatter(formObject, "8", "3|4|5") + "+" +
-                genFormulaFormatter(formObject, "10", "3|4|5") + "+" +
-                genFormulaFormatter(formObject, "12", "3|4|5") + "+" +
-                genFormulaFormatter(formObject, "14", "3|4|5") + "+" +
-                genFormulaFormatter(formObject, "16|17", "3|4|5") + "+" +
-                genFormulaFormatter(formObject, "24|25|26", "3|4|5");
+        FormulaParserData operation2 = genFormulaParser(formObject, rowOperation, "2", comparatorForm);
+        FormulaParserData operation3 = genFormulaParser(formObject, rowOperation, "3+4+5", comparatorForm);
+        FormulaParserData operation4 = genFormulaParser(formObject, rowOperation, "6+7+8+9+10+11", comparatorForm);
 
-        String formulaField4 = genFormulaFormatter(formObject, "5|6", "6|7|8|9|10|11") + "+" +
-                genFormulaFormatter(formObject, "8", "6|7|8|9|10|11") + "+" +
-                genFormulaFormatter(formObject, "10", "6|7|8|9|10|11") + "+" +
-                genFormulaFormatter(formObject, "12", "6|7|8|9|10|11") + "+" +
-                genFormulaFormatter(formObject, "14", "6|7|8|9|10|11") + "+" +
-                genFormulaFormatter(formObject, "16|17", "6|7|8|9|10|11") + "+" +
-                genFormulaFormatter(formObject, "24|25|26", "6|7|8|9|10|11");
+        String operationForm = operation2.getFormula() + "|" + operation3.getFormula() + "|" + operation4.getFormula();
+        String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LAK" + "|" +
+                "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LAK" + "|" +
+                "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LAK";
 
-        String operationForm = formulaField2 + "|" + formulaField3 + "|" + formulaField4;
-
-        return UtilSegmentValidation.genFormulaParserValidation(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL);
+        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS11402000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS11501000000(programs(PPMPK), () -> {
-        String selectField = "2|3|4";
-        String selectPosCode = R_RAS11501000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
-
         List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPMPK);
 
-        String formulaField2 = genFormulaFormatter(formObject, "22|23|24", "3");
-        String formulaField3 = genFormulaFormatter(formObject, "22|23|24", "4|5|6");
-        String formulaField4 = genFormulaFormatter(formObject, "22|23|24", "7|8|9|10|11|12");
+        FormulaParserData operation2 = genFormulaParser(formObject, "22+23+24", "3", comparatorForm);
+        FormulaParserData operation3 = genFormulaParser(formObject, "22+23+24", "4+5+6", comparatorForm);
+        FormulaParserData operation4 = genFormulaParser(formObject, "22+23+24", "7+8+9+10+11+12", comparatorForm);
 
-        String operationForm = formulaField2 + "|" + formulaField3 + "|" + formulaField4;
+        String operationForm = operation2.getFormula() + "|" + operation3.getFormula() + "|" + operation4.getFormula();
+        String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LAN" + "|" +
+                "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LAN" + "|" +
+                "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LAN";
 
-        return UtilSegmentValidation.genFormulaParserValidation(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL);
+        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS11501000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS11502000000(programs(PPMPK), () -> {
-        String selectField = "2|3|4";
-        String selectPosCode = R_RAS11502000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
-
         List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPMPK);
 
-        String formulaField2 = genFormulaFormatter(formObject, "48", "3");
-        String formulaField3 = genFormulaFormatter(formObject, "48", "4|5|6");
-        String formulaField4 = genFormulaFormatter(formObject, "48", "7|8|9|10|11|12");
+        FormulaParserData operation2 = genFormulaParser(formObject, "48", "3", comparatorForm);
+        FormulaParserData operation3 = genFormulaParser(formObject, "48", "4+5+6", comparatorForm);
+        FormulaParserData operation4 = genFormulaParser(formObject, "48", "7+8+9+10+11+12", comparatorForm);
 
-        String operationForm = formulaField2 + "|" + formulaField3 + "|" + formulaField4;
+        String operationForm = operation2.getFormula() + "|" + operation3.getFormula() + "|" + operation4.getFormula();
+        String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LAN" + "|" +
+                "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LAN" + "|" +
+                "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LAN";
 
-        return UtilSegmentValidation.genFormulaParserValidation(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL);
+        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS11502000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS11601000000(programs(PPMPK), () -> {
-        String selectField = "2|3|4";
-        String selectPosCode = R_RAS11601000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
-
         List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPMPK);
 
-        String formulaField2 = genFormulaFormatter(formObject, "22", "3");
-        String formulaField3 = genFormulaFormatter(formObject, "22", "4|5|6");
-        String formulaField4 = genFormulaFormatter(formObject, "22", "7|8|9|10|11|12");
+        FormulaParserData operation2 = genFormulaParser(formObject, "22", "3", comparatorForm);
+        FormulaParserData operation3 = genFormulaParser(formObject, "22", "4+5+6", comparatorForm);
+        FormulaParserData operation4 = genFormulaParser(formObject, "22", "7+8+9+10+11+12", comparatorForm);
 
-        String operationForm = formulaField2 + "|" + formulaField3 + "|" + formulaField4;
+        String operationForm = operation2.getFormula() + "|" + operation3.getFormula() + "|" + operation4.getFormula();
+        String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LAN" + "|" +
+                "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LAN" + "|" +
+                "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LAN";
 
-        return UtilSegmentValidation.genFormulaParserValidation(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL);
+        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS11601000000.key, operationForm, operationFormErr);
     }),
 
-    // RAS11701000000
+    // test error validasi
     SG_MULTI_SUM_RAS11701000000(programs(PPMPK), () -> {
-        String selectField = "2";
-        String selectPosCode = R_RAS11701000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_ALM.getCode();
-        String operationForm = genFormulaFormatter(ER7012PosLtlbDppkAlm.getObjects(PPMPK), "49", "7|10|13");
-
-        return UtilSegmentValidation.genFormulaParserValidation(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL);
+        String fields = "1 tahun kurang lebih atau sama dengan jatuh tempo < 5 tahun - Total|5 tahun kurang lebih atau sama dengan jatuh tempo < 10 tahun - Total|Jatuh Tempo lebih dari atau sama dengan 10 Tahun - Total";
+        FormulaParserData operationForm = genFormulaParser(ER7012PosLtlbDppkAlm.getObjects(PPMPK), "49", "7+10+13", fields, comparatorForm);
+        String operationFormErr = "sama dengan Baris " + operationForm.getErrMessage() + " pada form ALM";
+        return UtilSegmentValidation.genFormulaParserValidationV2("2", R_RAS11701000000.key, operationForm.getFormula(), operationFormErr);
     }),
 
-    // RAS11702000000
     SG_MULTI_SUM_RAS11702000000(programs(PPMPK), () -> {
-        String selectField = "2";
-        String selectPosCode = R_RAS11702000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAK.getCode();
-
-        String operationForm = genFormulaFormatter(ER7005PosLtlbDppkLak.getObjects(), "0|1|2|3", "2") + "+" +
-                genFormulaFormatter(ER7005PosLtlbDppkLak.getObjects(), "15", "2");
-
-        return UtilSegmentValidation.genFormulaParserValidation(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL);
+        FormulaParserData operationForm = genFormulaParser(ER7005PosLtlbDppkLak.getObjects(), "0+1+2+3+15", "2", comparatorForm);
+        String operationFormErr = "sama dengan Baris " + operationForm.getErrMessage() + " Manfaat Pensiun pada form LAK";
+        return UtilSegmentValidation.genFormulaParserValidationV2("2", R_RAS11702000000.key, operationForm.getFormula(), operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS11801000000(programs(PPMPK), () -> {
-        String selectField = "2|3|4";
-        String selectPosCode = R_RAS11801000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAK.getCode();
-
         List<KeyValueString> formObject = ER7005PosLtlbDppkLak.getObjects();
 
-        String formulaField2 = genFormulaFormatter(formObject, "6", "2") + "+" +
-                genFormulaFormatter(formObject, "8", "2") + "+" +
-                genFormulaFormatter(formObject, "25", "2");
-        String formulaField3 = genFormulaFormatter(formObject, "6", "3|4|5") + "+" +
-                genFormulaFormatter(formObject, "8", "3|4|5") + "+" +
-                genFormulaFormatter(formObject, "25", "3|4|5");
-        String formulaField4 = genFormulaFormatter(formObject, "6", "6|7|8|9|10|11") + "+" +
-                genFormulaFormatter(formObject, "8", "6|7|8|9|10|11") + "+" +
-                genFormulaFormatter(formObject, "25", "6|7|8|9|10|11");
+        FormulaParserData operation2 = genFormulaParser(formObject, "6+8+25", "2", comparatorForm);
+        FormulaParserData operation3 = genFormulaParser(formObject, "6+8+25", "3+4+5", comparatorForm);
+        FormulaParserData operation4 = genFormulaParser(formObject, "6+8+25", "6+7+8+9+10+11", comparatorForm);
 
-        String operationForm = formulaField2 + "|" + formulaField3 + "|" + formulaField4;
+        String operationForm = operation2.getFormula() + "|" + operation3.getFormula() + "|" + operation4.getFormula();
+        String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LAK" + "|" +
+                "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LAK" + "|" +
+                "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LAK";
 
-        return UtilSegmentValidation.genFormulaParserValidation(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL);
+        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS11801000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS11802000000(programs(PPMPK), () -> {
-        String selectField = "2|3|4";
-        String selectPosCode = R_RAS11802000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAK.getCode();
-
         List<KeyValueString> formObject = ER7005PosLtlbDppkLak.getObjects();
 
-        String formulaField2 = genFormulaFormatter(formObject, "0|1|2|3", "2") + "+" +
-                genFormulaFormatter(formObject, "15", "2");
-        String formulaField3 = genFormulaFormatter(formObject, "0|1|2|3", "3|4|5") + "+" +
-                genFormulaFormatter(formObject, "15", "3|4|5");
-        String formulaField4 = genFormulaFormatter(formObject, "0|1|2|3", "6|7|8|9|10|11") + "+" +
-                genFormulaFormatter(formObject, "15", "6|7|8|9|10|11");
+        FormulaParserData operation2 = genFormulaParser(formObject, "0+1+2+3+15", "2", comparatorForm);
+        FormulaParserData operation3 = genFormulaParser(formObject, "0+1+2+3+15", "3+4+5", comparatorForm);
+        FormulaParserData operation4 = genFormulaParser(formObject, "0+1+2+3+15", "6+7+8+9+10+11", comparatorForm);
 
-        String operationForm = formulaField2 + "|" + formulaField3 + "|" + formulaField4;
+        String operationForm = operation2.getFormula() + "|" + operation3.getFormula() + "|" + operation4.getFormula();
+        String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LAK" + "|" +
+                "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LAK" + "|" +
+                "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LAK";
 
-        return UtilSegmentValidation.genFormulaParserValidation(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL);
+        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS11802000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS11902000000(programs(PPMPK), () -> {
-        String selectField = "2|3|4";
-        String selectPosCode = R_RAS11902000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_KUP.getCode();
-
         List<KeyValueString> formObject = ER7007PosLtlbDppkKup.getObjects(PPMPK);
 
-        String formulaField2 = genFormulaFormatter(formObject, "17", "3");
-        String formulaField3 = genFormulaFormatter(formObject, "17", "4");
-        String formulaField4 = genFormulaFormatter(formObject, "17", "5");
+        FormulaParserData operation2 = genFormulaParser(formObject, "17", "3", comparatorForm);
+        FormulaParserData operation3 = genFormulaParser(formObject, "17", "4", comparatorForm);
+        FormulaParserData operation4 = genFormulaParser(formObject, "17", "5", comparatorForm);
 
-        String operationForm = formulaField2 + "|" + formulaField3 + "|" + formulaField4;
+        String operationForm = operation2.getFormula() + "|" + operation3.getFormula() + "|" + operation4.getFormula();
+        String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Nilai Program Manfaat Pensiun pada form KUP" + "|" +
+                "sama dengan Baris " + operation3.getErrMessage() + " Nilai Program Manfaat Pensiun Lainnya pada form KUP" + "|" +
+                "sama dengan Baris " + operation4.getErrMessage() + " Nilai Program Manfaat Lain pada form KUP";
 
-        return UtilSegmentValidation.genFormulaParserValidation(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL);
+        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS11902000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS12010000000(programs(PPMPK), () -> {
-        String selectField = "2";
-        String selectPosCode = R_RAS12010000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_ALM.getCode();
-        String operationForm = genFormulaFormatter(ER7012PosLtlbDppkAlm.getObjects(PPMPK), "39", "4");
-
-        return UtilSegmentValidation.genFormulaParserValidation(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL);
+        FormulaParserData operationForm = genFormulaParser(ER7012PosLtlbDppkAlm.getObjects(PPMPK), "39", "4", "Jatuh tempo < 1 tahun - Total", comparatorForm);
+        String operationFormErr = "sama dengan Baris " + operationForm.getErrMessage() + " pada form ALM";
+        return UtilSegmentValidation.genFormulaParserValidationV2("2", R_RAS12010000000.key, operationForm.getFormula(), operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS12020000000(programs(PPMPK), () -> {
-        String selectField = "2";
-        String selectPosCode = R_RAS12020000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_ALM.getCode();
-        String operationForm = genFormulaFormatter(ER7012PosLtlbDppkAlm.getObjects(PPMPK), "39", "16");
-
-        return UtilSegmentValidation.genFormulaParserValidation(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL);
+        FormulaParserData operationForm = genFormulaParser(ER7012PosLtlbDppkAlm.getObjects(PPMPK), "39", "16", "Total - Total", comparatorForm);
+        String operationFormErr = "sama dengan Baris " + operationForm.getErrMessage() + " pada form ALM";
+        return UtilSegmentValidation.genFormulaParserValidationV2("2", R_RAS12020000000.key, operationForm.getFormula(), operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS13010000000(programs(PPMPK), () -> {
-        String selectField = "2";
-        String selectPosCode = R_RAS13010000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_ALM.getCode();
-        String operationForm = genFormulaFormatter(ER7012PosLtlbDppkAlm.getObjects(PPMPK), "49", "4");
-
-        return UtilSegmentValidation.genFormulaParserValidation(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL);
+        FormulaParserData operationForm = genFormulaParser(ER7012PosLtlbDppkAlm.getObjects(PPMPK), "49", "4", "Jatuh tempo < 1 tahun - Total", comparatorForm);
+        String operationFormErr = "sama dengan Baris " + operationForm.getErrMessage() + " pada form ALM";
+        return UtilSegmentValidation.genFormulaParserValidationV2("2", R_RAS13010000000.key, operationForm.getFormula(), operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS13020000000(programs(PPMPK), () -> {
-        String selectField = "2";
-        String selectPosCode = R_RAS13020000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_ALM.getCode();
-        String operationForm = genFormulaFormatter(ER7012PosLtlbDppkAlm.getObjects(PPMPK), "49", "16");
-
-        return UtilSegmentValidation.genFormulaParserValidation(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL);
+        FormulaParserData operationForm = genFormulaParser(ER7012PosLtlbDppkAlm.getObjects(PPMPK), "49", "16", "Total - Total", comparatorForm);
+        String operationFormErr = "sama dengan Baris " + operationForm.getErrMessage() + " pada form ALM";
+        return UtilSegmentValidation.genFormulaParserValidationV2("2", R_RAS13020000000.key, operationForm.getFormula(), operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS14010000000(programs(PPMPK), () -> {
-        String selectField = "2|3|4";
-        String selectPosCode = R_RAS14010000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LPAN.getCode();
-
         List<KeyValueString> formObject = ER7002PosLtlbDppkLpan.getObjects(PPMPK);
 
-        String formulaField2 = genFormulaFormatter(formObject, "14|15", "2");
-        String formulaField3 = genFormulaFormatter(formObject, "14|15", "3|4|5");
-        String formulaField4 = genFormulaFormatter(formObject, "14|15", "6|7|8|9|10|11");
+        FormulaParserData operation2 = genFormulaParser(formObject, "14+15", "2", comparatorForm);
+        FormulaParserData operation3 = genFormulaParser(formObject, "14+15", "3+4+5", comparatorForm);
+        FormulaParserData operation4 = genFormulaParser(formObject, "14+15", "6+7+8+9+10+11", comparatorForm);
 
-        String operationForm = formulaField2 + "|" + formulaField3 + "|" + formulaField4;
+        String operationForm = operation2.getFormula() + "|" + operation3.getFormula() + "|" + operation4.getFormula();
+        String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LPAN" + "|" +
+                "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LPAN" + "|" +
+                "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LPAN";
 
-        return UtilSegmentValidation.genFormulaParserValidation(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL);
+        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS14010000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS14020000000(programs(PPMPK), () -> {
-        String selectField = "2|3|4";
-        String selectPosCode = R_RAS14020000000.key;
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LPAN.getCode();
-
         List<KeyValueString> formObject = ER7002PosLtlbDppkLpan.getObjects(PPMPK);
 
-        String formulaField2 = genFormulaFormatter(formObject, "5|6", "2");
-        String formulaField3 = genFormulaFormatter(formObject, "5|6", "3|4|5");
-        String formulaField4 = genFormulaFormatter(formObject, "5|6", "6|7|8|9|10|11");
+        FormulaParserData operation2 = genFormulaParser(formObject, "5+6", "2", comparatorForm);
+        FormulaParserData operation3 = genFormulaParser(formObject, "5+6", "3+4+5", comparatorForm);
+        FormulaParserData operation4 = genFormulaParser(formObject, "5+6", "6+7+8+9+10+11", comparatorForm);
 
-        String operationForm = formulaField2 + "|" + formulaField3 + "|" + formulaField4;
+        String operationForm = operation2.getFormula() + "|" + operation3.getFormula() + "|" + operation4.getFormula();
+        String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LPAN" + "|" +
+                "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LPAN" + "|" +
+                "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LPAN";
 
-        return UtilSegmentValidation.genFormulaParserValidation(selectField, selectPosCode, comparatorForm, operationForm, MessageType.DETAIL);
+        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS14020000000.key, operationForm, operationFormErr);
     }),
 
     /* Update Pak Yahya :: Segment Validation */
@@ -814,6 +752,39 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
             validations.add(genValidationRatioAB(ratios.get(i), rowA, rowB));
         }
         return validations;
+    }
+
+    private static FormulaParserData multiFormulaFormatter(FormulaParserData[] formulas, String operand) {
+        StringBuilder sbFormula = new StringBuilder();
+        StringBuilder sbFormulaErr = new StringBuilder();
+        String[] operands = StringUtils.split(operand, "#");
+
+        if (formulas.length != operands.length + 1) throw new IllegalStateException();
+
+        for (int i = 0; i < formulas.length; i++) {
+            sbFormula.append(formulas[i].getFormula());
+            sbFormulaErr.append("(").append(formulas[i].getErrMessage());
+            if (i < formulas.length - 1) {
+                sbFormula.append(operands[i]);
+                sbFormulaErr.append(") ").append(operands[i]).append(" ");
+            }
+        }
+
+        sbFormulaErr.append(")");
+
+        return new FormulaParserData(sbFormula.toString(), sbFormulaErr.toString());
+    }
+
+    public static void main(String[] args) {
+        String comparatorForm = EFormLaporanBulananTahunan.LTLB_LPAN.getCode();
+        List<KeyValueString> formObject = ER7002PosLtlbDppkLpan.getObjects(PPMPK);
+
+        FormulaParserData operation2 = multiFormulaFormatter(new FormulaParserData[]{
+                genFormulaParser(formObject, "5+6+11", "2", comparatorForm),
+                genFormulaParser(formObject, "14+15+16", "2", comparatorForm)
+        }, "-");
+
+        System.out.println(operation2.getErrMessage());
     }
 
 }
