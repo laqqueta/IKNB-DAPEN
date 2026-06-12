@@ -57,10 +57,6 @@ public class BaseFormulaParserValidation extends BaseRowValidation {
 
         if (!selectRowCodes.contains(currentRowCode)) return;
 
-        if (currentRowCode.equalsIgnoreCase("RAS10202000000")) {
-            System.out.println("asd");
-        }
-
         String[] fields = StringUtils.split(selectField, "|");
         String[] operations = StringUtils.split(formulaOperation, "|");
         String[] operationErrMsgs = StringUtils.split(formulaOperationErr, "|");
@@ -81,7 +77,10 @@ public class BaseFormulaParserValidation extends BaseRowValidation {
 //				String err = "= " + operationErrMsg + " pada Form " + comparatorForm;
                 logger.error("{}>{}?{} :: Operation Idx > {}", parameter, selectValue, calculatedValue, i);
                 validationResult.errors.add(new ValidationError(submissionField,
-                        ValidationErrorCode.E03_35_EQUAL_FORM, operationErrMsgs[i].replace("sama dengan", "=")));
+                        ValidationErrorCode.E03_35_EQUAL_FORM,
+                        operationErrMsgs[i].replaceFirst("(sama dengan)", "=")
+                                .replace("kurang lebih atau sama dengan", "<=")
+                                .replace("lebih dari atau sama dengan ", ">=")));
 
             }
         }

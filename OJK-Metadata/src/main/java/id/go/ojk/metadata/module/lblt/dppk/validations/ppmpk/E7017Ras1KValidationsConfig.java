@@ -206,7 +206,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
                 "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LAN" + "|" +
                 "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LAN";
 
-        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS10701000000.key, operationForm, operationFormErr);
+        return UtilSegmentValidation.genFormulaParserValidationV2PeriodePelaporan("2|3|4", R_RAS10701000000.key, operationForm, operationFormErr, 2);
     }),
 
     SG_MULTI_SUM_RAS10702000000(programs(PPMPK), () -> {
@@ -672,20 +672,20 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         return UtilFieldValidation.genEqualsPosFormula(formula, 2, UtilMetadata.genPipeRow(getObjects(PPMPK), rows));
     }),
 
-    FV_TOTAL_EQUAL_1(programs(PPMPK), validationFields(Dppk0017Ras1.TOTAL), () -> {
+    FV_TOTAL_EQUAL_1(programs(PPMPK), validationFields(Dppk0017Ras1.TOTAL_PPMP), () -> {
         String formula = UtilMetadata.genPlusColumn(2, 4);
         int[] rows = {0, 3, 6, 7, 9, 10, 12, 13, 15, 16, 18, 19, 21, 22, 24, 25, 27, 28, 30, 31, 33, 34, 36, 37, 39, 40,
                 45, 46, 51, 52};
         return UtilFieldValidation.genEqualsPosFormula(formula, UtilMetadata.genPipeRow(getObjects(PPMPK), rows));
     }),
 
-    FV_TOTAL_EQUAL_2(programs(PPMPK), validationFields(Dppk0017Ras1.TOTAL), () -> {
+    FV_TOTAL_EQUAL_2(programs(PPMPK), validationFields(Dppk0017Ras1.TOTAL_PPMP), () -> {
         String formula = UtilMetadata.genPlusColumn(3, 4);
         int[] rows = {42, 43, 54, 55};
         return UtilFieldValidation.genEqualsPosFormula(formula, UtilMetadata.genPipeRow(getObjects(PPMPK), rows));
     }),
 
-    CR_TOTAL_EMPTY(programs(PPMPK), validationFields(Dppk0017Ras1.TOTAL), () -> {
+    CR_TOTAL_EMPTY(programs(PPMPK), validationFields(Dppk0017Ras1.TOTAL_PPMP), () -> {
         String refPosCode = R_RAS11901000000.key + "|" + R_RAS11902000000.key;
         return UtilFieldConditional.genExistPosAndHasReference("N", "M", refPosCode,
                 getRefNumber(7017), "O");
@@ -738,7 +738,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
                 UtilMetadata.genPipeRow(getObjects(PPMPK), new int[]{rowA, rowB}), errMsg);
     }
 
-    public static List<SegmentValidation> genAllValidationRatioAB() {
+    public static List<SegmentValidation> genAllValidationRatioAB_PPMPK() {
         List<SegmentValidation> validations = new ArrayList<>();
         List<IObject<KeyValueString>> ratios = Arrays.asList(R_RAS10103000000, R_RAS10203000000, R_RAS10303000000,
                 R_RAS10503000000, R_RAS10703000000, R_RAS10803000000, R_RAS10903000000, R_RAS11003000000, R_RAS11103000000,

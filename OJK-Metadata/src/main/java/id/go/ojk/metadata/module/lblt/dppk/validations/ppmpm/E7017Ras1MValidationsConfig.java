@@ -3,7 +3,6 @@ package id.go.ojk.metadata.module.lblt.dppk.validations.ppmpm;
 import id.go.ojk.client.model.config.validation.conditional.ConditionalRequired;
 import id.go.ojk.client.model.config.validation.field.FieldValidation;
 import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
-import id.go.ojk.client.model.config.validation.segmen.v2.util.constant.MessageType;
 import id.go.ojk.client.model.validation.IValidation;
 import id.go.ojk.client.validation.IValidationConverter;
 import id.go.ojk.conf.client.UtilFieldConditional;
@@ -530,26 +529,26 @@ public enum E7017Ras1MValidationsConfig implements ILbltMetadataValidation, IVal
 
     /* Update Pak Yahya :: Field Validation */
 
-    FV_TOTAL_EQUAL_1(programs(PPMPM), validationFields(Dppk0017Ras1.TOTAL), () -> {
+    FV_TOTAL_EQUAL_1(programs(PPMPM), validationFields(Dppk0017Ras1.TOTAL_PPMP), () -> {
         String formula = UtilMetadata.genPlusColumn(2, 4);
         int[] rows = {0, 3, 4, 6, 7, 9, 10, 12, 13, 15, 16, 18, 19, 21, 22, 24, 25, 27, 28, 30, 31, 33, 34, 36, 37, 39, 40,
                 42, 43, 48, 49, 54, 55};
         return UtilFieldValidation.genEqualsPosFormula(formula, UtilMetadata.genPipeRow(getObjects(PPMPM), rows));
     }),
 
-    FV_TOTAL_EQUAL_1A(programs(PPMPM), validationFields(Dppk0017Ras1.TOTAL), () -> {
+    FV_TOTAL_EQUAL_1A(programs(PPMPM), validationFields(Dppk0017Ras1.TOTAL_PPMP), () -> {
         String formula = UtilMetadata.genPlusColumn(2, 4);
         int[] rows = {1};
         return UtilFieldValidation.genEqualsPosFormula(formula, 2, UtilMetadata.genPipeRow(getObjects(PPMPM), rows));
     }),
 
-    FV_TOTAL_EQUAL_2(programs(PPMPM), validationFields(Dppk0017Ras1.TOTAL), () -> {
+    FV_TOTAL_EQUAL_2(programs(PPMPM), validationFields(Dppk0017Ras1.TOTAL_PPMP), () -> {
         String formula = UtilMetadata.genPlusColumn(3, 4);
         int[] rows = {45, 46, 57, 58};
         return UtilFieldValidation.genEqualsPosFormula(formula, UtilMetadata.genPipeRow(getObjects(PPMPM), rows));
     }),
 
-    CR_EMPTY_COL_POS(programs(PPMPM), validationFields(Dppk0017Ras1.MANFAAT_PENSIUN_PPMPM, Dppk0017Ras1.TOTAL),
+    CR_EMPTY_COL_POS(programs(PPMPM), validationFields(Dppk0017Ras1.MANFAAT_PENSIUN_PPMPM, Dppk0017Ras1.TOTAL_PPMP),
             () -> {
                 String refPosCode = UtilMetadata.genPipeRow(getObjects(PPMPM), new int[]{51, 52, 53});
                 return UtilFieldConditional.genExistPos("N", "M", refPosCode);
@@ -604,7 +603,7 @@ public enum E7017Ras1MValidationsConfig implements ILbltMetadataValidation, IVal
                 UtilMetadata.genPipeRow(getObjects(PPMPM), new int[]{rowA, rowB}), errMsg);
     }
 
-    public static List<SegmentValidation> genAllValidationRatioAB() {
+    public static List<SegmentValidation> genAllValidationRatioAB_PPMPM() {
         List<SegmentValidation> validations = new ArrayList<>();
         List<IObject<KeyValueString>> ratios = Arrays.asList(R_RAS10103000000, R_RAS10203000000, R_RAS10303000000, R_RAS10403000000, R_RAS10603000000,
                 R_RAS10703000000, R_RAS10803000000, R_RAS10903000000, R_RAS11003000000, R_RAS11103000000, R_RAS11203000000, R_RAS11303000000,

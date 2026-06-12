@@ -273,6 +273,17 @@ public class UtilSegmentValidation {
         return new RatioValidation(builder.toString());
     }
 
+    public static SegmentValidation genEqualsRatioByRatio(String selectField, String fieldResult, String rightFormula,
+                                                          String msgError) {
+        StringBuilder builder = new StringBuilder("selectField=" + selectField);
+        builder.append("&selectPosCode=" + fieldResult);
+        builder.append("&leftFormula=" + fieldResult);
+        builder.append("&rightFormula=" + rightFormula);
+        builder.append("&operator=e");
+        builder.append("&msgError=" + msgError);
+        return new RatioByRatioValidation(builder.toString());
+    }
+
     public static SegmentValidation genEqualsRatio2(String selectField, String fieldResult, String rightFormula,
                                                     String msgError) {
         StringBuilder builder = new StringBuilder("selectField=" + selectField);

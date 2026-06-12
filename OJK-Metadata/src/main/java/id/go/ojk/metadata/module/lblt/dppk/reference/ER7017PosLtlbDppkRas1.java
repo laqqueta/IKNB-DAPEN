@@ -175,6 +175,12 @@ public enum ER7017PosLtlbDppkRas1 implements IObject<KeyValueString> {
             }
 
             @Override
+            public String savePosForm() {
+                return UtilMetadata.genFieldSave("2|3|4|5",
+                        Collections.singletonList(R_RAS10103000000.getObject()));
+            }
+
+            @Override
             public String savePos() {
                 return UtilMetadata.genFieldSave("2|3|4|5", getObjects(programType));
             }
