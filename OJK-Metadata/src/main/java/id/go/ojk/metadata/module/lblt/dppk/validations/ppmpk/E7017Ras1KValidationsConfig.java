@@ -76,7 +76,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
 
         FormulaParserData operation2 = multiFormulaFormatter(new FormulaParserData[]{
                 genFormulaParser(formObject, "5+6+11", "2", comparatorForm),
-                genFormulaParser(formObject, "14+15-16", "2", comparatorForm)
+                genFormulaParser(formObject, "14+15+16", "2", comparatorForm)
         }, "-");
 
         FormulaParserData operation3 = multiFormulaFormatter(new FormulaParserData[]{
@@ -229,14 +229,14 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
         List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPMPK);
 
-        FormulaParserData operation2 = genFormulaParser(formObject, "20", "2", comparatorForm);
-        FormulaParserData operation3 = genFormulaParser(formObject, "20", "3+4+5", comparatorForm);
-        FormulaParserData operation4 = genFormulaParser(formObject, "20", "6+7+8+9+10+11", comparatorForm);
+        FormulaParserData operation2 = genFormulaParser(formObject, "20", "3", comparatorForm);
+        FormulaParserData operation3 = genFormulaParser(formObject, "20", "4+5+6", comparatorForm);
+        FormulaParserData operation4 = genFormulaParser(formObject, "20", "7+8+9+10+11+12", comparatorForm);
 
         String operationForm = operation2.getFormula() + "|" + operation3.getFormula() + "|" + operation4.getFormula();
-        String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LPAN" + "|" +
-                "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LPAN" + "|" +
-                "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LPAN";
+        String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LAN" + "|" +
+                "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LAN" + "|" +
+                "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LAN";
 
         return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS10801000000.key, operationForm, operationFormErr);
     }),
@@ -407,7 +407,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAK.getCode();
         List<KeyValueString> formObject = ER7005PosLtlbDppkLak.getObjects();
 
-        String rowOperation = UtilMetadata.genPlusColumn(new int[] {0, 1, 2, 3, 4, 9, 11, 13, 15, 19, 20, 21, 22, 23});
+        String rowOperation = UtilMetadata.genPlusColumn(new int[]{0, 1, 2, 3, 4, 9, 11, 13, 15, 19, 20, 21, 22, 23});
 
         FormulaParserData operation2 = genFormulaParser(formObject, rowOperation, "2", comparatorForm);
         FormulaParserData operation3 = genFormulaParser(formObject, rowOperation, "3+4+5", comparatorForm);
@@ -426,7 +426,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAK.getCode();
         List<KeyValueString> formObject = ER7005PosLtlbDppkLak.getObjects();
 
-        String rowOperation = UtilMetadata.genPlusColumn(new int[] {5, 6, 8, 10, 12, 14, 16, 17, 24, 25, 26});
+        String rowOperation = UtilMetadata.genPlusColumn(new int[]{5, 6, 8, 10, 12, 14, 16, 17, 24, 25, 26});
 
         FormulaParserData operation2 = genFormulaParser(formObject, rowOperation, "2", comparatorForm);
         FormulaParserData operation3 = genFormulaParser(formObject, rowOperation, "3+4+5", comparatorForm);
@@ -614,49 +614,123 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
 
     /* Update Pak Yahya :: Segment Validation */
 
-    SG_NUMERIC(programs(PPMPK), () -> {
-        int[] INT_ROWS = {0, 3, 4, 6, 7, 9, 10, 12, 13, 15, 16, 18, 19, 21, 22, 24, 25, 27, 28, 30,
-                31, 36, 37, 39, 40, 42, 48, 49, 51, 52, 54, 55, 57, 58};
+    SG_RASIO_NUMERIC_DOT_POSITIVE(programs(PPMPK), () -> {
+        int[] INT_ROWS = {17, 20, 23, 29, 38, 41, 50, 53, 56};
+
+        return UtilSegmentValidation.genRegexNumericDot("2|3|4|5",
+                UtilMetadata.genPipeRow(getObjects(PPMPK), INT_ROWS));
+    }),
+
+    SG_RASIO_NUMERIC_DOT_NEGATIVE(programs(PPMPK), () -> {
+        int[] INT_ROWS = {2, 5, 8, 11, 14, 26, 32, 35, 44, 47, 59};
+
+        return UtilSegmentValidation.genRegexNumericDotNegative("2|3|4|5",
+                UtilMetadata.genPipeRow(getObjects(PPMPK), INT_ROWS));
+    }),
+
+    SG_NON_RASIO_NUMERIC_POSITIVE(programs(PPMPK), () -> {
+        int[] INT_ROWS = {10, 12, 15, 16, 18, 19, 21, 22, 27, 28, 30,
+                36, 37, 39, 40, 42, 48, 51, 52, 54, 55};
 
         return UtilSegmentValidation.genRegexNumeric("2|3|4|5",
                 UtilMetadata.genPipeRow(getObjects(PPMPK), INT_ROWS));
     }),
 
-    SG_NUMERIC_NUMERIC_2(programs(PPMPK), () -> {
-        int[] INT_ROWS = {43};
-
-        return UtilSegmentValidation.genRegexNumeric("3|4",
-                UtilMetadata.genPipeRow(getObjects(PPMPK), INT_ROWS));
-    }),
-
-    SG_NUMERIC_NEGATIVE(programs(PPMPK), () -> {
-        int[] INT_ROWS = {33, 34, 45, 46};
+    SG_NON_RASIO_NUMERIC_NEGATIVE(programs(PPMPK), () -> {
+        int[] INT_ROWS = {0, 3, 6, 7, 9, 13, 24, 25, 31, 33, 34, 43, 45, 46, 57, 58};
 
         return UtilSegmentValidation.genRegexNumericNegative("2|3|4|5",
                 UtilMetadata.genPipeRow(getObjects(PPMPK), INT_ROWS));
     }),
 
-    SG_NUMERIC_NEGATIVE_2(programs(PPMPK), () -> {
-        int[] INT_ROWS = {43};
+    // Row Specific
 
-        return UtilSegmentValidation.genRegexNumericNegative("2|5",
+    SG_RAS10102000000_NUMERIC_DOT_POSITIVE(programs(PPMPK), () -> {
+        int[] INT_ROWS = { 1 };
+
+        return UtilSegmentValidation.genRegexNumericDot("5",
                 UtilMetadata.genPipeRow(getObjects(PPMPK), INT_ROWS));
     }),
 
-    SG_NUMERIC_DOT(programs(PPMPK), () -> {
-        int[] PERCENT_ROWS = {2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35, 38, 41, 44, 47, 50, 53, 56,
-                59};
+    SG_RAS10102000000_NUMERIC_DOT_NEGATIVE(programs(PPMPK), () -> {
+        int[] INT_ROWS = { 1 };
 
-        return UtilSegmentValidation.genRegexNumericDot("2|3|4|5",
-                UtilMetadata.genPipeRow(getObjects(PPMPK), PERCENT_ROWS));
+        return UtilSegmentValidation.genRegexNumericDotNegative("2",
+                UtilMetadata.genPipeRow(getObjects(PPMPK), INT_ROWS));
     }),
 
-    SG_NUMERIC_DOT_RAS10102000000(programs(PPMPK), () -> {
-        int[] PERCENT_ROWS = {1};
+    SG_RAS10102000000_NUMERIC(programs(PPMPK), () -> {
+        int[] INT_ROWS = { 1 };
 
-        return UtilSegmentValidation.genRegexNumericDotNegative("2|5",
-                UtilMetadata.genPipeRow(getObjects(PPMPK), PERCENT_ROWS));
+        return UtilSegmentValidation.genRegexNumeric("3|4",
+                UtilMetadata.genPipeRow(getObjects(PPMPK), INT_ROWS));
     }),
+
+    SG_RAS10202000000_NUMERIC_DOT_NEGATIVE(programs(PPMPK), () -> {
+        int[] INT_ROWS = { 4 };
+
+        return UtilSegmentValidation.genRegexNumericNegative("2",
+                UtilMetadata.genPipeRow(getObjects(PPMPK), INT_ROWS));
+    }),
+
+    SG_RAS10202000000_NUMERIC(programs(PPMPK), () -> {
+        int[] INT_ROWS = { 4 };
+
+        return UtilSegmentValidation.genRegexNumeric("3|4|5",
+                UtilMetadata.genPipeRow(getObjects(PPMPK), INT_ROWS));
+    }),
+
+    SG_RAS11902000000_NUMERIC_DOT(programs(PPMPK), () -> {
+        int[] INT_ROWS = { 49 };
+
+        return UtilSegmentValidation.genRegexNumericDot("2|3|4",
+                UtilMetadata.genPipeRow(getObjects(PPMPK), INT_ROWS));
+    }),
+
+
+//    SG_NUMERIC(programs(PPMPK), () -> {
+//        int[] INT_ROWS = {0, 3, 4, 6, 7, 9, 10, 12, 13, 15, 16, 18, 19, 21, 22, 24, 25, 27, 28, 30,
+//                31, 36, 37, 39, 40, 42, 48, 49, 51, 52, 54, 55, 57, 58};
+//
+//        return UtilSegmentValidation.genRegexNumeric("2|3|4|5",
+//                UtilMetadata.genPipeRow(getObjects(PPMPK), INT_ROWS));
+//    }),
+//
+//    SG_NUMERIC_NUMERIC_2(programs(PPMPK), () -> {
+//        int[] INT_ROWS = {43};
+//
+//        return UtilSegmentValidation.genRegexNumeric("3|4",
+//                UtilMetadata.genPipeRow(getObjects(PPMPK), INT_ROWS));
+//    }),
+//
+//    SG_NUMERIC_NEGATIVE(programs(PPMPK), () -> {
+//        int[] INT_ROWS = {33, 34, 45, 46};
+//
+//        return UtilSegmentValidation.genRegexNumericNegative("2|3|4|5",
+//                UtilMetadata.genPipeRow(getObjects(PPMPK), INT_ROWS));
+//    }),
+//
+//    SG_NUMERIC_NEGATIVE_2(programs(PPMPK), () -> {
+//        int[] INT_ROWS = {43};
+//
+//        return UtilSegmentValidation.genRegexNumericNegative("2|5",
+//                UtilMetadata.genPipeRow(getObjects(PPMPK), INT_ROWS));
+//    }),
+//
+//    SG_NUMERIC_DOT(programs(PPMPK), () -> {
+//        int[] PERCENT_ROWS = {2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35, 38, 41, 44, 47, 50, 53, 56,
+//                59};
+//
+//        return UtilSegmentValidation.genRegexNumericDot("2|3|4|5",
+//                UtilMetadata.genPipeRow(getObjects(PPMPK), PERCENT_ROWS));
+//    }),
+//
+//    SG_NUMERIC_DOT_RAS10102000000(programs(PPMPK), () -> {
+//        int[] PERCENT_ROWS = {1};
+//
+//        return UtilSegmentValidation.genRegexNumericDotNegative("2|5",
+//                UtilMetadata.genPipeRow(getObjects(PPMPK), PERCENT_ROWS));
+//    }),
 
     /* Update Pak Yahya :: Field Validation */
 
@@ -672,23 +746,17 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         return UtilFieldValidation.genEqualsPosFormula(formula, 2, UtilMetadata.genPipeRow(getObjects(PPMPK), rows));
     }),
 
-    FV_TOTAL_EQUAL_1(programs(PPMPK), validationFields(Dppk0017Ras1.TOTAL_PPMP), () -> {
+    FV_TOTAL_EQUAL(programs(PPMPK), validationFields(Dppk0017Ras1.TOTAL_PPMP), () -> {
         String formula = UtilMetadata.genPlusColumn(2, 4);
         int[] rows = {0, 3, 6, 7, 9, 10, 12, 13, 15, 16, 18, 19, 21, 22, 24, 25, 27, 28, 30, 31, 33, 34, 36, 37, 39, 40,
-                45, 46, 51, 52};
-        return UtilFieldValidation.genEqualsPosFormula(formula, UtilMetadata.genPipeRow(getObjects(PPMPK), rows));
-    }),
+                42, 43, 45, 46, 51, 52, 54, 55, 57, 58};
 
-    FV_TOTAL_EQUAL_2(programs(PPMPK), validationFields(Dppk0017Ras1.TOTAL_PPMP), () -> {
-        String formula = UtilMetadata.genPlusColumn(3, 4);
-        int[] rows = {42, 43, 54, 55};
         return UtilFieldValidation.genEqualsPosFormula(formula, UtilMetadata.genPipeRow(getObjects(PPMPK), rows));
     }),
 
     CR_TOTAL_EMPTY(programs(PPMPK), validationFields(Dppk0017Ras1.TOTAL_PPMP), () -> {
-        String refPosCode = R_RAS11901000000.key + "|" + R_RAS11902000000.key;
-        return UtilFieldConditional.genExistPosAndHasReference("N", "M", refPosCode,
-                getRefNumber(7017), "O");
+        String refPosCode = UtilMetadata.genPipeRow(getObjects(PPMPK), new int[]{48, 49, 50});
+        return UtilFieldConditional.genExistPos("N", "M", refPosCode);
     });
 
     private final EnumSet<ProgramType> programTypes;
