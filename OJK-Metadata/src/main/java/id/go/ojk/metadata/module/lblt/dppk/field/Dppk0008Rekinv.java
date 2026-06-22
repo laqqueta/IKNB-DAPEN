@@ -38,49 +38,50 @@ import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 public enum Dppk0008Rekinv implements ILbltFieldMetadata {
 
     FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01"))
-    ),
+            sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric)
+                    .confConstant("D01"))),
+
     KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(1, null, "Kode Komponen", sv(M, 16, 16, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric))
-                    .confUnique(UniqueType.U)
-    ),
+                    .confUnique(UniqueType.U)),
+
     JAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(2, null, "Jan", sv(M, 1, 18, numeric))
-    ),
+            sf(2, null, "Jan", sv(M, 1, 18, numeric))),
+
     FEB(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(3, null, "Feb", sv(M, 1, 18, numeric))
-    ),
+            sf(3, null, "Feb", sv(M, 1, 18, numeric))),
+
     MAR(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(4, null, "Mar", sv(M, 1, 18, numeric))
-    ),
+            sf(4, null, "Mar", sv(M, 1, 18, numeric))),
+
     APR(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(5, null, "Apr", sv(M, 1, 18, numeric))
-    ),
+            sf(5, null, "Apr", sv(M, 1, 18, numeric))),
+
     MEI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(6, null, "Mei", sv(M, 1, 18, numeric))
-    ),
+            sf(6, null, "Mei", sv(M, 1, 18, numeric))),
+
     JUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(7, null, "Jun", sv(M, 1, 18, numeric))
-    ),
+            sf(7, null, "Jun", sv(M, 1, 18, numeric))),
+
     JUL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(8, null, "Jul", sv(M, 1, 18, numeric))
-    ),
+            sf(8, null, "Jul", sv(M, 1, 18, numeric))),
+
     AGU(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(9, null, "Agu", sv(M, 1, 18, numeric))
-    ),
+            sf(9, null, "Agu", sv(M, 1, 18, numeric))),
+
     SEP(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(10, null, "Sep", sv(M, 1, 18, numeric))
-    ),
+            sf(10, null, "Sep", sv(M, 1, 18, numeric))),
+
     OKT(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(11, null, "Okt", sv(M, 1, 18, numeric))
-    ),
+            sf(11, null, "Okt", sv(M, 1, 18, numeric))),
+
     NOV(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(12, null, "Nov", sv(M, 1, 18, numeric))
-    ),
+            sf(12, null, "Nov", sv(M, 1, 18, numeric))),
+
     DES(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(13, null, "Des", sv(M, 1, 18, numeric))
-    ),
+            sf(13, null, "Des", sv(M, 1, 18, numeric))),
+
     ;
 
     private final EnumSet<SectorType> sectorType;

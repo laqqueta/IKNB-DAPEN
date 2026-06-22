@@ -25,7 +25,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static id.go.ojk.lib.client.model.config.DataType.*;
-import static id.go.ojk.lib.client.model.constant.RequiredCondition.C;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
 import static id.go.ojk.metadata.util.FieldUtil.*;
 import static id.go.ojk.metadata.util.constants.ProgramType.PPIPK;
@@ -38,28 +37,24 @@ public enum Dppk0102Pinv implements ILbltFieldMetadata {
 
     FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
             sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric)
-                    .confConstant("D01"))
-    ),
+                    .confConstant("D01"))),
+
     KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
             sf(1, null, "Kode Komponen", sv(M, 14, 14, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric))
                     .confUnique(UniqueType.U)),
 
     PAKET_A(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
-            sf(2, null, "Paket Konvensional - Paket A",
-                    sv(M, 1, 18, numeric))),
+            sf(2, null, "Paket Konvensional - Paket A", sv(M, 1, 18, numeric))),
 
     PAKET_B(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
-            sf(3, null, "Paket Konvensional - Paket B",
-                    sv(M, 1, 18, numeric))),
+            sf(3, null, "Paket Konvensional - Paket B", sv(M, 1, 18, numeric))),
 
     PAKET_C(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
-            sf(4, null, "Paket Konvensional - Paket C",
-                    sv(M, 1, 18, numeric))),
+            sf(4, null, "Paket Konvensional - Paket C", sv(M, 1, 18, numeric))),
 
     PAKET_D(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
-            sf(5, null, "Paket Konvensional - Paket D",
-                    sv(M, 1, 18, numeric))),
+            sf(5, null, "Paket Konvensional - Paket D", sv(M, 1, 18, numeric))),
 
     ;
 

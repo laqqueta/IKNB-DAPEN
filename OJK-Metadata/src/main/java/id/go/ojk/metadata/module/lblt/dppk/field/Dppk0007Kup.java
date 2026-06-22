@@ -39,24 +39,25 @@ import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 public enum Dppk0007Kup implements ILbltFieldMetadata {
 
     FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
-            sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01"))
-    ),
+            sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric)
+                    .confConstant("D01"))),
+
     KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(1, null, "Kode Komponen", sv(M, 13, 13, refTable)
-                    .confRegex(SimpleValidation.patternAlfaNumeric))
-    ),
+                    .confRegex(SimpleValidation.patternAlfaNumeric))),
+
     URAIAN_TAMBAHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
-            sf(2, null, "Uraian Tambahan", sv(C, 1, 100, freeText))
-    ),
+            sf(2, null, "Uraian Tambahan", sv(C, 1, 100, freeText))),
+
     NILAI_PROGRAM_MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
-            sf(3, null, "Nilai Program Manfaat Pensiun", sv(M, 1, 18, freeText))
-    ),
+            sf(3, null, "Nilai Program Manfaat Pensiun", sv(M, 1, 18, freeText))),
+
     NILAI_PROGRAM_MANFAAT_PENSIUN_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
-            sf(4, null, "Nilai Program Manfaat Pensiun Lainnya", sv(M, 1, 18, freeText))
-    ),
+            sf(4, null, "Nilai Program Manfaat Pensiun Lainnya", sv(M, 1, 18, freeText))),
+
     NILAI_PROGRAM_MANFAAT_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
-            sf(5, null, "Nilai Program Manfaat Lain", sv(M, 1, 18, freeText))
-    ),
+            sf(5, null, "Nilai Program Manfaat Lain", sv(M, 1, 18, freeText))),
+
     ;
 
     private final EnumSet<SectorType> sectorType;

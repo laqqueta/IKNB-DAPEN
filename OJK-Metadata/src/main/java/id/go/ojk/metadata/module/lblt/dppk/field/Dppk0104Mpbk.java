@@ -37,67 +37,53 @@ public enum Dppk0104Mpbk implements ILbltFieldMetadata {
 
     FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
             sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric)
-                    .confConstant("D01"))
-    ),
+                    .confConstant("D01"))),
+
     KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
             sf(1, null, "Kode Komponen", sv(M, 10, 10, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric))),
 
     NAMA_BANK(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
-            sf(2, null, "Nama Bank/Nomor Seri SBN",
-                    sv(C, 1, 100, alfaNumericSpace))),
+            sf(2, null, "Nama Bank/Nomor Seri SBN", sv(C, 1, 100, alfaNumericSpace))),
 
     DEPOSITO_NOMOR_BILYET(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
-            sf(3, null, "Deposito - Nomor Bilyet",
-                    sv(C, 1, 50, alfaNumeric))),
+            sf(3, null, "Deposito - Nomor Bilyet", sv(C, 1, 50, alfaNumeric))),
 
     DEPOSITO_NOMINAL(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
-            sf(4, null, "Deposito - Nominal",
-                    sv(M, 1, 18, numeric))),
+            sf(4, null, "Deposito - Nominal", sv(M, 1, 18, numeric))),
 
     DEPOSITO_TANGGAL_JATUH_TEMPO(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
-            sf(5, null, "Deposito - Tanggal Jatuh Tempo",
-                    sv(C, 8, 8, date))),
+            sf(5, null, "Deposito - Tanggal Jatuh Tempo", sv(C, 8, 8, date))),
 
     SERTIFIKAT_DEPOSITO_NOMOR_BILYET(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
-            sf(6, null, "Sertifikat Deposito - Nomor Bilyet",
-                    sv(C, 1, 50, alfaNumeric))),
+            sf(6, null, "Sertifikat Deposito - Nomor Bilyet", sv(C, 1, 50, alfaNumeric))),
 
     SERTIFIKAT_DEPOSITO_NOMINAL(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
-            sf(7, null, "Sertifikat Deposito - Nominal",
-                    sv(M, 1, 18, numeric))),
+            sf(7, null, "Sertifikat Deposito - Nominal", sv(M, 1, 18, numeric))),
 
     SERTIFIKAT_DEPOSITO_TANGGAL_JATUH_TEMPO(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
-            sf(8, null, "Sertifikat Deposito - Tanggal Jatuh Tempo",
-                    sv(C, 8, 8, date))),
+            sf(8, null, "Sertifikat Deposito - Tanggal Jatuh Tempo", sv(C, 8, 8, date))),
 
     SBI_NILAI_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
-            sf(9, null, "SBI - Nilai Perolehan",
-                    sv(C, 1, 18, numeric))),
+            sf(9, null, "SBI - Nilai Perolehan", sv(C, 1, 18, numeric))),
 
     SBI_NILAI_WAJAR(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
-            sf(10, null, "SBI - Nilai Wajar",
-                    sv(C, 1, 18, numeric))),
+            sf(10, null, "SBI - Nilai Wajar", sv(C, 1, 18, numeric))),
 
     SBI_TANGGAL_JATUH_TEMPO(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
-            sf(11, null, "SBI - Tanggal Jatuh Tempo",
-                    sv(C, 8, 8, date))),
+            sf(11, null, "SBI - Tanggal Jatuh Tempo", sv(C, 8, 8, date))),
 
     SBN_NILAI_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
-            sf(12, null, "SBN - Nilai Perolehan",
-                    sv(C, 1, 18, numeric))),
+            sf(12, null, "SBN - Nilai Perolehan", sv(C, 1, 18, numeric))),
 
     SBN_NILAI_WAJAR(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
-            sf(13, null, "SBN - Nilai Wajar",
-                    sv(C, 1, 18, numeric))),
+            sf(13, null, "SBN - Nilai Wajar", sv(C, 1, 18, numeric))),
 
     SBN_TANGGAL_JATUH_TEMPO(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
-            sf(14, null, "SBN - Tanggal Jatuh Tempo",
-                    sv(C, 8, 8, date))),
+            sf(14, null, "SBN - Tanggal Jatuh Tempo", sv(C, 8, 8, date))),
 
     TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
-            sf(15, null, "TOTAL",
-                    sv(M, 1, 18, numeric))),
+            sf(15, null, "TOTAL", sv(M, 1, 18, numeric))),
 
     ;
 

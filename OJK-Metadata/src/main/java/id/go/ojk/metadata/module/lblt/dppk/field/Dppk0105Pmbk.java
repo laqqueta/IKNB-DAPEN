@@ -5,7 +5,6 @@ import id.go.ojk.client.model.config.SimpleValidation;
 import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
-import id.go.ojk.lib.client.model.config.UniqueType;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.metadata.field.lblt.ILbltFieldMetadata;
 import id.go.ojk.metadata.field.lblt.LbltMetadataField;
@@ -25,7 +24,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static id.go.ojk.lib.client.model.config.DataType.*;
-import static id.go.ojk.lib.client.model.constant.RequiredCondition.*;
+import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
+import static id.go.ojk.lib.client.model.constant.RequiredCondition.O;
 import static id.go.ojk.metadata.util.FieldUtil.*;
 import static id.go.ojk.metadata.util.constants.ProgramType.PPIPK;
 import static id.go.ojk.metadata.util.constants.ProgramType.PPIPM;
@@ -37,35 +37,29 @@ public enum Dppk0105Pmbk implements ILbltFieldMetadata {
 
     FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
             sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric)
-                    .confConstant("D01"))
-    ),
+                    .confConstant("D01"))),
+
     KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
             sf(1, null, "Kode Komponen", sv(M, 10, 10, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric))),
 
     JUMLAH_PESERTA_MP_BERKALA(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
-            sf(2, null, "Jumlah Peserta MP Berkala",
-                    sv(M, 1, 18, numeric))),
+            sf(2, null, "Jumlah Peserta MP Berkala", sv(M, 1, 18, numeric))),
 
     JUMLAH_PEMBAYARAN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
-            sf(3, null, "Jumlah Pembayaran",
-                    sv(M, 1, 18, numeric))),
+            sf(3, null, "Jumlah Pembayaran", sv(M, 1, 18, numeric))),
 
     AKUMULASI_DANA_SALDO(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
-            sf(4, null, "Akumulasi Dana Manfaat Berkala - Saldo Peserta",
-                    sv(M, 1, 18, numeric))),
+            sf(4, null, "Akumulasi Dana Manfaat Berkala - Saldo Peserta", sv(M, 1, 18, numeric))),
 
     AKUMULASI_DANA_TOTAL_PENGEMBANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
-            sf(5, null, "Akumulasi Dana Manfaat Berkala - Hasil Pengembangan",
-                    sv(M, 1, 18, numeric))),
+            sf(5, null, "Akumulasi Dana Manfaat Berkala - Hasil Pengembangan", sv(M, 1, 18, numeric))),
 
     AKUMULASI_DANA_TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
-            sf(6, null, "Akumulasi Dana Manfaat Berkala - Total",
-                    sv(M, 1, 18, numeric))),
+            sf(6, null, "Akumulasi Dana Manfaat Berkala - Total", sv(M, 1, 18, numeric))),
 
     KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
-            sf(7, null, "Keterangan",
-                    sv(O, 1, 256, freeText))),
+            sf(7, null, "Keterangan", sv(O, 1, 256, freeText))),
 
     ;
 

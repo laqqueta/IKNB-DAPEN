@@ -43,67 +43,59 @@ import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 public enum Dppk0004Lphu implements ILbltFieldMetadata {
 
     FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01"))
-    ),
+            sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric)
+                    .confConstant("D01"))),
+
     KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(1, null, "Kode Komponen", sv(M, 14, 14, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric))
-                    .confUnique(UniqueType.U)
-    ),
-    AKUMULASI_MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(2, null, "Akumulasi s.d DD-MM-YYYY Manfaat Pensiun", sv(M, 1, 18, numericNegatif))
-    ),
-    AKUMULASI_MANFAAT_PENSIUN_LAINNYA_MANFAAT_TAMBAHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
-            sf(3, null, "Akumulasi s.d DD-MM-YYYY Manfaat Pensiun Lainnya Manfaat Tambahan", sv(M, 1, 18, numericNegatif))
-    ),
-    AKUMULASI_MANFAAT_PENSIUN_LAINNYA_KOMPENSASI_PASCAKERJA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
-            sf(4, null, "Akumulasi s.d DD-MM-YYYY Manfaat Pensiun Lainnya Kompensasi Pascakerja", sv(M, 1, 18, numericNegatif))
-    ),
-    AKUMULASI_MANFAAT_PENSIUN_LAINNYA_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
-            sf(5, null, "Akumulasi s.d DD-MM-YYYY Manfaat Pensiun Lainnya Lainnya", sv(M, 1, 18, numericNegatif))
-    ),
-    AKUMULASI_MANFAAT_LAIN_KOMPENSASI_PASCAKERJA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
-            sf(6, null, "Akumulasi s.d DD-MM-YYYY Manfaat Lain Kompensasi Pascakerja", sv(M, 1, 18, numericNegatif))
-    ),
-    AKUMULASI_MANFAAT_LAIN_KESEHATAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
-            sf(7, null, "Akumulasi s.d DD-MM-YYYY Manfaat Lain Kesehatan", sv(M, 1, 18, numericNegatif))
-    ),
-    AKUMULASI_MANFAAT_LAIN_SANTUNAN_KEMATIAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
-            sf(8, null, "Akumulasi s.d DD-MM-YYYY Manfaat Lain Santunan Kematian", sv(M, 1, 18, numericNegatif))
-    ),
-    AKUMULASI_MANFAAT_LAIN_IBADAH_KEAGAMAAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
-            sf(9, null, "Akumulasi s.d DD-MM-YYYY Manfaat Lain Ibadah Keagamaan", sv(M, 1, 18, numericNegatif))
-    ),
-    AKUMULASI_MANFAAT_LAIN_PENDIDIKAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
-            sf(10, null, "Akumulasi s.d DD-MM-YYYY Manfaat Lain Pendidikan", sv(M, 1, 18, numericNegatif))
-    ),
-    AKUMULASI_MANFAAT_LAIN_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
-            sf(11, null, "Akumulasi s.d DD-MM-YYYY Manfaat Lain Lainnya", sv(M, 1, 18, numericNegatif))
-    ),
-    AKUMULASI_GABUNGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
-            sf(12, null, "Akumulasi s.d DD-MM-YYYY Gabungan", sv(M, 1, 18, numericNegatif))
-    ),
-    UUS_MANFAAT_PENSIUN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPIPK),
-            sf(13, null, "UUS - Manfaat Pensiun", sv(M, 1, 18, all2))
-    ),
+                    .confUnique(UniqueType.U)),
 
-    UUS_MANFAAT_PENSIUN_LAINNYA(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPIPK),
-            sf(14, null, "UUS - Manfaat Pensiun Lainnya", sv(M, 1, 18, all2))
-    ),
-    UUS_MANFAAT_LAIN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPIPK),
-            sf(15, null, "UUS - Manfaat Lain", sv(M, 1, 18, all2))
-    ),
-    TOTAL(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPIPK),
-            sf(16, null, "Total", sv(M, 1, 18, all2))
-    ),
+    AKUMULASI_MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
+            sf(2, null, "Akumulasi s.d DD-MM-YYYY Manfaat Pensiun", sv(M, 1, 18, numericNegatif))),
+
+    AKUMULASI_MANFAAT_PENSIUN_LAINNYA_MANFAAT_TAMBAHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
+            sf(3, null, "Akumulasi s.d DD-MM-YYYY Manfaat Pensiun Lainnya Manfaat Tambahan", sv(M, 1, 18, numericNegatif))),
+
+    AKUMULASI_MANFAAT_PENSIUN_LAINNYA_KOMPENSASI_PASCAKERJA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
+            sf(4, null, "Akumulasi s.d DD-MM-YYYY Manfaat Pensiun Lainnya Kompensasi Pascakerja", sv(M, 1, 18, numericNegatif))),
+
+    AKUMULASI_MANFAAT_PENSIUN_LAINNYA_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
+            sf(5, null, "Akumulasi s.d DD-MM-YYYY Manfaat Pensiun Lainnya Lainnya", sv(M, 1, 18, numericNegatif))),
+
+    AKUMULASI_MANFAAT_LAIN_KOMPENSASI_PASCAKERJA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
+            sf(6, null, "Akumulasi s.d DD-MM-YYYY Manfaat Lain Kompensasi Pascakerja", sv(M, 1, 18, numericNegatif))),
+
+    AKUMULASI_MANFAAT_LAIN_KESEHATAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
+            sf(7, null, "Akumulasi s.d DD-MM-YYYY Manfaat Lain Kesehatan", sv(M, 1, 18, numericNegatif))),
+
+    AKUMULASI_MANFAAT_LAIN_SANTUNAN_KEMATIAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
+            sf(8, null, "Akumulasi s.d DD-MM-YYYY Manfaat Lain Santunan Kematian", sv(M, 1, 18, numericNegatif))),
+
+    AKUMULASI_MANFAAT_LAIN_IBADAH_KEAGAMAAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
+            sf(9, null, "Akumulasi s.d DD-MM-YYYY Manfaat Lain Ibadah Keagamaan", sv(M, 1, 18, numericNegatif))),
+
+    AKUMULASI_MANFAAT_LAIN_PENDIDIKAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
+            sf(10, null, "Akumulasi s.d DD-MM-YYYY Manfaat Lain Pendidikan", sv(M, 1, 18, numericNegatif))),
+
+    AKUMULASI_MANFAAT_LAIN_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
+            sf(11, null, "Akumulasi s.d DD-MM-YYYY Manfaat Lain Lainnya", sv(M, 1, 18, numericNegatif))),
+
+    AKUMULASI_GABUNGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
+            sf(12, null, "Akumulasi s.d DD-MM-YYYY Gabungan", sv(M, 1, 18, numericNegatif))),
+
+    UUS_MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK),
+            sf(13, null, "UUS - Manfaat Pensiun", sv(M, 1, 18, all2))),
+
+    UUS_MANFAAT_PENSIUN_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK),
+            sf(14, null, "UUS - Manfaat Pensiun Lainnya", sv(M, 1, 18, all2))),
+
+    UUS_MANFAAT_LAIN(sectors(KONVENSIONAL, SYARIAH),programs(PPIPK),
+            sf(15, null, "UUS - Manfaat Lain", sv(M, 1, 18, all2))),
+
+    TOTAL(sectors(KONVENSIONAL, SYARIAH),programs(PPIPK),
+            sf(16, null, "Total", sv(M, 1, 18, all2))),
+
     ;
 
     private final EnumSet<SectorType> sectorType;

@@ -48,31 +48,30 @@ import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 public enum Dppk0017Ras1 implements ILbltFieldMetadata {
 
     FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01"))
-    ),
+            sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01"))),
+
     KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(1, null, "Kode Komponen", sv(M, 14, 14, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric))
-                    .confUnique(UniqueType.U)
-    ),
+                    .confUnique(UniqueType.U)),
+
     MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
-            sf(2, null, "Manfaat Pensiun", sv(M, 1, 18, freeText))
-    ),
+            sf(2, null, "Manfaat Pensiun", sv(M, 1, 18, freeText))),
+
     MANFAAT_PENSIUN_PPMPM(sectors(KONVENSIONAL, SYARIAH), programs(PPMPM, PPIPM),
-            sf(2, null, "Manfaat Pensiun", sv(C, 1, 18, freeText))
-    ),
+            sf(2, null, "Manfaat Pensiun", sv(C, 1, 18, freeText))),
+
     MANFAAT_PENSIUN_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
-            sf(3, null, "Manfaat Pensiun Lainnya", sv(M, 1, 18, freeText))
-    ),
+            sf(3, null, "Manfaat Pensiun Lainnya", sv(M, 1, 18, freeText))),
+
     MANFAAT_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
-            sf(4, null, "Manfaat lain", sv(M, 1, 18, freeText))
-    ),
+            sf(4, null, "Manfaat lain", sv(M, 1, 18, freeText))),
+
     TOTAL_PPMP(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
-            sf(5, null, "Total", sv(C, 1, 18, freeText))
-    ),
+            sf(5, null, "Total", sv(C, 1, 18, freeText))),
+
     TOTAL_PPIP(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK),
-            sf(5, null, "Total", sv(M, 1, 18, freeText))
-    ),
+            sf(5, null, "Total", sv(M, 1, 18, freeText))),
 
     ;
 

@@ -6,15 +6,15 @@ import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
+import id.go.ojk.metadata.field.lblt.ILbltFieldMetadata;
+import id.go.ojk.metadata.field.lblt.LbltMetadataField;
 import id.go.ojk.metadata.module.lblt.dppk.EFormLaporanBulananTahunan;
 import id.go.ojk.metadata.module.lblt.dppk.header.*;
 import id.go.ojk.metadata.module.lblt.dppk.reference.ER7039PosLtlbDppkPnyl;
 import id.go.ojk.metadata.module.lblt.dppk.validations.E7039PnylValidationsConfig;
+import id.go.ojk.metadata.submission.SubmissionConfig;
 import id.go.ojk.metadata.util.constants.ProgramType;
 import id.go.ojk.metadata.util.constants.SectorType;
-import id.go.ojk.metadata.field.lblt.ILbltFieldMetadata;
-import id.go.ojk.metadata.field.lblt.LbltMetadataField;
-import id.go.ojk.metadata.submission.SubmissionConfig;
 import id.go.ojk.metadata.validation.base.BaseMetadataValidation;
 import lombok.AllArgsConstructor;
 
@@ -23,8 +23,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static id.go.ojk.lib.client.model.config.DataType.*;
-import static id.go.ojk.lib.client.model.constant.RequiredCondition.*;
-import static id.go.ojk.lib.client.model.constant.RequiredCondition.O;
+import static id.go.ojk.lib.client.model.constant.RequiredCondition.C;
+import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
 import static id.go.ojk.metadata.util.FieldUtil.*;
 import static id.go.ojk.metadata.util.constants.ProgramType.*;
 import static id.go.ojk.metadata.util.constants.SectorType.KONVENSIONAL;
@@ -33,164 +33,126 @@ import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0039Pnyl implements ILbltFieldMetadata {
     FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(0, null, "Flag",
-                    sv(M, 3, 3, alfaNumeric)
-                            .confConstant("D01"))),
+            sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric)
+                    .confConstant("D01"))),
 
     KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(1, null, "Kode Komponen",
-                    sv(M, 10, 10, refTable)
-                            .confRegex(SimpleValidation.patternAlfaNumeric))),
+            sf(1, null, "Kode Komponen", sv(M, 10, 10, refTable)
+                    .confRegex(SimpleValidation.patternAlfaNumeric))),
 
     NAMA_PERUSAHAAN_1(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(2, null, "Nama Perusahaan (1)",
-                    sv(C, 1, 100, freeText))),
+            sf(2, null, "Nama Perusahaan (1)", sv(C, 1, 100, freeText))),
 
     PERWAKILAN_DANA_PENSIUN_NAMA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(3, null, "Perwakilan Dana Pensiun Nama",
-                    sv(C, 1, 100, freeText))),
+            sf(3, null, "Perwakilan Dana Pensiun Nama", sv(C, 1, 100, freeText))),
 
     PERWAKILAN_DANA_PENSIUN_JABATAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(4, null, "Perwakilan Dana Pensiun Jabatan",
-                    sv(C, 1, 50, alfaNumeric))),
+            sf(4, null, "Perwakilan Dana Pensiun Jabatan", sv(C, 1, 50, alfaNumeric))),
 
     KATEGORI_PENYERTAAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(5, null, "Kategori Penyertaan*)",
-                    sv(C, 1, 8, refTable)
-                            .confRegex(SimpleValidation.patternAlfaNumeric)
-                            .confReference(EHeaderMetadataSharedLkbt.R019.getObject()))),
+            sf(5, null, "Kategori Penyertaan*)", sv(C, 1, 8, refTable)
+                    .confRegex(SimpleValidation.patternAlfaNumeric)
+                    .confReference(EHeaderMetadataSharedLkbt.R019.getObject()))),
 
     TANGGAL_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(6, null, "Tanggal Perolehan",
-                    sv(C, 8, 8, date))),
+            sf(6, null, "Tanggal Perolehan", sv(C, 8, 8, date))),
 
     PENEMPATAN_AWAL_TANGGAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(7, null, "Penempatan Awal Tanggal",
-                    sv(C, 8, 8, date))),
+            sf(7, null, "Penempatan Awal Tanggal", sv(C, 8, 8, date))),
 
     PENEMPATAN_AWAL_PERSEN_KEPEMILIKAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(8, null, "Penempatan Awal % Kepemilikan",
-                    sv(C, 4, 6, numericDot))),
+            sf(8, null, "Penempatan Awal % Kepemilikan", sv(C, 4, 6, numericDot))),
 
     PENEMPATAN_AWAL_TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(9, null, "Penempatan Awal Total",
-                    sv(M, 1, 18, numeric))),
+            sf(9, null, "Penempatan Awal Total", sv(M, 1, 18, numeric))),
 
     NILAI_PEROLEHAN_PER_TANGGAL_LAPORAN_PERSEN_KEPEMILIKAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(10, null, "Nilai Perolehan Per tanggal laporan % Kepemilikan",
-                    sv(C, 4, 6, numericDot))),
+            sf(10, null, "Nilai Perolehan Per tanggal laporan % Kepemilikan", sv(C, 4, 6, numericDot))),
 
     NILAI_PEROLEHAN_PER_TANGGAL_LAPORAN_TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(11, null, "Nilai Perolehan Per tanggal laporan Total",
-                    sv(M, 1, 18, numeric))),
+            sf(11, null, "Nilai Perolehan Per tanggal laporan Total", sv(M, 1, 18, numeric))),
 
     NILAI_APPRASIAL_WAJAR_NAMA_PENILAI_PUBLIK_INDEPENDEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(12, null, "Nilai Apprasial/wajar Nama Penilai Publik/Independen",
-                    sv(C, 1, 100, freeText))),
+            sf(12, null, "Nilai Apprasial/wajar Nama Penilai Publik/Independen", sv(C, 1, 100, freeText))),
 
     NILAI_APPRASIAL_WAJAR_TANGGAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(13, null, "Nilai Apprasial/wajar Tanggal",
-                    sv(C, 8, 8, date))),
+            sf(13, null, "Nilai Apprasial/wajar Tanggal", sv(C, 8, 8, date))),
 
     NILAI_APPRASIAL_WAJAR_PERSEN_KEPEMILIKAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(14, null, "Nilai Apprasial/wajar % Kepemilikan",
-                    sv(C, 4, 6, numericDot))),
+            sf(14, null, "Nilai Apprasial/wajar % Kepemilikan", sv(C, 4, 6, numericDot))),
 
     NILAI_APPRASIAL_WAJAR_TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(15, null, "Nilai Apprasial/wajar Total",
-                    sv(M, 1, 18, numeric))),
+            sf(15, null, "Nilai Apprasial/wajar Total", sv(M, 1, 18, numeric))),
 
     SELISIH_PENILAIAN_INVESTASI_NILAI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(16, null, "Selisih Penilaian Investasi Nilai",
-                    sv(M, 1, 18, numeric))),
+            sf(16, null, "Selisih Penilaian Investasi Nilai", sv(M, 1, 18, numeric))),
 
     SELISIH_PENILAIAN_INVESTASI_PERSEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(17, null, "Selisih Penilaian Investasi %",
-                    sv(C, 4, 6, numericDot))),
+            sf(17, null, "Selisih Penilaian Investasi %", sv(C, 4, 6, numericDot))),
 
     SEKTOR_EKONOMI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(18, null, "Sektor Ekonomi",
-                    sv(C, 1, 8, refTable)
-                            .confRegex(SimpleValidation.patternAlfaNumeric)
-                            .confReference(EHeaderMetadataSharedLkbt.R007.getObject()))),
+            sf(18, null, "Sektor Ekonomi", sv(C, 1, 8, refTable)
+                    .confRegex(SimpleValidation.patternAlfaNumeric)
+                    .confReference(EHeaderMetadataSharedLkbt.R007.getObject()))),
 
     MANFAAT_PENSIUN_MANFAAT_PENSIUN_LAINNYA_MANFAAT_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(19, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain",
-                    sv(C, 1, 6, refTable)
-                            .confRegex(SimpleValidation.patternAlfaNumeric)
-                            .confReference(EHeaderMetadataSharedLkbt.R009.getObject()))),
+            sf(19, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain", sv(C, 1, 6, refTable)
+                    .confRegex(SimpleValidation.patternAlfaNumeric)
+                    .confReference(EHeaderMetadataSharedLkbt.R009.getObject()))),
 
     KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(20, null, "Keterangan",
-                    sv(C, 1, 250, freeText))),
+            sf(20, null, "Keterangan", sv(C, 1, 250, freeText))),
 
     TOTAL_MODAL_DISETOR(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(21, null, "Total Modal Disetor",
-                    sv(M, 1, 18, numeric))),
+            sf(21, null, "Total Modal Disetor", sv(M, 1, 18, numeric))),
 
     PRESENTASE_KEPEMILIKAN_V_PENDIRI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(22, null, "Presentase kepemilikan (v) Pendiri",
-                    sv(C, 4, 6, numericDot))),
+            sf(22, null, "Presentase kepemilikan (v) Pendiri", sv(C, 4, 6, numericDot))),
 
     PRESENTASE_KEPEMILIKAN_V_DANA_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(23, null, "Presentase kepemilikan (v) Dana Pensiun",
-                    sv(C, 4, 6, numericDot))),
+            sf(23, null, "Presentase kepemilikan (v) Dana Pensiun", sv(C, 4, 6, numericDot))),
 
     PRESENTASE_KEPEMILIKAN_V_MITRA_PENDIRI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(24, null, "Presentase kepemilikan (v) Mitra Pendiri",
-                    sv(C, 4, 6, numericDot))),
+            sf(24, null, "Presentase kepemilikan (v) Mitra Pendiri", sv(C, 4, 6, numericDot))),
 
     PRESENTASE_KEPEMILIKAN_V_PENGURUS(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(25, null, "Presentase kepemilikan (v) Pengurus",
-                    sv(C, 4, 6, numericDot))),
+            sf(25, null, "Presentase kepemilikan (v) Pengurus", sv(C, 4, 6, numericDot))),
 
     PRESENTASE_KEPEMILIKAN_V_PENERIMA_TITIPAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(26, null, "Presentase kepemilikan (v) Penerima titipan",
-                    sv(C, 4, 6, numericDot))),
+            sf(26, null, "Presentase kepemilikan (v) Penerima titipan", sv(C, 4, 6, numericDot))),
 
     PRESENTASE_KEPEMILIKAN_V_SERIKAT_KERJA_YANG_ANGGOTANYA_MERUPAKAN_PESERTA_DP(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(27, null, "Presentase kepemilikan (v) Serikat Kerja yang Anggotanya Merupakan Peserta DP",
-                    sv(C, 4, 6, numericDot))),
+            sf(27, null, "Presentase kepemilikan (v) Serikat Kerja yang Anggotanya Merupakan Peserta DP", sv(C, 4, 6, numericDot))),
 
     PRESENTASE_KEPEMILIKAN_V_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(28, null, "Presentase kepemilikan (v) Lainnya",
-                    sv(C, 4, 6, numericDot))),
+            sf(28, null, "Presentase kepemilikan (v) Lainnya", sv(C, 4, 6, numericDot))),
 
     ANAK_PERUSAHAAN_DARI_PENYERTAAN_LANGSUNG_2(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(29, null, "Anak Perusahaan dari Penyertaan Langsung(2)",
-                    sv(C, 1, 100, freeText))),
+            sf(29, null, "Anak Perusahaan dari Penyertaan Langsung(2)", sv(C, 1, 100, freeText))),
 
     TOTAL_MODAL_DISETOR_ANAK_PERUSAHAAN_DARI_PENYERTAAN_LANGSUNG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(30, null, "Total Modal Disetor Anak Perusahaan dari Penyertaan Langsung",
-                    sv(M, 1, 18, numeric))),
+            sf(30, null, "Total Modal Disetor Anak Perusahaan dari Penyertaan Langsung", sv(M, 1, 18, numeric))),
 
     PRESENTASE_KEPEMILIKAN_E1_PENDIRI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(31, null, "Presentase Kepemilikan (e1) Pendiri",
-                    sv(C, 4, 6, numericDot))),
+            sf(31, null, "Presentase Kepemilikan (e1) Pendiri", sv(C, 4, 6, numericDot))),
 
     PRESENTASE_KEPEMILIKAN_E1_MITRA_PENDIRI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(32, null, "Presentase Kepemilikan (e1) Mitra Pendiri",
-                    sv(C, 4, 6, numericDot))),
+            sf(32, null, "Presentase Kepemilikan (e1) Mitra Pendiri", sv(C, 4, 6, numericDot))),
 
     PRESENTASE_KEPEMILIKAN_E1_PENGURUS(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(33, null, "Presentase Kepemilikan (e1) Pengurus",
-                    sv(C, 4, 6, numericDot))),
+            sf(33, null, "Presentase Kepemilikan (e1) Pengurus", sv(C, 4, 6, numericDot))),
 
     PRESENTASE_KEPEMILIKAN_E1_PENERIMA_TITIPAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(34, null, "Presentase Kepemilikan (e1) Penerima Titipan",
-                    sv(C, 4, 6, numericDot))),
+            sf(34, null, "Presentase Kepemilikan (e1) Penerima Titipan", sv(C, 4, 6, numericDot))),
 
     PRESENTASE_KEPEMILIKAN_E1_SERIKAT_KERJA_YANG_ANGGOTANYA_MERUPAKAN_PESERTA_DP(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(35, null, "Presentase Kepemilikan (e1) Serikat Kerja yang Anggotanya Merupakan Peserta DP",
-                    sv(C, 4, 6, numericDot))),
+            sf(35, null, "Presentase Kepemilikan (e1) Serikat Kerja yang Anggotanya Merupakan Peserta DP", sv(C, 4, 6, numericDot))),
 
     PRESENTASE_KEPEMILIKAN_E1_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(36, null, "Presentase Kepemilikan (e1) Lainnya",
-                    sv(C, 4, 6, numericDot))),
+            sf(36, null, "Presentase Kepemilikan (e1) Lainnya", sv(C, 4, 6, numericDot))),
 
     PRESENTASE_KEPEMILIKAN_E1_DIVIDEN_ANAK_PERUSAHAAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(37, null, "Presentase Kepemilikan (e1) Dividen Anak Perusahaan",
-                    sv(C, 1, 18, numeric))),
+            sf(37, null, "Presentase Kepemilikan (e1) Dividen Anak Perusahaan", sv(C, 1, 18, numeric))),
 
     ;
 

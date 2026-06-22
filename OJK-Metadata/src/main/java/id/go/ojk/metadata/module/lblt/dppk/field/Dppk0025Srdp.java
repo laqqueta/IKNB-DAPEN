@@ -6,15 +6,15 @@ import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
+import id.go.ojk.metadata.field.lblt.ILbltFieldMetadata;
+import id.go.ojk.metadata.field.lblt.LbltMetadataField;
 import id.go.ojk.metadata.module.lblt.dppk.EFormLaporanBulananTahunan;
 import id.go.ojk.metadata.module.lblt.dppk.header.*;
 import id.go.ojk.metadata.module.lblt.dppk.reference.ER7025PosLtlbDppkSrdp;
 import id.go.ojk.metadata.module.lblt.dppk.validations.E7025SrdpValidationsConfig;
+import id.go.ojk.metadata.submission.SubmissionConfig;
 import id.go.ojk.metadata.util.constants.ProgramType;
 import id.go.ojk.metadata.util.constants.SectorType;
-import id.go.ojk.metadata.field.lblt.ILbltFieldMetadata;
-import id.go.ojk.metadata.field.lblt.LbltMetadataField;
-import id.go.ojk.metadata.submission.SubmissionConfig;
 import id.go.ojk.metadata.validation.base.BaseMetadataValidation;
 import lombok.AllArgsConstructor;
 
@@ -34,65 +34,51 @@ import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 public enum Dppk0025Srdp implements ILbltFieldMetadata {
 
     FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(0, null, "Flag",
-                    sv(M, 3, 3, alfaNumeric)
-                            .confConstant("D01"))),
+            sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric)
+                    .confConstant("D01"))),
 
     KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(1, null, "Kode Komponen",
-                    sv(M, 10, 10, refTable)
-                            .confRegex(SimpleValidation.patternAlfaNumeric))),
+            sf(1, null, "Kode Komponen", sv(M, 10, 10, refTable)
+                    .confRegex(SimpleValidation.patternAlfaNumeric))),
 
     NAMA_BANK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(2, null, "Nama Bank",
-                    sv(C, 1, 100, freeText))),
+            sf(2, null, "Nama Bank", sv(C, 1, 100, freeText))),
 
     CABANG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(3, null, "Cabang",
-                    sv(C, 1, 100, freeText))),
+            sf(3, null, "Cabang", sv(C, 1, 100, freeText))),
 
     KODE_BANK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(4, null, "Kode Bank",
-                    sv(C, 1, 6, refTable)
-                            .confRegex(SimpleValidation.patternAlfaNumeric)
-                            .confReference(EHeaderMetadataSharedLkbt.R011.getObject()))),
+            sf(4, null, "Kode Bank", sv(C, 1, 6, refTable)
+                    .confRegex(SimpleValidation.patternAlfaNumeric)
+                    .confReference(EHeaderMetadataSharedLkbt.R011.getObject()))),
 
     TANGGAL_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(5, null, "Tanggal Perolehan",
-                    sv(C, 8, 8, date))),
+            sf(5, null, "Tanggal Perolehan", sv(C, 8, 8, date))),
 
     NILAI_NOMINAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(6, null, "Nilai Nominal",
-                    sv(M, 1, 18, numeric))),
+            sf(6, null, "Nilai Nominal", sv(M, 1, 18, numeric))),
 
     JANGKA_WAKTU_HARI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(7, null, "Jangka Waktu (Hari)",
-                    sv(C, 1, 3, numeric))),
+            sf(7, null, "Jangka Waktu (Hari)", sv(C, 1, 3, numeric))),
 
     TINGKAT_BUNGA_NISBAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(8, null, "Tingkat Bunga/Nisbah (%)",
-                    sv(C, 4, 6, numericDot))),
+            sf(8, null, "Tingkat Bunga/Nisbah (%)", sv(C, 4, 6, numericDot))),
 
     MANFAAT_PENSIUN_LAINNYA_LAIN_LCF(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(9, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain/LCF",
-                    sv(C, 1, 6, refTable)
-                            .confRegex(SimpleValidation.patternAlfaNumeric)
-                            .confReference(EHeaderMetadataSharedLkbt.R009.getObject()))),
+            sf(9, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain/LCF", sv(C, 1, 6, refTable)
+                    .confRegex(SimpleValidation.patternAlfaNumeric)
+                    .confReference(EHeaderMetadataSharedLkbt.R009.getObject()))),
 
     PENGELOLAAN_SWAKELOLA_KPD(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(10, null, "Pengelolaan Swakelola/ KPD",
-                    sv(C, 1, 6, refTable)
-                            .confRegex(SimpleValidation.patternAlfa)
-                            .confReference(EHeaderMetadataSharedLkbt.R006.getObject()))),
+            sf(10, null, "Pengelolaan Swakelola/ KPD", sv(C, 1, 6, refTable)
+                    .confRegex(SimpleValidation.patternAlfa)
+                    .confReference(EHeaderMetadataSharedLkbt.R006.getObject()))),
 
     PENGELOLAAN_NAMA_MANAJER_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(11, null, "Pengelolaan Nama Manajer Investasi",
-                    sv(C, 1, 250, freeText)
-            )),
+            sf(11, null, "Pengelolaan Nama Manajer Investasi", sv(C, 1, 250, freeText))),
 
     KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(12, null, "Keterangan",
-                    sv(C, 1, 250, freeText))),
+            sf(12, null, "Keterangan", sv(C, 1, 250, freeText))),
 
     ;
 

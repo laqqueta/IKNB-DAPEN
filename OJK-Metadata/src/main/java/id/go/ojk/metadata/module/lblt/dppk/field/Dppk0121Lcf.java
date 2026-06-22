@@ -5,6 +5,7 @@ import id.go.ojk.client.model.config.SimpleValidation;
 import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
+import id.go.ojk.lib.client.model.config.UniqueType;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.metadata.field.lblt.ILbltFieldMetadata;
 import id.go.ojk.metadata.field.lblt.LbltMetadataField;
@@ -35,39 +36,33 @@ public enum Dppk0121Lcf implements ILbltFieldMetadata {
 
     FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPIPM),
             sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric)
-                    .confConstant("D01"))
-    ),
+                    .confConstant("D01"))),
+
     KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPM),
             sf(1, null, "Kode Komponen", sv(M, 13, 13, refTable)
-                    .confRegex(SimpleValidation.patternAlfaNumeric))),
+                    .confRegex(SimpleValidation.patternAlfaNumeric))
+                    .confUnique(UniqueType.U)),
 
     JUMLAH_PESERTA(sectors(KONVENSIONAL, SYARIAH), programs(PPIPM),
-            sf(2, null, "Jumlah Peserta",
-                    sv(C, 1, 18, numeric))),
+            sf(2, null, "Jumlah Peserta", sv(C, 1, 18, numeric))),
 
     HASIL_INVESTASI_TERLEASISASI(sectors(KONVENSIONAL, SYARIAH), programs(PPIPM),
-            sf(3, null, "Hasil Investasi yang Terealisasi",
-                    sv(M, 1, 18, numeric))),
+            sf(3, null, "Hasil Investasi yang Terealisasi", sv(M, 1, 18, numeric))),
 
     HASIL_INVESTASI_BELUM_TERLEASISASI(sectors(KONVENSIONAL, SYARIAH), programs(PPIPM),
-            sf(4, null, "Hasil Investasi yang belum Terealisasi",
-                    sv(M, 1, 18, numeric))),
+            sf(4, null, "Hasil Investasi yang belum Terealisasi", sv(M, 1, 18, numeric))),
 
     BEBAN_INVESATASI(sectors(KONVENSIONAL, SYARIAH), programs(PPIPM),
-            sf(5, null, "Beban Invesatsi",
-                    sv(M, 1, 18, numeric))),
+            sf(5, null, "Beban Invesatsi", sv(M, 1, 18, numeric))),
 
     HASIL_INVESTASI_BERSIH(sectors(KONVENSIONAL, SYARIAH), programs(PPIPM),
-            sf(6, null, "Hasil Investasi Bersih",
-                    sv(C, 1, 18, numeric))),
+            sf(6, null, "Hasil Investasi Bersih", sv(C, 1, 18, numeric))),
 
     RATA_RATA_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPIPM),
-            sf(7, null, "Rata - Rata Investasi",
-                    sv(C, 1, 18, numeric))),
+            sf(7, null, "Rata - Rata Investasi", sv(C, 1, 18, numeric))),
 
     ROI(sectors(KONVENSIONAL, SYARIAH), programs(PPIPM),
-            sf(8, null, "ROI",
-                    sv(C, 1, 18, numeric))),
+            sf(8, null, "ROI", sv(C, 1, 18, numeric))),
 
     ;
 

@@ -6,6 +6,8 @@ import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
+import id.go.ojk.metadata.field.lblt.ILbltFieldMetadata;
+import id.go.ojk.metadata.field.lblt.LbltMetadataField;
 import id.go.ojk.metadata.module.lblt.dppk.EFormLaporanBulananTahunan;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpipk;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpipm;
@@ -13,11 +15,9 @@ import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpk;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpm;
 import id.go.ojk.metadata.module.lblt.dppk.reference.ER7051PosLtlbDppkPkan;
 import id.go.ojk.metadata.module.lblt.dppk.validations.E7051PkanValidationsConfig;
+import id.go.ojk.metadata.submission.SubmissionConfig;
 import id.go.ojk.metadata.util.constants.ProgramType;
 import id.go.ojk.metadata.util.constants.SectorType;
-import id.go.ojk.metadata.field.lblt.ILbltFieldMetadata;
-import id.go.ojk.metadata.field.lblt.LbltMetadataField;
-import id.go.ojk.metadata.submission.SubmissionConfig;
 import id.go.ojk.metadata.validation.base.BaseMetadataValidation;
 import lombok.AllArgsConstructor;
 
@@ -37,43 +37,31 @@ import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 public enum Dppk0051Pkan implements ILbltFieldMetadata {
 
     FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(0, null, "Flag",
-                    sv(M, 3, 3, alfaNumeric)
-                            .confConstant("D01"))
-    ),
+            sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric)
+                    .confConstant("D01"))),
+
     KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(1, null, "Kode Komponen",
-                    sv(M, 10, 10, refTable)
-                            .confRegex(SimpleValidation.patternAlfaNumeric))
-    ),
+            sf(1, null, "Kode Komponen", sv(M, 10, 10, refTable)
+                    .confRegex(SimpleValidation.patternAlfaNumeric))),
+
     JENIS_PERALATAN_KANTOR(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(2, null, "Jenis Peralatan Kantor",
-                    sv(C, 1, 50, alfaNumeric)
-                    /*.confConditionalRequired(E7051PkanValidationsConfig.CR_EXISTS_POS_M)*/)
-    ),
+            sf(2, null, "Jenis Peralatan Kantor", sv(C, 1, 50, alfaNumeric))),
+
     TANGGAL_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(3, null, "Tanggal Perolehan",
-                    sv(C, 8, 8, date)
-                    /*.confConditionalRequired(E7051PkanValidationsConfig.CR_EXISTS_POS_M)*/)
-    ),
+            sf(3, null, "Tanggal Perolehan", sv(C, 8, 8, date))),
+
     NILAI_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(4, null, "Nilai Perolehan",
-                    sv(M, 1, 18, numeric))
-    ),
+            sf(4, null, "Nilai Perolehan", sv(M, 1, 18, numeric))),
+
     AKUMULASI_PENYUSUTAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(5, null, "Akumulasi Penyusutan",
-                    sv(M, 1, 18, numeric))
-    ),
+            sf(5, null, "Akumulasi Penyusutan", sv(M, 1, 18, numeric))),
+
     NILAI_BUKU(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(6, null, "Nilai Buku",
-                    sv(M, 1, 18, numeric))
-            /*.addFieldValidations(E7051PkanValidationsConfig.FV_EQUAL_NILAI_BUKU)*/
-    ),
+            sf(6, null, "Nilai Buku", sv(M, 1, 18, numeric))),
+
     KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(7, null, "Keterangan",
-                    sv(C, 1, 250, freeText)
-                    /*.confConditionalRequired(E7051PkanValidationsConfig.CR_EXISTS_POS_O)*/)
-    ),
+            sf(7, null, "Keterangan", sv(C, 1, 250, freeText))),
+
     ;
 
     private final EnumSet<SectorType> sectorType;

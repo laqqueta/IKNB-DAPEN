@@ -44,93 +44,61 @@ import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 public enum Dppk0001Lan implements ILbltFieldMetadata {
 
     FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01"))
-    ),
+            sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric)
+                    .confConstant("D01"))),
+
     KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(1, null, "Kode Komponen",
-                    sv(M, 13, 13, refTable)
-                            .confRegex(SimpleValidation.patternAlfaNumeric))
-                    .confUnique(UniqueType.U)
-    ),
+            sf(1, null, "Kode Komponen", sv(M, 13, 13, refTable)
+                    .confRegex(SimpleValidation.patternAlfaNumeric))
+                    .confUnique(UniqueType.U)),
+
     PERSENTASE_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(2, null, "Persentase Investasi",
-                    sv(C, 4, 6, numericDot))
-    ),
+            sf(2, null, "Persentase Investasi", sv(C, 4, 6, numericDot))),
+    
     MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(3, null, "Manfaat Pensiun", sv(M, 1, 18, numeric))
-    ),
+            sf(3, null, "Manfaat Pensiun", sv(M, 1, 18, numeric))),
 
-    MANFAAT_PENSIUN_LAINNYA_MANFAAT_TAMBAHAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPIPK),
-            sf(4, null, "Manfaat Pensiun Lainnya Manfaat Tambahan", sv(M, 1, 18, numeric))
-    ),
-    MANFAAT_PENSIUN_LAINNYA_KOMPENSASI_PASCAKERJA(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPIPK),
-            sf(5, null, "Manfaat Pensiun Lainnya Kompensasi Pascakerja", sv(M, 1, 18, numeric))
-    ),
-    MANFAAT_PENSIUN_LAINNYA_LAINNYA(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPIPK),
-            sf(6, null, "Manfaat Pensiun Lainnya Lainnya", sv(M, 1, 18, numeric))
-    ),
-    MANFAAT_LAIN_KOMPENSASI_PASCAKERJA(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPIPK),
-            sf(7, null, "Manfaat Lain Kompensasi Pascakerja", sv(M, 1, 18, numeric))
-    ),
-    MANFAAT_LAIN_KESEHATAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPIPK),
-            sf(8, null, "Manfaat Lain Kesehatan", sv(M, 1, 18, numeric))
-    ),
-    MANFAAT_LAIN_SANTUNAN_KEMATIAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPIPK),
-            sf(9, null, "Manfaat Lain Santunan Kematian", sv(M, 1, 18, numeric))
-    ),
-    MANFAAT_LAIN_IBADAH_KEAGAMAAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPIPK),
-            sf(10, null, "Manfaat Lain Ibadah Keagamaan", sv(M, 1, 18, numeric))
-    ),
-    MANFAAT_LAIN_PENDIDIKAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPIPK),
-            sf(11, null, "Manfaat Lain Pendidikan", sv(M, 1, 18, numeric))
-    ),
-    MANFAAT_LAIN_LAINNYA(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPIPK),
-            sf(12, null, "Manfaat Lain Lainnya", sv(M, 1, 18, numeric))
-    ),
-    GABUNGAN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPMPK, PPIPK),
-            sf(13, null, "Gabungan", sv(M, 1, 18, numeric))
-    ),
-    UUS_MANFAAT_PENSIUN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPIPK),
-            sf(14, null, "UUS - Manfaat Pensiun", sv(M, 1, 18, all2))
-    ),
+    MANFAAT_PENSIUN_LAINNYA_MANFAAT_TAMBAHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
+            sf(4, null, "Manfaat Pensiun Lainnya Manfaat Tambahan", sv(M, 1, 18, numeric))),
 
-    UUS_MANFAAT_PENSIUN_LAINNYA(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPIPK),
-            sf(15, null, "UUS - Manfaat Pensiun Lainnya", sv(M, 1, 18, all2))
-    ),
-    UUS_MANFAAT_LAIN(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPIPK),
-            sf(16, null, "UUS - Manfaat Lain", sv(M, 1, 18, all2))
-    ),
-    TOTAL(
-            sectors(KONVENSIONAL, SYARIAH),
-            programs(PPIPK),
-            sf(17, null, "Total", sv(M, 1, 18, all2))
-    ),
+    MANFAAT_PENSIUN_LAINNYA_KOMPENSASI_PASCAKERJA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
+            sf(5, null, "Manfaat Pensiun Lainnya Kompensasi Pascakerja", sv(M, 1, 18, numeric))),
+
+    MANFAAT_PENSIUN_LAINNYA_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
+            sf(6, null, "Manfaat Pensiun Lainnya Lainnya", sv(M, 1, 18, numeric))),
+
+    MANFAAT_LAIN_KOMPENSASI_PASCAKERJA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
+            sf(7, null, "Manfaat Lain Kompensasi Pascakerja", sv(M, 1, 18, numeric))),
+
+    MANFAAT_LAIN_KESEHATAN(sectors(KONVENSIONAL, SYARIAH),programs(PPMPK, PPIPK),
+            sf(8, null, "Manfaat Lain Kesehatan", sv(M, 1, 18, numeric))),
+
+    MANFAAT_LAIN_SANTUNAN_KEMATIAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
+            sf(9, null, "Manfaat Lain Santunan Kematian", sv(M, 1, 18, numeric))),
+
+    MANFAAT_LAIN_IBADAH_KEAGAMAAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
+            sf(10, null, "Manfaat Lain Ibadah Keagamaan", sv(M, 1, 18, numeric))),
+
+    MANFAAT_LAIN_PENDIDIKAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
+            sf(11, null, "Manfaat Lain Pendidikan", sv(M, 1, 18, numeric))),
+
+    MANFAAT_LAIN_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
+            sf(12, null, "Manfaat Lain Lainnya", sv(M, 1, 18, numeric))),
+
+    GABUNGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
+            sf(13, null, "Gabungan", sv(M, 1, 18, numeric))),
+
+    UUS_MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK),
+            sf(14, null, "UUS - Manfaat Pensiun", sv(M, 1, 18, all2))),
+
+    UUS_MANFAAT_PENSIUN_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK),
+            sf(15, null, "UUS - Manfaat Pensiun Lainnya", sv(M, 1, 18, all2))),
+
+    UUS_MANFAAT_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK),
+            sf(16, null, "UUS - Manfaat Lain", sv(M, 1, 18, all2))),
+
+    TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK),
+            sf(17, null, "Total", sv(M, 1, 18, all2))),
 
     ;
 

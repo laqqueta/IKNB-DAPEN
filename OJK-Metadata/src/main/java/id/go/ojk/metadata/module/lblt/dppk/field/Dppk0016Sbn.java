@@ -38,54 +38,44 @@ import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 public enum Dppk0016Sbn implements ILbltFieldMetadata {
 
     FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01"))
-    ),
+            sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01"))),
+
     KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(1, null, "Kode Komponen", sv(M, 9, 9, refTable)
-                    .confRegex(SimpleValidation.patternAlfaNumeric))
-    ),
+                    .confRegex(SimpleValidation.patternAlfaNumeric))),
+
     JENIS_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(2, null, "Jenis Investasi", sv(C, 1, 6, refTable)
                             .confRegex(SimpleValidation.patternAlfaNumeric)
-                            .confReference(EHeaderMetadataSharedLkbt.R022.getObject())
-                    /*.confConditionalRequired(E7016SbnValidationsConfig.CR_FOR_TOTAL)*/)
-    ),
+                            .confReference(EHeaderMetadataSharedLkbt.R022.getObject()))),
+
     NAMA_JENIS_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(3, null, "Nama Jenis Investasi", sv(C, 1, 100, freeText)
-                    /*.confConditionalRequired(E7016SbnValidationsConfig.CR_FOR_TOTAL)*/)
-    ),
+            sf(3, null, "Nama Jenis Investasi", sv(C, 1, 100, freeText))),
+
     SERI_EFEK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(4, null, "Seri Efek", sv(C, 1, 100, freeText)
-                    /*.confConditionalRequired(E7016SbnValidationsConfig.CR_JENIS_INVESTASI_VALUE_OBLIGASI)*/)
-    ),
+            sf(4, null, "Seri Efek", sv(C, 1, 100, freeText))),
+
     JENIS_KEPEMILIKAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(5, null, "Jenis Kepemilikan", sv(C, 1, 100, freeText)
-                    /*.confConditionalRequired(E7016SbnValidationsConfig.CR_JENIS_INVESTASI_VALUE_OBLIGASI)*/)
-    ),
+            sf(5, null, "Jenis Kepemilikan", sv(C, 1, 100, freeText))),
+
     RATING(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(6, null, "Rating", sv(C, 1, 100, freeText)
-                    /*.confConditionalRequired(E7016SbnValidationsConfig.CR_JENIS_INVESTASI_VALUE_OBLIGASI)*/)
-    ),
+            sf(6, null, "Rating", sv(C, 1, 100, freeText))),
+
     MENAJER_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(7, null, "Menajer Investasi", sv(C, 1, 100, freeText)
-                    /*.confConditionalRequired(E7016SbnValidationsConfig.CR_JENIS_INVESTASI_VALUE_SBN)*/)
-    ),
+            sf(7, null, "Menajer Investasi", sv(C, 1, 100, freeText))),
+
     NILAI_WAJAR(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(8, null, "Nilai Wajar", sv(C, 1, 18, numeric)
-                    /*.confConditionalRequired(E7016SbnValidationsConfig.CR_FOR_TOTAL)*/)
-    ),
+            sf(8, null, "Nilai Wajar", sv(C, 1, 18, numeric))),
+
     PERSEN_SBN_DALAM_REKSADANA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(9, null, "% SBN dalam Reksadana", sv(C, 4, 6, numericDot)
-                    /*.confConditionalRequired(E7016SbnValidationsConfig.CR_FOR_SBN)*/)
-    ),
+            sf(9, null, "% SBN dalam Reksadana", sv(C, 4, 6, numericDot))),
+
     SALDO(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(10, null, "Saldo", sv(C, 1, 18, numeric)
-                    /*.confConditionalRequired(E7016SbnValidationsConfig.CR_FOR_SALDO)*/)
-    ),
+            sf(10, null, "Saldo", sv(C, 1, 18, numeric))),
+
     EMITEN_PENERIMA_DANA_PROJECT(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(11, null, "Emiten Penerima Dana/Project", sv(O, 1, 100, alfa)
-                    /*.confConditionalRequired(E7016SbnValidationsConfig.CR_JENIS_INVESTASI_VALUE_REKSADANA)*/)
-    ),
+            sf(11, null, "Emiten Penerima Dana/Project", sv(O, 1, 100, alfa))),
+
     ;
 
     private final EnumSet<SectorType> sectorType;

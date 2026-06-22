@@ -42,35 +42,31 @@ import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 public enum Dppk0014Inpt implements ILbltFieldMetadata {
 
     FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01"))
-    ),
+            sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric)
+                    .confConstant("D01"))),
+
     KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(1, null, "Kode Komponen", sv(M, 10, 10, refTable)
-                    .confRegex(SimpleValidation.patternAlfaNumeric))
-    ),
+                    .confRegex(SimpleValidation.patternAlfaNumeric))),
+
     NAMA_PIHAK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(2, null, "Nama Pihak", sv(C, 1, 100, freeText)
-                    /*.confConditionalRequired(E7014InptValidationsConfig.CR_EXISTS_POS_M)*/)
-    ),
+            sf(2, null, "Nama Pihak", sv(C, 1, 100, freeText))),
+
     INVESTASI_JENIS(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(3, null, "Investasi Jenis", sv(C, 1, 100, freeText)
-                    /*.confConditionalRequired(E7014InptValidationsConfig.CR_EXISTS_POS_M)*/)
-    ),
+            sf(3, null, "Investasi Jenis", sv(C, 1, 100, freeText))),
+
     INVESTASI_JUMLAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(4, null, "Investasi Jumlah", sv(M, 1, 18, numeric))
-    ),
+            sf(4, null, "Investasi Jumlah", sv(M, 1, 18, numeric))),
+
     INVESTASI_PERSENTASE_TERHADAP_TOTAL_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(5, null, "Investasi Persentase Terhadap Total Investasi", sv(C, 4, 6, numericDot)
-                    /*.confConditionalRequired(E7014InptValidationsConfig.CR_EXISTS_POS_M)*/)
-    ),
+            sf(5, null, "Investasi Persentase Terhadap Total Investasi", sv(C, 4, 6, numericDot))),
+
     HUBUNGAN_AFILIASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(6, null, "Hubungan Afiliasi", sv(C, 1, 100, freeText)
-                    /*.confConditionalRequired(E7014InptValidationsConfig.CR_EXISTS_POS_M)*/)
-    ),
+            sf(6, null, "Hubungan Afiliasi", sv(C, 1, 100, freeText))),
+
     KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
-            sf(7, null, "Keterangan", sv(C, 1, 250, freeText)
-                    /*.confConditionalRequired(E7014InptValidationsConfig.CR_EXISTS_POS_O)*/)
-    ),
+            sf(7, null, "Keterangan", sv(C, 1, 250, freeText))),
+
     ;
 
     private final EnumSet<SectorType> sectorType;
