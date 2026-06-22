@@ -74,7 +74,7 @@ public enum ER7006PosLtlbDppkPst implements IObject<KeyValueString> {
             }
         },
 
-        REF_CONFIG_PPMPM {
+        REF_CONFIG_PPMPM_PPIPM {
             @Override
             public String requiredPos() {
                 return UtilMetadata.genPipeRow(getObjects());

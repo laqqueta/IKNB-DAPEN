@@ -34,40 +34,40 @@ import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0046Pihi implements ILbltFieldMetadata {
 
-    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(0, null, "Flag",
                     sv(M, 3, 3, alfaNumeric)
                             .confConstant("D01"))
     ),
-    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(1, null, "Kode Komponen",
                     sv(M, 10, 10, refTable)
                             .confRegex(SimpleValidation.patternAlfaNumeric))
     ),
-    JENIS_PIUTANG_HASIL_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    JENIS_PIUTANG_HASIL_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(2, null, "Jenis Piutang Hasil Investasi",
                     sv(C, 1, 6, refTable)
                             /*.confConditionalRequired(E7046PihiValidationsConfig.CR_EXISTS_POS_M)*/
                             .confRegex(SimpleValidation.patternAlfaNumeric)
                             .confReference(EHeaderMetadataSharedLkbt.R021.getObject()))
     ),
-    PIHAK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    PIHAK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(3, null, "Pihak",
                     sv(C, 1, 100, alfaNumeric)
                     /*.confConditionalRequired(E7046PihiValidationsConfig.CR_EXISTS_POS_M)*/)
     ),
-    NOMINAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    NOMINAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(4, null, "Nominal",
                     sv(M, 1, 18, numeric))
     ),
-    MANFAAT_PENSIUN_LAINNYA_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    MANFAAT_PENSIUN_LAINNYA_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(5, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain",
                     sv(C, 1, 6, refTable)
                             /*.confConditionalRequired(E7046PihiValidationsConfig.CR_EXISTS_POS_M)*/
                             .confRegex(SimpleValidation.patternAlfaNumeric)
                             .confReference(EHeaderMetadataSharedLkbt.R009.getObject()))
     ),
-    KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(6, null, "Keterangan",
                     sv(C, 1, 250, freeText)
                     /*.confConditionalRequired(E7046PihiValidationsConfig.CR_EXISTS_POS_O)*/)

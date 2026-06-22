@@ -33,50 +33,50 @@ import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0041Kasb implements ILbltFieldMetadata {
 
-    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(0, null, "Flag",
                     sv(M, 3, 3, alfaNumeric)
                             .confConstant("D01"))
     ),
-    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(1, null, "Kode Komponen",
                     sv(M, 10, 10, refTable)
                             .confRegex(SimpleValidation.patternAlfaNumeric))
     ),
-    NAMA_BANK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    NAMA_BANK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(2, null, "Nama Bank",
                     sv(C, 1, 100, freeText)
                     /*.confConditionalRequired(E7041KasbValidationsConfig.CR_EXISTS_POS_O)*/)
     ),
-    CABANG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    CABANG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(3, null, "Cabang",
                     sv(C, 1, 100, freeText)
                     /*.confConditionalRequired(E7041KasbValidationsConfig.CR_EXISTS_POS_O)*/)
     ),
-    KODE_BANK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    KODE_BANK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(4, null, "Kode Bank",
                     sv(C, 1, 6, refTable)
                             /*.confConditionalRequired(E7041KasbValidationsConfig.CR_EXISTS_POS_M)*/
                             .confRegex(SimpleValidation.patternAlfaNumeric)
                             .confReference(EHeaderMetadataSharedLkbt.R011.getObject()))
     ),
-    NO_REKENING(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    NO_REKENING(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(5, null, "No Rekening",
                     sv(C, 1, 20, alfaNumeric)
                     /*.confConditionalRequired(E7041KasbValidationsConfig.CR_EXISTS_POS_M)*/)
     ),
-    NOMINAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    NOMINAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(6, null, "Nominal",
                     sv(M, 1, 18, numeric))
     ),
-    MANFAAT_PENSIUN_LAINNYA_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    MANFAAT_PENSIUN_LAINNYA_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(7, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain",
                     sv(C, 1, 6, refTable)
                             /*.confConditionalRequired(E7041KasbValidationsConfig.CR_EXISTS_POS_M)*/
                             .confRegex(SimpleValidation.patternAlfaNumeric)
                             .confReference(EHeaderMetadataSharedLkbt.R009.getObject()))
     ),
-    KETERANGAN_TUJUAN_PENGGUNAAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    KETERANGAN_TUJUAN_PENGGUNAAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(8, null, "Keterangan (Tujuan penggunaan)",
                     sv(C, 1, 250, freeText)
                     /*.confConditionalRequired(E7041KasbValidationsConfig.CR_EXISTS_POS_O)*/)

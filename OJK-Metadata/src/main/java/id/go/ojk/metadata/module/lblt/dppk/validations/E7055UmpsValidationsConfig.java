@@ -31,14 +31,14 @@ import static id.go.ojk.metadata.util.constants.ProgramType.*;
 @AllArgsConstructor
 public enum E7055UmpsValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM, PPIPK),
+    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM, PPIPK, PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 4), R_UMPS000000.key, R_UMPS010000.key,
                     UtilMetadata.genMessageTotal(R_UMPS000000.value, R_UMPS010000.value))),
 
-    FV_EQUAL_TOTAL(programs(PPMPK, PPMPM, PPIPK), validationFields(4),
+    FV_EQUAL_TOTAL(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(4),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("2+3", R_UMPS000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK), validationFields(5),
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(5),
             () -> UtilFieldConditional.genExistPos("N", "O", R_UMPS000000.key)),
 
     ;

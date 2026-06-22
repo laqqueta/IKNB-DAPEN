@@ -119,5 +119,22 @@ public enum ER7005PosLtlbDppkLak implements IObject<KeyValueString> {
                 return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 16),getObjects());
             }
         },
+
+        REF_CONFIG_PPIPM {
+            @Override
+            public String requiredPos() {
+                return UtilMetadata.genPipeRow(getObjects());
+            }
+
+            @Override
+            public String savePos() {
+                return UtilMetadata.genFieldSave("2",getObjects());
+            }
+
+            @Override
+            public String savePosForm() {
+                return UtilMetadata.genFieldSave("2", getObjects());
+            }
+        },
     }
 }

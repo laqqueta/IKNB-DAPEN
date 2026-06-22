@@ -33,27 +33,27 @@ import static id.go.ojk.metadata.util.constants.ProgramType.*;
 @AllArgsConstructor
 public enum E7027RsbnValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM, PPIPK),
+    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM, PPIPK, PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula("4|7|8|9", R_RSBN000000.key, R_RSBN010000.key,
                     UtilMetadata.genMessageTotal(R_RSBN000000.value, R_RSBN010000.value))),
 
-    FV_EQUAL_NILAI_INVESTASI(programs(PPMPK, PPMPM, PPIPK), validationFields(9),
+    FV_EQUAL_NILAI_INVESTASI(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(9),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("8-7", R_RSBN000000.key)),
 
-    FV_EQUAL_PERSENTASE_INVESTASI(programs(PPMPK, PPMPM, PPIPK), validationFields(10),
+    FV_EQUAL_PERSENTASE_INVESTASI(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(10),
             () -> UtilFieldValidation.genEqualsPercentageExceptPosFormula("9/7", R_RSBN000000.key)),
 
-    FV_DATE_GREATER(programs(PPMPK, PPMPM, PPIPK), validationFields(6),
+    FV_DATE_GREATER(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(6),
             () -> UtilFieldValidation.genDateGreaterEquals("3")),
 
-    CR_NAMA_PENGELOLA(programs(PPMPK, PPMPM, PPIPK), validationFields(14),
+    CR_NAMA_PENGELOLA(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(14),
             () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("N", "M", "N",
                     R_RSBN010000.key, "13", ER1252Pengelolaan.getReferenceIndex(0), ER1252Pengelolaan.getReferenceValueIndex(0))),
 
-    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK), validationFields(2, 3, 5, 6, 10, 11, 12, 13),
+    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(2, 3, 5, 6, 10, 11, 12, 13),
             () -> UtilFieldConditional.genExistPos("N", "M", R_RSBN000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK), validationFields(15),
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(15),
             () -> UtilFieldConditional.genExistPos("N", "O", R_RSBN000000.key)),
 
     ;

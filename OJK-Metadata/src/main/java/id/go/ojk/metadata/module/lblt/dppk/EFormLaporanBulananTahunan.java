@@ -83,6 +83,7 @@ public enum EFormLaporanBulananTahunan {
 	LTLB_PINVS("PINVS", "Form Laporan Paket Investigasi Syariah"),
 	LTLB_MPBK("MPBK", "Form Laporan Investasi Manfaat Pensiun Berkala"),
 	LTLB_PMBK("PMBK", "Form Laporan Pengelolaan Manfaat Pensiun Berkala"),
+	LTLB_LCF("LCF", "Form Laporan Life Cycle Fund"),
 
 	LTLB_COVER("COVER", "LAPORAN BULANAN / LAPORAN KEUANGAN TAHUNAN DATA ELEKTRONIK DANA PENSIUN PEMBERI KERJA PROGRAM PENSIUN IURAN PASTI"),
 

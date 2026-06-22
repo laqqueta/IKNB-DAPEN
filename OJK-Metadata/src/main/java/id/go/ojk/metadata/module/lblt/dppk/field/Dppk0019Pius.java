@@ -35,26 +35,26 @@ import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0019Pius implements ILbltFieldMetadata {
 
-    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01"))
     ),
-    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(1, null, "Kode Komponen", sv(M, 14, 14, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric))
     ),
-    JUMLAH_PESERTA_IURAN_SUKARELA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    JUMLAH_PESERTA_IURAN_SUKARELA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(2, null, "Jumlah Peserta Iuran Sukarela", sv(M, 1, 18, numeric))
     ),
-    SALDO_AKUMULASI_IURAN_SUKARELA_BULAN_SEBELUMNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    SALDO_AKUMULASI_IURAN_SUKARELA_BULAN_SEBELUMNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(3, null, "Saldo Akumulasi Iuran Sukarela bulan sebelumnya", sv(M, 1, 18, numeric))
     ),
-    PENAMBAHAN_IURAN_SUKARELA_BULAN_BERJALAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    PENAMBAHAN_IURAN_SUKARELA_BULAN_BERJALAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(4, null, "Penambahan iuran sukarela bulan berjalan", sv(M, 1, 18, numeric))
     ),
-    DISTRIBUSI_HASIL_PENGEMBANGAN_DANA_IURAN_SUKARELA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    DISTRIBUSI_HASIL_PENGEMBANGAN_DANA_IURAN_SUKARELA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(5, null, "Distribusi Hasil Pengembangan Dana Iuran Sukarela", sv(M, 1, 18, numeric))
     ),
-    TOTAL_SALDO_AKUMULASI_IURAN_SUKARELA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    TOTAL_SALDO_AKUMULASI_IURAN_SUKARELA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(6, null, "Total Saldo akumulasi iuran sukarela", sv(M, 1, 18, numeric))
     ),
     ;

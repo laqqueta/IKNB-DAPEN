@@ -33,27 +33,27 @@ import static id.go.ojk.metadata.util.constants.ProgramType.*;
 @AllArgsConstructor
 public enum E7026SbiValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM, PPIPK),
+    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM, PPIPK, PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula("4|7|8|9", R_SBI000000.key, R_SBI010000.key,
                     UtilMetadata.genMessageTotal(R_SBI000000.value, R_SBI010000.value))),
 
-    FV_EQUAL_NILAI_INVESTASI(programs(PPMPK, PPMPM, PPIPK), validationFields(9),
+    FV_EQUAL_NILAI_INVESTASI(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(9),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("8-7", R_SBI000000.key)),
 
-    FV_EQUAL_PERSENTASE_INVESTASI(programs(PPMPK, PPMPM, PPIPK), validationFields(10),
+    FV_EQUAL_PERSENTASE_INVESTASI(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(10),
             () -> UtilFieldValidation.genEqualsPercentageExceptPosFormula("9/7", R_SBI000000.key)),
 
-    FV_DATE_GREATER(programs(PPMPK, PPMPM, PPIPK), validationFields(6),
+    FV_DATE_GREATER(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(6),
             () -> UtilFieldValidation.genDateGreaterEquals("3")),
 
-    CR_NAMA_PENGELOLA(programs(PPMPK, PPMPM, PPIPK), validationFields(13),
+    CR_NAMA_PENGELOLA(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(13),
             () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("N", "M", "N",
                     R_SBI010000.key, "12", ER1252Pengelolaan.getReferenceIndex(0), ER1252Pengelolaan.getReferenceValueIndex(0))),
 
-    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK), validationFields(2, 3, 5, 6, 10, 11, 12),
+    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(2, 3, 5, 6, 10, 11, 12),
             () -> UtilFieldConditional.genExistPos("N", "M", R_SBI000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK), validationFields(14),
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(14),
             () -> UtilFieldConditional.genExistPos("N", "O", R_SBI000000.key)),
     ;
 

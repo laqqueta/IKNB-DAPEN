@@ -9,6 +9,7 @@ import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.metadata.module.lblt.dppk.EFormLaporanBulananTahunan;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpipk;
+import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpipm;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpk;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpm;
 import id.go.ojk.metadata.module.lblt.dppk.reference.ER7013PosLtlbDppkInsp;
@@ -28,6 +29,7 @@ import java.util.stream.Stream;
 import static id.go.ojk.lib.client.model.config.DataType.*;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.*;
 import static id.go.ojk.metadata.module.lblt.dppk.validations.ppipik.E7013InspKValidationsConfig.VALIDATION_METADATA_PPIPK;
+import static id.go.ojk.metadata.module.lblt.dppk.validations.ppipm.E7013InspMValidationsConfig.VALIDATION_METADATA_PPIPM;
 import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpk.E7013InspKValidationsConfig.VALIDATION_METADATA_PPMPK;
 import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpm.E7013InspMValidationsConfig.VALIDATION_METADATA_PPMPM;
 import static id.go.ojk.metadata.util.FieldUtil.*;
@@ -38,33 +40,33 @@ import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0013Insp implements ILbltFieldMetadata {
 
-    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01"))
     ),
-    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(1, null, "Kode Komponen", sv(M, 10, 10, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric))
     ),
-    NAMA_PIHAK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    NAMA_PIHAK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(2, null, "Nama Pihak", sv(C, 1, 100, freeText)
                     /*.confConditionalRequired(E7013InspValidationsConfig.CR_EXIST_POS_M)*/)
     ),
-    INVESTASI_JENIS(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    INVESTASI_JENIS(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(3, null, "Investasi Jenis", sv(C, 1, 100, freeText)
                     /*.confConditionalRequired(E7013InspValidationsConfig.CR_EXIST_POS_M)*/)
     ),
-    INVESTASI_JUMLAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    INVESTASI_JUMLAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(4, null, "Investasi Jumlah", sv(M, 1, 18, numeric))
     ),
-    INVESTASI_PERSENTASE_TERHADAP_TOTAL_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    INVESTASI_PERSENTASE_TERHADAP_TOTAL_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(5, null, "Investasi Persentase Terhadap Total Investasi", sv(C, 4, 6, numericDot)
                     /*.confConditionalRequired(E7013InspValidationsConfig.CR_EXIST_POS_M)*/)
     ),
-    BATASAN_DALAM_ARAHAN_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    BATASAN_DALAM_ARAHAN_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(6, null, "Batasan Dalam Arahan Investasi", sv(C, 1, 18, numeric)
                     /*.confConditionalRequired(E7013InspValidationsConfig.CR_EXIST_POS_M)*/)
     ),
-    BATASAN_INVESTASI_SESUAI_KETENTUAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    BATASAN_INVESTASI_SESUAI_KETENTUAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(7, null, "Batasan Investasi Sesuai Ketentuan", sv(C, 1, 18, numeric)
                     /*.confConditionalRequired(E7013InspValidationsConfig.CR_EXIST_POS_O)*/)
     ),
@@ -77,7 +79,8 @@ public enum Dppk0013Insp implements ILbltFieldMetadata {
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7013Insp.getObject()),
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7013Insp.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7013Insp.getObject())
+            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7013Insp.getObject()),
+            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7013Insp.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0013Insp> FIELD_METADATA = new LbltMetadataField<>(Dppk0013Insp.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
@@ -119,6 +122,10 @@ public enum Dppk0013Insp implements ILbltFieldMetadata {
                 break;
             case PPIPK:
                 metadataValidation = VALIDATION_METADATA_PPIPK;
+                referenceConfig = ER7013PosLtlbDppkInsp.Configs.REF_CONFIG_PPIPK_PPIPM;
+                break;
+            case PPIPM:
+                metadataValidation = VALIDATION_METADATA_PPIPM;
                 referenceConfig = ER7013PosLtlbDppkInsp.Configs.REF_CONFIG_PPIPK_PPIPM;
                 break;
             default:

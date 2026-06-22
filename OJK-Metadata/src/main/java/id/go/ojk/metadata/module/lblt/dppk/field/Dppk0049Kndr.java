@@ -36,45 +36,45 @@ import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0049Kndr implements ILbltFieldMetadata {
 
-    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(0, null, "Flag",
                     sv(M, 3, 3, alfaNumeric)
                             .confConstant("D01"))
     ),
-    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(1, null, "Kode Komponen",
                     sv(M, 10, 10, refTable)
                             .confRegex(SimpleValidation.patternAlfaNumeric))
     ),
-    NO_PLAT_KENDARAAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    NO_PLAT_KENDARAAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(2, null, "No Plat Kendaraan",
                     sv(C, 1, 10, alfaNumeric)
                     /*.confConditionalRequired(E7049KndrValidationsConfig.CR_EXISTS_POS_M)*/)
     ),
-    JENIS_KENDARAAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    JENIS_KENDARAAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(3, null, "Jenis Kendaraan",
                     sv(C, 1, 50, alfaNumeric)
                     /*.confConditionalRequired(E7049KndrValidationsConfig.CR_EXISTS_POS_M)*/)
     ),
-    TANGGAL_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    TANGGAL_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(4, null, "Tanggal Perolehan",
                     sv(C, 8, 8, date)
                     /*.confConditionalRequired(E7049KndrValidationsConfig.CR_EXISTS_POS_M)*/)
     ),
-    NILAI_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    NILAI_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(5, null, "Nilai Perolehan",
                     sv(M, 1, 18, numeric))
     ),
-    AKUMULASI_PENYUSUTAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    AKUMULASI_PENYUSUTAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(6, null, "Akumulasi Penyusutan",
                     sv(M, 1, 18, numeric))
     ),
-    NILAI_BUKU(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    NILAI_BUKU(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(7, null, "Nilai Buku",
                     sv(M, 1, 18, numeric))
             /*.addFieldValidations(E7049KndrValidationsConfig.FV_EQUAL_NILAI_BUKU)*/
     ),
-    KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(8, null, "Keterangan",
                     sv(C, 1, 250, freeText)
                     /*.confConditionalRequired(E7049KndrValidationsConfig.CR_EXISTS_POS_O)*/)

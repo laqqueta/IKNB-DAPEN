@@ -32,41 +32,41 @@ import static id.go.ojk.metadata.util.constants.ProgramType.*;
 @AllArgsConstructor
 public enum E7039PnylValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM, PPIPK),
+    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM, PPIPK, PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula("9|11|15|16|21|30", R_PNYL000000.key, R_PNYL010000.key,
                     UtilMetadata.genMessageTotal(R_PNYL000000.value, R_PNYL010000.value))),
 
-    FV_EQUAL_NILAI(programs(PPMPK, PPMPM, PPIPK), validationFields(16),
+    FV_EQUAL_NILAI(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(16),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("15-11", R_PNYL000000.key)),
 
-    FV_EQUAL_RATIO(programs(PPMPK, PPMPM, PPIPK), validationFields(17),
+    FV_EQUAL_RATIO(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(17),
             () -> UtilFieldValidation.genEqualsPosRatio("16|11", R_PNYL010000.key)),
 
-    FV_FIXED_PERSENTASE_V(programs(PPMPK, PPMPM, PPIPK), validationFields(28),
+    FV_FIXED_PERSENTASE_V(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(28),
             () -> UtilFieldValidation.genEqualsPosFormulaFixedValue(
                     UtilMetadata.genPlusColumn(22, 28), R_PNYL010000.key, "100.00")),
 
-    FV_FIXED_PERSENTASE_E1(programs(PPMPK, PPMPM, PPIPK), validationFields(36),
+    FV_FIXED_PERSENTASE_E1(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(36),
             () -> UtilFieldValidation.genEqualsPosFormulaFixedValue(
                     UtilMetadata.genPlusColumn(31, 36), R_PNYL010000.key, "100.00")),
 
-    CR_EXISTS_POS_TOTAL(programs(PPMPK, PPMPM, PPIPK),
+    CR_EXISTS_POS_TOTAL(programs(PPMPK, PPMPM, PPIPK, PPIPM),
             validationFields(UtilMetadata.genDelimitedColumnExcept(2, 37, new int[] { 9,11,15,16,21,30 }, ",")),
             () -> UtilFieldConditional.genExistPos("N", "M", R_PNYL000000.key)),
 
-//    CR_HAS_VALUE_NAMA_PERUSAHAAN_DETIL(programs(PPMPK, PPMPM, PPIPK), validationFields(3,4,5,6,7,8,10,12,13,14,17,18,19,22,23,24,25,26,27,28,29),
+//    CR_HAS_VALUE_NAMA_PERUSAHAAN_DETIL(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(3,4,5,6,7,8,10,12,13,14,17,18,19,22,23,24,25,26,27,28,29),
 //            () -> UtilFieldConditional.genExistPosAndComparatorNotEmptyDAPENVer("M", "N", "N",
 //                    R_PNYL010000.key, "2")),
 //
-//    CR_HAS_VALUE_NAMA_PERUSAHAAN_TOTAL(programs(PPMPK, PPMPM, PPIPK), validationFields(9,11,15,16,21),
+//    CR_HAS_VALUE_NAMA_PERUSAHAAN_TOTAL(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(9,11,15,16,21),
 //            () -> UtilFieldConditional.genExistPosAndComparatorNotEmptyDAPENVer("M", "N", "M",
 //                    R_PNYL010000.key, "2")),
 //
-//    CR_HAS_VALUE_ANAK_PERUSAHAAN_DETIL(programs(PPMPK, PPMPM, PPIPK), validationFields(31,32,33,34,35,36,37),
+//    CR_HAS_VALUE_ANAK_PERUSAHAAN_DETIL(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(31,32,33,34,35,36,37),
 //            () -> UtilFieldConditional.genExistPosAndComparatorNotEmptyDAPENVer("M", "N", "N",
 //                    R_PNYL010000.key, "29")),
 //
-//    CR_HAS_VALUE_ANAK_PERUSAHAAN_TOTAL(programs(PPMPK, PPMPM, PPIPK), validationFields(30),
+//    CR_HAS_VALUE_ANAK_PERUSAHAAN_TOTAL(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(30),
 //            () -> UtilFieldConditional.genExistPosAndComparatorNotEmptyDAPENVer("M", "N", "M",
 //                    R_PNYL010000.key, "29")),
 

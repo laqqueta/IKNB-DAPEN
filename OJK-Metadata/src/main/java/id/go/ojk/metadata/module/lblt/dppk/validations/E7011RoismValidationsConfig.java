@@ -30,13 +30,13 @@ import static id.go.ojk.metadata.util.constants.ProgramType.*;
 @AllArgsConstructor
 public enum E7011RoismValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    FV_FIELD_VALIDATION_1(programs(PPMPK, PPMPM, PPIPK), validationFields(9),
+    FV_FIELD_VALIDATION_1(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(9),
             () -> UtilFieldValidation.genEqualsFormula(UtilMetadata.genPlusColumn(2, 7) + "-8")),
 
-    FV_FIELD_VALIDATION_2(programs(PPMPK, PPMPM, PPIPK), validationFields(11),
+    FV_FIELD_VALIDATION_2(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(11),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("9/10", R_ROISM2100000000.key)),
 
-    SG_SUM_POS_COL_EQUAL(programs(PPMPK, PPMPM, PPIPK),
+    SG_SUM_POS_COL_EQUAL(programs(PPMPK, PPMPM, PPIPK, PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula(
                     UtilMetadata.genPipeColumn(new int[]{2, 3, 4, 5, 6, 7, 8, 10, 11}), R_ROISM2100000000.key,
                     UtilMetadata.genPlusRow(ER7011PosLtlbDppkRoism.getObjects(), 0, 19),

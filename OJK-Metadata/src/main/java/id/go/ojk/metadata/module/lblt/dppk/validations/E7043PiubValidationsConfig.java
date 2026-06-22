@@ -34,14 +34,14 @@ public enum E7043PiubValidationsConfig implements ILbltMetadataValidation, IVali
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(3, 5), R_PIUB000000.key, R_PIUB010000.key,
                     UtilMetadata.genMessageTotal(R_PIUB000000.value, R_PIUB010000.value))),
 
-    SG_EQUAL_FORMULA_2(programs(PPIPK),
+    SG_EQUAL_FORMULA_2(programs(PPIPK, PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(3, 4), R_PIUB000000.key, R_PIUB010000.key,
                     UtilMetadata.genMessageTotal(R_PIUB000000.value, R_PIUB010000.value))),
 
-    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK), validationFields(2, 6),
+    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(2, 6),
             () -> UtilFieldConditional.genExistPos("N", "M", R_PIUB000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK), validationFields(7),
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(7),
             () -> UtilFieldConditional.genExistPos("N", "O", R_PIUB000000.key)),
 
     ;

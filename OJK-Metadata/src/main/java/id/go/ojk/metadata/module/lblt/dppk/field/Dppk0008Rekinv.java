@@ -11,6 +11,7 @@ import id.go.ojk.metadata.field.lblt.ILbltFieldMetadata;
 import id.go.ojk.metadata.field.lblt.LbltMetadataField;
 import id.go.ojk.metadata.module.lblt.dppk.EFormLaporanBulananTahunan;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpipk;
+import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpipm;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpk;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpm;
 import id.go.ojk.metadata.module.lblt.dppk.reference.ER7008PosLtlbDppkRekinv;
@@ -36,48 +37,48 @@ import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0008Rekinv implements ILbltFieldMetadata {
 
-    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01"))
     ),
-    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(1, null, "Kode Komponen", sv(M, 16, 16, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric))
                     .confUnique(UniqueType.U)
     ),
-    JAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    JAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(2, null, "Jan", sv(M, 1, 18, numeric))
     ),
-    FEB(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    FEB(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(3, null, "Feb", sv(M, 1, 18, numeric))
     ),
-    MAR(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    MAR(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(4, null, "Mar", sv(M, 1, 18, numeric))
     ),
-    APR(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    APR(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(5, null, "Apr", sv(M, 1, 18, numeric))
     ),
-    MEI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    MEI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(6, null, "Mei", sv(M, 1, 18, numeric))
     ),
-    JUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    JUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(7, null, "Jun", sv(M, 1, 18, numeric))
     ),
-    JUL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    JUL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(8, null, "Jul", sv(M, 1, 18, numeric))
     ),
-    AGU(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    AGU(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(9, null, "Agu", sv(M, 1, 18, numeric))
     ),
-    SEP(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    SEP(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(10, null, "Sep", sv(M, 1, 18, numeric))
     ),
-    OKT(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    OKT(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(11, null, "Okt", sv(M, 1, 18, numeric))
     ),
-    NOV(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    NOV(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(12, null, "Nov", sv(M, 1, 18, numeric))
     ),
-    DES(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    DES(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(13, null, "Des", sv(M, 1, 18, numeric))
     ),
     ;
@@ -89,7 +90,8 @@ public enum Dppk0008Rekinv implements ILbltFieldMetadata {
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7008Rekinv.getObject()),
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7008Rekinv.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7008Rekinv.getObject())
+            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7008Rekinv.getObject()),
+            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7008Rekinv.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0008Rekinv> FIELD_METADATA =
@@ -138,6 +140,11 @@ public enum Dppk0008Rekinv implements ILbltFieldMetadata {
                 minMaxRow = 24;
                 referenceConfig = ER7008PosLtlbDppkRekinv.Configs.REF_CONFIG_PPIPK;
                 metadataValidation = E7008RekinvValidationsConfig.VALIDATION_METADATA_PPIPK;
+                break;
+            case PPIPM:
+                minMaxRow = 22;
+                referenceConfig = ER7008PosLtlbDppkRekinv.Configs.REF_CONFIG_PPIPM;
+                metadataValidation = E7008RekinvValidationsConfig.VALIDATION_METADATA_PPIPM;
                 break;
             default:
                 throw new IllegalStateException();

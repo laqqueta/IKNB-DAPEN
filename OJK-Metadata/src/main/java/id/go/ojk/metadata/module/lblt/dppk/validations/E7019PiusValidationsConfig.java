@@ -28,7 +28,7 @@ import static id.go.ojk.metadata.util.constants.ProgramType.*;
 @AllArgsConstructor
 public enum E7019PiusValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM, PPIPK),
+    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM, PPIPK, PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula(
                     UtilMetadata.genPipeColumn(2, 6), R_PIUS0000000000.key, R_PIUS0100000000.key,
                     UtilMetadata.genMessageTotal(R_PIUS0000000000.value, R_PIUS0100000000.value))),

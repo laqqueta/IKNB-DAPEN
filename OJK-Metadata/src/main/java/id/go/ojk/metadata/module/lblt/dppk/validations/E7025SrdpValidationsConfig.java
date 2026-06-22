@@ -33,17 +33,17 @@ import static id.go.ojk.metadata.util.constants.ProgramType.*;
 @AllArgsConstructor
 public enum E7025SrdpValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_EQUAL_SRDP000000_SRDP010000(programs(PPMPK, PPMPM, PPIPK),
+    SG_EQUAL_SRDP000000_SRDP010000(programs(PPMPK, PPMPM, PPIPK, PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula("6", R_SRDP000000.key, R_SRDP010000.key,
                     UtilMetadata.genMessageTotal(R_SRDP000000.value, R_SRDP010000.value))),
 
-    CR_EXISTS_SRDP000000_M(programs(PPMPK, PPMPM, PPIPK), validationFields(2, 5, 7, 8, 9, 10),
+    CR_EXISTS_SRDP000000_M(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(2, 5, 7, 8, 9, 10),
             () -> UtilFieldConditional.genExistPos("N", "M", R_SRDP000000.key)),
 
-    CR_EXISTS_SRDP000000_O(programs(PPMPK, PPMPM, PPIPK), validationFields(3, 4, 12),
+    CR_EXISTS_SRDP000000_O(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(3, 4, 12),
             () -> UtilFieldConditional.genExistPos("N", "O", R_SRDP000000.key)),
 
-    CR_EQUAL_NAMA_PENGGUNA(programs(PPMPK, PPMPM, PPIPK), validationFields(11),
+    CR_EQUAL_NAMA_PENGGUNA(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(11),
             () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("N", "M", "N",
                     R_SRDP010000.key, "10", ER1252Pengelolaan.getReferenceIndex(0), ER1252Pengelolaan.getReferenceValueIndex(0))),
 

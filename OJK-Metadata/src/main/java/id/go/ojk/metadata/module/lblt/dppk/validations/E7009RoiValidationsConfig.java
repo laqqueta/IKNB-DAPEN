@@ -33,10 +33,10 @@ import static id.go.ojk.metadata.util.constants.ProgramType.*;
 @AllArgsConstructor
 public enum E7009RoiValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    FV_FIELD_VALIDATION_1(programs(PPMPK, PPMPM, PPIPK), validationFields(9),
+    FV_FIELD_VALIDATION_1(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(9),
             () -> UtilFieldValidation.genEqualsFormula(UtilMetadata.genPlusColumn(2, 7) + "-8")),
 
-    FV_FIELD_VALIDATION_2(programs(PPMPK, PPMPM, PPIPK), validationFields(Dppk0009Roi.ROI),
+    FV_FIELD_VALIDATION_2(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(Dppk0009Roi.ROI),
             () -> UtilFieldValidation.genEqualsPosFormula3("9/10", 2,
                     UtilMetadata.genPipeRowExcept(ER7009PosLtlbDppkRoi.getObjects(), new int[] { 20 }))),
 
@@ -73,7 +73,18 @@ public enum E7009RoiValidationsConfig implements ILbltMetadataValidation, IValid
                         UtilMetadata.genPipeColumn(2, 13), errMsg, formRowDesc);
             }),
 
-    SG_SUM_POS_COL_EQUAL(programs(PPMPK, PPMPM, PPIPK),
+    SG_GEO_MEAN_PPIPM(programs(PPIPM),
+            () -> {
+                String errMsg = UtilMetadata.genDelimitedColumn(2, 13, "*") + "|3|14|" + "REKINV baris ";
+                String formRow = UtilMetadata.genPipeRow(ER7008PosLtlbDppkRekinv.getObjects(PPIPM), 0, 19);
+                String formRowDesc = UtilMetadata.genDelimitedDesc(ER7008PosLtlbDppkRekinv.getObjects(PPIPM), 0, 19, "|");
+                return UtilSegmentValidation.genGeoMeanInvestasi("10",
+                        UtilMetadata.genPipeRow(ER7009PosLtlbDppkRoi.getObjects(), 0, 19),
+                        EFormLaporanBulananTahunan.LTLB_REKINV.getCode(), formRow,
+                        UtilMetadata.genPipeColumn(2, 13), errMsg, formRowDesc);
+            }),
+
+    SG_SUM_POS_COL_EQUAL(programs(PPMPK, PPMPM, PPIPK, PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula(
                     UtilMetadata.genPipeColumn(new int[] { 2, 3, 4, 5, 6, 7, 8, 10, 11}), R_ROI2100000000.key,
                     UtilMetadata.genPlusRow(ER7009PosLtlbDppkRoi.getObjects(), 0, 19),
@@ -126,5 +137,8 @@ public enum E7009RoiValidationsConfig implements ILbltMetadataValidation, IValid
 
     public static final BaseMetadataValidation<E7009RoiValidationsConfig> VALIDATION_METADATA_PPIPK =
             new LbltMetadataValidation<>(E7009RoiValidationsConfig.class, PPIPK);
+
+    public static final BaseMetadataValidation<E7009RoiValidationsConfig> VALIDATION_METADATA_PPIPM =
+            new LbltMetadataValidation<>(E7009RoiValidationsConfig.class, PPIPM);
 
 }

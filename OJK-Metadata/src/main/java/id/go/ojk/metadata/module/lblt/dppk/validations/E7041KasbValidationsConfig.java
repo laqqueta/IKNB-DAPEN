@@ -30,14 +30,14 @@ import static id.go.ojk.metadata.util.constants.ProgramType.*;
 @AllArgsConstructor
 public enum E7041KasbValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM, PPIPK),
+    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM, PPIPK, PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula("6", R_KASB000000.key, R_KASB010000.key,
                     UtilMetadata.genMessageTotal(R_KASB000000.value, R_KASB010000.value))),
 
-    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK), validationFields(4,5,7),
+    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(4,5,7),
             () -> UtilFieldConditional.genExistPos("N", "M", R_KASB000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK), validationFields(2,3,8),
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(2,3,8),
             () -> UtilFieldConditional.genExistPos("N", "O", R_KASB000000.key)),
 
     ;

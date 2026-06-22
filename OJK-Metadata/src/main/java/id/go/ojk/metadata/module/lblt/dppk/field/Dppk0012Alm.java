@@ -12,6 +12,7 @@ import id.go.ojk.metadata.field.lblt.ILbltFieldMetadata;
 import id.go.ojk.metadata.field.lblt.LbltMetadataField;
 import id.go.ojk.metadata.module.lblt.dppk.EFormLaporanBulananTahunan;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpipk;
+import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpipm;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpk;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpm;
 import id.go.ojk.metadata.module.lblt.dppk.reference.ER7012PosLtlbDppkAlm;
@@ -29,6 +30,7 @@ import java.util.stream.Stream;
 import static id.go.ojk.lib.client.model.config.DataType.*;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.*;
 import static id.go.ojk.metadata.module.lblt.dppk.validations.ppipik.E7012AlmKValidationsConfig.VALIDATION_METADATA_PPIPK;
+import static id.go.ojk.metadata.module.lblt.dppk.validations.ppipm.E7012AlmMValidationsConfig.VALIDATION_METADATA_PPIPM;
 import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpk.E7012AlmKValidationsConfig.VALIDATION_METADATA_PPMPK;
 import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpm.E7012AlmMValidationsConfig.VALIDATION_METADATA_PPMPM;
 import static id.go.ojk.metadata.util.FieldUtil.*;
@@ -39,72 +41,72 @@ import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0012Alm implements ILbltFieldMetadata {
 
-    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01"))),
 
-    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(1, null, "Kode Komponen", sv(M, 13, 13, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric))
                     .confUnique(UniqueType.U)),
 
-    JT_LT_1_TAHUN_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    JT_LT_1_TAHUN_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(2, null, "Jatuh tempo < 1 tahun - Rupiah", sv(M, 1, 18, numeric))),
 
-    JT_LT_1_TAHUN_NON_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    JT_LT_1_TAHUN_NON_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(3, null, "Jatuh tempo < 1 tahun - Non Rupiah", sv(M, 1, 18, numeric))),
 
     JT_LT_1_TAHUN_TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(4, null, "Jatuh tempo < 1 tahun - Total", sv(C, 1, 18, numeric))),
 
-    JT_LT_1_TAHUN_TOTAL_PPIPK(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK),
+    JT_LT_1_TAHUN_TOTAL_PPIPK(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
             sf(4, null, "Jatuh tempo < 1 tahun - Total", sv(M, 1, 18, numeric))),
 
-    JT_1_5_TAHUN_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    JT_1_5_TAHUN_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(5, null, "1 tahun <= jatuh tempo < 5 tahun - Rupiah", sv(M, 1, 18, numeric))),
 
-    JT_1_5_TAHUN_NON_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    JT_1_5_TAHUN_NON_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(6, null, "1 tahun <= jatuh tempo < 5 tahun - Non Rupiah", sv(M, 1, 18, numeric))),
 
     JT_1_5_TAHUN_TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(7, null, "1 tahun <= jatuh tempo < 5 tahun - Total", sv(C, 1, 18, numeric))),
 
-    JT_1_5_TAHUN_TOTAL_PPIPK(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK),
+    JT_1_5_TAHUN_TOTAL_PPIPK(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
             sf(7, null, "1 tahun <= jatuh tempo < 5 tahun - Total", sv(M, 1, 18, numeric))),
 
-    JT_5_10_TAHUN_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    JT_5_10_TAHUN_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(8, null, "5 tahun <= jatuh tempo < 10 tahun - Rupiah", sv(M, 1, 18, numeric))),
 
-    JT_5_10_TAHUN_NON_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    JT_5_10_TAHUN_NON_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(9, null, "5 tahun <= jatuh tempo < 10 tahun - Non Rupiah", sv(M, 1, 18, numeric))),
 
     JT_5_10_TAHUN_TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(10, null, "5 tahun <= jatuh tempo < 10 tahun - Total", sv(C, 1, 18, numeric))),
 
-    JT_5_10_TAHUN_TOTAL_PPIPK(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK),
+    JT_5_10_TAHUN_TOTAL_PPIPK(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
             sf(10, null, "5 tahun <= jatuh tempo < 10 tahun - Total", sv(M, 1, 18, numeric))),
 
-    JT_GTE_10_TAHUN_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    JT_GTE_10_TAHUN_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(11, null, "Jatuh Tempo >= 10 Tahun - Rupiah", sv(M, 1, 18, numeric))),
 
-    JT_GTE_10_TAHUN_NON_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    JT_GTE_10_TAHUN_NON_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(12, null, "Jatuh Tempo >= 10 - Non Rupiah", sv(M, 1, 18, numeric))),
 
     JT_GTE_10_TAHUN_TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(13, null, "Jatuh Tempo >= 10 - Total", sv(C, 1, 18, numeric))),
 
-    JT_GTE_10_TAHUN_TOTAL_PPIPK(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK),
+    JT_GTE_10_TAHUN_TOTAL_PPIPK(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
             sf(13, null, "Jatuh Tempo >= 10 - Total", sv(M, 1, 18, numeric))),
 
-    TOTAL_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    TOTAL_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(14, null, "Total - Rupiah", sv(M, 1, 18, numeric))),
 
-    TOTAL_NON_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    TOTAL_NON_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(15, null, "Total - Non Rupiah", sv(M, 1, 18, numeric))),
 
     TOTAL_TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(16, null, "Total - Total", sv(C, 1, 18, numeric))),
 
-    TOTAL_TOTAL_PPIPK(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK),
+    TOTAL_TOTAL_PPIPK(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
             sf(16, null, "Total - Total", sv(M, 1, 18, numeric))),
     ;
 
@@ -115,7 +117,8 @@ public enum Dppk0012Alm implements ILbltFieldMetadata {
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7012Alm.getObject()),
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7012Alm.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7012Alm.getObject())
+            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7012Alm.getObject()),
+            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7012Alm.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0012Alm> FIELD_METADATA = new LbltMetadataField<>(Dppk0012Alm.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
@@ -178,6 +181,10 @@ public enum Dppk0012Alm implements ILbltFieldMetadata {
             case PPIPK:
                 metadataValidation = VALIDATION_METADATA_PPIPK;
                 referenceConfig = ER7012PosLtlbDppkAlm.Configs.REF_CONFIG_PPIPK;
+                break;
+            case PPIPM:
+                metadataValidation = VALIDATION_METADATA_PPIPM;
+                referenceConfig = ER7012PosLtlbDppkAlm.Configs.REF_CONFIG_PPIPM;
                 break;
             default:
                 throw new IllegalStateException();

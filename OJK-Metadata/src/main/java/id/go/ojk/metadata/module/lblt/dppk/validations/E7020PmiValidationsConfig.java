@@ -31,14 +31,14 @@ import static id.go.ojk.metadata.util.constants.ProgramType.*;
 @AllArgsConstructor
 public enum E7020PmiValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM, PPIPK),
+    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM, PPIPK, PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula("7|8|9|11|12", R_PMI000000.key, R_PMI010000.key,
                     UtilMetadata.genMessageTotal(R_PMI000000.value, R_PMI010000.value))),
 
-    FV_PENILAIAN_INVESATSI(programs(PPMPK, PPMPM, PPIPK), validationFields(9),
+    FV_PENILAIAN_INVESATSI(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(9),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("7-8", R_PMI000000.key)),
 
-    CR_EXIST_POS(programs(PPMPK, PPMPM, PPIPK), validationFields(2,3,4,5,6,10,13),
+    CR_EXIST_POS(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(2,3,4,5,6,10,13),
             () -> UtilFieldConditional.genExistPos("N", "M", R_PMI000000.key)),
 
     ;

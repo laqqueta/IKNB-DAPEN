@@ -10,6 +10,7 @@ import id.go.ojk.lib.client.model.config.UniqueType;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.metadata.module.lblt.dppk.EFormLaporanBulananTahunan;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpipk;
+import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpipm;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpk;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpm;
 import id.go.ojk.metadata.module.lblt.dppk.reference.ER7003PosLtlbDppkNrc;
@@ -42,15 +43,15 @@ import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0003Nrc implements ILbltFieldMetadata {
 
-    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01"))
     ),
-    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(1, null, "Kode Komponen", sv(M, 13, 13, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric))
                     .confUnique(UniqueType.U)
     ),
-    MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(2, null, "Manfaat Pensiun", sv(M, 1, 18, numeric))
     ),
     MANFAAT_PENSIUN_LAINNYA_MANFAAT_TAMBAHAN(
@@ -134,7 +135,8 @@ public enum Dppk0003Nrc implements ILbltFieldMetadata {
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7003Nrc.getObject()),
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7003Nrc.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7003Nrc.getObject())
+            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7003Nrc.getObject()),
+            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7003Nrc.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0003Nrc> FIELD_METADATA = new LbltMetadataField<>(Dppk0003Nrc.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
@@ -207,6 +209,14 @@ public enum Dppk0003Nrc implements ILbltFieldMetadata {
                         .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
                         .setSegmentValidations(metadataValidation)
                         .additionalSegmentValidations(E7003NrcKValidationsConfig.additionalSegmentLan());
+                break;
+            case PPIPM:
+                referenceConfig = ER7003PosLtlbDppkNrc.Configs.REF_CONFIG_PPIPM;
+                submssionConfig
+                        .setReferenceConfigs(referenceConfig)
+                        .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
+                        .setSubmissionField(FIELD_METADATA.getClearedFields())
+                        .setSegmentValidations();
                 break;
             default:
                 throw new IllegalStateException();

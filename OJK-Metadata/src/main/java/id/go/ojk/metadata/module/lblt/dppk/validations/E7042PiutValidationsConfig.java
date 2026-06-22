@@ -35,23 +35,23 @@ public enum E7042PiutValidationsConfig implements ILbltMetadataValidation, IVali
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(3, 12), R_PIUT000000.key, R_PIUT010000.key,
                     UtilMetadata.genMessageTotal(R_PIUT000000.value, R_PIUT010000.value))),
 
-    SG_EQUAL_FORMULA_2(programs(PPIPK),
+    SG_EQUAL_FORMULA_2(programs(PPIPK, PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(3, 9), R_PIUT000000.key, R_PIUT010000.key,
                     UtilMetadata.genMessageTotal(R_PIUT000000.value, R_PIUT010000.value))),
 
-    FV_EQUAL_PEMBERI_KERJA(programs(PPMPK, PPMPM, PPIPK), validationFields(5),
+    FV_EQUAL_PEMBERI_KERJA(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(5),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("3+4", R_PIUT000000.key)),
 
-    FV_EQUAL_PESERTA(programs(PPMPK, PPMPM, PPIPK), validationFields(8),
+    FV_EQUAL_PESERTA(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(8),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("6+7", R_PIUT000000.key)),
 
-    FV_EQUAL_TAMBAHAN(programs(PPMPK, PPMPM, PPIPK), validationFields(11),
+    FV_EQUAL_TAMBAHAN(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(11),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("9+10", R_PIUT000000.key)),
 
-    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK), validationFields(2,13),
+    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(2,13),
             () -> UtilFieldConditional.genExistPos("N", "M", R_PIUT000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK), validationFields(14),
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(14),
             () -> UtilFieldConditional.genExistPos("N", "O", R_PIUT000000.key)),
 
     ;

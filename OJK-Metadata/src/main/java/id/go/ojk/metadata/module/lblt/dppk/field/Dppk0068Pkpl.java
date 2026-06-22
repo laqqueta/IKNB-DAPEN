@@ -33,39 +33,39 @@ import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0068Pkpl implements ILbltFieldMetadata {
 
-    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(0, null, "Flag",
                     sv(M, 3, 3, alfaNumeric)
                             .confConstant("D01"))
     ),
-    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(1, null, "Kode Komponen",
                     sv(M, 10, 10, refTable)
                             .confRegex(SimpleValidation.patternAlfaNumeric))
     ),
-    DANA_PENSIUN_YANG_MENERIMA_PENGALIHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    DANA_PENSIUN_YANG_MENERIMA_PENGALIHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(2, null, "Dana Pensiun yang menerima Pengalihan",
                     sv(C, 1, 100, freeText)
                     /*.confConditionalRequired(E7068PkplValidationsConfig.CR_EXISTS_POS_M)*/)
     ),
-    JUMLAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    JUMLAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(3, null, "Jumlah",
                     sv(M, 1, 18, numeric))
     ),
-    MANFAAT_PENSIUN_LAINNYA_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    MANFAAT_PENSIUN_LAINNYA_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(4, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain",
                     sv(C, 1, 6, refTable)
                             /*.confConditionalRequired(E7068PkplValidationsConfig.CR_EXISTS_POS_M)*/
                             .confRegex(SimpleValidation.patternAlfaNumeric)
                             .confReference(EHeaderMetadataSharedLkbt.R009.getObject()))
     ),
-    RINCIAN_MANFAAT_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    RINCIAN_MANFAAT_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(5, null, "Rincian Manfaat Lain *)",
                     sv(C, 1, 6, freeText)
                     /*.confConditionalRequired(E7068PkplValidationsConfig.CR_EXISTS_POS_M)*/
                     /*.confConditionalRequired(E7068PkplValidationsConfig.CR_MANFAAT_LAIN)*/)
     ),
-    KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(6, null, "Keterangan",
                     sv(C, 1, 250, freeText)
                     /*.confConditionalRequired(E7068PkplValidationsConfig.CR_EXISTS_POS_O)*/)

@@ -31,21 +31,21 @@ import static id.go.ojk.metadata.util.constants.ProgramType.*;
 @AllArgsConstructor
 public enum E7068PkplValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM, PPIPK),
+    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM, PPIPK, PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula("3", R_PKPL000000.key, R_PKPL010000.key,
                     UtilMetadata.genMessageTotal(R_PKPL000000.value, R_PKPL010000.value))),
 
-    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK), validationFields(2, 4),
+    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(2, 4),
             () -> UtilFieldConditional.genExistPos("N", "M", R_PKPL000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK), validationFields(6),
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(6),
             () -> UtilFieldConditional.genExistPos("N", "O", R_PKPL000000.key)),
 
-//    CR_MANFAAT_LAIN(programs(PPMPK, PPMPM, PPIPK),
+//    CR_MANFAAT_LAIN(programs(PPMPK, PPMPM, PPIPK, PPIPM),
 //            () -> UtilFieldConditional.genEquals("M", "N", "4",
 //                    ER1255JenisManfaat.getReferenceIndex(11))),
 
-    CR_MANFAAT_LAIN(programs(PPMPK, PPMPM, PPIPK), validationFields(5),
+    CR_MANFAAT_LAIN(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(5),
             () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("M", "O", "N",
                     R_PKPL010000.key, "4", ER1255JenisManfaat.getReferenceIndex(11), ER1255JenisManfaat.getReferenceValueIndex(11))),
 

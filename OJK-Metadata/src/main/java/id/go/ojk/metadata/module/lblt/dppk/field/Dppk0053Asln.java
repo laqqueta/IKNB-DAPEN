@@ -33,48 +33,48 @@ import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0053Asln implements ILbltFieldMetadata {
 
-    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(0, null, "Flag",
                     sv(M, 3, 3, alfaNumeric)
                             .confConstant("D01"))
     ),
-    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(1, null, "Kode Komponen",
                     sv(M, 10, 10, refTable)
                             .confRegex(SimpleValidation.patternAlfaNumeric))
     ),
-    JENIS_ASET_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    JENIS_ASET_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(2, null, "Jenis Aset Lain",
                     sv(C, 1, 50, alfaNumeric)
                     /*.confConditionalRequired(E7053AslnValidationsConfig.CR_EXISTS_POS_M)*/)
     ),
-    TANGGAL_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    TANGGAL_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(3, null, "Tanggal Perolehan",
                     sv(C, 8, 8, date)
                     /*.confConditionalRequired(E7053AslnValidationsConfig.CR_EXISTS_POS_M)*/)
     ),
-    TANGGAL_REKLASIFIKASI_MENJADI_ASET_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    TANGGAL_REKLASIFIKASI_MENJADI_ASET_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(4, null, "Tanggal Reklasifikasi menjadi Aset Lain",
                     sv(C, 8, 8, date)
                     /*.confConditionalRequired(E7053AslnValidationsConfig.CR_EXISTS_POS_M)*/)
     ),
-    NILAI_ASET(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    NILAI_ASET(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(5, null, "Nilai Aset",
                     sv(M, 1, 18, numeric))
     ),
-    PENCATATAN_SEBELUM_MENJADI_ASET_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    PENCATATAN_SEBELUM_MENJADI_ASET_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(6, null, "Pencatatan Sebelum Menjadi Aset Lain",
                     sv(C, 1, 100, alfaNumeric)
                     /*.confConditionalRequired(E7053AslnValidationsConfig.CR_EXISTS_POS_M)*/)
     ),
-    MANFAAT_PENSIUN_LAINNYA_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    MANFAAT_PENSIUN_LAINNYA_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(7, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain",
                     sv(C, 1, 6, refTable)
                             /*.confConditionalRequired(E7053AslnValidationsConfig.CR_EXISTS_POS_M)*/
                             .confRegex(SimpleValidation.patternAlfaNumeric)
                             .confReference(EHeaderMetadataSharedLkbt.R009.getObject()))
     ),
-    KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(8, null, "Keterangan",
                     sv(C, 1, 250, freeText)
                     /*.confConditionalRequired(E7053AslnValidationsConfig.CR_EXISTS_POS_O)*/)

@@ -31,23 +31,23 @@ import static id.go.ojk.metadata.util.constants.ProgramType.*;
 @AllArgsConstructor
 public enum E7040PropValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM, PPIPK),
+    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM, PPIPK, PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula("8|9|10|11|15", R_PROP000000.key, R_PROP010000.key,
                     UtilMetadata.genMessageTotal(R_PROP000000.value, R_PROP010000.value))),
 
-    FV_EQUAL_NILAI_BUKU(programs(PPMPK, PPMPM, PPIPK), validationFields(10),
+    FV_EQUAL_NILAI_BUKU(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(10),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("8-9", R_PROP000000.key)),
 
-    FV_EQUAL_NILAI_INVESTASI(programs(PPMPK, PPMPM, PPIPK), validationFields(15),
+    FV_EQUAL_NILAI_INVESTASI(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(15),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("11-10", R_PROP000000.key)),
 
-    FV_EQUAL_PERSENTASE_INVESTASI(programs(PPMPK, PPMPM, PPIPK), validationFields(16),
+    FV_EQUAL_PERSENTASE_INVESTASI(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(16),
             () -> UtilFieldValidation.genEqualsPercentageExceptPosFormula("15/10", R_PROP000000.key)),
 
-    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK), validationFields(2, 3, 4, 5, 6, 7, 12, 13, 14, 16, 17, 18),
+    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(2, 3, 4, 5, 6, 7, 12, 13, 14, 16, 17, 18),
             () -> UtilFieldConditional.genExistPos("N", "M", R_PROP000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK), validationFields(19),
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(19),
             () -> UtilFieldConditional.genExistPos("N", "O", R_PROP000000.key)),
 
     ;

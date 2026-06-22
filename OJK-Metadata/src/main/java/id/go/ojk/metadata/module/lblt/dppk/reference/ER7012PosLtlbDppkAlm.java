@@ -163,5 +163,24 @@ public enum ER7012PosLtlbDppkAlm implements IObject<KeyValueString> {
                 return UtilMetadata.genPipeRow(getObjects(programType));
             }
         },
+
+        REF_CONFIG_PPIPM {
+            private final ProgramType programType = ProgramType.PPIPM;
+
+            @Override
+            public String savePos() {
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 16), getObjects(programType));
+            }
+
+            @Override
+            public String savePosForm() {
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 16), getObjects(programType));
+            }
+
+            @Override
+            public String requiredPos() {
+                return UtilMetadata.genPipeRow(getObjects(programType));
+            }
+        },
     }
 }

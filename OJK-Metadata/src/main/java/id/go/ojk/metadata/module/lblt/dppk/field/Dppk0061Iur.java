@@ -38,36 +38,36 @@ import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0061Iur implements ILbltFieldMetadata {
 
-    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01"))
     ),
-    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(1, null, "Kode Komponen", sv(M, 9, 9, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric))
     ),
-    NAMA_PENDIRI_MITRA_PENDIRI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    NAMA_PENDIRI_MITRA_PENDIRI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(2, null, "Nama Pendiri/Mitra Pendiri",
                     sv(C, 1, 100, alfaNumeric)
                     /*.confConditionalRequired(E7061IurValidationsConfig.CR_EXISTS_POS_M)*/)
     ),
-    PHDP(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    PHDP(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(3, null, "PhDP", sv(C, 4, 6, numericDot)
                     /*.confConditionalRequired(E7061IurValidationsConfig.CR_EXISTS_POS_M)*/)
     ),
-    IURAN_JATUH_TEMPO_NORMAL_PESERTA_PERSEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    IURAN_JATUH_TEMPO_NORMAL_PESERTA_PERSEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(4, null, "Iuran Jatuh Tempo - Iuran Normal Peserta %",
                     sv(C, 4, 18, numericDot)
                     /*.confConditionalRequired(E7061IurValidationsConfig.CR_EXISTS_POS_M)*/)
     ),
-    IURAN_JATUH_TEMPO_NORMAL_PESERTA_JUMLAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    IURAN_JATUH_TEMPO_NORMAL_PESERTA_JUMLAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(5, null, "Iuran Jatuh Tempo - Iuran Normal Peserta Jumlah", sv(M, 1, 18, numeric))
     ),
-    IURAN_JATUH_TEMPO_NORMAL_PEMBERI_KERJA_PERSEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    IURAN_JATUH_TEMPO_NORMAL_PEMBERI_KERJA_PERSEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(6, null, "Iuran Jatuh Tempo - Iuran Normal Pemberi Kerja %",
                     sv(C, 4, 6, numericDot)
                     /*.confConditionalRequired(E7061IurValidationsConfig.CR_EXISTS_POS_M)*/)
     ),
-    IURAN_JATUH_TEMPO_NORMAL_PEMBERI_KERJA_JUMLAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    IURAN_JATUH_TEMPO_NORMAL_PEMBERI_KERJA_JUMLAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(7, null, "Iuran Jatuh Tempo - Iuran Normal Pemberi Kerja Jumlah", sv(M, 1, 18, numeric))
     ),
     IURAN_JATUH_TEMPO_SUKARELA_PESERTA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
@@ -76,33 +76,33 @@ public enum Dppk0061Iur implements ILbltFieldMetadata {
     IURAN_JATUH_TEMPO_TAMBAHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(9, null, "Iuran Jatuh Tempo - Iuran Tambahan", sv(M, 1, 18, numeric))
     ),
-    PENERIMAAN_IURAN_NORMAL_PESERTA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    PENERIMAAN_IURAN_NORMAL_PESERTA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(10, null, "Penerimaan Iuran - Iuran Normal Peserta", sv(M, 1, 18, numeric))
     ),
-    PENERIMAAN_IURAN_NORMAL_PEMBERI_KERJA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    PENERIMAAN_IURAN_NORMAL_PEMBERI_KERJA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(11, null, "Penerimaan Iuran - Iuran Normal Pemberi Kerja", sv(M, 1, 18, numeric))
     ),
     PENERIMAAN_IURAN_TAMBAHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(12, null, "Penerimaan Iuran - Iuran Tambahan", sv(M, 1, 18, numeric))
     ),
-    PENERIMAAN_IURAN_SUKARELA_PESERTA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    PENERIMAAN_IURAN_SUKARELA_PESERTA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(13, null, "Penerimaan Iuran - Iuran Sukarela Peserta", sv(M, 1, 18, numeric))
     ),
-    KURANG_LEBIH_BAYAR_NORMAL_PESERTA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    KURANG_LEBIH_BAYAR_NORMAL_PESERTA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(14, null, "Kurang/Lebih bayar - Iuran Normal Peserta", sv(M, 1, 18, numeric))
     ),
-    KURANG_LEBIH_BAYAR_NORMAL_PEMBERI_KERJA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    KURANG_LEBIH_BAYAR_NORMAL_PEMBERI_KERJA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(15, null, "Kurang/Lebih bayar - Iuran Normal Pemberi Kerja", sv(M, 1, 18, numeric))
     ),
     KURANG_LEBIH_BAYAR_TAMBAHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
             sf(16, null, "Kurang/Lebih bayar - Iuran Tambahan", sv(M, 1, 18, numeric))
     ),
-    MANFAAT_PENSIUN_LAINNYA_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    MANFAAT_PENSIUN_LAINNYA_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(17, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain",
                     sv(C, 1, 6, alfaNumeric)
                     /*.confConditionalRequired(E7061IurValidationsConfig.CR_EXISTS_POS_M)*/)
     ),
-    KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(18, null, "Keterangan",
                     sv(C, 1, 250, freeText)
                     /*.confConditionalRequired(E7061IurValidationsConfig.CR_EXISTS_POS_O)*/)

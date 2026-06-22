@@ -10,11 +10,11 @@ import id.go.ojk.lib.client.model.config.UniqueType;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.metadata.module.lblt.dppk.EFormLaporanBulananTahunan;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpipk;
+import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpipm;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpk;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpm;
 import id.go.ojk.metadata.module.lblt.dppk.reference.ER7006PosLtlbDppkPst;
-import id.go.ojk.metadata.module.lblt.dppk.validations.ppmpk.E7006PstKValidationsConfig;
-import id.go.ojk.metadata.module.lblt.dppk.validations.ppmpm.E7006PstMValidationsConfig;
+import id.go.ojk.metadata.submission.base.BaseSubmissionConfig;
 import id.go.ojk.metadata.util.constants.ProgramType;
 import id.go.ojk.metadata.util.constants.SectorType;
 import id.go.ojk.metadata.field.lblt.ILbltFieldMetadata;
@@ -41,15 +41,15 @@ import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0006Pst implements ILbltFieldMetadata {
 
-    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01"))),
 
-    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(1, null, "Kode Komponen", sv(M, 13, 13, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric))
                     .confUnique(UniqueType.U)),
 
-    MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(2, null, "Manfaat Pensiun", sv(M, 1, 18, numeric))),
 
     MANFAAT_PENSIUN_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
@@ -70,7 +70,8 @@ public enum Dppk0006Pst implements ILbltFieldMetadata {
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7006Pst.getObject()),
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7006Pst.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7006Pst.getObject())
+            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7006Pst.getObject()),
+            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7006Pst.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0006Pst> FIELD_METADATA = new LbltMetadataField<>(Dppk0006Pst.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
@@ -108,24 +109,51 @@ public enum Dppk0006Pst implements ILbltFieldMetadata {
                 break;
             case PPMPM:
                 metadataValidation = VALIDATION_METADATA_PPMPM;
-                referenceConfig = ER7006PosLtlbDppkPst.Configs.REF_CONFIG_PPMPM;
+                referenceConfig = ER7006PosLtlbDppkPst.Configs.REF_CONFIG_PPMPM_PPIPM;
                 break;
             case PPIPK:
                 metadataValidation = VALIDATION_METADATA_PPIPK;
                 referenceConfig = ER7006PosLtlbDppkPst.Configs.REF_CONFIG_PPMPK_PPIPK;
                 break;
+            case PPIPM:
+                referenceConfig = ER7006PosLtlbDppkPst.Configs.REF_CONFIG_PPMPM_PPIPM;
+                break;
             default:
                 throw new IllegalStateException();
         }
 
-        return new SubmissionConfig(programType.toString())
+        BaseSubmissionConfig.Config<? extends BaseSubmissionConfig.Config<?>> cfg = new SubmissionConfig(programType.toString())
                 .config()
                 .setReferenceConfigs(referenceConfig)
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
-                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-                .setSegmentValidations(metadataValidation)
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()));
+
+        switch (programType) {
+            case PPMPK:
+            case PPMPM:
+            case PPIPK:
+                cfg = cfg.setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                        .setSegmentValidations(metadataValidation);
+                break;
+            case PPIPM:
+                cfg = cfg.setSubmissionField(FIELD_METADATA.getClearedFields())
+                        .setSegmentValidations();
+                break;
+            default:
+                throw new IllegalStateException();
+        }
+
+        return cfg
                 .build()
                 .get();
+
+//        return new SubmissionConfig(programType.toString())
+//                .config()
+//                .setReferenceConfigs(referenceConfig)
+//                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
+//                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+//                .setSegmentValidations(metadataValidation)
+//                .build()
+//                .get();
     }
 
     @Override

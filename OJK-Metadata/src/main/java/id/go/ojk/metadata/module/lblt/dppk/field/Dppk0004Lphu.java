@@ -12,6 +12,7 @@ import id.go.ojk.metadata.field.lblt.ILbltFieldMetadata;
 import id.go.ojk.metadata.field.lblt.LbltMetadataField;
 import id.go.ojk.metadata.module.lblt.dppk.EFormLaporanBulananTahunan;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpipk;
+import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpipm;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpk;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpm;
 import id.go.ojk.metadata.module.lblt.dppk.reference.ER7004PosLtlbDppkLphu;
@@ -41,15 +42,15 @@ import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0004Lphu implements ILbltFieldMetadata {
 
-    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01"))
     ),
-    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(1, null, "Kode Komponen", sv(M, 14, 14, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric))
                     .confUnique(UniqueType.U)
     ),
-    AKUMULASI_MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    AKUMULASI_MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(2, null, "Akumulasi s.d DD-MM-YYYY Manfaat Pensiun", sv(M, 1, 18, numericNegatif))
     ),
     AKUMULASI_MANFAAT_PENSIUN_LAINNYA_MANFAAT_TAMBAHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
@@ -112,7 +113,8 @@ public enum Dppk0004Lphu implements ILbltFieldMetadata {
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7004Lphu.getObject()),
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7004Lphu.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7004Lphu.getObject())
+            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7004Lphu.getObject()),
+            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7004Lphu.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0004Lphu> FIELD_METADATA =
@@ -157,16 +159,34 @@ public enum Dppk0004Lphu implements ILbltFieldMetadata {
                 metadataValidation = VALIDATION_METADATA_PPIPK;
                 referenceConfig = ER7004PosLtlbDppkLphu.Configs.REF_CONFIG_PPIPK;
                 break;
+            case PPIPM:
+                referenceConfig = ER7004PosLtlbDppkLphu.Configs.REF_CONFIG_PPIPM;
+                break;
             default:
                 throw new IllegalStateException();
         }
 
-        return new SubmissionConfig(programType.toString())
+        BaseSubmissionConfig.Config<? extends BaseSubmissionConfig.Config<?>> cfg = new SubmissionConfig(programType.toString())
                 .config()
                 .setReferenceConfigs(referenceConfig)
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
-                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-                .setSegmentValidations(metadataValidation)
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()));
+
+        switch (programType) {
+            case PPMPK:
+            case PPMPM:
+            case PPIPK:
+                cfg = cfg.setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                        .setSegmentValidations(metadataValidation);
+                break;
+            case PPIPM:
+                cfg = cfg.setSubmissionField(FIELD_METADATA.getClearedFields())
+                        .setSegmentValidations();
+                break;
+            default:
+                throw new IllegalStateException();
+        }
+
+        return cfg
                 .build()
                 .get();
     }

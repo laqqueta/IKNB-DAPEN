@@ -163,5 +163,24 @@ public enum ER7003PosLtlbDppkNrc implements IObject<KeyValueString> {
                 return UtilMetadata.genPipeRow(getObjects(programType));
             }
         },
+
+        REF_CONFIG_PPIPM {
+            private final ProgramType programType = ProgramType.PPIPM;
+
+            @Override
+            public String savePos() {
+                return UtilMetadata.genFieldSave("2", getObjects(programType));
+            }
+
+            @Override
+            public String savePosForm() {
+                return UtilMetadata.genFieldSave("2", getObjects(programType));
+            }
+
+            @Override
+            public String requiredPos() {
+                return UtilMetadata.genPipeRow(getObjects(programType));
+            }
+        },
     }
 }

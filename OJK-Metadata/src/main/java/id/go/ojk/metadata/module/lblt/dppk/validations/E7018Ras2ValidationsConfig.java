@@ -30,30 +30,32 @@ import static id.go.ojk.metadata.util.constants.ProgramType.*;
 @AllArgsConstructor
 public enum E7018Ras2ValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_NUMERIC_DOT(programs(PPMPK, PPMPM, PPIPK),
+    SG_NUMERIC_DOT(programs(PPMPK, PPMPM, PPIPK, PPIPM),
             () -> UtilSegmentValidation.genRegexNumericDot("3|4",
                     UtilMetadata.genPipeRow(ER7018PosLtlbDppkRas2.getObjects(), new int[]{6}))),
 
-    SG_NUMERIC(programs(PPMPK, PPMPM, PPIPK),
+    SG_NUMERIC(programs(PPMPK, PPMPM, PPIPK, PPIPM),
             () -> UtilSegmentValidation.genRegexNumeric("3|4",
                     UtilMetadata.genPipeRowExcept(ER7018PosLtlbDppkRas2.getObjects(), new int[]{6}))),
 
-    SG_SUM_COL(programs(PPMPK, PPMPM, PPIPK),
+    SG_SUM_COL(programs(PPMPK, PPMPM, PPIPK, PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula("3|4", R_RAS20102000000.key, UtilMetadata.genPlusRow(ER7018PosLtlbDppkRas2.getObjects(), 1, 4),
                     UtilMetadata.genMessageTotal(R_RAS20102000000.value, UtilMetadata.genPlusDesc(ER7018PosLtlbDppkRas2.getObjects(), 1, 4)))),
 
-    SG_RASIO(programs(PPMPK, PPMPM, PPIPK),
+    SG_RASIO(programs(PPMPK, PPMPM, PPIPK, PPIPM),
             () -> UtilSegmentValidation.genEqualsRatio2(
                     "3|4", R_RAS20103000000.key, R_RAS20102000000.key,
                     "3|4", R_RAS20100000000.key, "2",
                     UtilMetadata.genMessage(R_RAS20103000000.value,
                             UtilMetadata.genDevideDesc(ER7018PosLtlbDppkRas2.getObjects(), new int[]{5, 0})), 2)),
 
-    CR_EMPTY_1(programs(PPMPK, PPMPM, PPIPK), validationFields(2),
-            () -> UtilFieldConditional.genExistPos("N", "M", UtilMetadata.genPipeRow(ER7018PosLtlbDppkRas2.getObjects(), 1, 6))),
+    CR_EMPTY_1(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(2),
+            () -> UtilFieldConditional.genExistPos("N", "M",
+                    UtilMetadata.genPipeRow(ER7018PosLtlbDppkRas2.getObjects(), 1, 6))),
 
-    CR_EMPTY_2(programs(PPMPK, PPMPM, PPIPK), validationFields(3, 4),
-            () -> UtilFieldConditional.genExistPos("N", "M", UtilMetadata.genPipeRow(ER7018PosLtlbDppkRas2.getObjects(), new int[]{0}))),
+    CR_EMPTY_2(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(3, 4),
+            () -> UtilFieldConditional.genExistPos("N", "M",
+                    UtilMetadata.genPipeRow(ER7018PosLtlbDppkRas2.getObjects(), new int[]{0}))),
 
     ;
 

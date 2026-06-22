@@ -49,6 +49,13 @@ public enum E7008RekinvValidationsConfig implements ILbltMetadataValidation, IVa
                     UtilMetadata.genMessage(R_REKINV2100000000.getObject().getValue(),
                             UtilMetadata.genPlusRow(ER7008PosLtlbDppkRekinv.getObjects(ProgramType.PPIPK), 0, 19)))),
 
+    SG_SUM_POS_EQUAL_PPIPM(programs(PPIPM),
+            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 13),
+                    R_REKINV2100000000.getObject().getKey(),
+                    UtilMetadata.genPlusRow(ER7008PosLtlbDppkRekinv.getObjects(PPIPM), 0, 19),
+                    UtilMetadata.genMessage(R_REKINV2100000000.getObject().getValue(),
+                            UtilMetadata.genPlusRow(ER7008PosLtlbDppkRekinv.getObjects(PPIPM), 0, 19)))),
+
     ;
 
     private final EnumSet<ProgramType> programTypes;
@@ -96,5 +103,8 @@ public enum E7008RekinvValidationsConfig implements ILbltMetadataValidation, IVa
 
     public static final BaseMetadataValidation<E7008RekinvValidationsConfig> VALIDATION_METADATA_PPIPK =
             new LbltMetadataValidation<>(E7008RekinvValidationsConfig.class, PPIPK);
+
+    public static final BaseMetadataValidation<E7008RekinvValidationsConfig> VALIDATION_METADATA_PPIPM =
+            new LbltMetadataValidation<>(E7008RekinvValidationsConfig.class, PPIPM);
 
 }

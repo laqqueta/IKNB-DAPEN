@@ -35,15 +35,15 @@ public enum E7061IurValidationsConfig implements ILbltMetadataValidation, IValid
                     UtilMetadata.genPipeColumnExcept(5, 16, new int[] { 6 }), R_IUR000000.key, R_IUR010000.key,
                     UtilMetadata.genMessageTotal(R_IUR000000.value, R_IUR010000.value))),
 
-    SG_EQUAL_FORMULA_2(programs(PPIPK),
+    SG_EQUAL_FORMULA_2(programs(PPIPK, PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula(
                     UtilMetadata.genPipeColumnExcept(5, 12, new int[] { 6 }), R_IUR000000.key, R_IUR010000.key,
                     UtilMetadata.genMessageTotal(R_IUR000000.value, R_IUR010000.value))),
 
-    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK), validationFields(2, 3, 4, 6, 17),
+    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(2, 3, 4, 6, 17),
             () -> UtilFieldConditional.genExistPos("N", "M", R_IUR000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK), validationFields(18),
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(18),
             () -> UtilFieldConditional.genExistPos("N", "O", R_IUR000000.key)),
 
     ;

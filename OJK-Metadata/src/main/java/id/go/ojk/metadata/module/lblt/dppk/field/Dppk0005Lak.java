@@ -10,11 +10,13 @@ import id.go.ojk.lib.client.model.config.UniqueType;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.metadata.module.lblt.dppk.EFormLaporanBulananTahunan;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpipk;
+import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpipm;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpk;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpm;
 import id.go.ojk.metadata.module.lblt.dppk.reference.ER7005PosLtlbDppkLak;
 import id.go.ojk.metadata.module.lblt.dppk.validations.ppmpk.E7005LakKValidationsConfig;
 import id.go.ojk.metadata.module.lblt.dppk.validations.ppmpm.E7005LakMMValidationsConfig;
+import id.go.ojk.metadata.submission.base.BaseSubmissionConfig;
 import id.go.ojk.metadata.util.constants.ProgramType;
 import id.go.ojk.metadata.util.constants.SectorType;
 import id.go.ojk.metadata.field.lblt.ILbltFieldMetadata;
@@ -41,46 +43,46 @@ import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0005Lak implements ILbltFieldMetadata {
 
-    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01"))),
 
-    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(1, null, "Kode Komponen", sv(M, 13, 13, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric))
                     .confUnique(UniqueType.U)),
 
-    AKUMULASI_MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
-            sf(2, null, "Akumulasi s.d DD-MM-YYYY Manfaat Pensiun", sv(M, 1, 18, all2))),
+    AKUMULASI_MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
+            sf(2, null, "Akumulasi s.d DD-MM-YYYY - Manfaat Pensiun", sv(M, 1, 18, all2))),
 
     AKUMULASI_MANFAAT_PENSIUN_LAINNYA_MANFAAT_TAMBAHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
-            sf(3, null, "Akumulasi s.d DD-MM-YYYY Manfaat Pensiun Lainnya Manfaat Tambahan", sv(M, 1, 18, all2))),
+            sf(3, null, "Akumulasi s.d DD-MM-YYYY - Manfaat Pensiun Lainnya Manfaat Tambahan", sv(M, 1, 18, all2))),
 
     AKUMULASI_MANFAAT_PENSIUN_LAINNYA_KOMPENSASI_PASCAKERJA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
-            sf(4, null, "Akumulasi s.d DD-MM-YYYY Manfaat Pensiun Lainnya Kompensasi Pascakerja", sv(M, 1, 18, all2))),
+            sf(4, null, "Akumulasi s.d DD-MM-YYYY - Manfaat Pensiun Lainnya Kompensasi Pascakerja", sv(M, 1, 18, all2))),
 
     AKUMULASI_MANFAAT_PENSIUN_LAINNYA_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
-            sf(5, null, "Akumulasi s.d DD-MM-YYYY Manfaat Pensiun Lainnya Lainnya", sv(M, 1, 18, all2))),
+            sf(5, null, "Akumulasi s.d DD-MM-YYYY - Manfaat Pensiun Lainnya Lainnya", sv(M, 1, 18, all2))),
 
     AKUMULASI_MANFAAT_LAIN_KOMPENSASI_PASCAKERJA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
-            sf(6, null, "Akumulasi s.d DD-MM-YYYY Manfaat Lain Kompensasi Pascakerja", sv(M, 1, 18, all2))),
+            sf(6, null, "Akumulasi s.d DD-MM-YYYY - Manfaat Lain Kompensasi Pascakerja", sv(M, 1, 18, all2))),
 
     AKUMULASI_MANFAAT_LAIN_KESEHATAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
-            sf(7, null, "Akumulasi s.d DD-MM-YYYY Manfaat Lain Kesehatan", sv(M, 1, 18, all2))),
+            sf(7, null, "Akumulasi s.d DD-MM-YYYY - Manfaat Lain Kesehatan", sv(M, 1, 18, all2))),
 
     AKUMULASI_MANFAAT_LAIN_SANTUNAN_KEMATIAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
-            sf(8, null, "Akumulasi s.d DD-MM-YYYY Manfaat Lain Santunan Kematian", sv(M, 1, 18, all2))),
+            sf(8, null, "Akumulasi s.d DD-MM-YYYY - Manfaat Lain Santunan Kematian", sv(M, 1, 18, all2))),
 
     AKUMULASI_MANFAAT_LAIN_IBADAH_KEAGAMAAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
-            sf(9, null, "Akumulasi s.d DD-MM-YYYY Manfaat Lain Ibadah Keagamaan", sv(M, 1, 18, all2))),
+            sf(9, null, "Akumulasi s.d DD-MM-YYYY - Manfaat Lain Ibadah Keagamaan", sv(M, 1, 18, all2))),
 
     AKUMULASI_MANFAAT_LAIN_PENDIDIKAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
-            sf(10, null, "Akumulasi s.d DD-MM-YYYY Manfaat Lain Pendidikan", sv(M, 1, 18, all2))),
+            sf(10, null, "Akumulasi s.d DD-MM-YYYY - Manfaat Lain Pendidikan", sv(M, 1, 18, all2))),
 
     AKUMULASI_MANFAAT_LAIN_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
-            sf(11, null, "Akumulasi s.d DD-MM-YYYY Manfaat Lain Lainnya", sv(M, 1, 18, all2))),
+            sf(11, null, "Akumulasi s.d DD-MM-YYYY - Manfaat Lain Lainnya", sv(M, 1, 18, all2))),
 
     AKUMULASI_GABUNGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
-            sf(12, null, "Akumulasi s.d DD-MM-YYYY Gabungan", sv(M, 1, 18, all2))),
+            sf(12, null, "Akumulasi s.d DD-MM-YYYY - Gabungan", sv(M, 1, 18, all2))),
 
     UUS_MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK),
             sf(13, null, "UUS - Manfaat Pensiun", sv(M, 1, 18, all2))),
@@ -103,7 +105,8 @@ public enum Dppk0005Lak implements ILbltFieldMetadata {
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7005Lak.getObject()),
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7005Lak.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7005Lak.getObject())
+            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7005Lak.getObject()),
+            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7005Lak.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0005Lak> FIELD_METADATA = new LbltMetadataField<>(Dppk0005Lak.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
@@ -147,17 +150,35 @@ public enum Dppk0005Lak implements ILbltFieldMetadata {
                 metadataValidation = VALIDATION_METADATA_PPIPK;
                 referenceConfig = ER7005PosLtlbDppkLak.Configs.REF_CONFIG_PPIPK;
                 break;
+            case PPIPM:
+                referenceConfig = ER7005PosLtlbDppkLak.Configs.REF_CONFIG_PPIPM;
+                break;
             default:
                 throw new IllegalStateException();
 
         }
 
-        return new SubmissionConfig(programType.toString())
+        BaseSubmissionConfig.Config<? extends BaseSubmissionConfig.Config<?>> cfg = new SubmissionConfig(programType.toString())
                 .config()
                 .setReferenceConfigs(referenceConfig)
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
-                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-                .setSegmentValidations(metadataValidation)
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()));
+
+        switch (programType) {
+            case PPMPK:
+            case PPMPM:
+            case PPIPK:
+                cfg = cfg.setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                        .setSegmentValidations(metadataValidation);
+                break;
+            case PPIPM:
+                cfg = cfg.setSubmissionField(FIELD_METADATA.getClearedFields())
+                        .setSegmentValidations();
+                break;
+            default:
+                throw new IllegalStateException();
+        }
+
+        return cfg
                 .build()
                 .get();
     }

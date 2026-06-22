@@ -8,10 +8,7 @@ import id.go.ojk.client.model.config.SubmissionFormatBuilder;
 import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.metadata.module.lblt.dppk.EFormLaporanBulananTahunan;
-import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpipk;
-import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpk;
-import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpm;
-import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataSharedLkbt;
+import id.go.ojk.metadata.module.lblt.dppk.header.*;
 import id.go.ojk.metadata.module.lblt.dppk.reference.ER7016PosLtlbDppkSbn;
 import id.go.ojk.metadata.util.constants.ProgramType;
 import id.go.ojk.metadata.util.constants.SectorType;
@@ -29,6 +26,7 @@ import java.util.stream.Stream;
 import static id.go.ojk.lib.client.model.config.DataType.*;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.*;
 import static id.go.ojk.metadata.module.lblt.dppk.validations.ppipik.E7016SbnKValidationsConfig.VALIDATION_METADATA_PPIPK;
+import static id.go.ojk.metadata.module.lblt.dppk.validations.ppipm.E7016SbnMValidationsConfig.VALIDATION_METADATA_PPIPM;
 import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpk.E7016SbnKValidationsConfig.VALIDATION_METADATA_PPMPK;
 import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpm.E7016SbnMValidationsConfig.VALIDATION_METADATA_PPMPM;
 import static id.go.ojk.metadata.util.FieldUtil.*;
@@ -39,52 +37,52 @@ import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0016Sbn implements ILbltFieldMetadata {
 
-    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01"))
     ),
-    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(1, null, "Kode Komponen", sv(M, 9, 9, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric))
     ),
-    JENIS_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    JENIS_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(2, null, "Jenis Investasi", sv(C, 1, 6, refTable)
                             .confRegex(SimpleValidation.patternAlfaNumeric)
                             .confReference(EHeaderMetadataSharedLkbt.R022.getObject())
                     /*.confConditionalRequired(E7016SbnValidationsConfig.CR_FOR_TOTAL)*/)
     ),
-    NAMA_JENIS_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    NAMA_JENIS_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(3, null, "Nama Jenis Investasi", sv(C, 1, 100, freeText)
                     /*.confConditionalRequired(E7016SbnValidationsConfig.CR_FOR_TOTAL)*/)
     ),
-    SERI_EFEK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    SERI_EFEK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(4, null, "Seri Efek", sv(C, 1, 100, freeText)
                     /*.confConditionalRequired(E7016SbnValidationsConfig.CR_JENIS_INVESTASI_VALUE_OBLIGASI)*/)
     ),
-    JENIS_KEPEMILIKAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    JENIS_KEPEMILIKAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(5, null, "Jenis Kepemilikan", sv(C, 1, 100, freeText)
                     /*.confConditionalRequired(E7016SbnValidationsConfig.CR_JENIS_INVESTASI_VALUE_OBLIGASI)*/)
     ),
-    RATING(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    RATING(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(6, null, "Rating", sv(C, 1, 100, freeText)
                     /*.confConditionalRequired(E7016SbnValidationsConfig.CR_JENIS_INVESTASI_VALUE_OBLIGASI)*/)
     ),
-    MENAJER_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    MENAJER_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(7, null, "Menajer Investasi", sv(C, 1, 100, freeText)
                     /*.confConditionalRequired(E7016SbnValidationsConfig.CR_JENIS_INVESTASI_VALUE_SBN)*/)
     ),
-    NILAI_WAJAR(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    NILAI_WAJAR(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(8, null, "Nilai Wajar", sv(C, 1, 18, numeric)
                     /*.confConditionalRequired(E7016SbnValidationsConfig.CR_FOR_TOTAL)*/)
     ),
-    PERSEN_SBN_DALAM_REKSADANA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    PERSEN_SBN_DALAM_REKSADANA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(9, null, "% SBN dalam Reksadana", sv(C, 4, 6, numericDot)
                     /*.confConditionalRequired(E7016SbnValidationsConfig.CR_FOR_SBN)*/)
     ),
-    SALDO(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    SALDO(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(10, null, "Saldo", sv(C, 1, 18, numeric)
                     /*.confConditionalRequired(E7016SbnValidationsConfig.CR_FOR_SALDO)*/)
     ),
-    EMITEN_PENERIMA_DANA_PROJECT(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    EMITEN_PENERIMA_DANA_PROJECT(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(11, null, "Emiten Penerima Dana/Project", sv(O, 1, 100, alfa)
                     /*.confConditionalRequired(E7016SbnValidationsConfig.CR_JENIS_INVESTASI_VALUE_REKSADANA)*/)
     ),
@@ -97,7 +95,8 @@ public enum Dppk0016Sbn implements ILbltFieldMetadata {
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7016Sbn.getObject()),
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7016Sbn.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7016Sbn.getObject())
+            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7016Sbn.getObject()),
+            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7016Sbn.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0016Sbn> FIELD_METADATA = new LbltMetadataField<>(
@@ -141,6 +140,10 @@ public enum Dppk0016Sbn implements ILbltFieldMetadata {
             case PPIPK:
                 referenceConfig = ER7016PosLtlbDppkSbn.Configs.REF_CONFIG_PPIPK_PPIPM;
                 metadataValidation = VALIDATION_METADATA_PPIPK;
+                break;
+            case PPIPM:
+                referenceConfig = ER7016PosLtlbDppkSbn.Configs.REF_CONFIG_PPIPK_PPIPM;
+                metadataValidation = VALIDATION_METADATA_PPIPM;
                 break;
             default:
                 throw new IllegalStateException();

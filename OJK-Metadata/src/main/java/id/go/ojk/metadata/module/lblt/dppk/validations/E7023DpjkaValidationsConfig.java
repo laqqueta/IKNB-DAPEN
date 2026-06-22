@@ -32,17 +32,17 @@ import static id.go.ojk.metadata.util.constants.ProgramType.*;
 @AllArgsConstructor
 public enum E7023DpjkaValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_EQUAL_DPJKA000000_DPJKA010000(programs(PPMPK, PPMPM, PPIPK),
+    SG_EQUAL_DPJKA000000_DPJKA010000(programs(PPMPK, PPMPM, PPIPK, PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula("6", R_DPJKA000000.key, R_DPJKA010000.key,
                     UtilMetadata.genMessageTotal(R_DPJKA000000.value, R_DPJKA010000.value))),
 
-    CR_EXISTS_DPJKA000000_M(programs(PPMPK, PPMPM, PPIPK), validationFields(5, 7, 8, 9, 10, 12),
+    CR_EXISTS_DPJKA000000_M(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(5, 7, 8, 9, 10, 12),
             () -> UtilFieldConditional.genExistPos("N", "M", R_DPJKA000000.key)),
 
-    CR_EXISTS_DPJKA000000_O(programs(PPMPK, PPMPM, PPIPK), validationFields(2, 3, 4),
+    CR_EXISTS_DPJKA000000_O(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(2, 3, 4),
             () -> UtilFieldConditional.genExistPos("N", "O", R_DPJKA000000.key)),
 
-    CR_EQUAL_EXCEPT_DPJKA000000(programs(PPMPK, PPMPM, PPIPK), validationFields(11),
+    CR_EQUAL_EXCEPT_DPJKA000000(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(11),
             () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("N", "M", "N",
                     R_DPJKA010000.key, "10", ER1252Pengelolaan.getReferenceIndex(0), ER1252Pengelolaan.getReferenceValueIndex(0)));
 

@@ -31,17 +31,17 @@ import static id.go.ojk.metadata.util.constants.ProgramType.*;
 @AllArgsConstructor
 public enum E7051PkanValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM, PPIPK),
+    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM, PPIPK, PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(4, 6), R_PKAN000000.key, R_PKAN010000.key,
                     UtilMetadata.genMessageTotal(R_PKAN000000.value, R_PKAN010000.value))),
 
-    FV_EQUAL_NILAI_BUKU(programs(PPMPK, PPMPM, PPIPK), validationFields(6),
+    FV_EQUAL_NILAI_BUKU(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(6),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("4-5", R_PKAN000000.key)),
 
-    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK), validationFields(2,3),
+    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(2,3),
             () -> UtilFieldConditional.genExistPos("N", "M", R_PKAN000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK), validationFields(7),
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(7),
             () -> UtilFieldConditional.genExistPos("N", "O", R_PKAN000000.key)),
 
     ;

@@ -32,63 +32,63 @@ import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0020Pmi implements ILbltFieldMetadata {
 
-    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(0, null, "Flag",
                     sv(M, 3, 3, alfaNumeric)
                             .confConstant("D01"))),
 
-    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(1, null, "Kode Komponen",
                     sv(M, 9, 9, refTable)
                             .confRegex(SimpleValidation.patternAlfaNumeric))),
 
-    NAMA_MANAJER_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    NAMA_MANAJER_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(2, null, "Nama Manajer Investasi",
                     sv(C, 1, 100, freeText))),
 
-    NOMOR_KONTRAK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    NOMOR_KONTRAK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(3, null, "Nomor Kontrak",
                     sv(C, 1, 100, freeText))),
 
-    TANGGAL_KONTRAK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    TANGGAL_KONTRAK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(4, null, "Tanggal Kontrak",
                     sv(C, 8, 8, numeric))),
 
-    MASA_PERJANJIAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    MASA_PERJANJIAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(5, null, "Masa Perjanjian",
                     sv(C, 1, 18, numeric))),
 
-    JENIS_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    JENIS_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(6, null, "Jenis Investasi",
                     sv(C, 1, 6, refTable)
                             .confRegex(SimpleValidation.patternAlfaNumeric)
                             .confReference(EHeaderMetadataSharedLkbt.R022.getObject()))),
 
-    JUMLAH_NILAI_WAJAR_DANA_KELOLAAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    JUMLAH_NILAI_WAJAR_DANA_KELOLAAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(7, null, "Jumlah Nilai Wajar Dana Kelolaan (Rp)",
                     sv(M, 1, 18, numeric))),
 
-    NILAI_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    NILAI_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(8, null, "Nilai Perolehan (yang dikelola Manajer Investasi)",
                     sv(M, 1, 18, numeric))),
 
-    SELISIH_PENILAIAN_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    SELISIH_PENILAIAN_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(9, null, "Selisih Penilaian Investasi",
                     sv(M, 1, 18, numeric))),
 
-    RETURN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    RETURN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(10, null, "Return (%)",
                     sv(C, 4, 6, numericDot))),
 
-    TINGKAT_HASIL_INVESTASI_BERSIH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    TINGKAT_HASIL_INVESTASI_BERSIH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(11, null, "Tingkat Hasil Investasi Bersih (Rp)",
                     sv(M, 1, 18, numeric))),
 
-    JUMLAH_BIAYA_PENGELOLAAN_YANG_DIBEBANKAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    JUMLAH_BIAYA_PENGELOLAAN_YANG_DIBEBANKAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(12, null, "Jumlah Biaya Pengelolaan yang dibebankan (Rp)",
                     sv(M, 1, 18, numeric))),
 
-    TERAFILIASI_DENGAN_DANA_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    TERAFILIASI_DENGAN_DANA_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(13, null, "Terafiliasi dengan Dana Pensiun (Ya/Tidak)",
                     sv(C, 1, 10, alfa))),
 

@@ -34,11 +34,11 @@ import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
 @RequiredArgsConstructor
 public enum E7104MpbkValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_EQUAL_FORMULA(programs(PPIPK),
+    SG_EQUAL_FORMULA(programs(PPIPK, PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula("4|7|15", R_MPBK000000.key, R_MPBK010000.key,
                     UtilMetadata.genMessageTotal(R_MPBK000000.value, R_MPBK010000.value))),
 
-    CR_EXIST_POS(programs(PPIPK), validationFields(2,3,5,6,8,9,10,11,12,13,14),
+    CR_EXIST_POS(programs(PPIPK, PPIPM), validationFields(2,3,5,6,8,9,10,11,12,13,14),
             () -> UtilFieldConditional.genExistPos("N", "M", R_MPBK000000.key)),
 
     ;

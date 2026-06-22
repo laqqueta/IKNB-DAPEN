@@ -169,5 +169,31 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
                 return UtilMetadata.genPipeRow(getObjects(programType));
             }
         },
+
+        REF_CONFIG_PPIPM {
+            @Override
+            public String savePos() {
+                ProgramType programType = ProgramType.PPIPM;
+                return UtilMetadata.genFieldSave(
+                        UtilMetadata.genPipeColumn(2, 3),
+                        getObjects(programType)
+                );
+            }
+            @Override
+            public String savePosForm() {
+                ProgramType programType = ProgramType.PPIPM;
+                return UtilMetadata.genFieldSave(
+                        UtilMetadata.genPipeColumn(2, 3),
+                        getObjects(programType)
+                );
+            }
+
+
+            @Override
+            public String requiredPos() {
+                ProgramType programType = ProgramType.PPIPM;
+                return UtilMetadata.genPipeRow(getObjects(programType));
+            }
+        },
     }
 }

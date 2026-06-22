@@ -33,24 +33,24 @@ import static id.go.ojk.metadata.util.constants.ProgramType.*;
 @AllArgsConstructor
 public enum E7038RepoValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM, PPIPK),
+    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM, PPIPK, PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula("5|10|11|13|14|15", R_REPO000000.key, R_REPO010000.key,
                     UtilMetadata.genMessageTotal(R_REPO000000.value, R_REPO010000.value))),
 
-    FV_EQUAL_NILAI_INVESTASI(programs(PPMPK, PPMPM, PPIPK), validationFields(15),
+    FV_EQUAL_NILAI_INVESTASI(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(15),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("14-10", R_REPO000000.key)),
 
-    FV_EQUAL_PERSENTASE_INVESTASI(programs(PPMPK, PPMPM, PPIPK), validationFields(16),
+    FV_EQUAL_PERSENTASE_INVESTASI(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(16),
             () -> UtilFieldValidation.genEqualsPercentageExceptPosFormula("15/10", R_REPO000000.key)),
 
-    CR_NAMA_PENGELOLA(programs(PPMPK, PPMPM, PPIPK), validationFields(19),
+    CR_NAMA_PENGELOLA(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(19),
             () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("N", "M", "N",
                     R_REPO010000.key, "18", ER1252Pengelolaan.getReferenceIndex(0), ER1252Pengelolaan.getReferenceValueIndex(0))),
 
-    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK), validationFields(2, 3, 4, 6, 7, 8, 9, 12, 16, 17, 18),
+    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(2, 3, 4, 6, 7, 8, 9, 12, 16, 17, 18),
             () -> UtilFieldConditional.genExistPos("N", "M", R_REPO000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK), validationFields(20),
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(20),
             () -> UtilFieldConditional.genExistPos("N", "O", R_REPO000000.key)),
 
     ;

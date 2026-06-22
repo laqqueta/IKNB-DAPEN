@@ -34,43 +34,43 @@ import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0042Piut implements ILbltFieldMetadata {
 
-    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(0, null, "Flag",
                     sv(M, 3, 3, alfaNumeric)
                             .confConstant("D01"))
     ),
-    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(1, null, "Kode Komponen",
                     sv(M, 10, 10, refTable)
                             .confRegex(SimpleValidation.patternAlfaNumeric))
     ),
-    NAMA_PEMBERI_KERJA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    NAMA_PEMBERI_KERJA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(2, null, "Nama Pemberi Kerja(Pendiri/Mitra Pendiri)",
                     sv(C, 1, 100, freeText)
                     /*.confConditionalRequired(E7042PiutValidationsConfig.CR_EXISTS_POS_M)*/)
     ),
-    PIUTANG_IURAN_PEMBERI_KERJA_LTE_1_BULAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    PIUTANG_IURAN_PEMBERI_KERJA_LTE_1_BULAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(3, null, "Piutang Iuran Pemberi Kerja Usia Piutang <=1 Bulan",
                     sv(M, 1, 18, numeric))
     ),
-    PIUTANG_IURAN_PEMBERI_KERJA_GT_1_BULAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    PIUTANG_IURAN_PEMBERI_KERJA_GT_1_BULAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(4, null, "Piutang Iuran Pemberi Kerja Usia Piutang >1 Bulan",
                     sv(M, 1, 18, numeric))
     ),
-    PIUTANG_IURAN_PEMBERI_KERJA_TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    PIUTANG_IURAN_PEMBERI_KERJA_TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(5, null, "Piutang Iuran Pemberi Kerja Total",
                     sv(M, 1, 18, numeric))
             /*.addFieldValidations(E7042PiutValidationsConfig.FV_EQUAL_PEMBERI_KERJA)*/
     ),
-    PIUTANG_IURAN_PESERTA_LTE_1_BULAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    PIUTANG_IURAN_PESERTA_LTE_1_BULAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(6, null, "Piutang Iuran Peserta Usia Piutang <=1 Bulan",
                     sv(M, 1, 18, numeric))
     ),
-    PIUTANG_IURAN_PESERTA_GT_1_BULAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    PIUTANG_IURAN_PESERTA_GT_1_BULAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(7, null, "Piutang Iuran Peserta Usia Piutang >1 Bulan",
                     sv(M, 1, 18, numeric))
     ),
-    PIUTANG_IURAN_PESERTA_TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    PIUTANG_IURAN_PESERTA_TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(8, null, "Piutang Iuran Peserta Total",
                     sv(M, 1, 18, numeric))
             /*.addFieldValidations(E7042PiutValidationsConfig.FV_EQUAL_PESERTA)*/
@@ -88,18 +88,18 @@ public enum Dppk0042Piut implements ILbltFieldMetadata {
                     sv(M, 1, 18, numeric))
             /*.addFieldValidations(E7042PiutValidationsConfig.FV_EQUAL_TAMBAHAN)*/
     ),
-    PIUTANG_IURAN_SUKARELA_PESERTA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    PIUTANG_IURAN_SUKARELA_PESERTA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(12, null, "Piutang Iuran Sukarela Peserta",
                     sv(M, 1, 18, numeric))
     ),
-    MANFAAT_PENSIUN_LAINNYA_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    MANFAAT_PENSIUN_LAINNYA_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(13, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain",
                     sv(C, 1, 6, refTable)
                             /*.confConditionalRequired(E7042PiutValidationsConfig.CR_EXISTS_POS_M)*/
                             .confRegex(SimpleValidation.patternAlfaNumeric)
                             .confReference(EHeaderMetadataSharedLkbt.R009.getObject()))
     ),
-    KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(14, null, "Keterangan",
                     sv(C, 1, 250, freeText)
                     /*.confConditionalRequired(E7042PiutValidationsConfig.CR_EXISTS_POS_O)*/)
