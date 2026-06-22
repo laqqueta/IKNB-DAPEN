@@ -114,7 +114,7 @@ public enum Dppk0044Bbmk implements ILbltFieldMetadata {
         FIELD_METADATA.setProgramType(programType);
         return new SubmissionConfig(programType.toString())
                 .config()
-                .setReferenceConfigs(ER7044PosLtlbDppkBbmk.Configs.REF_CONFIG_PPMP)
+                .setReferenceConfigs(ER7044PosLtlbDppkBbmk.Configs.REF_CONFIG)
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
                 .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
                 .setSegmentValidations(metadataValidation)

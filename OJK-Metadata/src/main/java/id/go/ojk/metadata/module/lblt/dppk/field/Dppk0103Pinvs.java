@@ -107,7 +107,7 @@ public enum Dppk0103Pinvs implements ILbltFieldMetadata {
 
         return new SubmissionConfig(programType.toString())
                 .config()
-                .setReferenceConfigs(ER7103PosLtlbDppkPinvs.Configs.REF_CONFIG_PPIP)
+                .setReferenceConfigs(ER7103PosLtlbDppkPinvs.Configs.REF_CONFIG)
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
                 .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
                 .setSegmentValidations(metadataValidation)

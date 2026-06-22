@@ -116,7 +116,7 @@ public enum Dppk0065Bopr implements ILbltFieldMetadata {
 
         return new SubmissionConfig(programType.toString())
                 .config()
-                .setReferenceConfigs(ER7065PosLtlbDppkBopr.Configs.REF_CONFIG_PPMP)
+                .setReferenceConfigs(ER7065PosLtlbDppkBopr.Configs.REF_CONFIG)
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
                 .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
                 .setSegmentValidations(metadataValidation)

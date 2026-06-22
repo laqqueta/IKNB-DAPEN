@@ -125,7 +125,7 @@ public enum Dppk0041Kasb implements ILbltFieldMetadata {
 
         return new SubmissionConfig(programType.toString())
                 .config()
-                .setReferenceConfigs(ER7041PosLtlbDppkKasb.Configs.REF_CONFIG_PPMP)
+                .setReferenceConfigs(ER7041PosLtlbDppkKasb.Configs.REF_CONFIG)
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
                 .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
                 .setSegmentValidations(metadataValidation)

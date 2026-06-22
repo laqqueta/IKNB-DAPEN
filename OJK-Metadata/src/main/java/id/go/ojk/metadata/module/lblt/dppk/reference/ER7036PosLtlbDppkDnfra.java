@@ -40,7 +40,7 @@ public enum ER7036PosLtlbDppkDnfra implements IObject<KeyValueString> {
     }
 
     public enum Configs implements ReferenceConfig {
-        REF_CONFIG_PPMP {
+        REF_CONFIG {
             @Override
             public String savePos() {
                 return UtilMetadata.genFieldSave("6|7|8|9|12", getObjects());

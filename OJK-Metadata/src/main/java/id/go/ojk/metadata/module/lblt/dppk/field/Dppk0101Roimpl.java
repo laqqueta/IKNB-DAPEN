@@ -118,7 +118,7 @@ public enum Dppk0101Roimpl implements ILbltFieldMetadata {
 
         return new SubmissionConfig(programType.toString())
                 .config()
-                .setReferenceConfigs(ER7101PosLtlbDppkRoimpl.Configs.REF_CONFIG_PPIP)
+                .setReferenceConfigs(ER7101PosLtlbDppkRoimpl.Configs.REF_CONFIG)
                 .setSubmissionFormat(getPpipSubmissionFormatConfig(sectorType, programType.toString()))
                 .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
                 .setSegmentValidations(metadataValidation)

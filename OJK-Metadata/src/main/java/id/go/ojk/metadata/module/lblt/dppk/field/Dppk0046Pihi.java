@@ -120,7 +120,7 @@ public enum Dppk0046Pihi implements ILbltFieldMetadata {
 
         return new SubmissionConfig(programType.toString())
                 .config()
-                .setReferenceConfigs(ER7046PosLtlbDppkPihi.Configs.REF_CONFIG_PPMP)
+                .setReferenceConfigs(ER7046PosLtlbDppkPihi.Configs.REF_CONFIG)
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
                 .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
                 .setSegmentValidations(metadataValidation)

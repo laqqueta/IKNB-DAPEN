@@ -139,7 +139,7 @@ public enum Dppk0036Dnfra implements ILbltFieldMetadata {
 
         return new SubmissionConfig(programType.toString())
                 .config()
-                .setReferenceConfigs(ER7036PosLtlbDppkDnfra.Configs.REF_CONFIG_PPMP)
+                .setReferenceConfigs(ER7036PosLtlbDppkDnfra.Configs.REF_CONFIG)
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
                 .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
                 .setSegmentValidations(metadataValidation)

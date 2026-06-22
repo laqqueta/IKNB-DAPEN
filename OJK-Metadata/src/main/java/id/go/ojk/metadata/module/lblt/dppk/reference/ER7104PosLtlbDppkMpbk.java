@@ -42,16 +42,11 @@ public enum ER7104PosLtlbDppkMpbk implements IObject<KeyValueString> {
     }
 
     public enum Configs implements ReferenceConfig {
-        REF_CONFIG_PPIP {
+        REF_CONFIG {
             @Override
             public String savePos() {
                 return UtilMetadata.genFieldSave("4|7|15", getObjects());
             }
-
-//            @Override
-//            public String savePosForm() {
-//                return UtilMetadata.genFieldSave("3|4", getObjects());
-//            }
 
             @Override
             public String requiredPos() {
