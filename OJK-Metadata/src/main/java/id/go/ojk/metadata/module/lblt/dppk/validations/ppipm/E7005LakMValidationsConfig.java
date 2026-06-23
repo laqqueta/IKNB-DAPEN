@@ -1,4 +1,4 @@
-package id.go.ojk.metadata.module.lblt.dppk.validations.ppmpm;
+package id.go.ojk.metadata.module.lblt.dppk.validations.ppipm;
 
 import id.go.ojk.client.model.config.validation.conditional.ConditionalRequired;
 import id.go.ojk.client.model.config.validation.field.FieldValidation;
@@ -21,42 +21,41 @@ import java.util.EnumSet;
 import java.util.List;
 import java.util.function.Supplier;
 
-import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7001PosLtlbDppkLan.R_LAN0103010000;
 import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7003PosLtlbDppkNrc.R_NRC0104010000;
 import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7005PosLtlbDppkLak.*;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
+import static id.go.ojk.metadata.util.constants.ProgramType.PPIPM;
 
 @RequiredArgsConstructor
 @AllArgsConstructor
-public enum E7005LakMMValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
+public enum E7005LakMValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_SUM_POS_COL_EQUAL_1(programs(PPMPM),
+    SG_SUM_POS_COL_EQUAL_1(programs(PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula("2", R_LAK0200000000.key,
                     UtilMetadata.genPlusRow(getObjects(), 0, 6),
                     UtilMetadata.genMessage(R_LAK0200000000.value, UtilMetadata.genPlusDesc(getObjects(), 0, 6)))),
 
-    SG_SUM_POS_COL_EQUAL_2(programs(PPMPM),
+    SG_SUM_POS_COL_EQUAL_2(programs(PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula("2", R_LAK0400000000.key,
                     UtilMetadata.genPlusRow(getObjects(), 8, 17),
                     UtilMetadata.genMessage(R_LAK0400000000.value, UtilMetadata.genPlusDesc(getObjects(), 8, 17)))),
 
-    SG_SUM_POS_COL_EQUAL_3(programs(PPMPM),
+    SG_SUM_POS_COL_EQUAL_3(programs(PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula("2", R_LAK0600000000.key,
                     UtilMetadata.genPlusRow(getObjects(), 19, 26),
                     UtilMetadata.genMessage(R_LAK0600000000.value, UtilMetadata.genPlusDesc(getObjects(), 19, 26)))),
 
-    SG_SUM_POS_COL_EQUAL_4(programs(PPMPM),
+    SG_SUM_POS_COL_EQUAL_4(programs(PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula("2", R_LAK0700000000.key,
                     UtilMetadata.genPlusRow(getObjects(), new int[]{7, 18, 27}),
                     UtilMetadata.genMessage(R_LAK0700000000.value, UtilMetadata.genPlusDesc(getObjects(), new int[]{7, 18, 27})))),
 
-    SG_SUM_POS_COL_EQUAL_5(programs(PPMPM),
+    SG_SUM_POS_COL_EQUAL_5(programs(PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula("2", R_LAK0900000000.key,
                     UtilMetadata.genPlusRow(getObjects(), new int[]{28, 29}),
                     UtilMetadata.genMessage(R_LAK0900000000.value, UtilMetadata.genPlusDesc(getObjects(), new int[]{28, 29})))),
 
-    GEN_VALIDATON_FORM_LAN(programs(PPMPM), () -> {
+    GEN_VALIDATON_FORM_LAN(programs(PPIPM), () -> {
         KeyValueString selectPosCode = R_LAK0900000000.getObject();
         int[] cols = { 2 };
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_NERACA.getCode();
@@ -69,12 +68,12 @@ public enum E7005LakMMValidationsConfig implements ILbltMetadataValidation, IVal
     }),
 
 
-    SG_NEGATIVE_NUM(programs(PPMPM),
+    SG_NEGATIVE_NUM(programs(PPIPM),
             () -> UtilSegmentValidation.genRegexNumericNegative(
                     "2",
                     UtilMetadata.genPipeRowExcept(getObjects(), new int[]{7, 18, 27, 28, 29, 30}))),
 
-    SG_POSITIVE_NUM(programs(PPMPM),
+    SG_POSITIVE_NUM(programs(PPIPM),
             () -> UtilSegmentValidation.genRegexNumeric(
                     "2",
                     UtilMetadata.genPipeRow(getObjects(), new int[]{7, 18, 27, 28, 29, 30}))),
@@ -118,7 +117,7 @@ public enum E7005LakMMValidationsConfig implements ILbltMetadataValidation, IVal
                 .toValidation(this, ConditionalRequired.class);
     }
 
-    public static final BaseMetadataValidation<E7005LakMMValidationsConfig> VALIDATION_METADATA_PPMPM =
-            new LbltMetadataValidation<>(E7005LakMMValidationsConfig.class, PPMPM);
+    public static final BaseMetadataValidation<E7005LakMValidationsConfig> VALIDATION_METADATA_PPIPM =
+            new LbltMetadataValidation<>(E7005LakMValidationsConfig.class, PPIPM);
 
 }

@@ -32,6 +32,7 @@ import java.util.stream.Stream;
 import static id.go.ojk.lib.client.model.config.DataType.*;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
 import static id.go.ojk.metadata.module.lblt.dppk.validations.ppipik.E7003NrcKValidationsConfig.VALIDATION_METADATA_PPIPK;
+import static id.go.ojk.metadata.module.lblt.dppk.validations.ppipm.E7003NrcMValidationsConfig.VALIDATION_METADATA_PPIPM;
 import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpk.E7003NrcKValidationsConfig.VALIDATION_METADATA_PPMPK;
 import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpm.E7003NrcMValidationsConfig.VALIDATION_METADATA_PPMPM;
 import static id.go.ojk.metadata.util.FieldUtil.*;
@@ -55,47 +56,47 @@ public enum Dppk0003Nrc implements ILbltFieldMetadata {
     MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(2, null, "Manfaat Pensiun", sv(M, 1, 18, numeric))),
 
-    MANFAAT_PENSIUN_LAINNYA_MANFAAT_TAMBAHAN(sectors(KONVENSIONAL, SYARIAH),programs(PPMPK, PPIPK),
+    MANFAAT_PENSIUN_LAINNYA_MANFAAT_TAMBAHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
             sf(3, null, "Manfaat Pensiun Lainnya Manfaat Tambahan", sv(M, 1, 18, numeric))),
 
-    MANFAAT_PENSIUN_LAINNYA_KOMPENSASI_PASCAKERJA(sectors(KONVENSIONAL, SYARIAH),programs(PPMPK, PPIPK),
+    MANFAAT_PENSIUN_LAINNYA_KOMPENSASI_PASCAKERJA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
             sf(4, null, "Manfaat Pensiun Lainnya Kompensasi Pascakerja", sv(M, 1, 18, numeric))),
 
-    MANFAAT_PENSIUN_LAINNYA_LAINNYA(sectors(KONVENSIONAL, SYARIAH),programs(PPMPK, PPIPK),
+    MANFAAT_PENSIUN_LAINNYA_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
             sf(5, null, "Manfaat Pensiun Lainnya Lainnya", sv(M, 1, 18, numeric))),
 
-    MANFAAT_LAIN_KOMPENSASI_PASCAKERJA(sectors(KONVENSIONAL, SYARIAH),programs(PPMPK, PPIPK),
+    MANFAAT_LAIN_KOMPENSASI_PASCAKERJA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
             sf(6, null, "Manfaat Lain Kompensasi Pascakerja", sv(M, 1, 18, numeric))),
 
-    MANFAAT_LAIN_KESEHATAN(sectors(KONVENSIONAL, SYARIAH),programs(PPMPK, PPIPK),
+    MANFAAT_LAIN_KESEHATAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
             sf(7, null, "Manfaat Lain Kesehatan", sv(M, 1, 18, numeric))),
 
-    MANFAAT_LAIN_SANTUNAN_KEMATIAN(sectors(KONVENSIONAL, SYARIAH),programs(PPMPK, PPIPK),
+    MANFAAT_LAIN_SANTUNAN_KEMATIAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
             sf(8, null, "Manfaat Lain Santunan Kematian", sv(M, 1, 18, numeric))),
 
-    MANFAAT_LAIN_IBADAH_KEAGAMAAN(sectors(KONVENSIONAL, SYARIAH),programs(PPMPK, PPIPK),
+    MANFAAT_LAIN_IBADAH_KEAGAMAAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
             sf(9, null, "Manfaat Lain Ibadah Keagamaan", sv(M, 1, 18, numeric))),
 
-    MANFAAT_LAIN_PENDIDIKAN(sectors(KONVENSIONAL, SYARIAH),programs(PPMPK, PPIPK),
+    MANFAAT_LAIN_PENDIDIKAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
             sf(10, null, "Manfaat Lain Pendidikan", sv(M, 1, 18, numeric))),
 
-    MANFAAT_LAIN_LAINNYA(sectors(KONVENSIONAL, SYARIAH),programs(PPMPK, PPIPK),
+    MANFAAT_LAIN_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
             sf(11, null, "Manfaat Lain Lainnya", sv(M, 1, 18, numeric))),
 
-    GABUNGAN(sectors(KONVENSIONAL, SYARIAH),programs(PPMPK, PPIPK),
+    GABUNGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
             sf(12, null, "Gabungan", sv(M, 1, 18, numeric))/*.addFieldValidations(E7003NrcValidationsConfig.FV_EQUALS_EXCEPT)*/),
 
-    UUS_MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH),programs(PPIPK),
+    UUS_MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK),
             sf(13, null, "UUS - Manfaat Pensiun", sv(M, 1, 18, all2))),
 
 
-    UUS_MANFAAT_PENSIUN_LAINNYA(sectors(KONVENSIONAL, SYARIAH),programs(PPIPK),
+    UUS_MANFAAT_PENSIUN_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK),
             sf(14, null, "UUS - Manfaat Pensiun Lainnya", sv(M, 1, 18, all2))),
 
-    UUS_MANFAAT_LAIN(sectors(KONVENSIONAL, SYARIAH),programs(PPIPK),
+    UUS_MANFAAT_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK),
             sf(15, null, "UUS - Manfaat Lain", sv(M, 1, 18, all2))),
 
-    TOTAL(sectors(KONVENSIONAL, SYARIAH),programs(PPIPK),
+    TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK),
             sf(16, null, "Total", sv(M, 1, 18, all2))),
 
     ;
@@ -149,50 +150,37 @@ public enum Dppk0003Nrc implements ILbltFieldMetadata {
 
         BaseMetadataValidation<? extends ILbltMetadataValidation> metadataValidation = null;
         ReferenceConfig referenceConfig = null;
-        BaseSubmissionConfig.Config<? extends BaseSubmissionConfig.Config<?>> submssionConfig =
-                new SubmissionConfig(programType.toString()).config();
-
 
         switch (programType) {
             case PPMPK:
                 metadataValidation = VALIDATION_METADATA_PPMPK;
                 referenceConfig = ER7003PosLtlbDppkNrc.Configs.REF_CONFIG_PPMPK;
-                submssionConfig
-                        .setReferenceConfigs(referenceConfig)
-                        .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
-                        .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-                        .setSegmentValidations(metadataValidation);
                 break;
             case PPMPM:
                 metadataValidation = VALIDATION_METADATA_PPMPM;
                 referenceConfig = ER7003PosLtlbDppkNrc.Configs.REF_CONFIG_PPMPM;
-                submssionConfig
-                        .setReferenceConfigs(referenceConfig)
-                        .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
-                        .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-                        .setSegmentValidations(metadataValidation);
                 break;
             case PPIPK:
                 metadataValidation = VALIDATION_METADATA_PPIPK;
                 referenceConfig = ER7003PosLtlbDppkNrc.Configs.REF_CONFIG_PPIPK;
-                submssionConfig
-                        .setReferenceConfigs(referenceConfig)
-                        .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
-                        .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-                        .setSegmentValidations(metadataValidation)
-                        .additionalSegmentValidations(E7003NrcKValidationsConfig.additionalSegmentLan());
                 break;
             case PPIPM:
+                metadataValidation = VALIDATION_METADATA_PPIPM;
                 referenceConfig = ER7003PosLtlbDppkNrc.Configs.REF_CONFIG_PPIPM;
-                submssionConfig
-                        .setReferenceConfigs(referenceConfig)
-                        .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
-                        .setSubmissionField(FIELD_METADATA.getClearedFields())
-                        .setSegmentValidations();
                 break;
             default:
                 throw new IllegalStateException();
         }
+
+        BaseSubmissionConfig.Config<? extends BaseSubmissionConfig.Config<?>> submssionConfig =
+                new SubmissionConfig(programType.toString()).config()
+                        .setReferenceConfigs(referenceConfig)
+                        .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
+                        .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                        .setSegmentValidations(metadataValidation);
+
+        if (programType.equals(PPIPK)) submssionConfig
+                .additionalSegmentValidations(E7003NrcKValidationsConfig.additionalSegmentLan());
 
         return submssionConfig.build()
                 .get();

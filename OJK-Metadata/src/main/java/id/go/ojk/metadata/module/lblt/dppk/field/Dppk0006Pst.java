@@ -31,6 +31,7 @@ import java.util.stream.Stream;
 import static id.go.ojk.lib.client.model.config.DataType.*;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
 import static id.go.ojk.metadata.module.lblt.dppk.validations.ppipik.E7006PstKValidationsConfig.VALIDATION_METADATA_PPIPK;
+import static id.go.ojk.metadata.module.lblt.dppk.validations.ppipm.E7006PstMValidationsConfig.VALIDATION_METADATA_PPIPM;
 import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpk.E7006PstKValidationsConfig.VALIDATION_METADATA_PPMPK;
 import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpm.E7006PstMValidationsConfig.VALIDATION_METADATA_PPMPM;
 import static id.go.ojk.metadata.util.FieldUtil.*;
@@ -116,44 +117,20 @@ public enum Dppk0006Pst implements ILbltFieldMetadata {
                 referenceConfig = ER7006PosLtlbDppkPst.Configs.REF_CONFIG_PPMPK_PPIPK;
                 break;
             case PPIPM:
+                metadataValidation = VALIDATION_METADATA_PPIPM;
                 referenceConfig = ER7006PosLtlbDppkPst.Configs.REF_CONFIG_PPMPM_PPIPM;
                 break;
             default:
                 throw new IllegalStateException();
         }
 
-        BaseSubmissionConfig.Config<? extends BaseSubmissionConfig.Config<?>> cfg = new SubmissionConfig(programType.toString())
+        return new SubmissionConfig(programType.toString())
                 .config()
                 .setReferenceConfigs(referenceConfig)
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()));
-
-        switch (programType) {
-            case PPMPK:
-            case PPMPM:
-            case PPIPK:
-                cfg = cfg.setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-                        .setSegmentValidations(metadataValidation);
-                break;
-            case PPIPM:
-                cfg = cfg.setSubmissionField(FIELD_METADATA.getClearedFields())
-                        .setSegmentValidations();
-                break;
-            default:
-                throw new IllegalStateException();
-        }
-
-        return cfg
-                .build()
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
+                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                .setSegmentValidations(metadataValidation).build()
                 .get();
-
-//        return new SubmissionConfig(programType.toString())
-//                .config()
-//                .setReferenceConfigs(referenceConfig)
-//                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
-//                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-//                .setSegmentValidations(metadataValidation)
-//                .build()
-//                .get();
     }
 
     @Override

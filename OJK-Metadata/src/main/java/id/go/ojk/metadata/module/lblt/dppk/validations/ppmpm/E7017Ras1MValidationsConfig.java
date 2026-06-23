@@ -548,7 +548,7 @@ public enum E7017Ras1MValidationsConfig implements ILbltMetadataValidation, IVal
         return UtilFieldValidation.genEqualsPosFormula(formula, 2, UtilMetadata.genPipeRow(getObjects(PPMPM), rows));
     }),
 
-    CR_EMPTY_COL_POS(programs(PPMPM), validationFields(Dppk0017Ras1.MANFAAT_PENSIUN_PPMPM, Dppk0017Ras1.TOTAL_PPMP),
+    CR_EMPTY_COL_POS(programs(PPMPM), validationFields(Dppk0017Ras1.MANFAAT_PENSIUN_PPMPM_PPIPM, Dppk0017Ras1.TOTAL_PPMP),
             () -> {
                 String refPosCode = UtilMetadata.genPipeRow(getObjects(PPMPM), new int[]{51, 52, 53});
                 return UtilFieldConditional.genExistPos("N", "M", refPosCode);

@@ -35,6 +35,8 @@ import static id.go.ojk.lib.client.model.constant.RequiredCondition.C;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
 import static id.go.ojk.metadata.module.lblt.dppk.validations.ppipik.E7017Ras1KValidationsConfig.VALIDATION_METADATA_PPIPK;
 import static id.go.ojk.metadata.module.lblt.dppk.validations.ppipik.E7017Ras1KValidationsConfig.genAllValidationRatioAB_PPIPK;
+import static id.go.ojk.metadata.module.lblt.dppk.validations.ppipm.E7017Ras1MValidationsConfig.VALIDATION_METADATA_PPIPM;
+import static id.go.ojk.metadata.module.lblt.dppk.validations.ppipm.E7017Ras1MValidationsConfig.genAllValidationRatioAB_PPIPM;
 import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpk.E7017Ras1KValidationsConfig.VALIDATION_METADATA_PPMPK;
 import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpk.E7017Ras1KValidationsConfig.genAllValidationRatioAB_PPMPK;
 import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpm.E7017Ras1MValidationsConfig.VALIDATION_METADATA_PPMPM;
@@ -58,7 +60,7 @@ public enum Dppk0017Ras1 implements ILbltFieldMetadata {
     MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
             sf(2, null, "Manfaat Pensiun", sv(M, 1, 18, freeText))),
 
-    MANFAAT_PENSIUN_PPMPM(sectors(KONVENSIONAL, SYARIAH), programs(PPMPM, PPIPM),
+    MANFAAT_PENSIUN_PPMPM_PPIPM(sectors(KONVENSIONAL, SYARIAH), programs(PPMPM, PPIPM),
             sf(2, null, "Manfaat Pensiun", sv(C, 1, 18, freeText))),
 
     MANFAAT_PENSIUN_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
@@ -124,48 +126,32 @@ public enum Dppk0017Ras1 implements ILbltFieldMetadata {
                 metadataValidation = VALIDATION_METADATA_PPMPK;
                 referenceConfig = ER7017PosLtlbDppkRas1.Configs.REF_CONFIG_PPMPK;
                 additionalSegment = genAllValidationRatioAB_PPMPK();
-                submssionConfig
-                        .setReferenceConfigs(referenceConfig)
-                        .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
-                        .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-                        .setSegmentValidations(metadataValidation)
-                        .additionalSegmentValidations(additionalSegment);
                 break;
             case PPMPM:
                 metadataValidation = VALIDATION_METADATA_PPMPM;
                 referenceConfig = ER7017PosLtlbDppkRas1.Configs.REF_CONFIG_PPMPM;
                 additionalSegment = genAllValidationRatioAB_PPMPM();
-                submssionConfig
-                        .setReferenceConfigs(referenceConfig)
-                        .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
-                        .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-                        .setSegmentValidations(metadataValidation)
-                        .additionalSegmentValidations(additionalSegment);
                 break;
             case PPIPK:
                 metadataValidation = VALIDATION_METADATA_PPIPK;
                 referenceConfig = ER7017PosLtlbDppkRas1.Configs.REF_CONFIG_PPIPK;
                 additionalSegment = genAllValidationRatioAB_PPIPK();
-                submssionConfig
-                        .setReferenceConfigs(referenceConfig)
-                        .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
-                        .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-                        .setSegmentValidations(metadataValidation)
-                        .additionalSegmentValidations(additionalSegment);
                 break;
             case PPIPM:
+                metadataValidation = VALIDATION_METADATA_PPIPM;
                 referenceConfig = ER7017PosLtlbDppkRas1.Configs.REF_CONFIG_PPIPM;
-                submssionConfig
-                        .setReferenceConfigs(referenceConfig)
-                        .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
-                        .setSubmissionField(FIELD_METADATA.getClearedFields())
-                        .setSegmentValidations();
+                additionalSegment = genAllValidationRatioAB_PPIPM();;
                 break;
             default:
                 throw new IllegalStateException();
         }
 
-        return submssionConfig
+        return new SubmissionConfig(programType.toString()).config()
+                .setReferenceConfigs(referenceConfig)
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
+                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                .setSegmentValidations(metadataValidation)
+                .additionalSegmentValidations(additionalSegment)
                 .build().get();
     }
 

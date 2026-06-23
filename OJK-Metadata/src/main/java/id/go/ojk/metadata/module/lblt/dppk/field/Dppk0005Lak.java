@@ -14,8 +14,6 @@ import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpipm;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpk;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpm;
 import id.go.ojk.metadata.module.lblt.dppk.reference.ER7005PosLtlbDppkLak;
-import id.go.ojk.metadata.module.lblt.dppk.validations.ppmpk.E7005LakKValidationsConfig;
-import id.go.ojk.metadata.module.lblt.dppk.validations.ppmpm.E7005LakMMValidationsConfig;
 import id.go.ojk.metadata.submission.base.BaseSubmissionConfig;
 import id.go.ojk.metadata.util.constants.ProgramType;
 import id.go.ojk.metadata.util.constants.SectorType;
@@ -33,8 +31,9 @@ import java.util.stream.Stream;
 import static id.go.ojk.lib.client.model.config.DataType.*;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
 import static id.go.ojk.metadata.module.lblt.dppk.validations.ppipik.E7005LakKValidationsConfig.VALIDATION_METADATA_PPIPK;
+import static id.go.ojk.metadata.module.lblt.dppk.validations.ppipm.E7005LakMValidationsConfig.VALIDATION_METADATA_PPIPM;
 import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpk.E7005LakKValidationsConfig.VALIDATION_METADATA_PPMPK;
-import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpm.E7005LakMMValidationsConfig.VALIDATION_METADATA_PPMPM;
+import static id.go.ojk.metadata.module.lblt.dppk.validations.ppmpm.E7005LakMValidationsConfig.VALIDATION_METADATA_PPMPM;
 import static id.go.ojk.metadata.util.FieldUtil.*;
 import static id.go.ojk.metadata.util.constants.ProgramType.*;
 import static id.go.ojk.metadata.util.constants.SectorType.KONVENSIONAL;
@@ -151,6 +150,7 @@ public enum Dppk0005Lak implements ILbltFieldMetadata {
                 referenceConfig = ER7005PosLtlbDppkLak.Configs.REF_CONFIG_PPIPK;
                 break;
             case PPIPM:
+                metadataValidation = VALIDATION_METADATA_PPIPM;
                 referenceConfig = ER7005PosLtlbDppkLak.Configs.REF_CONFIG_PPIPM;
                 break;
             default:
@@ -158,28 +158,12 @@ public enum Dppk0005Lak implements ILbltFieldMetadata {
 
         }
 
-        BaseSubmissionConfig.Config<? extends BaseSubmissionConfig.Config<?>> cfg = new SubmissionConfig(programType.toString())
+        return new SubmissionConfig(programType.toString())
                 .config()
                 .setReferenceConfigs(referenceConfig)
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()));
-
-        switch (programType) {
-            case PPMPK:
-            case PPMPM:
-            case PPIPK:
-                cfg = cfg.setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-                        .setSegmentValidations(metadataValidation);
-                break;
-            case PPIPM:
-                cfg = cfg.setSubmissionField(FIELD_METADATA.getClearedFields())
-                        .setSegmentValidations();
-                break;
-            default:
-                throw new IllegalStateException();
-        }
-
-        return cfg
-                .build()
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
+                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                .setSegmentValidations(metadataValidation).build()
                 .get();
     }
 
