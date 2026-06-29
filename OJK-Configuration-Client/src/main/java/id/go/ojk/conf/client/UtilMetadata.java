@@ -383,7 +383,7 @@ public class UtilMetadata {
 
 //            if (arrFields.length > 1) message.append("(");
             message.append("'")
-                    .append(kv.getValue()).append("'");
+                    .append(kv.getValue()).append("' ");
 
             for (int k = 0; k < arrFields.length; k++) {
                 if (k > 0) {
@@ -396,9 +396,9 @@ public class UtilMetadata {
                 formula.append(arrFields[k]);
 
                 if (option.equals(FormulaParserMessageOption.FIELD_DETAILED)) {
-                    message.append(" Kolom '").append(fieldNames[k]).append("'");
+                    message.append("Kolom '").append(fieldNames[k]).append("'");
                 } else if (option.equals(FormulaParserMessageOption.FIELD_SIMPLE)) {
-                    message.append(" Kolom '").append(arrFields[k]).append("'");
+                    message.append("Kolom '").append(arrFields[k]).append("'");
                 }
             }
 
@@ -413,7 +413,7 @@ public class UtilMetadata {
         return genFormulaParser(listKv, operationPos, fields, new String[]{}, FormulaParserMessageOption.NONE, form);
     }
 
-    public static <T extends IObject<KeyValueString>> FormulaParserData genFormulaParser(List<KeyValueString> listKv, String operationPos, String fields, String fieldNames, String form) {
+    public static FormulaParserData genFormulaParser(List<KeyValueString> listKv, String operationPos, String fields, String fieldNames, String form) {
         String[] arrFieldNames = StringUtils.split(fieldNames, "|");
         return genFormulaParser(listKv, operationPos, fields, arrFieldNames, FormulaParserMessageOption.FIELD_DETAILED, form);
     }
