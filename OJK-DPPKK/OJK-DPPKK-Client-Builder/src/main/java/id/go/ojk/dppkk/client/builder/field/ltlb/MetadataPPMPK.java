@@ -18,7 +18,6 @@ public class MetadataPPMPK {
     private static final List<SubmissionFormat> metadata = getFormMetadata();
 
     private static List<SubmissionFormat> getFormMetadata() {
-
         ProgramType programType = ProgramType.PPMPK;
         SectorType sectorType = SectorType.KONVENSIONAL;
 

@@ -32,7 +32,7 @@ public class MetadataPPMPM {
                 Dppk0007Kup.formMetadata(sectorType, programType),
                 Dppk0008Rekinv.formMetadata(sectorType, programType),
                 Dppk0009Roi.formMetadata(sectorType, programType),
-                /* Dppk0010Roiml.formMetadata(programType) ==> Tidak digunakan untuk Jenis Program PPMPM */
+                /* Dppk0010Roiml.formMetadata(programType) ==> Tidak digunakan di Jenis Program PPMPM */
                 Dppk0011Roism.formMetadata(sectorType, programType),
                 Dppk0012Alm.formMetadata(sectorType, programType),
                 Dppk0013Insp.formMetadata(sectorType, programType),

@@ -29,7 +29,7 @@ public class MetadataPPIPK {
                 Dppk0004Lphu.formMetadata(sectorType, programType),
                 Dppk0005Lak.formMetadata(sectorType, programType),
                 Dppk0006Pst.formMetadata(sectorType, programType),
-                /* Dppk0007Kup.formMetadata(sectorType, programType), -> unused in PPIPK */
+                /* Dppk0007Kup.formMetadata(sectorType, programType),  -> unused in PPIPK */
                 Dppk0008Rekinv.formMetadata(sectorType, programType),
                 Dppk0009Roi.formMetadata(sectorType, programType),
                 Dppk0010Roiml.formMetadata(sectorType, programType),

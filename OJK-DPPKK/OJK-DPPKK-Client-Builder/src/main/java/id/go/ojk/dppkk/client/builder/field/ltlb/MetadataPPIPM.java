@@ -29,12 +29,13 @@ public class MetadataPPIPM {
                 Dppk0004Lphu.formMetadata(sectorType, programType),
                 Dppk0005Lak.formMetadata(sectorType, programType),
                 Dppk0006Pst.formMetadata(sectorType, programType),
-                /* Dppk0007Kup.formMetadata(sectorType, programType), -> unused in PPIPM */
+//                /* Dppk0007Kup.formMetadata(sectorType, programType), -> unused in PPIPM */
                 Dppk0008Rekinv.formMetadata(sectorType, programType),
                 Dppk0009Roi.formMetadata(sectorType, programType),
-                /* Dppk0010Roiml.formMetadata(sectorType, programType), -> unused in PPIPM*/
+                Dppk0121Lcf.formMetadata(sectorType, programType),
+//                /* Dppk0010Roiml.formMetadata(sectorType, programType), -> unused in PPIPM */
                 Dppk0011Roism.formMetadata(sectorType, programType),
-                /* Dppk0101Roimpl.formMetadata(sectorType, programType), -> unused in PPIPM*/
+//                /* Dppk0101Roimpl.formMetadata(sectorType, programType), -> unused in PPIPM */
                 Dppk0012Alm.formMetadata(sectorType, programType),
                 Dppk0013Insp.formMetadata(sectorType, programType),
                 Dppk0014Inpt.formMetadata(sectorType, programType),
