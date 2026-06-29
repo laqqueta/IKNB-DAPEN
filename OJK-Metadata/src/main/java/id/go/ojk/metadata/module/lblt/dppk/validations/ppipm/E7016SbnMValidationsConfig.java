@@ -8,6 +8,7 @@ import id.go.ojk.client.validation.IValidationConverter;
 import id.go.ojk.conf.client.UtilFieldConditional;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
+import id.go.ojk.conf.client.UtilSegmentValidationV2;
 import id.go.ojk.conf.client.field.reference.ER1268JenisInvestasi;
 import id.go.ojk.metadata.module.lblt.dppk.EFormLaporanBulananTahunan;
 import id.go.ojk.metadata.module.lblt.dppk.reference.ER7001PosLtlbDppkLan;
@@ -37,7 +38,7 @@ public enum E7016SbnMValidationsConfig implements ILbltMetadataValidation, IVali
                     UtilMetadata.genMessageTotal(R_SBN000000.value, R_SBN010000.value))),
 
     SG_EQUAL_SBN_RATION(programs(PPIPM),
-            () -> UtilSegmentValidation.genEqualsSbnRatio("9", R_SBN020000.key,
+            () -> UtilSegmentValidationV2.genEqualsSbnRatio("9", R_SBN020000.key,
                     R_SBN000000.key, "10", EFormLaporanBulananTahunan.LTLB_LAN.getCode(),
                     ER7001PosLtlbDppkLan.R_LAN0102000000.getObject().getKey(), "3",
                     UtilMetadata.genMessage(R_SBN020000.value, R_SBN020000.value + " / Baris 'TOTAL INVESTASI' (Piutang Investasi) pada form LAN"), 2)),

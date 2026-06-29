@@ -23,7 +23,7 @@ import java.util.function.Supplier;
 import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7005PosLtlbDppkLak.*;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
-import static id.go.ojk.metadata.util.constants.ProgramType.*;
+import static id.go.ojk.metadata.util.constants.ProgramType.PPIPK;
 
 @RequiredArgsConstructor
 @AllArgsConstructor

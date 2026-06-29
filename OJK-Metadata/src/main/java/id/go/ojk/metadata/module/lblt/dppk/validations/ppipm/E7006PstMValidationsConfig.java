@@ -8,6 +8,7 @@ import id.go.ojk.client.validation.IValidationConverter;
 import id.go.ojk.conf.client.UtilFieldValidation;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
+import id.go.ojk.conf.client.UtilSegmentValidationV2;
 import id.go.ojk.lib.client.model.KeyValueString;
 import id.go.ojk.metadata.module.lblt.dppk.EFormLaporanBulananTahunan;
 import id.go.ojk.metadata.module.lblt.dppk.reference.ER7001PosLtlbDppkLan;
@@ -71,7 +72,7 @@ public enum E7006PstMValidationsConfig implements ILbltMetadataValidation, IVali
         KeyValueString comparator = ER7001PosLtlbDppkLan.R_LAN0111000000.getObject();
         String comparatorExpr = "> 0";
         String errMsg = comparator.getValue() + "|" + R_PST0400000000.value;
-        return UtilSegmentValidation.genEqualsFormConditionalExpression2("2", R_PST0400000000.key, selectExpr, comparatorForm, "3",
+        return UtilSegmentValidationV2.genEqualsFormConditionalExpression2("2", R_PST0400000000.key, selectExpr, comparatorForm, "3",
                 comparator.getKey(), comparatorExpr, "e", 2, errMsg);
     }),
 

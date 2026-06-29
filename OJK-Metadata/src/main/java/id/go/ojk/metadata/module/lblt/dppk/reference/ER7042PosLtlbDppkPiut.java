@@ -43,7 +43,7 @@ public enum ER7042PosLtlbDppkPiut implements IObject<KeyValueString> {
         REF_CONFIG_PPMP {
             @Override
             public String savePos() {
-                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(3, 12), getObjects());
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(3, 13), getObjects());
             }
 
             @Override
@@ -53,7 +53,7 @@ public enum ER7042PosLtlbDppkPiut implements IObject<KeyValueString> {
 
             @Override
             public String savePosForm() {
-                return UtilMetadata.genFieldSave("8|5|9|12|13", getObjects());
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(3, 13), getObjects());
             }
         },
 
@@ -70,7 +70,7 @@ public enum ER7042PosLtlbDppkPiut implements IObject<KeyValueString> {
 
             @Override
             public String savePosForm() {
-                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(3, 10), getObjects());
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(3, 12), getObjects());
             }
         }
     }

@@ -8,6 +8,7 @@ import id.go.ojk.client.validation.IValidationConverter;
 import id.go.ojk.conf.client.UtilFieldConditional;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
+import id.go.ojk.conf.client.UtilSegmentValidationV2;
 import id.go.ojk.metadata.module.lblt.dppk.EFormLaporanBulananTahunan;
 import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataSharedLkbt;
 import id.go.ojk.metadata.module.lblt.dppk.reference.ER7001PosLtlbDppkLan;
@@ -83,11 +84,11 @@ public enum E7007KupMValidationsConfig implements ILbltMetadataValidation, IVali
                             UtilMetadata.genPlusDesc(getObjects(ProgramType.PPMPM), new int[]{0, 13})))),
 
     SG_EQUAL_FORM_LAN(programs(PPMPM),
-            () -> UtilSegmentValidation.genEqualsForm("3|4|5",
-                    R_KUP0100000000.getObject().getKey(),
-                    EFormLaporanBulananTahunan.LTLB_LAN.getCode(),
-                    "3",
-                    ER7001PosLtlbDppkLan.R_LAN0111000000.getObject().getKey())),
+            () -> UtilSegmentValidationV2.genEqualsForm("3|4|5",
+                    R_KUP0100000000.getObject().getKey(), EFormLaporanBulananTahunan.LTLB_LAN.getCode(),
+                    "3", ER7001PosLtlbDppkLan.R_LAN0111000000.getObject().getKey(),
+                    UtilMetadata.genMessage(R_KUP0100000000.getObject().getValue(), ER7001PosLtlbDppkLan.R_LAN0111000000.getObject().getValue()) +
+                            " pada for LAN")),
 
     SG_REF_KODE_PENDANAAN(programs(PPMPM),
             () -> UtilSegmentValidation.genReference("3|4|5",
@@ -107,7 +108,7 @@ public enum E7007KupMValidationsConfig implements ILbltMetadataValidation, IVali
                     UtilMetadata.genPipeRowExcept(getObjects(ProgramType.PPMPM), new int[] {18, 19}))),
     
     SG_VALIDATION_PROYEKSI_PENDANAAN(programs(PPMPM),
-            () -> UtilSegmentValidation.genOperatorProyeksi("3|4|5",
+            () -> UtilSegmentValidationV2.genOperatorProyeksi("3|4|5",
                     R_KUP0209000000.getObject().getKey(),
                     String.format("%1$s<%2$s|%1$s>%3$s",
                             R_KUP0200000200.getObject().getKey(),

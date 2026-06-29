@@ -3,12 +3,13 @@ package id.go.ojk.metadata.module.lblt.dppk.validations.ppmpk;
 import id.go.ojk.client.model.config.validation.conditional.ConditionalRequired;
 import id.go.ojk.client.model.config.validation.field.FieldValidation;
 import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
-import id.go.ojk.client.model.config.validation.segmen.v2.util.constant.MessageType;
 import id.go.ojk.client.model.validation.IValidation;
 import id.go.ojk.client.validation.IValidationConverter;
 import id.go.ojk.conf.client.UtilFieldValidation;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
+import id.go.ojk.conf.client.UtilSegmentValidationV2;
+import id.go.ojk.conf.client.dto.FormulaParserData;
 import id.go.ojk.conf.client.field.reference.ER1250Properti;
 import id.go.ojk.conf.client.field.reference.ER1255JenisManfaat;
 import id.go.ojk.lib.client.model.KeyValueString;
@@ -21,12 +22,13 @@ import id.go.ojk.metadata.validation.lblt.ILbltMetadataValidation;
 import id.go.ojk.metadata.validation.lblt.LbltMetadataValidation;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.EnumSet;
 import java.util.List;
 import java.util.function.Supplier;
 
-import static id.go.ojk.conf.client.UtilMetadata.genFormulaFormatter;
+import static id.go.ojk.conf.client.UtilMetadata.genFormulaParser;
 import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7003PosLtlbDppkNrc.*;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
@@ -180,7 +182,7 @@ public enum E7003NrcKValidationsConfig implements ILbltMetadataValidation, IVali
                         + "$" + ER1250Properti.getPipedReferenceKeyValues();
                 String sumCriteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
                 String sumCriteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
-                return UtilSegmentValidation.genMultiCriteriaSumIf(
+                return UtilSegmentValidationV2.genMultiCriteriaSumIf(
                         UtilMetadata.genPipeColumn(2, 11), UtilMetadata.genPipeRow(ER7003PosLtlbDppkNrc.getObjects(ProgramType.PPMPK), 17, 19),
                         EFormLaporanBulananTahunan.LTLB_PROP.getCode(),
                         ER7040PosLtlbDppkProp.R_PROP010000.getObject().getKey(),
@@ -197,7 +199,7 @@ public enum E7003NrcKValidationsConfig implements ILbltMetadataValidation, IVali
                         + "$" + ER1250Properti.getKeyValue("2005");
                 String sumCriteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
                 String sumCriteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
-                return UtilSegmentValidation.genMultiCriteriaSumIf(
+                return UtilSegmentValidationV2.genMultiCriteriaSumIf(
                         UtilMetadata.genPipeColumn(2, 11), R_NRC0101210000.key,
                         EFormLaporanBulananTahunan.LTLB_PROP.getCode(),
                         ER7040PosLtlbDppkProp.R_PROP010000.getObject().getKey(),
@@ -212,7 +214,7 @@ public enum E7003NrcKValidationsConfig implements ILbltMetadataValidation, IVali
                 String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MPL1|MPL2|MPL3|ML1|ML2|ML3|ML4|ML5|ML6");
                 String sumCriteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
                 String sumCriteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
-                return UtilSegmentValidation.genSumIf(
+                return UtilSegmentValidationV2.genSumIf(
                         UtilMetadata.genPipeColumn(2, 11), UtilMetadata.genPipeRow(ER7003PosLtlbDppkNrc.getObjects(ProgramType.PPMPK), 24, 26),
                         EFormLaporanBulananTahunan.LTLB_PIUT.getCode(),
                         ER7042PosLtlbDppkPiut.R_PIUT010000.getObject().getKey(),
@@ -240,7 +242,7 @@ public enum E7003NrcKValidationsConfig implements ILbltMetadataValidation, IVali
                 String sumCriteriaCond = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
                 String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MPL1|MPL2|MPL3|ML1|ML2|ML3|ML4|ML5|ML6");
                 String sumConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
-                return UtilSegmentValidation.genMultiFormSumIf(
+                return UtilSegmentValidationV2.genMultiFormSumIf(
                         UtilMetadata.genPipeColumn(2, 11), ER7003PosLtlbDppkNrc.R_NRC0101020000.getObject().getKey(),
                         comparatorForms, comparatorRows,
                         "6|6", "9|12", "2", criteriaCondition, sumCriteriaCond,
@@ -309,21 +311,17 @@ public enum E7003NrcKValidationsConfig implements ILbltMetadataValidation, IVali
             "4", "Nilai Perolehan", "Total")),
 
     SG_MULTI_SUM_NRC0106060000(programs(PPMPK), () -> {
-        String ops = String.format("(%1$s[%2$s]+" +
-                        "%3$s[%4$s]+" +
-                        "%5$s[%6$s]+" +
-                        "%7$s[%8$s]+" +
-                        "%9$s[%10$s])",
-                ER7048PosLtlbDppkTnbg.R_TNBG000000.key, "7", ER7049PosLtlbDppkKndr.R_KNDR000000.key, "6",
-                ER7050PosLtlbDppkPkom.R_PKOM000000.key, "5", ER7051PosLtlbDppkPkan.R_PKAN000000.key, "5",
-                ER7052PosLtlbDppkAsol.R_ASOL000000.key, "5");
+        FormulaParserData operation = multiFormulaFormatter(new FormulaParserData[]{
+                genFormulaParser(ER7048PosLtlbDppkTnbg.getObjects(), "1", "7", EFormLaporanBulananTahunan.LTLB_TNBG.getCode()),
+                genFormulaParser(ER7049PosLtlbDppkKndr.getObjects(), "1", "6", EFormLaporanBulananTahunan.LTLB_KNDR.getCode()),
+                genFormulaParser(ER7050PosLtlbDppkPkom.getObjects(), "1", "5", EFormLaporanBulananTahunan.LTLB_PKOM.getCode()),
+                genFormulaParser(ER7051PosLtlbDppkPkan.getObjects(), "1", "5", EFormLaporanBulananTahunan.LTLB_PKAN.getCode()),
+                genFormulaParser(ER7052PosLtlbDppkAsol.getObjects(), "1", "5", EFormLaporanBulananTahunan.LTLB_ASOL.getCode()),
+        }, "+|+|+|+");
 
-        return UtilSegmentValidation.genFormulaParserMultiFormValidation(
-                "12", R_NRC0106060000.key,
-                "TNBG|KNDR|PKOM|PKAN|ASOL",
-                ops, MessageType.DETAIL,
-                "Akumulasi Penyusutan|Akumulasi Penyusutan|Akumulasi Penyusutan|Akumulasi Penyusutan|Akumulasi Penyusutan",
-                "Total|Total|Total|Total|Total");
+        String operationFormErr = "sama dengan Total Penjumlahan Kolom 'Akumulasi Penyusutan' pada form TNBG, KNDR, PKOM, PKAN, dan ASOL";
+
+        return UtilSegmentValidationV2.genFormulaParserValidationV2("12", R_NRC0106060000.key, operation.getFormula(), operationFormErr);
     }),
 
     GEN_VALIDATON_FORM_LAK(programs(PPMPK), () -> {
@@ -332,10 +330,10 @@ public enum E7003NrcKValidationsConfig implements ILbltMetadataValidation, IVali
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAK.getCode();
         String comparatorColumn = UtilMetadata.genPlusColumn(cols);
         KeyValueString comparatorPosCode = ER7005PosLtlbDppkLak.R_LAK0900000000.getObject();
-        String comparatorPosCodeForm = comparatorForm + comparatorPosCode.getKey();
+        String comparatorPosCodeForm = comparatorPosCode.getKey();
         String errMsg = selectPosCode.getValue() + " | Total " + comparatorPosCode.getValue() + " pada form " + comparatorForm;
-        return UtilSegmentValidation.genEqualsFormColumCalculation("12", selectPosCode.getKey(), comparatorColumn,
-                comparatorPosCodeForm, errMsg, 2);
+        return UtilSegmentValidationV2.genEqualsFormColumCalculation("12", selectPosCode.getKey(), comparatorColumn,
+                comparatorPosCodeForm, comparatorForm, errMsg, 2);
     }),
 
     GEN_VALIDATON_FORM_UMPS(programs(PPMPK), () -> {
@@ -344,10 +342,10 @@ public enum E7003NrcKValidationsConfig implements ILbltMetadataValidation, IVali
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_UMPS.getCode();
         String comparatorColumn = UtilMetadata.genPlusColumn(cols);
         KeyValueString comparatorPosCode = ER7055PosLtlbDppkUmps.R_UMPS000000.getObject();
-        String comparatorPosCodeForm = comparatorForm + comparatorPosCode.getKey();
+        String comparatorPosCodeForm = comparatorPosCode.getKey();
         String errMsg = selectPosCode.getValue() + " | " + comparatorPosCode.getValue() + " pada form " + comparatorForm;
-        return UtilSegmentValidation.genEqualsFormColumCalculation("12", selectPosCode.getKey(), comparatorColumn,
-                comparatorPosCodeForm, errMsg, 2);
+        return UtilSegmentValidationV2.genEqualsFormColumCalculation("12", selectPosCode.getKey(), comparatorColumn,
+                comparatorPosCodeForm, comparatorForm, errMsg, 2);
     }),
 
     SG_EQUALS_FORM_FORMULA_LAN_1(programs(PPMPK), () -> genEqualsForm("2", "3")),
@@ -408,9 +406,12 @@ public enum E7003NrcKValidationsConfig implements ILbltMetadataValidation, IVali
             new LbltMetadataValidation<>(E7003NrcKValidationsConfig.class, PPMPK);
 
     private static SegmentValidation genEqualsForm(String selectField, String formComparatorField) {
-        return UtilSegmentValidation.genEqualsForm(selectField, R_NRC0104010000.getObject().getKey(),
+        String msg = UtilMetadata.genMessage(ER7003PosLtlbDppkNrc.R_NRC0104010000.getObject().getValue(),
+                ER7001PosLtlbDppkLan.R_LAN0103010000.getObject().getValue());
+
+        return UtilSegmentValidationV2.genEqualsForm(selectField, R_NRC0104010000.getObject().getKey(),
                 EFormLaporanBulananTahunan.LTLB_LAN.getCode(), formComparatorField,
-                ER7001PosLtlbDppkLan.R_LAN0103010000.getObject().getKey());
+                ER7001PosLtlbDppkLan.R_LAN0103010000.getObject().getKey(), msg + " pada form LAN");
     }
 
     private static SegmentValidation sumIfValidationHelper(String posCode, String rangeField, String criteriaField, String formCode,
@@ -421,7 +422,7 @@ public enum E7003NrcKValidationsConfig implements ILbltMetadataValidation, IVali
         String sumCriteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
         String sumCriteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
 
-        return UtilSegmentValidation.genSumIf(UtilMetadata.genPipeColumn(2, 11), posCode,
+        return UtilSegmentValidationV2.genSumIf(UtilMetadata.genPipeColumn(2, 11), posCode,
                 formCode, formObjects,
                 rangeField, criteriaField, sumField, criteriaCondition, sumCriteriaCondition,
                 errMsg, criteriaConditionErr, sumCriteriaConditionErr);
@@ -432,10 +433,36 @@ public enum E7003NrcKValidationsConfig implements ILbltMetadataValidation, IVali
                                                         List<KeyValueString> formObject,
                                                         String comparatorFields, String fieldErrorMessage, String rowErrorMessage) {
 
-        return UtilSegmentValidation.genFormulaParserAlmValidation("12",
-                selectPosCode,
-                comparatorForm.getCode(),
-                genFormulaFormatter(formObject, "1" /* 0 :: baris detail | kalo validasi lama ganti 1 biar langsung nembak ke baris total */, comparatorFields),
-                MessageType.DETAIL, fieldErrorMessage, rowErrorMessage);
+
+        FormulaParserData operation2 = genFormulaParser(formObject,
+                "1", /* 0 :: baris detail | 1 :: baris total
+                                    kalo validasi lama ganti 1 biar langsung nembak ke baris total */
+                comparatorFields, comparatorForm.getCode());
+
+        String errMsg = "sama dengan 'Total' Kolom '" + fieldErrorMessage + "' pada Form " + comparatorForm.getCode();
+
+        return UtilSegmentValidationV2.genFormulaParserValidationV2("12", selectPosCode, operation2.getFormula(),
+                errMsg);
+    }
+
+    private static FormulaParserData multiFormulaFormatter(FormulaParserData[] formulas, String operand) {
+        StringBuilder sbFormula = new StringBuilder();
+        StringBuilder sbFormulaErr = new StringBuilder();
+        String[] operands = StringUtils.split(operand, "|");
+
+        if (formulas.length != operands.length + 1) throw new IllegalStateException();
+
+        for (int i = 0; i < formulas.length; i++) {
+            sbFormula.append(formulas[i].getFormula());
+            sbFormulaErr.append("(").append(formulas[i].getErrMessage());
+            if (i < formulas.length - 1) {
+                sbFormula.append(operands[i]);
+                sbFormulaErr.append(") ").append(operands[i]).append(" ");
+            }
+        }
+
+        sbFormulaErr.append(")");
+
+        return new FormulaParserData(sbFormula.toString(), sbFormulaErr.toString());
     }
 }

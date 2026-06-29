@@ -24,7 +24,6 @@ import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7006PosLtlbDppkPst
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
 import static id.go.ojk.metadata.util.constants.ProgramType.PPIPK;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
 
 @RequiredArgsConstructor
 @AllArgsConstructor
@@ -33,6 +32,31 @@ public enum E7006PstKValidationsConfig implements ILbltMetadataValidation, IVali
     FV_SUM_ROW(programs(PPIPK), validationFields(5),
             () -> UtilFieldValidation.genEqualsFormula(UtilMetadata.genPlusColumn(2, 4))),
 
+    SG_SEGMENT_1(programs(PPIPK),
+            () -> UtilSegmentValidation.genEqualsFormula("2",
+                    R_PST0100000000.key, UtilMetadata.genPlusRow(getObjects(), new int[]{1, 2}),
+                    UtilMetadata.genMessage(R_PST0100000000.value, UtilMetadata.genPlusDesc(getObjects(), new int[]{1, 2})))),
+
+    SG_SEGMENT_2(programs(PPIPK),
+            () -> UtilSegmentValidation.genEqualsFormula("2", R_PST0200000000.key,
+                    UtilMetadata.genPlusRow(getObjects(), new int[]{4, 9}),
+                    UtilMetadata.genMessage(R_PST0200000000.value, UtilMetadata.genPlusDesc(getObjects(), new int[]{4, 9})))),
+
+    SG_SEGMENT_3(programs(PPIPK),
+            () -> UtilSegmentValidation.genEqualsFormula("2", R_PST0201000000.key,
+                    UtilMetadata.genPlusRow(getObjects(), 5, 8),
+                    UtilMetadata.genMessage(R_PST0201000000.value, UtilMetadata.genPlusDesc(getObjects(), 5, 8)))),
+
+    SG_SEGMENT_4(programs(PPIPK),
+            () -> UtilSegmentValidation.genEqualsFormula("2", R_PST0202000000.key,
+                    UtilMetadata.genPlusRow(getObjects(), 10, 13),
+                    UtilMetadata.genMessage(R_PST0202000000.value, UtilMetadata.genPlusDesc(getObjects(), 10, 13)))),
+
+    SG_SEGMENT_5(programs(PPIPK),
+            () -> UtilSegmentValidation.genEqualsFormula("2", R_PST0300000000.key,
+                    UtilMetadata.genPlusRow(getObjects(), new int[]{15, 16}),
+                    UtilMetadata.genMessage(R_PST0300000000.value, UtilMetadata.genPlusDesc(getObjects(), new int[]{15, 16})))),
+    
     SG_SEGMENT_6(programs(PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula("2|3|4", R_PST0400000000.key,
                     UtilMetadata.genPlusRow(getObjects(), new int[]{0, 3, 14}),

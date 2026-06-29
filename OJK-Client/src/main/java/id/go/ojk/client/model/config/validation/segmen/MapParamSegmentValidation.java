@@ -2,7 +2,6 @@ package id.go.ojk.client.model.config.validation.segmen;
 
 import id.go.ojk.client.constant.EMacro;
 import id.go.ojk.client.model.config.SubmissionFormat;
-import id.go.ojk.client.model.config.validation.segmen.v2.util.constant.MessageType;
 import id.go.ojk.lib.client.CollectionUtil;
 import id.go.ojk.lib.client.model.constant.Operator;
 import org.apache.commons.lang3.StringUtils;
@@ -109,11 +108,6 @@ public abstract class MapParamSegmentValidation extends BaseSegmentValidation {
 		if ( StringUtils.isEmpty(getStringParameter(name)) )
 			return new HashSet<>();
 		return CollectionUtil.toStringSet(value);
-	}
-
-	protected MessageType getMessageTypeParameter(String name) {
-		String tmp = this.parameterMap.get(name);
-		return MessageType.valueOf(tmp.toUpperCase());
 	}
 
 	protected String getString(int idx, String[] arr, String defaultValue) {

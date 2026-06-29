@@ -1,5 +1,6 @@
 package id.go.ojk.client.module.lktb;
 
+import id.go.ojk.client.model.SaveMapValueForm;
 import id.go.ojk.client.model.ValidFile;
 import id.go.ojk.client.model.bind.ProgressPreparationAndSending;
 import id.go.ojk.client.model.bind.ProgressSegment;
@@ -29,9 +30,8 @@ public class ReadDirectoryLktb extends BaseReadDirectory {
 
     @Override
     protected void saveFormData(ProgressSegment progressSegment, File file) {
-        super.saveFormData(progressSegment, file);
-
-        SubmissionFormat.treeMapPosValueForm.putAll(SubmissionFormat.mapPosValueForm);
+        SaveMapValueForm smv = new SaveMapValueForm(progressSegment, file);
+        SubmissionFormat.treeMapPosValueForm.putAll(smv.getMapping());
         SubmissionFormat.reportPeriod = getReportPeriod(file);
     }
 

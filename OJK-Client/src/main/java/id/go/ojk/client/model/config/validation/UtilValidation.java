@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
@@ -223,10 +224,55 @@ public class UtilValidation {
 		}
 		return res.setScale(scale, RoundingMode.HALF_UP);
 	}
-	
+
+	public static BigDecimal calculateColumn(Stream<Entry<String, Map<String, String>>> savedValues, String rowCode, String columnFormula, int scale) {
+		Logger logger = LoggerFactory.getLogger(MapParamSegmentValidation.class);
+		BigDecimal res = BigDecimal.ZERO;
+		try {
+			String[] formulaSplit = columnFormula.split(FORMULA_REGEX);
+			if (formulaSplit != null) {
+				int length = formulaSplit.length;
+				String operator = "+";
+				for (int i = 0; i < length; i++) {
+					String formula = formulaSplit[i];
+					if (!formula.isEmpty()) {
+						if (FORMULA_SYMBOL.contains(formula)) {
+							operator = formula;
+						} else  {
+							res = calculate(savedValues, rowCode, formula, operator, res);
+						}
+					}
+				}
+			}
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+		}
+		return res.setScale(scale, RoundingMode.HALF_UP);
+	}
+
 	private static BigDecimal calculate(Map<String, Map<String, String>> savedValues, String rowCode, String columnIdx, String operator, BigDecimal value) {
 		BigDecimal res = value;
 		BigDecimal sum = SubmissionFormat.getSum(savedValues, rowCode, columnIdx);
+		if (operator.equals("-")) {
+			res = res.subtract(sum);
+		} else if (operator.equals("*")) {
+			res = res.multiply(sum);
+		} else if (operator.equals("/")) {
+			if (value != BigDecimal.ZERO) {
+				res = res.divide(sum);
+			}
+		} else {
+			res = res.add(sum);
+		}
+		return res;
+	}
+
+	private static BigDecimal calculate(Stream<Entry<String, Map<String, String>>> savedValues, String rowCode, String columnIdx, String operator, BigDecimal value) {
+		BigDecimal res = value;
+		BigDecimal sum = SubmissionFormat.getSum(
+				savedValues.filter(v -> v.getKey().contains(rowCode)),
+				columnIdx);
+
 		if (operator.equals("-")) {
 			res = res.subtract(sum);
 		} else if (operator.equals("*")) {

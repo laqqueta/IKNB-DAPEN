@@ -14,6 +14,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.Map.Entry;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -603,6 +604,10 @@ public class SubmissionFormat {
         return getSum(SubmissionFormat.mapPosValueForm, form + pos, field);
     }
 
+    public static BigDecimal getSumTreeMapPosFormValue(String form, String pos, String field) {
+        return getSum(getStreamOfFormSubMap(form + pos, Character.MAX_VALUE), field);
+    }
+
     public static BigDecimal getSumMapPosFormValueFilterByReference(String form, String pos, String field, String referenceField, List<String> referenceKeys) {
         return getSumFilterByReference(SubmissionFormat.mapPosValueForm, form + pos, field, referenceField, referenceKeys);
     }
@@ -747,6 +752,27 @@ public class SubmissionFormat {
             }
         }
         return res;
+    }
+
+    public static BigDecimal getSum(Stream<Entry<String, Map<String, String>>> map, String field) {
+        BigDecimal[] res = { BigDecimal.ZERO };
+        String[] columnVal = { "" };
+
+        map.forEach(entry -> {
+            columnVal[0] = entry.getValue().get(field);
+            if (!isInvalidNumeric(columnVal[0])) {
+                res[0] = res[0].add(new BigDecimal(columnVal[0]));
+            }
+
+//            try {
+//                tmpRes[0] = new BigDecimal(columnVal[0]);
+//            } catch (Exception e) {
+//                // silent
+//            } finally {
+//                res[0] = res[0].add(tmpRes[0]);
+//            }
+        });
+        return res[0];
     }
 
     public static Map<String, Map<String, String>> getFormRow(Map<String, Map<String, String>> map, String form) {
@@ -1011,5 +1037,36 @@ public class SubmissionFormat {
 
     public static String getHeader(int idx) {
         return headers != null && (headers.length - 1) > idx ? headers[idx] : "";
+    }
+
+    private static boolean isInvalidNumeric(String s) {
+        if (s == null || s.isEmpty()) return true;
+
+        boolean isDot = false;
+        boolean isNumeric = false;
+        int i = 0;
+
+        if (s.charAt(0) == '-') {
+            if (s.length() == 1) return true;
+            i = 1;
+        }
+
+        for (; i < s.length(); i++) {
+            char c = s.charAt(i);
+
+            if (c >= '0' && c <= '9') {
+                isNumeric = true;
+            } else if (c == '.') {
+                if (isDot) return true;
+                if (!isNumeric) return true;
+                isDot = true;
+            } else {
+                return true;
+            }
+        }
+
+        if (isDot && s.charAt(s.length() - 1) == '.') return true;
+
+        return false;
     }
 }

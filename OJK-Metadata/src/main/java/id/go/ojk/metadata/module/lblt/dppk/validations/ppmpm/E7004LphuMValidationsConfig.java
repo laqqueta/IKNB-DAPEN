@@ -7,9 +7,11 @@ import id.go.ojk.client.model.validation.IValidation;
 import id.go.ojk.client.validation.IValidationConverter;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
+import id.go.ojk.conf.client.UtilSegmentValidationV2;
 import id.go.ojk.conf.client.field.reference.ER1255JenisManfaat;
 import id.go.ojk.conf.client.field.reference.ER1263BebanInvestasi;
 import id.go.ojk.conf.client.field.reference.ER1264BebanOperasinal;
+import id.go.ojk.lib.client.model.KeyValueString;
 import id.go.ojk.metadata.module.lblt.dppk.EFormLaporanBulananTahunan;
 import id.go.ojk.metadata.module.lblt.dppk.reference.*;
 import id.go.ojk.metadata.util.constants.ProgramType;
@@ -88,19 +90,19 @@ public enum E7004LphuMValidationsConfig implements ILbltMetadataValidation, IVal
                     UtilMetadata.genMessage(R_LPHU0700000000.value, UtilMetadata.genMinusRow(getObjects(), new int[] {13, 21}) + "+LPHU0606000000"))),
     
     SG_ROW_VALIDATION_8A(programs(PPMPM),
-            () -> genRowValidation(R_LPHU0101000000.key, "2")),
+            () -> genRowValidation(R_LPHU0101000000.getObject(), "2")),
 
     SG_ROW_VALIDATION_8B(programs(PPMPM),
-            () -> genRowValidation(R_LPHU0102000000.key, "3")),
+            () -> genRowValidation(R_LPHU0102000000.getObject(), "3")),
 
     SG_ROW_VALIDATION_8C(programs(PPMPM),
-            () -> genRowValidation(R_LPHU0103000000.key, "4")),
+            () -> genRowValidation(R_LPHU0103000000.getObject(), "4")),
 
     SG_ROW_VALIDATION_8D(programs(PPMPM),
-            () -> genRowValidation(R_LPHU0104000000.key, "5")),
+            () -> genRowValidation(R_LPHU0104000000.getObject(), "5")),
 
     SG_ROW_VALIDATION_8E(programs(PPMPM),
-            () -> genRowValidation(R_LPHU0105000000.key, "6")),
+            () -> genRowValidation(R_LPHU0105000000.getObject(), "6")),
 
     ;
 
@@ -154,7 +156,7 @@ public enum E7004LphuMValidationsConfig implements ILbltMetadataValidation, IVal
         String sumCriteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
         String sumCriteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
 
-        return UtilSegmentValidation.genMultiCriteriaSumIf("2", row,
+        return UtilSegmentValidationV2.genMultiCriteriaSumIf("2", row,
                 formComparator, comparatorRow,
                 comparatorRangeField, comparatorCriteriaField, sumField, criteriaCondition, sumCriteriaCondition,
                 errMsg, criteriaConditionErr, sumCriteriaConditionErr, criteriaKey);
@@ -169,16 +171,20 @@ public enum E7004LphuMValidationsConfig implements ILbltMetadataValidation, IVal
         String sumCriteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
         String sumCriteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
 
-        return UtilSegmentValidation.genSumIf("2", row,
+        return UtilSegmentValidationV2.genSumIf("2", row,
                 comparatorForm, comparatorRow,
                 rangeField, criteriaField, sumField, criteriaCondition, sumCriteriaCondition,
                 errMsg, criteriaConditionErr, sumCriteriaConditionErr);
     }
 
-    private static SegmentValidation genRowValidation(String posCode, String comparatorField) {
-        return UtilSegmentValidation.genEqualsForm("2", posCode,
+    private static SegmentValidation genRowValidation(KeyValueString posCode, String comparatorField) {
+
+        String msg = UtilMetadata.genMessage(posCode.getValue(),
+                ER7009PosLtlbDppkRoi.R_ROI2100000000.getObject().getValue());
+
+        return UtilSegmentValidationV2.genEqualsForm("2", posCode.getKey(),
                 EFormLaporanBulananTahunan.LTLB_ROI.getCode(), comparatorField,
-                ER7009PosLtlbDppkRoi.R_ROI2100000000.getObject().getKey());
+                ER7009PosLtlbDppkRoi.R_ROI2100000000.getObject().getKey(), msg + " pada form ROI");
     }
 
 }

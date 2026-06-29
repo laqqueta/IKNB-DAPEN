@@ -4,14 +4,11 @@ import id.go.ojk.client.model.config.validation.conditional.ConditionalRequired;
 import id.go.ojk.client.model.config.validation.field.FieldValidation;
 import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
 import id.go.ojk.client.model.validation.IValidation;
+import id.go.ojk.client.validation.IValidationConverter;
 import id.go.ojk.conf.client.UtilFieldValidation;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
-import id.go.ojk.lib.client.model.KeyValueString;
-import id.go.ojk.metadata.module.lblt.dppk.EFormLaporanBulananTahunan;
-import id.go.ojk.metadata.module.lblt.dppk.reference.ER7001PosLtlbDppkLan;
 import id.go.ojk.metadata.util.constants.ProgramType;
-import id.go.ojk.client.validation.IValidationConverter;
 import id.go.ojk.metadata.validation.ValidationConverter;
 import id.go.ojk.metadata.validation.base.BaseMetadataValidation;
 import id.go.ojk.metadata.validation.lblt.ILbltMetadataValidation;
@@ -27,7 +24,6 @@ import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7006PosLtlbDppkPst
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
 import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
 
 @RequiredArgsConstructor
 @AllArgsConstructor

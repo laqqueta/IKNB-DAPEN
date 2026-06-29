@@ -5,10 +5,7 @@ import id.go.ojk.client.model.config.validation.field.FieldValidation;
 import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
 import id.go.ojk.client.model.validation.IValidation;
 import id.go.ojk.client.validation.IValidationConverter;
-import id.go.ojk.conf.client.UtilFieldConditional;
-import id.go.ojk.conf.client.UtilFieldValidation;
-import id.go.ojk.conf.client.UtilMetadata;
-import id.go.ojk.conf.client.UtilSegmentValidation;
+import id.go.ojk.conf.client.*;
 import id.go.ojk.conf.client.dto.FormulaParserData;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
@@ -53,21 +50,23 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
                 "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LPAN" + "|" +
                 "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LPAN";
 
-        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS10101000000.key, operationForm, operationFormErr);
+        return UtilSegmentValidationV2.genFormulaParserValidationV2("2|3|4", R_RAS10101000000.key, operationForm, operationFormErr);
     }),
 
     SG_RAS10102000000_A(programs(PPMPK), () -> {
-        String selectPosCode = R_RAS10102000000.key;
-        String comparatorPosCode = ER7010PosLtlbDppkRoiml.R_ROIML2100000000.key;
-        return UtilSegmentValidation.genEqualsForm("4", selectPosCode,
-                EFormLaporanBulananTahunan.LTLB_ROI_ML.getCode(), "10", comparatorPosCode);
+        KeyValueString selectPosCode = R_RAS10102000000.getObject();
+        KeyValueString comparatorPosCode = ER7010PosLtlbDppkRoiml.R_ROIML2100000000.getObject();
+        String errMsg = selectPosCode.getValue() + "|" + comparatorPosCode.getValue() + " pada form ROIML";
+        return UtilSegmentValidationV2.genEqualsForm("4", selectPosCode.getKey(),
+                EFormLaporanBulananTahunan.LTLB_ROI_ML.getCode(), "10", comparatorPosCode.getKey(), errMsg);
     }),
 
     SG_RAS10102000000_B(programs(PPMPK), () -> {
-        String selectPosCode = R_RAS10102000000.key;
-        String comparatorPosCode = ER7009PosLtlbDppkRoi.R_ROI2100000000.key;
-        return UtilSegmentValidation.genEqualsForm("5", selectPosCode,
-                EFormLaporanBulananTahunan.LTLB_ROI.getCode(), "10", comparatorPosCode);
+        KeyValueString selectPosCode = R_RAS10102000000.getObject();
+        KeyValueString comparatorPosCode = ER7009PosLtlbDppkRoi.R_ROI2100000000.getObject();
+        String errMsg = selectPosCode.getValue() + "|" + comparatorPosCode.getValue() + " pada form ROI";
+        return UtilSegmentValidationV2.genEqualsForm("5", selectPosCode.getKey(),
+                EFormLaporanBulananTahunan.LTLB_ROI.getCode(), "10", comparatorPosCode.getKey(), errMsg);
     }),
 
     SG_MULTI_SUM_RAS10201000000(programs(PPMPK), () -> {
@@ -96,7 +95,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
                 "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LPAN" + "|" +
                 "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LPAN";
 
-        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS10201000000.key, operationForm, operationFormErr);
+        return UtilSegmentValidationV2.genFormulaParserValidationV2("2|3|4", R_RAS10201000000.key, operationForm, operationFormErr);
     }),
 
     SG_AVG_REKINV_RAS10202000000_A(programs(PPMPK), () -> {
@@ -105,7 +104,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String comparatorExpr = "/12";
         String form = EFormLaporanBulananTahunan.LTLB_REKINV.getCode();
         String errMsg = "'" + R_RAS10202000000.value + "' harus sama dengan rata-rata '" + comparator.getValue() + "' pada form " + form;
-        return UtilSegmentValidation.genEqualsFormExpression("3", R_RAS10202000000.key, null, form, comparatorField,
+        return UtilSegmentValidationV2.genEqualsFormExpression("3", R_RAS10202000000.key, null, form, comparatorField,
                 comparator.getKey(), comparatorExpr, "e", 2, errMsg);
     }),
 
@@ -115,7 +114,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String comparatorField = UtilMetadata.genPipeColumn(2, 13);
         String comparatorExpr = "/12";
         String errMsg = "'" + R_RAS10202000000.value + "' harus sama dengan rata-rata '" + comparator.getValue() + "' pada form " + form;
-        return UtilSegmentValidation.genEqualsFormExpression("4", R_RAS10202000000.key, null, form, comparatorField,
+        return UtilSegmentValidationV2.genEqualsFormExpression("4", R_RAS10202000000.key, null, form, comparatorField,
                 comparator.getKey(), comparatorExpr, "e", 2, errMsg);
     }),
 
@@ -125,7 +124,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String comparatorField = UtilMetadata.genPipeColumn(2, 13);
         String comparatorExpr = "/12";
         String errMsg = "'" + R_RAS10202000000.value + "' harus sama dengan rata-rata '" + comparator.getValue() + "' pada form " + form;
-        return UtilSegmentValidation.genEqualsFormExpression("5", R_RAS10202000000.key, null, form, comparatorField,
+        return UtilSegmentValidationV2.genEqualsFormExpression("5", R_RAS10202000000.key, null, form, comparatorField,
                 comparator.getKey(), comparatorExpr, "e", 2, errMsg);
     }),
 
@@ -142,7 +141,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
                 "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LPAN" + "|" +
                 "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LPAN";
 
-        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS10301000000.key, operationForm, operationFormErr);
+        return UtilSegmentValidationV2.genFormulaParserValidationV2("2|3|4", R_RAS10301000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS10302000000(programs(PPMPK), () -> {
@@ -158,7 +157,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
                 "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LPAN" + "|" +
                 "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LPAN";
 
-        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS10302000000.key, operationForm, operationFormErr);
+        return UtilSegmentValidationV2.genFormulaParserValidationV2("2|3|4", R_RAS10302000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS10501000000(programs(PPMPK), () -> {
@@ -174,7 +173,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
                 "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LPAN" + "|" +
                 "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LPAN";
 
-        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS10501000000.key, operationForm, operationFormErr);
+        return UtilSegmentValidationV2.genFormulaParserValidationV2("2|3|4", R_RAS10501000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS10502000000(programs(PPMPK), () -> {
@@ -190,7 +189,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
                 "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LAN" + "|" +
                 "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LAN";
 
-        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS10502000000.key, operationForm, operationFormErr);
+        return UtilSegmentValidationV2.genFormulaParserValidationV2("2|3|4", R_RAS10502000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS10701000000(programs(PPMPK), () -> {
@@ -206,7 +205,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
                 "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LAN" + "|" +
                 "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LAN";
 
-        return UtilSegmentValidation.genFormulaParserValidationV2PeriodePelaporan("2|3|4", R_RAS10701000000.key, operationForm, operationFormErr, 2);
+        return UtilSegmentValidationV2.genFormulaParserValidationV2PeriodePelaporan("2|3|4", R_RAS10701000000.key, operationForm, operationFormErr, 2);
     }),
 
     SG_MULTI_SUM_RAS10702000000(programs(PPMPK), () -> {
@@ -222,7 +221,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
                 "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LPAN" + "|" +
                 "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LPAN";
 
-        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS10702000000.key, operationForm, operationFormErr);
+        return UtilSegmentValidationV2.genFormulaParserValidationV2("2|3|4", R_RAS10702000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS10801000000(programs(PPMPK), () -> {
@@ -238,7 +237,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
                 "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LAN" + "|" +
                 "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LAN";
 
-        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS10801000000.key, operationForm, operationFormErr);
+        return UtilSegmentValidationV2.genFormulaParserValidationV2("2|3|4", R_RAS10801000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS10802000000(programs(PPMPK), () -> {
@@ -254,7 +253,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
                 "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LAN" + "|" +
                 "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LAN";
 
-        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS10802000000.key, operationForm, operationFormErr);
+        return UtilSegmentValidationV2.genFormulaParserValidationV2("2|3|4", R_RAS10802000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS10901000000(programs(PPMPK), () -> {
@@ -270,7 +269,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
                 "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LAN" + "|" +
                 "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LAN";
 
-        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS10901000000.key, operationForm, operationFormErr);
+        return UtilSegmentValidationV2.genFormulaParserValidationV2("2|3|4", R_RAS10901000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS10902000000(programs(PPMPK), () -> {
@@ -286,7 +285,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
                 "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LAN" + "|" +
                 "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LAN";
 
-        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS10902000000.key, operationForm, operationFormErr);
+        return UtilSegmentValidationV2.genFormulaParserValidationV2("2|3|4", R_RAS10902000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS11001000000(programs(PPMPK), () -> {
@@ -302,7 +301,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
                 "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LAN" + "|" +
                 "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LAN";
 
-        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS11001000000.key, operationForm, operationFormErr);
+        return UtilSegmentValidationV2.genFormulaParserValidationV2("2|3|4", R_RAS11001000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS11101000000(programs(PPMPK), () -> {
@@ -318,7 +317,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
                 "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LPAN" + "|" +
                 "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LPAN";
 
-        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS11101000000.key, operationForm, operationFormErr);
+        return UtilSegmentValidationV2.genFormulaParserValidationV2("2|3|4", R_RAS11101000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS11102000000(programs(PPMPK), () -> {
@@ -334,7 +333,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
                 "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LPAN" + "|" +
                 "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LPAN";
 
-        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS11102000000.key, operationForm, operationFormErr);
+        return UtilSegmentValidationV2.genFormulaParserValidationV2("2|3|4", R_RAS11102000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS11201000000(programs(PPMPK), () -> {
@@ -350,7 +349,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
                 "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form NRC" + "|" +
                 "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form NRC";
 
-        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS11201000000.key, operationForm, operationFormErr);
+        return UtilSegmentValidationV2.genFormulaParserValidationV2("2|3|4", R_RAS11201000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS11202000000(programs(PPMPK), () -> {
@@ -366,7 +365,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
                 "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LAN" + "|" +
                 "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LAN";
 
-        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS11202000000.key, operationForm, operationFormErr);
+        return UtilSegmentValidationV2.genFormulaParserValidationV2("2|3|4", R_RAS11202000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS11301000000(programs(PPMPK), () -> {
@@ -382,7 +381,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
                 "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LAN" + "|" +
                 "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LAN";
 
-        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS11301000000.key, operationForm, operationFormErr);
+        return UtilSegmentValidationV2.genFormulaParserValidationV2("2|3|4", R_RAS11301000000.key, operationForm, operationFormErr);
     }),
 
     //RAS11302000000
@@ -399,7 +398,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
                 "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LPAN" + "|" +
                 "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LPAN";
 
-        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS11302000000.key, operationForm, operationFormErr);
+        return UtilSegmentValidationV2.genFormulaParserValidationV2("2|3|4", R_RAS11302000000.key, operationForm, operationFormErr);
     }),
 
     //RAS11401000000
@@ -418,7 +417,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
                 "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LAK" + "|" +
                 "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LAK";
 
-        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS11401000000.key, operationForm, operationFormErr);
+        return UtilSegmentValidationV2.genFormulaParserValidationV2("2|3|4", R_RAS11401000000.key, operationForm, operationFormErr);
     }),
 
     //RAS11402000000
@@ -437,7 +436,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
                 "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LAK" + "|" +
                 "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LAK";
 
-        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS11402000000.key, operationForm, operationFormErr);
+        return UtilSegmentValidationV2.genFormulaParserValidationV2("2|3|4", R_RAS11402000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS11501000000(programs(PPMPK), () -> {
@@ -453,7 +452,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
                 "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LAN" + "|" +
                 "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LAN";
 
-        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS11501000000.key, operationForm, operationFormErr);
+        return UtilSegmentValidationV2.genFormulaParserValidationV2("2|3|4", R_RAS11501000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS11502000000(programs(PPMPK), () -> {
@@ -469,7 +468,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
                 "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LAN" + "|" +
                 "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LAN";
 
-        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS11502000000.key, operationForm, operationFormErr);
+        return UtilSegmentValidationV2.genFormulaParserValidationV2("2|3|4", R_RAS11502000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS11601000000(programs(PPMPK), () -> {
@@ -485,7 +484,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
                 "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LAN" + "|" +
                 "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LAN";
 
-        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS11601000000.key, operationForm, operationFormErr);
+        return UtilSegmentValidationV2.genFormulaParserValidationV2("2|3|4", R_RAS11601000000.key, operationForm, operationFormErr);
     }),
 
     // test error validasi
@@ -494,14 +493,14 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String fields = "1 tahun kurang lebih atau sama dengan jatuh tempo < 5 tahun - Total|5 tahun kurang lebih atau sama dengan jatuh tempo < 10 tahun - Total|Jatuh Tempo lebih dari atau sama dengan 10 Tahun - Total";
         FormulaParserData operationForm = genFormulaParser(ER7012PosLtlbDppkAlm.getObjects(PPMPK), "49", "7+10+13", fields, comparatorForm);
         String operationFormErr = "sama dengan Baris " + operationForm.getErrMessage() + " pada form ALM";
-        return UtilSegmentValidation.genFormulaParserValidationV2("2", R_RAS11701000000.key, operationForm.getFormula(), operationFormErr);
+        return UtilSegmentValidationV2.genFormulaParserValidationV2("2", R_RAS11701000000.key, operationForm.getFormula(), operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS11702000000(programs(PPMPK), () -> {
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAK.getCode();
         FormulaParserData operationForm = genFormulaParser(ER7005PosLtlbDppkLak.getObjects(), "0+1+2+3+15", "2", comparatorForm);
         String operationFormErr = "sama dengan Baris " + operationForm.getErrMessage() + " Manfaat Pensiun pada form LAK";
-        return UtilSegmentValidation.genFormulaParserValidationV2("2", R_RAS11702000000.key, operationForm.getFormula(), operationFormErr);
+        return UtilSegmentValidationV2.genFormulaParserValidationV2("2", R_RAS11702000000.key, operationForm.getFormula(), operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS11801000000(programs(PPMPK), () -> {
@@ -517,7 +516,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
                 "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LAK" + "|" +
                 "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LAK";
 
-        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS11801000000.key, operationForm, operationFormErr);
+        return UtilSegmentValidationV2.genFormulaParserValidationV2("2|3|4", R_RAS11801000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS11802000000(programs(PPMPK), () -> {
@@ -533,7 +532,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
                 "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LAK" + "|" +
                 "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LAK";
 
-        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS11802000000.key, operationForm, operationFormErr);
+        return UtilSegmentValidationV2.genFormulaParserValidationV2("2|3|4", R_RAS11802000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS11902000000(programs(PPMPK), () -> {
@@ -549,35 +548,35 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
                 "sama dengan Baris " + operation3.getErrMessage() + " Nilai Program Manfaat Pensiun Lainnya pada form KUP" + "|" +
                 "sama dengan Baris " + operation4.getErrMessage() + " Nilai Program Manfaat Lain pada form KUP";
 
-        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS11902000000.key, operationForm, operationFormErr);
+        return UtilSegmentValidationV2.genFormulaParserValidationV2("2|3|4", R_RAS11902000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS12010000000(programs(PPMPK), () -> {
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_ALM.getCode();
         FormulaParserData operationForm = genFormulaParser(ER7012PosLtlbDppkAlm.getObjects(PPMPK), "39", "4", "Jatuh tempo < 1 tahun - Total", comparatorForm);
         String operationFormErr = "sama dengan Baris " + operationForm.getErrMessage() + " pada form ALM";
-        return UtilSegmentValidation.genFormulaParserValidationV2("2", R_RAS12010000000.key, operationForm.getFormula(), operationFormErr);
+        return UtilSegmentValidationV2.genFormulaParserValidationV2("2", R_RAS12010000000.key, operationForm.getFormula(), operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS12020000000(programs(PPMPK), () -> {
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_ALM.getCode();
         FormulaParserData operationForm = genFormulaParser(ER7012PosLtlbDppkAlm.getObjects(PPMPK), "39", "16", "Total - Total", comparatorForm);
         String operationFormErr = "sama dengan Baris " + operationForm.getErrMessage() + " pada form ALM";
-        return UtilSegmentValidation.genFormulaParserValidationV2("2", R_RAS12020000000.key, operationForm.getFormula(), operationFormErr);
+        return UtilSegmentValidationV2.genFormulaParserValidationV2("2", R_RAS12020000000.key, operationForm.getFormula(), operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS13010000000(programs(PPMPK), () -> {
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_ALM.getCode();
         FormulaParserData operationForm = genFormulaParser(ER7012PosLtlbDppkAlm.getObjects(PPMPK), "49", "4", "Jatuh tempo < 1 tahun - Total", comparatorForm);
         String operationFormErr = "sama dengan Baris " + operationForm.getErrMessage() + " pada form ALM";
-        return UtilSegmentValidation.genFormulaParserValidationV2("2", R_RAS13010000000.key, operationForm.getFormula(), operationFormErr);
+        return UtilSegmentValidationV2.genFormulaParserValidationV2("2", R_RAS13010000000.key, operationForm.getFormula(), operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS13020000000(programs(PPMPK), () -> {
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_ALM.getCode();
         FormulaParserData operationForm = genFormulaParser(ER7012PosLtlbDppkAlm.getObjects(PPMPK), "49", "16", "Total - Total", comparatorForm);
         String operationFormErr = "sama dengan Baris " + operationForm.getErrMessage() + " pada form ALM";
-        return UtilSegmentValidation.genFormulaParserValidationV2("2", R_RAS13020000000.key, operationForm.getFormula(), operationFormErr);
+        return UtilSegmentValidationV2.genFormulaParserValidationV2("2", R_RAS13020000000.key, operationForm.getFormula(), operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS14010000000(programs(PPMPK), () -> {
@@ -593,7 +592,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
                 "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LPAN" + "|" +
                 "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LPAN";
 
-        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS14010000000.key, operationForm, operationFormErr);
+        return UtilSegmentValidationV2.genFormulaParserValidationV2("2|3|4", R_RAS14010000000.key, operationForm, operationFormErr);
     }),
 
     SG_MULTI_SUM_RAS14020000000(programs(PPMPK), () -> {
@@ -609,7 +608,7 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
                 "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LPAN" + "|" +
                 "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LPAN";
 
-        return UtilSegmentValidation.genFormulaParserValidationV2("2|3|4", R_RAS14020000000.key, operationForm, operationFormErr);
+        return UtilSegmentValidationV2.genFormulaParserValidationV2("2|3|4", R_RAS14020000000.key, operationForm, operationFormErr);
     }),
 
     /* Update Pak Yahya :: Segment Validation */
@@ -686,51 +685,6 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         return UtilSegmentValidation.genRegexNumericDot("2|3|4",
                 UtilMetadata.genPipeRow(getObjects(PPMPK), INT_ROWS));
     }),
-
-
-//    SG_NUMERIC(programs(PPMPK), () -> {
-//        int[] INT_ROWS = {0, 3, 4, 6, 7, 9, 10, 12, 13, 15, 16, 18, 19, 21, 22, 24, 25, 27, 28, 30,
-//                31, 36, 37, 39, 40, 42, 48, 49, 51, 52, 54, 55, 57, 58};
-//
-//        return UtilSegmentValidation.genRegexNumeric("2|3|4|5",
-//                UtilMetadata.genPipeRow(getObjects(PPMPK), INT_ROWS));
-//    }),
-//
-//    SG_NUMERIC_NUMERIC_2(programs(PPMPK), () -> {
-//        int[] INT_ROWS = {43};
-//
-//        return UtilSegmentValidation.genRegexNumeric("3|4",
-//                UtilMetadata.genPipeRow(getObjects(PPMPK), INT_ROWS));
-//    }),
-//
-//    SG_NUMERIC_NEGATIVE(programs(PPMPK), () -> {
-//        int[] INT_ROWS = {33, 34, 45, 46};
-//
-//        return UtilSegmentValidation.genRegexNumericNegative("2|3|4|5",
-//                UtilMetadata.genPipeRow(getObjects(PPMPK), INT_ROWS));
-//    }),
-//
-//    SG_NUMERIC_NEGATIVE_2(programs(PPMPK), () -> {
-//        int[] INT_ROWS = {43};
-//
-//        return UtilSegmentValidation.genRegexNumericNegative("2|5",
-//                UtilMetadata.genPipeRow(getObjects(PPMPK), INT_ROWS));
-//    }),
-//
-//    SG_NUMERIC_DOT(programs(PPMPK), () -> {
-//        int[] PERCENT_ROWS = {2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35, 38, 41, 44, 47, 50, 53, 56,
-//                59};
-//
-//        return UtilSegmentValidation.genRegexNumericDot("2|3|4|5",
-//                UtilMetadata.genPipeRow(getObjects(PPMPK), PERCENT_ROWS));
-//    }),
-//
-//    SG_NUMERIC_DOT_RAS10102000000(programs(PPMPK), () -> {
-//        int[] PERCENT_ROWS = {1};
-//
-//        return UtilSegmentValidation.genRegexNumericDotNegative("2|5",
-//                UtilMetadata.genPipeRow(getObjects(PPMPK), PERCENT_ROWS));
-//    }),
 
     /* Update Pak Yahya :: Field Validation */
 
@@ -842,17 +796,4 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
 
         return new FormulaParserData(sbFormula.toString(), sbFormulaErr.toString());
     }
-
-    public static void main(String[] args) {
-        String comparatorForm = EFormLaporanBulananTahunan.LTLB_LPAN.getCode();
-        List<KeyValueString> formObject = ER7002PosLtlbDppkLpan.getObjects(PPMPK);
-
-        FormulaParserData operation2 = multiFormulaFormatter(new FormulaParserData[]{
-                genFormulaParser(formObject, "5+6+11", "2", comparatorForm),
-                genFormulaParser(formObject, "14+15+16", "2", comparatorForm)
-        }, "-");
-
-        System.out.println(operation2.getErrMessage());
-    }
-
 }

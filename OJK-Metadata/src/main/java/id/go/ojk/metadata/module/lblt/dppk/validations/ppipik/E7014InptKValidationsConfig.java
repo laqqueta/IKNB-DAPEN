@@ -8,6 +8,7 @@ import id.go.ojk.client.validation.IValidationConverter;
 import id.go.ojk.conf.client.UtilFieldConditional;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
+import id.go.ojk.conf.client.UtilSegmentValidationV2;
 import id.go.ojk.metadata.module.lblt.dppk.EFormLaporanBulananTahunan;
 import id.go.ojk.metadata.module.lblt.dppk.reference.ER7001PosLtlbDppkLan;
 import id.go.ojk.metadata.util.constants.ProgramType;
@@ -27,7 +28,6 @@ import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7014PosLtlbDppkInp
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
 import static id.go.ojk.metadata.util.constants.ProgramType.PPIPK;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
 
 @AllArgsConstructor
 @RequiredArgsConstructor
@@ -38,7 +38,7 @@ public enum E7014InptKValidationsConfig implements ILbltMetadataValidation, IVal
                     UtilMetadata.genMessageTotal(R_INPT000000.value, R_INPT010000.value))),
 
     SG_ROW_VALIDATION(programs(PPIPK),
-            () -> UtilSegmentValidation.genEqualsInvestasiRatio("5", R_INPT010000.key,
+            () -> UtilSegmentValidationV2.genEqualsInvestasiRatio("5", R_INPT010000.key,
                     R_INPT010000.key, "4", EFormLaporanBulananTahunan.LTLB_LAN.getCode(),
                     ER7001PosLtlbDppkLan.R_LAN0102000000.getObject().getKey(), "13",
                     UtilMetadata.genMessage(R_INPT010000.value, R_INPT010000.value + " / Baris 'TOTAL INVESTASI' (Gabungan) pada form LAN"), 2)),

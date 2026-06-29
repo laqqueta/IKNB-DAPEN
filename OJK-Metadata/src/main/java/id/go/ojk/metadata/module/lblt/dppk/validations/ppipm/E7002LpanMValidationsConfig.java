@@ -5,13 +5,12 @@ import id.go.ojk.client.model.config.validation.field.FieldValidation;
 import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
 import id.go.ojk.client.model.validation.IValidation;
 import id.go.ojk.client.validation.IValidationConverter;
-import id.go.ojk.conf.client.UtilFieldValidation;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
+import id.go.ojk.conf.client.UtilSegmentValidationV2;
 import id.go.ojk.conf.client.field.reference.ER1255JenisManfaat;
 import id.go.ojk.lib.client.model.KeyValueString;
 import id.go.ojk.metadata.module.lblt.dppk.EFormLaporanBulananTahunan;
-import id.go.ojk.metadata.module.lblt.dppk.field.Dppk0002Lpan;
 import id.go.ojk.metadata.module.lblt.dppk.reference.*;
 import id.go.ojk.metadata.util.constants.ProgramType;
 import id.go.ojk.metadata.validation.ValidationConverter;
@@ -27,7 +26,6 @@ import java.util.function.Supplier;
 
 import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7002PosLtlbDppkLpan.*;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
-import static id.go.ojk.metadata.util.FieldUtil.validationFields;
 import static id.go.ojk.metadata.util.constants.ProgramType.PPIPM;
 
 @AllArgsConstructor
@@ -45,7 +43,7 @@ public enum E7002LpanMValidationsConfig implements ILbltMetadataValidation, IVal
                 String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
                 String sumCriteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
                 String sumCriteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
-                return UtilSegmentValidation.genSumIf("2",
+                return UtilSegmentValidationV2.genSumIf("2",
                         UtilMetadata.genPipeRow(ER7002PosLtlbDppkLpan.getObjects(ProgramType.PPIPM), 7, 9),
                         EFormLaporanBulananTahunan.LTLB_IUR.getCode(),
                         ER7061PosLtlbDppkIur.R_IUR010000.getObject().getKey(),
@@ -117,19 +115,19 @@ public enum E7002LpanMValidationsConfig implements ILbltMetadataValidation, IVal
                     UtilMetadata.genMessage(R_LPAN0500000000.getObject().getValue(), UtilMetadata.genMinusDesc(getObjects(ProgramType.PPIPM), new int[]{22, 21})))),
 
     SG_EQUAL_FORMULA_ROI_1(programs(PPIPM),
-            () -> genRowValidation(R_LPAN0101010000.getObject().getKey(), "2")),
+            () -> genRowValidation(R_LPAN0101010000.getObject(), "2")),
 
     SG_EQUAL_FORMULA_ROI_2(programs(PPIPM),
-            () -> genRowValidation(R_LPAN0101020000.getObject().getKey(), "3")),
+            () -> genRowValidation(R_LPAN0101020000.getObject(), "3")),
 
     SG_EQUAL_FORMULA_ROI_3(programs(PPIPM),
-            () -> genRowValidation(R_LPAN0101030000.getObject().getKey(), "4")),
+            () -> genRowValidation(R_LPAN0101030000.getObject(), "4")),
 
     SG_EQUAL_FORMULA_ROI_4(programs(PPIPM),
-            () -> genRowValidation(R_LPAN0101040000.getObject().getKey(), "5")),
+            () -> genRowValidation(R_LPAN0101040000.getObject(), "5")),
 
     SG_EQUAL_FORMULA_ROI_5(programs(PPIPM),
-            () -> genRowValidation(R_LPAN0101050000.getObject().getKey(), "6")),
+            () -> genRowValidation(R_LPAN0101050000.getObject(), "6")),
 
     /* Update pak Yahya */
 
@@ -139,10 +137,10 @@ public enum E7002LpanMValidationsConfig implements ILbltMetadataValidation, IVal
                 String selectColumn = "2";
                 String comparatorForm = EFormLaporanBulananTahunan.LTLB_PPIN.getCode();
                 String comparatorColumn = "4";
-                String comparatorPosCode = comparatorForm + ER7060PosLtlbDppkPpin.R_PPIN000000.key;
+                String comparatorPosCode = ER7060PosLtlbDppkPpin.R_PPIN000000.key;
                 String errMsg = selectPosCode.getValue() + " | Total Peningkatan / Penurunan pada form " + comparatorForm;
-                return UtilSegmentValidation.genEqualsFormColumCalculation(selectColumn, selectPosCode.getKey(), comparatorColumn,
-                        comparatorPosCode, errMsg, 2);
+                return UtilSegmentValidationV2.genEqualsFormColumCalculation(selectColumn, selectPosCode.getKey(), comparatorColumn,
+                        comparatorPosCode, comparatorForm, errMsg, 2);
             }),
 
     SG_LPAN0201000000(programs(PPIPM),
@@ -151,10 +149,10 @@ public enum E7002LpanMValidationsConfig implements ILbltMetadataValidation, IVal
                 String selectColumn = "2";
                 String comparatorForm = EFormLaporanBulananTahunan.LTLB_ROI.getCode();
                 String comparatorColumn = "8";
-                String comparatorPosCode = comparatorForm + ER7009PosLtlbDppkRoi.R_ROI2100000000.key;
+                String comparatorPosCode = ER7009PosLtlbDppkRoi.R_ROI2100000000.key;
                 String errMsg = selectPosCode.getValue() + " | Total Beban Investasi pada form " + comparatorForm;
-                return UtilSegmentValidation.genEqualsFormColumCalculation(selectColumn, selectPosCode.getKey(), comparatorColumn,
-                        comparatorPosCode, errMsg, 2);
+                return UtilSegmentValidationV2.genEqualsFormColumCalculation(selectColumn, selectPosCode.getKey(), comparatorColumn,
+                        comparatorPosCode, comparatorForm, errMsg, 2);
             }),
 
     ;
@@ -207,16 +205,19 @@ public enum E7002LpanMValidationsConfig implements ILbltMetadataValidation, IVal
         String sumCriteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
         String sumCriteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
 
-        return UtilSegmentValidation.genSumIf("2", posCode,
+        return UtilSegmentValidationV2.genSumIf("2", posCode,
                 formCode, formObjects,
                 rangeField, criteriaField, sumField, criteriaCondition, sumCriteriaCondition,
                 errMsg, criteriaConditionErr, sumCriteriaConditionErr);
     }
 
-    private static SegmentValidation genRowValidation(String posCode, String comparatorField) {
-        return UtilSegmentValidation.genEqualsForm("2", posCode,
+    private static SegmentValidation genRowValidation(KeyValueString posCode, String comparatorField) {
+        String msg = UtilMetadata.genMessage(posCode.getValue(),
+                ER7009PosLtlbDppkRoi.R_ROI2100000000.getObject().getValue());
+
+        return UtilSegmentValidationV2.genEqualsForm("2", posCode.getKey(),
                 EFormLaporanBulananTahunan.LTLB_ROI.getCode(), comparatorField,
-                ER7009PosLtlbDppkRoi.R_ROI2100000000.getObject().getKey());
+                ER7009PosLtlbDppkRoi.R_ROI2100000000.getObject().getKey(), msg + " pada form ROI");
     }
 
 }

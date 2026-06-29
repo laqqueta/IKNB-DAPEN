@@ -2,13 +2,11 @@ package id.go.ojk.client.model.config.validation.segmen.v2.util;
 
 import lombok.Getter;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
-// this made using AI, don't expect this to always work for every case
 // [TESTED] work with this case :: (ROW[1+2+3]+ROW[1-2-3]-ROW[1*2*3]) * (ROW[1+2+3]+ROW[1-2-3]-ROW[1*2*3])
 // use UtilMetadata.genFormulaFormatter(....) to format the formula
 // Example usage on E7017Ras1ValidationsConfig.java :: OJK-METADATA package
@@ -37,21 +35,28 @@ public class FormulaParser {
     public static class RowToken {
         private final String operator;
         private final String rowCode;
+        private final String rowPrefix;
         private final String raw;
         private final List<Operand> operands;
+        private final Map<String, String> mapOperands;
 
-        RowToken(String operator, String rowCode, String raw, List<Operand> operands) {
+        RowToken(String operator, String rowCode, String rowPrefix, String raw, List<Operand> operands) {
             this.operator = operator;
             this.rowCode = rowCode;
+            this.rowPrefix = rowPrefix;
             this.raw = raw;
             this.operands = operands;
+            this.mapOperands = this.operands.stream()
+                    .collect(Collectors.toMap(Operand::getField, Operand::getOperator,
+                            (ex, dup) -> ex, LinkedHashMap::new
+                    ));
         }
     }
 
     @Getter
     public static class Group {
         private final int index;
-        private final String operator; // operator BEFORE this group, e.g. "*"
+        private final String operator;
         private final String raw;
         private final List<RowToken> tokens;
 
@@ -76,7 +81,7 @@ public class FormulaParser {
             Pattern.compile("([+\\-*]?)\\s*\\(([^)]+)\\)");
 
     private static final Pattern P_ROW_TOKEN =
-            Pattern.compile("([+\\-*]?)\\s*(([\\w]+)\\[([^]]+)])");
+            Pattern.compile("([+\\-*]?)\\s*(([\\w#]+)\\[([^]]+)])");
 
     private static final Pattern P_OPERAND =
             Pattern.compile("([+\\-*]?)\\s*(\\w+)");
@@ -94,11 +99,23 @@ public class FormulaParser {
         List<RowToken> result = new ArrayList<>();
         Matcher m = P_ROW_TOKEN.matcher(groupContent);
         while (m.find()) {
-            String op = m.group(1);
-            String raw = m.group(2);
-            String rowName = m.group(3);
-            String inner = m.group(4);
-            result.add(new RowToken(op, rowName, raw, parseInner(inner)));
+            String op         = m.group(1);              // "+", "-", "*", or ""
+            String raw        = m.group(2);              // "AASD#ASSD000002[1+2+3]"
+            String identifier = m.group(3);              // "AASD#ASSD000002"
+            String inner      = m.group(4);
+
+            String prefix;
+            String rowCode;
+            if (identifier.contains("#")) {
+                String[] parts = identifier.split("#", 2);
+                prefix  = parts[0]; // "AASD"
+                rowCode = parts[1]; // "ASSD000002"
+            } else {
+                prefix  = "";
+                rowCode = identifier;
+            }
+
+            result.add(new RowToken(op, rowCode, prefix, raw, parseInner(inner)));
         }
         return result;
     }
@@ -108,43 +125,11 @@ public class FormulaParser {
         Matcher m = P_GROUP.matcher(formula);
         int idx = 1;
         while (m.find()) {
-            String op = m.group(1); // "*", "+", "-", or "" for the first group
+            String op = m.group(1);
             String content = m.group(2);
             groups.add(new Group(idx++, op, content, parseGroup(content)));
         }
         return new ParsedFormula(groups);
-    }
-
-    public static void main(String[] args) {
-        String formula =
-                "(ROW#ROWXXX000001[1])";
-
-        System.out.println("Formula: " + formula);
-        System.out.println();
-
-        ParsedFormula parsed = parse(formula);
-
-        for (Group g : parsed.getGroups()) {
-            System.out.printf("══ Group %d  op=%-4s ══════════════════════%n",
-                    g.getIndex(), "\"" + g.getOperator() + "\"");
-            System.out.println("  Raw: " + g.getRaw());
-            System.out.println();
-
-            for (RowToken t : g.getTokens()) {
-                System.out.printf("  ├─ op=%-4s  rowName=%-12s  raw=%s%n",
-                        "\"" + t.getOperator() + "\"", t.getRowCode(), t.getRaw());
-
-                for (Operand o : t.getOperands()) {
-                    System.out.printf("  │    ├─ op=%-4s  field=%s%n",
-                            "\"" + o.getOperator() + "\"", o.getField());
-                }
-                System.out.println("  │");
-            }
-            System.out.println();
-        }
-
-        List<String> a = Arrays.asList("1", "2", "3");
-        System.out.println(a.toString().replace(", ", "+"));
     }
 }
 

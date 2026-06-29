@@ -5,7 +5,7 @@ import id.go.ojk.client.model.bind.ProgressPreparationAndSending.SubmissionData;
 import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.validation.UtilValidation;
-import id.go.ojk.client.model.config.validation.segmen.v2.util.FormulaParserV2;
+import id.go.ojk.client.model.config.validation.segmen.v2.util.FormulaParser;
 import id.go.ojk.client.model.validation.ValidationError;
 import id.go.ojk.client.model.validation.ValidationResult;
 import id.go.ojk.lib.client.model.validation.ValidationErrorCode;
@@ -18,11 +18,10 @@ import java.math.RoundingMode;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
-import static id.go.ojk.client.model.config.validation.segmen.v2.util.FormulaParserV2.ParsedFormula;
-import static id.go.ojk.client.model.config.validation.segmen.v2.util.FormulaParserV2.parse;
+import static id.go.ojk.client.model.config.validation.segmen.v2.util.FormulaParser.ParsedFormula;
+import static id.go.ojk.client.model.config.validation.segmen.v2.util.FormulaParser.parse;
 
 @XStreamAlias("BaseFormulaParserFormValidation")
 public class BaseFormulaParserValidation extends BaseRowValidation {
@@ -86,32 +85,16 @@ public class BaseFormulaParserValidation extends BaseRowValidation {
         }
     }
 
-    private BigDecimal getCurrentValue(ValidationResult validationResult, String idxField) {
+    protected BigDecimal getCurrentValue(ValidationResult validationResult, String idxField) {
         return UtilValidation.toBigDecimal(validationResult.getColumn(Integer.parseInt(idxField)));
     }
 
     protected BigDecimal calculateFormula(ParsedFormula parsed) {
         BigDecimal formulaResult = BigDecimal.ZERO;
-        for (FormulaParserV2.Group g : parsed.getGroups()) {
+        for (FormulaParser.Group g : parsed.getGroups()) {
             BigDecimal groupTotal = BigDecimal.ZERO;
-            for (FormulaParserV2.RowToken t : g.getTokens()) {
-                AtomicReference<BigDecimal> rowTotal = new AtomicReference<>(BigDecimal.ZERO);
-                SubmissionFormat.getStreamOfFormSubMap(t.getRowPrefix() + t.getRowCode(), Character.MAX_VALUE)
-                        .map(Map.Entry::getValue)
-                        .forEach(v -> {
-                            boolean isInvalidValue = false;
-                            for (String field : t.getMapOperands().keySet()) {
-                                if (isInvalidValue) continue;
-                                if (isInvalidNumeric(v.get(field))) isInvalidValue = true;
-                                else rowTotal.set(calculateOperand(rowTotal.get(),
-                                        new BigDecimal(v.get(field)),
-                                        t.getMapOperands().get(field)));
-                            }
-
-                            if (isInvalidValue) rowTotal.set(BigDecimal.ZERO);
-                        });
-
-                groupTotal = calculateOperand(groupTotal, rowTotal.get(), t.getOperator());
+            for (FormulaParser.RowToken t : g.getTokens()) {
+                groupTotal = calculateOperand(groupTotal, calculateFieldStream(t), t.getOperator());
             }
             formulaResult = calculateOperand(formulaResult, groupTotal, g.getOperator());
         }
@@ -119,9 +102,61 @@ public class BaseFormulaParserValidation extends BaseRowValidation {
         return formulaResult;
     }
 
+    protected BigDecimal calculateFieldStream(FormulaParser.RowToken rowToken) {
+        BigDecimal[] fieldTotal = { BigDecimal.ZERO };
+        int[] ctrA = { 0 };
+        boolean[] isInvalidValue = { false };
+        SubmissionFormat.getStreamOfFormSubMap(rowToken.getRowPrefix() + rowToken.getRowCode(), Character.MAX_VALUE)
+                .map(Map.Entry::getValue)
+                .forEach(v -> {
+                    for (String field : rowToken.getMapOperands().keySet()) {
+                        if (isInvalidValue[0]) continue;
+                        if (isInvalidNumeric(v.get(field))) isInvalidValue[0] = true;
+                        else {
+                            fieldTotal[0] = calculateFieldOperand(fieldTotal[0],
+                                    new BigDecimal(v.get(field)),
+                                    rowToken.getMapOperands().get(field), ctrA[0]++);
+                        }
+                    }
+
+                    if (isInvalidValue[0]) fieldTotal[0] = BigDecimal.ZERO;
+                });
+
+        return fieldTotal[0];
+    }
+
     protected BigDecimal calculateOperand(BigDecimal value, BigDecimal tmpVal, String operator) {
-        if (operator.isEmpty()) {
+        if (operator == null || operator.isEmpty()) {
             value = tmpVal;
+        } else {
+            switch (operator) {
+                case "+":
+                    value = value.add(tmpVal);
+                    break;
+                case "-":
+                    value = value.subtract(tmpVal);
+                    break;
+                case "*":
+                    value = value.multiply(tmpVal);
+                    break;
+                case "/":
+                    if (tmpVal.compareTo(BigDecimal.ZERO) != 0) value = value.divide(tmpVal, 4, RoundingMode.HALF_EVEN);
+                    else value = BigDecimal.ZERO;
+                    break;
+                default:
+                    throw new UnsupportedOperationException();
+            }
+        }
+
+        return value
+                .setScale(scale, RoundingMode.HALF_UP);
+    }
+
+    protected BigDecimal calculateFieldOperand(BigDecimal value, BigDecimal tmpVal, String operator, int ctr) {
+        if (ctr == 0 && (operator == null || operator.isEmpty())) {
+            value = tmpVal;
+        } else if (ctr > 0 && (operator == null || operator.isEmpty())) {
+            value = value.add(tmpVal);
         } else {
             switch (operator) {
                 case "+":
