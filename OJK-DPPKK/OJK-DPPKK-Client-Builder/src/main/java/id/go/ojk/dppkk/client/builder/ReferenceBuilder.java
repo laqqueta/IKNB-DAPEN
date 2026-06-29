@@ -20,10 +20,7 @@ import id.go.ojk.lib.client.model.KeyValueString;
 import id.go.ojk.lib.client.model.reference.ReferenceHeader;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.lib.client.model.validation.ValidationErrorCode;
-import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpipk;
-import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpk;
-import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataPpmpm;
-import id.go.ojk.metadata.module.lblt.dppk.header.EHeaderMetadataSharedLkbt;
+import id.go.ojk.metadata.module.lblt.dppk.header.*;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -65,6 +62,7 @@ public class ReferenceBuilder extends BaseReferenceBuilder {
 		res.putAll(EHeaderMetadataPpmpk.getMap());
 		res.putAll(EHeaderMetadataPpmpm.getMap());
 		res.putAll(EHeaderMetadataPpipk.getMap());
+		res.putAll(EHeaderMetadataPpipm.getMap());
 		return res;
 	}
 
@@ -87,6 +85,7 @@ public class ReferenceBuilder extends BaseReferenceBuilder {
 		res.addAll(EHeaderMetadataPpmpk.getObjects());
 		res.addAll(EHeaderMetadataPpmpm.getObjects());
 		res.addAll(EHeaderMetadataPpipk.getObjects());
+		res.addAll(EHeaderMetadataPpipm.getObjects());
 		return res;
 	}
 }

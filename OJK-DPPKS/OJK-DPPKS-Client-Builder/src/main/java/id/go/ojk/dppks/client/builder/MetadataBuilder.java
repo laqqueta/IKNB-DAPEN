@@ -7,6 +7,7 @@ import id.go.ojk.client.model.config.SubmissionMetadata;
 import id.go.ojk.client.vc.HomeController;
 import id.go.ojk.conf.client.BaseMetadataBuilder;
 import id.go.ojk.dppks.client.builder.field.lblt.MetadataPPIPK;
+import id.go.ojk.dppks.client.builder.field.lblt.MetadataPPIPM;
 import id.go.ojk.dppks.client.builder.field.lblt.MetadataPPMPK;
 import id.go.ojk.dppks.client.builder.field.lblt.MetadataPPMPM;
 import id.go.ojk.dppks.client.builder.field.rb.metadata.MetadataRb;
@@ -51,6 +52,7 @@ public class MetadataBuilder extends BaseMetadataBuilder {
 		res.getFormats().addAll(MetadataPPMPK.getMetadata());
 		res.getFormats().addAll(MetadataPPMPM.getMetadata());
 		res.getFormats().addAll(MetadataPPIPK.getMetadata());
+		res.getFormats().addAll(MetadataPPIPM.getMetadata());
 		return res;
 	}
 
