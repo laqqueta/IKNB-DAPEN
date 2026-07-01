@@ -340,7 +340,7 @@ public enum E7001LanMValidationsConfig implements ILbltMetadataValidation, IVali
         String plusDesc = UtilMetadata.genPlusDesc(ER7003PosLtlbDppkNrc.getObjects(PPIPM), comparatorRows);
         String errMsg = UtilMetadata.genMessage(R_LAN0102000000.value, plusDesc + " pada form " + EFormLaporanBulananTahunan.LTLB_NERACA.getCode());
         return UtilSegmentValidationV2.genEqualsFormulaFormV2("3", R_LAN0102000000.key,
-                EFormLaporanBulananTahunan.LTLB_NERACA.getCode(), "16", comparatorField, errMsg, 2);
+                EFormLaporanBulananTahunan.LTLB_NERACA.getCode(), "2", comparatorField, errMsg, 2);
     }),
 
     GEN_VALIDATON_FORM_INSP(programs(PPIPM), () -> {
@@ -379,7 +379,7 @@ public enum E7001LanMValidationsConfig implements ILbltMetadataValidation, IVali
 
     GEN_VALIDATON_FORM_LAK(programs(PPIPM), () -> {
         KeyValueString selectPosCode = R_LAN0103010000.getObject();
-        int[] cols = {16};
+        int[] cols = {2};
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAK.getCode();
         String comparatorColumn = UtilMetadata.genPlusColumn(cols);
         KeyValueString comparatorPosCode = ER7005PosLtlbDppkLak.R_LAK0900000000.getObject();
@@ -446,7 +446,7 @@ public enum E7001LanMValidationsConfig implements ILbltMetadataValidation, IVali
 
     GEN_VALIDATON_FORM_NRC2(programs(PPIPM), () -> {
         KeyValueString selectPosCode = R_LAN0107000000.getObject();
-        int[] cols = {16};
+        int[] cols = {2};
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_NERACA.getCode();
         String comparatorColumn = UtilMetadata.genPlusColumn(cols);
         KeyValueString comparatorPosCode = ER7003PosLtlbDppkNrc.R_NRC0109000000.getObject();
@@ -470,7 +470,7 @@ public enum E7001LanMValidationsConfig implements ILbltMetadataValidation, IVali
 
     GEN_VALIDATON_FORM_LPAN(programs(PPIPM), () -> {
         KeyValueString selectPosCode = R_LAN0111000000.getObject();
-        int[] cols = {16};
+        int[] cols = {2};
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LPAN.getCode();
         String comparatorColumn = UtilMetadata.genPlusColumn(cols);
         KeyValueString comparatorPosCode = ER7002PosLtlbDppkLpan.R_LPAN0500000000.getObject();

@@ -5,6 +5,7 @@ import id.go.ojk.client.model.config.validation.field.FieldValidation;
 import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
 import id.go.ojk.client.model.validation.IValidation;
 import id.go.ojk.client.validation.IValidationConverter;
+import id.go.ojk.conf.client.UtilFieldValidation;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
 import id.go.ojk.conf.client.UtilSegmentValidationV2;
@@ -13,6 +14,7 @@ import id.go.ojk.conf.client.field.reference.ER1250Properti;
 import id.go.ojk.conf.client.field.reference.ER1255JenisManfaat;
 import id.go.ojk.lib.client.model.KeyValueString;
 import id.go.ojk.metadata.module.lblt.dppk.EFormLaporanBulananTahunan;
+import id.go.ojk.metadata.module.lblt.dppk.field.Dppk0003Nrc;
 import id.go.ojk.metadata.module.lblt.dppk.reference.*;
 import id.go.ojk.metadata.util.constants.ProgramType;
 import id.go.ojk.metadata.validation.ValidationConverter;
@@ -30,6 +32,7 @@ import java.util.function.Supplier;
 import static id.go.ojk.conf.client.UtilMetadata.genFormulaParser;
 import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7003PosLtlbDppkNrc.*;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
+import static id.go.ojk.metadata.util.FieldUtil.validationFields;
 import static id.go.ojk.metadata.util.constants.ProgramType.PPIPM;
 
 @AllArgsConstructor
@@ -241,23 +244,23 @@ public enum E7003NrcMValidationsConfig implements ILbltMetadataValidation, IVali
     SG_EQUALS_FORMULA_2(programs(PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula("2",
                     ER7003PosLtlbDppkNrc.R_NRC0105000000.getObject().getKey(),
-                    UtilMetadata.genPlusRow(ER7003PosLtlbDppkNrc.getObjects(ProgramType.PPIPM), 23, 32),
+                    UtilMetadata.genPlusRow(ER7003PosLtlbDppkNrc.getObjects(ProgramType.PPIPM), 23, 31),
                     UtilMetadata.genMessage(ER7003PosLtlbDppkNrc.R_NRC0105000000.getObject().getValue(),
-                            UtilMetadata.genPlusDesc(ER7003PosLtlbDppkNrc.getObjects(ProgramType.PPIPM), 23, 32)))),
+                            UtilMetadata.genPlusDesc(ER7003PosLtlbDppkNrc.getObjects(ProgramType.PPIPM), 23, 31)))),
 
     SG_EQUALS_FORMULA_3(programs(PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula("2",
                     ER7003PosLtlbDppkNrc.R_NRC0107000000.getObject().getKey(),
-                    UtilMetadata.genPlusRow(ER7003PosLtlbDppkNrc.getObjects(PPIPM), 34, 38) + "-NRC0106060000",
+                    UtilMetadata.genPlusRow(ER7003PosLtlbDppkNrc.getObjects(PPIPM), 33, 37) + "-NRC0106060000",
                     UtilMetadata.genMessage(ER7003PosLtlbDppkNrc.R_NRC0107000000.getObject().getValue(),
-                            UtilMetadata.genPlusDesc(ER7003PosLtlbDppkNrc.getObjects(PPIPM), 34, 38) + "-'Akumulasi Penyusutan'"))),
+                            UtilMetadata.genPlusDesc(ER7003PosLtlbDppkNrc.getObjects(PPIPM), 33, 37) + "-'Akumulasi Penyusutan'"))),
 
     SG_EQUALS_FORMULA_5(programs(PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula("2",
                     ER7003PosLtlbDppkNrc.R_NRC0109000000.getObject().getKey(),
-                    UtilMetadata.genPlusRow(ER7003PosLtlbDppkNrc.getObjects(ProgramType.PPIPM), new int[]{21, 22, 33, 40, 41}),
+                    UtilMetadata.genPlusRow(ER7003PosLtlbDppkNrc.getObjects(ProgramType.PPIPM), new int[]{21, 22, 32, 39, 40}),
                     UtilMetadata.genMessage(ER7003PosLtlbDppkNrc.R_NRC0109000000.getObject().getValue(),
-                            UtilMetadata.genPlusDesc(ER7003PosLtlbDppkNrc.getObjects(ProgramType.PPIPM), new int[]{21, 22, 33, 40, 41})))),
+                            UtilMetadata.genPlusDesc(ER7003PosLtlbDppkNrc.getObjects(ProgramType.PPIPM), new int[]{21, 22, 32, 39, 40})))),
     //
     SG_EQUALS_FORMULA_6(programs(PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula("2",
@@ -304,7 +307,17 @@ public enum E7003NrcMValidationsConfig implements ILbltMetadataValidation, IVali
 
         return UtilSegmentValidationV2.genFormulaParserValidationV2("2", R_NRC0106060000.key, operation.getFormula(), operationFormErr);
     }),
-    //
+
+    SG_LIALIBILATAS_ALM(programs(PPIPM), () -> {
+        String comparatorForm = EFormLaporanBulananTahunan.LTLB_ALM.getCode();
+        List<KeyValueString> formObject = ER7012PosLtlbDppkAlm.getObjects(PPIPM);
+        FormulaParserData operation2 = genFormulaParser(formObject, "40", "16", "Total - Total", comparatorForm);
+        String operationForm = operation2.getFormula();
+        String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " pada form ALM";
+
+        return UtilSegmentValidationV2.genFormulaParserValidationV2("2", R_NRC0113000000.key, operationForm, operationFormErr);
+    }),
+
     GEN_VALIDATON_FORM_LAK(programs(PPIPM), () -> {
         KeyValueString selectPosCode = R_NRC0104010000.getObject();
         int[] cols = {2};
@@ -313,6 +326,19 @@ public enum E7003NrcMValidationsConfig implements ILbltMetadataValidation, IVali
         KeyValueString comparatorPosCode = ER7005PosLtlbDppkLak.R_LAK0900000000.getObject();
         String comparatorPosCodeForm = comparatorPosCode.getKey();
         String errMsg = selectPosCode.getValue() + " | Total " + comparatorPosCode.getValue() + " pada form " + comparatorForm;
+        return UtilSegmentValidationV2.genEqualsFormColumCalculation("2", selectPosCode.getKey(), comparatorColumn,
+                comparatorPosCodeForm, comparatorForm, errMsg, 2);
+    }),
+
+    //
+    SG_EQUAL_TOTAL_LIABILITAS(programs(PPIPM), () -> {
+        KeyValueString selectPosCode = R_NRC0109000000.getObject();
+        int[] cols = {2};
+        String comparatorForm = EFormLaporanBulananTahunan.LTLB_NERACA.getCode();
+        String comparatorColumn = UtilMetadata.genPlusColumn(cols);
+        KeyValueString comparatorPosCode = ER7003PosLtlbDppkNrc.R_NRC0118000000.getObject();
+        String comparatorPosCodeForm = comparatorPosCode.getKey();
+        String errMsg = selectPosCode.getValue() + " | " + comparatorPosCode.getValue();
         return UtilSegmentValidationV2.genEqualsFormColumCalculation("2", selectPosCode.getKey(), comparatorColumn,
                 comparatorPosCodeForm, comparatorForm, errMsg, 2);
     }),
@@ -329,11 +355,18 @@ public enum E7003NrcMValidationsConfig implements ILbltMetadataValidation, IVali
                 comparatorPosCodeForm, comparatorForm, errMsg, 2);
     }),
     //
-    SG_EQUALS_FORM_FORMULA_LAN_1(programs(PPIPM), () -> UtilSegmentValidation.genEqualsForm("2", R_NRC0104010000.getObject().getKey(),
-            EFormLaporanBulananTahunan.LTLB_LAN.getCode(), "3",
-            ER7001PosLtlbDppkLan.R_LAN0103010000.getObject().getKey())),
+    SG_EQUALS_FORM_FORMULA_LAN_1(programs(PPIPM), () -> {
+        String errMsg = UtilMetadata.genMessage(R_NRC0104010000.getObject().getValue(),
+                ER7001PosLtlbDppkLan.R_LAN0103010000.getObject().getValue());
 
-    ;
+        return UtilSegmentValidationV2.genEqualsForm("2", R_NRC0104010000.getObject().getKey(),
+                EFormLaporanBulananTahunan.LTLB_LAN.getCode(), "3",
+                ER7001PosLtlbDppkLan.R_LAN0103010000.getObject().getKey(), errMsg + " pada form LAN");
+    }),
+
+    FV_MORE_THAN_ZERO(programs(PPIPM),
+            validationFields(Dppk0003Nrc.MANFAAT_PENSIUN),
+            () -> UtilFieldValidation.genPosGreaterValue(R_NRC0113000000.key, "0"));
 
     private final EnumSet<ProgramType> programTypes;
     private List<Integer> fieldIndexes;
@@ -424,5 +457,16 @@ public enum E7003NrcMValidationsConfig implements ILbltMetadataValidation, IVali
         sbFormulaErr.append(")");
 
         return new FormulaParserData(sbFormula.toString(), sbFormulaErr.toString());
+    }
+
+    public static void main(String[] args) {
+        String comparatorForm = EFormLaporanBulananTahunan.LTLB_ALM.getCode();
+        List<KeyValueString> formObject = ER7012PosLtlbDppkAlm.getObjects(PPIPM);
+        FormulaParserData operation2 = genFormulaParser(formObject, "40", "16", "Total - Total", comparatorForm);
+        String operationForm = operation2.getFormula();
+        String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " pada form ALM";
+
+        System.out.println(operationForm);
+        System.out.println(operationFormErr);
     }
 }

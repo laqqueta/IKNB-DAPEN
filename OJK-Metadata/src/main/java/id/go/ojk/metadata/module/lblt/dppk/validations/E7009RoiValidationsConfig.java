@@ -43,7 +43,8 @@ public enum E7009RoiValidationsConfig implements ILbltMetadataValidation, IValid
 
     SG_GEO_MEAN_PPMPK(programs(PPMPK),
             () -> {
-                String errMsg = UtilMetadata.genDelimitedColumn(2, 13, "*") + "|3|14|" + "REKINV baris ";
+                String colNames = "Jan*Feb*Mar*Apr*Mei*Jun*Jul*Agu*Sep*Okt*Nov*Des";
+                String errMsg = colNames + "|Jan|Des|" + "REKINV Baris ";
                 String formRow = UtilMetadata.genPipeRow(ER7008PosLtlbDppkRekinv.getObjects(ProgramType.PPMPK), 0, 19);
                 String formRowDesc = UtilMetadata.genDelimitedDesc(ER7008PosLtlbDppkRekinv.getObjects(ProgramType.PPMPK), 0, 19, "|");
                 return UtilSegmentValidationV2.genGeoMeanInvestasi("10",
@@ -54,7 +55,8 @@ public enum E7009RoiValidationsConfig implements ILbltMetadataValidation, IValid
 
     SG_GEO_MEAN_PPMPM(programs(PPMPM),
             () -> {
-                String errMsg = UtilMetadata.genDelimitedColumn(2, 13, "*") + "|3|14|" + "REKINV baris ";
+                String colNames = "Jan*Feb*Mar*Apr*Mei*Jun*Jul*Agu*Sep*Okt*Nov*Des";
+                String errMsg = colNames + "|Jan|Des|" + "REKINV Baris ";
                 String formRow = UtilMetadata.genPipeRow(ER7008PosLtlbDppkRekinv.getObjects(PPMPM), 0, 19);
                 String formRowDesc = UtilMetadata.genDelimitedDesc(ER7008PosLtlbDppkRekinv.getObjects(PPMPM), 0, 19, "|");
                 return UtilSegmentValidationV2.genGeoMeanInvestasi("10",
@@ -65,7 +67,8 @@ public enum E7009RoiValidationsConfig implements ILbltMetadataValidation, IValid
 
     SG_GEO_MEAN_PPIPK(programs(PPIPK),
             () -> {
-                String errMsg = UtilMetadata.genDelimitedColumn(2, 13, "*") + "|3|14|" + "REKINV baris ";
+                String colNames = "Jan*Feb*Mar*Apr*Mei*Jun*Jul*Agu*Sep*Okt*Nov*Des";
+                String errMsg = colNames + "|Jan|Des|" + "REKINV Baris ";
                 String formRow = UtilMetadata.genPipeRow(ER7008PosLtlbDppkRekinv.getObjects(PPIPK), 0, 19);
                 String formRowDesc = UtilMetadata.genDelimitedDesc(ER7008PosLtlbDppkRekinv.getObjects(PPIPK), 0, 19, "|");
                 return UtilSegmentValidationV2.genGeoMeanInvestasi("10",
@@ -76,7 +79,8 @@ public enum E7009RoiValidationsConfig implements ILbltMetadataValidation, IValid
 
     SG_GEO_MEAN_PPIPM(programs(PPIPM),
             () -> {
-                String errMsg = UtilMetadata.genDelimitedColumn(2, 13, "*") + "|3|14|" + "REKINV baris ";
+                String colNames = "Jan*Feb*Mar*Apr*Mei*Jun*Jul*Agu*Sep*Okt*Nov*Des";
+                String errMsg = colNames + "|Jan|Des|" + "REKINV Baris ";
                 String formRow = UtilMetadata.genPipeRow(ER7008PosLtlbDppkRekinv.getObjects(PPIPM), 0, 19);
                 String formRowDesc = UtilMetadata.genDelimitedDesc(ER7008PosLtlbDppkRekinv.getObjects(PPIPM), 0, 19, "|");
                 return UtilSegmentValidationV2.genGeoMeanInvestasi("10",

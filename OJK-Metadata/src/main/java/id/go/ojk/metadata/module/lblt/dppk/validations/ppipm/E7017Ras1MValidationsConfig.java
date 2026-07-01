@@ -52,10 +52,10 @@ public enum E7017Ras1MValidationsConfig implements ILbltMetadataValidation, IVal
 
     SG_RAS10102000000_B(programs(PPIPM), () -> {
         KeyValueString selectPosCode = R_RAS10102000000.getObject();
-        KeyValueString comparatorPosCode = ER7010PosLtlbDppkRoiml.R_ROIML2100000000.getObject();
-        String errMsg = selectPosCode.getValue() + "|" + comparatorPosCode.getValue() + " pada form ROIML";
+        KeyValueString comparatorPosCode = ER7009PosLtlbDppkRoi.R_ROI2100000000.getObject();
+        String errMsg = selectPosCode.getValue() + "|" + comparatorPosCode.getValue() + " Rata-rata Investasi pada form ROI";
         return UtilSegmentValidationV2.genEqualsForm("2", selectPosCode.getKey(),
-                EFormLaporanBulananTahunan.LTLB_ROI_ML.getCode(), "10", comparatorPosCode.getKey(), errMsg);
+                EFormLaporanBulananTahunan.LTLB_ROI.getCode(), "10", comparatorPosCode.getKey(), errMsg);
     }),
 
     SG_MULTI_SUM_RAS10201000000(programs(PPIPM), () -> {
@@ -79,7 +79,7 @@ public enum E7017Ras1MValidationsConfig implements ILbltMetadataValidation, IVal
         String comparatorExpr = "/12";
         String form = EFormLaporanBulananTahunan.LTLB_REKINV.getCode();
         String errMsg = "'" + R_RAS10202000000.value + "' harus sama dengan rata-rata '" + comparator.getValue() + "' pada form " + form;
-        return UtilSegmentValidation.genEqualsFormExpression("2", R_RAS10202000000.key, null, form, comparatorField,
+        return UtilSegmentValidationV2.genEqualsFormExpression("2", R_RAS10202000000.key, null, form, comparatorField,
                 comparator.getKey(), comparatorExpr, "e", 2, errMsg);
     }),
 

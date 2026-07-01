@@ -135,10 +135,10 @@ public enum E7002LpanMValidationsConfig implements ILbltMetadataValidation, IVal
             () -> {
                 KeyValueString selectPosCode = R_LPAN0103000000.getObject();
                 String selectColumn = "2";
-                String comparatorForm = EFormLaporanBulananTahunan.LTLB_PPIN.getCode();
-                String comparatorColumn = "4";
-                String comparatorPosCode = ER7060PosLtlbDppkPpin.R_PPIN000000.key;
-                String errMsg = selectPosCode.getValue() + " | Total Peningkatan / Penurunan pada form " + comparatorForm;
+                String comparatorForm = EFormLaporanBulananTahunan.LTLB_ROI.getCode();
+                String comparatorColumn = "7";
+                String comparatorPosCode = ER7009PosLtlbDppkRoi.R_ROI2100000000.key;
+                String errMsg = selectPosCode.getValue() + " | Total Hasil Investasi yang Belum Terealisasi pada form " + comparatorForm;
                 return UtilSegmentValidationV2.genEqualsFormColumCalculation(selectColumn, selectPosCode.getKey(), comparatorColumn,
                         comparatorPosCode, comparatorForm, errMsg, 2);
             }),

@@ -47,13 +47,13 @@ public enum Dppk0121Lcf implements ILbltFieldMetadata {
             sf(2, null, "Jumlah Peserta", sv(C, 1, 18, numeric))),
 
     HASIL_INVESTASI_TERLEASISASI(sectors(KONVENSIONAL, SYARIAH), programs(PPIPM),
-            sf(3, null, "Hasil Investasi yang Terealisasi", sv(M, 1, 18, numeric))),
+            sf(3, null, "Hasil Investasi yang Terealisasi", sv(C, 1, 18, numeric))),
 
     HASIL_INVESTASI_BELUM_TERLEASISASI(sectors(KONVENSIONAL, SYARIAH), programs(PPIPM),
-            sf(4, null, "Hasil Investasi yang belum Terealisasi", sv(M, 1, 18, numeric))),
+            sf(4, null, "Hasil Investasi yang belum Terealisasi", sv(C, 1, 18, numeric))),
 
     BEBAN_INVESATASI(sectors(KONVENSIONAL, SYARIAH), programs(PPIPM),
-            sf(5, null, "Beban Invesatsi", sv(M, 1, 18, numeric))),
+            sf(5, null, "Beban Invesatsi", sv(C, 1, 18, numeric))),
 
     HASIL_INVESTASI_BERSIH(sectors(KONVENSIONAL, SYARIAH), programs(PPIPM),
             sf(6, null, "Hasil Investasi Bersih", sv(C, 1, 18, numeric))),
@@ -83,12 +83,12 @@ public enum Dppk0121Lcf implements ILbltFieldMetadata {
                 .name(form.getName())
                 .extension(ExtensionType.TXT)
                 .reportCode(reportCode)
-                .maxRow(null)
+                .maxRow(7)
+                .minRow(7)
                 .fields(new ArrayList<>())
                 .build();
 
         if (sectorType.equals(KONVENSIONAL) || sectorType.equals(SYARIAH)) {
-            sfConfig.setMinRow(0);
             return sfConfig;
         }
 

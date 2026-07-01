@@ -87,7 +87,7 @@ public class GeoMeanInvestasiFormValidation extends BaseRowValidation {
 
         if (formData.isEmpty()) return BigDecimal.ZERO;
 
-        for(String field : comparatorFields) {
+        for (String field : comparatorFields) {
             if (!formData.containsKey(field)) return BigDecimal.ZERO;
             if (isInvalidNumeric(formData.get(field))) return BigDecimal.ZERO;
 
@@ -103,7 +103,7 @@ public class GeoMeanInvestasiFormValidation extends BaseRowValidation {
         }
 
         BigDecimal exponent = BigDecimal.ONE.divide(
-                BigDecimal.valueOf(positiveCount), 4, RoundingMode.HALF_UP);
+                BigDecimal.valueOf(positiveCount), MathContext.DECIMAL64);
 
         return BigDecimal.valueOf(
                         Math.pow(p.doubleValue(), exponent.doubleValue()))
@@ -116,7 +116,7 @@ public class GeoMeanInvestasiFormValidation extends BaseRowValidation {
     }
 
     private String getComparatorMsg(String comparatorFormula) {
-        StringBuilder res = new StringBuilder("(");
+        StringBuilder res = new StringBuilder("( Kolom");
         String[] formulaSplit = comparatorFormula.split("(?<=[-+/*])|(?=[-+/*])");
         int len = formulaSplit.length;
         for (int i = 0; i < len; i++) {
@@ -124,7 +124,7 @@ public class GeoMeanInvestasiFormValidation extends BaseRowValidation {
             String tmp = "";
             if (StringUtils.isNumeric(str)) {
                 tmp = " kolom " + (Integer.parseInt(str) + 1);
-            } else if (i + 1 < len) {
+            } else {
                 tmp = " " + str;
             }
             res.append(tmp);

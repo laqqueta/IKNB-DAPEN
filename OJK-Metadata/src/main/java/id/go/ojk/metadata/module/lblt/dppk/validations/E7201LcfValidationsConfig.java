@@ -22,9 +22,7 @@ import java.util.EnumSet;
 import java.util.List;
 import java.util.function.Supplier;
 
-import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7067PosLtlbDppkPph.R_PPH000000;
-import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7067PosLtlbDppkPph.R_PPH010000;
-import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7201PosLtlbDppkLcf.R_LCF0000000000;
+import static id.go.ojk.metadata.module.lblt.dppk.reference.ER7201PosLtlbDppkLcf.*;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
 import static id.go.ojk.metadata.util.constants.ProgramType.*;
@@ -35,18 +33,22 @@ public enum E7201LcfValidationsConfig implements ILbltMetadataValidation, IValid
 
     SG_EQUAL_FORMULA(programs(PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(3, 5),
-                    UtilMetadata.genPlusRow(ER7201PosLtlbDppkLcf.getObjects(), 0, 4), R_LCF0000000000.key,
-                    UtilMetadata.genMessageTotal(UtilMetadata.genPlusDesc(ER7201PosLtlbDppkLcf.getObjects(), 0, 4), R_LCF0000000000.value))),
+                    UtilMetadata.genPlusRow(ER7201PosLtlbDppkLcf.getObjects(), 0, 4), R_LCF0700000000.key,
+                    UtilMetadata.genMessageTotal(UtilMetadata.genPlusDesc(ER7201PosLtlbDppkLcf.getObjects(), 0, 4), R_LCF0700000000.value))),
 
     CR_COL_EMPTY_1(programs(PPIPM),
-            validationFields(Dppk0121Lcf.JUMLAH_PESERTA, Dppk0121Lcf.HASIL_INVESTASI_BERSIH,
-                    Dppk0121Lcf.RATA_RATA_INVESTASI, Dppk0121Lcf.ROI),
-            () -> UtilFieldConditional.genExistPos("N", "M", R_LCF0000000000.key)),
+            validationFields(Dppk0121Lcf.JUMLAH_PESERTA),
+            () -> UtilFieldConditional.genExistPos("M", "N", R_LCF0100000000.key)),
 
     CR_COL_EMPTY_2(programs(PPIPM),
-            validationFields(Dppk0121Lcf.JUMLAH_PESERTA),
+            validationFields(Dppk0121Lcf.HASIL_INVESTASI_TERLEASISASI, Dppk0121Lcf.HASIL_INVESTASI_BELUM_TERLEASISASI,
+                    Dppk0121Lcf.BEBAN_INVESATASI),
+            () -> UtilFieldConditional.genExistPos("N", "M", R_LCF0100000000.key)),
+
+    CR_COL_EMPTY_3(programs(PPIPM),
+            validationFields(Dppk0121Lcf.HASIL_INVESTASI_BERSIH, Dppk0121Lcf.RATA_RATA_INVESTASI, Dppk0121Lcf.ROI),
             () -> UtilFieldConditional.genExistPos("N", "M",
-                    UtilMetadata.genPipeRow(ER7201PosLtlbDppkLcf.getObjects()))),
+                    UtilMetadata.genPipeRow(getObjects(), new int[] { 0, 6 }))),
 
     ;
 

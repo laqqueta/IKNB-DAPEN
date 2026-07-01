@@ -13,13 +13,13 @@ import java.util.List;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ER7201PosLtlbDppkLcf implements IObject<KeyValueString> {
 
-//    R_LCF0100000000("LCF0100000000", "a"),
-    R_LCF0200000000("LCF0200000000", "b"),
-    R_LCF0300000000("LCF0300000000", "c"),
-    R_LCF0400000000("LCF0400000000", "d"),
-    R_LCF0500000000("LCF0500000000", "e"),
-    R_LCF0600000000("LCF0600000000", "f"),
-    R_LCF0000000000("LCF0000000000", "Total"),
+    R_LCF0100000000("LCF0100000000", "Jumlah Peserta"),
+    R_LCF0200000000("LCF0200000000", "Deposito on call pada Bank"),
+    R_LCF0300000000("LCF0300000000", "Deposito berjangka pada Bank"),
+    R_LCF0400000000("LCF0400000000", "Sertifikat deposito pada Bank"),
+    R_LCF0500000000("LCF0500000000", "Surat berharga yang diterbitkan oleh Bank Indonesia"),
+    R_LCF0600000000("LCF0600000000", "Surat Berharga Negara"),
+    R_LCF0700000000("LCF0700000000", "Total"),
 
     ;
 

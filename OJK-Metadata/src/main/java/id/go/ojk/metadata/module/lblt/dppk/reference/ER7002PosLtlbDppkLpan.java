@@ -15,22 +15,22 @@ import java.util.List;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ER7002PosLtlbDppkLpan implements IObject<KeyValueString> {
 
-    R_LPAN0101010000("LPAN0101010000", "Bunga/Bagi Hasil", EnumSet.of(ProgramType.ALL)),
-    R_LPAN0101020000("LPAN0101020000", "Dividen", EnumSet.of(ProgramType.ALL)),
-    R_LPAN0101030000("LPAN0101030000", "Sewa", EnumSet.of(ProgramType.ALL)),
-    R_LPAN0101040000("LPAN0101040000", "Laba (Rugi) Pelepasan Investasi", EnumSet.of(ProgramType.ALL)),
-    R_LPAN0101050000("LPAN0101050000", "Pendapatan Investasi Lain", EnumSet.of(ProgramType.ALL)),
-    R_LPAN0102000000("LPAN0102000000", "Total Pendapatan Investasi", EnumSet.of(ProgramType.ALL)),
-    R_LPAN0103000000("LPAN0103000000", "Peningkatan (Penurunan) Nilai Investasi", EnumSet.of(ProgramType.ALL)),
-    R_LPAN0104010000("LPAN0104010000", "- Iuran Normal Pemberi Kerja", EnumSet.of(ProgramType.ALL)),
-    R_LPAN0104020000("LPAN0104020000", "- Iuran Normal Peserta", EnumSet.of(ProgramType.ALL)),
-    R_LPAN0104030000("LPAN0104030000", "- Iuran Sukarela Peserta", EnumSet.of(ProgramType.ALL)),
-    R_LPAN0104040000("LPAN0104040000", "- Iuran Tambahan", EnumSet.of(ProgramType.PPMPM, ProgramType.PPMPK)),
-    R_LPAN0105000000("LPAN0105000000", "Pendapatan di Luar Investasi", EnumSet.of(ProgramType.ALL)),
-    R_LPAN0106000000("LPAN0106000000", "Pengalihan Dana dari Dana Pensiun Lain", EnumSet.of(ProgramType.ALL)),
-    R_LPAN0107000000("LPAN0107000000", "Jumlah Penambahan", EnumSet.of(ProgramType.ALL)),
-    R_LPAN0201000000("LPAN0201000000", "Beban Investasi", EnumSet.of(ProgramType.ALL)),
-    R_LPAN0202000000("LPAN0202000000", "Beban Operasional", EnumSet.of(ProgramType.ALL)),
+    R_LPAN0101010000("LPAN0101010000", "Bunga/Bagi Hasil", EnumSet.of(ProgramType.ALL)), // 0
+    R_LPAN0101020000("LPAN0101020000", "Dividen", EnumSet.of(ProgramType.ALL)), // 1
+    R_LPAN0101030000("LPAN0101030000", "Sewa", EnumSet.of(ProgramType.ALL)), // 2
+    R_LPAN0101040000("LPAN0101040000", "Laba (Rugi) Pelepasan Investasi", EnumSet.of(ProgramType.ALL)), // 3
+    R_LPAN0101050000("LPAN0101050000", "Pendapatan Investasi Lain", EnumSet.of(ProgramType.ALL)), // 4
+    R_LPAN0102000000("LPAN0102000000", "Total Pendapatan Investasi", EnumSet.of(ProgramType.ALL)), // 5
+    R_LPAN0103000000("LPAN0103000000", "Peningkatan (Penurunan) Nilai Investasi", EnumSet.of(ProgramType.ALL)), // 6
+    R_LPAN0104010000("LPAN0104010000", "- Iuran Normal Pemberi Kerja", EnumSet.of(ProgramType.ALL)), // 7
+    R_LPAN0104020000("LPAN0104020000", "- Iuran Normal Peserta", EnumSet.of(ProgramType.ALL)), // 8
+    R_LPAN0104030000("LPAN0104030000", "- Iuran Sukarela Peserta", EnumSet.of(ProgramType.ALL)), // 9
+    R_LPAN0104040000("LPAN0104040000", "- Iuran Tambahan", EnumSet.of(ProgramType.PPMPM, ProgramType.PPMPK)), // 10
+    R_LPAN0105000000("LPAN0105000000", "Pendapatan di Luar Investasi", EnumSet.of(ProgramType.ALL)), // 11
+    R_LPAN0106000000("LPAN0106000000", "Pengalihan Dana dari Dana Pensiun Lain", EnumSet.of(ProgramType.ALL)), // 12
+    R_LPAN0107000000("LPAN0107000000", "Jumlah Penambahan", EnumSet.of(ProgramType.ALL)), // 13
+    R_LPAN0201000000("LPAN0201000000", "Beban Investasi", EnumSet.of(ProgramType.ALL)), // 14
+    R_LPAN0202000000("LPAN0202000000", "Beban Operasional", EnumSet.of(ProgramType.ALL)), //
     R_LPAN0203000000("LPAN0203000000", "Beban di Luar Investasi dan Operasional", EnumSet.of(ProgramType.ALL)),
     R_LPAN0204000000("LPAN0204000000", "Manfaat Pensiun dan Manfaat Lain", EnumSet.of(ProgramType.ALL)),
     R_LPAN0205000000("LPAN0205000000", "Pajak Penghasilan", EnumSet.of(ProgramType.ALL)),

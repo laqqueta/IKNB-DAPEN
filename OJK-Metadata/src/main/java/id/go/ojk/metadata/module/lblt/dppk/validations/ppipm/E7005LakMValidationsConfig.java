@@ -7,6 +7,7 @@ import id.go.ojk.client.model.validation.IValidation;
 import id.go.ojk.client.validation.IValidationConverter;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
+import id.go.ojk.conf.client.UtilSegmentValidationV2;
 import id.go.ojk.lib.client.model.KeyValueString;
 import id.go.ojk.metadata.module.lblt.dppk.EFormLaporanBulananTahunan;
 import id.go.ojk.metadata.util.constants.ProgramType;
@@ -61,10 +62,10 @@ public enum E7005LakMValidationsConfig implements ILbltMetadataValidation, IVali
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_NERACA.getCode();
         String comparatorColumn = UtilMetadata.genPlusColumn(cols);
         KeyValueString comparatorPosCode = R_NRC0104010000.getObject();
-        String comparatorPosCodeForm = comparatorForm + comparatorPosCode.getKey();
+        String comparatorPosCodeForm = comparatorPosCode.getKey();
         String errMsg = selectPosCode.getValue() + " | Total " + comparatorPosCode.getValue() + " pada form " + comparatorForm;
-        return UtilSegmentValidation.genEqualsFormColumCalculation("2", selectPosCode.getKey(), comparatorColumn,
-                comparatorPosCodeForm, errMsg, 2);
+        return UtilSegmentValidationV2.genEqualsFormColumCalculation("2", selectPosCode.getKey(), comparatorColumn,
+                comparatorPosCodeForm, comparatorForm, errMsg, 2);
     }),
 
 
