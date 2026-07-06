@@ -73,13 +73,13 @@ public enum Dppk0056Utin implements ILbltFieldMetadata {
 
     public static final LbltMetadataField<Dppk0056Utin> FIELD_METADATA = new LbltMetadataField<>(Dppk0056Utin.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
 
-    public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, String reportCode) {
+    public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, ProgramType programType) {
         EFormLaporanBulananTahunan UTIN_FORM = EFormLaporanBulananTahunan.LTLB_UTIN;
         SubmissionFormatBuilder sfConfig = SubmissionFormatBuilder.builder()
                 .code(UTIN_FORM.getCode())
                 .name(UTIN_FORM.getName())
                 .extension(ExtensionType.TXT)
-                .reportCode(reportCode)
+                .reportCode(programType.toString())
                 .maxRow(null)
                 .fields(new ArrayList<>())
                 .build();
@@ -115,10 +115,10 @@ public enum Dppk0056Utin implements ILbltFieldMetadata {
                 throw new IllegalStateException();
         }
 
-        return new SubmissionConfig(programType.toString())
+        return new SubmissionConfig(programType)
                 .config()
                 .setReferenceConfigs(ER7056PosLtlbDppkUtin.Configs.REF_CONFIG)
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
                 .setSubmissionField(FIELD_METADATA.getClearedFields())
                 .setSegmentValidations()
                 .build()

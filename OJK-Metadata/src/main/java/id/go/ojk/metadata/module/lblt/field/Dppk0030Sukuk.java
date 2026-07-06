@@ -121,13 +121,13 @@ public enum Dppk0030Sukuk implements ILbltFieldMetadata {
 
     public static final LbltMetadataField<Dppk0030Sukuk> FIELD_METADATA = new LbltMetadataField<>(Dppk0030Sukuk.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
 
-    public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, String reportCode) {
+    public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, ProgramType programType) {
         EFormLaporanBulananTahunan SUKUK_FORM = EFormLaporanBulananTahunan.LTLB_SUKUK;
         SubmissionFormatBuilder sfConfig = SubmissionFormatBuilder.builder()
                 .code(SUKUK_FORM.getCode())
                 .name(SUKUK_FORM.getName())
                 .extension(ExtensionType.TXT)
-                .reportCode(reportCode)
+                .reportCode(programType.toString())
                 .maxRow(null)
                 .fields(new ArrayList<>())
                 .build();
@@ -163,10 +163,10 @@ public enum Dppk0030Sukuk implements ILbltFieldMetadata {
                 throw new IllegalStateException();
         }
 
-        return new SubmissionConfig(programType.toString())
+        return new SubmissionConfig(programType)
                 .config()
                 .setReferenceConfigs(ER7030PosLtlbDppkSukuk.Configs.REF_CONFIG)
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
                 .setSubmissionField(FIELD_METADATA.getClearedFields())
                 .setSegmentValidations()
                 .build()

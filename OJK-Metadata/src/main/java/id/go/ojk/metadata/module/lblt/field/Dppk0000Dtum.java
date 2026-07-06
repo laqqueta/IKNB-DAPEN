@@ -68,13 +68,13 @@ public enum Dppk0000Dtum implements ILbltFieldMetadata {
     private static final LbltMetadataField<Dppk0000Dtum> FIELD_METADATA = new LbltMetadataField<>
             (Dppk0000Dtum.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
 
-    private static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, String reportCode) {
+    private static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, ProgramType programType) {
         EFormLaporanBulananTahunan DTUM_FORM = EFormLaporanBulananTahunan.LTLB_DTUM;
         SubmissionFormatBuilder sfConfig = SubmissionFormatBuilder.builder()
                 .code(DTUM_FORM.getCode())
                 .name(DTUM_FORM.getName())
                 .extension(ExtensionType.TXT)
-                .reportCode(reportCode)
+                .reportCode(programType.toString())
                 .maxRow(null)
                 .fields(new ArrayList<>())
                 .build();
@@ -114,10 +114,10 @@ public enum Dppk0000Dtum implements ILbltFieldMetadata {
                 throw new IllegalStateException();
         }
 
-        BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType.toString())
+        BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType)
                 .config()
                 .setReferenceConfigs(referenceConfig)
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()));
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType));
 
         if (programType == DPLK) {
             submissionConfig

@@ -95,13 +95,13 @@ public enum Dppk0025Srdp implements ILbltFieldMetadata {
 
     public static final LbltMetadataField<Dppk0025Srdp> FIELD_METADATA = new LbltMetadataField<>(Dppk0025Srdp.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
 
-    public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, String reportCode) {
+    public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, ProgramType programType) {
         EFormLaporanBulananTahunan SRDP_FORM = EFormLaporanBulananTahunan.LTLB_SRDP;
         SubmissionFormatBuilder sfConfig = SubmissionFormatBuilder.builder()
                 .code(SRDP_FORM.getCode())
                 .name(SRDP_FORM.getName())
                 .extension(ExtensionType.TXT)
-                .reportCode(reportCode)
+                .reportCode(programType.toString())
                 .maxRow(null)
                 .fields(new ArrayList<>())
                 .build();
@@ -138,10 +138,10 @@ public enum Dppk0025Srdp implements ILbltFieldMetadata {
 
         }
 
-        return new SubmissionConfig(programType.toString())
+        return new SubmissionConfig(programType)
                 .config()
                 .setReferenceConfigs(ER7025PosLtlbDppkSrdp.Configs.REF_CONFIG)
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
                 .setSubmissionField(FIELD_METADATA.getClearedFields())
                 .setSegmentValidations()
                 .build()

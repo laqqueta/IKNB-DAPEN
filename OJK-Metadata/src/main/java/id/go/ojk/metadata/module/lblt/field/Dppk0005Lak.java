@@ -110,13 +110,13 @@ public enum Dppk0005Lak implements ILbltFieldMetadata {
 
     public static final LbltMetadataField<Dppk0005Lak> FIELD_METADATA = new LbltMetadataField<>(Dppk0005Lak.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
 
-    public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, String reportCode) {
+    public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, ProgramType programType) {
         EFormLaporanBulananTahunan LAK_FORM = EFormLaporanBulananTahunan.LTLB_LAK;
         SubmissionFormatBuilder sfConfig = SubmissionFormatBuilder.builder()
                 .code(LAK_FORM.getCode())
                 .name(LAK_FORM.getName())
                 .extension(ExtensionType.TXT)
-                .reportCode(reportCode)
+                .reportCode(programType.toString())
                 .maxRow(31)
                 .fields(new ArrayList<>())
                 .build();
@@ -160,8 +160,8 @@ public enum Dppk0005Lak implements ILbltFieldMetadata {
                 throw new IllegalStateException();
         }
 
-        BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType.toString()).config()
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
+        BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType).config()
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
                 .setReferenceConfigs(referenceConfig);
 
         if (programType == DPLK) {
@@ -176,10 +176,10 @@ public enum Dppk0005Lak implements ILbltFieldMetadata {
 
         return submissionConfig.build().get();
 
-//        return new SubmissionConfig(programType.toString())
+//        return new SubmissionConfig(programType)
 //                .config()
 //                .setReferenceConfigs(referenceConfig)
-//                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
+//                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
 //                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
 //                .setSegmentValidations(metadataValidation).build()
 //                .get();

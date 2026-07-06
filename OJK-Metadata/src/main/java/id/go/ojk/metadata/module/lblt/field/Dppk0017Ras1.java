@@ -91,13 +91,13 @@ public enum Dppk0017Ras1 implements ILbltFieldMetadata {
     public static final LbltMetadataField<Dppk0017Ras1> FIELD_METADATA =
             new LbltMetadataField<>(Dppk0017Ras1.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
 
-    public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, String reportCode) {
+    public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, ProgramType programType) {
         EFormLaporanBulananTahunan RAS1_FORM = EFormLaporanBulananTahunan.LTLB_RAS_1;
         SubmissionFormatBuilder sfConfig = SubmissionFormatBuilder.builder()
                 .code(RAS1_FORM.getCode())
                 .name(RAS1_FORM.getName())
                 .extension(ExtensionType.TXT)
-                .reportCode(reportCode)
+                .reportCode(programType.toString())
                 .maxRow(null)
                 .fields(new ArrayList<>())
                 .build();
@@ -118,7 +118,7 @@ public enum Dppk0017Ras1 implements ILbltFieldMetadata {
         List<SegmentValidation> additionalSegment = new ArrayList<>();
         ReferenceConfig referenceConfig = null;
         BaseSubmissionConfig.Config<? extends BaseSubmissionConfig.Config<?>> submssionConfig =
-                new SubmissionConfig(programType.toString()).config();
+                new SubmissionConfig(programType).config();
 
         switch (programType) {
             case PPMPK:
@@ -148,8 +148,8 @@ public enum Dppk0017Ras1 implements ILbltFieldMetadata {
                 throw new IllegalStateException();
         }
 
-        BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType.toString()).config()
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
+        BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType).config()
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
                 .setReferenceConfigs(referenceConfig);
 
         if (programType == DPLK) {
@@ -165,9 +165,9 @@ public enum Dppk0017Ras1 implements ILbltFieldMetadata {
 
         return submissionConfig.build().get();
 
-//        return new SubmissionConfig(programType.toString()).config()
+//        return new SubmissionConfig(programType).config()
 //                .setReferenceConfigs(referenceConfig)
-//                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
+//                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
 //                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
 //                .setSegmentValidations(metadataValidation)
 //                .additionalSegmentValidations(additionalSegment)

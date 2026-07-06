@@ -99,13 +99,13 @@ public enum Dppk0008Rekinv implements ILbltFieldMetadata {
     public static final LbltMetadataField<Dppk0008Rekinv> FIELD_METADATA =
             new LbltMetadataField<>(Dppk0008Rekinv.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
 
-    public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, String reportCode) {
+    public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, ProgramType programType) {
         EFormLaporanBulananTahunan REKINV_FORM = EFormLaporanBulananTahunan.LTLB_REKINV;
         SubmissionFormatBuilder sfConfig = SubmissionFormatBuilder.builder()
                 .code(REKINV_FORM.getCode())
                 .name(REKINV_FORM.getName())
                 .extension(ExtensionType.TXT)
-                .reportCode(reportCode)
+                .reportCode(programType.toString())
                 .maxRow(24)
                 .fields(new ArrayList<>())
                 .build();
@@ -121,7 +121,7 @@ public enum Dppk0008Rekinv implements ILbltFieldMetadata {
     public static SubmissionFormat formMetadata(SectorType sectorType, ProgramType programType) {
         FIELD_METADATA.setProgramType(programType);
 
-        SubmissionFormatBuilder submissionFormatBuilder = getPpmpSubmissionFormatConfig(sectorType, programType.toString());
+        SubmissionFormatBuilder submissionFormatBuilder = getPpmpSubmissionFormatConfig(sectorType, programType);
         ER7008PosLtlbDppkRekinv.Configs referenceConfig = null;
         BaseMetadataValidation<? extends IBaseMetadataValidation> metadataValidation = null;
 
@@ -156,7 +156,7 @@ public enum Dppk0008Rekinv implements ILbltFieldMetadata {
                 throw new IllegalStateException();
         }
 
-        BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType.toString()).config()
+        BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType).config()
                 .setSubmissionFormat(submissionFormatBuilder)
                 .setReferenceConfigs(referenceConfig);
 
@@ -175,7 +175,7 @@ public enum Dppk0008Rekinv implements ILbltFieldMetadata {
 
         return submissionConfig.build().get();
 
-//        return new SubmissionConfig(programType.toString())
+//        return new SubmissionConfig(programType)
 //                .config()
 //                .setReferenceConfigs(referenceConfig)
 //                .setSubmissionFormat(submissionFormatBuilder)

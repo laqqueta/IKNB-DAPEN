@@ -97,13 +97,13 @@ public enum Dppk0022Doc implements ILbltFieldMetadata {
 
     public static final LbltMetadataField<Dppk0022Doc> FIELD_METADATA = new LbltMetadataField<>(Dppk0022Doc.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
 
-    public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, String reportCode) {
+    public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, ProgramType programType) {
         EFormLaporanBulananTahunan DOC_FORM = EFormLaporanBulananTahunan.LTLB_DOC;
         SubmissionFormatBuilder sfConfig = SubmissionFormatBuilder.builder()
                 .code(DOC_FORM.getCode())
                 .name(DOC_FORM.getName())
                 .extension(ExtensionType.TXT)
-                .reportCode(reportCode)
+                .reportCode(programType.toString())
                 .maxRow(null)
                 .build();
 
@@ -139,10 +139,10 @@ public enum Dppk0022Doc implements ILbltFieldMetadata {
 
         }
 
-        return new SubmissionConfig(programType.toString())
+        return new SubmissionConfig(programType)
                 .config()
                 .setReferenceConfigs(ER7022PosLtlbDppkDoc.Configs.REF_CONFIG)
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
                 .setSubmissionField(FIELD_METADATA.getClearedFields())
                 .setSegmentValidations()
                 .build()

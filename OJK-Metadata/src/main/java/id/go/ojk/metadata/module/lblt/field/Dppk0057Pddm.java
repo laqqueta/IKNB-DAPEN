@@ -73,13 +73,13 @@ public enum Dppk0057Pddm implements ILbltFieldMetadata {
 
     public static final LbltMetadataField<Dppk0057Pddm> FIELD_METADATA = new LbltMetadataField<>(Dppk0057Pddm.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
 
-    public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, String reportCode) {
+    public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, ProgramType programType) {
         EFormLaporanBulananTahunan PDDM_FORM = EFormLaporanBulananTahunan.LTLB_PDDM;
         SubmissionFormatBuilder sfConfig = SubmissionFormatBuilder.builder()
                 .code(PDDM_FORM.getCode())
                 .name(PDDM_FORM.getName())
                 .extension(ExtensionType.TXT)
-                .reportCode(reportCode)
+                .reportCode(programType.toString())
                 .maxRow(null)
                 .fields(new ArrayList<>())
                 .build();
@@ -114,10 +114,10 @@ public enum Dppk0057Pddm implements ILbltFieldMetadata {
                 throw new IllegalStateException();
         }
 
-        return new SubmissionConfig(programType.toString())
+        return new SubmissionConfig(programType)
                 .config()
                 .setReferenceConfigs(ER7057PosLtlbDppkPddm.Configs.REF_CONFIG)
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
                 .setSubmissionField(FIELD_METADATA.getClearedFields())
                 .setSegmentValidations()
                 .build()

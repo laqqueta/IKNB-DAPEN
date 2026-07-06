@@ -73,13 +73,13 @@ public enum Dppk0019Pius implements ILbltFieldMetadata {
 
     public static final LbltMetadataField<Dppk0019Pius> FIELD_METADATA = new LbltMetadataField<>(Dppk0019Pius.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
 
-    public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, String reportCode) {
+    public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, ProgramType programType) {
         EFormLaporanBulananTahunan PIUS_FORM = EFormLaporanBulananTahunan.LTLB_PIUS;
         SubmissionFormatBuilder sfConfig = SubmissionFormatBuilder.builder()
                 .code(PIUS_FORM.getCode())
                 .name(PIUS_FORM.getName())
                 .extension(ExtensionType.TXT)
-                .reportCode(reportCode)
+                .reportCode(programType.toString())
                 .maxRow(null)
                 .fields(new ArrayList<>())
                 .build();
@@ -116,10 +116,10 @@ public enum Dppk0019Pius implements ILbltFieldMetadata {
 
         }
 
-        return new SubmissionConfig(programType.toString())
+        return new SubmissionConfig(programType)
                 .config()
                 .setReferenceConfigs(ER7019PosLtlbDppkPius.Configs.REF_CONFIG)
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType.toString()))
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
                 .setSubmissionField(FIELD_METADATA.getClearedFields())
                 .setSegmentValidations()
                 .build()
