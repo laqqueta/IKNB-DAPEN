@@ -378,7 +378,7 @@ public class ServiceUpload {
 
 	private String getJenisKoreksi(ReportInfo reportInfo) {
 		EReportGroup reportGroup = reportInfo.getReport().getReportGroup();
-		if (reportGroup.equals(EReportGroup.PLS) | reportGroup.equals(EReportGroup.LKTB)) {
+		if (reportGroup.equals(EReportGroup.PLS) | reportGroup.equals(EReportGroup.LKBT)) {
 			return String.valueOf(-1);
 		}
 		return String.valueOf(reportInfo.getReportGroup().getRevisionCode());

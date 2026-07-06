@@ -86,7 +86,7 @@ public abstract class BaseMetadataField<T extends Enum<T> & IBaseFieldMetadata> 
                 .collect(Collectors.toList());
     }
 
-    // this func is to make all fields Optional and remove any validation
+    // this method is to make all fields Optional and remove any validation
     // !!DO NOT USE IN PROD!!
     public List<SubmissionField> getClearedFields() {
         return getfilteredFieldStream()

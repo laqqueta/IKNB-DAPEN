@@ -6,8 +6,8 @@ public enum ProgramType {
     PPMPM("PPMP Murni"),
     PPIPK("PPIP Kompleks"),
     PPIPM("PPIP Kopmpleks"),
+    DPLK("DPLK"),
     PPMPPPIPK("PPMPPPIP Kompleks"),
-
     ALL("ALL")
     ;
 

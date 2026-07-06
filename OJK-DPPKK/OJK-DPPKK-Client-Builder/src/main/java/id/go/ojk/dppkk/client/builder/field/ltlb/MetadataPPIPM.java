@@ -1,7 +1,7 @@
 package id.go.ojk.dppkk.client.builder.field.ltlb;
 
 import id.go.ojk.client.model.config.SubmissionFormat;
-import id.go.ojk.metadata.module.lblt.dppk.field.*;
+import id.go.ojk.metadata.module.lblt.field.*;
 import id.go.ojk.metadata.util.constants.ProgramType;
 import id.go.ojk.metadata.util.constants.SectorType;
 import lombok.AccessLevel;

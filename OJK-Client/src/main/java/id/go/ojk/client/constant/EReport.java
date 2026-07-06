@@ -101,10 +101,10 @@ public enum EReport {
     BPTKLB("7604", "LBBPTK", EReportGroup.BPTKLKB, ESector.BPTK, ApiUsage.sendAndLogin()),
     BPTKLT("7696", "LTBPTK", EReportGroup.BPTKLKT, ESector.BPTK, ApiUsage.sendAndLogin()),
     BPTKLA("7697", "LABPTK", EReportGroup.BPTKLAT, ESector.BPTK, ApiUsage.sendAndLogin()),
-    LKTB_DPPKK("7510", "LKDPK", EReportGroup.LKTB, ESector.DPPKK, ApiUsage.sendAndLogin()),
-    LKTB_DPPKS("7520", "LKDPS", EReportGroup.LKTB, ESector.DPPKS, ApiUsage.sendAndLogin()),
-    LKTB_DPLKK("7530", "LKDLK", EReportGroup.LKTB, ESector.DPLKK, ApiUsage.sendAndLogin()),
-    LKTB_DPLKS("7540", "LKDLS", EReportGroup.LKTB, ESector.DPLKS, ApiUsage.sendAndLogin()),
+    LKBT_DPPKK("7510", "LKDPK", EReportGroup.LKBT, ESector.DPPKK, ApiUsage.sendAndLogin()),
+    LKBT_DPPKS("7520", "LKDPS", EReportGroup.LKBT, ESector.DPPKS, ApiUsage.sendAndLogin()),
+    LKBT_DPLKK("7530", "LKDLK", EReportGroup.LKBT, ESector.DPLKK, ApiUsage.sendAndLogin()),
+    LKBT_DPLKS("7540", "LKDLS", EReportGroup.LKBT, ESector.DPLKS, ApiUsage.sendAndLogin()),
     ;
 
     @Getter
@@ -234,8 +234,8 @@ public enum EReport {
     }
 
     public static boolean isLktb(String reportCode) {
-        return reportCode.equals(LKTB_DPPKK.getCode()) || reportCode.equals(LKTB_DPPKS.getCode()) ||
-                reportCode.equals(LKTB_DPLKK.getCode()) || reportCode.equals(LKTB_DPLKS.getCode());
+        return reportCode.equals(LKBT_DPPKK.getCode()) || reportCode.equals(LKBT_DPPKS.getCode()) ||
+                reportCode.equals(LKBT_DPLKK.getCode()) || reportCode.equals(LKBT_DPLKS.getCode());
     }
 
     public static boolean useLoginApi(String reportIdAndCode) {
