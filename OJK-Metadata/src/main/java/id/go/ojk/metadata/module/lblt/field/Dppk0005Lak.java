@@ -9,10 +9,7 @@ import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.lib.client.model.config.UniqueType;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.metadata.module.lblt.EFormLaporanBulananTahunan;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataPpipk;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataPpipm;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataPpmpk;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataPpmpm;
+import id.go.ojk.metadata.module.lblt.header.*;
 import id.go.ojk.metadata.module.lblt.reference.ER7005PosLtlbDppkLak;
 import id.go.ojk.metadata.submission.base.BaseSubmissionConfig;
 import id.go.ojk.metadata.util.constants.ProgramType;
@@ -105,7 +102,8 @@ public enum Dppk0005Lak implements ILbltFieldMetadata {
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7005Lak.getObject()),
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7005Lak.getObject()),
             new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7005Lak.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7005Lak.getObject())
+            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7005Lak.getObject()),
+            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkbtDplk.R7005Lak.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0005Lak> FIELD_METADATA = new LbltMetadataField<>(Dppk0005Lak.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);

@@ -71,7 +71,8 @@ public enum Dppk0047Pill implements ILbltFieldMetadata {
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7047Pill.getObject()),
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7047Pill.getObject()),
             new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7047Pill.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7047Pill.getObject())
+            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7047Pill.getObject()),
+            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkbtDplk.R7047Pill.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0047Pill> FIELD_METADATA = new LbltMetadataField<>(Dppk0047Pill.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
@@ -113,6 +114,7 @@ public enum Dppk0047Pill implements ILbltFieldMetadata {
                 break;
             case PPIPM:
                 metadataValidation = E7047PillValidationsConfig.VALIDATION_METADATA_PPIPM;
+            case DPLK:
                 break;
             default:
                 throw new IllegalStateException();

@@ -164,7 +164,8 @@ public enum Dppk0039Pnyl implements ILbltFieldMetadata {
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7039Pnyl.getObject()),
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7039Pnyl.getObject()),
             new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7039Pnyl.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7039Pnyl.getObject())
+            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7039Pnyl.getObject()),
+            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkbtDplk.R7039Pnyl.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0039Pnyl> FIELD_METADATA = new LbltMetadataField<>(Dppk0039Pnyl.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
@@ -206,6 +207,7 @@ public enum Dppk0039Pnyl implements ILbltFieldMetadata {
                 break;
             case PPIPM:
                 metadataValidation = E7039PnylValidationsConfig.VALIDATION_METADATA_PPIPM;
+            case DPLK:
                 break;
             default:
                 throw new IllegalStateException();

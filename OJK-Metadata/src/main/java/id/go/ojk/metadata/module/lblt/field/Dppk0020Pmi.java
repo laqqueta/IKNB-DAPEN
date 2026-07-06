@@ -88,7 +88,8 @@ public enum Dppk0020Pmi implements ILbltFieldMetadata {
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7020Pmi.getObject()),
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7020Pmi.getObject()),
             new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7020Pmi.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7020Pmi.getObject())
+            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7020Pmi.getObject()),
+            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkbtDplk.R7020Pmi.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0020Pmi> FIELD_METADATA = new LbltMetadataField<>(Dppk0020Pmi.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
@@ -130,6 +131,8 @@ public enum Dppk0020Pmi implements ILbltFieldMetadata {
                 break;
             case PPIPM:
                 metadataValidation = E7020PmiValidationsConfig.VALIDATION_METADATA_PPIPM;
+                break;
+            case DPLK:
                 break;
             default:
                 throw new IllegalStateException();

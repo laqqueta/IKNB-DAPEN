@@ -10,10 +10,7 @@ import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.metadata.field.lblt.ILbltFieldMetadata;
 import id.go.ojk.metadata.field.lblt.LbltMetadataField;
 import id.go.ojk.metadata.module.lblt.EFormLaporanBulananTahunan;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataPpipk;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataPpipm;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataPpmpk;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataPpmpm;
+import id.go.ojk.metadata.module.lblt.header.*;
 import id.go.ojk.metadata.module.lblt.reference.ER7008PosLtlbDppkRekinv;
 import id.go.ojk.metadata.module.lblt.validations.E7008RekinvValidationsConfig;
 import id.go.ojk.metadata.submission.SubmissionConfig;
@@ -93,7 +90,8 @@ public enum Dppk0008Rekinv implements ILbltFieldMetadata {
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7008Rekinv.getObject()),
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7008Rekinv.getObject()),
             new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7008Rekinv.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7008Rekinv.getObject())
+            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7008Rekinv.getObject()),
+            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkbtDplk.R7008Rekinv.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0008Rekinv> FIELD_METADATA =

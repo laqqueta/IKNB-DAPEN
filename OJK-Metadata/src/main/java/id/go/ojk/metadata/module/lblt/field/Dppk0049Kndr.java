@@ -9,10 +9,7 @@ import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.metadata.field.lblt.ILbltFieldMetadata;
 import id.go.ojk.metadata.field.lblt.LbltMetadataField;
 import id.go.ojk.metadata.module.lblt.EFormLaporanBulananTahunan;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataPpipk;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataPpipm;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataPpmpk;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataPpmpm;
+import id.go.ojk.metadata.module.lblt.header.*;
 import id.go.ojk.metadata.module.lblt.reference.ER7049PosLtlbDppkKndr;
 import id.go.ojk.metadata.module.lblt.validations.E7049KndrValidationsConfig;
 import id.go.ojk.metadata.submission.SubmissionConfig;
@@ -75,7 +72,8 @@ public enum Dppk0049Kndr implements ILbltFieldMetadata {
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7049Kndr.getObject()),
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7049Kndr.getObject()),
             new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7049Kndr.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7049Kndr.getObject())
+            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7049Kndr.getObject()),
+            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkbtDplk.R7049Kndr.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0049Kndr> FIELD_METADATA = new LbltMetadataField<>(Dppk0049Kndr.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
@@ -117,6 +115,7 @@ public enum Dppk0049Kndr implements ILbltFieldMetadata {
                 break;
             case PPIPM:
                 metadataValidation = E7049KndrValidationsConfig.VALIDATION_METADATA_PPIPM;
+            case DPLK:
                 break;
             default:
                 throw new IllegalStateException();

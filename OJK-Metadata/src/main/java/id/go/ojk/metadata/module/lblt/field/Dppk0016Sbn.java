@@ -86,7 +86,8 @@ public enum Dppk0016Sbn implements ILbltFieldMetadata {
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7016Sbn.getObject()),
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7016Sbn.getObject()),
             new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7016Sbn.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7016Sbn.getObject())
+            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7016Sbn.getObject()),
+            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkbtDplk.R7016Sbn.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0016Sbn> FIELD_METADATA = new LbltMetadataField<>(
@@ -131,6 +132,8 @@ public enum Dppk0016Sbn implements ILbltFieldMetadata {
             case PPIPM:
                 metadataValidation = VALIDATION_METADATA_PPIPM;
                 break;
+            case DPLK:
+                break;
             default:
                 throw new IllegalStateException();
         }
@@ -139,8 +142,8 @@ public enum Dppk0016Sbn implements ILbltFieldMetadata {
                 .config()
                 .setReferenceConfigs(referenceConfig)
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
-                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-                .setSegmentValidations(metadataValidation)
+                .setSubmissionField(FIELD_METADATA.getClearedFields())
+                .setSegmentValidations()
                 .build()
                 .get();
     }

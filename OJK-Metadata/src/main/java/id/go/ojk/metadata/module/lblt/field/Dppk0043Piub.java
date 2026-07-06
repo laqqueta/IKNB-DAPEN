@@ -73,7 +73,8 @@ public enum Dppk0043Piub implements ILbltFieldMetadata {
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7043Piub.getObject()),
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7043Piub.getObject()),
             new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7043Piub.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7043Piub.getObject())
+            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7043Piub.getObject()),
+            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkbtDplk.R7043Piub.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0043Piub> FIELD_METADATA = new LbltMetadataField<>(Dppk0043Piub.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
@@ -127,7 +128,6 @@ public enum Dppk0043Piub implements ILbltFieldMetadata {
                 metadataValidation = E7043PiubValidationsConfig.VALIDATION_METADATA_PPIPM;
                 submissionFields = FIELD_METADATA.getReindexFields(usedFieldIdx, metadataValidation.getFieldValidations());
                 referenceConfig = ER7043PosLtlbDppkPiub.Configs.REF_CONFIG_PPIP;
-                break;
             case DPLK:
                 submissionFields = FIELD_METADATA.getClearedFields();
                 referenceConfig = ER7043PosLtlbDppkPiub.Configs.REF_CONFIG_DPLK;

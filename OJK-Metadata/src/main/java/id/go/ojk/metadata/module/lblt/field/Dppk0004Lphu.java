@@ -11,10 +11,7 @@ import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.metadata.field.lblt.ILbltFieldMetadata;
 import id.go.ojk.metadata.field.lblt.LbltMetadataField;
 import id.go.ojk.metadata.module.lblt.EFormLaporanBulananTahunan;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataPpipk;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataPpipm;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataPpmpk;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataPpmpm;
+import id.go.ojk.metadata.module.lblt.header.*;
 import id.go.ojk.metadata.module.lblt.reference.ER7004PosLtlbDppkLphu;
 import id.go.ojk.metadata.submission.SubmissionConfig;
 import id.go.ojk.metadata.submission.base.BaseSubmissionConfig;
@@ -91,10 +88,10 @@ public enum Dppk0004Lphu implements ILbltFieldMetadata {
     UUS_MANFAAT_PENSIUN_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK),
             sf(14, null, "UUS - Manfaat Pensiun Lainnya", sv(M, 1, 18, all2))),
 
-    UUS_MANFAAT_LAIN(sectors(KONVENSIONAL, SYARIAH),programs(PPIPK),
+    UUS_MANFAAT_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK),
             sf(15, null, "UUS - Manfaat Lain", sv(M, 1, 18, all2))),
 
-    TOTAL(sectors(KONVENSIONAL, SYARIAH),programs(PPIPK),
+    TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK),
             sf(16, null, "Total", sv(M, 1, 18, all2))),
 
     ;
@@ -107,7 +104,8 @@ public enum Dppk0004Lphu implements ILbltFieldMetadata {
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7004Lphu.getObject()),
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7004Lphu.getObject()),
             new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7004Lphu.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7004Lphu.getObject())
+            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7004Lphu.getObject()),
+            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkbtDplk.R7004Lphu.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0004Lphu> FIELD_METADATA =

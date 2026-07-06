@@ -10,10 +10,7 @@ import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.metadata.field.lblt.ILbltFieldMetadata;
 import id.go.ojk.metadata.field.lblt.LbltMetadataField;
 import id.go.ojk.metadata.module.lblt.EFormLaporanBulananTahunan;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataPpipk;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataPpipm;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataPpmpk;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataPpmpm;
+import id.go.ojk.metadata.module.lblt.header.*;
 import id.go.ojk.metadata.module.lblt.reference.ER7061PosLtlbDppkIur;
 import id.go.ojk.metadata.module.lblt.validations.E7061IurValidationsConfig;
 import id.go.ojk.metadata.submission.SubmissionConfig;
@@ -105,7 +102,8 @@ public enum Dppk0061Iur implements ILbltFieldMetadata {
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7061Iur.getObject()),
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7061Iur.getObject()),
             new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7061Iur.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7061Iur.getObject())
+            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7061Iur.getObject()),
+            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkbtDplk.R7061Iur.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0061Iur> FIELD_METADATA = new LbltMetadataField<>(Dppk0061Iur.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
@@ -159,7 +157,6 @@ public enum Dppk0061Iur implements ILbltFieldMetadata {
                 metadataValidation = E7061IurValidationsConfig.VALIDATION_METADATA_PPIPM;
                 submissionFields = FIELD_METADATA.getReindexFields(usedFieldIdx, metadataValidation.getFieldValidations());
                 referenceConfig = ER7061PosLtlbDppkIur.Configs.REF_CONFIG_PPIP;
-                break;
             case DPLK:
                 submissionFields = FIELD_METADATA.getClearedFields();
                 referenceConfig = ER7061PosLtlbDppkIur.Configs.REF_CONFIG_DPLK;

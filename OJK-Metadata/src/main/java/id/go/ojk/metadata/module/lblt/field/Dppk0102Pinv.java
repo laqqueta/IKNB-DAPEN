@@ -11,6 +11,7 @@ import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.metadata.field.lblt.ILbltFieldMetadata;
 import id.go.ojk.metadata.field.lblt.LbltMetadataField;
 import id.go.ojk.metadata.module.lblt.EFormLaporanBulananTahunan;
+import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataLkbtDplk;
 import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataPpipk;
 import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataPpipm;
 import id.go.ojk.metadata.module.lblt.reference.ER7102PosLtlbDppkPinv;
@@ -65,7 +66,8 @@ public enum Dppk0102Pinv implements ILbltFieldMetadata {
 
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
             new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7020Pinv.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7020Pinv.getObject())
+            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7020Pinv.getObject()),
+            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkbtDplk.R7020Pinv.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     private static final LbltMetadataField<Dppk0102Pinv> FIELD_METADATA = new LbltMetadataField<>(Dppk0102Pinv.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);

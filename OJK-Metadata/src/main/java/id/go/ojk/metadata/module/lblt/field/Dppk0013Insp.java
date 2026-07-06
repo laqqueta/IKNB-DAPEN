@@ -8,10 +8,7 @@ import id.go.ojk.client.model.config.SubmissionFormatBuilder;
 import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.metadata.module.lblt.EFormLaporanBulananTahunan;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataPpipk;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataPpipm;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataPpmpk;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataPpmpm;
+import id.go.ojk.metadata.module.lblt.header.*;
 import id.go.ojk.metadata.module.lblt.reference.ER7013PosLtlbDppkInsp;
 import id.go.ojk.metadata.util.constants.ProgramType;
 import id.go.ojk.metadata.util.constants.SectorType;
@@ -76,7 +73,8 @@ public enum Dppk0013Insp implements ILbltFieldMetadata {
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7013Insp.getObject()),
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7013Insp.getObject()),
             new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7013Insp.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7013Insp.getObject())
+            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7013Insp.getObject()),
+            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkbtDplk.R7013Insp.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0013Insp> FIELD_METADATA = new LbltMetadataField<>(Dppk0013Insp.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
@@ -120,6 +118,8 @@ public enum Dppk0013Insp implements ILbltFieldMetadata {
             case PPIPM:
                 metadataValidation = VALIDATION_METADATA_PPIPM;
                 break;
+            case DPLK:
+                break;
             default:
                 throw new IllegalStateException();
         }
@@ -128,8 +128,8 @@ public enum Dppk0013Insp implements ILbltFieldMetadata {
                 .config()
                 .setReferenceConfigs(referenceConfig)
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
-                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-                .setSegmentValidations(metadataValidation)
+                .setSubmissionField(FIELD_METADATA.getClearedFields())
+                .setSegmentValidations()
                 .build()
                 .get();
     }
