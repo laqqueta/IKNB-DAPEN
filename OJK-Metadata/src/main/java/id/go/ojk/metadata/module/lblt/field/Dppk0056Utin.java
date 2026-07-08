@@ -111,6 +111,7 @@ public enum Dppk0056Utin implements ILbltFieldMetadata {
                 break;
             case PPIPM:
                 metadataValidation = E7056UtinValidationsConfig.VALIDATION_METADATA_PPIPM;
+                break;
             case DPLK:
                 break;
             default:

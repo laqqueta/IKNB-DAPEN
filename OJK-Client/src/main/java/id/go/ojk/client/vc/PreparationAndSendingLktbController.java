@@ -6,6 +6,7 @@ import id.go.ojk.client.service.security.SecurityService;
 import id.go.ojk.client.util.AlertUtil;
 import id.go.ojk.client.util.states.JenisProgramState;
 import id.go.ojk.lib.client.model.config.ConfigString;
+import id.go.ojk.lib.client.model.security.UserSession;
 import id.go.ojk.lib.client.vc.object.ReportValue;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -26,10 +27,8 @@ public class PreparationAndSendingLktbController extends BasePreparationAndSendi
     RadioButton rutinRadio;
     @FXML
     RadioButton koreksiRadio;
-
     @FXML
     ComboBox<ReportValue> cbxReport = new ComboBox<>();
-
     @FXML
     ToggleGroup reportGroup;
     @FXML
@@ -45,9 +44,28 @@ public class PreparationAndSendingLktbController extends BasePreparationAndSendi
         mapReport.put("PPMP-PPIP-K", "PPMP PPIP Kompleks");
     }
 
+    private String reportCode = "";
+
     @Override
     protected void initialize() {
         super.initialize();
+
+        // make sure this block run, hence its inside synchronized block
+        synchronized (this) {
+            reportCode = super.getSecurityService()
+                    .getUserSession()
+                    .getReportCode();
+
+            if (reportCode.equalsIgnoreCase("LKDLK") || reportCode.equalsIgnoreCase("LKDLS")) {
+                cbxReport.setDisable(true);
+                cbxReport.setVisible(false);
+                JenisProgramState.selectedValue = "DPLK";
+                JenisProgramState.selectedKey = "DPLK";
+                JenisProgramState.program = "DPLK";
+
+                return;
+            }
+        }
 
         ObservableList<ReportValue> reportValue = FXCollections.observableArrayList();
         reportValue.add(new ReportValue("0", "Pilih Jenis Program :"));
@@ -82,8 +100,10 @@ public class PreparationAndSendingLktbController extends BasePreparationAndSendi
                 JenisProgramState.program = "PPMP";
             } else if (JenisProgramState.selectedKey.equalsIgnoreCase("PPIP-K") || JenisProgramState.selectedKey.equalsIgnoreCase("PPIP-M")) {
                 JenisProgramState.program = "PPIP";
-            } else {
+            } else if (JenisProgramState.selectedKey.equalsIgnoreCase("DPLK")) {
                 JenisProgramState.program = "DPLK";
+            } else {
+                JenisProgramState.program = "PPMPPPIPK";
             }
         });
 
@@ -99,6 +119,15 @@ public class PreparationAndSendingLktbController extends BasePreparationAndSendi
     @Override
     @FXML
     protected void handleOpen() {
+        if (reportCode.equalsIgnoreCase("LKDLK") || reportCode.equalsIgnoreCase("LKDLS")) {
+            handleOpenDplk();
+            return;
+        }
+
+        handleOpenDppk();
+    }
+
+    protected void handleOpenDppk() {
         ReportValue selected = cbxReport.getSelectionModel()
                 .getSelectedItem();
 
@@ -108,6 +137,10 @@ public class PreparationAndSendingLktbController extends BasePreparationAndSendi
             return;
         }
 
+        super.handleOpen();
+    }
+
+    protected void handleOpenDplk() {
         super.handleOpen();
     }
 

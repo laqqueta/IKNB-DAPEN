@@ -134,6 +134,7 @@ public enum Dppk0022Doc implements ILbltFieldMetadata {
                 break;
             case PPIPM:
                 metadataValidation = E7022DocValidationsConfig.VALIDATION_METADATA_PPIPM;
+                break;
             case DPLK:
                 break;
             default:

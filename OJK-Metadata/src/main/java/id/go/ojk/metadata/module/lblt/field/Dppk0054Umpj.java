@@ -111,6 +111,7 @@ public enum Dppk0054Umpj implements ILbltFieldMetadata {
                 break;
             case PPIPM:
                 metadataValidation = E7054UmpjValidationsConfig.VALIDATION_METADATA_PPIPM;
+                break;
             case DPLK:
                 break;
             default:

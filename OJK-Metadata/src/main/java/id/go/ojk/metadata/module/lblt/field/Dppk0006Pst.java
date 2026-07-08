@@ -8,16 +8,16 @@ import id.go.ojk.client.model.config.SubmissionFormatBuilder;
 import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.lib.client.model.config.UniqueType;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
+import id.go.ojk.metadata.field.lblt.ILbltFieldMetadata;
+import id.go.ojk.metadata.field.lblt.LbltMetadataField;
 import id.go.ojk.metadata.module.lblt.EFormLaporanBulananTahunan;
 import id.go.ojk.metadata.module.lblt.header.*;
 import id.go.ojk.metadata.module.lblt.reference.ER7005PosLtlbDppkLak;
 import id.go.ojk.metadata.module.lblt.reference.ER7006PosLtlbDppkPst;
+import id.go.ojk.metadata.submission.SubmissionConfig;
 import id.go.ojk.metadata.submission.base.BaseSubmissionConfig;
 import id.go.ojk.metadata.util.constants.ProgramType;
 import id.go.ojk.metadata.util.constants.SectorType;
-import id.go.ojk.metadata.field.lblt.ILbltFieldMetadata;
-import id.go.ojk.metadata.field.lblt.LbltMetadataField;
-import id.go.ojk.metadata.submission.SubmissionConfig;
 import id.go.ojk.metadata.validation.base.BaseMetadataValidation;
 import id.go.ojk.metadata.validation.lblt.ILbltMetadataValidation;
 import lombok.AllArgsConstructor;
@@ -40,24 +40,24 @@ import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0006Pst implements ILbltFieldMetadata {
 
-    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
             sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01"))),
 
-    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
             sf(1, null, "Kode Komponen", sv(M, 13, 13, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric))
                     .confUnique(UniqueType.U)),
 
-    MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
+    MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
             sf(2, null, "Manfaat Pensiun", sv(M, 1, 18, numeric))),
 
-    MANFAAT_PENSIUN_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
+    MANFAAT_PENSIUN_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK),
             sf(3, null, "Manfaat Pensiun Lainnya", sv(M, 1, 18, numeric))),
 
-    MANFAAT_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
+    MANFAAT_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK),
             sf(4, null, "Manfaat  lain", sv(M, 1, 18, numeric))),
 
-    JUMLAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
+    JUMLAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK),
             sf(5, null, "Jumlah", sv(M, 1, 18, numeric))),
 
     ;
@@ -78,22 +78,15 @@ public enum Dppk0006Pst implements ILbltFieldMetadata {
 
     public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, ProgramType programType) {
         EFormLaporanBulananTahunan PST_FORM = EFormLaporanBulananTahunan.LTLB_PST;
-        SubmissionFormatBuilder sfConfig = SubmissionFormatBuilder.builder()
+        return SubmissionFormatBuilder.builder()
                 .code(PST_FORM.getCode())
                 .name(PST_FORM.getName())
                 .extension(ExtensionType.TXT)
                 .reportCode(programType.toString())
-                .maxRow(19)
+                .maxRow(ER7006PosLtlbDppkPst.getRowSize(programType))
+                .minRow(ER7006PosLtlbDppkPst.getRowSize(programType))
                 .fields(new ArrayList<>())
                 .build();
-
-        if (sectorType.equals(KONVENSIONAL) || sectorType.equals(SYARIAH)) {
-            sfConfig.setMinRow(19);
-            return sfConfig;
-        }
-
-
-        throw new IllegalArgumentException("Unknown sector type: " + sectorType);
     }
 
     public static SubmissionFormat formMetadata(SectorType sectorType, ProgramType programType) {
@@ -120,7 +113,7 @@ public enum Dppk0006Pst implements ILbltFieldMetadata {
                 referenceConfig = ER7006PosLtlbDppkPst.Configs.REF_CONFIG_PPMPM_PPIPM;
                 break;
             case DPLK:
-                referenceConfig = ER7005PosLtlbDppkLak.Configs.REF_CONFIG_DPLK;
+                referenceConfig = ER7006PosLtlbDppkPst.Configs.REF_CONFIG_DPLK;
                 break;
             default:
                 throw new IllegalStateException();

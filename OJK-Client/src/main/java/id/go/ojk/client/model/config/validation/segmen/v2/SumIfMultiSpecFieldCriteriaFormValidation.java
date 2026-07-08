@@ -103,11 +103,39 @@ public class SumIfMultiSpecFieldCriteriaFormValidation extends BaseSumIf<SumIfMu
                     SubmissionField submissionField = fields.get(Integer.parseInt(idxField));
                     logger.error("{}>{}?{}", parameter, selectValue, condsValue);
 
-                    String criteriaError = idxField.equals(sumField) ?
-                            slashFormatError(sumConditionError) :
-                            criteriaKeyError[i-1];
+//                    if (idxField.equals(sumField)) {
+//                        condError = slashFormatError(sumConditionError);
+//                        colErr = msgErrors[1];
+//                    } else if (i > 0) {
+//                        condError = condErrors[i - 1];
+//                        colErr = msgErrors[1];
+//
+//                        if (specConds.contains(conds[i-1])) {
+//                            colErr = msgErrors[2];
+//                        }
+//                    }
 
-                    String colErr = specConds.contains(criteriaKey[i + (-1)]) ? msgErrors[2] : msgErrors[1];
+                    String criteriaError = "";
+                    String colErr = "";
+
+                    if (idxField.equals(sumField)) {
+                        criteriaError = slashFormatError(sumConditionError);
+                        colErr = msgErrors[1];
+                    } else {
+                        criteriaError = criteriaKeyError[i-1];
+                        colErr = msgErrors[2];
+
+                        if (specConds.contains(criteriaKey[i + (-1)])) {
+                            colErr = msgErrors[1];
+                        }
+
+                    }
+
+//                    String criteriaError = idxField.equals(sumField) ?
+//                            slashFormatError(sumConditionError) :
+//                            criteriaKeyError[i-1];
+//
+//                    String colErr = specConds.contains(criteriaKey[i + (-1)]) ? msgErrors[2] : msgErrors[1];
 
                     validationResult.errors.add(new ValidationError(submissionField,
                             ValidationErrorCode.E50_23_FORMULA_MULTICRITERIASUMIF,

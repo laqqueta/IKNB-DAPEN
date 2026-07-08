@@ -15,13 +15,26 @@ import java.util.List;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ER7018PosLtlbDppkRas2 implements IObject<KeyValueString> {
 
-    R_RAS20100000000("RAS20100000000", "Biaya Pegawai, Pengurus, Dewan Pengawas, dan/atau Dewas Pengawas Syariah", EnumSet.of(ProgramType.ALL)),
-    R_RAS20101010000("RAS20101010000", "a. Diklat Pegawai", EnumSet.of(ProgramType.ALL)),
-    R_RAS20101020000("RAS20101020000", "b. Diklat Pengurus", EnumSet.of(ProgramType.ALL)),
-    R_RAS20101030000("RAS20101030000", "c. Diklat Dewan Pengawas", EnumSet.of(ProgramType.ALL)),
-    R_RAS20101040000("RAS20101040000", "d. Diklat Dewan Pengawas Syariah (jika ada)", EnumSet.of(ProgramType.ALL)),
-    R_RAS20102000000("RAS20102000000", "Total Biaya Diklat", EnumSet.of(ProgramType.ALL)),
-    R_RAS20103000000("RAS20103000000", "Rasio Biaya Diklat", EnumSet.of(ProgramType.ALL));
+//    R_RAS20100000000("RAS20100000000", "Biaya Pegawai, Pengurus, Dewan Pengawas, dan/atau Dewas Pengawas Syariah", EnumSet.of(ProgramType.ALL)),
+//    R_RAS20101010000("RAS20101010000", "a. Diklat Pegawai", EnumSet.of(ProgramType.ALL)),
+//    R_RAS20101020000("RAS20101020000", "b. Diklat Pengurus", EnumSet.of(ProgramType.ALL)),
+//    R_RAS20101030000("RAS20101030000", "c. Diklat Dewan Pengawas", EnumSet.of(ProgramType.ALL)),
+//    R_RAS20101040000("RAS20101040000", "d. Diklat Dewan Pengawas Syariah (jika ada)", EnumSet.of(ProgramType.ALL)),
+//    R_RAS20102000000("RAS20102000000", "Total Biaya Diklat", EnumSet.of(ProgramType.ALL)),
+//    R_RAS20103000000("RAS20103000000", "Rasio Biaya Diklat", EnumSet.of(ProgramType.ALL));
+
+    R_RAS20100000000("RAS20100000000", "Biaya Pegawai, Pengurus, Dewan Pengawas, dan/atau Dewas Pengawas Syariah", EnumSet.of(ProgramType.ALL, ProgramType.DPLK)),
+
+//    R_RAS20101000000("RAS20101000000", "Biaya Pendidikan dan Latihan (Diklat)", EnumSet.of(ProgramType.DPLK)),
+
+    R_RAS20101010000("RAS20101010000", "a. Diklat Pegawai", EnumSet.of(ProgramType.ALL, ProgramType.DPLK)),
+    R_RAS20101020000("RAS20101020000", "b. Diklat Pengurus", EnumSet.of(ProgramType.ALL, ProgramType.DPLK)),
+    R_RAS20101030000("RAS20101030000", "c. Diklat Dewan Pengawas", EnumSet.of(ProgramType.ALL, ProgramType.DPLK)),
+    R_RAS20101040000("RAS20101040000", "d. Diklat Dewan Pengawas Syariah (jika ada)", EnumSet.of(ProgramType.ALL, ProgramType.DPLK)),
+
+    R_RAS20102000000("RAS20102000000", "Total Biaya Diklat", EnumSet.of(ProgramType.ALL, ProgramType.DPLK)),
+    R_RAS20103000000("RAS20103000000", "Rasio Biaya Diklat", EnumSet.of(ProgramType.ALL, ProgramType.DPLK));
+    
 
     public final String key;
     public final String value;
@@ -57,6 +70,10 @@ public enum ER7018PosLtlbDppkRas2 implements IObject<KeyValueString> {
 
     public KeyValueString getObject() {
         return new KeyValueString(key, value, new String[]{});
+    }
+
+    public static int getRowSize(ProgramType programType) {
+        return programType.equals(ProgramType.DPLK) ? getObjects(programType).size() : getObjects().size();
     }
 
     public enum Configs implements ReferenceConfig {

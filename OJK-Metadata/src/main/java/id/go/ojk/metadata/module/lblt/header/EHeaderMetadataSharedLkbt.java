@@ -16,9 +16,9 @@ import java.util.Map;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum EHeaderMetadataSharedLkbt implements IObject<ReferenceMetadata> {
-	R001 (ER1010PeriodeRealisasi.getRefNumber(), ER1010PeriodeRealisasi.getName(), ER1010PeriodeRealisasi.getObjects()),
+//	R001 (ER1010PeriodeRealisasi.getRefNumber(), ER1010PeriodeRealisasi.getName(), ER1010PeriodeRealisasi.getObjects()),
 	R002 (ER1011Program.getRefNumber(), ER1011Program.getName(), ER1011Program.getObjects()),
-	R003 (ER1012KualitasPendanaan.getRefNumber(), ER1012KualitasPendanaan.getName(), ER1012KualitasPendanaan.getObjects()),
+//	R003 (ER1012KualitasPendanaan.getRefNumber(), ER1012KualitasPendanaan.getName(), ER1012KualitasPendanaan.getObjects()),
 	R004(ER1250Properti.getRefNumber(), ER1250Properti.getName(), ER1250Properti.getObjects()),
 	R005(ER1251MetodePencatatan.getRefNumber(), ER1251MetodePencatatan.getName(), ER1251MetodePencatatan.getObjects()),
 	R006(ER1252Pengelolaan.getRefNumber(), ER1252Pengelolaan.getName(), ER1252Pengelolaan.getObjects()),

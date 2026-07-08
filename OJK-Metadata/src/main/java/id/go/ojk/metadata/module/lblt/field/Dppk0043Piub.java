@@ -128,6 +128,7 @@ public enum Dppk0043Piub implements ILbltFieldMetadata {
                 metadataValidation = E7043PiubValidationsConfig.VALIDATION_METADATA_PPIPM;
                 submissionFields = FIELD_METADATA.getReindexFields(usedFieldIdx, metadataValidation.getFieldValidations());
                 referenceConfig = ER7043PosLtlbDppkPiub.Configs.REF_CONFIG_PPIP;
+                break;
             case DPLK:
                 submissionFields = FIELD_METADATA.getClearedFields();
                 referenceConfig = ER7043PosLtlbDppkPiub.Configs.REF_CONFIG_DPLK;

@@ -4,6 +4,7 @@ import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
+import id.go.ojk.metadata.util.constants.ProgramType;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
@@ -58,6 +59,10 @@ public enum ER7101PosLtlbDppkRoimpl implements IObject<KeyValueString> {
 
     public KeyValueString getObject() {
         return new KeyValueString(key, value, new String[]{});
+    }
+
+    public static int getRowSize() {
+        return getObjects().size();
     }
 
     public enum Configs implements ReferenceConfig {

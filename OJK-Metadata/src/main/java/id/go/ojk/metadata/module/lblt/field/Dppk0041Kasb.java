@@ -119,6 +119,7 @@ public enum Dppk0041Kasb implements ILbltFieldMetadata {
                 break;
             case PPIPM:
                 metadataValidation = E7041KasbValidationsConfig.VALIDATION_METADATA_PPIPM;
+                break;
             case DPLK:
                 break;
             default:

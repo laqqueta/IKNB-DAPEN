@@ -9,6 +9,7 @@ import id.go.ojk.conf.client.BaseMetadataBuilder;
 import id.go.ojk.dplkk.client.builder.field.apu.metadata.MetadataPenilaian;
 import id.go.ojk.dplkk.client.builder.field.apu.metadata.MetadataRealisasi;
 import id.go.ojk.dplkk.client.builder.field.apu.metadata.MetadataRencana;
+import id.go.ojk.dplkk.client.builder.field.lblt.MetadataLblt;
 import id.go.ojk.dplkk.client.builder.field.rb.metadata.MetadataRb;
 import id.go.ojk.dplkk.client.builder.field.rb.metadata.MetadataRe;
 import id.go.ojk.dplkk.client.builder.field.rb.metadata.MetadataRp;
@@ -49,6 +50,7 @@ public class MetadataBuilder extends BaseMetadataBuilder {
 		res.getFormats().addAll(MetadataSaa.getMetadata());
 		res.getFormats().addAll(MetadataPenilaian.getMetadata());
 		res.getFormats().addAll(MetadataTl.getMetadata());
+		res.getFormats().addAll(MetadataLblt.getMetadata());
 		return res;
 	}
 

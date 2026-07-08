@@ -22,7 +22,7 @@ public class DplksDatBuilder extends BaseDatBuilder {
 	private static final EReport REPORT_TL = EReport.TL_DPLKS;
 	private static final EReport REPORT_LBLT = EReport.LKBT_DPLKS;
 	private static final List<String> DUMMY_USER = Arrays.asList("dplksdummy@gmail.com", "mif.test12@gmail.com",
-			"apolo.sit010@gmail.com", "apolo.sit007@gmail.com", "dev@local");
+			"apolo.sit010@gmail.com", "apolo.sit007@gmail.com", "apolo.sit006@gmail.com","dev@local");
 
 	public static void main(String[] args) {
 		try {

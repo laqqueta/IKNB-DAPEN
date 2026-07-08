@@ -113,6 +113,7 @@ public enum Dppk0046Pihi implements ILbltFieldMetadata {
                 break;
             case PPIPM:
                 metadataValidation = E7046PihiValidationsConfig.VALIDATION_METADATA_PPIPM;
+                break;
             case DPLK:
                 break;
             default:

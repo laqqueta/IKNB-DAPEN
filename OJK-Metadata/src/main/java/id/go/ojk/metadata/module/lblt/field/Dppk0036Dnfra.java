@@ -133,6 +133,7 @@ public enum Dppk0036Dnfra implements ILbltFieldMetadata {
                 break;
             case PPIPM:
                 metadataValidation = E7036DnfraValidationsConfig.VALIDATION_METADATA_PPIPM;
+                break;
             case DPLK:
                 break;
             default:

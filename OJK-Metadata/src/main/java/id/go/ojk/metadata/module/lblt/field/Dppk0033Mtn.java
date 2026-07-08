@@ -152,6 +152,7 @@ public enum Dppk0033Mtn implements ILbltFieldMetadata {
                 break;
             case PPIPM:
                 metadataValidation = E7033MtnValidationsConfig.VALIDATION_METADATA_PPIPM;
+                break;
             case DPLK:
                 break;
             default:

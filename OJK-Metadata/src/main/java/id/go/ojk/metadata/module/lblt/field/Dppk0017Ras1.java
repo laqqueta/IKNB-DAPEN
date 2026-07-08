@@ -45,27 +45,27 @@ import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0017Ras1 implements ILbltFieldMetadata {
 
-    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
             sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01"))),
 
-    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
             sf(1, null, "Kode Komponen", sv(M, 14, 14, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric))
                     .confUnique(UniqueType.U)),
 
-    MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK),
+    MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK),
             sf(2, null, "Manfaat Pensiun", sv(M, 1, 18, freeText))),
 
     MANFAAT_PENSIUN_PPMPM_PPIPM(sectors(KONVENSIONAL, SYARIAH), programs(PPMPM, PPIPM),
             sf(2, null, "Manfaat Pensiun", sv(C, 1, 18, freeText))),
 
-    MANFAAT_PENSIUN_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    MANFAAT_PENSIUN_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, DPLK),
             sf(3, null, "Manfaat Pensiun Lainnya", sv(M, 1, 18, freeText))),
 
-    MANFAAT_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK),
+    MANFAAT_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, DPLK),
             sf(4, null, "Manfaat lain", sv(M, 1, 18, freeText))),
 
-    TOTAL_PPMP(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
+    TOTAL_PPMP(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, DPLK),
             sf(5, null, "Total", sv(C, 1, 18, freeText))),
 
     TOTAL_PPIP(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK),
@@ -91,22 +91,15 @@ public enum Dppk0017Ras1 implements ILbltFieldMetadata {
 
     public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, ProgramType programType) {
         EFormLaporanBulananTahunan RAS1_FORM = EFormLaporanBulananTahunan.LTLB_RAS_1;
-        SubmissionFormatBuilder sfConfig = SubmissionFormatBuilder.builder()
+        return SubmissionFormatBuilder.builder()
                 .code(RAS1_FORM.getCode())
                 .name(RAS1_FORM.getName())
                 .extension(ExtensionType.TXT)
                 .reportCode(programType.toString())
-                .maxRow(null)
+                .maxRow(ER7017PosLtlbDppkRas1.getRowSize(programType))
+                .minRow(ER7017PosLtlbDppkRas1.getRowSize(programType))
                 .fields(new ArrayList<>())
                 .build();
-
-        if (sectorType.equals(KONVENSIONAL) || sectorType.equals(SYARIAH)) {
-            sfConfig.setMinRow(0);
-            return sfConfig;
-        }
-
-
-        throw new IllegalArgumentException("Unknown sector type: " + sectorType);
     }
 
     public static SubmissionFormat formMetadata(SectorType sectorType, ProgramType programType) {
@@ -138,7 +131,6 @@ public enum Dppk0017Ras1 implements ILbltFieldMetadata {
                 metadataValidation = VALIDATION_METADATA_PPIPM;
                 referenceConfig = ER7017PosLtlbDppkRas1.Configs.REF_CONFIG_PPIPM;
                 additionalSegment = genAllValidationRatioAB_PPIPM();
-                ;
                 break;
             case DPLK:
                 referenceConfig = ER7017PosLtlbDppkRas1.Configs.REF_CONFIG_DPLK;

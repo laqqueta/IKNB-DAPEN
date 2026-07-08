@@ -11,7 +11,7 @@ import id.go.ojk.lib.client.model.KeyValueString;
 import id.go.ojk.lib.client.model.reference.ReferenceHeader;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.lib.client.model.validation.ValidationErrorCode;
-import id.go.ojk.metadata.module.lblt.dppk.header.*;
+import id.go.ojk.metadata.module.lblt.header.*;
 import lombok.extern.slf4j.Slf4j;
 
 import java.time.LocalDateTime;

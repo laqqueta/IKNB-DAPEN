@@ -207,6 +207,7 @@ public enum Dppk0039Pnyl implements ILbltFieldMetadata {
                 break;
             case PPIPM:
                 metadataValidation = E7039PnylValidationsConfig.VALIDATION_METADATA_PPIPM;
+                break;
             case DPLK:
                 break;
             default:

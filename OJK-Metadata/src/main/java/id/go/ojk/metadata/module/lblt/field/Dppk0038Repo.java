@@ -155,6 +155,7 @@ public enum Dppk0038Repo implements ILbltFieldMetadata {
                 break;
             case PPIPM:
                 metadataValidation = E7038RepoValidationsConfig.VALIDATION_METADATA_PPIPM;
+                break;
             case DPLK:
                 break;
             default:

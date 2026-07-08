@@ -106,6 +106,7 @@ public enum Dppk0055Umps implements ILbltFieldMetadata {
                 break;
             case PPIPM:
                 metadataValidation = E7055UmpsValidationsConfig.VALIDATION_METADATA_PPIPM;
+                break;
             case DPLK:
                 break;
             default:

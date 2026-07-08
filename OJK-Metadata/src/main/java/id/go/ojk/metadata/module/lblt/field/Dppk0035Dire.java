@@ -134,6 +134,7 @@ public enum Dppk0035Dire implements ILbltFieldMetadata {
                 break;
             case PPIPM:
                 metadataValidation = E7035DireValidationsConfig.VALIDATION_METADATA_PPIPM;
+                break;
             case DPLK:
                 break;
             default:

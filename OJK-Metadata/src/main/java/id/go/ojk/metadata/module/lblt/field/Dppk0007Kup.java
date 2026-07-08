@@ -83,7 +83,7 @@ public enum Dppk0007Kup implements ILbltFieldMetadata {
                 .build();
 
         if (sectorType.equals(KONVENSIONAL) || sectorType.equals(SYARIAH)) {
-            sfConfig.setMinRow(0);
+            sfConfig.setMinRow(9);
             return sfConfig;
         }
 

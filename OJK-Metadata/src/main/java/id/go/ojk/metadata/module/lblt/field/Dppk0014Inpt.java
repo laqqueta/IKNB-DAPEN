@@ -12,6 +12,7 @@ import id.go.ojk.metadata.field.lblt.LbltMetadataField;
 import id.go.ojk.metadata.module.lblt.EFormLaporanBulananTahunan;
 import id.go.ojk.metadata.module.lblt.header.*;
 import id.go.ojk.metadata.module.lblt.reference.ER7013PosLtlbDppkInsp;
+import id.go.ojk.metadata.module.lblt.reference.ER7014PosLtlbDppkInpt;
 import id.go.ojk.metadata.submission.SubmissionConfig;
 import id.go.ojk.metadata.util.constants.ProgramType;
 import id.go.ojk.metadata.util.constants.SectorType;
@@ -104,7 +105,7 @@ public enum Dppk0014Inpt implements ILbltFieldMetadata {
         FIELD_METADATA.setProgramType(programType);
 
         BaseMetadataValidation<? extends ILbltMetadataValidation> metadataValidation = null;
-        ReferenceConfig referenceConfig = ER7013PosLtlbDppkInsp.Configs.REF_CONFIG;
+        ReferenceConfig referenceConfig = ER7014PosLtlbDppkInpt.Configs.REF_CONFIG;
 
         switch (programType) {
             case PPMPK:

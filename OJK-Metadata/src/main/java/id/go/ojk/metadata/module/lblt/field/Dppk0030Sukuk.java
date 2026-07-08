@@ -159,6 +159,7 @@ public enum Dppk0030Sukuk implements ILbltFieldMetadata {
                 break;
             case PPIPM:
                 metadataValidation = E7030SukukValidationsConfig.VALIDATION_METADATA_PPIPM;
+                break;
             case DPLK:
                 break;
             default:

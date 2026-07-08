@@ -151,6 +151,7 @@ public enum Dppk0040Prop implements ILbltFieldMetadata {
                 break;
             case PPIPM:
                 metadataValidation = E7040PropValidationsConfig.VALIDATION_METADATA_PPIPM;
+                break;
             case DPLK:
                 break;
             default:

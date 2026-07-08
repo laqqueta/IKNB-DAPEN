@@ -152,6 +152,7 @@ public enum Dppk0034Eba implements ILbltFieldMetadata {
                 break;
             case PPIPM:
                 metadataValidation = E7034EbaValidationsConfig.VALIDATION_METADATA_PPIPM;
+                break;
             case DPLK:
                 break;
             default:

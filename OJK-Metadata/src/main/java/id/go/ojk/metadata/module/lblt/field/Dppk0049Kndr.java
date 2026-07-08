@@ -115,6 +115,7 @@ public enum Dppk0049Kndr implements ILbltFieldMetadata {
                 break;
             case PPIPM:
                 metadataValidation = E7049KndrValidationsConfig.VALIDATION_METADATA_PPIPM;
+                break;
             case DPLK:
                 break;
             default:

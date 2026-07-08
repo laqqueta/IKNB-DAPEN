@@ -22,7 +22,7 @@ public class DplkkDatBuilder extends BaseDatBuilder {
 	private static final EReport REPORT_TL = EReport.TL_DPLKK;
 	private static final EReport REPORT_LBLT = EReport.LKBT_DPLKK;
 	private static final List<String> DUMMY_USER = Arrays.asList("darhensu.test@gmail.com", "dplkkdummy@gmail.com",
-			"apolo.sit009@gmail.com", "apolo.sit007@gmail.com", "dev@local");
+			"apolo.sit009@gmail.com", "apolo.sit007@gmail.com", "apolo.sit006@gmail.com", "dev@local");
 
 	public static void main(String[] args) {
 		try {
@@ -81,7 +81,8 @@ public class DplkkDatBuilder extends BaseDatBuilder {
 
 	@Override
 	protected String genDummyClientEntity() {
-		return genDummyClientEntity(Constant.SECTOR.getCode(), Arrays.asList("2000009999", "2000099996"), DUMMY_USER);
+		return genDummyClientEntity(Constant.SECTOR.getCode(), Arrays.asList(
+				"2000009999", "2000099996", "2000003647"), DUMMY_USER);
 	}
 
 	@Override

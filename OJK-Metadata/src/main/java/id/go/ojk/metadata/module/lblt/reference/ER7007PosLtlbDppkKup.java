@@ -102,6 +102,10 @@ public enum ER7007PosLtlbDppkKup implements IObject<KeyValueString> {
         return new KeyValueString(key, value, new String[]{});
     }
 
+    public static int getRowSize(ProgramType programType) {
+        return getObjects(programType).size();
+    }
+
     public enum Configs implements ReferenceConfig {
         REF_CONFIG_PPMPK {
             @Override

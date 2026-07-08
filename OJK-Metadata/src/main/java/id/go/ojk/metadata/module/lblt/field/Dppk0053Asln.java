@@ -117,6 +117,7 @@ public enum Dppk0053Asln implements ILbltFieldMetadata {
                 break;
             case PPIPM:
                 metadataValidation = E7053AslnValidationsConfig.VALIDATION_METADATA_PPIPM;
+                break;
             case DPLK:
                 break;
             default:

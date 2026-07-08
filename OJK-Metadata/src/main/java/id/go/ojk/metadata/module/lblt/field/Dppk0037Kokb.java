@@ -130,6 +130,7 @@ public enum Dppk0037Kokb implements ILbltFieldMetadata {
                 break;
             case PPIPM:
                 metadataValidation = E7037KokbValidationsConfig.VALIDATION_METADATA_PPIPM;
+                break;
             case DPLK:
                 break;
             default:

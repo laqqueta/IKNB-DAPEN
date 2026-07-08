@@ -139,6 +139,7 @@ public enum Dppk0032Rksd implements ILbltFieldMetadata {
                 break;
             case PPIPM:
                 metadataValidation = E7032RksdValidationsConfig.VALIDATION_METADATA_PPIPM;
+                break;
             case DPLK:
                 break;
             default:

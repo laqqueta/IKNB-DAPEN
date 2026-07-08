@@ -20,6 +20,8 @@ import id.go.ojk.lib.client.model.KeyValueString;
 import id.go.ojk.lib.client.model.reference.ReferenceHeader;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.lib.client.model.validation.ValidationErrorCode;
+import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataLkbtDplk;
+import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataSharedLkbt;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -57,6 +59,8 @@ public class ReferenceBuilder extends BaseReferenceBuilder {
 		res.putAll(EHeaderMetadataSa.getMap());
 		res.putAll(EHeaderMetadataPenilaian.getMap());
 		res.putAll(EHeaderMetadataTl.getMap());
+		res.putAll(EHeaderMetadataSharedLkbt.getMap());
+		res.putAll(EHeaderMetadataLkbtDplk.getMap()); // APOLO Dapen 2025
 		return res;
 	}
 
@@ -75,6 +79,8 @@ public class ReferenceBuilder extends BaseReferenceBuilder {
 		res.addAll(EHeaderMetadataSa.getObjects());
 		res.addAll(EHeaderMetadataPenilaian.getObjects());
 		res.addAll(EHeaderMetadataTl.getObjects());
+		res.addAll(EHeaderMetadataSharedLkbt.getObjects());
+		res.addAll(EHeaderMetadataLkbtDplk.getObjects()); // APOLO Dapen 2025
 		return res;
 	}
 }

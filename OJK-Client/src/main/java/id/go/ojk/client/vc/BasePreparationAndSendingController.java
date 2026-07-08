@@ -355,4 +355,12 @@ public abstract class BasePreparationAndSendingController extends BaseController
 		return submissionService.getProgressModel().inProcessProperty().get();
 	}
 
+	public SecurityService getSecurityService() {
+		if (securityService == null) {
+			securityService = appCtx.getService(SecurityService.class);
+		}
+
+		return securityService;
+	}
+
 }

@@ -110,6 +110,7 @@ public enum Dppk0064Binv implements ILbltFieldMetadata {
                 break;
             case PPIPM:
                 metadataValidation = E7064BinvValidationsConfig.VALIDATION_METADATA_PPIPM;
+                break;
             case DPLK:
                 break;
             default:

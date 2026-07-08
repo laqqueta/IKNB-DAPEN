@@ -123,6 +123,7 @@ public enum Dppk0048Tnbg implements ILbltFieldMetadata {
                 break;
             case PPIPM:
                 metadataValidation = E7048TnbgValidationsConfig.VALIDATION_METADATA_PPIPM;
+                break;
             case DPLK:
                 break;
             default:

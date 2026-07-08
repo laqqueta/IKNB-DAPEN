@@ -159,6 +159,7 @@ public enum Dppk0029Obli implements ILbltFieldMetadata {
                 break;
             case PPIPM:
                 metadataValidation = E7029ObliValidationsConfig.VALIDATION_METADATA_PPIPM;
+                break;
             case DPLK:
                 break;
             default:

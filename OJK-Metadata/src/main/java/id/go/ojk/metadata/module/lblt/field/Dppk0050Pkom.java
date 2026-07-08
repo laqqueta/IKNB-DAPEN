@@ -112,6 +112,7 @@ public enum Dppk0050Pkom implements ILbltFieldMetadata {
                 break;
             case PPIPM:
                 metadataValidation = E7050PkomValidationsConfig.VALIDATION_METADATA_PPIPM;
+                break;
             case DPLK:
                 break;
             default:

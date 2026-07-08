@@ -458,15 +458,4 @@ public enum E7003NrcMValidationsConfig implements ILbltMetadataValidation, IVali
 
         return new FormulaParserData(sbFormula.toString(), sbFormulaErr.toString());
     }
-
-    public static void main(String[] args) {
-        String comparatorForm = EFormLaporanBulananTahunan.LTLB_ALM.getCode();
-        List<KeyValueString> formObject = ER7012PosLtlbDppkAlm.getObjects(PPIPM);
-        FormulaParserData operation2 = genFormulaParser(formObject, "40", "16", "Total - Total", comparatorForm);
-        String operationForm = operation2.getFormula();
-        String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " pada form ALM";
-
-        System.out.println(operationForm);
-        System.out.println(operationFormErr);
-    }
 }

@@ -609,22 +609,4 @@ public enum E7017Ras1MValidationsConfig implements ILbltMetadataValidation, IVal
 
         return new FormulaParserData(sbFormula.toString(), sbFormulaErr.toString());
     }
-
-    public static void main(String[] args) {
-        FormulaParserData ops = multiFormulaFormatter(new FormulaParserData[]{
-                genFormulaParser(ER7001PosLtlbDppkLan.getObjects(PPMPM), "20", "3", "LAN"),
-                genFormulaParser(ER7017PosLtlbDppkRas1.getObjects(PPMPM), "21", "2", "RAS1")
-        }, "-");
-
-        String formatted = ops.getErrMessage();
-        int idx = formatted.indexOf(") - (");
-        String err = ("sama dengan Total penjumlahan " + (formatted.substring(0, idx + 1) + " pada Form LAN" + formatted.substring(idx + 1) + " pada Form RAS1"))
-                .replace("(", "")
-                .replace(") ", "");
-
-        System.out.println(err);
-        System.out.println(ops.getFormula());
-        System.out.println(ops.getErrMessage());
-    }
-
 }
