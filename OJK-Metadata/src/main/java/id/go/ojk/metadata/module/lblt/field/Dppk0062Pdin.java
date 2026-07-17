@@ -110,6 +110,7 @@ public enum Dppk0062Pdin implements ILbltFieldMetadata {
                 metadataValidation = E7062PdinValidationsConfig.VALIDATION_METADATA_PPIPM;
                 break;
             case DPLK:
+                metadataValidation = E7062PdinValidationsConfig.VALIDATION_METADATA_DPLK;
                 break;
             default:
                 throw new IllegalStateException();
@@ -119,8 +120,8 @@ public enum Dppk0062Pdin implements ILbltFieldMetadata {
                 .config()
                 .setReferenceConfigs(ER7062PosLtlbDppkPdin.Configs.REF_CONFIG)
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
-                .setSubmissionField(FIELD_METADATA.getClearedFields())
-                .setSegmentValidations()
+                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                .setSegmentValidations(metadataValidation)
                 .build()
                 .get();
     }

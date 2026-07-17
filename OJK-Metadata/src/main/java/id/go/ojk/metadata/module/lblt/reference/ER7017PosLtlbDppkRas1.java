@@ -252,7 +252,7 @@ public enum ER7017PosLtlbDppkRas1 implements IObject<KeyValueString> {
 
             @Override
             public String savePos() {
-                return UtilMetadata.genFieldSave("2|3|4|5", getObjects(programType));
+                return UtilMetadata.genFieldSave("2", getObjects(programType));
             }
         },
 
@@ -304,16 +304,16 @@ public enum ER7017PosLtlbDppkRas1 implements IObject<KeyValueString> {
                 return UtilMetadata.genPipeRow(getObjects(programType));
             }
 
-//            @Override
-//            public String savePosForm() {
-//                return UtilMetadata.genFieldSave("2",
-//                        Collections.singletonList(R_RAS10901000000.getObject()));
-//            }
-//
-//            @Override
-//            public String savePos() {
-//                return UtilMetadata.genFieldSave("2", getObjects(programType));
-//            }
+            @Override
+            public String savePosForm() {
+                return UtilMetadata.genFieldSave("2|3|4|5",
+                        Collections.singletonList(R_RAS10901000000.getObject()));
+            }
+
+            @Override
+            public String savePos() {
+                return UtilMetadata.genFieldSave("2|3|4|5", getObjects(programType));
+            }
         },
     }
 }

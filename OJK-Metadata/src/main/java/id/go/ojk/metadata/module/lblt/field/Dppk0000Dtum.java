@@ -82,25 +82,16 @@ public enum Dppk0000Dtum implements ILbltFieldMetadata {
     public static SubmissionFormat formMetadata(SectorType sectorType, ProgramType programType) {
         FIELD_METADATA.setProgramType(programType);
 
-        BaseMetadataValidation<E7000DtumValidationsConfig> metadataValidation = null;
+        BaseMetadataValidation<E7000DtumValidationsConfig> metadataValidation = E7000DtumValidationsConfig.getValidationMetadata(programType);
         ReferenceConfig referenceConfig = ER7000PosLtlbDppkDtum.Configs.REF_CONFIG_ALL;
 
 
         switch (programType) {
             case PPMPK:
-                metadataValidation = E7000DtumValidationsConfig.VALIDATION_METADATA_PPMPK;
-                break;
             case PPMPM:
-                metadataValidation = E7000DtumValidationsConfig.VALIDATION_METADATA_PPMPM;
-                break;
             case PPIPK:
-                metadataValidation = E7000DtumValidationsConfig.VALIDATION_METADATA_PPIPK;
-                break;
             case PPIPM:
-                metadataValidation = E7000DtumValidationsConfig.VALIDATION_METADATA_PPIPM;
-                break;
             case DPLK:
-                referenceConfig = ER7000PosLtlbDppkDtum.Configs.REF_CONFIG_DPLK;
                 break;
             default:
                 throw new IllegalStateException();
@@ -108,18 +99,20 @@ public enum Dppk0000Dtum implements ILbltFieldMetadata {
 
         BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType)
                 .config()
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
+                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
                 .setReferenceConfigs(referenceConfig)
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType));
+                .setSegmentValidations(metadataValidation);
 
-        if (programType == DPLK) {
-            submissionConfig
-                    .setSubmissionField(FIELD_METADATA.getClearedFields())
-                    .setSegmentValidations();
-        } else {
-            submissionConfig
-                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-                    .setSegmentValidations(metadataValidation);
-        }
+//        if (programType == DPLK) {
+//            submissionConfig
+//                    .setSubmissionField(FIELD_METADATA.getClearedFields())
+//                    .setSegmentValidations();
+//        } else {
+//            submissionConfig
+//                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+//                    .setSegmentValidations(metadataValidation);
+//        }
 
         return submissionConfig.build().get();
     }

@@ -48,18 +48,18 @@ public class LbltMetadataField<T extends Enum<T> & ILbltFieldMetadata> extends B
 
     @Override
     protected Stream<SubmissionField> getfilteredFieldStream() {
-        AtomicBoolean changed = new AtomicBoolean(false);
+        AtomicBoolean isChange = new AtomicBoolean(false);
 
         return enumValues().stream()
                 .map(v -> SerializationUtils.clone(v.getField()))
                 .peek(sf -> {
-                    if (changed.get()) return;
+                    if (isChange.get()) return;
 
                     if (sf.getNumber() == KODE_KOMPONEN_FIELD_INDEX) {
                         sf.getSimpleValidation()
                                 .confReference(kodeKomponenReferences.get(programType));
 
-                        changed.set(true);
+                        isChange.set(true);
                     }
                 });
     }

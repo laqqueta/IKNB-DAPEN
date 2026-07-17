@@ -132,6 +132,7 @@ public enum Dppk0104Mpbk implements ILbltFieldMetadata {
                 metadataValidation = E7104MpbkValidationsConfig.VALIDATION_METADATA_PPIPM;
                 break;
             case DPLK:
+                metadataValidation = E7104MpbkValidationsConfig.VALIDATION_METADATA_DPLK;
                 break;
             default:
                 throw new IllegalStateException();
@@ -141,8 +142,8 @@ public enum Dppk0104Mpbk implements ILbltFieldMetadata {
                 .config()
                 .setReferenceConfigs(ER7104PosLtlbDppkMpbk.Configs.REF_CONFIG)
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
-                .setSubmissionField(FIELD_METADATA.getClearedFields())
-                .setSegmentValidations()
+                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                .setSegmentValidations(metadataValidation)
                 .build()
                 .get();
     }

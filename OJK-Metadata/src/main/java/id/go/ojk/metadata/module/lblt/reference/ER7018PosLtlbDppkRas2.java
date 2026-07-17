@@ -9,8 +9,10 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ER7018PosLtlbDppkRas2 implements IObject<KeyValueString> {
@@ -92,10 +94,14 @@ public enum ER7018PosLtlbDppkRas2 implements IObject<KeyValueString> {
         REF_CONFIG_DPLK {
             private final ProgramType programType = ProgramType.DPLK;
 
-//            @Override
-//            public String savePos() {
-//                return UtilMetadata.genFieldSave("2|3|4", getObjects());
-//            }
+            @Override
+            public String savePos() {
+                List<ER7018PosLtlbDppkRas2> objs = Arrays.asList(R_RAS20102000000, R_RAS20103000000);
+                return UtilMetadata.genFieldSave("3|4",
+                        objs.stream().map(ER7018PosLtlbDppkRas2::getObject)
+                                .collect(Collectors.toList())
+                );
+            }
 
             @Override
             public String requiredPos() {

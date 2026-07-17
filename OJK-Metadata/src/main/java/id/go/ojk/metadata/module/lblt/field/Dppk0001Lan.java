@@ -28,6 +28,7 @@ import java.util.stream.Stream;
 import static id.go.ojk.lib.client.model.config.DataType.*;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.C;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
+import static id.go.ojk.metadata.module.lblt.validations.dplk.E7001LanKValidationsConfig.VALIDATION_METADATA_DPLK;
 import static id.go.ojk.metadata.module.lblt.validations.ppipik.E7001LanKValidationsConfig.VALIDATION_METADATA_PPIPK;
 import static id.go.ojk.metadata.module.lblt.validations.ppipm.E7001LanMValidationsConfig.VALIDATION_METADATA_PPIPM;
 import static id.go.ojk.metadata.module.lblt.validations.ppmpk.E7001LanKValidationsConfig.VALIDATION_METADATA_PPMPK;
@@ -131,27 +132,23 @@ public enum Dppk0001Lan implements ILbltFieldMetadata {
         FIELD_METADATA.setProgramType(programType);
 
         BaseMetadataValidation<? extends ILbltMetadataValidation> metadataValidation = null;
-        ReferenceConfig referenceConfig = null;
+        ReferenceConfig referenceConfig = ER7001PosLtlbDppkLan.getRefConfig(programType);
 
         switch (programType) {
             case PPMPK:
                 metadataValidation = VALIDATION_METADATA_PPMPK;
-                referenceConfig = ER7001PosLtlbDppkLan.Configs.REF_CONFIG_PPMPK;
                 break;
             case PPMPM:
                 metadataValidation = VALIDATION_METADATA_PPMPM;
-                referenceConfig = ER7001PosLtlbDppkLan.Configs.REF_CONFIG_PPMPM;
                 break;
             case PPIPK:
                 metadataValidation = VALIDATION_METADATA_PPIPK;
-                referenceConfig = ER7001PosLtlbDppkLan.Configs.REF_CONFIG_PPIPK;
                 break;
             case PPIPM:
                 metadataValidation = VALIDATION_METADATA_PPIPM;
-                referenceConfig = ER7001PosLtlbDppkLan.Configs.REF_CONFIG_PPIPM;
                 break;
             case DPLK:
-                referenceConfig = ER7001PosLtlbDppkLan.Configs.REF_CONFIG_DPLK;
+                metadataValidation = VALIDATION_METADATA_DPLK;
                 break;
             default:
                 throw new IllegalStateException();
@@ -159,17 +156,19 @@ public enum Dppk0001Lan implements ILbltFieldMetadata {
 
         BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType).config()
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
-                .setReferenceConfigs(referenceConfig);
+                .setReferenceConfigs(referenceConfig)
+                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                .setSegmentValidations(metadataValidation);
 
-        if (programType == DPLK) {
-            submissionConfig
-                    .setSubmissionField(FIELD_METADATA.getClearedFields())
-                    .setSegmentValidations();
-        } else {
-            submissionConfig
-                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-                    .setSegmentValidations(metadataValidation);
-        }
+//        if (programType == DPLK) {
+//            submissionConfig
+//                    .setSubmissionField(FIELD_METADATA.getClearedFields())
+//                    .setSegmentValidations();
+//        } else {
+//            submissionConfig
+//                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+//                    .setSegmentValidations(metadataValidation);
+//        }
 
         return submissionConfig.build().get();
 

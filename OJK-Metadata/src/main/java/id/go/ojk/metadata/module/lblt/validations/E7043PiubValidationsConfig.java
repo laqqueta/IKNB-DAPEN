@@ -38,15 +38,15 @@ public enum E7043PiubValidationsConfig implements ILbltMetadataValidation, IVali
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(3, 4), R_PIUB000000.key, R_PIUB010000.key,
                     UtilMetadata.genMessageTotal(R_PIUB000000.value, R_PIUB010000.value))),
 
-    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(2, 6),
+    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(2, 6),
             () -> UtilFieldConditional.genExistPos("N", "M", R_PIUB000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(7),
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(7),
             () -> UtilFieldConditional.genExistPos("N", "O", R_PIUB000000.key)),
 
     ;
 
- private final EnumSet<ProgramType> programTypes;
+    private final EnumSet<ProgramType> programTypes;
     private List<Integer> fieldIndexes;
     private final Supplier<? extends IValidation> supplier;
 
@@ -93,10 +93,7 @@ public enum E7043PiubValidationsConfig implements ILbltMetadataValidation, IVali
     public static final BaseMetadataValidation<E7043PiubValidationsConfig> VALIDATION_METADATA_PPIPK =
             new LbltMetadataValidation<>(E7043PiubValidationsConfig.class, PPIPK);
 
-        public static final BaseMetadataValidation<E7043PiubValidationsConfig> VALIDATION_METADATA_PPIPM =
+    public static final BaseMetadataValidation<E7043PiubValidationsConfig> VALIDATION_METADATA_PPIPM =
             new LbltMetadataValidation<>(E7043PiubValidationsConfig.class, PPIPM);
-
-    public static final BaseMetadataValidation<E7043PiubValidationsConfig> VALIDATION_METADATA_DPLK =
-            new LbltMetadataValidation<>(E7043PiubValidationsConfig.class, DPLK);
 
 }

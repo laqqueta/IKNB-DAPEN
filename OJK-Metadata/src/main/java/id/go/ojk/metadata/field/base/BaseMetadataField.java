@@ -62,7 +62,7 @@ public abstract class BaseMetadataField<T extends Enum<T> & IBaseFieldMetadata> 
                 .collect(Collectors.toList());
     }
 
-    public <V extends IBaseMetadataValidation> List<SubmissionField> getFields(Map<Integer, List<V>> fieldValidations) {
+    public <X, V extends IBaseMetadataValidation> List<SubmissionField> getFields(Map<Integer, List<V>> fieldValidations) {
         return getfilteredFieldStream()
                 .map(SerializationUtils::clone)
                 .peek(field -> {

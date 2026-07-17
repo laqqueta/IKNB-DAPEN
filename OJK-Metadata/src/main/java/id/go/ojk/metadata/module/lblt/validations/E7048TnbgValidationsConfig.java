@@ -31,17 +31,17 @@ import static id.go.ojk.metadata.util.constants.ProgramType.*;
 @AllArgsConstructor
 public enum E7048TnbgValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
+    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM, PPIPK, PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(6, 9), R_TNBG000000.key, R_TNBG010000.key,
                     UtilMetadata.genMessageTotal(R_TNBG000000.value, R_TNBG010000.value))),
 
-    FV_EQUAL_NILAI_BUKU(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(8),
+    FV_EQUAL_NILAI_BUKU(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(8),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("6-7", R_TNBG000000.key)),
 
-    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(2, 3, 4, 5),
+    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(2, 3, 4, 5),
             () -> UtilFieldConditional.genExistPos("N", "M", R_TNBG000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(10),
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(10),
             () -> UtilFieldConditional.genExistPos("N", "O", R_TNBG000000.key)),
 
     ;
@@ -93,10 +93,8 @@ public enum E7048TnbgValidationsConfig implements ILbltMetadataValidation, IVali
     public static final BaseMetadataValidation<E7048TnbgValidationsConfig> VALIDATION_METADATA_PPIPK =
             new LbltMetadataValidation<>(E7048TnbgValidationsConfig.class, PPIPK);
 
-        public static final BaseMetadataValidation<E7048TnbgValidationsConfig> VALIDATION_METADATA_PPIPM =
+    public static final BaseMetadataValidation<E7048TnbgValidationsConfig> VALIDATION_METADATA_PPIPM =
             new LbltMetadataValidation<>(E7048TnbgValidationsConfig.class, PPIPM);
 
-    public static final BaseMetadataValidation<E7048TnbgValidationsConfig> VALIDATION_METADATA_DPLK =
-            new LbltMetadataValidation<>(E7048TnbgValidationsConfig.class, DPLK);
 
 }

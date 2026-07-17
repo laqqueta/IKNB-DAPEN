@@ -134,16 +134,8 @@ public enum E7009RoiValidationsConfig implements ILbltMetadataValidation, IValid
                 .toValidation(this, ConditionalRequired.class);
     }
 
-    public static final BaseMetadataValidation<E7009RoiValidationsConfig> VALIDATION_METADATA_PPMPK =
-            new LbltMetadataValidation<>(E7009RoiValidationsConfig.class, PPMPK);
-
-    public static final BaseMetadataValidation<E7009RoiValidationsConfig> VALIDATION_METADATA_PPMPM =
-            new LbltMetadataValidation<>(E7009RoiValidationsConfig.class, PPMPM);
-
-    public static final BaseMetadataValidation<E7009RoiValidationsConfig> VALIDATION_METADATA_PPIPK =
-            new LbltMetadataValidation<>(E7009RoiValidationsConfig.class, PPIPK);
-
-    public static final BaseMetadataValidation<E7009RoiValidationsConfig> VALIDATION_METADATA_PPIPM =
-            new LbltMetadataValidation<>(E7009RoiValidationsConfig.class, PPIPM);
+    public static BaseMetadataValidation<E7009RoiValidationsConfig> getValidationMetadata(ProgramType programType) {
+        return new LbltMetadataValidation<>(E7009RoiValidationsConfig.class, programType);
+    }
 
 }

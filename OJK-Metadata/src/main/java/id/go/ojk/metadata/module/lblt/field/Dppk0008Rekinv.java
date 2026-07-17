@@ -5,6 +5,7 @@ import id.go.ojk.client.model.config.SimpleValidation;
 import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
+import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.lib.client.model.config.UniqueType;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.metadata.field.lblt.ILbltFieldMetadata;
@@ -115,28 +116,15 @@ public enum Dppk0008Rekinv implements ILbltFieldMetadata {
         FIELD_METADATA.setProgramType(programType);
 
         SubmissionFormatBuilder submissionFormatBuilder = getPpmpSubmissionFormatConfig(sectorType, programType);
-        ER7008PosLtlbDppkRekinv.Configs referenceConfig = null;
-        BaseMetadataValidation<? extends IBaseMetadataValidation> metadataValidation = null;
+        ReferenceConfig referenceConfig = ER7008PosLtlbDppkRekinv.getRefConfig(programType);
+        BaseMetadataValidation<? extends IBaseMetadataValidation> metadataValidation = E7008RekinvValidationsConfig.getValidationMetadata(programType);
 
         switch (programType) {
             case PPMPK:
-                referenceConfig = ER7008PosLtlbDppkRekinv.Configs.REF_CONFIG_PPMPK;
-                metadataValidation = E7008RekinvValidationsConfig.VALIDATION_METADATA_PPMPK;
-                break;
             case PPMPM:
-                referenceConfig = ER7008PosLtlbDppkRekinv.Configs.REF_CONFIG_PPMPM;
-                metadataValidation = E7008RekinvValidationsConfig.VALIDATION_METADATA_PPMPM;
-                break;
             case PPIPK:
-                referenceConfig = ER7008PosLtlbDppkRekinv.Configs.REF_CONFIG_PPIPK;
-                metadataValidation = E7008RekinvValidationsConfig.VALIDATION_METADATA_PPIPK;
-                break;
             case PPIPM:
-                referenceConfig = ER7008PosLtlbDppkRekinv.Configs.REF_CONFIG_PPIPM;
-                metadataValidation = E7008RekinvValidationsConfig.VALIDATION_METADATA_PPIPM;
-                break;
             case DPLK:
-                referenceConfig = ER7008PosLtlbDppkRekinv.Configs.REF_CONFIG_DPLK;
                 break;
             default:
                 throw new IllegalStateException();
@@ -144,17 +132,19 @@ public enum Dppk0008Rekinv implements ILbltFieldMetadata {
 
         BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType).config()
                 .setSubmissionFormat(submissionFormatBuilder)
-                .setReferenceConfigs(referenceConfig);
+                .setReferenceConfigs(referenceConfig)
+                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                .setSegmentValidations(metadataValidation);
 
-        if (programType == DPLK) {
-            submissionConfig
-                    .setSubmissionField(FIELD_METADATA.getClearedFields())
-                    .setSegmentValidations();
-        } else {
-            submissionConfig
-                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-                    .setSegmentValidations(metadataValidation);
-        }
+//        if (programType == DPLK) {
+//            submissionConfig
+//                    .setSubmissionField(FIELD_METADATA.getClearedFields())
+//                    .setSegmentValidations();
+//        } else {
+//            submissionConfig
+//                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+//                    .setSegmentValidations(metadataValidation);
+//        }
 
         return submissionConfig.build().get();
 

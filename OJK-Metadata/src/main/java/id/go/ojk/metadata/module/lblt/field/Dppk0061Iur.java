@@ -135,7 +135,8 @@ public enum Dppk0061Iur implements ILbltFieldMetadata {
         List<SubmissionField> submissionFields = null;
         ReferenceConfig referenceConfig = null;
 
-        List<Integer> usedFieldIdx = Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 13, 14, 15, 17, 18);
+        List<Integer> ppipFields = Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 13, 14, 15, 17, 18);
+        List<Integer> dplkFields = Arrays.asList(0, 1, 2, 3, 10, 11, 13, 17, 18);
 
         switch (programType) {
             case PPMPK:
@@ -150,16 +151,17 @@ public enum Dppk0061Iur implements ILbltFieldMetadata {
                 break;
             case PPIPK:
                 metadataValidation = E7061IurValidationsConfig.VALIDATION_METADATA_PPIPK;
-                submissionFields = FIELD_METADATA.getReindexFields(usedFieldIdx, metadataValidation.getFieldValidations());
+                submissionFields = FIELD_METADATA.getReindexFields(ppipFields, metadataValidation.getFieldValidations());
                 referenceConfig = ER7061PosLtlbDppkIur.Configs.REF_CONFIG_PPIP;
                 break;
             case PPIPM:
                 metadataValidation = E7061IurValidationsConfig.VALIDATION_METADATA_PPIPM;
-                submissionFields = FIELD_METADATA.getReindexFields(usedFieldIdx, metadataValidation.getFieldValidations());
+                submissionFields = FIELD_METADATA.getReindexFields(ppipFields, metadataValidation.getFieldValidations());
                 referenceConfig = ER7061PosLtlbDppkIur.Configs.REF_CONFIG_PPIP;
                 break;
             case DPLK:
-                submissionFields = FIELD_METADATA.getClearedFields();
+                metadataValidation = E7061IurValidationsConfig.VALIDATION_METADATA_DPLK;
+                submissionFields = FIELD_METADATA.getReindexClearedFields(dplkFields);
                 referenceConfig = ER7061PosLtlbDppkIur.Configs.REF_CONFIG_DPLK;
                 break;
             default:
@@ -173,7 +175,7 @@ public enum Dppk0061Iur implements ILbltFieldMetadata {
         if (programType == DPLK) {
             submissionConfig
                     .setSubmissionField(submissionFields)
-                    .setSegmentValidations();
+                    .setSegmentValidations(metadataValidation);
         } else {
             submissionConfig
                     .setSubmissionField(submissionFields)
@@ -181,15 +183,6 @@ public enum Dppk0061Iur implements ILbltFieldMetadata {
         }
 
         return submissionConfig.build().get();
-
-//        return new SubmissionConfig(programType)
-//                .config()
-//                .setReferenceConfigs(referenceConfig)
-//                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
-//                .setSubmissionField(submissionFields)
-//                .setSegmentValidations(metadataValidation)
-//                .build()
-//                .get();
     }
 
     @Override
@@ -205,6 +198,13 @@ public enum Dppk0061Iur implements ILbltFieldMetadata {
     @Override
     public EnumSet<ProgramType> getProgramType() {
         return programType;
+    }
+
+    public static void main(String[] args) {
+        FIELD_METADATA.setProgramType(DPLK);
+        FIELD_METADATA.getFields().forEach(v -> {
+            System.out.println(v.getNumber() + "::" + v.getName());
+        });
     }
 
 }

@@ -99,7 +99,7 @@ public enum Dppk0102Pinv implements ILbltFieldMetadata {
                 metadataValidation = E7102PinvValidationsConfig.VALIDATION_METADATA_PPIPM;
                 break;
             case DPLK:
-                referenceConfig = ER7102PosLtlbDppkPinv.Configs.REF_CONFIG_DPLK;
+                metadataValidation = E7102PinvValidationsConfig.VALIDATION_METADATA_DPLK;
                 break;
             default:
                 throw new IllegalStateException();
@@ -108,17 +108,19 @@ public enum Dppk0102Pinv implements ILbltFieldMetadata {
         BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType)
                 .config()
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
-                .setReferenceConfigs(referenceConfig);
+                .setReferenceConfigs(referenceConfig)
+                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                .setSegmentValidations(metadataValidation);
 
-        if (programType == DPLK) {
-            submissionConfig
-                    .setSubmissionField(FIELD_METADATA.getClearedFields())
-                    .setSegmentValidations();
-        } else {
-            submissionConfig
-                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-                    .setSegmentValidations(metadataValidation);
-        }
+//        if (programType == DPLK) {
+//            submissionConfig
+//                    .setSubmissionField(FIELD_METADATA.getClearedFields())
+//                    .setSegmentValidations();
+//        } else {
+//            submissionConfig
+//                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+//                    .setSegmentValidations(metadataValidation);
+//        }
 
         return submissionConfig.build().get();
 

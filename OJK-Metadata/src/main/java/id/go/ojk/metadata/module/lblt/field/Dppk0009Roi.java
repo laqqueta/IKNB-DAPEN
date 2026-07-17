@@ -105,21 +105,16 @@ public enum Dppk0009Roi implements ILbltFieldMetadata {
     public static SubmissionFormat formMetadata(SectorType sectorType, ProgramType programType) {
         FIELD_METADATA.setProgramType(programType);
 
-        BaseMetadataValidation<E7009RoiValidationsConfig> metadataValidation = null;
+        BaseMetadataValidation<E7009RoiValidationsConfig> metadataValidation = E7009RoiValidationsConfig
+                .getValidationMetadata(programType);
+
         ReferenceConfig referenceConfig = ER7009PosLtlbDppkRoi.Configs.REF_CONFIG;
 
         switch (programType) {
             case PPMPK:
-                metadataValidation = E7009RoiValidationsConfig.VALIDATION_METADATA_PPMPK;
-                break;
             case PPMPM:
-                metadataValidation = E7009RoiValidationsConfig.VALIDATION_METADATA_PPMPM;
-                break;
             case PPIPK:
-                metadataValidation = E7009RoiValidationsConfig.VALIDATION_METADATA_PPIPK;
-                break;
             case PPIPM:
-                metadataValidation = E7009RoiValidationsConfig.VALIDATION_METADATA_PPIPM;
                 break;
             case DPLK:
                 referenceConfig = ER7009PosLtlbDppkRoi.Configs.REF_CONFIG_DPLK;
@@ -130,17 +125,19 @@ public enum Dppk0009Roi implements ILbltFieldMetadata {
 
         BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType).config()
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
-                .setReferenceConfigs(referenceConfig);
+                .setReferenceConfigs(referenceConfig)
+                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                .setSegmentValidations(metadataValidation);
 
-        if (programType == DPLK) {
-            submissionConfig
-                    .setSubmissionField(FIELD_METADATA.getClearedFields())
-                    .setSegmentValidations();
-        } else {
-            submissionConfig
-                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-                    .setSegmentValidations(metadataValidation);
-        }
+//        if (programType == DPLK) {
+//            submissionConfig
+//                    .setSubmissionField(FIELD_METADATA.getClearedFields())
+//                    .setSegmentValidations();
+//        } else {
+//            submissionConfig
+//                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+//                    .setSegmentValidations(metadataValidation);
+//        }
 
         return submissionConfig.build().get();
 

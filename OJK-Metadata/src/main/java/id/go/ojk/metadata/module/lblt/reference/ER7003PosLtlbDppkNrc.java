@@ -195,7 +195,24 @@ public enum ER7003PosLtlbDppkNrc implements IObject<KeyValueString> {
         return getObjects(programType).size();
     }
 
-    public enum Configs implements ReferenceConfig {
+    public static ReferenceConfig getRefConfig(ProgramType programType) {
+        switch (programType) {
+            case PPMPK:
+                return Configs.REF_CONFIG_PPMPK;
+            case PPMPM:
+                return Configs.REF_CONFIG_PPMPM;
+            case PPIPK:
+                return Configs.REF_CONFIG_PPIPK;
+            case PPIPM:
+                return Configs.REF_CONFIG_PPIPM;
+            case DPLK:
+                return Configs.REF_CONFIG_DPLK;
+            default:
+                throw new IllegalStateException();
+        }
+    }
+
+    enum Configs implements ReferenceConfig {
         REF_CONFIG_PPMPK {
             private final ProgramType programType = ProgramType.PPMPK;
 
@@ -275,15 +292,15 @@ public enum ER7003PosLtlbDppkNrc implements IObject<KeyValueString> {
         REF_CONFIG_DPLK {
             private final ProgramType programType = ProgramType.DPLK;
 
-//            @Override
-//            public String savePos() {
-//                return UtilMetadata.genFieldSave("2", getObjects(programType));
-//            }
-//
-//            @Override
-//            public String savePosForm() {
-//                return UtilMetadata.genFieldSave("2", getObjects(programType));
-//            }
+            @Override
+            public String savePos() {
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 12), getObjects(programType));
+            }
+
+            @Override
+            public String savePosForm() {
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 12), getObjects(programType));
+            }
 
             @Override
             public String requiredPos() {

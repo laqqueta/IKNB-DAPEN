@@ -19,6 +19,7 @@ import id.go.ojk.metadata.field.lblt.ILbltFieldMetadata;
 import id.go.ojk.metadata.field.lblt.LbltMetadataField;
 import id.go.ojk.metadata.submission.SubmissionConfig;
 import id.go.ojk.metadata.validation.base.BaseMetadataValidation;
+import id.go.ojk.metadata.validation.lblt.ILbltMetadataValidation;
 import lombok.AllArgsConstructor;
 
 import java.util.*;
@@ -105,21 +106,14 @@ public enum Dppk0011Roism implements ILbltFieldMetadata {
     public static SubmissionFormat formMetadata(SectorType sectorType, ProgramType programType) {
         FIELD_METADATA.setProgramType(programType);
 
-        BaseMetadataValidation<E7011RoismValidationsConfig> metadataValidation = null;
+        BaseMetadataValidation<? extends ILbltMetadataValidation> metadataValidation = E7011RoismValidationsConfig.getValidationMetadata(programType);
         ReferenceConfig referenceConfig = ER7011PosLtlbDppkRoism.Configs.REF_CONFIG;
 
         switch (programType) {
             case PPMPK:
-                metadataValidation = E7011RoismValidationsConfig.VALIDATION_METADATA_PPMPK;
-                break;
             case PPMPM:
-                metadataValidation = E7011RoismValidationsConfig.VALIDATION_METADATA_PPMPM;
-                break;
             case PPIPK:
-                metadataValidation = E7011RoismValidationsConfig.VALIDATION_METADATA_PPIPK;
-                break;
             case PPIPM:
-                metadataValidation = E7011RoismValidationsConfig.VALIDATION_METADATA_PPIPM;
                 break;
             case DPLK:
                 referenceConfig = ER7011PosLtlbDppkRoism.Configs.REF_CONFIG_DPLK;
@@ -130,17 +124,19 @@ public enum Dppk0011Roism implements ILbltFieldMetadata {
 
         BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType).config()
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
-                .setReferenceConfigs(referenceConfig);
+                .setReferenceConfigs(referenceConfig)
+                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                .setSegmentValidations(metadataValidation);
 
-        if (programType == DPLK) {
-            submissionConfig
-                    .setSubmissionField(FIELD_METADATA.getClearedFields())
-                    .setSegmentValidations();
-        } else {
-            submissionConfig
-                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-                    .setSegmentValidations(metadataValidation);
-        }
+//        if (programType == DPLK) {
+//            submissionConfig
+//                    .setSubmissionField(FIELD_METADATA.getClearedFields())
+//                    .setSegmentValidations();
+//        } else {
+//            submissionConfig
+//                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+//                    .setSegmentValidations(metadataValidation);
+//        }
 
         return submissionConfig.build().get();
 

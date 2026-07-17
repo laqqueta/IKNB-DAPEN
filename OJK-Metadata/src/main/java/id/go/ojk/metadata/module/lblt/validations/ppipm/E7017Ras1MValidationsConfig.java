@@ -249,7 +249,7 @@ public enum E7017Ras1MValidationsConfig implements ILbltMetadataValidation, IVal
         List<KeyValueString> formObject = ER7002PosLtlbDppkLpan.getObjects(PPIPM);
         FormulaParserData operation2 = genFormulaParser(formObject, "13+14+16", "2", comparatorForm);
         String operationForm = operation2.getFormula();
-        String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun * Periode bulan berjalan pada form LPAN";
+        String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun * Periode laporan bulan berjalan pada form LPAN";
 
         return UtilSegmentValidationV2.genFormulaParserValidationV2PeriodePelaporan("2", R_RAS11302000000.key, operationForm, operationFormErr, 2);
     }),

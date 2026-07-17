@@ -109,5 +109,8 @@ public enum E7018Ras2ValidationsConfig implements ILbltMetadataValidation, IVali
     public static final BaseMetadataValidation<E7018Ras2ValidationsConfig> VALIDATION_METADATA_PPIPM =
             new LbltMetadataValidation<>(E7018Ras2ValidationsConfig.class, PPIPM);
 
+    public static final BaseMetadataValidation<E7018Ras2ValidationsConfig> VALIDATION_METADATA_DPLK =
+            new LbltMetadataValidation<>(E7018Ras2ValidationsConfig.class, DPLK);
+
 
 }

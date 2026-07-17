@@ -90,7 +90,7 @@ public enum ER7000PosLtlbDppkDtum implements IObject<KeyValueString> {
     }
 
     public static int getRowSize(ProgramType programType) {
-        return getObjects(programType).size();
+        return programType.equals(ProgramType.DPLK) ? getObjects(programType).size() : getObjects().size();
     }
 
     public enum Configs implements ReferenceConfig {
@@ -109,27 +109,6 @@ public enum ER7000PosLtlbDppkDtum implements IObject<KeyValueString> {
             public String savePosForm() {
                 return UtilMetadata.genFieldSave("2", Collections.singletonList(R_DTUM080700.getObject()));
             }
-        },
-
-        REF_CONFIG_DPLK {
-            private final ProgramType programType = ProgramType.DPLK;
-
-            @Override
-            public String requiredPos() {
-//                return UtilMetadata.genPipeRowExcept(getObjects(), new int[]{24, 25, 26});
-
-                return UtilMetadata.genPipeRow(getObjects(programType));
-            }
-
-//            @Override
-//            public String savePos() {
-//                return UtilMetadata.genFieldSave("0", getObjects());
-//            }
-//
-//            @Override
-//            public String savePosForm() {
-//                return UtilMetadata.genFieldSave("2", Collections.singletonList(R_DTUM080700.getObject()));
-//            }
         }
     }
 }

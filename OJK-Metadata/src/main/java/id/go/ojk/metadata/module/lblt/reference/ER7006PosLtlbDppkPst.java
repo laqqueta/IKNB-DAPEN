@@ -121,9 +121,23 @@ public enum ER7006PosLtlbDppkPst implements IObject<KeyValueString> {
     public static int getRowSize(ProgramType programType) {
         return programType.equals(ProgramType.DPLK) ? getObjects(programType).size() : getObjects().size();
     }
+    public static ReferenceConfig getRefConfig(ProgramType programType) {
+        switch (programType) {
+            case PPMPK:
+            case PPIPK:
+            case DPLK:
+                return Configs.REF_CONFIG_PPMPK_PPIPK_DPLK;
+            case PPMPM:
+            case PPIPM:
+                return Configs.REF_CONFIG_PPMPM_PPIPM;
+            default:
+                throw new IllegalStateException();
+        }
+    }
 
-    public enum Configs implements ReferenceConfig {
-        REF_CONFIG_PPMPK_PPIPK {
+
+    enum Configs implements ReferenceConfig {
+        REF_CONFIG_PPMPK_PPIPK_DPLK {
             @Override
             public String requiredPos() {
                 return UtilMetadata.genPipeRow(getObjects());
@@ -136,7 +150,7 @@ public enum ER7006PosLtlbDppkPst implements IObject<KeyValueString> {
 
             @Override
             public String savePos() {
-                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 4),getObjects());
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 5),getObjects());
             }
         },
 
@@ -155,29 +169,6 @@ public enum ER7006PosLtlbDppkPst implements IObject<KeyValueString> {
             public String savePos() {
                 return UtilMetadata.genFieldSave("2",getObjects());
             }
-        },
-
-        REF_CONFIG_DPLK {
-            private final ProgramType programType = ProgramType.DPLK;
-
-            @Override
-            public String requiredPos() {
-                return UtilMetadata.genPipeRow(getObjects(programType));
-            }
-
-//            @Override
-//            public String savePosForm() {
-//                return UtilMetadata.genFieldSave("2", getObjects());
-//            }
-//
-//            @Override
-//            public String savePos() {
-//                return UtilMetadata.genFieldSave("2",getObjects());
-//            }
-        },
-    }
-
-    public static void main(String[] args) {
-        System.out.println(getRowSize(ProgramType.PPIPK));
+        }
     }
 }

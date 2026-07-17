@@ -26,6 +26,7 @@ import java.util.stream.Stream;
 import static id.go.ojk.lib.client.model.config.DataType.*;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.C;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
+import static id.go.ojk.metadata.module.lblt.validations.dplk.E7015InbmKValidationsConfig.VALIDATION_METADATA_DPLK;
 import static id.go.ojk.metadata.module.lblt.validations.ppipik.E7015InbmKValidationsConfig.VALIDATION_METADATA_PPIPK;
 import static id.go.ojk.metadata.module.lblt.validations.ppipm.E7015InbmMValidationsConfig.VALIDATION_METADATA_PPIPM;
 import static id.go.ojk.metadata.module.lblt.validations.ppmpk.E7015InbmKValidationsConfig.VALIDATION_METADATA_PPMPK;
@@ -119,6 +120,7 @@ public enum Dppk0015Inbm implements ILbltFieldMetadata {
                 metadataValidation = VALIDATION_METADATA_PPIPM;
                 break;
             case DPLK:
+                metadataValidation = VALIDATION_METADATA_DPLK;
                 break;
             default:
                 throw new IllegalStateException();
@@ -128,8 +130,8 @@ public enum Dppk0015Inbm implements ILbltFieldMetadata {
                 .config()
                 .setReferenceConfigs(referenceConfig)
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
-                .setSubmissionField(FIELD_METADATA.getClearedFields())
-                .setSegmentValidations()
+                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                .setSegmentValidations(metadataValidation)
                 .build()
                 .get();
     }

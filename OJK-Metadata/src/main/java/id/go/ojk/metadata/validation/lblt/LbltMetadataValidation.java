@@ -4,6 +4,7 @@ import id.go.ojk.metadata.util.constants.ProgramType;
 import id.go.ojk.metadata.validation.base.BaseMetadataValidation;
 import lombok.Setter;
 
+import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,9 +29,13 @@ public class LbltMetadataValidation<T extends Enum<T> & ILbltMetadataValidation>
 
     @Override
     protected List<T> enumValues() {
-        return EnumSet.allOf(enumClass).stream()
+        List<T> enumVals = EnumSet.allOf(enumClass).stream()
                 .filter(e -> e.getProgramTypes().contains(programType) || e.getProgramTypes().contains(ProgramType.ALL))
                 .collect(Collectors.toList());
+
+        if (enumVals.isEmpty()) throw new IllegalStateException("empty metadata validation");
+
+        return enumVals;
     }
 
 }

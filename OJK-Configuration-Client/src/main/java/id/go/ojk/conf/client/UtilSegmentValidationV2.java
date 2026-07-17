@@ -245,6 +245,26 @@ public class UtilSegmentValidationV2 {
         return new SumIfFormValidation(builder.toString());
     }
 
+    public static SegmentValidation genSumIfOffset(String selectField, String selectPosCode, String comparatorForm, String comparatorRow,
+                                             String formRangeField, String formCriteriaField, String sumField, String criteriaCondition, String sumCriteriaCondition,
+                                             String msgError, String conditionError, String sumConditionError, String multiRangeFieldErr) {
+
+        StringBuilder builder = new StringBuilder("selectField=" + selectField);
+        builder.append("&selectPosCode=" + selectPosCode);
+        builder.append("&comparatorForm=" + comparatorForm);
+        builder.append("&comparatorRow=" + comparatorRow);
+        builder.append("&rangeField=" + formRangeField);
+        builder.append("&criteriaField=" + formCriteriaField);
+        builder.append("&sumField=" + sumField);
+        builder.append("&criteriaCondition=" + criteriaCondition);
+        builder.append("&sumCriteriaCondition=" + sumCriteriaCondition);
+        builder.append("&msgError=" + msgError);
+        builder.append("&criteriaConditionError=" + conditionError);
+        builder.append("&sumConditionError=" + sumConditionError);
+        builder.append("&multiRangeFieldErr=" + multiRangeFieldErr);
+        return new SumIfOffsetFormValidation(builder.toString());
+    }
+
     public static SegmentValidation genSumIfMultiField(String selectField, String selectPosCode, String comparatorForm, String comparatorRow,
                                                        String formRangeField, String formCriteriaField, String sumField, String criteriaCondition, String sumCriteriaCondition,
                                                        String msgError, String conditionError, String sumConditionError) {

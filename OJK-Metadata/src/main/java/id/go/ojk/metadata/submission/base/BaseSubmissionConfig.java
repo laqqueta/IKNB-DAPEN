@@ -90,6 +90,8 @@ public abstract class BaseSubmissionConfig extends BaseMetadata {
         }
 
         public <C extends ReferenceConfig> Config<T> setReferenceConfigs(C referenceConfigs) {
+            if (referenceConfigs == null) throw new IllegalStateException();
+
             BaseSubmissionConfig.this.referenceConfig = referenceConfigs;
             return this;
         }
@@ -113,7 +115,7 @@ public abstract class BaseSubmissionConfig extends BaseMetadata {
             return this;
         }
 
-        // for testing to not use validation segments at all
+        // for testing to not using segment validations
         public Config<T> setSegmentValidations() {
             BaseSubmissionConfig.this.segmentValidations = new ArrayList<>();
             return this;

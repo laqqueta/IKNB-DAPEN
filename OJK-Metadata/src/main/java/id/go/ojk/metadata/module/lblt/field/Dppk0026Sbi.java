@@ -139,6 +139,7 @@ public enum Dppk0026Sbi implements ILbltFieldMetadata {
                 metadataValidation = E7026SbiValidationsConfig.VALIDATION_METADATA_PPIPM;
                 break;
             case DPLK:
+                metadataValidation = E7026SbiValidationsConfig.VALIDATION_METADATA_DPLK;
                 break;
             default:
                 throw new IllegalStateException();
@@ -148,8 +149,8 @@ public enum Dppk0026Sbi implements ILbltFieldMetadata {
                 .config()
                 .setReferenceConfigs(ER7026PosLtlbDppkSbi.Configs.REF_CONFIG)
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
-                .setSubmissionField(FIELD_METADATA.getClearedFields())
-                .setSegmentValidations()
+                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                .setSegmentValidations(metadataValidation)
                 .build()
                 .get();
     }

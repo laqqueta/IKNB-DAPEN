@@ -28,6 +28,7 @@ import java.util.stream.Stream;
 import static id.go.ojk.lib.client.model.config.DataType.*;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.C;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
+import static id.go.ojk.metadata.module.lblt.validations.dplk.E7012AlmKValidationsConfig.VALIDATION_METADATA_DPLK;
 import static id.go.ojk.metadata.module.lblt.validations.ppipik.E7012AlmKValidationsConfig.VALIDATION_METADATA_PPIPK;
 import static id.go.ojk.metadata.module.lblt.validations.ppipm.E7012AlmMValidationsConfig.VALIDATION_METADATA_PPIPM;
 import static id.go.ojk.metadata.module.lblt.validations.ppmpk.E7012AlmKValidationsConfig.VALIDATION_METADATA_PPMPK;
@@ -162,6 +163,7 @@ public enum Dppk0012Alm implements ILbltFieldMetadata {
                 break;
             case DPLK:
                 referenceConfig = ER7012PosLtlbDppkAlm.Configs.REF_CONFIG_DPLK;
+                metadataValidation = VALIDATION_METADATA_DPLK;
                 break;
             default:
                 throw new IllegalStateException();

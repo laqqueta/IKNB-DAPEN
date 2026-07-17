@@ -33,41 +33,41 @@ import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0048Tnbg implements ILbltFieldMetadata {
 
-    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric)
                     .confConstant("D01"))),
 
-    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(1, null, "Kode Komponen", sv(M, 10, 10, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric))),
 
-    JENIS_OBJEK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
+    JENIS_OBJEK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(2, null, "Jenis Objek (Tanah/Bangunan/Tanah & Bangunan)", sv(C, 1, 8, refTable)
                     .confRegex(SimpleValidation.patternNumeric)
                     .confReference(EHeaderMetadataSharedLkbt.R004.getObject()))),
 
-    NOMOR_SERTIFIKAT(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
+    NOMOR_SERTIFIKAT(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(3, null, "Nomor Sertifikat", sv(C, 1, 20, alfaNumeric))),
 
-    ALAMAT_LOKASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
+    ALAMAT_LOKASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(4, null, "Alamat Lokasi", sv(C, 1, 250, alfaNumeric))),
 
-    TANGGAL_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
+    TANGGAL_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(5, null, "Tanggal Perolehan", sv(C, 8, 8, date))),
 
-    NILAI_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
+    NILAI_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(6, null, "Nilai Perolehan", sv(M, 1, 18, numeric))),
 
-    AKUMULASI_PENYUSUTAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
+    AKUMULASI_PENYUSUTAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(7, null, "Akumulasi Penyusutan", sv(M, 1, 18, numeric))),
 
-    NILAI_BUKU(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
+    NILAI_BUKU(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(8, null, "Nilai Buku", sv(M, 1, 18, numeric))),
 
-    NILAI_PEROLEHAN_PADA_TANGGAL_LAPORAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
+    NILAI_PEROLEHAN_PADA_TANGGAL_LAPORAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(9, null, "Nilai Perolehan Pada Tanggal Laporan", sv(M, 1, 18, numeric))),
 
-    KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
+    KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(10, null, "Keterangan", sv(C, 1, 250, freeText))),
 
     ;
@@ -80,8 +80,7 @@ public enum Dppk0048Tnbg implements ILbltFieldMetadata {
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7048Tnbg.getObject()),
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7048Tnbg.getObject()),
             new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7048Tnbg.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7048Tnbg.getObject()),
-            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkbtDplk.R7048Tnbg.getObject())
+            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7048Tnbg.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0048Tnbg> FIELD_METADATA = new LbltMetadataField<>(Dppk0048Tnbg.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
@@ -124,8 +123,6 @@ public enum Dppk0048Tnbg implements ILbltFieldMetadata {
             case PPIPM:
                 metadataValidation = E7048TnbgValidationsConfig.VALIDATION_METADATA_PPIPM;
                 break;
-            case DPLK:
-                break;
             default:
                 throw new IllegalStateException();
         }
@@ -134,8 +131,8 @@ public enum Dppk0048Tnbg implements ILbltFieldMetadata {
                 .config()
                 .setReferenceConfigs(ER7048PosLtlbDppkTnbg.Configs.REF_CONFIG)
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
-                .setSubmissionField(FIELD_METADATA.getClearedFields())
-                .setSegmentValidations()
+                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                .setSegmentValidations(metadataValidation)
                 .build()
                 .get();
     }

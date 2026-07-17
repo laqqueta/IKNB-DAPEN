@@ -99,17 +99,8 @@ public enum E7000DtumValidationsConfig implements ILbltMetadataValidation, IVali
                 .toValidation(this, ConditionalRequired.class);
     }
 
-    public static final BaseMetadataValidation<E7000DtumValidationsConfig> VALIDATION_METADATA_PPMPK =
-            new LbltMetadataValidation<>(E7000DtumValidationsConfig.class, PPMPK);
-
-    public static final BaseMetadataValidation<E7000DtumValidationsConfig> VALIDATION_METADATA_PPMPM =
-            new LbltMetadataValidation<>(E7000DtumValidationsConfig.class, PPMPM);
-
-    public static final BaseMetadataValidation<E7000DtumValidationsConfig> VALIDATION_METADATA_PPIPK =
-            new LbltMetadataValidation<>(E7000DtumValidationsConfig.class, PPIPK);
-
-    public static final BaseMetadataValidation<E7000DtumValidationsConfig> VALIDATION_METADATA_PPIPM =
-            new LbltMetadataValidation<>(E7000DtumValidationsConfig.class, PPIPM);
-
+    public static BaseMetadataValidation<E7000DtumValidationsConfig> getValidationMetadata(ProgramType programType) {
+        return new LbltMetadataValidation<>(E7000DtumValidationsConfig.class, programType);
+    }
 
 }

@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ER7021PosLtlbDppkTbdsp implements IObject<KeyValueString> {
@@ -98,15 +99,22 @@ public enum ER7021PosLtlbDppkTbdsp implements IObject<KeyValueString> {
         REF_CONFIG_DPLK {
             private final ProgramType programType = ProgramType.DPLK;
 
-//            @Override
-//            public String savePos() {
-//                return UtilMetadata.genFieldSave("3", getObjects());
-//            }
+            @Override
+            public String savePos() {
+                return UtilMetadata.genFieldSave("3", getObjects(programType));
+            }
 
             @Override
             public String requiredPos() {
                 return UtilMetadata.genPipeRowExcept(getObjects(programType), new int[]{3, 7});
             }
         }
+    }
+
+    public static void main(String[] args) {
+        AtomicInteger n = new AtomicInteger();
+        getObjects(ProgramType.DPLK).forEach(v -> {
+            System.out.println(n.getAndIncrement() + ". " + v.getValue() + "::" + v.getKey());
+        });
     }
 }

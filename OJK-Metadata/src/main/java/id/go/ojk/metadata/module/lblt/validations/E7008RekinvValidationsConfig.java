@@ -56,6 +56,13 @@ public enum E7008RekinvValidationsConfig implements ILbltMetadataValidation, IVa
                     UtilMetadata.genMessage(R_REKINV2100000000.getObject().getValue(),
                             UtilMetadata.genPlusRow(ER7008PosLtlbDppkRekinv.getObjects(PPIPM), 0, 19)))),
 
+    SG_SUM_POS_EQUAL_DPLK(programs(DPLK),
+            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 13),
+                    R_REKINV2100000000.getObject().getKey(),
+                    UtilMetadata.genPlusRow(ER7008PosLtlbDppkRekinv.getObjects(DPLK), 0, 19),
+                    UtilMetadata.genMessage(R_REKINV2100000000.getObject().getValue(),
+                            UtilMetadata.genPlusRow(ER7008PosLtlbDppkRekinv.getObjects(DPLK), 0, 19)))),
+
     ;
 
     private final EnumSet<ProgramType> programTypes;
@@ -95,16 +102,8 @@ public enum E7008RekinvValidationsConfig implements ILbltMetadataValidation, IVa
                 .toValidation(this, ConditionalRequired.class);
     }
 
-    public static final BaseMetadataValidation<E7008RekinvValidationsConfig> VALIDATION_METADATA_PPMPK =
-            new LbltMetadataValidation<>(E7008RekinvValidationsConfig.class, PPMPK);
-
-    public static final BaseMetadataValidation<E7008RekinvValidationsConfig> VALIDATION_METADATA_PPMPM =
-            new LbltMetadataValidation<>(E7008RekinvValidationsConfig.class, PPMPM);
-
-    public static final BaseMetadataValidation<E7008RekinvValidationsConfig> VALIDATION_METADATA_PPIPK =
-            new LbltMetadataValidation<>(E7008RekinvValidationsConfig.class, PPIPK);
-
-    public static final BaseMetadataValidation<E7008RekinvValidationsConfig> VALIDATION_METADATA_PPIPM =
-            new LbltMetadataValidation<>(E7008RekinvValidationsConfig.class, PPIPM);
+    public static BaseMetadataValidation<E7008RekinvValidationsConfig> getValidationMetadata(ProgramType programType) {
+        return new LbltMetadataValidation<>(E7008RekinvValidationsConfig.class, programType);
+    }
 
 }

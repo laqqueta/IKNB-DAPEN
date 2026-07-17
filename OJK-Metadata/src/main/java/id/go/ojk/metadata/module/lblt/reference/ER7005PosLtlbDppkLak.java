@@ -142,7 +142,24 @@ public enum ER7005PosLtlbDppkLak implements IObject<KeyValueString> {
         return programType.equals(ProgramType.DPLK) ? getObjects(programType).size() : getObjects().size();
     }
 
-    public enum Configs implements ReferenceConfig {
+    public static ReferenceConfig getRefConfig(ProgramType programType) {
+        switch (programType) {
+            case PPMPK:
+                return Configs.REF_CONFIG_PPMPK;
+            case PPMPM:
+                return Configs.REF_CONFIG_PPMPM;
+            case PPIPK:
+                return Configs.REF_CONFIG_PPIPK;
+            case PPIPM:
+                return Configs.REF_CONFIG_PPIPM;
+            case DPLK:
+                return Configs.REF_CONFIG_DPLK;
+            default:
+                throw new IllegalStateException();
+        }
+    }
+
+    enum Configs implements ReferenceConfig {
         REF_CONFIG_PPMPK {
             @Override
             public String requiredPos() {
@@ -151,7 +168,7 @@ public enum ER7005PosLtlbDppkLak implements IObject<KeyValueString> {
 
             @Override
             public String savePos() {
-                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 11), getObjects());
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 12), getObjects());
             }
 
             @Override
@@ -219,15 +236,15 @@ public enum ER7005PosLtlbDppkLak implements IObject<KeyValueString> {
                 return UtilMetadata.genPipeRow(getObjects(programType));
             }
 
-//            @Override
-//            public String savePos() {
-//                return UtilMetadata.genFieldSave("2", getObjects());
-//            }
-//
-//            @Override
-//            public String savePosForm() {
-//                return UtilMetadata.genFieldSave("2", getObjects());
-//            }
+            @Override
+            public String savePos() {
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 12), getObjects(programType));
+            }
+
+            @Override
+            public String savePosForm() {
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 12), getObjects(programType));
+            }
         },
     }
 }

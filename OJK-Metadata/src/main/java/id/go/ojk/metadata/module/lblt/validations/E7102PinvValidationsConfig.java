@@ -27,7 +27,7 @@ import static id.go.ojk.metadata.util.constants.ProgramType.*;
 @RequiredArgsConstructor
 public enum E7102PinvValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_EQUALS_FORMULA_1(programs(PPIPK, PPIPM),
+    SG_EQUALS_FORMULA_1(programs(PPIPK, PPIPM, DPLK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 5),
                     ER7102PosLtlbDppkPinv.R_PINV0101200000.getObject().getKey(),
                     UtilMetadata.genPlusRow(ER7102PosLtlbDppkPinv.getObjects(), 0, 18),
@@ -35,21 +35,21 @@ public enum E7102PinvValidationsConfig implements ILbltMetadataValidation, IVali
                             UtilMetadata.genPlusDesc(ER7102PosLtlbDppkPinv.getObjects(), 0, 18)))),
 
 
-    SG_EQUALS_FORMULA_2(programs(PPIPK, PPIPM),
+    SG_EQUALS_FORMULA_2(programs(PPIPK, PPIPM, DPLK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 5),
                     ER7102PosLtlbDppkPinv.R_PINV0102060000.getObject().getKey(),
                     UtilMetadata.genPlusRow(ER7102PosLtlbDppkPinv.getObjects(), 20, 24),
                     UtilMetadata.genMessage(ER7102PosLtlbDppkPinv.R_PINV0102060000.getObject().getValue(),
                             UtilMetadata.genPlusDesc(ER7102PosLtlbDppkPinv.getObjects(), 20, 24)))),
 
-    SG_EQUALS_FORMULA_3(programs(PPIPK, PPIPM),
+    SG_EQUALS_FORMULA_3(programs(PPIPK, PPIPM, DPLK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 5),
                     ER7102PosLtlbDppkPinv.R_PINV0103070000.getObject().getKey(),
                     UtilMetadata.genPlusRow(ER7102PosLtlbDppkPinv.getObjects(), 26, 31),
                     UtilMetadata.genMessage(ER7102PosLtlbDppkPinv.R_PINV0103070000.getObject().getValue(),
                             UtilMetadata.genPlusDesc(ER7102PosLtlbDppkPinv.getObjects(), 26, 31)))),
 
-    SG_EQUALS_FORMULA_4(programs(PPIPK, PPIPM),
+    SG_EQUALS_FORMULA_4(programs(PPIPK, PPIPM, DPLK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 5),
                     ER7102PosLtlbDppkPinv.R_PINV0104000000.getObject().getKey(),
                     UtilMetadata.genPlusRow(ER7102PosLtlbDppkPinv.getObjects(), new int[] {19, 25}) + "-PINV0103070000",
@@ -101,5 +101,8 @@ public enum E7102PinvValidationsConfig implements ILbltMetadataValidation, IVali
 
     public static final BaseMetadataValidation<E7102PinvValidationsConfig> VALIDATION_METADATA_PPIPM =
             new LbltMetadataValidation<>(E7102PinvValidationsConfig.class, PPIPM);
+
+    public static final BaseMetadataValidation<E7102PinvValidationsConfig> VALIDATION_METADATA_DPLK =
+            new LbltMetadataValidation<>(E7102PinvValidationsConfig.class, DPLK);
 
 }

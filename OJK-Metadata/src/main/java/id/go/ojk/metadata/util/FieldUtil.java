@@ -41,6 +41,12 @@ public class FieldUtil {
                 .collect(Collectors.toList());
     }
 
+    public static List<Integer> validationFieldsDelimited(String fields, String delimited) {
+        return Arrays.stream(fields.split(delimited))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+    }
+
     @SafeVarargs
     public static <T extends IBaseFieldMetadata> List<Integer> validationFields(T ...fields) {
         return Arrays.stream(fields)

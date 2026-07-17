@@ -30,13 +30,13 @@ import static id.go.ojk.metadata.util.constants.ProgramType.*;
 @AllArgsConstructor
 public enum E7011RoismValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    FV_FIELD_VALIDATION_1(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(9),
+    FV_FIELD_VALIDATION_1(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(9),
             () -> UtilFieldValidation.genEqualsFormula(UtilMetadata.genPlusColumn(2, 7) + "-8")),
 
-    FV_FIELD_VALIDATION_2(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(11),
+    FV_FIELD_VALIDATION_2(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(11),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("9/10", R_ROISM2100000000.key)),
 
-    SG_SUM_POS_COL_EQUAL(programs(PPMPK, PPMPM, PPIPK, PPIPM),
+    SG_SUM_POS_COL_EQUAL(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
             () -> UtilSegmentValidation.genEqualsFormula(
                     UtilMetadata.genPipeColumn(new int[]{2, 3, 4, 5, 6, 7, 8, 10, 11}), R_ROISM2100000000.key,
                     UtilMetadata.genPlusRow(ER7011PosLtlbDppkRoism.getObjects(), 0, 19),
@@ -82,16 +82,8 @@ public enum E7011RoismValidationsConfig implements ILbltMetadataValidation, IVal
                 .toValidation(this, ConditionalRequired.class);
     }
 
-    public static final BaseMetadataValidation<E7011RoismValidationsConfig> VALIDATION_METADATA_PPMPK =
-            new LbltMetadataValidation<>(E7011RoismValidationsConfig.class, PPMPK);
-
-    public static final BaseMetadataValidation<E7011RoismValidationsConfig> VALIDATION_METADATA_PPMPM =
-            new LbltMetadataValidation<>(E7011RoismValidationsConfig.class, PPMPM);
-
-    public static final BaseMetadataValidation<E7011RoismValidationsConfig> VALIDATION_METADATA_PPIPK =
-            new LbltMetadataValidation<>(E7011RoismValidationsConfig.class, PPIPK);
-
-    public static final BaseMetadataValidation<E7011RoismValidationsConfig> VALIDATION_METADATA_PPIPM =
-            new LbltMetadataValidation<>(E7011RoismValidationsConfig.class, PPIPM);
+    public static BaseMetadataValidation<E7011RoismValidationsConfig> getValidationMetadata(ProgramType programType) {
+        return new LbltMetadataValidation<>(E7011RoismValidationsConfig.class, programType);
+    }
 
 }

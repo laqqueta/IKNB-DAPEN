@@ -277,15 +277,15 @@ public enum ER7012PosLtlbDppkAlm implements IObject<KeyValueString> {
         REF_CONFIG_DPLK {
             private final ProgramType programType = ProgramType.DPLK;
 
-//            @Override
-//            public String savePos() {
-//                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 16), getObjects(programType));
-//            }
-//
-//            @Override
-//            public String savePosForm() {
-//                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 16), getObjects(programType));
-//            }
+            @Override
+            public String savePos() {
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 16), getObjects(programType));
+            }
+
+            @Override
+            public String savePosForm() {
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 16), getObjects(programType));
+            }
 
             @Override
             public String requiredPos() {

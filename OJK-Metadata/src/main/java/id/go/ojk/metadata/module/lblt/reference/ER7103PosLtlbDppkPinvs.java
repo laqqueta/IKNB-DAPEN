@@ -155,27 +155,5 @@ public enum ER7103PosLtlbDppkPinvs implements IObject<KeyValueString> {
                 return UtilMetadata.genPipeRow(getObjects());
             }
         },
-
-        REF_CONFIG_DPLK {
-            private final ProgramType programType = ProgramType.DPLK;
-
-//            @Override
-//            public String savePos() {
-//                return UtilMetadata.genFieldSave("2|3|4|5", getObjects());
-//            }
-
-            @Override
-            public String requiredPos() {
-                return UtilMetadata.genPipeRow(getObjects(programType));
-            }
-        }
-    }
-
-    public static void main(String[] args) {
-        System.out.println(getRowSize(ProgramType.DPLK));
-
-        getObjects(ProgramType.DPLK).forEach(v -> {
-            System.out.println(v.getKey() + "|" + v.getValue());
-        });
     }
 }

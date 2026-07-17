@@ -77,7 +77,7 @@ public enum ER7061PosLtlbDppkIur implements IObject<KeyValueString> {
         REF_CONFIG_DPLK {
             @Override
             public String savePos() {
-                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumnExcept(5, 7, new int[] { 6 }), getObjects());
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(5, 7), getObjects());
             }
 
             @Override

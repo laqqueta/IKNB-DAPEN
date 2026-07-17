@@ -67,8 +67,7 @@ public enum Dppk0065Bopr implements ILbltFieldMetadata {
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7065Bopr.getObject()),
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7065Bopr.getObject()),
             new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7065Bopr.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7065Bopr.getObject()),
-            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkbtDplk.R7065Bopr.getObject())
+            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7065Bopr.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0065Bopr> FIELD_METADATA = new LbltMetadataField<>(Dppk0065Bopr.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
@@ -111,8 +110,6 @@ public enum Dppk0065Bopr implements ILbltFieldMetadata {
             case PPIPM:
                 metadataValidation = E7065BoprValidationsConfig.VALIDATION_METADATA_PPIPM;
                 break;
-            case DPLK:
-                break;
             default:
                 throw new IllegalStateException();
         }
@@ -121,8 +118,8 @@ public enum Dppk0065Bopr implements ILbltFieldMetadata {
                 .config()
                 .setReferenceConfigs(ER7065PosLtlbDppkBopr.Configs.REF_CONFIG)
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
-                .setSubmissionField(FIELD_METADATA.getClearedFields())
-                .setSegmentValidations()
+                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                .setSegmentValidations(metadataValidation)
                 .build()
                 .get();
     }

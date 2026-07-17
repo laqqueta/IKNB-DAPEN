@@ -392,13 +392,13 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         FormulaParserData operation2 = genFormulaParser(formObject, "14+15+17", "2", comparatorForm);
         FormulaParserData operation3 = genFormulaParser(formObject, "14+15+17", "3+4+5", comparatorForm);
         FormulaParserData operation4 = genFormulaParser(formObject, "14+15+17", "6+7+8+9+10+11", comparatorForm);
-
+        String addMsg = " * Periode laporan bulan berjalan";
         String operationForm = operation2.getFormula() + "|" + operation3.getFormula() + "|" + operation4.getFormula();
-        String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LPAN" + "|" +
-                "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LPAN" + "|" +
-                "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LPAN";
+        String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun" + addMsg + " pada form LPAN" + "|" +
+                "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya" + addMsg + " pada form LPAN" + "|" +
+                "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain" + addMsg + " pada form LPAN";
 
-        return UtilSegmentValidationV2.genFormulaParserValidationV2("2|3|4", R_RAS11302000000.key, operationForm, operationFormErr);
+        return UtilSegmentValidationV2.genFormulaParserValidationV2PeriodePelaporan("2|3|4", R_RAS11302000000.key, operationForm, operationFormErr, 2);
     }),
 
     //RAS11401000000

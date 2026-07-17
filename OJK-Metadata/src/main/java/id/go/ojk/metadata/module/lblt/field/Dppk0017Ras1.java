@@ -29,6 +29,8 @@ import java.util.stream.Stream;
 import static id.go.ojk.lib.client.model.config.DataType.*;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.C;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
+import static id.go.ojk.metadata.module.lblt.validations.dplk.E7017Ras1KValidationsConfig.VALIDATION_METADATA_DPLK;
+import static id.go.ojk.metadata.module.lblt.validations.dplk.E7017Ras1KValidationsConfig.genAllValidationRatioAB_DPLK;
 import static id.go.ojk.metadata.module.lblt.validations.ppipik.E7017Ras1KValidationsConfig.VALIDATION_METADATA_PPIPK;
 import static id.go.ojk.metadata.module.lblt.validations.ppipik.E7017Ras1KValidationsConfig.genAllValidationRatioAB_PPIPK;
 import static id.go.ojk.metadata.module.lblt.validations.ppipm.E7017Ras1MValidationsConfig.VALIDATION_METADATA_PPIPM;
@@ -134,6 +136,8 @@ public enum Dppk0017Ras1 implements ILbltFieldMetadata {
                 break;
             case DPLK:
                 referenceConfig = ER7017PosLtlbDppkRas1.Configs.REF_CONFIG_DPLK;
+                metadataValidation = VALIDATION_METADATA_DPLK;
+                additionalSegment = genAllValidationRatioAB_DPLK();
                 break;
             default:
                 throw new IllegalStateException();
@@ -141,18 +145,20 @@ public enum Dppk0017Ras1 implements ILbltFieldMetadata {
 
         BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType).config()
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
-                .setReferenceConfigs(referenceConfig);
+                .setReferenceConfigs(referenceConfig)
+                .setSegmentValidations(metadataValidation)
+                .additionalSegmentValidations(additionalSegment);
 
-        if (programType == DPLK) {
-            submissionConfig
-                    .setSubmissionField(FIELD_METADATA.getClearedFields())
-                    .setSegmentValidations();
-        } else {
-            submissionConfig
-                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-                    .setSegmentValidations(metadataValidation)
-                    .additionalSegmentValidations(additionalSegment);
-        }
+//        if (programType == DPLK) {
+//            submissionConfig
+//                    .setSubmissionField(FIELD_METADATA.getClearedFields())
+//                    .setSegmentValidations();
+//        } else {
+//            submissionConfig
+//                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+//                    .setSegmentValidations(metadataValidation)
+//                    .additionalSegmentValidations(additionalSegment);
+//        }
 
         return submissionConfig.build().get();
 

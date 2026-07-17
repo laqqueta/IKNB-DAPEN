@@ -74,21 +74,6 @@ public enum ER7042PosLtlbDppkPiut implements IObject<KeyValueString> {
             }
         },
 
-        REF_CONFIG_DPLK {
-            @Override
-            public String savePos() {
-                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(3, 4), getObjects());
-            }
 
-            @Override
-            public String requiredPos() {
-                return UtilMetadata.genPipeRow(getObjects(), new int[]{1});
-            }
-
-            @Override
-            public String savePosForm() {
-                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(3, 4), getObjects());
-            }
-        },
     }
 }

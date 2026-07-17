@@ -161,6 +161,7 @@ public enum Dppk0029Obli implements ILbltFieldMetadata {
                 metadataValidation = E7029ObliValidationsConfig.VALIDATION_METADATA_PPIPM;
                 break;
             case DPLK:
+                metadataValidation = E7029ObliValidationsConfig.VALIDATION_METADATA_DPLK;
                 break;
             default:
                 throw new IllegalStateException();
@@ -171,8 +172,8 @@ public enum Dppk0029Obli implements ILbltFieldMetadata {
                 .config()
                 .setReferenceConfigs(ER7029PosLtlbDppkObli.Configs.REF_CONFIG)
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
-                .setSubmissionField(FIELD_METADATA.getClearedFields())
-                .setSegmentValidations()
+                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                .setSegmentValidations(metadataValidation)
                 .build()
                 .get();
     }
