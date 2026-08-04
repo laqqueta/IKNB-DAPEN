@@ -13,8 +13,8 @@ public class ValidationConverter {
 
     public static <T extends IBaseMetadataValidation, R> R toValidation(T validation, Class<R> validationType) {
 
-        boolean typeCheck = validationType == SegmentValidation.class ||
-                validationType == FieldValidation.class || validationType == ConditionalRequired.class;
+        boolean typeCheck = validationType == SegmentValidation.class |
+                validationType == FieldValidation.class | validationType == ConditionalRequired.class;
 
         if (!typeCheck) {
             throw new IllegalStateException("ValidationType must be SegmentValidation or FieldValidation or ConditionalRequired");

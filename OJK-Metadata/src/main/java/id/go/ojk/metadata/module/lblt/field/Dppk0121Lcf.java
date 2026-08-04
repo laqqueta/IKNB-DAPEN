@@ -10,8 +10,8 @@ import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.metadata.field.lblt.ILbltFieldMetadata;
 import id.go.ojk.metadata.field.lblt.LbltMetadataField;
 import id.go.ojk.metadata.module.lblt.EFormLaporanBulananTahunan;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataLkbtDplk;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataPpipm;
+import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataLkdpDplk;
+import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataLkdpPpipm;
 import id.go.ojk.metadata.module.lblt.reference.ER7201PosLtlbDppkLcf;
 import id.go.ojk.metadata.module.lblt.validations.E7201LcfValidationsConfig;
 import id.go.ojk.metadata.submission.SubmissionConfig;
@@ -28,15 +28,14 @@ import static id.go.ojk.lib.client.model.config.DataType.*;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.C;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
 import static id.go.ojk.metadata.util.FieldUtil.*;
-import static id.go.ojk.metadata.util.constants.ProgramType.DPLK;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPIPM;
+import static id.go.ojk.metadata.util.constants.ProgramType.*;
 import static id.go.ojk.metadata.util.constants.SectorType.KONVENSIONAL;
 import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 
 @AllArgsConstructor
 public enum Dppk0121Lcf implements ILbltFieldMetadata {
 
-    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPIPM, DPLK),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPIPM, DPLK, PPMPPPIPK),
             sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric)
                     .confConstant("D01"))),
 
@@ -45,26 +44,35 @@ public enum Dppk0121Lcf implements ILbltFieldMetadata {
                     .confRegex(SimpleValidation.patternAlfaNumeric))
                     .confUnique(UniqueType.U)),
 
-    JUMLAH_PESERTA(sectors(KONVENSIONAL, SYARIAH), programs(PPIPM, DPLK),
+    KODE_KOMPONEN_GABUNGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPPPIPK),
+            sf(1, null, "Kode Komponen", sv(M, 16, 16, refTable)
+                    .confRegex(SimpleValidation.patternAlfaNumeric))),
+
+    JUMLAH_PESERTA(sectors(KONVENSIONAL, SYARIAH), programs(PPIPM, DPLK, PPMPPPIPK),
             sf(2, null, "Jumlah Peserta", sv(C, 1, 18, numeric))),
 
-    HASIL_INVESTASI_TERLEASISASI(sectors(KONVENSIONAL, SYARIAH), programs(PPIPM, DPLK),
+    HASIL_INVESTASI_TERLEASISASI(sectors(KONVENSIONAL, SYARIAH), programs(PPIPM, DPLK, PPMPPPIPK),
             sf(3, null, "Hasil Investasi yang Terealisasi", sv(C, 1, 18, numeric))),
 
-    HASIL_INVESTASI_BELUM_TERLEASISASI(sectors(KONVENSIONAL, SYARIAH), programs(PPIPM, DPLK),
+    HASIL_INVESTASI_BELUM_TERLEASISASI(sectors(KONVENSIONAL, SYARIAH), programs(PPIPM, DPLK, PPMPPPIPK),
             sf(4, null, "Hasil Investasi yang belum Terealisasi", sv(C, 1, 18, numeric))),
 
-    BEBAN_INVESATASI(sectors(KONVENSIONAL, SYARIAH), programs(PPIPM, DPLK),
+    BEBAN_INVESATASI(sectors(KONVENSIONAL, SYARIAH), programs(PPIPM, DPLK, PPMPPPIPK),
             sf(5, null, "Beban Invesatsi", sv(C, 1, 18, numeric))),
 
-    HASIL_INVESTASI_BERSIH(sectors(KONVENSIONAL, SYARIAH), programs(PPIPM, DPLK),
-            sf(6, null, "Hasil Investasi Bersih", sv(C, 1, 18, numeric))),
+    HASIL_INVESTASI_BERSIH(sectors(KONVENSIONAL, SYARIAH), programs(PPIPM, DPLK, PPMPPPIPK),
+            sf(6, null, "Hasil Investasi Bersih", sv(C, 1, 18, numericNegatif))),
 
-    RATA_RATA_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPIPM, DPLK),
+    RATA_RATA_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPIPM, DPLK, PPMPPPIPK),
             sf(7, null, "Rata - Rata Investasi", sv(C, 1, 18, numeric))),
 
-    ROI(sectors(KONVENSIONAL, SYARIAH), programs(PPIPM, DPLK),
+    ROI(sectors(KONVENSIONAL, SYARIAH), programs(PPIPM, DPLK, PPMPPPIPK),
             sf(8, null, "ROI", sv(C, 1, 18, numeric))),
+
+    /* Gabungan Additional Field */
+
+    JENIS_PROGRAM(sectors(KONVENSIONAL, SYARIAH), programs(PPMPPPIPK),
+            sf(1000, null, "Jenis Program", sv(M, 5, 5, alfa))),
 
     ;
 
@@ -73,8 +81,8 @@ public enum Dppk0121Lcf implements ILbltFieldMetadata {
     private final SubmissionField field;
 
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
-            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7099Lcf.getObject()),
-            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkbtDplk.R7099Lcf.getObject())
+            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataLkdpPpipm.R7099Lcf.getObject()),
+            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkdpDplk.R7099Lcf.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     private static final LbltMetadataField<Dppk0121Lcf> FIELD_METADATA = new LbltMetadataField<>(Dppk0121Lcf.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);

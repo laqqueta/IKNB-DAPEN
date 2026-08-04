@@ -10,7 +10,7 @@ import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
 import id.go.ojk.conf.client.UtilSegmentValidationV2;
 import id.go.ojk.metadata.module.lblt.EFormLaporanBulananTahunan;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataSharedLkbt;
+import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataSharedLblt;
 import id.go.ojk.metadata.module.lblt.reference.ER7001PosLtlbDppkLan;
 import id.go.ojk.metadata.module.lblt.reference.ER7007PosLtlbDppkKup;
 import id.go.ojk.metadata.util.constants.ProgramType;
@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.function.Supplier;
 
 import static id.go.ojk.metadata.module.lblt.reference.ER7007PosLtlbDppkKup.*;
+import static id.go.ojk.metadata.module.lblt.reference.ER7007PosLtlbDppkKup.getObjects;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
 import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
@@ -90,23 +91,6 @@ public enum E7007KupKValidationsConfig implements ILbltMetadataValidation, IVali
                     UtilMetadata.genMessage(R_KUP0100000000.getObject().getValue(), ER7001PosLtlbDppkLan.R_LAN0111000000.getObject().getValue()) +
                             " pada for LAN")),
 
-    SG_REF_KODE_PENDANAAN(programs(PPMPK),
-            () -> UtilSegmentValidation.genReference("3|4|5",
-                    UtilMetadata.genPipeRow(getObjects(ProgramType.PPMPK), new int[]{19}),
-                    EHeaderMetadataSharedLkbt.R023.getNumber())),
-
-    SG_REGEX_ALFA(programs(PPMPK),
-            () -> UtilSegmentValidation.genRegexAlfa("3|4|5",
-                    UtilMetadata.genPipeRow(getObjects(ProgramType.PPMPK), new int[]{18}))),
-
-    SG_REGEX_ALFA_NUMERIC(programs(PPMPK),
-            () -> UtilSegmentValidation.genRegexAlfaNumeric("3|4|5",
-                    UtilMetadata.genPipeRow(getObjects(ProgramType.PPMPK), new int[]{19}))),
-
-    SG_REGEX_NUMERIC(programs(PPMPK),
-            () -> UtilSegmentValidation.genRegexAlfaNumeric("3|4|5",
-                    UtilMetadata.genPipeRowExcept(getObjects(ProgramType.PPMPK), new int[]{18, 19}))),
-
     SG_VALIDATION_PROYEKSI_PENDANAAN(programs(PPMPK),
             () -> UtilSegmentValidationV2.genOperatorProyeksi("3|4|5",
                     R_KUP0209000000.getObject().getKey(),
@@ -115,6 +99,31 @@ public enum E7007KupKValidationsConfig implements ILbltMetadataValidation, IVali
                             R_KUP0206000000.getObject().getKey(),
                             R_KUP0207000000.getObject().getKey()),
                     "III|I", "II")),
+
+    SG_REF_KODE_PENDANAAN(programs(PPMPK),
+            () -> UtilSegmentValidation.genReference("3|4|5",
+                    UtilMetadata.genPipeRow(getObjects(ProgramType.PPMPK), new int[]{19}),
+                    EHeaderMetadataSharedLblt.R023.getNumber())),
+
+    SG_ROW_DATA_TYPE_NUMERIC_1(programs(PPMPK), () ->
+            UtilSegmentValidation.genRegexNumeric("3|4|5",
+                    UtilMetadata.genPipeRow(getObjects(PPMPK), new int[] { 1, 7, 9, 11 }))),
+
+    SG_ROW_DATA_TYPE_NUMERIC_2(programs(PPMPK), () ->
+            UtilSegmentValidation.genRegexNumeric("3|4|5",
+                    UtilMetadata.genPipeRowExcept(getObjects(PPMPK), new int[] { 0, 1, 7, 9, 11, 14, 18, 19}))),
+
+    SG_ROW_DATA_TYPE_NUMERIC_NEGATIVE(programs(PPMPK), () ->
+            UtilSegmentValidation.genRegexNumericNegative("3|4|5",
+                    UtilMetadata.genPipeRow(getObjects(PPMPK), new int[] { 0, 14 }))),
+
+    SG_ROW_DATA_TYPE_ALFA_NUMERIC(programs(PPMPK), () ->
+            UtilSegmentValidation.genRegexAlfaNumeric("3|4|5",
+                    UtilMetadata.genPipeRow(getObjects(PPMPK), new int[] { 19 }))),
+
+    SG_ROW_DATA_TYPE_ALFA(programs(PPMPK), () ->
+            UtilSegmentValidation.genRegexAlfa("3|4|5",
+                    UtilMetadata.genPipeRow(getObjects(PPMPK), new int[] { 18 }))),
 
     CR_URAIAN(programs(PPMPK), validationFields(2),
             () -> UtilFieldConditional.genExistPos("M", "N",

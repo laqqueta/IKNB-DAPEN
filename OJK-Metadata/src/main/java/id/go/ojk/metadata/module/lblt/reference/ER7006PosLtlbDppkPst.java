@@ -7,6 +7,7 @@ import id.go.ojk.lib.client.model.KeyValueString;
 import id.go.ojk.metadata.util.constants.ProgramType;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import org.apache.pdfbox.pdmodel.documentinterchange.logicalstructure.PDStructureTreeRoot;
 
 import java.util.ArrayList;
 import java.util.EnumSet;
@@ -125,11 +126,12 @@ public enum ER7006PosLtlbDppkPst implements IObject<KeyValueString> {
         switch (programType) {
             case PPMPK:
             case PPIPK:
-            case DPLK:
                 return Configs.REF_CONFIG_PPMPK_PPIPK_DPLK;
             case PPMPM:
             case PPIPM:
                 return Configs.REF_CONFIG_PPMPM_PPIPM;
+            case DPLK:
+                return Configs.REF_CONFIG_DPLK;
             default:
                 throw new IllegalStateException();
         }
@@ -169,6 +171,26 @@ public enum ER7006PosLtlbDppkPst implements IObject<KeyValueString> {
             public String savePos() {
                 return UtilMetadata.genFieldSave("2",getObjects());
             }
-        }
+        },
+
+        REF_CONFIG_DPLK {
+            private final ProgramType programType = ProgramType.DPLK;
+
+            @Override
+            public String requiredPos() {
+                return UtilMetadata.genPipeRow(getObjects(programType));
+            }
+
+            @Override
+            public String savePosForm() {
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 5), getObjects(programType));
+            }
+
+            @Override
+            public String savePos() {
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 5),getObjects(programType));
+            }
+        },
+
     }
 }

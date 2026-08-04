@@ -32,51 +32,56 @@ import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0020Pmi implements ILbltFieldMetadata {
 
-    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric)
                     .confConstant("D01"))),
 
-    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(1, null, "Kode Komponen", sv(M, 9, 9, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric))),
 
-    NAMA_MANAJER_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
+    NAMA_MANAJER_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(2, null, "Nama Manajer Investasi", sv(C, 1, 100, freeText))),
 
-    NOMOR_KONTRAK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
+    NOMOR_KONTRAK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(3, null, "Nomor Kontrak", sv(C, 1, 100, freeText))),
 
-    TANGGAL_KONTRAK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
+    TANGGAL_KONTRAK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(4, null, "Tanggal Kontrak", sv(C, 8, 8, numeric))),
 
-    MASA_PERJANJIAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
+    MASA_PERJANJIAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(5, null, "Masa Perjanjian", sv(C, 1, 18, numeric))),
 
-    JENIS_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
+    JENIS_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(6, null, "Jenis Investasi", sv(C, 1, 6, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric)
-                    .confReference(EHeaderMetadataSharedLkbt.R022.getObject()))),
+                    .confReference(EHeaderMetadataSharedLblt.R022.getObject()))),
 
-    JUMLAH_NILAI_WAJAR_DANA_KELOLAAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
+    JUMLAH_NILAI_WAJAR_DANA_KELOLAAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(7, null, "Jumlah Nilai Wajar Dana Kelolaan (Rp)", sv(M, 1, 18, numeric))),
 
-    NILAI_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
+    NILAI_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(8, null, "Nilai Perolehan (yang dikelola Manajer Investasi)", sv(M, 1, 18, numeric))),
 
-    SELISIH_PENILAIAN_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
+    SELISIH_PENILAIAN_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(9, null, "Selisih Penilaian Investasi", sv(M, 1, 18, numeric))),
 
-    RETURN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
+    RETURN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(10, null, "Return (%)", sv(C, 4, 6, numericDot))),
 
-    TINGKAT_HASIL_INVESTASI_BERSIH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
+    TINGKAT_HASIL_INVESTASI_BERSIH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(11, null, "Tingkat Hasil Investasi Bersih (Rp)", sv(M, 1, 18, numeric))),
 
-    JUMLAH_BIAYA_PENGELOLAAN_YANG_DIBEBANKAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
+    JUMLAH_BIAYA_PENGELOLAAN_YANG_DIBEBANKAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(12, null, "Jumlah Biaya Pengelolaan yang dibebankan (Rp)", sv(M, 1, 18, numeric))),
 
-    TERAFILIASI_DENGAN_DANA_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
+    TERAFILIASI_DENGAN_DANA_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(13, null, "Terafiliasi dengan Dana Pensiun (Ya/Tidak)", sv(C, 1, 10, alfa))),
+
+    /* Gabungan Additional Field */
+
+    JENIS_PROGRAM(sectors(KONVENSIONAL, SYARIAH), programs(PPMPPPIPK),
+            sf(1000, null, "Jenis Program", sv(M, 5, 5, alfa))),
 
     ;
 
@@ -85,11 +90,11 @@ public enum Dppk0020Pmi implements ILbltFieldMetadata {
     private final SubmissionField field;
 
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
-            new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7020Pmi.getObject()),
-            new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7020Pmi.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7020Pmi.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7020Pmi.getObject()),
-            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkbtDplk.R7020Pmi.getObject())
+            new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataLkdpPpmpk.R7020Pmi.getObject()),
+            new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataLkdpPpmpm.R7020Pmi.getObject()),
+            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataLkdpPpipk.R7020Pmi.getObject()),
+            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataLkdpPpipm.R7020Pmi.getObject()),
+            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkdpDplk.R7020Pmi.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0020Pmi> FIELD_METADATA = new LbltMetadataField<>(Dppk0020Pmi.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);

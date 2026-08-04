@@ -1,5 +1,6 @@
 package id.go.ojk.metadata.field.base;
 
+import id.go.ojk.client.model.config.SimpleValidation;
 import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.validation.conditional.ConditionalRequired;
 import id.go.ojk.client.model.config.validation.field.FieldValidation;
@@ -16,8 +17,9 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static id.go.ojk.client.model.config.SimpleValidation.patternAll2;
-import static id.go.ojk.lib.client.model.config.DataType.all2;
+import static id.go.ojk.lib.client.model.config.DataType.*;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.C;
+import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
 
 public abstract class BaseMetadataField<T extends Enum<T> & IBaseFieldMetadata> {
 
@@ -40,9 +42,9 @@ public abstract class BaseMetadataField<T extends Enum<T> & IBaseFieldMetadata> 
                 .filter(f -> reindexNumber.contains(f.getNumber()))
                 .peek(f -> {
                     int num = idx.getAndIncrement();
-                    String pref = num < 10 ? "0" : "";
+                    String code = "F" + (num < 10 ? "0" : "") + num;
                     f.setNumber(num);
-                    f.setCode("F" + pref + num);
+                    f.setCode(code);
                 })
                 .sorted(Comparator.comparingInt(SubmissionField::getNumber))
                 .collect(Collectors.toList());
@@ -93,14 +95,21 @@ public abstract class BaseMetadataField<T extends Enum<T> & IBaseFieldMetadata> 
                 .map(SerializationUtils::clone)
                 .peek(field -> {
                     if (field.getNumber() == 0 || field.getNumber() == 1) return;
+                    clearBasicValidation(field);
+                })
+                .sorted(Comparator.comparingInt(SubmissionField::getNumber))
+                .collect(Collectors.toList());
+    }
 
-                    field.getSimpleValidation().setRequiredCondition(RequiredCondition.O);
-                    field.getSimpleValidation().setConditionalRequired(null);
-                    field.getSimpleValidation().setDataType(all2);
-                    field.getSimpleValidation().setRegex(patternAll2.c());
-                    field.getSimpleValidation().setMaxLength(999);
-                    field.getSimpleValidation().setMinLength(1);
-                    field.setFieldValidations(new ArrayList<>());
+    public List<SubmissionField> getClearedFields(boolean isAll) {
+        return getfilteredFieldStream()
+                .map(SerializationUtils::clone)
+                .peek(field -> {
+                    if (isAll) {
+                        allClearedField(field);
+                    } else {
+                        clearedField(field);
+                    }
                 })
                 .sorted(Comparator.comparingInt(SubmissionField::getNumber))
                 .collect(Collectors.toList());
@@ -109,12 +118,20 @@ public abstract class BaseMetadataField<T extends Enum<T> & IBaseFieldMetadata> 
     public List<SubmissionField> getReindexClearedFields(List<Integer> reindexNumber) {
         return reindex(getfilteredFieldStream()
                 .map(SerializationUtils::clone)
-                .peek(field -> {
-                    if (field.getNumber() == 0 || field.getNumber() == 1) return;
+                .peek(this::clearedField)
+                .sorted(Comparator.comparingInt(SubmissionField::getNumber))
+                .collect(Collectors.toList()), reindexNumber);
+    }
 
-                    field.getSimpleValidation().setRequiredCondition(RequiredCondition.O);
-                    field.getSimpleValidation().setConditionalRequired(null);
-                    field.setFieldValidations(new ArrayList<>());
+    public List<SubmissionField> getReindexClearedFields(List<Integer> reindexNumber, boolean isAll) {
+        return reindex(getfilteredFieldStream()
+                .map(SerializationUtils::clone)
+                .peek(f -> {
+                    if (isAll) {
+                        allClearedField(f);
+                    } else {
+                        clearedField(f);
+                    }
                 })
                 .sorted(Comparator.comparingInt(SubmissionField::getNumber))
                 .collect(Collectors.toList()), reindexNumber);
@@ -134,5 +151,28 @@ public abstract class BaseMetadataField<T extends Enum<T> & IBaseFieldMetadata> 
 
     protected List<SectorType> getSectorType() {
         return sectorType;
+    }
+
+    private void clearedField(SubmissionField field) {
+        if (field.getNumber() == 0 || field.getNumber() == 1) return;
+        clearBasicValidation(field);
+    }
+
+    private void allClearedField(SubmissionField field) {
+        if (field.getNumber() == 0 || field.getNumber() == 1) {
+            field.setSimpleValidation(new SimpleValidation(RequiredCondition.O, 0, 999, all2));
+            return;
+        }
+        clearBasicValidation(field);
+    }
+
+    protected void clearBasicValidation(SubmissionField field) {
+        field.getSimpleValidation().setRequiredCondition(RequiredCondition.O);
+        field.getSimpleValidation().setConditionalRequired(null);
+        field.getSimpleValidation().setDataType(all2);
+        field.getSimpleValidation().setRegex(patternAll2.c());
+        field.getSimpleValidation().setMaxLength(999);
+        field.getSimpleValidation().setMinLength(0);
+        field.setFieldValidations(new ArrayList<>());
     }
 }

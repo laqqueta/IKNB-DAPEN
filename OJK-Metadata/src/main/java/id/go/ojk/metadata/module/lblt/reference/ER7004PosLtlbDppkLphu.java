@@ -214,7 +214,7 @@ public enum ER7004PosLtlbDppkLphu implements IObject<KeyValueString> {
 
             @Override
             public String requiredPos() {
-                return UtilMetadata.genPipeRow(getObjects());
+                return UtilMetadata.genPipeRow(getObjects(programType));
             }
         },
     }

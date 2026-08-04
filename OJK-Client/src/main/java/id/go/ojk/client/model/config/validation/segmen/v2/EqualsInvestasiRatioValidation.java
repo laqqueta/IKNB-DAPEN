@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.math.RoundingMode;
 import java.util.List;
 import java.util.Map;
@@ -54,10 +55,15 @@ public class EqualsInvestasiRatioValidation extends BaseDecimalValidation {
 
 	private BigDecimal getComparatorValue(BigDecimal value1) {
 		BigDecimal value2 = getComparator2Value(fieldRow2);
-		if (value1.compareTo(BigDecimal.ZERO) == 0) {
+
+		if (value1.compareTo(BigDecimal.ZERO) == 0 || value2.compareTo(BigDecimal.ZERO) == 0) {
 			return BigDecimal.ZERO;
 		}
-		return value2.compareTo(BigDecimal.ZERO) != 0 ? value1.divide(value2, scale, RoundingMode.HALF_UP) : BigDecimal.ZERO;
+
+		BigDecimal tmp = value1.divide(value2, MathContext.DECIMAL128);
+		BigDecimal tmp2 = tmp.multiply(BigDecimal.valueOf(100));
+
+		return value1.divide(value2, scale, RoundingMode.HALF_UP);
 	}
 
 	private BigDecimal getCurrentValue(ValidationResult validationResult, String column) {
@@ -69,6 +75,7 @@ public class EqualsInvestasiRatioValidation extends BaseDecimalValidation {
 			ValidationResult validationResult) {
 		String currentRowCode = validationResult.getColumn(1);
 		if (currentRowCode.equals(selectPosCode)) {
+
 			String[] arrColumn = StringUtils.split(selectField, "|");
 			for (int i = 0; i < arrColumn.length; i++) {
 				String column = arrColumn[i];

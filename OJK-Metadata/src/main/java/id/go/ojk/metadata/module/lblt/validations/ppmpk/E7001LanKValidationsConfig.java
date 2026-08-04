@@ -28,6 +28,7 @@ import java.util.function.Supplier;
 
 import static id.go.ojk.conf.client.UtilMetadata.genFormulaParser;
 import static id.go.ojk.metadata.module.lblt.reference.ER7001PosLtlbDppkLan.*;
+import static id.go.ojk.metadata.module.lblt.reference.ER7001PosLtlbDppkLan.getObjects;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
 import static id.go.ojk.metadata.util.constants.ProgramType.PPIPM;
@@ -35,7 +36,7 @@ import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
 
 @AllArgsConstructor
 @RequiredArgsConstructor
-public enum E7001LanKValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
+public enum  E7001LanKValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
     SG_SUMIF_LAN0101010000(programs(PPMPK),
             () -> sumIfValidationHelper(
@@ -542,6 +543,18 @@ public enum E7001LanKValidationsConfig implements ILbltMetadataValidation, IVali
         return UtilSegmentValidationV2.genEqualsFormConditionalExpression2("13", R_LAN0111000000.key, selectExpr, comparatorForm, "5",
                 comparator.getKey(), comparatorExpr, "e", 2, errMsg);
     }),
+
+    SG_ROW_DATA_TYPE_NUMERIC_DOT(programs(PPMPK), () ->
+            UtilSegmentValidation.genRegexNumericDot("2",
+                    UtilMetadata.genPipeRow(getObjects(PPMPK), 0, 20))),
+
+    SG_ROW_DATA_TYPE_NUMERIC(programs(PPMPK), () ->
+            UtilSegmentValidation.genRegexNumeric(UtilMetadata.genPipeColumn(3, 13),
+                    UtilMetadata.genPipeRow(getObjects(PPMPK), 0, 47))),
+
+    SG_ROW_DATA_TYPE_NUMERIC_NEGATIVE(programs(PPMPK), () ->
+            UtilSegmentValidation.genRegexNumericNegative(UtilMetadata.genPipeColumn(3, 13),
+                    UtilMetadata.genPipeRow(getObjects(PPMPK), new int[] { 48 }))),
 
     FV_GABUNGAN_EQUALS_EXCEPT(programs(PPMPK), validationFields(13),
             () -> UtilFieldValidation.genEqualsExceptPosFormula(

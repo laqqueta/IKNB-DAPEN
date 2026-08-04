@@ -34,21 +34,26 @@ import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0021Tbdsp implements ILbltFieldMetadata {
 
-    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01"))),
 
-    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(1, null, "Kode Komponen", sv(M, 15, 15, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric))),
 
-    URAIAN_RINCIAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
+    URAIAN_RINCIAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(2, null, "Uraian Rincian", sv(C, 1, 100, freeText))),
 
-    JUMLAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
+    JUMLAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(3, null, "Jumlah", sv(M, 1, 18, numeric))),
 
-    KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
+    KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(4, null, "keterangan", sv(C, 1, 250, freeText))),
+
+    /* Gabungan Additional Field */
+
+    JENIS_PROGRAM(sectors(KONVENSIONAL, SYARIAH), programs(PPMPPPIPK),
+            sf(1000, null, "Jenis Program", sv(M, 5, 5, alfa))),
 
     ;
 
@@ -57,11 +62,11 @@ public enum Dppk0021Tbdsp implements ILbltFieldMetadata {
     private final SubmissionField field;
 
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
-            new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7021Tbdsp.getObject()),
-            new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7021Tbdsp.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7021Tbdsp.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7021Tbdsp.getObject()),
-            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkbtDplk.R7021Tbdsp.getObject())
+            new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataLkdpPpmpk.R7021Tbdsp.getObject()),
+            new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataLkdpPpmpm.R7021Tbdsp.getObject()),
+            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataLkdpPpipk.R7021Tbdsp.getObject()),
+            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataLkdpPpipm.R7021Tbdsp.getObject()),
+            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkdpDplk.R7021Tbdsp.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0021Tbdsp> FIELD_METADATA = new LbltMetadataField<>(Dppk0021Tbdsp.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
@@ -82,21 +87,14 @@ public enum Dppk0021Tbdsp implements ILbltFieldMetadata {
     public static SubmissionFormat formMetadata(SectorType sectorType, ProgramType programType) {
         FIELD_METADATA.setProgramType(programType);
 
-        BaseMetadataValidation<E7021TbdspValidationsConfig> metadataValidation = null;
+        BaseMetadataValidation<E7021TbdspValidationsConfig> metadataValidation = E7021TbdspValidationsConfig.getValidationMetadata(programType);
         ReferenceConfig referenceConfig = ER7021PosLtlbDppkTbdsp.Configs.REF_CONFIG;
 
         switch (programType) {
             case PPMPK:
-                metadataValidation = E7021TbdspValidationsConfig.VALIDATION_METADATA_PPMPK;
-                break;
             case PPMPM:
-                metadataValidation = E7021TbdspValidationsConfig.VALIDATION_METADATA_PPMPM;
-                break;
             case PPIPK:
-                metadataValidation = E7021TbdspValidationsConfig.VALIDATION_METADATA_PPIPK;
-                break;
             case PPIPM:
-                metadataValidation = E7021TbdspValidationsConfig.VALIDATION_METADATA_PPIPM;
                 break;
             case DPLK:
                 referenceConfig = ER7021PosLtlbDppkTbdsp.Configs.REF_CONFIG_DPLK;

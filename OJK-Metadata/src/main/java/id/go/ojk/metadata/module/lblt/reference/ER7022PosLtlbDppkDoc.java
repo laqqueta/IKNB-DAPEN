@@ -42,11 +42,6 @@ public enum ER7022PosLtlbDppkDoc implements IObject<KeyValueString> {
     public enum Configs implements ReferenceConfig {
         REF_CONFIG {
             @Override
-            public String requiredPos() {
-                return UtilMetadata.genPipeRow(getObjects(), new int[]{1});
-            }
-
-            @Override
             public String savePos() {
                 return UtilMetadata.genFieldSave("6|10", getObjects());
             }
@@ -54,6 +49,11 @@ public enum ER7022PosLtlbDppkDoc implements IObject<KeyValueString> {
             @Override
             public String savePosForm() {
                 return UtilMetadata.genFieldSave("6|9", getObjects());
+            }
+
+            @Override
+            public String requiredPos() {
+                return UtilMetadata.genPipeRow(getObjects(), new int[] { 1 });
             }
         }
     }

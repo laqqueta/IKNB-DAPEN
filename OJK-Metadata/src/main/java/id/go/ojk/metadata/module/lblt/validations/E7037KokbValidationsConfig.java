@@ -32,8 +32,12 @@ import static id.go.ojk.metadata.util.constants.ProgramType.*;
 @AllArgsConstructor
 public enum E7037KokbValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
+    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM, PPIPK, PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula("6|7|8", R_KOKB000000.key, R_KOKB010000.key,
+                    UtilMetadata.genMessageTotal(R_KOKB000000.value, R_KOKB010000.value))),
+
+    SG_EQUAL_FORMULA_DPLK(programs(DPLK),
+            () -> UtilSegmentValidation.genEqualsFormula("5|6|7|8", R_KOKB000000.key, R_KOKB010000.key,
                     UtilMetadata.genMessageTotal(R_KOKB000000.value, R_KOKB010000.value))),
 
     FV_EQUAL_NILAI_INVESTASI(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(8),
@@ -46,7 +50,10 @@ public enum E7037KokbValidationsConfig implements ILbltMetadataValidation, IVali
             () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("N", "M", "N",
                     R_KOKB010000.key, "11", ER1252Pengelolaan.getReferenceIndex(0), ER1252Pengelolaan.getReferenceValueIndex(0))),
 
-    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(2, 3, 4, 5, 9, 10, 11),
+    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(2, 3, 4, 5, 9, 10, 11),
+            () -> UtilFieldConditional.genExistPos("N", "M", R_KOKB000000.key)),
+
+    CR_EXISTS_POS_M_DPLK(programs(DPLK), validationFields(2, 3, 4, 9, 10, 11, 12),
             () -> UtilFieldConditional.genExistPos("N", "M", R_KOKB000000.key)),
 
     CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(13),

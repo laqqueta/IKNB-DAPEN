@@ -45,7 +45,6 @@ public class SumIfOffsetFormValidation extends BaseSumIf<SumIfBaseParams> {
         if (selectRowCodes.contains(currentRowCode)) {
             final Logger logger = LoggerFactory.getLogger(SumIfOffsetFormValidation.class);
 
-            String[] arrRangeFields = StringUtils.split(rangeField, "|");
             String[] arrColumn = StringUtils.split(selectField, "|");
             String[] conds = StringUtils.split(criteriaCondition, "|");
             String[] condErrors = StringUtils.split(criteriaConditionError, "|");
@@ -119,6 +118,8 @@ public class SumIfOffsetFormValidation extends BaseSumIf<SumIfBaseParams> {
 
         String prefix = comparatorForm + comparatorRow.split("-")[0];
 
+        String[] ranges = param.getRangeField().split("\\|");
+
         final String[] key = new String[1];
         final String[] value = new String[1];
 
@@ -133,7 +134,7 @@ public class SumIfOffsetFormValidation extends BaseSumIf<SumIfBaseParams> {
                     if (!mapCriteria.containsKey(key[0])) return;
                     if (!mapCriteriaStatus.get(key[0])) return;
 
-                    for (String range : param.getRangeField().split("\\|")) {
+                    for (String range : ranges) {
                         value[0] = entry.getValue().get(range);
                         if (this.isInvalidNumeric(value[0])) {
                             mapCriteriaStatus.put(key[0], false);

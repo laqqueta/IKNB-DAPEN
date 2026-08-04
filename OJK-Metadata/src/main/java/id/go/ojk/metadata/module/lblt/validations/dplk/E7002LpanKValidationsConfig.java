@@ -44,12 +44,12 @@ public enum E7002LpanKValidationsConfig implements ILbltMetadataValidation, IVal
 
     SG_SUMIF_IUR(programs(DPLK),
             () -> {
-                String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MPL1|MPL2|MPL3||ML1|ML2|ML3|ML4|ML5|ML6|UUS1|UUS2|UUS3");
-                String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MPL1|MPL2|MPL3||ML1|ML2|ML3|ML4|ML5|ML6|UUS1|UUS2|UUS3");
+                String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MPL1|MPL2|MPL3||ML1|ML2|ML3|ML4|ML5|ML6");
+                String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MPL1|MPL2|MPL3||ML1|ML2|ML3|ML4|ML5|ML6");
                 String sumCriteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
                 String sumCriteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
                 return UtilSegmentValidationV2.genSumIfOffset(
-                        UtilMetadata.genPipeColumn(2, 12), R_LPAN0104000000.getObject().getKey(),
+                        UtilMetadata.genPipeColumn(2, 11), R_LPAN0104000000.getObject().getKey(),
                         EFormLaporanBulananTahunan.LTLB_IUR.getCode(),
                         ER7061PosLtlbDppkIur.R_IUR010000.getObject().getKey(),
                         "4|5|6", "7", "2", criteriaCondition, sumCriteriaCondition,
@@ -90,29 +90,29 @@ public enum E7002LpanKValidationsConfig implements ILbltMetadataValidation, IVal
                     "PKPL|Jumlah|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain")),
 
     SG_EQUAL_FORMULA_1(programs(DPLK),
-            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 13),
+            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 11),
                     R_LPAN0102000000.getObject().getKey(), UtilMetadata.genPlusRow(getObjects(ProgramType.DPLK), 0, 4),
                     UtilMetadata.genMessage(R_LPAN0102000000.getObject().getValue(), UtilMetadata.genPlusDesc(getObjects(ProgramType.DPLK), 0, 4)))),
 
     SG_EQUAL_FORMULA_2(programs(DPLK),
-            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 13),
-                    R_LPAN0107000000.getObject().getKey(), UtilMetadata.genPlusRow(getObjects(ProgramType.DPLK), 6, 11),
-                    UtilMetadata.genMessage(R_LPAN0107000000.getObject().getValue(), UtilMetadata.genPlusDesc(getObjects(ProgramType.DPLK), 6, 11)))),
+            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 12),
+                    R_LPAN0107000000.getObject().getKey(), UtilMetadata.genPlusRow(getObjects(ProgramType.DPLK), 6, 9),
+                    UtilMetadata.genMessage(R_LPAN0107000000.getObject().getValue(), UtilMetadata.genPlusDesc(getObjects(ProgramType.DPLK), 6, 9)))),
 
     SG_EQUAL_FORMULA_3(programs(DPLK),
-            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 13),
-                    R_LPAN0209000000.getObject().getKey(), UtilMetadata.genPlusRow(getObjects(ProgramType.DPLK), 13, 19),
-                    UtilMetadata.genMessage(R_LPAN0209000000.getObject().getValue(), UtilMetadata.genPlusDesc(getObjects(ProgramType.DPLK), 13, 19)))),
+            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 11),
+                    R_LPAN0209000000.getObject().getKey(), UtilMetadata.genPlusRow(getObjects(ProgramType.DPLK), 11, 18),
+                    UtilMetadata.genMessage(R_LPAN0209000000.getObject().getValue(), UtilMetadata.genPlusDesc(getObjects(ProgramType.DPLK), 11, 18)))),
 
     SG_EQUAL_FORMULA_4(programs(DPLK),
-            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 13),
-                    R_LPAN0300000000.getObject().getKey(), UtilMetadata.genPlusRow(getObjects(ProgramType.DPLK), new int[]{5, 12}) + "-LPAN0208000000",
-                    UtilMetadata.genMessage(R_LPAN0300000000.getObject().getValue(), UtilMetadata.genPlusDesc(getObjects(ProgramType.DPLK), new int[]{5, 12}) + "-LPAN0208000000"))),
+            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 11),
+                    R_LPAN0300000000.getObject().getKey(), UtilMetadata.genPlusRow(getObjects(ProgramType.DPLK), new int[]{5, 10}) + "-LPAN0209000000",
+                    UtilMetadata.genMessage(R_LPAN0300000000.getObject().getValue(), UtilMetadata.genPlusDesc(getObjects(ProgramType.DPLK), new int[]{5, 10}) + "-'Jumlah Pengurangan'"))),
 
     SG_EQUAL_FORMULA_5(programs(DPLK),
-            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 13),
-                    R_LPAN0500000000.getObject().getKey(), UtilMetadata.genMinusRow(getObjects(ProgramType.DPLK), new int[]{22, 21}),
-                    UtilMetadata.genMessage(R_LPAN0500000000.getObject().getValue(), UtilMetadata.genMinusDesc(getObjects(ProgramType.DPLK), new int[]{22, 21})))),
+            () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 11),
+                    R_LPAN0500000000.getObject().getKey(), UtilMetadata.genMinusRow(getObjects(ProgramType.DPLK), new int[]{21, 20}),
+                    UtilMetadata.genMessage(R_LPAN0500000000.getObject().getValue(), UtilMetadata.genMinusDesc(getObjects(ProgramType.DPLK), new int[]{21, 20})))),
 
     SG_EQUAL_FORMULA_ROI_1(programs(DPLK),
             () -> genRowValidation(R_LPAN0101010000.getObject(), "2")),
@@ -150,11 +150,11 @@ public enum E7002LpanKValidationsConfig implements ILbltMetadataValidation, IVal
 
     FV_EQUAL_FORMULA_EXCEPT_1(programs(DPLK), validationFields(Dppk0002Lpan.GABUNGAN),
             () -> UtilFieldValidation.genEqualsExceptPosFormula(UtilMetadata.genPlusColumn(2, 11),
-                    UtilMetadata.genPipeRow(getObjects(ProgramType.DPLK), new int[]{5, 12, 20, 21, 23}), 2)),
+                    UtilMetadata.genPipeRow(getObjects(ProgramType.DPLK), new int[]{5, 10, 19, 20, 22}), 2)),
 
     FV_EQUAL_FORMULA_EXCEPT_2(programs(DPLK), validationFields(Dppk0002Lpan.TOTAL),
             () -> UtilFieldValidation.genEqualsExceptPosFormula(UtilMetadata.genPlusColumn(12, 15),
-                    UtilMetadata.genPipeRow(getObjects(ProgramType.DPLK), new int[]{5, 12, 20, 21, 23}), 2));
+                    UtilMetadata.genPipeRow(getObjects(ProgramType.DPLK), new int[]{5, 10, 19, 20, 22}), 2));
 
     private final EnumSet<ProgramType> programTypes;
     private List<Integer> fieldIndexes;
@@ -199,12 +199,12 @@ public enum E7002LpanKValidationsConfig implements ILbltMetadataValidation, IVal
     private static SegmentValidation genSumIfValidation(String posCode, String rangeField, String criteriaField, String formCode,
                                                         String formObjects, String errMsg) {
         String sumField = "2";
-        String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MPL1|MPL2|MPL3|ML1|ML2|ML3|ML4|ML5|ML6|UUS1|UUS2|UUS3");
-        String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MPL1|MPL2|MPL3|ML1|ML2|ML3|ML4|ML5|ML6|UUS1|UUS2|UUS3");
+        String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MPL1|MPL2|MPL3|ML1|ML2|ML3|ML4|ML5|ML6");
+        String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MPL1|MPL2|MPL3|ML1|ML2|ML3|ML4|ML5|ML6");
         String sumCriteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
         String sumCriteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
 
-        return UtilSegmentValidationV2.genSumIf(UtilMetadata.genPipeColumn(2, 12), posCode,
+        return UtilSegmentValidationV2.genSumIf(UtilMetadata.genPipeColumn(2, 11), posCode,
                 formCode, formObjects,
                 rangeField, criteriaField, sumField, criteriaCondition, sumCriteriaCondition,
                 errMsg, criteriaConditionErr, sumCriteriaConditionErr);

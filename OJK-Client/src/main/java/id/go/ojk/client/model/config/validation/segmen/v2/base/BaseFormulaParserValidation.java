@@ -17,6 +17,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -55,6 +56,10 @@ public class BaseFormulaParserValidation extends BaseRowValidation {
                 .collect(Collectors.toList());
 
         if (!selectRowCodes.contains(currentRowCode)) return;
+
+        if (currentRowCode.contains("ALM0203000000")) {
+            System.out.println("dbg ALM0203000000");
+        }
 
         String[] fields = StringUtils.split(selectField, "|");
         String[] operations = StringUtils.split(formulaOperation, "|");

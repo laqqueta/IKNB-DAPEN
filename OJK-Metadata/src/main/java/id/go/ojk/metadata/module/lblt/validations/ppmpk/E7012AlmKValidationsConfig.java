@@ -319,13 +319,13 @@ public enum E7012AlmKValidationsConfig implements ILbltMetadataValidation, IVali
                     "PROP|Nilai Appraisal/Nilai Wajar|Jenis Objek (Tanah/Bangunan/Tanah & Bangunan)", "2010"
             )),
 
-//    SG_NUMERIC_DECIMAL(programs(ALL),
-//            () -> UtilSegmentValidation.genRegexNumericDot(UtilMetadata.genPipeColumnExcept(2, 16, new int[] {4, 7, 10, 13, 16}),
-//                    UtilMetadata.genPipeRow(ER7012PosLtlbDppkAlm.getObjects(PPMPK), new int[] { 51 }))),
-//
-//    SG_NUMERIC(programs(ALL),
-//            () -> UtilSegmentValidation.genRegexNumericDot(UtilMetadata.genPipeColumn(2, 16),
-//                    UtilMetadata.genPipeRowExcept(ER7012PosLtlbDppkAlm.getObjects(PPMPK), new int[] { 51 }))),
+    SG_ROW_DATA_TYPE_NUMERIC(programs(PPMPK),
+            () -> UtilSegmentValidation.genRegexNumeric(UtilMetadata.genPipeColumn(2, 16),
+                    UtilMetadata.genPipeRowExcept(ER7012PosLtlbDppkAlm.getObjects(PPMPK), new int[] { 50 }))),
+
+    SG_ROW_DATA_TYPE_NUMERIC_NEGATIVE(programs(PPMPK),
+            () -> UtilSegmentValidation.genRegexNumericNegative(UtilMetadata.genPipeColumn(2, 16),
+                    UtilMetadata.genPipeRow(ER7012PosLtlbDppkAlm.getObjects(PPMPK), new int[] { 50 }))),
 
     FV_TOTAL1_EQUAL(programs(PPMPK), validationFields(14),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("2+5+8+11",

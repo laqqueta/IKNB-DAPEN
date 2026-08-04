@@ -144,11 +144,6 @@ public enum ER7102PosLtlbDppkPinv implements IObject<KeyValueString> {
             public String savePos() {
                 return UtilMetadata.genFieldSave("2|3|4|5", getObjects());
             }
-
-            @Override
-            public String requiredPos() {
-                return UtilMetadata.genPipeRow(getObjects());
-            }
         },
     }
 }

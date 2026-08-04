@@ -48,7 +48,7 @@ public enum ER7020PosLtlbDppkPmi implements IObject<KeyValueString> {
 
             @Override
             public String requiredPos() {
-                return UtilMetadata.genPipeRow(getObjects(), new int[]{1});
+                return UtilMetadata.genPipeRow(getObjects(), new int[] { 1 });
             }
         }
     }

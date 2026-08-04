@@ -5,10 +5,10 @@ import id.go.ojk.client.model.config.validation.segmen.v2.base.BaseFormulaParser
 
 @XStreamAlias("FormulaParserValidation")
 public class FormulaParserValidation extends BaseFormulaParserValidation {
-	public FormulaParserValidation() {
-	}
+    public FormulaParserValidation() {
+    }
 
-	public FormulaParserValidation(String parameter) {
-		super(parameter);
-	}
+    public FormulaParserValidation(String parameter) {
+        super(parameter);
+    }
 }

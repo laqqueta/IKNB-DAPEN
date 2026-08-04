@@ -47,14 +47,15 @@ public enum ER7032PosLtlbDppkRksd implements IObject<KeyValueString> {
             }
 
             @Override
-            public String requiredPos() {
-                return UtilMetadata.genPipeRow(getObjects(), new int[]{1});
-            }
-
-            @Override
             public String savePosForm() {
                 return UtilMetadata.genFieldSave("8|9|12", getObjects());
             }
+
+            @Override
+            public String requiredPos() {
+                return UtilMetadata.genPipeRow(getObjects(), new int[] { 1 });
+            }
+
         }
     }
 }

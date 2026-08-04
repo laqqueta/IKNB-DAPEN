@@ -53,7 +53,7 @@ public enum ER7055PosLtlbDppkUmps implements IObject<KeyValueString> {
 
             @Override
             public String requiredPos() {
-                return UtilMetadata.genPipeRow(getObjects());
+                return UtilMetadata.genPipeRow(getObjects(), new int[] { 1 });
             }
         }
     }

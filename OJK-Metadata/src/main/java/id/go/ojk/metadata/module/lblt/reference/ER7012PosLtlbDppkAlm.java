@@ -293,12 +293,4 @@ public enum ER7012PosLtlbDppkAlm implements IObject<KeyValueString> {
             }
         },
     }
-
-    public static void main(String[] args) {
-        System.out.println(getRowSize(ProgramType.DPLK));
-
-        getObjects(ProgramType.DPLK).forEach(v -> {
-            System.out.println(v.getKey() + "|" + v.getValue());
-        });
-    }
 }

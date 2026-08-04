@@ -9,6 +9,7 @@ import id.go.ojk.conf.client.UtilFieldValidation;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
 import id.go.ojk.conf.client.UtilSegmentValidationV2;
+import id.go.ojk.conf.client.field.reference.ER1250Properti;
 import id.go.ojk.conf.client.field.reference.ER1255JenisManfaat;
 import id.go.ojk.conf.client.field.reference.ER1263BebanInvestasi;
 import id.go.ojk.conf.client.field.reference.ER1264BebanOperasinal;
@@ -38,68 +39,68 @@ import static id.go.ojk.metadata.util.constants.ProgramType.DPLK;
 public enum E7004LphuKValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
     SG_SUM_IF_MULTI_BINV(programs(DPLK),
-            () -> genValidationSumIfMultiCriteria(UtilMetadata.genPipeRow(ER7004PosLtlbDppkLphu.getObjects(), 6, 11),
+            () -> genValidationSumIfMultiCriteria(UtilMetadata.genPipeRow(ER7004PosLtlbDppkLphu.getObjects(DPLK), 6, 11),
                     EFormLaporanBulananTahunan.LTLB_BINV.getCode(), ER7064PosLtlbDppkBinv.R_BINV010000.getObject().getKey(),
                     ER1263BebanInvestasi.getPipedReferenceKeys(), ER1263BebanInvestasi.getPipedReferenceKeyValues(),
                     "BINV|Jumlah|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain|Jenis Beban Investasi")),
 
     SG_SUM_IF_PDIN(programs(DPLK),
-            () -> genValidationSumIf(R_LPHU0601000000.key,
+            () -> genValidationSumIf(R_LPHU0601000000.key, "3", "4",
                     EFormLaporanBulananTahunan.LTLB_PDIN.getCode(), ER7062PosLtlbDppkPdin.R_PDIN010000.getObject().getKey(),
                     "PDIN|Jumlah|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain")),
 
     SG_SUM_IF_BIPR(programs(DPLK),
-            () -> genValidationSumIf(R_LPHU0602000000.key,
+            () -> genValidationSumIf(R_LPHU0602000000.key, "3", "4",
                     EFormLaporanBulananTahunan.LTLB_BIPR.getCode(), ER7066PosLtlbDppkBipr.R_BIPR010000.getObject().getKey(),
                     "BIPR|Jumlah|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain")),
 
     SG_SUM_IF_PPH(programs(DPLK),
-            () -> genValidationSumIf(R_LPHU0800000000.key,
+            () -> genValidationSumIf(R_LPHU0800000000.key, "3", "4",
                     EFormLaporanBulananTahunan.LTLB_PPH.getCode(), ER7067PosLtlbDppkPph.R_PPH010000.getObject().getKey(),
                     "PPH|Jumlah|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain")),
 
     SG_ADDITION_1(programs(DPLK),
             () -> UtilSegmentValidation.genEqualsFormula(
-                    UtilMetadata.genPipeColumn(2, 16), R_LPHU0106000000.key,
-                    UtilMetadata.genPlusRow(ER7004PosLtlbDppkLphu.getObjects(), 0, 4),
-                    UtilMetadata.genMessage(R_LPHU0106000000.value, UtilMetadata.genPlusDesc(ER7004PosLtlbDppkLphu.getObjects(), 0, 4)))),
+                    UtilMetadata.genPipeColumn(2, 12), R_LPHU0106000000.key,
+                    UtilMetadata.genPlusRow(ER7004PosLtlbDppkLphu.getObjects(DPLK), 0, 4),
+                    UtilMetadata.genMessage(R_LPHU0106000000.value, UtilMetadata.genPlusDesc(ER7004PosLtlbDppkLphu.getObjects(DPLK), 0, 4)))),
 
     SG_ADDITION_2(programs(DPLK),
             () -> UtilSegmentValidation.genEqualsFormula(
-                    UtilMetadata.genPipeColumn(2, 16), R_LPHU0300000000.key,
-                    UtilMetadata.genPlusRow(ER7004PosLtlbDppkLphu.getObjects(), 6, 11),
-                    UtilMetadata.genMessage(R_LPHU0300000000.value, UtilMetadata.genPlusDesc(ER7004PosLtlbDppkLphu.getObjects(), 6, 11)))),
+                    UtilMetadata.genPipeColumn(2, 12), R_LPHU0300000000.key,
+                    UtilMetadata.genPlusRow(ER7004PosLtlbDppkLphu.getObjects(DPLK), 6, 11),
+                    UtilMetadata.genMessage(R_LPHU0300000000.value, UtilMetadata.genPlusDesc(ER7004PosLtlbDppkLphu.getObjects(DPLK), 6, 11)))),
 
     SG_SUBSTRACTION_1(programs(DPLK),
             () -> UtilSegmentValidation.genEqualsFormula(
-                    UtilMetadata.genPipeColumn(2, 16), R_LPHU0400000000.key,
-                    UtilMetadata.genMinusRow(ER7004PosLtlbDppkLphu.getObjects(), new int[]{5, 12}),
-                    UtilMetadata.genMessage(R_LPHU0400000000.value, UtilMetadata.genMinusDesc(ER7004PosLtlbDppkLphu.getObjects(), new int[]{5, 12})))),
+                    UtilMetadata.genPipeColumn(2, 12), R_LPHU0400000000.key,
+                    UtilMetadata.genMinusRow(ER7004PosLtlbDppkLphu.getObjects(DPLK), new int[]{5, 12}),
+                    UtilMetadata.genMessage(R_LPHU0400000000.value, UtilMetadata.genMinusDesc(ER7004PosLtlbDppkLphu.getObjects(DPLK), new int[]{5, 12})))),
 
     SG_EQUAL_1(programs(DPLK),
             () -> UtilSegmentValidation.genEqualsFormula(
-                    UtilMetadata.genPipeColumn(2, 16), R_LPHU0502000000.key,
-                    UtilMetadata.genPlusRow(ER7004PosLtlbDppkLphu.getObjects(), new int[] { 14 }),
-                    UtilMetadata.genMessage(R_LPHU0502000000.value, UtilMetadata.genPlusDesc(ER7004PosLtlbDppkLphu.getObjects(), new int[] { 14 })))),
+                    UtilMetadata.genPipeColumn(2, 12), R_LPHU0502000000.key,
+                    UtilMetadata.genPlusRow(ER7004PosLtlbDppkLphu.getObjects(DPLK), new int[] { 14 }),
+                    UtilMetadata.genMessage(R_LPHU0502000000.value, UtilMetadata.genPlusDesc(ER7004PosLtlbDppkLphu.getObjects(DPLK), new int[] { 14 })))),
 
     SG_SUBSTRACTION_2(programs(DPLK),
             () -> UtilSegmentValidation.genEqualsFormula(
-                    UtilMetadata.genPipeColumn(2, 16), R_LPHU0603000000.key,
-                    UtilMetadata.genMinusRow(ER7004PosLtlbDppkLphu.getObjects(), new int[]{16, 17}),
-                    UtilMetadata.genMessage(R_LPHU0603000000.value, UtilMetadata.genMinusDesc(ER7004PosLtlbDppkLphu.getObjects(), new int[]{16, 17})))),
+                    UtilMetadata.genPipeColumn(2, 12), R_LPHU0603000000.key,
+                    UtilMetadata.genMinusRow(ER7004PosLtlbDppkLphu.getObjects(DPLK), new int[]{16, 17}),
+                    UtilMetadata.genMessage(R_LPHU0603000000.value, UtilMetadata.genMinusDesc(ER7004PosLtlbDppkLphu.getObjects(DPLK), new int[]{16, 17})))),
 
     SG_MIX_ADD_SUB(programs(DPLK),
             () -> UtilSegmentValidation.genEqualsFormula(
-                    UtilMetadata.genPipeColumn(2, 16), R_LPHU0700000000.key,
+                    UtilMetadata.genPipeColumn(2, 12), R_LPHU0700000000.key,
                     UtilMetadata.genMinusRow(getObjects(), new int[]{13, 15}) + "+LPHU0603000000",
                     UtilMetadata.genMessage(R_LPHU0700000000.value,
                             UtilMetadata.genMinusDesc(getObjects(), new int[]{13, 15}) + "+Total Pendapatan dan Beban Lain-Lain"))),
 
     SG_SUBSTRACTION_3(programs(DPLK),
             () -> UtilSegmentValidation.genEqualsFormula(
-                    UtilMetadata.genPipeColumn(2, 16), R_LPHU0900000000.key,
-                    UtilMetadata.genMinusRow(ER7004PosLtlbDppkLphu.getObjects(), new int[]{28, 29}),
-                    UtilMetadata.genMessage(R_LPHU0900000000.value, UtilMetadata.genMinusDesc(ER7004PosLtlbDppkLphu.getObjects(), new int[]{28, 29})))),
+                    UtilMetadata.genPipeColumn(2, 12), R_LPHU0900000000.key,
+                    UtilMetadata.genMinusRow(ER7004PosLtlbDppkLphu.getObjects(DPLK), new int[]{19, 20}),
+                    UtilMetadata.genMessage(R_LPHU0900000000.value, UtilMetadata.genMinusDesc(ER7004PosLtlbDppkLphu.getObjects(DPLK), new int[]{19, 20})))),
 
 
     SG_ROW_VALIDATION_8A(programs(DPLK),
@@ -119,7 +120,7 @@ public enum E7004LphuKValidationsConfig implements ILbltMetadataValidation, IVal
 
     FV_EQUALS(programs(DPLK), validationFields(Dppk0004Lphu.AKUMULASI_GABUNGAN),
             () -> UtilFieldValidation.genEqualsExceptPosFormula(UtilMetadata.genPlusColumn(2, 11),
-                    UtilMetadata.genPipeRow(ER7004PosLtlbDppkLphu.getObjects()), 2))
+                    UtilMetadata.genPipeRow(ER7004PosLtlbDppkLphu.getObjects(DPLK)), 2))
 
     ;
 
@@ -169,8 +170,8 @@ public enum E7004LphuKValidationsConfig implements ILbltMetadataValidation, IVal
         String comparatorRangeField = "3";
         String comparatorCriteriaField = "4|2";
         String criteriaKey = "0";
-        String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3|ML1|ML2|ML3|ML4|ML5|ML6") + "$" + additionalCriteria;
-        String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3|ML1|ML2|ML3|ML4|ML5|ML6") + "$" + additionalCriteriaErr;
+        String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MPL1|MPL2|MPL3|ML1|ML2|ML3|ML4|ML5|ML6") + "$" + additionalCriteria;
+        String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MPL1|MPL2|MPL3|ML1|ML2|ML3|ML4|ML5|ML6") + "$" + additionalCriteriaErr;
         String sumCriteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
         String sumCriteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
 
@@ -180,12 +181,25 @@ public enum E7004LphuKValidationsConfig implements ILbltMetadataValidation, IVal
                 errMsg, criteriaConditionErr, sumCriteriaConditionErr, criteriaKey);
     }
 
-    private static SegmentValidation genValidationSumIf(String row, String comparatorForm, String comparatorRow, String errMsg) {
+//    private static SegmentValidation genValidationSumIf(String row, String comparatorForm, String comparatorRow, String errMsg) {
+//        String sumField = "2";
+//        String rangeField = "3";
+//        String criteriaField = "4";
+//        String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MPL1|MPL2|MPL3|ML1|ML2|ML3|ML4|ML5|ML6");
+//        String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MPL1|MPL2|MPL3|ML1|ML2|ML3|ML4|ML5|ML6");
+//        String sumCriteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
+//        String sumCriteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
+//
+//        return UtilSegmentValidationV2.genSumIf(UtilMetadata.genPipeColumn(2, 11), row,
+//                comparatorForm, comparatorRow,
+//                rangeField, criteriaField, sumField, criteriaCondition, sumCriteriaCondition,
+//                errMsg, criteriaConditionErr, sumCriteriaConditionErr);
+//    }
+
+    private static SegmentValidation genValidationSumIf(String row, String rangeField, String criteriaField, String comparatorForm, String comparatorRow, String errMsg) {
         String sumField = "2";
-        String rangeField = "3";
-        String criteriaField = "4";
-        String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3|ML1|ML2|ML3|ML4|ML5|ML6");
-        String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3|ML1|ML2|ML3|ML4|ML5|ML6");
+        String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MPL1|MPL2|MPL3|ML1|ML2|ML3|ML4|ML5|ML6");
+        String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MPL1|MPL2|MPL3|ML1|ML2|ML3|ML4|ML5|ML6");
         String sumCriteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
         String sumCriteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
 

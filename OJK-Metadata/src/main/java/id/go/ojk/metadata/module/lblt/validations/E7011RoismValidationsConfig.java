@@ -36,12 +36,19 @@ public enum E7011RoismValidationsConfig implements ILbltMetadataValidation, IVal
     FV_FIELD_VALIDATION_2(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(11),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("9/10", R_ROISM2100000000.key)),
 
-    SG_SUM_POS_COL_EQUAL(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
+    SG_SUM_POS_COL_EQUAL(programs(PPMPK, PPMPM, PPIPK, PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula(
                     UtilMetadata.genPipeColumn(new int[]{2, 3, 4, 5, 6, 7, 8, 10, 11}), R_ROISM2100000000.key,
                     UtilMetadata.genPlusRow(ER7011PosLtlbDppkRoism.getObjects(), 0, 19),
                     UtilMetadata.genMessage(R_ROISM2100000000.value,
                             UtilMetadata.genPlusDesc(ER7011PosLtlbDppkRoism.getObjects(), 0, 19)))),
+
+    SG_SUM_POS_COL_EQUAL_DPLK(programs(DPLK),
+            () -> UtilSegmentValidation.genEqualsFormula(
+                    UtilMetadata.genPipeColumn(new int[]{2, 3, 4, 5, 6, 7, 8, 10, 11}), R_ROISM2100000000.key,
+                    UtilMetadata.genPlusRow(ER7011PosLtlbDppkRoism.getObjects(DPLK), 0, 19),
+                    UtilMetadata.genMessage(R_ROISM2100000000.value,
+                            UtilMetadata.genPlusDesc(ER7011PosLtlbDppkRoism.getObjects(DPLK), 0, 19)))),
 
     ;
 

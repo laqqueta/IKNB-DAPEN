@@ -47,14 +47,14 @@ public enum ER7043PosLtlbDppkPiub implements IObject<KeyValueString> {
             }
 
             @Override
-            public String requiredPos() {
-                return UtilMetadata.genPipeRow(getObjects(), new int[]{1});
-            }
-
-            @Override
             public String savePosForm() {
                 return UtilMetadata.genFieldSave("3|4|5|6", getObjects());
             }
+            @Override
+            public String requiredPos() {
+                return UtilMetadata.genPipeRow(getObjects(), new int[] { 1 });
+            }
+
         },
 
         REF_CONFIG_PPIP {
@@ -64,13 +64,13 @@ public enum ER7043PosLtlbDppkPiub implements IObject<KeyValueString> {
             }
 
             @Override
-            public String requiredPos() {
-                return UtilMetadata.genPipeRow(getObjects(), new int[]{1});
+            public String savePosForm() {
+                return UtilMetadata.genFieldSave("3|4|5", getObjects());
             }
 
             @Override
-            public String savePosForm() {
-                return UtilMetadata.genFieldSave("3|4|5", getObjects());
+            public String requiredPos() {
+                return UtilMetadata.genPipeRow(getObjects(), new int[] { 1 });
             }
         }
     }

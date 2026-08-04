@@ -92,7 +92,7 @@ public enum ER7021PosLtlbDppkTbdsp implements IObject<KeyValueString> {
 
             @Override
             public String requiredPos() {
-                return UtilMetadata.genPipeRowExcept(getObjects(), new int[]{3, 7});
+                return UtilMetadata.genPipeRowExcept(getObjects(), new int[]{3, 8});
             }
         },
 
@@ -106,15 +106,8 @@ public enum ER7021PosLtlbDppkTbdsp implements IObject<KeyValueString> {
 
             @Override
             public String requiredPos() {
-                return UtilMetadata.genPipeRowExcept(getObjects(programType), new int[]{3, 7});
+                return UtilMetadata.genPipeRowExcept(getObjects(programType), new int[]{6});
             }
         }
-    }
-
-    public static void main(String[] args) {
-        AtomicInteger n = new AtomicInteger();
-        getObjects(ProgramType.DPLK).forEach(v -> {
-            System.out.println(n.getAndIncrement() + ". " + v.getValue() + "::" + v.getKey());
-        });
     }
 }

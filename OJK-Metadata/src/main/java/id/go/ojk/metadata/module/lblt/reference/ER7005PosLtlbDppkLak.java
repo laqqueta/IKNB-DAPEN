@@ -86,7 +86,7 @@ public enum ER7005PosLtlbDppkLak implements IObject<KeyValueString> {
     R_LAK0503000000_DPLK("LAK0503000000", "Pembayaran Pengalihan Dana ke Dana Pensiun Lain", EnumSet.of(ProgramType.DPLK)),
 
     R_LAK0504000000("LAK0504000000", "Penerimaan Bunga Keterlambatan Iuran", EnumSet.of(ProgramType.ALL)),
-    R_LAK0504000000_DPLK("LAK0504000000", "Pembayaran Manfaat Pensiun & Manfaat Lain", EnumSet.of(ProgramType.DPLK)),
+    R_LAK0504000000_DPLK("LAK0504000000", "Pembayaran Manfaat Pensiun dan Manfaat Lain", EnumSet.of(ProgramType.DPLK)),
 
     R_LAK0505000000("LAK0505000000", "Penerimaan Pengalihan Dana dari Dana Pensiun Lain", EnumSet.of(ProgramType.ALL)),
     R_LAK0505000000_DPLK("LAK0505000000", "Penarikan Iuran", EnumSet.of(ProgramType.DPLK)),

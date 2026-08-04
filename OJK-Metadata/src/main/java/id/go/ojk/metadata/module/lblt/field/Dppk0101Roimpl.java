@@ -10,7 +10,7 @@ import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.metadata.field.lblt.ILbltFieldMetadata;
 import id.go.ojk.metadata.field.lblt.LbltMetadataField;
 import id.go.ojk.metadata.module.lblt.EFormLaporanBulananTahunan;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataPpipk;
+import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataLkdpPpipk;
 import id.go.ojk.metadata.module.lblt.reference.ER7101PosLtlbDppkRoimpl;
 import id.go.ojk.metadata.module.lblt.validations.E7101RoimplValidationsConfig;
 import id.go.ojk.metadata.submission.SubmissionConfig;
@@ -27,15 +27,14 @@ import java.util.stream.Stream;
 import static id.go.ojk.lib.client.model.config.DataType.*;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
 import static id.go.ojk.metadata.util.FieldUtil.*;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPIPK;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPIPM;
+import static id.go.ojk.metadata.util.constants.ProgramType.*;
 import static id.go.ojk.metadata.util.constants.SectorType.KONVENSIONAL;
 import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 
 @AllArgsConstructor
 public enum Dppk0101Roimpl implements ILbltFieldMetadata {
 
-    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, PPMPPPIPK),
             sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01"))),
 
     KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
@@ -43,35 +42,44 @@ public enum Dppk0101Roimpl implements ILbltFieldMetadata {
                     .confRegex(SimpleValidation.patternAlfaNumeric))
                     .confUnique(UniqueType.U)),
 
-    HASIL_INVESTASI_TEREALISASI_BUNGA_BAGI_HASIL(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
+    KODE_KOMPONEN_GABUNGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPPPIPK),
+            sf(1, null, "Kode Komponen", sv(M, 16, 16, refTable)
+                    .confRegex(SimpleValidation.patternAlfaNumeric))),
+
+    HASIL_INVESTASI_TEREALISASI_BUNGA_BAGI_HASIL(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, PPMPPPIPK),
             sf(2, null, "Hasil investasi yang terealisasi Bunga/ Bagi Hasil", sv(M, 1, 18, numeric))),
 
-    HASIL_INVESTASI_TEREALISASI_DIVIDEN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
+    HASIL_INVESTASI_TEREALISASI_DIVIDEN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, PPMPPPIPK),
             sf(3, null, "Hasil investasi yang terealisasi Dividen", sv(M, 1, 18, numeric))),
 
-    HASIL_INVESTASI_TEREALISASI_SEWA(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
+    HASIL_INVESTASI_TEREALISASI_SEWA(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, PPMPPPIPK),
             sf(4, null, "Hasil investasi yang terealisasi Sewa", sv(M, 1, 18, numeric))),
 
-    HASIL_INVESTASI_TEREALISASI_LABA_RUGI_PELEPASAN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
+    HASIL_INVESTASI_TEREALISASI_LABA_RUGI_PELEPASAN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, PPMPPPIPK),
             sf(5, null, "Hasil investasi yang terealisasi Laba/Rugi Pelepasan", sv(M, 1, 18, numeric))),
 
-    HASIL_INVESTASI_TEREALISASI_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
+    HASIL_INVESTASI_TEREALISASI_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, PPMPPPIPK),
             sf(6, null, "Hasil investasi yang terealisasi Lainnya", sv(M, 1, 18, numeric))),
 
-    HASIL_INVESTASI_BELUM_TEREALISASI(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
+    HASIL_INVESTASI_BELUM_TEREALISASI(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, PPMPPPIPK),
             sf(7, null, "Hasil Investasi yang Belum Terealisasi", sv(M, 1, 18, numeric))),
 
-    BEBAN_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
+    BEBAN_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, PPMPPPIPK),
             sf(8, null, "Beban Investasi", sv(M, 1, 18, numeric))),
 
-    HASIL_INVESTASI_BERSIH(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
-            sf(9, null, "Hasil investasi bersih", sv(M, 1, 18, numeric))),
+    HASIL_INVESTASI_BERSIH(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, PPMPPPIPK),
+            sf(9, null, "Hasil investasi bersih", sv(M, 1, 18, numericNegatif))),
 
-    RATA_RATA_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
+    RATA_RATA_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, PPMPPPIPK),
             sf(10, null, "Rata-rata Investasi", sv(M, 1, 18, numeric))),
 
-    ROI(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM),
+    ROI(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, PPMPPPIPK),
             sf(11, null, "ROI", sv(M, 3, 18, numericDot))),
+
+    /* Gabungan Additional Field */
+
+    JENIS_PROGRAM(sectors(KONVENSIONAL, SYARIAH), programs(PPMPPPIPK),
+            sf(1000, null, "Jenis Program", sv(M, 5, 5, alfa))),
 
     ;
 
@@ -80,7 +88,7 @@ public enum Dppk0101Roimpl implements ILbltFieldMetadata {
     private final SubmissionField field;
 
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
-            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7013Roimpl.getObject())
+            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataLkdpPpipk.R7013Roimpl.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     private static final LbltMetadataField<Dppk0101Roimpl> FIELD_METADATA = new LbltMetadataField<>(Dppk0101Roimpl.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);

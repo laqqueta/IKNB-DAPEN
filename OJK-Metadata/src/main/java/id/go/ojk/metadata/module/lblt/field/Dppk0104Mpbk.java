@@ -9,9 +9,9 @@ import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.metadata.field.lblt.ILbltFieldMetadata;
 import id.go.ojk.metadata.field.lblt.LbltMetadataField;
 import id.go.ojk.metadata.module.lblt.EFormLaporanBulananTahunan;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataLkbtDplk;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataPpipk;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataPpipm;
+import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataLkdpDplk;
+import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataLkdpPpipk;
+import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataLkdpPpipm;
 import id.go.ojk.metadata.module.lblt.reference.ER7104PosLtlbDppkMpbk;
 import id.go.ojk.metadata.module.lblt.validations.E7104MpbkValidationsConfig;
 import id.go.ojk.metadata.submission.SubmissionConfig;
@@ -35,55 +35,60 @@ import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0104Mpbk implements ILbltFieldMetadata {
 
-    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric)
                     .confConstant("D01"))),
 
-    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(1, null, "Kode Komponen", sv(M, 10, 10, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric))),
 
-    NAMA_BANK(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK),
+    NAMA_BANK(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(2, null, "Nama Bank/Nomor Seri SBN", sv(C, 1, 100, alfaNumericSpace))),
 
-    DEPOSITO_NOMOR_BILYET(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK),
+    DEPOSITO_NOMOR_BILYET(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(3, null, "Deposito - Nomor Bilyet", sv(C, 1, 50, alfaNumeric))),
 
-    DEPOSITO_NOMINAL(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK),
+    DEPOSITO_NOMINAL(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(4, null, "Deposito - Nominal", sv(M, 1, 18, numeric))),
 
-    DEPOSITO_TANGGAL_JATUH_TEMPO(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK),
+    DEPOSITO_TANGGAL_JATUH_TEMPO(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(5, null, "Deposito - Tanggal Jatuh Tempo", sv(C, 8, 8, date))),
 
-    SERTIFIKAT_DEPOSITO_NOMOR_BILYET(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK),
+    SERTIFIKAT_DEPOSITO_NOMOR_BILYET(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(6, null, "Sertifikat Deposito - Nomor Bilyet", sv(C, 1, 50, alfaNumeric))),
 
-    SERTIFIKAT_DEPOSITO_NOMINAL(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK),
+    SERTIFIKAT_DEPOSITO_NOMINAL(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(7, null, "Sertifikat Deposito - Nominal", sv(M, 1, 18, numeric))),
 
-    SERTIFIKAT_DEPOSITO_TANGGAL_JATUH_TEMPO(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK),
+    SERTIFIKAT_DEPOSITO_TANGGAL_JATUH_TEMPO(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(8, null, "Sertifikat Deposito - Tanggal Jatuh Tempo", sv(C, 8, 8, date))),
 
-    SBI_NILAI_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK),
+    SBI_NILAI_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(9, null, "SBI - Nilai Perolehan", sv(C, 1, 18, numeric))),
 
-    SBI_NILAI_WAJAR(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK),
+    SBI_NILAI_WAJAR(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(10, null, "SBI - Nilai Wajar", sv(C, 1, 18, numeric))),
 
-    SBI_TANGGAL_JATUH_TEMPO(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK),
+    SBI_TANGGAL_JATUH_TEMPO(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(11, null, "SBI - Tanggal Jatuh Tempo", sv(C, 8, 8, date))),
 
-    SBN_NILAI_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK),
+    SBN_NILAI_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(12, null, "SBN - Nilai Perolehan", sv(C, 1, 18, numeric))),
 
-    SBN_NILAI_WAJAR(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK),
+    SBN_NILAI_WAJAR(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(13, null, "SBN - Nilai Wajar", sv(C, 1, 18, numeric))),
 
-    SBN_TANGGAL_JATUH_TEMPO(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK),
+    SBN_TANGGAL_JATUH_TEMPO(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(14, null, "SBN - Tanggal Jatuh Tempo", sv(C, 8, 8, date))),
 
-    TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK),
+    TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(15, null, "TOTAL", sv(M, 1, 18, numeric))),
+
+    /* Gabungan Additional Field */
+
+    JENIS_PROGRAM(sectors(KONVENSIONAL, SYARIAH), programs(PPMPPPIPK),
+            sf(1000, null, "Jenis Program", sv(M, 5, 5, alfa))),
 
     ;
 
@@ -92,9 +97,9 @@ public enum Dppk0104Mpbk implements ILbltFieldMetadata {
     private final SubmissionField field;
 
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
-            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7022Mpbk.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7022Mpbk.getObject()),
-            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkbtDplk.R7022Mpbk.getObject())
+            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataLkdpPpipk.R7022Mpbk.getObject()),
+            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataLkdpPpipm.R7022Mpbk.getObject()),
+            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkdpDplk.R7022Mpbk.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     private static final LbltMetadataField<Dppk0104Mpbk> FIELD_METADATA = new LbltMetadataField<>(Dppk0104Mpbk.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);

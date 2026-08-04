@@ -32,8 +32,8 @@ import static id.go.ojk.conf.client.UtilMetadata.genFormulaParser;
 import static id.go.ojk.metadata.module.lblt.reference.ER7001PosLtlbDppkLan.*;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPIPM;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
+import static id.go.ojk.metadata.util.constants.ProgramType.*;
+import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
 
 @AllArgsConstructor
 @RequiredArgsConstructor
@@ -460,7 +460,7 @@ public enum E7001LanMValidationsConfig implements ILbltMetadataValidation, IVali
         int[] cols = {6};
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_ASOL.getCode();
         String comparatorColumn = UtilMetadata.genPlusColumn(cols);
-        String comparatorPosCode =  ER7052PosLtlbDppkAsol.R_ASOL000000.key;
+        String comparatorPosCode = ER7052PosLtlbDppkAsol.R_ASOL000000.key;
         String errMsg = selectPosCode.getValue() + " | Total Nilai Buku pada form " + comparatorForm;
         return UtilSegmentValidationV2.genEqualsFormColumCalculation("3", selectPosCode.getKey(), comparatorColumn,
                 comparatorPosCode, comparatorForm, errMsg, 2);
@@ -501,6 +501,19 @@ public enum E7001LanMValidationsConfig implements ILbltMetadataValidation, IVali
         return UtilSegmentValidationV2.genEqualsFormColumCalculation("3", selectPosCode.getKey(), comparatorColumn,
                 comparatorPosCodeForm, comparatorForm, errMsg, 2);
     }),
+
+    SG_ROW_DATA_TYPE_NUMERIC_DOT(programs(PPMPM), () ->
+            UtilSegmentValidation.genRegexNumericDot("2",
+                    UtilMetadata.genPipeRow(getObjects(PPMPM), 0, 20))),
+
+    SG_ROW_DATA_TYPE_NUMERIC(programs(PPMPM), () ->
+            UtilSegmentValidation.genRegexNumeric("3",
+                    UtilMetadata.genPipeRow(getObjects(PPMPM), 0, 47))),
+
+    SG_ROW_DATA_TYPE_NUMERIC_NEGATIVE(programs(PPMPM), () ->
+            UtilSegmentValidation.genRegexNumericNegative("3",
+                    UtilMetadata.genPipeRow(getObjects(PPMPM), new int[]{48}))),
+
 
     CR_EXIST_POS_N_PERSENTASE_INVESTASI(programs(PPMPM), validationFields(2),
             () -> UtilFieldConditional.genExistPos("N", "M",

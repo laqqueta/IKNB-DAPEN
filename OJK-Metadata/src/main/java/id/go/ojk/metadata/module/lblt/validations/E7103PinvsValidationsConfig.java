@@ -7,6 +7,7 @@ import id.go.ojk.client.model.validation.IValidation;
 import id.go.ojk.client.validation.IValidationConverter;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
+import id.go.ojk.metadata.module.lblt.reference.ER7012PosLtlbDppkAlm;
 import id.go.ojk.metadata.module.lblt.reference.ER7102PosLtlbDppkPinv;
 import id.go.ojk.metadata.util.constants.ProgramType;
 import id.go.ojk.metadata.validation.ValidationConverter;
@@ -56,6 +57,22 @@ public enum E7103PinvsValidationsConfig implements ILbltMetadataValidation, IVal
                     UtilMetadata.genPlusRow(ER7102PosLtlbDppkPinv.getObjects(), new int[] {19, 25}) + "-PINVS0103080000",
                     UtilMetadata.genMessage(ER7102PosLtlbDppkPinv.R_PINV0104000000.getObject().getValue(),
                             UtilMetadata.genPlusDesc(ER7102PosLtlbDppkPinv.getObjects(), new int[] {19, 25})) + "-'Total Liabilitas Di Luar Kewajiban Manfaat Pensiun '")),
+
+    SG_ROW_DATA_TYPE_NUMERIC(programs(PPIPK, PPIPM),
+            () -> UtilSegmentValidation.genRegexNumeric(UtilMetadata.genPipeColumn(2, 5),
+                    UtilMetadata.genPipeRowExcept(ER7102PosLtlbDppkPinv.getObjects(), new int[] { 33 }))),
+
+    SG_ROW_DATA_TYPE_NUMERIC_NEGATIVE(programs(PPIPK, PPIPM),
+            () -> UtilSegmentValidation.genRegexNumericNegative(UtilMetadata.genPipeColumn(2, 5),
+                    UtilMetadata.genPipeRow(ER7102PosLtlbDppkPinv.getObjects(), new int[] { 33 }))),
+
+    SG_ROW_DATA_TYPE_NUMERIC_DPLK(programs(DPLK),
+            () -> UtilSegmentValidation.genRegexNumeric(UtilMetadata.genPipeColumn(2, 5),
+                    UtilMetadata.genPipeRowExcept(ER7102PosLtlbDppkPinv.getObjects(DPLK), new int[] { 33 }))),
+
+    SG_ROW_DATA_TYPE_NUMERIC_NEGATIVE_DPLK(programs(DPLK),
+            () -> UtilSegmentValidation.genRegexNumericNegative(UtilMetadata.genPipeColumn(2, 5),
+                    UtilMetadata.genPipeRow(ER7102PosLtlbDppkPinv.getObjects(DPLK), new int[] { 33 }))),
 
 
     ;

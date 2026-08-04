@@ -9,37 +9,13 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ER7002PosLtlbDppkLpan implements IObject<KeyValueString> {
-
-//    R_LPAN0101010000("LPAN0101010000", "Bunga/Bagi Hasil", EnumSet.of(ProgramType.ALL)), // 0
-//    R_LPAN0101020000("LPAN0101020000", "Dividen", EnumSet.of(ProgramType.ALL)), // 1
-//    R_LPAN0101030000("LPAN0101030000", "Sewa", EnumSet.of(ProgramType.ALL)), // 2
-//    R_LPAN0101040000("LPAN0101040000", "Laba (Rugi) Pelepasan Investasi", EnumSet.of(ProgramType.ALL)), // 3
-//    R_LPAN0101050000("LPAN0101050000", "Pendapatan Investasi Lain", EnumSet.of(ProgramType.ALL)), // 4
-//    R_LPAN0102000000("LPAN0102000000", "Total Pendapatan Investasi", EnumSet.of(ProgramType.ALL)), // 5
-//    R_LPAN0103000000("LPAN0103000000", "Peningkatan (Penurunan) Nilai Investasi", EnumSet.of(ProgramType.ALL)), // 6
-//    R_LPAN0104010000("LPAN0104010000", "- Iuran Normal Pemberi Kerja", EnumSet.of(ProgramType.ALL)), // 7
-//    R_LPAN0104020000("LPAN0104020000", "- Iuran Normal Peserta", EnumSet.of(ProgramType.ALL)), // 8
-//    R_LPAN0104030000("LPAN0104030000", "- Iuran Sukarela Peserta", EnumSet.of(ProgramType.ALL)), // 9
-//    R_LPAN0104040000("LPAN0104040000", "- Iuran Tambahan", EnumSet.of(ProgramType.PPMPM, ProgramType.PPMPK)), // 10
-//    R_LPAN0105000000("LPAN0105000000", "Pendapatan di Luar Investasi", EnumSet.of(ProgramType.ALL)), // 11
-//    R_LPAN0106000000("LPAN0106000000", "Pengalihan Dana dari Dana Pensiun Lain", EnumSet.of(ProgramType.ALL)), // 12
-//    R_LPAN0107000000("LPAN0107000000", "Jumlah Penambahan", EnumSet.of(ProgramType.ALL)), // 13
-//    R_LPAN0201000000("LPAN0201000000", "Beban Investasi", EnumSet.of(ProgramType.ALL)), // 14
-//    R_LPAN0202000000("LPAN0202000000", "Beban Operasional", EnumSet.of(ProgramType.ALL)), //
-//    R_LPAN0203000000("LPAN0203000000", "Beban di Luar Investasi dan Operasional", EnumSet.of(ProgramType.ALL)),
-//    R_LPAN0204000000("LPAN0204000000", "Manfaat Pensiun dan Manfaat Lain", EnumSet.of(ProgramType.ALL)),
-//    R_LPAN0205000000("LPAN0205000000", "Pajak Penghasilan", EnumSet.of(ProgramType.ALL)),
-//    R_LPAN0206000000("LPAN0206000000", "Pengalihan Dana ke Dana Pensiun Lain", EnumSet.of(ProgramType.ALL)),
-//    R_LPAN0207000000("LPAN0207000000", "Pengalihan Dana ke Balai Harta Peninggalan", EnumSet.of(ProgramType.ALL)),
-//    R_LPAN0208000000("LPAN0208000000", "Jumlah Pengurangan", EnumSet.of(ProgramType.ALL)),
-//    R_LPAN0300000000("LPAN0300000000", "KENAIKAN (PENURUNAN) ASET NETO", EnumSet.of(ProgramType.ALL)),
-//    R_LPAN0400000000("LPAN0400000000", "ASET NETO AWAL PERIODE", EnumSet.of(ProgramType.ALL)),
-//    R_LPAN0500000000("LPAN0500000000", "ASET NETO AKHIR PERIODE", EnumSet.of(ProgramType.ALL)),
 
     R_LPAN0101010000("LPAN0101010000", "Bunga/Bagi Hasil", EnumSet.of(ProgramType.ALL, ProgramType.DPLK)),
     R_LPAN0101020000("LPAN0101020000", "Dividen", EnumSet.of(ProgramType.ALL, ProgramType.DPLK)),
@@ -86,6 +62,23 @@ public enum ER7002PosLtlbDppkLpan implements IObject<KeyValueString> {
     private final EnumSet<ProgramType> jenisProgram;
 
     public static List<KeyValueString> getObjects(ProgramType jenisProgram) {
+        if (!jenisProgram.equals(ProgramType.PPMPPPIPK)) return getNonGabunganObjects(jenisProgram);
+
+        ER7002PosLtlbDppkLpan[] eVals = ER7002PosLtlbDppkLpan.values();
+
+        List<KeyValueString> res = Arrays.stream(eVals)
+                .filter(eEnum -> eEnum.jenisProgram.contains(ProgramType.PPMPK) || eEnum.jenisProgram.contains(ProgramType.ALL))
+                .map(ER7002PosLtlbDppkLpan::getObject).collect(Collectors.toList());
+
+        res.addAll(Arrays.stream(eVals)
+                .filter(eEnum -> eEnum.jenisProgram.contains(ProgramType.PPIPK) || eEnum.jenisProgram.contains(ProgramType.ALL))
+                .map(ER7002PosLtlbDppkLpan::getObject)
+                .collect(Collectors.toList()));
+
+        return res;
+    }
+
+    public static List<KeyValueString> getNonGabunganObjects(ProgramType jenisProgram) {
         List<KeyValueString> res = new ArrayList<>();
 
         for (ER7002PosLtlbDppkLpan eEnum : ER7002PosLtlbDppkLpan.values()) {
@@ -126,6 +119,8 @@ public enum ER7002PosLtlbDppkLpan implements IObject<KeyValueString> {
                 return Configs.REF_CONFIG_PPIPM;
             case DPLK:
                 return Configs.REF_CONFIG_DPLK;
+            case PPMPPPIPK:
+                return Configs.REF_CONFIG_PPMPPPIPK;
             default:
                 throw new IllegalStateException();
         }
@@ -219,6 +214,25 @@ public enum ER7002PosLtlbDppkLpan implements IObject<KeyValueString> {
             @Override
             public String savePosForm() {
                 return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 12), getObjects(dplkProgram));
+            }
+
+            @Override
+            public String requiredPos() {
+                return UtilMetadata.genPipeRow(getObjects(dplkProgram));
+            }
+        },
+
+        REF_CONFIG_PPMPPPIPK {
+            private final ProgramType dplkProgram = ProgramType.PPMPPPIPK;
+
+            @Override
+            public String savePos() {
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 17), getObjects(dplkProgram));
+            }
+
+            @Override
+            public String savePosForm() {
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 17), getObjects(dplkProgram));
             }
 
             @Override

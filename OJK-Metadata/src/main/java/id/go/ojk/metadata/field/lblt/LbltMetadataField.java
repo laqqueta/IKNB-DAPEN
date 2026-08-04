@@ -56,6 +56,12 @@ public class LbltMetadataField<T extends Enum<T> & ILbltFieldMetadata> extends B
                     if (isChange.get()) return;
 
                     if (sf.getNumber() == KODE_KOMPONEN_FIELD_INDEX) {
+                        // tmp
+                        if (kodeKomponenReferences.get(programType) == null) {
+                            isChange.set(true);
+                            return;
+                        }
+
                         sf.getSimpleValidation()
                                 .confReference(kodeKomponenReferences.get(programType));
 

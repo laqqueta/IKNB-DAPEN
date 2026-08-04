@@ -43,17 +43,17 @@ public enum ER7037PosLtlbDppkKokb implements IObject<KeyValueString> {
         REF_CONFIG {
             @Override
             public String savePos() {
-                return UtilMetadata.genFieldSave("6|7|8", getObjects());
-            }
-
-            @Override
-            public String requiredPos() {
-                return UtilMetadata.genPipeRow(getObjects(), new int[]{1});
+                return UtilMetadata.genFieldSave("5|6|7|8", getObjects());
             }
 
             @Override
             public String savePosForm() {
                 return UtilMetadata.genFieldSave("6|7|10", getObjects());
+            }
+
+            @Override
+            public String requiredPos() {
+                return UtilMetadata.genPipeRow(getObjects(), new int[] { 1 });
             }
         }
     }

@@ -41,7 +41,7 @@ import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0003Nrc implements ILbltFieldMetadata {
 
-    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric)
                     .confConstant("D01"))),
 
@@ -50,51 +50,62 @@ public enum Dppk0003Nrc implements ILbltFieldMetadata {
                     .confRegex(SimpleValidation.patternAlfaNumeric))
                     .confUnique(UniqueType.U)),
 
-    MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
-            sf(2, null, "Manfaat Pensiun", sv(M, 1, 18, numeric))),
+    KODE_KOMPONEN_GABUNGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPPPIPK),
+            sf(1, null, "Kode Komponen", sv(M, 13, 13, refTable)
+                    .confRegex(SimpleValidation.patternAlfaNumeric))
+                    .confUnique(UniqueType.U)),
 
-    MANFAAT_PENSIUN_LAINNYA_MANFAAT_TAMBAHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK),
-            sf(3, null, "Manfaat Pensiun Lainnya Manfaat Tambahan", sv(M, 1, 18, numeric))),
+    MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK,PPMPPPIPK),
+            sf(2, null, "Manfaat Pensiun", sv(M, 1, 18, freeText))),
 
-    MANFAAT_PENSIUN_LAINNYA_KOMPENSASI_PASCAKERJA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK),
-            sf(4, null, "Manfaat Pensiun Lainnya Kompensasi Pascakerja", sv(M, 1, 18, numeric))),
+    MANFAAT_PENSIUN_LAINNYA_MANFAAT_TAMBAHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK,PPMPPPIPK),
+            sf(3, null, "Manfaat Pensiun Lainnya Manfaat Tambahan", sv(M, 1, 18, freeText))),
 
-    MANFAAT_PENSIUN_LAINNYA_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK),
-            sf(5, null, "Manfaat Pensiun Lainnya Lainnya", sv(M, 1, 18, numeric))),
+    MANFAAT_PENSIUN_LAINNYA_KOMPENSASI_PASCAKERJA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK,PPMPPPIPK),
+            sf(4, null, "Manfaat Pensiun Lainnya Kompensasi Pascakerja", sv(M, 1, 18, freeText))),
 
-    MANFAAT_LAIN_KOMPENSASI_PASCAKERJA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK),
-            sf(6, null, "Manfaat Lain Kompensasi Pascakerja", sv(M, 1, 18, numeric))),
+    MANFAAT_PENSIUN_LAINNYA_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK,PPMPPPIPK),
+            sf(5, null, "Manfaat Pensiun Lainnya Lainnya", sv(M, 1, 18, freeText))),
 
-    MANFAAT_LAIN_KESEHATAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK),
-            sf(7, null, "Manfaat Lain Kesehatan", sv(M, 1, 18, numeric))),
+    MANFAAT_LAIN_KOMPENSASI_PASCAKERJA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK,PPMPPPIPK),
+            sf(6, null, "Manfaat Lain Kompensasi Pascakerja", sv(M, 1, 18, freeText))),
 
-    MANFAAT_LAIN_SANTUNAN_KEMATIAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK),
-            sf(8, null, "Manfaat Lain Santunan Kematian", sv(M, 1, 18, numeric))),
+    MANFAAT_LAIN_KESEHATAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK,PPMPPPIPK),
+            sf(7, null, "Manfaat Lain Kesehatan", sv(M, 1, 18, freeText))),
 
-    MANFAAT_LAIN_IBADAH_KEAGAMAAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK),
-            sf(9, null, "Manfaat Lain Ibadah Keagamaan", sv(M, 1, 18, numeric))),
+    MANFAAT_LAIN_SANTUNAN_KEMATIAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK,PPMPPPIPK),
+            sf(8, null, "Manfaat Lain Santunan Kematian", sv(M, 1, 18, freeText))),
 
-    MANFAAT_LAIN_PENDIDIKAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK),
-            sf(10, null, "Manfaat Lain Pendidikan", sv(M, 1, 18, numeric))),
+    MANFAAT_LAIN_IBADAH_KEAGAMAAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK,PPMPPPIPK),
+            sf(9, null, "Manfaat Lain Ibadah Keagamaan", sv(M, 1, 18, freeText))),
 
-    MANFAAT_LAIN_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK),
-            sf(11, null, "Manfaat Lain Lainnya", sv(M, 1, 18, numeric))),
+    MANFAAT_LAIN_PENDIDIKAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK,PPMPPPIPK),
+            sf(10, null, "Manfaat Lain Pendidikan", sv(M, 1, 18, freeText))),
 
-    GABUNGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK),
-            sf(12, null, "Gabungan", sv(M, 1, 18, numeric))/*.addFieldValidations(E7003NrcValidationsConfig.FV_EQUALS_EXCEPT)*/),
+    MANFAAT_LAIN_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK,PPMPPPIPK),
+            sf(11, null, "Manfaat Lain Lainnya", sv(M, 1, 18, freeText))),
 
-    UUS_MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK),
-            sf(13, null, "UUS - Manfaat Pensiun", sv(M, 1, 18, all2))),
+    GABUNGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK,PPMPPPIPK),
+            sf(12, null, "Gabungan", sv(M, 1, 18, freeText))/*.addFieldValidations(E7003NrcValidationsConfig.FV_EQUALS_EXCEPT)*/),
 
+    /* Additional for PPIPK Program Type */
 
-    UUS_MANFAAT_PENSIUN_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK),
-            sf(14, null, "UUS - Manfaat Pensiun Lainnya", sv(M, 1, 18, all2))),
+    UUS_MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK,PPMPPPIPK),
+            sf(13, null, "UUS - Manfaat Pensiun", sv(M, 1, 18, freeText))),
 
-    UUS_MANFAAT_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK),
-            sf(15, null, "UUS - Manfaat Lain", sv(M, 1, 18, all2))),
+    UUS_MANFAAT_PENSIUN_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK,PPMPPPIPK),
+            sf(14, null, "UUS - Manfaat Pensiun Lainnya", sv(M, 1, 18, freeText))),
 
-    TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK),
-            sf(16, null, "Total", sv(M, 1, 18, all2))),
+    UUS_MANFAAT_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK,PPMPPPIPK),
+            sf(15, null, "UUS - Manfaat Lain", sv(M, 1, 18, freeText))),
+
+    TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK,PPMPPPIPK),
+            sf(16, null, "Total", sv(M, 1, 18, freeText))),
+
+    /* Gabungan Additional Field */
+
+    JENIS_PROGRAM(sectors(KONVENSIONAL, SYARIAH), programs(PPMPPPIPK),
+            sf(1000, null, "Jenis Program", sv(M, 5, 5, alfa))),
 
     ;
 
@@ -103,11 +114,11 @@ public enum Dppk0003Nrc implements ILbltFieldMetadata {
     private final SubmissionField field;
 
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
-            new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7003Nrc.getObject()),
-            new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7003Nrc.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7003Nrc.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7003Nrc.getObject()),
-            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkbtDplk.R7003Nrc.getObject())
+            new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataLkdpPpmpk.R7003Nrc.getObject()),
+            new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataLkdpPpmpm.R7003Nrc.getObject()),
+            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataLkdpPpipk.R7003Nrc.getObject()),
+            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataLkdpPpipm.R7003Nrc.getObject()),
+            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkdpDplk.R7003Nrc.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0003Nrc> FIELD_METADATA = new LbltMetadataField<>(Dppk0003Nrc.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);

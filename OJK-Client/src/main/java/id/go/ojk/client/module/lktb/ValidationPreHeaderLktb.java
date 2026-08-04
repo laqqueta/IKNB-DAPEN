@@ -130,7 +130,7 @@ public class ValidationPreHeaderLktb extends BaseValidationPreHeader {
 
     protected boolean validatePart7() {
         String part = getPart(8);
-        String code = JenisProgramState.selectedKey.replaceAll("[^A-Za-z]", "");
+        String code = JenisProgramState.selectedKey.replaceAll("[^A-Za-z\\s]", "");
         String type = "";
 
         if (part.substring(part.length()-1).equalsIgnoreCase("M")) {
@@ -141,7 +141,7 @@ public class ValidationPreHeaderLktb extends BaseValidationPreHeader {
 
         boolean res = part.equals(code);
         if (!res) {
-            String programErr = part.substring(0, part.length()-1) + " " + type;
+            String programErr = part.substring(0, part.length()-1) + type;
             JenisProgramState.validationState.setValue(false);
             result.errors.add(new ValidationError(null, ValidationErrorCode.E03_30_JENIS_PROGRAM, programErr, JenisProgramState.selectedValue));
         }

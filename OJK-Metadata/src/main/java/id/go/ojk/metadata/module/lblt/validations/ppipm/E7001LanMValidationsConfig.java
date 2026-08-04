@@ -32,6 +32,7 @@ import static id.go.ojk.conf.client.UtilMetadata.genFormulaParser;
 import static id.go.ojk.metadata.module.lblt.reference.ER7001PosLtlbDppkLan.*;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
+import static id.go.ojk.metadata.util.constants.ProgramType.PPIPK;
 import static id.go.ojk.metadata.util.constants.ProgramType.PPIPM;
 
 @AllArgsConstructor
@@ -479,6 +480,18 @@ public enum E7001LanMValidationsConfig implements ILbltMetadataValidation, IVali
         return UtilSegmentValidationV2.genEqualsFormColumCalculation("3", selectPosCode.getKey(), comparatorColumn,
                 comparatorPosCodeForm, comparatorForm, errMsg, 2);
     }),
+
+    SG_ROW_DATA_TYPE_NUMERIC_DOT(programs(PPIPK), () ->
+            UtilSegmentValidation.genRegexNumericDot("2",
+                    UtilMetadata.genPipeRow(getObjects(PPIPK), 0, 20))),
+
+    SG_ROW_DATA_TYPE_NUMERIC(programs(PPIPM), () ->
+            UtilSegmentValidation.genRegexNumeric("3",
+                    UtilMetadata.genPipeRow(getObjects(PPIPM), 0, 47))),
+
+    SG_ROW_DATA_TYPE_NUMERIC_NEGATIVE(programs(PPIPM), () ->
+            UtilSegmentValidation.genRegexNumericNegative("3",
+                    UtilMetadata.genPipeRow(getObjects(PPIPM), new int[]{48}))),
 
     CR_EXIST_POS_N_PERSENTASE_INVESTASI(programs(PPIPM), validationFields(2),
             () -> UtilFieldConditional.genExistPos("N", "M",

@@ -41,8 +41,9 @@ public class FieldUtil {
                 .collect(Collectors.toList());
     }
 
-    public static List<Integer> validationFieldsDelimited(String fields, String delimited) {
-        return Arrays.stream(fields.split(delimited))
+    public static List<Integer> validationPipeFields(String fields) {
+        String[] fieldSplit = fields.split("[|]");
+        return Arrays.stream(fieldSplit)
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }

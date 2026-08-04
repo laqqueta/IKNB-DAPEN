@@ -16,6 +16,7 @@ import id.go.ojk.lib.client.model.KeyValueString;
 import id.go.ojk.metadata.module.lblt.EFormLaporanBulananTahunan;
 import id.go.ojk.metadata.module.lblt.field.Dppk0003Nrc;
 import id.go.ojk.metadata.module.lblt.reference.*;
+import id.go.ojk.metadata.util.FieldUtil;
 import id.go.ojk.metadata.util.constants.ProgramType;
 import id.go.ojk.metadata.validation.ValidationConverter;
 import id.go.ojk.metadata.validation.base.BaseMetadataValidation;
@@ -35,6 +36,7 @@ import static id.go.ojk.metadata.module.lblt.reference.ER7003PosLtlbDppkNrc.*;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
 import static id.go.ojk.metadata.util.constants.ProgramType.PPIPK;
+import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
 
 @AllArgsConstructor
 @RequiredArgsConstructor
@@ -47,6 +49,24 @@ public enum E7003NrcKValidationsConfig implements ILbltMetadataValidation, IVali
                     ER7022PosLtlbDppkDoc.R_DOC010000.getObject().getKey(),
                     "DOC|Nilai Nominal|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain/LCF"
             )),
+
+    SG_SUMIF_DPJKA_DPJKV(programs(PPIPK),
+            () -> {
+                String comparatorForms = EFormLaporanBulananTahunan.LTLB_DPJKA.getCode() + "|"
+                        + EFormLaporanBulananTahunan.LTLB_DPJKV.getCode();
+                String comparatorRows = ER7023PosLtlbDppkDpjka.R_DPJKA010000.getObject().getKey() + "|"
+                        + ER7024PosLtlbDppkDpjkv.R_DPJKV010000.getObject().getKey();
+                String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MPL1|MPL2|MPL3|ML1|ML2|ML3|ML4|ML5|ML6|UUS1|UUS2|UUS3");
+                String sumCriteriaCond = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
+                String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MPL1|MPL2|MPL3|ML1|ML2|ML3|ML4|ML5|ML6|UUS1|UUS2|UUS3");
+                String sumConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
+                return UtilSegmentValidationV2.genMultiFormSumIf(
+                        UtilMetadata.genPipeColumnExcept(2, 15, new int[]{12}), ER7003PosLtlbDppkNrc.R_NRC0101020000.getObject().getKey(),
+                        comparatorForms, comparatorRows,
+                        "6|6", "9|12", "2", criteriaCondition, sumCriteriaCond,
+                        "DPJKA|DPJKV|Jumlah Nominal|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain",
+                        criteriaConditionErr, sumConditionErr);
+            }),
 
     SG_SUMIF_SRDP(programs(PPIPK),
             () -> sumIfValidationHelper(
@@ -64,14 +84,6 @@ public enum E7003NrcKValidationsConfig implements ILbltMetadataValidation, IVali
                     "SBI|Nilai Perolehan|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain/LCF"
             )),
 
-    SG_SUMIF_SHM(programs(PPIPK),
-            () -> sumIfValidationHelper(
-                    ER7003PosLtlbDppkNrc.R_NRC0101060000.getObject().getKey(), "6", "11",
-                    EFormLaporanBulananTahunan.LTLB_SHM.getCode(),
-                    ER7028PosLtlbDppkShm.R_SHM010000.getObject().getKey(),
-                    "SHM|Nilai Perolehan|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain"
-            )),
-
     SG_SUMIF_RSBN(programs(PPIPK),
             () -> sumIfValidationHelper(
                     ER7003PosLtlbDppkNrc.R_NRC0101050000.getObject().getKey(), "7", "11",
@@ -80,12 +92,12 @@ public enum E7003NrcKValidationsConfig implements ILbltMetadataValidation, IVali
                     "RSBN|Nilai Perolehan|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain/LCF"
             )),
 
-    SG_SUMIF_SUKUK(programs(PPIPK),
+    SG_SUMIF_SHM(programs(PPIPK),
             () -> sumIfValidationHelper(
-                    ER7003PosLtlbDppkNrc.R_NRC0101080000.getObject().getKey(), "11", "16",
-                    EFormLaporanBulananTahunan.LTLB_SUKUK.getCode(),
-                    ER7030PosLtlbDppkSukuk.R_SUKUK010000.getObject().getKey(),
-                    "SUKUK|Nilai Perolehan|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain"
+                    ER7003PosLtlbDppkNrc.R_NRC0101060000.getObject().getKey(), "6", "11",
+                    EFormLaporanBulananTahunan.LTLB_SHM.getCode(),
+                    ER7028PosLtlbDppkShm.R_SHM010000.getObject().getKey(),
+                    "SHM|Nilai Perolehan|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain"
             )),
 
     SG_SUMIF_OBLI(programs(PPIPK),
@@ -94,6 +106,14 @@ public enum E7003NrcKValidationsConfig implements ILbltMetadataValidation, IVali
                     EFormLaporanBulananTahunan.LTLB_OBLI.getCode(),
                     ER7029PosLtlbDppkObli.R_OBLI010000.getObject().getKey(),
                     "OBLI|Nilai Perolehan|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain"
+            )),
+
+    SG_SUMIF_SUKUK(programs(PPIPK),
+            () -> sumIfValidationHelper(
+                    ER7003PosLtlbDppkNrc.R_NRC0101080000.getObject().getKey(), "11", "16",
+                    EFormLaporanBulananTahunan.LTLB_SUKUK.getCode(),
+                    ER7030PosLtlbDppkSukuk.R_SUKUK010000.getObject().getKey(),
+                    "SUKUK|Nilai Perolehan|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain"
             )),
 
     SG_SUMIF_OBSUD(programs(PPIPK),
@@ -168,14 +188,6 @@ public enum E7003NrcKValidationsConfig implements ILbltMetadataValidation, IVali
                     "PNYL|Nilai Perolehan|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain"
             )),
 
-    SG_SUMIF_PPIN(programs(PPIPK),
-            () -> sumIfValidationHelper(
-                    ER7003PosLtlbDppkNrc.R_NRC0103000000.getObject().getKey(), "3", "5",
-                    EFormLaporanBulananTahunan.LTLB_PPIN.getCode(),
-                    ER7060PosLtlbDppkPpin.R_PPIN010000.getObject().getKey(),
-                    "PPIN|Nilai Nominal|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain"
-            )),
-
     SG_SUMIF_PROP(programs(PPIPK),
             () -> {
                 String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MPL1|MPL2|MPL3|ML1|ML2|ML3|ML4|ML5|ML6|UUS1|UUS2|UUS3")
@@ -210,6 +222,14 @@ public enum E7003NrcKValidationsConfig implements ILbltMetadataValidation, IVali
                         criteriaConditionErr, sumCriteriaConditionErr, "0");
             }),
 
+    SG_SUMIF_PPIN(programs(PPIPK),
+            () -> sumIfValidationHelper(
+                    ER7003PosLtlbDppkNrc.R_NRC0103000000.getObject().getKey(), "3", "5",
+                    EFormLaporanBulananTahunan.LTLB_PPIN.getCode(),
+                    ER7060PosLtlbDppkPpin.R_PPIN010000.getObject().getKey(),
+                    "PPIN|Nilai Nominal|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain"
+            )),
+
     SG_SUMIF_PIUT(programs(PPIPK),
             () -> {
                 String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MPL1|MPL2|MPL3|ML1|ML2|ML3|ML4|ML5|ML6|UUS1|UUS2|UUS3");
@@ -226,6 +246,58 @@ public enum E7003NrcKValidationsConfig implements ILbltMetadataValidation, IVali
                         "Piutang Iuran Peserta Total|Piutang Iuran Pemberi Kerja Total|Piutang Iuran Tambahan Total");
             }),
 
+    SG_SUMIF_PIUB(FieldUtil.programs(PPIPK), () -> {
+        String posCode = R_NRC0104030000.key;
+        String rangeField = "3#4";
+        String criteriaField = "5";
+        String formCode = EFormLaporanBulananTahunan.LTLB_PIUB.getCode();
+        String formObjects = ER7043PosLtlbDppkPiub.R_PIUB010000.getObject().getKey();
+        String errMsg = "PIUB|Piutang Bunga Iuran Peserta dan Piutang Bunga Iuran Pemberi Kerja|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain/LCF";
+
+        String sumField = "2";
+        String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MPL1|MPL2|MPL3|ML1|ML2|ML3|ML4|ML5|ML6|UUS1|UUS2|UUS3");
+        String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MPL1|MPL2|MPL3|ML1|ML2|ML3|ML4|ML5|ML6|UUS1|UUS2|UUS3");
+        String sumCriteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
+        String sumCriteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
+
+        return UtilSegmentValidationV2.genSumIfMultiField(UtilMetadata.genPipeColumnExcept(2, 15, new int[]{12}), posCode,
+                formCode, formObjects,
+                rangeField, criteriaField, sumField, criteriaCondition, sumCriteriaCondition,
+                errMsg, criteriaConditionErr, sumCriteriaConditionErr);
+    }),
+
+    SG_SUMIF_BBMK(programs(PPIPK),
+            () -> sumIfValidationHelper(
+                    ER7003PosLtlbDppkNrc.R_NRC0104040000.getObject().getKey(), "3", "4",
+                    EFormLaporanBulananTahunan.LTLB_BBMK.getCode(),
+                    ER7044PosLtlbDppkBbmk.R_BBMK010000.getObject().getKey(),
+                    "BBMK|Jumlah|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain"
+            )),
+
+    SG_SUMIF_PIUI(programs(PPIPK),
+            () -> sumIfValidationHelper(
+                    ER7003PosLtlbDppkNrc.R_NRC0104050000.getObject().getKey(), "4", "5",
+                    EFormLaporanBulananTahunan.LTLB_PIUI.getCode(),
+                    ER7045PosLtlbDppkPiui.R_PIUI010000.getObject().getKey(),
+                    "PIUI|Nominal|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain"
+            )),
+
+    SG_SUMIF_PIHI(programs(PPIPK),
+            () -> sumIfValidationHelper(
+                    ER7003PosLtlbDppkNrc.R_NRC0104060000.getObject().getKey(), "4", "5",
+                    EFormLaporanBulananTahunan.LTLB_PIHI.getCode(),
+                    ER7046PosLtlbDppkPihi.R_PIHI010000.getObject().getKey(),
+                    "PIHI|Nominal|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain"
+            )),
+
+    SG_SUMIF_PILL(programs(PPIPK),
+            () -> sumIfValidationHelper(
+                    ER7003PosLtlbDppkNrc.R_NRC0104070000.getObject().getKey(), "4", "6",
+                    EFormLaporanBulananTahunan.LTLB_PILL.getCode(),
+                    ER7047PosLtlbDppkPill.R_PILL010000.getObject().getKey(),
+                    "PIHI|Nominal|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain"
+            )),
+
     SG_SUMIF_ASLN(programs(PPIPK),
             () -> {
                 String sumField = "2";
@@ -240,26 +312,48 @@ public enum E7003NrcKValidationsConfig implements ILbltMetadataValidation, IVali
                         ER7053PosLtlbDppkAsln.R_ASLN010000.getObject().getKey(),
                         "5", "7", sumField, criteriaCondition, sumCriteriaCondition,
                         "ASLN|Nilai Aset|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain", criteriaConditionErr, sumCriteriaConditionErr);
-            }
-    ),
-
-    SG_SUMIF_DPJKA_DPJKV(programs(PPIPK),
-            () -> {
-                String comparatorForms = EFormLaporanBulananTahunan.LTLB_DPJKA.getCode() + "|"
-                        + EFormLaporanBulananTahunan.LTLB_DPJKV.getCode();
-                String comparatorRows = ER7023PosLtlbDppkDpjka.R_DPJKA010000.getObject().getKey() + "|"
-                        + ER7024PosLtlbDppkDpjkv.R_DPJKV010000.getObject().getKey();
-                String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MPL1|MPL2|MPL3|ML1|ML2|ML3|ML4|ML5|ML6|UUS1|UUS2|UUS3");
-                String sumCriteriaCond = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
-                String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MPL1|MPL2|MPL3|ML1|ML2|ML3|ML4|ML5|ML6|UUS1|UUS2|UUS3");
-                String sumConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
-                return UtilSegmentValidationV2.genMultiFormSumIf(
-                        UtilMetadata.genPipeColumnExcept(2, 15, new int[]{12}), ER7003PosLtlbDppkNrc.R_NRC0101020000.getObject().getKey(),
-                        comparatorForms, comparatorRows,
-                        "6|6", "9|12", "2", criteriaCondition, sumCriteriaCond,
-                        "DPJKA|DPJKV|Jumlah Nominal|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain",
-                        criteriaConditionErr, sumConditionErr);
             }),
+
+    SG_SUMIF_UMPJ(programs(PPIPK),
+            () -> sumIfValidationHelper(
+                    ER7003PosLtlbDppkNrc.R_NRC0115010000.getObject().getKey(), "4", "5",
+                    EFormLaporanBulananTahunan.LTLB_UMPJ.getCode(),
+                    ER7054PosLtlbDppkUmpj.R_UMPJ010000.getObject().getKey(),
+                    "UMPJ|Jumlah - Total|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain"
+            )),
+
+    SG_SUMIF_UTIN(programs(PPIPK),
+            () -> sumIfValidationHelper(
+                    ER7003PosLtlbDppkNrc.R_NRC0115030000.getObject().getKey(), "4", "5",
+                    EFormLaporanBulananTahunan.LTLB_UTIN.getCode(),
+                    ER7056PosLtlbDppkUtin.R_UTIN010000.getObject().getKey(),
+                    "UTIN|Nilai|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain"
+            )),
+
+    SG_SUMIF_PDDM(programs(PPIPK),
+            () -> sumIfValidationHelper(
+                    ER7003PosLtlbDppkNrc.R_NRC0115040000.getObject().getKey(), "4", "5",
+                    EFormLaporanBulananTahunan.LTLB_PDDM.getCode(),
+                    ER7057PosLtlbDppkPddm.R_PDDM010000.getObject().getKey(),
+                    "PDDM|Nilai|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain"
+            )),
+
+    SG_SUMIF_BMHB(programs(PPIPK),
+            () -> sumIfValidationHelper(
+                    ER7003PosLtlbDppkNrc.R_NRC0115050000.getObject().getKey(), "4", "5",
+                    EFormLaporanBulananTahunan.LTLB_BMHB.getCode(),
+                    ER7058PosLtlbDppkBmhb.R_BMHB010000.getObject().getKey(),
+                    "BMHB|Nilai|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain"
+            )),
+
+    SG_SUMIF_UTLN(programs(PPIPK),
+            () -> sumIfValidationHelper(
+                    ER7003PosLtlbDppkNrc.R_NRC0115060000.getObject().getKey(), "4", "5",
+                    EFormLaporanBulananTahunan.LTLB_UTLN.getCode(),
+                    ER7059PosLtlbDppkUtln.R_UTLN010000.getObject().getKey(),
+                    "UTLN|Nilai|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain"
+            )),
+
 
     SG_EQUALS_FORMULA_1(programs(PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 16),
@@ -365,6 +459,14 @@ public enum E7003NrcKValidationsConfig implements ILbltMetadataValidation, IVali
         return UtilSegmentValidationV2.genEqualsFormColumCalculation("16", selectPosCode.getKey(), comparatorColumn,
                 comparatorPosCodeForm, comparatorForm, errMsg, 2);
     }),
+
+    SG_ROW_DATA_TYPE_NUMERIC(programs(PPIPK), () ->
+            UtilSegmentValidation.genRegexNumeric(UtilMetadata.genPipeColumn(2, 16),
+                    UtilMetadata.genPipeRowExcept(getObjects(PPIPK), new int[] { 39 }))),
+
+    SG_ROW_DATA_TYPE_NUMERIC_NEGATIVE(programs(PPIPK), () ->
+            UtilSegmentValidation.genRegexNumericNegative(UtilMetadata.genPipeColumn(2, 16),
+                    UtilMetadata.genPipeRow(getObjects(PPIPK), new int[] { 39 }))),
 
     FV_EQUALS_EXCEPT_1(programs(PPIPK), validationFields(Dppk0003Nrc.GABUNGAN),
             () -> UtilFieldValidation.genEqualsExceptPosFormula(

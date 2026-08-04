@@ -10,7 +10,7 @@ import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
 import id.go.ojk.conf.client.UtilSegmentValidationV2;
 import id.go.ojk.metadata.module.lblt.EFormLaporanBulananTahunan;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataSharedLkbt;
+import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataSharedLblt;
 import id.go.ojk.metadata.module.lblt.reference.ER7001PosLtlbDppkLan;
 import id.go.ojk.metadata.module.lblt.reference.ER7007PosLtlbDppkKup;
 import id.go.ojk.metadata.util.constants.ProgramType;
@@ -28,6 +28,7 @@ import java.util.function.Supplier;
 import static id.go.ojk.metadata.module.lblt.reference.ER7007PosLtlbDppkKup.*;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
+import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
 import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
 
 @AllArgsConstructor
@@ -93,19 +94,27 @@ public enum E7007KupMValidationsConfig implements ILbltMetadataValidation, IVali
     SG_REF_KODE_PENDANAAN(programs(PPMPM),
             () -> UtilSegmentValidation.genReference("3|4|5",
                     UtilMetadata.genPipeRow(getObjects(ProgramType.PPMPM), new int[]{19}),
-                    EHeaderMetadataSharedLkbt.R023.getNumber())),
+                    EHeaderMetadataSharedLblt.R023.getNumber())),
 
-    SG_REGEX_ALFA(programs(PPMPM),
-            () -> UtilSegmentValidation.genRegexAlfa("3|4|5",
-                    UtilMetadata.genPipeRow(getObjects(ProgramType.PPMPM), new int[] {18}))),
+    SG_ROW_DATA_TYPE_NUMERIC_1(programs(PPMPM), () ->
+            UtilSegmentValidation.genRegexNumeric("3|4|5",
+                    UtilMetadata.genPipeRow(getObjects(PPMPM), new int[] { 1, 7, 9, 11 }))),
 
-    SG_REGEX_ALFA_NUMERIC(programs(PPMPM),
-            () -> UtilSegmentValidation.genRegexAlfaNumeric("3|4|5",
-                    UtilMetadata.genPipeRow(getObjects(ProgramType.PPMPM), new int[] {19}))),
+    SG_ROW_DATA_TYPE_NUMERIC_2(programs(PPMPM), () ->
+            UtilSegmentValidation.genRegexNumeric("3|4|5",
+                    UtilMetadata.genPipeRowExcept(getObjects(PPMPM), new int[] { 0, 1, 7, 9, 11, 14, 18, 19}))),
 
-    SG_REGEX_NUMERIC(programs(PPMPM),
-            () -> UtilSegmentValidation.genRegexAlfaNumeric("3|4|5",
-                    UtilMetadata.genPipeRowExcept(getObjects(ProgramType.PPMPM), new int[] {18, 19}))),
+    SG_ROW_DATA_TYPE_NUMERIC_NEGATIVE(programs(PPMPM), () ->
+            UtilSegmentValidation.genRegexNumericNegative("3|4|5",
+                    UtilMetadata.genPipeRow(getObjects(PPMPM), new int[] { 0, 14 }))),
+
+    SG_ROW_DATA_TYPE_ALFA_NUMERIC(programs(PPMPM), () ->
+            UtilSegmentValidation.genRegexAlfaNumeric("3|4|5",
+                    UtilMetadata.genPipeRow(getObjects(PPMPM), new int[] { 19 }))),
+
+    SG_ROW_DATA_TYPE_ALFA(programs(PPMPM), () ->
+            UtilSegmentValidation.genRegexAlfa("3|4|5",
+                    UtilMetadata.genPipeRow(getObjects(PPMPM), new int[] { 18 }))),
     
     SG_VALIDATION_PROYEKSI_PENDANAAN(programs(PPMPM),
             () -> UtilSegmentValidationV2.genOperatorProyeksi("3|4|5",

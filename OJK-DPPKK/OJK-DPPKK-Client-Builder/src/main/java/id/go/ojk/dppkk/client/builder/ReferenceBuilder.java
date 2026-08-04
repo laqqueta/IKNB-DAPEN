@@ -58,11 +58,12 @@ public class ReferenceBuilder extends BaseReferenceBuilder {
 		res.putAll(EHeaderMetadataSa.getMap());
 		res.putAll(EHeaderMetadataSaUus.getMap());
 		res.putAll(EHeaderMetadataTl.getMap());
-		res.putAll(EHeaderMetadataSharedLkbt.getMap());
-		res.putAll(EHeaderMetadataPpmpk.getMap());
-		res.putAll(EHeaderMetadataPpmpm.getMap());
-		res.putAll(EHeaderMetadataPpipk.getMap());
-		res.putAll(EHeaderMetadataPpipm.getMap());
+		res.putAll(EHeaderMetadataSharedLblt.getMap());
+		res.putAll(EHeaderMetadataLkdpPpmpk.getMap());
+		res.putAll(EHeaderMetadataLkdpPpmpm.getMap());
+		res.putAll(EHeaderMetadataLkdpPpipk.getMap());
+		res.putAll(EHeaderMetadataLkdpPpipm.getMap());
+		res.putAll(EHeaderMetadataLkdpPpmpppipk.getMap());
 		return res;
 	}
 
@@ -81,11 +82,12 @@ public class ReferenceBuilder extends BaseReferenceBuilder {
 		res.addAll(EHeaderMetadataSa.getObjects());
 		res.addAll(EHeaderMetadataSaUus.getObjects());
 		res.addAll(EHeaderMetadataTl.getObjects());
-		res.addAll(EHeaderMetadataSharedLkbt.getObjects());
-		res.addAll(EHeaderMetadataPpmpk.getObjects());
-		res.addAll(EHeaderMetadataPpmpm.getObjects());
-		res.addAll(EHeaderMetadataPpipk.getObjects());
-		res.addAll(EHeaderMetadataPpipm.getObjects());
+		res.addAll(EHeaderMetadataSharedLblt.getObjects());
+		res.addAll(EHeaderMetadataLkdpPpmpk.getObjects());
+		res.addAll(EHeaderMetadataLkdpPpmpm.getObjects());
+		res.addAll(EHeaderMetadataLkdpPpipk.getObjects());
+		res.addAll(EHeaderMetadataLkdpPpipm.getObjects());
+		res.addAll(EHeaderMetadataLkdpPpmpppipk.getObjects());
 		return res;
 	}
 }

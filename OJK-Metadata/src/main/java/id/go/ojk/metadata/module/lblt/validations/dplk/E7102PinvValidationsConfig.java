@@ -1,4 +1,4 @@
-package id.go.ojk.metadata.module.lblt.validations;
+package id.go.ojk.metadata.module.lblt.validations.dplk;
 
 import id.go.ojk.client.model.config.validation.conditional.ConditionalRequired;
 import id.go.ojk.client.model.config.validation.field.FieldValidation;
@@ -27,50 +27,34 @@ import static id.go.ojk.metadata.util.constants.ProgramType.*;
 @RequiredArgsConstructor
 public enum E7102PinvValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_EQUALS_FORMULA_1(programs(PPIPK, PPIPM),
+    SG_EQUALS_FORMULA_1(programs(DPLK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 5),
                     ER7102PosLtlbDppkPinv.R_PINV0101200000.getObject().getKey(),
-                    UtilMetadata.genPlusRow(ER7102PosLtlbDppkPinv.getObjects(), 0, 18),
+                    UtilMetadata.genPlusRow(ER7102PosLtlbDppkPinv.getObjects(DPLK), 0, 18),
                     UtilMetadata.genMessage(ER7102PosLtlbDppkPinv.R_PINV0101200000.getObject().getValue(),
-                            UtilMetadata.genPlusDesc(ER7102PosLtlbDppkPinv.getObjects(), 0, 18)))),
+                            UtilMetadata.genPlusDesc(ER7102PosLtlbDppkPinv.getObjects(DPLK), 0, 18)))),
 
 
-    SG_EQUALS_FORMULA_2(programs(PPIPK, PPIPM),
+    SG_EQUALS_FORMULA_2(programs(DPLK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 5),
                     ER7102PosLtlbDppkPinv.R_PINV0102060000.getObject().getKey(),
-                    UtilMetadata.genPlusRow(ER7102PosLtlbDppkPinv.getObjects(), 20, 24),
+                    UtilMetadata.genPlusRow(ER7102PosLtlbDppkPinv.getObjects(DPLK), 20, 24),
                     UtilMetadata.genMessage(ER7102PosLtlbDppkPinv.R_PINV0102060000.getObject().getValue(),
-                            UtilMetadata.genPlusDesc(ER7102PosLtlbDppkPinv.getObjects(), 20, 24)))),
+                            UtilMetadata.genPlusDesc(ER7102PosLtlbDppkPinv.getObjects(DPLK), 20, 24)))),
 
-    SG_EQUALS_FORMULA_3(programs(PPIPK, PPIPM),
+    SG_EQUALS_FORMULA_3(programs(DPLK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 5),
                     ER7102PosLtlbDppkPinv.R_PINV0103070000.getObject().getKey(),
-                    UtilMetadata.genPlusRow(ER7102PosLtlbDppkPinv.getObjects(), 26, 31),
+                    UtilMetadata.genPlusRow(ER7102PosLtlbDppkPinv.getObjects(DPLK), 26, 31),
                     UtilMetadata.genMessage(ER7102PosLtlbDppkPinv.R_PINV0103070000.getObject().getValue(),
-                            UtilMetadata.genPlusDesc(ER7102PosLtlbDppkPinv.getObjects(), 26, 31)))),
+                            UtilMetadata.genPlusDesc(ER7102PosLtlbDppkPinv.getObjects(DPLK), 26, 31)))),
 
-    SG_EQUALS_FORMULA_4(programs(PPIPK, PPIPM),
+    SG_EQUALS_FORMULA_4(programs(DPLK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 5),
                     ER7102PosLtlbDppkPinv.R_PINV0104000000.getObject().getKey(),
-                    UtilMetadata.genPlusRow(ER7102PosLtlbDppkPinv.getObjects(), new int[] {19, 25}) + "-PINV0103070000",
+                    UtilMetadata.genPlusRow(ER7102PosLtlbDppkPinv.getObjects(DPLK), new int[] {19, 25}) + "-PINV0103070000",
                     UtilMetadata.genMessage(ER7102PosLtlbDppkPinv.R_PINV0104000000.getObject().getValue(),
-                            UtilMetadata.genPlusDesc(ER7102PosLtlbDppkPinv.getObjects(), new int[] {19, 25}) + "-'Total Liabilitas Di Luar Kewajiban Manfaat Pensiun'"))),
-
-    SG_ROW_DATA_TYPE_NUMERIC(programs(PPIPK, PPIPM),
-            () -> UtilSegmentValidation.genRegexNumeric(UtilMetadata.genPipeColumn(2, 5),
-                    UtilMetadata.genPipeRowExcept(ER7102PosLtlbDppkPinv.getObjects(), new int[] { 33 }))),
-
-    SG_ROW_DATA_TYPE_NUMERIC_NEGATIVE(programs(PPIPK, PPIPM),
-            () -> UtilSegmentValidation.genRegexNumericNegative(UtilMetadata.genPipeColumn(2, 5),
-                    UtilMetadata.genPipeRow(ER7102PosLtlbDppkPinv.getObjects(), new int[] { 33 }))),
-
-    SG_ROW_DATA_TYPE_NUMERIC_DPLK(programs(DPLK),
-            () -> UtilSegmentValidation.genRegexNumeric(UtilMetadata.genPipeColumn(2, 5),
-                    UtilMetadata.genPipeRowExcept(ER7102PosLtlbDppkPinv.getObjects(DPLK), new int[] { 33 }))),
-
-    SG_ROW_DATA_TYPE_NUMERIC_NEGATIVE_DPLK(programs(DPLK),
-            () -> UtilSegmentValidation.genRegexNumericNegative(UtilMetadata.genPipeColumn(2, 5),
-                    UtilMetadata.genPipeRow(ER7102PosLtlbDppkPinv.getObjects(DPLK), new int[] { 33 }))),
+                            UtilMetadata.genPlusDesc(ER7102PosLtlbDppkPinv.getObjects(DPLK), new int[] {19, 25}) + "-'Total Liabilitas Di Luar Kewajiban Manfaat Pensiun'"))),
 
 
     ;
@@ -112,10 +96,7 @@ public enum E7102PinvValidationsConfig implements ILbltMetadataValidation, IVali
                 .toValidation(this, ConditionalRequired.class);
     }
 
-    public static final BaseMetadataValidation<E7102PinvValidationsConfig> VALIDATION_METADATA_PPIPK =
-            new LbltMetadataValidation<>(E7102PinvValidationsConfig.class, PPIPK);
-
-    public static final BaseMetadataValidation<E7102PinvValidationsConfig> VALIDATION_METADATA_PPIPM =
-            new LbltMetadataValidation<>(E7102PinvValidationsConfig.class, PPIPM);
+    public static final BaseMetadataValidation<E7102PinvValidationsConfig> VALIDATION_METADATA_DPLK =
+            new LbltMetadataValidation<>(E7102PinvValidationsConfig.class, DPLK);
 
 }

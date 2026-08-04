@@ -7,16 +7,16 @@ import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
 import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
+import id.go.ojk.metadata.field.lblt.ILbltFieldMetadata;
+import id.go.ojk.metadata.field.lblt.LbltMetadataField;
 import id.go.ojk.metadata.module.lblt.EFormLaporanBulananTahunan;
 import id.go.ojk.metadata.module.lblt.header.*;
 import id.go.ojk.metadata.module.lblt.reference.ER7000PosLtlbDppkDtum;
 import id.go.ojk.metadata.module.lblt.validations.E7000DtumValidationsConfig;
+import id.go.ojk.metadata.submission.SubmissionConfig;
 import id.go.ojk.metadata.submission.base.BaseSubmissionConfig;
 import id.go.ojk.metadata.util.constants.ProgramType;
 import id.go.ojk.metadata.util.constants.SectorType;
-import id.go.ojk.metadata.field.lblt.ILbltFieldMetadata;
-import id.go.ojk.metadata.field.lblt.LbltMetadataField;
-import id.go.ojk.metadata.submission.SubmissionConfig;
 import id.go.ojk.metadata.validation.base.BaseMetadataValidation;
 import lombok.AllArgsConstructor;
 
@@ -56,11 +56,11 @@ public enum Dppk0000Dtum implements ILbltFieldMetadata {
     private final SubmissionField field;
 
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
-            new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7000Dtum.getObject()),
-            new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7000Dtum.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7000Dtum.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7000Dtum.getObject()),
-            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkbtDplk.R7000Dtum.getObject())
+            new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataLkdpPpmpk.R7000Dtum.getObject()),
+            new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataLkdpPpmpm.R7000Dtum.getObject()),
+            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataLkdpPpipk.R7000Dtum.getObject()),
+            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataLkdpPpipm.R7000Dtum.getObject()),
+            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkdpDplk.R7000Dtum.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     private static final LbltMetadataField<Dppk0000Dtum> FIELD_METADATA = new LbltMetadataField<>
@@ -92,6 +92,7 @@ public enum Dppk0000Dtum implements ILbltFieldMetadata {
             case PPIPK:
             case PPIPM:
             case DPLK:
+            case PPMPPPIPK:
                 break;
             default:
                 throw new IllegalStateException();
@@ -99,20 +100,18 @@ public enum Dppk0000Dtum implements ILbltFieldMetadata {
 
         BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType)
                 .config()
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
-                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-                .setReferenceConfigs(referenceConfig)
-                .setSegmentValidations(metadataValidation);
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType));
 
-//        if (programType == DPLK) {
-//            submissionConfig
-//                    .setSubmissionField(FIELD_METADATA.getClearedFields())
-//                    .setSegmentValidations();
-//        } else {
-//            submissionConfig
-//                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-//                    .setSegmentValidations(metadataValidation);
-//        }
+        if (programType == PPMPPPIPK) {
+            submissionConfig
+                    .setSubmissionField(FIELD_METADATA.getClearedFields(true))
+                    .setSegmentValidations();
+        } else {
+            submissionConfig
+                    .setReferenceConfigs(ER7000PosLtlbDppkDtum.Configs.REF_CONFIG_ALL)
+                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                    .setSegmentValidations(metadataValidation);
+        }
 
         return submissionConfig.build().get();
     }

@@ -30,6 +30,7 @@ import java.util.function.Supplier;
 
 import static id.go.ojk.conf.client.UtilMetadata.genFormulaParser;
 import static id.go.ojk.metadata.module.lblt.reference.ER7003PosLtlbDppkNrc.*;
+import static id.go.ojk.metadata.module.lblt.reference.ER7003PosLtlbDppkNrc.getObjects;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
 import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
@@ -358,6 +359,14 @@ public enum E7003NrcKValidationsConfig implements ILbltMetadataValidation, IVali
     SG_EQUALS_FORM_FORMULA_LAN_8(programs(PPMPK), () -> genEqualsForm("9", "10")),
     SG_EQUALS_FORM_FORMULA_LAN_9(programs(PPMPK), () -> genEqualsForm("10", "11")),
     SG_EQUALS_FORM_FORMULA_LAN_10(programs(PPMPK), () -> genEqualsForm("11", "12")),
+
+    SG_ROW_DATA_TYPE_NUMERIC(programs(PPMPK), () ->
+            UtilSegmentValidation.genRegexNumeric(UtilMetadata.genPipeColumn(2, 12),
+                    UtilMetadata.genPipeRowExcept(getObjects(PPMPK), new int[] { 40 }))),
+
+    SG_ROW_DATA_TYPE_NUMERIC_NEGATIVE(programs(PPMPK), () ->
+            UtilSegmentValidation.genRegexNumericNegative(UtilMetadata.genPipeColumn(2, 12),
+                    UtilMetadata.genPipeRow(getObjects(PPMPK), new int[] { 40 }))),
 
     FV_EQUALS_EXCEPT(programs(PPMPK), validationFields(12),
             () -> UtilFieldValidation.genEqualsExceptPosFormula(

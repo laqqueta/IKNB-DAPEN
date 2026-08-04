@@ -96,11 +96,7 @@ public enum ER7018PosLtlbDppkRas2 implements IObject<KeyValueString> {
 
             @Override
             public String savePos() {
-                List<ER7018PosLtlbDppkRas2> objs = Arrays.asList(R_RAS20102000000, R_RAS20103000000);
-                return UtilMetadata.genFieldSave("3|4",
-                        objs.stream().map(ER7018PosLtlbDppkRas2::getObject)
-                                .collect(Collectors.toList())
-                );
+                return UtilMetadata.genFieldSave("2|3|4", getObjects(programType));
             }
 
             @Override

@@ -12,7 +12,6 @@ import id.go.ojk.conf.client.BaseReferenceBuilder;
 import id.go.ojk.conf.client.field.reference.EConfig;
 import id.go.ojk.dplks.client.builder.field.apu.reference.EHeaderMetadataPenilaian;
 import id.go.ojk.dplks.client.builder.field.rb.reference.EHeaderMetadataRb;
-import id.go.ojk.dplks.client.builder.field.reference.EHeaderMetadataShared;
 import id.go.ojk.dplks.client.builder.field.sa.reference.EHeaderMetadataSa;
 import id.go.ojk.dplks.client.builder.field.setup.EMessage;
 import id.go.ojk.dplks.client.builder.field.tl.reference.EHeaderMetadataTl;
@@ -20,8 +19,8 @@ import id.go.ojk.lib.client.model.KeyValueString;
 import id.go.ojk.lib.client.model.reference.ReferenceHeader;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.lib.client.model.validation.ValidationErrorCode;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataLkbtDplk;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataSharedLkbt;
+import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataLkdpDplk;
+import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataSharedLblt;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -54,13 +53,13 @@ public class ReferenceBuilder extends BaseReferenceBuilder {
 
 	private Map<String, List<KeyValueString>> getReferences() {
 		Map<String, List<KeyValueString>> res = new HashMap<>();
-		res.putAll(EHeaderMetadataShared.getMap());
+//		res.putAll(EHeaderMetadataShared.getMap());
 		res.putAll(EHeaderMetadataRb.getMap());
 		res.putAll(EHeaderMetadataSa.getMap());
 		res.putAll(EHeaderMetadataPenilaian.getMap());
 		res.putAll(EHeaderMetadataTl.getMap());
-		res.putAll(EHeaderMetadataSharedLkbt.getMap());
-		res.putAll(EHeaderMetadataLkbtDplk.getMap()); // APOLO Dapen 2025
+		res.putAll(EHeaderMetadataSharedLblt.getMap());
+		res.putAll(EHeaderMetadataLkdpDplk.getMap()); // APOLO Dapen 2025
 		return res;
 	}
 
@@ -74,13 +73,13 @@ public class ReferenceBuilder extends BaseReferenceBuilder {
 
 	private List<ReferenceMetadata> getReferenceMetadata() {
 		List<ReferenceMetadata> res = new ArrayList<>();
-		res.addAll(EHeaderMetadataShared.getObjects());
+//		res.addAll(EHeaderMetadataShared.getObjects());
 		res.addAll(EHeaderMetadataRb.getObjects());
 		res.addAll(EHeaderMetadataSa.getObjects());
 		res.addAll(EHeaderMetadataPenilaian.getObjects());
 		res.addAll(EHeaderMetadataTl.getObjects());
-		res.addAll(EHeaderMetadataSharedLkbt.getObjects());
-		res.addAll(EHeaderMetadataLkbtDplk.getObjects()); // APOLO Dapen 2025
+		res.addAll(EHeaderMetadataSharedLblt.getObjects());
+		res.addAll(EHeaderMetadataLkdpDplk.getObjects()); // APOLO Dapen 2025
 		return res;
 	}
 }

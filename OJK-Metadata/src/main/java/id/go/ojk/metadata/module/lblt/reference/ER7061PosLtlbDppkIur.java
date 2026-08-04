@@ -53,7 +53,7 @@ public enum ER7061PosLtlbDppkIur implements IObject<KeyValueString> {
 
             @Override
             public String requiredPos() {
-                return UtilMetadata.genPipeRow(getObjects(), new int[]{1});
+                return UtilMetadata.genPipeRow(getObjects(), new int[] { 1 });
             }
         },
 
@@ -70,24 +70,24 @@ public enum ER7061PosLtlbDppkIur implements IObject<KeyValueString> {
 
             @Override
             public String requiredPos() {
-                return UtilMetadata.genPipeRow(getObjects(), new int[]{1});
+                return UtilMetadata.genPipeRow(getObjects(), new int[] { 1 });
             }
         },
 
         REF_CONFIG_DPLK {
             @Override
             public String savePos() {
-                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(5, 7), getObjects());
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(4, 7), getObjects());
             }
 
             @Override
             public String savePosForm() {
-                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(5, 7), getObjects());
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(4, 7), getObjects());
             }
 
             @Override
             public String requiredPos() {
-                return UtilMetadata.genPipeRow(getObjects(), new int[]{1});
+                return UtilMetadata.genPipeRow(getObjects(), new int[] { 1 });
             }
         }
     }

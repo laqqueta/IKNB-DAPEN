@@ -35,28 +35,28 @@ public enum E7005LakKValidationsConfig implements ILbltMetadataValidation, IVali
 
     SG_SUM_POS_COL_EQUAL_1(programs(DPLK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 12), R_LAK0200000000.key,
-                    UtilMetadata.genPlusRow(getObjects(), 0, 6),
-                    UtilMetadata.genMessage(R_LAK0200000000.value, UtilMetadata.genPlusDesc(getObjects(), 0, 6)))),
+                    UtilMetadata.genPlusRow(getObjects(DPLK), 0, 6),
+                    UtilMetadata.genMessage(R_LAK0200000000.value, UtilMetadata.genPlusDesc(getObjects(DPLK), 0, 6)))),
 
     SG_SUM_POS_COL_EQUAL_2(programs(DPLK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 12), R_LAK0400000000.key,
-                    UtilMetadata.genPlusRow(getObjects(), 8, 11),
-                    UtilMetadata.genMessage(R_LAK0400000000.value, UtilMetadata.genPlusDesc(getObjects(), 8, 11)))),
+                    UtilMetadata.genPlusRow(getObjects(DPLK), 8, 11),
+                    UtilMetadata.genMessage(R_LAK0400000000.value, UtilMetadata.genPlusDesc(getObjects(DPLK), 8, 11)))),
 
     SG_SUM_POS_COL_EQUAL_3(programs(DPLK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 12), R_LAK0600000000.key,
-                    UtilMetadata.genPlusRow(getObjects(), 13, 18),
-                    UtilMetadata.genMessage(R_LAK0600000000.value, UtilMetadata.genPlusDesc(getObjects(), 13, 18)))),
+                    UtilMetadata.genPlusRow(getObjects(DPLK), 13, 18),
+                    UtilMetadata.genMessage(R_LAK0600000000.value, UtilMetadata.genPlusDesc(getObjects(DPLK), 13, 18)))),
 
     SG_SUM_POS_COL_EQUAL_4(programs(DPLK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 12), R_LAK0700000000.key,
-                    UtilMetadata.genPlusRow(getObjects(), new int[]{7, 12, 19}),
-                    UtilMetadata.genMessage(R_LAK0700000000.value, UtilMetadata.genPlusDesc(getObjects(), new int[]{7, 12, 19})))),
+                    UtilMetadata.genPlusRow(getObjects(DPLK), new int[]{7, 12, 19}),
+                    UtilMetadata.genMessage(R_LAK0700000000.value, UtilMetadata.genPlusDesc(getObjects(DPLK), new int[]{7, 12, 19})))),
 
     SG_SUM_POS_COL_EQUAL_5(programs(DPLK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 12), R_LAK0900000000.key,
-                    UtilMetadata.genPlusRow(getObjects(), new int[]{20, 21}),
-                    UtilMetadata.genMessage(R_LAK0900000000.value, UtilMetadata.genPlusDesc(getObjects(), new int[]{20, 21})))),
+                    UtilMetadata.genPlusRow(getObjects(DPLK), new int[]{20, 21}),
+                    UtilMetadata.genMessage(R_LAK0900000000.value, UtilMetadata.genPlusDesc(getObjects(DPLK), new int[]{20, 21})))),
 
     GEN_VALIDATON_FORM_NRC(programs(DPLK), () -> {
         KeyValueString selectPosCode = R_LAK0900000000.getObject();
@@ -73,7 +73,7 @@ public enum E7005LakKValidationsConfig implements ILbltMetadataValidation, IVali
 
     FV_SUM_COL_1(programs(DPLK), validationFields(12),
             () -> UtilFieldValidation.genEqualsPosFormula(UtilMetadata.genPlusColumn(2, 11),
-                    UtilMetadata.genPipeRow(getObjects()))),
+                    UtilMetadata.genPipeRow(getObjects(DPLK)))),
 
     ;
 

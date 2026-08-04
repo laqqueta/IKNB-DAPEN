@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public enum EHeaderMetadataSharedLkbt implements IObject<ReferenceMetadata> {
+public enum EHeaderMetadataSharedLblt implements IObject<ReferenceMetadata> {
 //	R001 (ER1010PeriodeRealisasi.getRefNumber(), ER1010PeriodeRealisasi.getName(), ER1010PeriodeRealisasi.getObjects()),
 	R002 (ER1011Program.getRefNumber(), ER1011Program.getName(), ER1011Program.getObjects()),
 //	R003 (ER1012KualitasPendanaan.getRefNumber(), ER1012KualitasPendanaan.getName(), ER1012KualitasPendanaan.getObjects()),
@@ -69,7 +69,7 @@ public enum EHeaderMetadataSharedLkbt implements IObject<ReferenceMetadata> {
 
 	public static List<ReferenceMetadata> getObjects() {
 		List<ReferenceMetadata> res = new ArrayList<>();
-		for (EHeaderMetadataSharedLkbt eEnum : EHeaderMetadataSharedLkbt.values()) {
+		for (EHeaderMetadataSharedLblt eEnum : EHeaderMetadataSharedLblt.values()) {
 			res.add(eEnum.getObject());
 		}
 		return res;
@@ -77,7 +77,7 @@ public enum EHeaderMetadataSharedLkbt implements IObject<ReferenceMetadata> {
 	
 	public static Map<String, List<KeyValueString>> getMap() {
 		Map<String, List<KeyValueString>> res = new HashMap<>();
-		for (EHeaderMetadataSharedLkbt eEnum : EHeaderMetadataSharedLkbt.values()) {
+		for (EHeaderMetadataSharedLblt eEnum : EHeaderMetadataSharedLblt.values()) {
 			res.put(eEnum.getFileName(), eEnum.references);
 		}
 		return res;

@@ -149,11 +149,10 @@ public enum ER7103PosLtlbDppkPinvs implements IObject<KeyValueString> {
             public String savePos() {
                 return UtilMetadata.genFieldSave("2|3|4|5", getObjects());
             }
-
-            @Override
-            public String requiredPos() {
-                return UtilMetadata.genPipeRow(getObjects());
-            }
         },
+    }
+
+    public static void main(String[] args) {
+        System.out.println(getRowSize(ProgramType.PPIPK));
     }
 }

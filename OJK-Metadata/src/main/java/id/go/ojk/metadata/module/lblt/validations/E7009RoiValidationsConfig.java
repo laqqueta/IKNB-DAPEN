@@ -34,10 +34,10 @@ import static id.go.ojk.metadata.util.constants.ProgramType.*;
 @AllArgsConstructor
 public enum E7009RoiValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    FV_FIELD_VALIDATION_1(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(9),
+    FV_FIELD_VALIDATION_1(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(9),
             () -> UtilFieldValidation.genEqualsFormula(UtilMetadata.genPlusColumn(2, 7) + "-8")),
 
-    FV_FIELD_VALIDATION_2(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(Dppk0009Roi.ROI),
+    FV_FIELD_VALIDATION_2(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(Dppk0009Roi.ROI),
             () -> UtilFieldValidation.genEqualsPosFormula3("9/10", 2,
                     UtilMetadata.genPipeRowExcept(ER7009PosLtlbDppkRoi.getObjects(), new int[] { 20 }))),
 
@@ -89,11 +89,29 @@ public enum E7009RoiValidationsConfig implements ILbltMetadataValidation, IValid
                         UtilMetadata.genPipeColumn(2, 13), errMsg, formRowDesc);
             }),
 
+    SG_GEO_MEAN_DPLK(programs(DPLK),
+            () -> {
+                String colNames = "Jan*Feb*Mar*Apr*Mei*Jun*Jul*Agu*Sep*Okt*Nov*Des";
+                String errMsg = colNames + "|Jan|Des|" + "REKINV Baris ";
+                String formRow = UtilMetadata.genPipeRow(ER7008PosLtlbDppkRekinv.getObjects(DPLK), 0, 19);
+                String formRowDesc = UtilMetadata.genDelimitedDesc(ER7008PosLtlbDppkRekinv.getObjects(DPLK), 0, 19, "|");
+                return UtilSegmentValidationV2.genGeoMeanInvestasi("10",
+                        UtilMetadata.genPipeRow(ER7009PosLtlbDppkRoi.getObjects(DPLK), 0, 19),
+                        EFormLaporanBulananTahunan.LTLB_REKINV.getCode(), formRow,
+                        UtilMetadata.genPipeColumn(2, 13), errMsg, formRowDesc);
+            }),
+
     SG_SUM_POS_COL_EQUAL(programs(PPMPK, PPMPM, PPIPK, PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula(
-                    UtilMetadata.genPipeColumn(new int[] { 2, 3, 4, 5, 6, 7, 8, 10, 11}), R_ROI2100000000.key,
+                    UtilMetadata.genPipeColumn(2, 11), R_ROI2100000000.key,
                     UtilMetadata.genPlusRow(ER7009PosLtlbDppkRoi.getObjects(), 0, 19),
                     UtilMetadata.genMessage(R_ROI2100000000.value, UtilMetadata.genPlusDesc(ER7009PosLtlbDppkRoi.getObjects(), 0, 19)))),
+
+    SG_SUM_POS_COL_EQUAL_DPL(programs(DPLK),
+            () -> UtilSegmentValidation.genEqualsFormula(
+                    UtilMetadata.genPipeColumn(2, 11), R_ROI2100000000.key,
+                    UtilMetadata.genPlusRow(ER7009PosLtlbDppkRoi.getObjects(DPLK), 0, 19),
+                    UtilMetadata.genMessage(R_ROI2100000000.value, UtilMetadata.genPlusDesc(ER7009PosLtlbDppkRoi.getObjects(DPLK), 0, 19)))),
 
     ;
 

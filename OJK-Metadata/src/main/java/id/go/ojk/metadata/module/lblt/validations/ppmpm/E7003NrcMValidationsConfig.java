@@ -30,6 +30,7 @@ import java.util.function.Supplier;
 import static id.go.ojk.conf.client.UtilMetadata.genFormulaParser;
 import static id.go.ojk.metadata.module.lblt.reference.ER7003PosLtlbDppkNrc.*;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
+import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
 import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
 
 @AllArgsConstructor
@@ -338,6 +339,14 @@ public enum E7003NrcMValidationsConfig implements ILbltMetadataValidation, IVali
                 EFormLaporanBulananTahunan.LTLB_LAN.getCode(), "3",
                 ER7001PosLtlbDppkLan.R_LAN0103010000.getObject().getKey(), msg + " pada form LAN");
     }),
+
+    SG_ROW_DATA_TYPE_NUMERIC(programs(PPMPM), () ->
+            UtilSegmentValidation.genRegexNumeric("2",
+                    UtilMetadata.genPipeRowExcept(getObjects(PPMPM), new int[] { 40 }))),
+
+    SG_ROW_DATA_TYPE_NUMERIC_NEGATIVE(programs(PPMPM), () ->
+            UtilSegmentValidation.genRegexNumericNegative("2",
+                    UtilMetadata.genPipeRow(getObjects(PPMPM), new int[] { 40 }))),
 
     ;
 

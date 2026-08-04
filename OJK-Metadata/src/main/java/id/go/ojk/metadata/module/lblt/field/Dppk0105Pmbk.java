@@ -9,9 +9,9 @@ import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.metadata.field.lblt.ILbltFieldMetadata;
 import id.go.ojk.metadata.field.lblt.LbltMetadataField;
 import id.go.ojk.metadata.module.lblt.EFormLaporanBulananTahunan;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataLkbtDplk;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataPpipk;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataPpipm;
+import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataLkdpDplk;
+import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataLkdpPpipk;
+import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataLkdpPpipm;
 import id.go.ojk.metadata.module.lblt.reference.ER7105PosLtlbDppkPmbk;
 import id.go.ojk.metadata.module.lblt.validations.E7105PmbkValidationsConfig;
 import id.go.ojk.metadata.submission.SubmissionConfig;
@@ -35,31 +35,36 @@ import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0105Pmbk implements ILbltFieldMetadata {
 
-    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric)
                     .confConstant("D01"))),
 
-    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(1, null, "Kode Komponen", sv(M, 10, 10, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric))),
 
-    JUMLAH_PESERTA_MP_BERKALA(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK),
+    JUMLAH_PESERTA_MP_BERKALA(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(2, null, "Jumlah Peserta MP Berkala", sv(M, 1, 18, numeric))),
 
-    JUMLAH_PEMBAYARAN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK),
+    JUMLAH_PEMBAYARAN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(3, null, "Jumlah Pembayaran", sv(M, 1, 18, numeric))),
 
-    AKUMULASI_DANA_SALDO(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK),
+    AKUMULASI_DANA_SALDO(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(4, null, "Akumulasi Dana Manfaat Berkala - Saldo Peserta", sv(M, 1, 18, numeric))),
 
-    AKUMULASI_DANA_TOTAL_PENGEMBANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK),
+    AKUMULASI_DANA_TOTAL_PENGEMBANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(5, null, "Akumulasi Dana Manfaat Berkala - Hasil Pengembangan", sv(M, 1, 18, numeric))),
 
-    AKUMULASI_DANA_TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK),
+    AKUMULASI_DANA_TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(6, null, "Akumulasi Dana Manfaat Berkala - Total", sv(M, 1, 18, numeric))),
 
-    KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK),
+    KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(7, null, "Keterangan", sv(O, 1, 256, freeText))),
+
+    /* Gabungan Additional Field */
+
+    JENIS_PROGRAM(sectors(KONVENSIONAL, SYARIAH), programs(PPMPPPIPK),
+            sf(1000, null, "Jenis Program", sv(M, 5, 5, alfa))),
 
     ;
 
@@ -68,9 +73,9 @@ public enum Dppk0105Pmbk implements ILbltFieldMetadata {
     private final SubmissionField field;
 
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
-            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7023Pmbk.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7023Pmbk.getObject()),
-            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkbtDplk.R7023Pmbk.getObject())
+            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataLkdpPpipk.R7023Pmbk.getObject()),
+            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataLkdpPpipm.R7023Pmbk.getObject()),
+            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkdpDplk.R7023Pmbk.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     private static final LbltMetadataField<Dppk0105Pmbk> FIELD_METADATA = new LbltMetadataField<>(Dppk0105Pmbk.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);

@@ -517,6 +517,18 @@ public enum E7001LanKValidationsConfig implements ILbltMetadataValidation, IVali
                 comparator.getKey(), comparatorExpr, "e", 2, errMsg);
     }),
 
+    SG_ROW_DATA_TYPE_NUMERIC_DOT(programs(PPIPK), () ->
+            UtilSegmentValidation.genRegexNumericDot("2",
+                    UtilMetadata.genPipeRow(getObjects(PPIPK), 0, 20))),
+
+    SG_ROW_DATA_TYPE_NUMERIC(programs(PPIPK), () ->
+            UtilSegmentValidation.genRegexNumeric(UtilMetadata.genPipeColumn(3, 17),
+                    UtilMetadata.genPipeRow(getObjects(PPIPK), 0, 47))),
+
+    SG_ROW_DATA_TYPE_NUMERIC_NEGATIVE(programs(PPIPK), () ->
+            UtilSegmentValidation.genRegexNumericNegative(UtilMetadata.genPipeColumn(3, 17),
+                    UtilMetadata.genPipeRow(getObjects(PPIPK), new int[]{48}))),
+
     FV_GABUNGAN_EQUALS_EXCEPT(programs(PPIPK), validationFields(Dppk0001Lan.GABUNGAN),
             () -> UtilFieldValidation.genEqualsExceptPosFormula(
                     UtilMetadata.genPlusColumn(3, 12),

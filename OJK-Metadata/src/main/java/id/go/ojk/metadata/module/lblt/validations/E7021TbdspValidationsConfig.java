@@ -39,22 +39,22 @@ public enum E7021TbdspValidationsConfig implements ILbltMetadataValidation, IVal
                     UtilMetadata.genMessageTotal(R_TBDSP0303000000.value, R_TBDSP0301000000.value))),
 
     SG_SUM_JUMLAH(programs(DPLK),
-            () -> UtilSegmentValidation.genEqualsFormula("3", R_TBDSP0301000000.key, R_TBDSP0302000000.key,
-                    UtilMetadata.genMessageTotal(R_TBDSP0301000000.value, R_TBDSP0302000000.value))),
+            () -> UtilSegmentValidation.genEqualsFormula("3", R_TBDSP0302000000.key, R_TBDSP0301000000.key,
+                    UtilMetadata.genMessageTotal(R_TBDSP0302000000.value, R_TBDSP0301000000.value))),
 
     SG_SALDO_AKHIR(programs(PPMPK, PPMPM, PPIPK, PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula("3", R_TBDSP0400000000.key, UtilMetadata.genPlusRow(getObjects(), new int[]{0, 3, 8}),
                     UtilMetadata.genMessageTotal(R_TBDSP0400000000.value, UtilMetadata.genPlusDesc(getObjects(), new int[]{0, 3, 8})))),
 
     SG_SALDO_AKHIR_DPLK(programs(DPLK),
-            () -> UtilSegmentValidation.genEqualsFormula("3", R_TBDSP0400000000.key, UtilMetadata.genPlusRow(getObjects(), new int[]{0, 1, 7}),
+            () -> UtilSegmentValidation.genEqualsFormula("3", R_TBDSP0400000000.key, UtilMetadata.genPlusRow(getObjects(DPLK), new int[]{0, 1, 7}),
                     UtilMetadata.genMessageTotal(R_TBDSP0400000000.value, UtilMetadata.genPlusDesc(getObjects(), new int[]{0, 1, 7})))),
 
     CR_EMPTY_1(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(Dppk0021Tbdsp.URAIAN_RINCIAN),
             () -> UtilFieldConditional.genExistPos("N", "M", UtilMetadata.genPipeRowExcept(getObjects(), new int[]{3, 8}))),
 
     CR_EMPTY_1_DPLK(programs(DPLK), validationFields(Dppk0021Tbdsp.URAIAN_RINCIAN),
-            () -> UtilFieldConditional.genExistPos("N", "M", UtilMetadata.genPipeRowExcept(getObjects(), new int[]{6}))),
+            () -> UtilFieldConditional.genExistPos("N", "M", UtilMetadata.genPipeRowExcept(getObjects(DPLK), new int[]{6}))),
 
     CR_EMPTY_2(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(Dppk0021Tbdsp.KETERANGAN),
             () -> UtilFieldConditional.genExistPos("N", "O", R_TBDSP0400000000.key)),
@@ -99,16 +99,8 @@ public enum E7021TbdspValidationsConfig implements ILbltMetadataValidation, IVal
                 .toValidation(this, ConditionalRequired.class);
     }
 
-    public static final BaseMetadataValidation<E7021TbdspValidationsConfig> VALIDATION_METADATA_PPMPK =
-            new LbltMetadataValidation<>(E7021TbdspValidationsConfig.class, PPMPK);
-
-    public static final BaseMetadataValidation<E7021TbdspValidationsConfig> VALIDATION_METADATA_PPMPM =
-            new LbltMetadataValidation<>(E7021TbdspValidationsConfig.class, PPMPM);
-
-    public static final BaseMetadataValidation<E7021TbdspValidationsConfig> VALIDATION_METADATA_PPIPK =
-            new LbltMetadataValidation<>(E7021TbdspValidationsConfig.class, PPIPK);
-
-    public static final BaseMetadataValidation<E7021TbdspValidationsConfig> VALIDATION_METADATA_PPIPM =
-            new LbltMetadataValidation<>(E7021TbdspValidationsConfig.class, PPIPM);
+    public static BaseMetadataValidation<E7021TbdspValidationsConfig> getValidationMetadata(ProgramType programType) {
+        return new LbltMetadataValidation<>(E7021TbdspValidationsConfig.class, programType);
+    }
 
 }

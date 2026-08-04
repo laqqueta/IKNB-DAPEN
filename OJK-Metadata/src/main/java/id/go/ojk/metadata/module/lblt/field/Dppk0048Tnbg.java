@@ -44,7 +44,7 @@ public enum Dppk0048Tnbg implements ILbltFieldMetadata {
     JENIS_OBJEK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(2, null, "Jenis Objek (Tanah/Bangunan/Tanah & Bangunan)", sv(C, 1, 8, refTable)
                     .confRegex(SimpleValidation.patternNumeric)
-                    .confReference(EHeaderMetadataSharedLkbt.R004.getObject()))),
+                    .confReference(EHeaderMetadataSharedLblt.R004.getObject()))),
 
     NOMOR_SERTIFIKAT(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(3, null, "Nomor Sertifikat", sv(C, 1, 20, alfaNumeric))),
@@ -70,6 +70,11 @@ public enum Dppk0048Tnbg implements ILbltFieldMetadata {
     KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
             sf(10, null, "Keterangan", sv(C, 1, 250, freeText))),
 
+    /* Gabungan Additional Field */
+
+    JENIS_PROGRAM(sectors(KONVENSIONAL, SYARIAH), programs(PPMPPPIPK),
+            sf(1000, null, "Jenis Program", sv(M, 5, 5, alfa))),
+
     ;
 
     private final EnumSet<SectorType> sectorType;
@@ -77,10 +82,10 @@ public enum Dppk0048Tnbg implements ILbltFieldMetadata {
     private final SubmissionField field;
 
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
-            new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7048Tnbg.getObject()),
-            new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7048Tnbg.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7048Tnbg.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7048Tnbg.getObject())
+            new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataLkdpPpmpk.R7048Tnbg.getObject()),
+            new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataLkdpPpmpm.R7048Tnbg.getObject()),
+            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataLkdpPpipk.R7048Tnbg.getObject()),
+            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataLkdpPpipm.R7048Tnbg.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0048Tnbg> FIELD_METADATA = new LbltMetadataField<>(Dppk0048Tnbg.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);

@@ -41,73 +41,79 @@ import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0012Alm implements ILbltFieldMetadata {
 
-    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric).confConstant("D01"))),
 
-    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(1, null, "Kode Komponen", sv(M, 13, 13, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric))
                     .confUnique(UniqueType.U)),
 
-    JT_LT_1_TAHUN_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
-            sf(2, null, "Jatuh tempo < 1 tahun - Rupiah", sv(M, 1, 18, numeric))),
+    JT_LT_1_TAHUN_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
+            sf(2, null, "Jatuh tempo < 1 tahun - Rupiah", sv(M, 1, 18, freeText))),
 
-    JT_LT_1_TAHUN_NON_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
-            sf(3, null, "Jatuh tempo < 1 tahun - Non Rupiah", sv(M, 1, 18, numeric))),
+    JT_LT_1_TAHUN_NON_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
+            sf(3, null, "Jatuh tempo < 1 tahun - Non Rupiah", sv(M, 1, 18, freeText))),
 
     JT_LT_1_TAHUN_TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
-            sf(4, null, "Jatuh tempo < 1 tahun - Total", sv(C, 1, 18, numeric))),
+            sf(4, null, "Jatuh tempo < 1 tahun - Total", sv(C, 1, 18, freeText))),
 
-    JT_LT_1_TAHUN_TOTAL_PPIPK(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK),
-            sf(4, null, "Jatuh tempo < 1 tahun - Total", sv(M, 1, 18, numeric))),
+    JT_LT_1_TAHUN_TOTAL_PPIPK(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK, PPMPPPIPK),
+            sf(4, null, "Jatuh tempo < 1 tahun - Total", sv(M, 1, 18, freeText))),
 
-    JT_1_5_TAHUN_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
-            sf(5, null, "1 tahun <= jatuh tempo < 5 tahun - Rupiah", sv(M, 1, 18, numeric))),
+    JT_1_5_TAHUN_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
+            sf(5, null, "1 tahun <= jatuh tempo < 5 tahun - Rupiah", sv(M, 1, 18, freeText))),
 
-    JT_1_5_TAHUN_NON_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
-            sf(6, null, "1 tahun <= jatuh tempo < 5 tahun - Non Rupiah", sv(M, 1, 18, numeric))),
+    JT_1_5_TAHUN_NON_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
+            sf(6, null, "1 tahun <= jatuh tempo < 5 tahun - Non Rupiah", sv(M, 1, 18, freeText))),
 
     JT_1_5_TAHUN_TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
-            sf(7, null, "1 tahun <= jatuh tempo < 5 tahun - Total", sv(C, 1, 18, numeric))),
+            sf(7, null, "1 tahun <= jatuh tempo < 5 tahun - Total", sv(C, 1, 18, freeText))),
 
-    JT_1_5_TAHUN_TOTAL_PPIPK(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK),
-            sf(7, null, "1 tahun <= jatuh tempo < 5 tahun - Total", sv(M, 1, 18, numeric))),
+    JT_1_5_TAHUN_TOTAL_PPIPK(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK, PPMPPPIPK),
+            sf(7, null, "1 tahun <= jatuh tempo < 5 tahun - Total", sv(M, 1, 18, freeText))),
 
-    JT_5_10_TAHUN_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
-            sf(8, null, "5 tahun <= jatuh tempo < 10 tahun - Rupiah", sv(M, 1, 18, numeric))),
+    JT_5_10_TAHUN_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
+            sf(8, null, "5 tahun <= jatuh tempo < 10 tahun - Rupiah", sv(M, 1, 18, freeText))),
 
-    JT_5_10_TAHUN_NON_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
-            sf(9, null, "5 tahun <= jatuh tempo < 10 tahun - Non Rupiah", sv(M, 1, 18, numeric))),
+    JT_5_10_TAHUN_NON_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
+            sf(9, null, "5 tahun <= jatuh tempo < 10 tahun - Non Rupiah", sv(M, 1, 18, freeText))),
 
     JT_5_10_TAHUN_TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
-            sf(10, null, "5 tahun <= jatuh tempo < 10 tahun - Total", sv(C, 1, 18, numeric))),
+            sf(10, null, "5 tahun <= jatuh tempo < 10 tahun - Total", sv(C, 1, 18, freeText))),
 
-    JT_5_10_TAHUN_TOTAL_PPIPK(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK),
-            sf(10, null, "5 tahun <= jatuh tempo < 10 tahun - Total", sv(M, 1, 18, numeric))),
+    JT_5_10_TAHUN_TOTAL_PPIPK(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK, PPMPPPIPK),
+            sf(10, null, "5 tahun <= jatuh tempo < 10 tahun - Total", sv(M, 1, 18, freeText))),
 
-    JT_GTE_10_TAHUN_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
-            sf(11, null, "Jatuh Tempo >= 10 Tahun - Rupiah", sv(M, 1, 18, numeric))),
+    JT_GTE_10_TAHUN_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
+            sf(11, null, "Jatuh Tempo >= 10 Tahun - Rupiah", sv(M, 1, 18, freeText))),
 
-    JT_GTE_10_TAHUN_NON_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
-            sf(12, null, "Jatuh Tempo >= 10 - Non Rupiah", sv(M, 1, 18, numeric))),
+    JT_GTE_10_TAHUN_NON_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
+            sf(12, null, "Jatuh Tempo >= 10 - Non Rupiah", sv(M, 1, 18, freeText))),
 
     JT_GTE_10_TAHUN_TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
-            sf(13, null, "Jatuh Tempo >= 10 - Total", sv(C, 1, 18, numeric))),
+            sf(13, null, "Jatuh Tempo >= 10 - Total", sv(C, 1, 18, freeText))),
 
-    JT_GTE_10_TAHUN_TOTAL_PPIPK(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK),
-            sf(13, null, "Jatuh Tempo >= 10 - Total", sv(M, 1, 18, numeric))),
+    JT_GTE_10_TAHUN_TOTAL_PPIPK(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK, PPMPPPIPK),
+            sf(13, null, "Jatuh Tempo >= 10 - Total", sv(M, 1, 18, freeText))),
 
-    TOTAL_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
-            sf(14, null, "Total - Rupiah", sv(M, 1, 18, numeric))),
+    TOTAL_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
+            sf(14, null, "Total - Rupiah", sv(M, 1, 18, freeText))),
 
-    TOTAL_NON_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
-            sf(15, null, "Total - Non Rupiah", sv(M, 1, 18, numeric))),
+    TOTAL_NON_RUPIAH(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
+            sf(15, null, "Total - Non Rupiah", sv(M, 1, 18, freeText))),
 
     TOTAL_TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM),
-            sf(16, null, "Total - Total", sv(C, 1, 18, numeric))),
+            sf(16, null, "Total - Total", sv(C, 1, 18, freeText))),
 
-    TOTAL_TOTAL_PPIPK(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK),
-            sf(16, null, "Total - Total", sv(M, 1, 18, numeric))),
+    TOTAL_TOTAL_PPIP_DPLK(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPIPM, DPLK, PPMPPPIPK),
+            sf(16, null, "Total - Total", sv(M, 1, 18, freeText))),
+
+    /* Gabungan Additional Field */
+
+    JENIS_PROGRAM(sectors(KONVENSIONAL, SYARIAH), programs(PPMPPPIPK),
+            sf(1000, null, "Jenis Program", sv(M, 5, 5, alfa))),
+
     ;
 
     private final EnumSet<SectorType> sectorType;
@@ -115,11 +121,11 @@ public enum Dppk0012Alm implements ILbltFieldMetadata {
     private final SubmissionField field;
 
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
-            new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataPpmpk.R7012Alm.getObject()),
-            new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataPpmpm.R7012Alm.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataPpipk.R7012Alm.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataPpipm.R7012Alm.getObject()),
-            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkbtDplk.R7012Alm.getObject())
+            new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataLkdpPpmpk.R7012Alm.getObject()),
+            new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataLkdpPpmpm.R7012Alm.getObject()),
+            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataLkdpPpipk.R7012Alm.getObject()),
+            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataLkdpPpipm.R7012Alm.getObject()),
+            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkdpDplk.R7012Alm.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0012Alm> FIELD_METADATA = new LbltMetadataField<>(Dppk0012Alm.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
@@ -171,17 +177,19 @@ public enum Dppk0012Alm implements ILbltFieldMetadata {
 
         BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType).config()
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
-                .setReferenceConfigs(referenceConfig);
+                .setReferenceConfigs(referenceConfig)
+                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                .setSegmentValidations(metadataValidation);
 
-        if (programType == DPLK) {
-            submissionConfig
-                    .setSubmissionField(FIELD_METADATA.getClearedFields())
-                    .setSegmentValidations();
-        } else {
-            submissionConfig
-                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-                    .setSegmentValidations(metadataValidation);
-        }
+//        if (programType == DPLK) {
+//            submissionConfig
+//                    .setSubmissionField(FIELD_METADATA.getClearedFields())
+//                    .setSegmentValidations();
+//        } else {
+//            submissionConfig
+//                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+//                    .setSegmentValidations(metadataValidation);
+//        }
 
         return submissionConfig.build().get();
 

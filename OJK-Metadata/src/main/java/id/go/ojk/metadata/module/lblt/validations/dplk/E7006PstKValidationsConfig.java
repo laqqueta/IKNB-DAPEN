@@ -8,6 +8,10 @@ import id.go.ojk.client.validation.IValidationConverter;
 import id.go.ojk.conf.client.UtilFieldValidation;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
+import id.go.ojk.conf.client.UtilSegmentValidationV2;
+import id.go.ojk.lib.client.model.KeyValueString;
+import id.go.ojk.metadata.module.lblt.EFormLaporanBulananTahunan;
+import id.go.ojk.metadata.module.lblt.reference.ER7001PosLtlbDppkLan;
 import id.go.ojk.metadata.util.constants.ProgramType;
 import id.go.ojk.metadata.validation.ValidationConverter;
 import id.go.ojk.metadata.validation.base.BaseMetadataValidation;
@@ -24,6 +28,7 @@ import static id.go.ojk.metadata.module.lblt.reference.ER7006PosLtlbDppkPst.*;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
 import static id.go.ojk.metadata.util.constants.ProgramType.DPLK;
+import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
 
 @RequiredArgsConstructor
 @AllArgsConstructor
@@ -31,37 +36,43 @@ public enum E7006PstKValidationsConfig implements ILbltMetadataValidation, IVali
 
     SG_SEGMENT_1(programs(DPLK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 4), R_PST0100000000.key,
-                    UtilMetadata.genPlusRow(getObjects(), new int[]{1, 2}),
+                    UtilMetadata.genPlusRow(getObjects(DPLK), new int[]{1, 2}),
                     UtilMetadata.genMessage(R_PST0100000000.value,
-                            UtilMetadata.genPlusDesc(getObjects(), new int[]{1, 2})))),
+                            UtilMetadata.genPlusDesc(getObjects(DPLK), new int[]{1, 2})))),
 
     SG_SEGMENT_2(programs(DPLK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 4), R_PST0200000000.key,
-                    UtilMetadata.genPlusRow(getObjects(), new int[]{4, 5}),
+                    UtilMetadata.genPlusRow(getObjects(DPLK), new int[]{4, 5}),
                     UtilMetadata.genMessage(R_PST0200000000.value,
-                            UtilMetadata.genPlusDesc(getObjects(), new int[]{4, 5})))),
+                            UtilMetadata.genPlusDesc(getObjects(DPLK), new int[]{4, 5})))),
 
     SG_SEGMENT_3(programs(DPLK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 4), R_PST0300000000.key,
-                    UtilMetadata.genPlusRow(getObjects(), new int[]{7, 8}),
+                    UtilMetadata.genPlusRow(getObjects(DPLK), new int[]{7, 8}),
                     UtilMetadata.genMessage(R_PST0300000000.value,
-                            UtilMetadata.genPlusDesc(getObjects(), new int[]{7, 8})))),
+                            UtilMetadata.genPlusDesc(getObjects(DPLK), new int[]{7, 8})))),
     
     SG_SEGMENT_4(programs(DPLK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 4), R_PST0400000000.key,
-                    UtilMetadata.genPlusRow(getObjects(), new int[]{10, 11}),
+                    UtilMetadata.genPlusRow(getObjects(DPLK), new int[]{10, 11}),
                     UtilMetadata.genMessage(R_PST0400000000.value,
-                            UtilMetadata.genPlusDesc(getObjects(), new int[]{10, 11})))),
+                            UtilMetadata.genPlusDesc(getObjects(DPLK), new int[]{10, 11})))),
 
     SG_SEGMENT_5(programs(DPLK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 4), R_PST0500000000.key,
-                    UtilMetadata.genPlusRow(getObjects(), new int[]{0, 3, 6, 9}),
+                    UtilMetadata.genPlusRow(getObjects(DPLK), new int[]{0, 3, 6, 9}),
                     UtilMetadata.genMessage(R_PST0500000000.value,
-                            UtilMetadata.genPlusDesc(getObjects(), new int[]{0, 3, 6, 9})))),
+                            UtilMetadata.genPlusDesc(getObjects(DPLK), new int[]{0, 3, 6, 9})))),
 
-    FV_SUM_ROW(programs(DPLK), validationFields(5),
-            () -> UtilFieldValidation.genEqualsFormula(UtilMetadata.genPlusColumn(2, 4))),
-
+    GEN_VALIDATON_FORM_LAN(programs(DPLK), () -> {
+        String selectExpr = "> 0";
+        String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
+        KeyValueString comparator = ER7001PosLtlbDppkLan.R_LAN0110000000.getObject();
+        String comparatorExpr = "> 0";
+        String errMsg = comparator.getValue() + "|" + R_PST0500000000.value;
+        return UtilSegmentValidationV2.genEqualsFormConditionalExpression2("2", R_PST0500000000.key, selectExpr, comparatorForm, "3",
+                comparator.getKey(), comparatorExpr, "e", 2, errMsg);
+    }),
     ;
 
     private final EnumSet<ProgramType> programTypes;

@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public enum EHeaderMetadataPpmpk implements IObject<ReferenceMetadata> {
+public enum EHeaderMetadataLkdpPpmpk implements IObject<ReferenceMetadata> {
     R7000Dtum(ER7000PosLtlbDppkDtum.getRefNumber(7000), ER7000PosLtlbDppkDtum.getName(), ER7000PosLtlbDppkDtum.getObjects()),
     R7001Lan(ER7001PosLtlbDppkLan.getRefNumber(7001), ER7001PosLtlbDppkLan.getName(), ER7001PosLtlbDppkLan.getObjects(ProgramType.PPMPK)),
     R7002Lpan(ER7002PosLtlbDppkLpan.getRefNumber(7002), ER7002PosLtlbDppkLpan.getName(), ER7002PosLtlbDppkLpan.getObjects(ProgramType.PPMPK)),
@@ -113,7 +113,7 @@ public enum EHeaderMetadataPpmpk implements IObject<ReferenceMetadata> {
 
     public static List<ReferenceMetadata> getObjects() {
         List<ReferenceMetadata> res = new ArrayList<>();
-        for (EHeaderMetadataPpmpk eEnum : EHeaderMetadataPpmpk.values()) {
+        for (EHeaderMetadataLkdpPpmpk eEnum : EHeaderMetadataLkdpPpmpk.values()) {
             res.add(eEnum.getObject());
         }
         return res;
@@ -121,7 +121,7 @@ public enum EHeaderMetadataPpmpk implements IObject<ReferenceMetadata> {
 
     public static Map<String, List<KeyValueString>> getMap() {
         Map<String, List<KeyValueString>> res = new HashMap<>();
-        for (EHeaderMetadataPpmpk eEnum : EHeaderMetadataPpmpk.values()) {
+        for (EHeaderMetadataLkdpPpmpk eEnum : EHeaderMetadataLkdpPpmpk.values()) {
             res.put(eEnum.getFileName(), eEnum.references);
         }
         return res;

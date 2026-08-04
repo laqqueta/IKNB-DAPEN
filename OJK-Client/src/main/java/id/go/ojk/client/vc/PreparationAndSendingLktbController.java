@@ -41,7 +41,7 @@ public class PreparationAndSendingLktbController extends BasePreparationAndSendi
         mapReport.put("PPMP-K", "PPMP Kompleks");
         mapReport.put("PPIP-M", "PPIP Murni");
         mapReport.put("PPIP-K", "PPIP Kompleks");
-        mapReport.put("PPMP-PPIP-K", "PPMP PPIP Kompleks");
+        mapReport.put("PPMP PPIP K", "PPMP PPIP Kompleks");
     }
 
     private String reportCode = "";

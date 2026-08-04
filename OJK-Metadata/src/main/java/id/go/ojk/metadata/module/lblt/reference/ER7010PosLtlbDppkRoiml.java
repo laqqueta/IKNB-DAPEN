@@ -115,25 +115,6 @@ public enum ER7010PosLtlbDppkRoiml implements IObject<KeyValueString> {
             public String requiredPos() {
                 return UtilMetadata.genPipeRow(getObjects());
             }
-        },
-
-        REF_CONFIG_DPLK {
-            private final ProgramType programType = ProgramType.DPLK;
-
-//            @Override
-//            public String savePos() {
-//                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 11),getObjects());
-//            }
-//
-//            @Override
-//            public String savePosForm() {
-//                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 11),getObjects());
-//            }
-
-            @Override
-            public String requiredPos() {
-                return UtilMetadata.genPipeRow(getObjects(programType));
-            }
         }
     }
 }

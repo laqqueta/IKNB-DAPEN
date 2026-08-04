@@ -48,14 +48,14 @@ public enum E7061IurValidationsConfig implements ILbltMetadataValidation, IValid
     CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(2, 3, 4, 6, 17),
             () -> UtilFieldConditional.genExistPos("N", "M", R_IUR000000.key)),
 
-    CR_EXISTS_POS_M_DPLK(programs(DPLK), validationFields(2, 3, 7),
+    CR_EXISTS_POS_M_DPLK(programs(DPLK), validationFields(2, 3, 17),
             () -> UtilFieldConditional.genExistPos("N", "M", R_IUR000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(18),
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(18),
             () -> UtilFieldConditional.genExistPos("N", "O", R_IUR000000.key)),
 
-    CR_EXISTS_POS_O_DPLK(programs(DPLK), validationFields(8),
-            () -> UtilFieldConditional.genExistPos("N", "O", R_IUR000000.key)),
+//    CR_EXISTS_POS_O_DPLK(programs(DPLK), validationFields(8),
+//            () -> UtilFieldConditional.genExistPos("N", "O", R_IUR000000.key)),
 
     ;
 
