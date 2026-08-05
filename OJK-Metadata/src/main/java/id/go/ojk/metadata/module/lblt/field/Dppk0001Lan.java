@@ -179,7 +179,7 @@ public enum Dppk0001Lan implements ILbltFieldMetadata {
             // -> Ngambil field terbanyak
             List<Integer> gabunganField = Arrays.asList(0, 1, 1000, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17);
             submissionConfig
-                    .setSubmissionField(FIELD_METADATA.getReindexClearedFields(gabunganField))
+                    .setSubmissionField(FIELD_METADATA.getReindexClearedFields(gabunganField, true))
                     .setSegmentValidations();
         } else {
             submissionConfig

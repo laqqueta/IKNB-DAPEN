@@ -13,6 +13,7 @@ import id.go.ojk.metadata.module.lblt.header.*;
 import id.go.ojk.metadata.module.lblt.reference.ER7038PosLtlbDppkRepo;
 import id.go.ojk.metadata.module.lblt.validations.E7038RepoValidationsConfig;
 import id.go.ojk.metadata.submission.SubmissionConfig;
+import id.go.ojk.metadata.submission.base.BaseSubmissionConfig;
 import id.go.ojk.metadata.util.constants.ProgramType;
 import id.go.ojk.metadata.util.constants.SectorType;
 import id.go.ojk.metadata.validation.base.BaseMetadataValidation;
@@ -102,12 +103,12 @@ public enum Dppk0038Repo implements ILbltFieldMetadata {
             sf(19, null, "Pengelolaan Nama Manajer Investasi", sv(C, 1, 250, alfaNumeric))),
 
     KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
-            sf(20, null, "Keterangan", sv(O, 1, 250, freeText)))
+            sf(20, null, "Keterangan", sv(O, 1, 250, freeText))),
 
     /* Gabungan Additional Field */
 
     JENIS_PROGRAM(sectors(KONVENSIONAL, SYARIAH), programs(PPMPPPIPK),
-    sf(1000, null, "Jenis Program", sv(M, 5, 5, alfa))),
+            sf(1000, null, "Jenis Program", sv(M, 5, 5, alfa))),
 
     ;
 
@@ -166,19 +167,30 @@ public enum Dppk0038Repo implements ILbltFieldMetadata {
             case DPLK:
                 metadataValidation = E7038RepoValidationsConfig.VALIDATION_METADATA_DPLK;
                 break;
+            case PPMPPPIPK:
+                break;
             default:
                 throw new IllegalStateException();
         }
 
 
-        return new SubmissionConfig(programType)
+        BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType)
                 .config()
-                .setReferenceConfigs(ER7038PosLtlbDppkRepo.Configs.REF_CONFIG)
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
-                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-                .setSegmentValidations(metadataValidation)
-                .build()
-                .get();
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType));
+
+        if (programType == PPMPPPIPK) {
+            List<Integer> gabunganFields = Arrays.asList(0, 1, 1000, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20);
+            submissionConfig
+                    .setSubmissionField(FIELD_METADATA.getReindexClearedFields(gabunganFields, true))
+                    .setSegmentValidations();
+        } else {
+            submissionConfig
+                    .setReferenceConfigs(ER7038PosLtlbDppkRepo.Configs.REF_CONFIG)
+                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                    .setSegmentValidations(metadataValidation);
+        }
+
+        return submissionConfig.build().get();
     }
 
     @Override

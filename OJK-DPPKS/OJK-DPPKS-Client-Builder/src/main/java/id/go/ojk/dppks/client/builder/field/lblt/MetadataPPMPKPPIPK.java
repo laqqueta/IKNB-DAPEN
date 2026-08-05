@@ -1,4 +1,4 @@
-package id.go.ojk.dppkk.client.builder.field.ltlb;
+package id.go.ojk.dppks.client.builder.field.lblt;
 
 import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.metadata.module.lblt.field.*;
@@ -19,7 +19,7 @@ public class MetadataPPMPKPPIPK {
 
     private static List<SubmissionFormat> getFormMetadata() {
         ProgramType programType = ProgramType.PPMPPPIPK;
-        SectorType sectorType = SectorType.KONVENSIONAL;
+        SectorType sectorType = SectorType.SYARIAH;
 
         return Arrays.asList(
                 Dppk0000Dtum.formMetadata(sectorType, programType),

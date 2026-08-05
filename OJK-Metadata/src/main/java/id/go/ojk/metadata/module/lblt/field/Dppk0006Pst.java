@@ -87,7 +87,7 @@ public enum Dppk0006Pst implements ILbltFieldMetadata {
 
     public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, ProgramType programType) {
         EFormLaporanBulananTahunan PST_FORM = EFormLaporanBulananTahunan.LTLB_PST;
-        return SubmissionFormatBuilder.builder()
+        SubmissionFormatBuilder sf = SubmissionFormatBuilder.builder()
                 .code(PST_FORM.getCode())
                 .name(PST_FORM.getName())
                 .extension(ExtensionType.TXT)
@@ -96,6 +96,13 @@ public enum Dppk0006Pst implements ILbltFieldMetadata {
                 .minRow(ER7006PosLtlbDppkPst.getRowSize(programType))
                 .fields(new ArrayList<>())
                 .build();
+
+        if (programType == PPMPPPIPK) {
+            sf.setMaxRow(null);
+            sf.setMinRow(0);
+        }
+
+        return sf;
     }
 
     public static SubmissionFormat formMetadata(SectorType sectorType, ProgramType programType) {
@@ -120,25 +127,30 @@ public enum Dppk0006Pst implements ILbltFieldMetadata {
             case DPLK:
                 metadataValidation = VALIDATION_METADATA_DPLK;
                 break;
+            case PPMPPPIPK:
+                break;
             default:
                 throw new IllegalStateException();
         }
 
         BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType).config()
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
-                .setReferenceConfigs(referenceConfig)
-                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-                .setSegmentValidations(metadataValidation);
+//                .setReferenceConfigs(referenceConfig)
+//                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+//                .setSegmentValidations(metadataValidation)
+                ;
 
-//        if (programType == DPLK) {
-//            submissionConfig
-//                    .setSubmissionField(FIELD_METADATA.getClearedFields())
-//                    .setSegmentValidations();
-//        } else {
-//            submissionConfig
-//                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-//                    .setSegmentValidations(metadataValidation);
-//        }
+        if (programType == PPMPPPIPK) {
+            List<Integer> gabunganField = Arrays.asList(0, 1, 1000, 2, 3, 4, 5);
+            submissionConfig
+                    .setSubmissionField(FIELD_METADATA.getReindexClearedFields(gabunganField, true))
+                    .setSegmentValidations();
+        } else {
+            submissionConfig
+                    .setReferenceConfigs(referenceConfig)
+                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                    .setSegmentValidations(metadataValidation);
+        }
 
         return submissionConfig.build().get();
 

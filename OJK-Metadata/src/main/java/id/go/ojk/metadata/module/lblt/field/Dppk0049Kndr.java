@@ -13,6 +13,7 @@ import id.go.ojk.metadata.module.lblt.header.*;
 import id.go.ojk.metadata.module.lblt.reference.ER7049PosLtlbDppkKndr;
 import id.go.ojk.metadata.module.lblt.validations.E7049KndrValidationsConfig;
 import id.go.ojk.metadata.submission.SubmissionConfig;
+import id.go.ojk.metadata.submission.base.BaseSubmissionConfig;
 import id.go.ojk.metadata.util.constants.ProgramType;
 import id.go.ojk.metadata.util.constants.SectorType;
 import id.go.ojk.metadata.validation.base.BaseMetadataValidation;
@@ -33,33 +34,33 @@ import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0049Kndr implements ILbltFieldMetadata {
 
-    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, PPMPPPIPK),
             sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric)
                     .confConstant("D01"))),
 
-    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
+    KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, PPMPPPIPK),
             sf(1, null, "Kode Komponen", sv(M, 10, 10, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric))),
 
-    NO_PLAT_KENDARAAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
+    NO_PLAT_KENDARAAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, PPMPPPIPK),
             sf(2, null, "No Plat Kendaraan", sv(C, 1, 10, alfaNumeric))),
 
-    JENIS_KENDARAAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
+    JENIS_KENDARAAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, PPMPPPIPK),
             sf(3, null, "Jenis Kendaraan", sv(C, 1, 50, alfaNumeric))),
 
-    TANGGAL_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
+    TANGGAL_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, PPMPPPIPK),
             sf(4, null, "Tanggal Perolehan", sv(C, 8, 8, date))),
 
-    NILAI_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
+    NILAI_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, PPMPPPIPK),
             sf(5, null, "Nilai Perolehan", sv(M, 1, 18, numeric))),
 
-    AKUMULASI_PENYUSUTAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
+    AKUMULASI_PENYUSUTAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, PPMPPPIPK),
             sf(6, null, "Akumulasi Penyusutan", sv(M, 1, 18, numeric))),
 
-    NILAI_BUKU(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
+    NILAI_BUKU(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, PPMPPPIPK),
             sf(7, null, "Nilai Buku", sv(M, 1, 18, numeric))),
 
-    KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM),
+    KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, PPMPPPIPK),
             sf(8, null, "Keterangan", sv(C, 1, 250, freeText))),
 
     /* Gabungan Additional Field */
@@ -120,18 +121,29 @@ public enum Dppk0049Kndr implements ILbltFieldMetadata {
             case PPIPM:
                 metadataValidation = E7049KndrValidationsConfig.VALIDATION_METADATA_PPIPM;
                 break;
+            case PPMPPPIPK:
+                break;
             default:
                 throw new IllegalStateException();
         }
 
-        return new SubmissionConfig(programType)
+        BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType)
                 .config()
-                .setReferenceConfigs(ER7049PosLtlbDppkKndr.Configs.REF_CONFIG)
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
-                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-                .setSegmentValidations(metadataValidation)
-                .build()
-                .get();
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType));
+
+        if (programType == PPMPPPIPK) {
+            List<Integer> gabunganFields = Arrays.asList(0, 1, 1000, 2, 3, 4, 5, 6, 7, 8);
+            submissionConfig
+                    .setSubmissionField(FIELD_METADATA.getReindexClearedFields(gabunganFields, true))
+                    .setSegmentValidations();
+        } else {
+            submissionConfig
+                    .setReferenceConfigs(ER7049PosLtlbDppkKndr.Configs.REF_CONFIG)
+                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                    .setSegmentValidations(metadataValidation);
+        }
+
+        return submissionConfig.build().get();
     }
 
     @Override

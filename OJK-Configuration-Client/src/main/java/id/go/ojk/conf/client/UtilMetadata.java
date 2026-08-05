@@ -272,9 +272,9 @@ public class UtilMetadata {
                 formula.append(arrFields[k]);
 
                 if (option.equals(FormulaParserMessageOption.FIELD_DETAILED)) {
-                    message.append("Kolom '").append(fieldNames[k]).append("'");
+                    message.append(" Kolom '").append(fieldNames[k]).append("'");
                 } else if (option.equals(FormulaParserMessageOption.FIELD_SIMPLE)) {
-                    message.append("Kolom ").append(arrFields[k]);
+                    message.append(" Kolom ").append(arrFields[k]);
                 }
             }
 

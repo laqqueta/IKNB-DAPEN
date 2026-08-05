@@ -57,10 +57,6 @@ public class BaseFormulaParserValidation extends BaseRowValidation {
 
         if (!selectRowCodes.contains(currentRowCode)) return;
 
-        if (currentRowCode.contains("ALM0203000000")) {
-            System.out.println("dbg ALM0203000000");
-        }
-
         String[] fields = StringUtils.split(selectField, "|");
         String[] operations = StringUtils.split(formulaOperation, "|");
         String[] operationErrMsgs = StringUtils.split(formulaOperationErr, "|");

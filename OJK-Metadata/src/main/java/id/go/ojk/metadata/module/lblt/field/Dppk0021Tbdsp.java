@@ -99,6 +99,9 @@ public enum Dppk0021Tbdsp implements ILbltFieldMetadata {
             case DPLK:
                 referenceConfig = ER7021PosLtlbDppkTbdsp.Configs.REF_CONFIG_DPLK;
                 break;
+            case PPMPPPIPK:
+                metadataValidation = null;
+                break;
             default:
                 throw new IllegalStateException();
         }
@@ -106,19 +109,21 @@ public enum Dppk0021Tbdsp implements ILbltFieldMetadata {
         BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType)
                 .config()
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
-                .setReferenceConfigs(referenceConfig)
-                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-                .setSegmentValidations(metadataValidation);
+//                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+//                .setSegmentValidations(metadataValidation)
+                ;
 
-//        if (programType == DPLK) {
-//            submissionConfig
-//                    .setSubmissionField(FIELD_METADATA.getClearedFields())
-//                    .setSegmentValidations();
-//        } else {
-//            submissionConfig
-//                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-//                    .setSegmentValidations(metadataValidation);
-//        }
+        if (programType == PPMPPPIPK) {
+            List<Integer> gabunganField = Arrays.asList(0, 1, 1000, 2, 3, 4);
+            submissionConfig
+                    .setSubmissionField(FIELD_METADATA.getReindexClearedFields(gabunganField, true))
+                    .setSegmentValidations();
+        } else {
+            submissionConfig
+                    .setReferenceConfigs(referenceConfig)
+                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                    .setSegmentValidations(metadataValidation);
+        }
 
         return submissionConfig.build().get();
 

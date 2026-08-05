@@ -130,7 +130,7 @@ public class ValidationPreHeaderLktb extends BaseValidationPreHeader {
 
     protected boolean validatePart7() {
         String part = getPart(8);
-        String code = JenisProgramState.selectedKey.replaceAll("[^A-Za-z\\s]", "");
+        String code = JenisProgramState.selectedKey.replaceAll("[^A-Za-z]", "");
         String type = "";
 
         if (part.substring(part.length()-1).equalsIgnoreCase("M")) {

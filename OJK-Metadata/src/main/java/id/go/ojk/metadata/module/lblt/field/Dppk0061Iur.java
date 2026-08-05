@@ -20,6 +20,7 @@ import id.go.ojk.metadata.util.constants.SectorType;
 import id.go.ojk.metadata.validation.base.BaseMetadataValidation;
 import lombok.AllArgsConstructor;
 
+import javax.print.attribute.standard.PagesPerMinute;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -170,25 +171,29 @@ public enum Dppk0061Iur implements ILbltFieldMetadata {
                 submissionFields = FIELD_METADATA.getReindexFields(dplkFields, metadataValidation.getFieldValidations());
                 referenceConfig = ER7061PosLtlbDppkIur.Configs.REF_CONFIG_DPLK;
                 break;
+            case PPMPPPIPK:
+                break;
             default:
                 throw new IllegalStateException();
         }
 
         BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType).config()
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
-                .setReferenceConfigs(referenceConfig)
-                .setSubmissionField(submissionFields)
-                .setSegmentValidations(metadataValidation);
+//                .setSubmissionField(submissionFields)
+//                .setSegmentValidations(metadataValidation)
+                ;
 
-//        if (programType == DPLK) {
-//            submissionConfig
-//                    .setSubmissionField(submissionFields)
-//                    .setSegmentValidations(metadataValidation);
-//        } else {
-//            submissionConfig
-//                    .setSubmissionField(submissionFields)
-//                    .setSegmentValidations(metadataValidation);
-//        }
+        if (programType == PPMPPPIPK) {
+            List<Integer> gabunganFields = Arrays.asList(0, 1, 1000, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18);
+            submissionConfig
+                    .setSubmissionField(FIELD_METADATA.getReindexClearedFields(gabunganFields, true))
+                    .setSegmentValidations();
+        } else {
+            submissionConfig
+                    .setReferenceConfigs(referenceConfig)
+                    .setSubmissionField(submissionFields)
+                    .setSegmentValidations(metadataValidation);
+        }
 
         return submissionConfig.build().get();
     }
@@ -209,10 +214,14 @@ public enum Dppk0061Iur implements ILbltFieldMetadata {
     }
 
     public static void main(String[] args) {
-        FIELD_METADATA.setProgramType(DPLK);
+        FIELD_METADATA.setProgramType(PPMPPPIPK);
+        List<String> a = new ArrayList<>();
         FIELD_METADATA.getFields().forEach(v -> {
-            System.out.println(v.getNumber() + "::" + v.getName() + " > " + v.getSimpleValidation().getRequiredCondition());
+            a.add(String.valueOf(v.getNumber()));
+//            System.out.println(v.getNumber() + "::" + v.getName() + " > " + v.getSimpleValidation().getRequiredCondition());
         });
+
+        System.out.println(String.join(", ", a));
     }
 
 }

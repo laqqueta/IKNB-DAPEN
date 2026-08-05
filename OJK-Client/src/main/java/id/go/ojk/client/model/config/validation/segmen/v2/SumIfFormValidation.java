@@ -54,10 +54,6 @@ public class SumIfFormValidation extends BaseSumIf<SumIfBaseParams> {
             SumIfData formulaData;
             SumIfBaseParams param = new SumIfBaseParams(conds, arrRangeFields[rowIdx]);
 
-            if (currentRowCode.contains("LAN0107010600")) {
-                System.out.println("dbg LAN0107010600");
-            }
-
             if (sumCriteriaCondition == null) {
                 formulaData = calculateCondition(param);
             } else {

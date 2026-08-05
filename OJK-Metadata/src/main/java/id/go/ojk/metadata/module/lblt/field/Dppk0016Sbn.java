@@ -12,7 +12,9 @@ import id.go.ojk.metadata.field.lblt.LbltMetadataField;
 import id.go.ojk.metadata.module.lblt.EFormLaporanBulananTahunan;
 import id.go.ojk.metadata.module.lblt.header.*;
 import id.go.ojk.metadata.module.lblt.reference.ER7016PosLtlbDppkSbn;
+import id.go.ojk.metadata.module.lblt.reference.ER7022PosLtlbDppkDoc;
 import id.go.ojk.metadata.submission.SubmissionConfig;
+import id.go.ojk.metadata.submission.base.BaseSubmissionConfig;
 import id.go.ojk.metadata.util.constants.ProgramType;
 import id.go.ojk.metadata.util.constants.SectorType;
 import id.go.ojk.metadata.validation.base.BaseMetadataValidation;
@@ -136,18 +138,38 @@ public enum Dppk0016Sbn implements ILbltFieldMetadata {
             case PPIPM:
                 metadataValidation = VALIDATION_METADATA_PPIPM;
                 break;
+            case PPMPPPIPK:
+                break;
             default:
                 throw new IllegalStateException();
         }
 
-        return new SubmissionConfig(programType)
+        BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType)
                 .config()
-                .setReferenceConfigs(referenceConfig)
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
-                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-                .setSegmentValidations(metadataValidation)
-                .build()
-                .get();
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType));
+
+        if (programType == PPMPPPIPK) {
+            List<Integer> gabunganField = Arrays.asList(0, 1, 1000, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11);
+            submissionConfig
+                    .setSubmissionField(FIELD_METADATA.getReindexClearedFields(gabunganField, true))
+                    .setSegmentValidations();
+        } else {
+            submissionConfig
+                    .setReferenceConfigs(referenceConfig)
+                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                    .setSegmentValidations(metadataValidation);
+        }
+
+        return submissionConfig.build().get();
+
+//        return new SubmissionConfig(programType)
+//                .config()
+//                .setReferenceConfigs(referenceConfig)
+//                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
+//                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+//                .setSegmentValidations(metadataValidation)
+//                .build()
+//                .get();
     }
 
     @Override

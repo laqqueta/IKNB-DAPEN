@@ -102,15 +102,23 @@ public enum Dppk0017Ras1 implements ILbltFieldMetadata {
 
     public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, ProgramType programType) {
         EFormLaporanBulananTahunan RAS1_FORM = EFormLaporanBulananTahunan.LTLB_RAS_1;
-        return SubmissionFormatBuilder.builder()
+        int minMaxRow = ER7017PosLtlbDppkRas1.getRowSize(programType);
+        SubmissionFormatBuilder sf = SubmissionFormatBuilder.builder()
                 .code(RAS1_FORM.getCode())
                 .name(RAS1_FORM.getName())
                 .extension(ExtensionType.TXT)
                 .reportCode(programType.toString())
-                .maxRow(ER7017PosLtlbDppkRas1.getRowSize(programType))
-                .minRow(ER7017PosLtlbDppkRas1.getRowSize(programType))
+                .maxRow(minMaxRow)
+                .minRow(minMaxRow)
                 .fields(new ArrayList<>())
                 .build();
+
+        if (programType == PPMPPPIPK) {
+            sf.setMaxRow(null);
+            sf.setMinRow(0);
+        }
+
+        return sf;
     }
 
     public static SubmissionFormat formMetadata(SectorType sectorType, ProgramType programType) {
@@ -148,27 +156,32 @@ public enum Dppk0017Ras1 implements ILbltFieldMetadata {
                 metadataValidation = VALIDATION_METADATA_DPLK;
                 additionalSegment = genAllValidationRatioAB_DPLK();
                 break;
+            case PPMPPPIPK:
+                break;
             default:
                 throw new IllegalStateException();
         }
 
         BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType).config()
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
-                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-                .setReferenceConfigs(referenceConfig)
-                .setSegmentValidations(metadataValidation)
-                .additionalSegmentValidations(additionalSegment);
+//                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+//                .setReferenceConfigs(referenceConfig)
+//                .setSegmentValidations(metadataValidation)
+//                .additionalSegmentValidations(additionalSegment)
+                ;
 
-//        if (programType == DPLK) {
-//            submissionConfig
-//                    .setSubmissionField(FIELD_METADATA.getClearedFields())
-//                    .setSegmentValidations();
-//        } else {
-//            submissionConfig
-//                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-//                    .setSegmentValidations(metadataValidation)
-//                    .additionalSegmentValidations(additionalSegment);
-//        }
+        if (programType == PPMPPPIPK) {
+            List<Integer> gabunganField = Arrays.asList(0, 1, 1000, 2, 3, 4, 5);
+            submissionConfig
+                    .setSubmissionField(FIELD_METADATA.getReindexClearedFields(gabunganField, true))
+                    .setSegmentValidations();
+        } else {
+            submissionConfig
+                    .setReferenceConfigs(referenceConfig)
+                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                    .setSegmentValidations(metadataValidation)
+                    .additionalSegmentValidations(additionalSegment);
+        }
 
         return submissionConfig.build().get();
 

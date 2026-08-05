@@ -12,9 +12,11 @@ import id.go.ojk.metadata.module.lblt.EFormLaporanBulananTahunan;
 import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataLkdpDplk;
 import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataLkdpPpipk;
 import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataLkdpPpipm;
+import id.go.ojk.metadata.module.lblt.reference.ER7104PosLtlbDppkMpbk;
 import id.go.ojk.metadata.module.lblt.reference.ER7105PosLtlbDppkPmbk;
 import id.go.ojk.metadata.module.lblt.validations.E7105PmbkValidationsConfig;
 import id.go.ojk.metadata.submission.SubmissionConfig;
+import id.go.ojk.metadata.submission.base.BaseSubmissionConfig;
 import id.go.ojk.metadata.util.constants.ProgramType;
 import id.go.ojk.metadata.util.constants.SectorType;
 import id.go.ojk.metadata.validation.base.BaseMetadataValidation;
@@ -115,18 +117,33 @@ public enum Dppk0105Pmbk implements ILbltFieldMetadata {
             case DPLK:
                 metadataValidation = E7105PmbkValidationsConfig.VALIDATION_METADATA_DPLK;
                 break;
+            case PPMPPPIPK:
+                break;
             default:
                 throw new IllegalStateException();
         }
 
-        return new SubmissionConfig(programType)
+        BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType)
                 .config()
-                .setReferenceConfigs(ER7105PosLtlbDppkPmbk.Configs.REF_CONFIG)
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
-                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-                .setSegmentValidations(metadataValidation)
-                .build()
-                .get();
+//                .setReferenceConfigs(referenceConfig)
+//                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+//                .setSegmentValidations(metadataValidation)
+                ;
+
+        if (programType == PPMPPPIPK) {
+            List<Integer> gabunganFields = Arrays.asList(0, 1, 1000, 2, 3, 4, 5, 6, 7);
+            submissionConfig
+                    .setSubmissionField(FIELD_METADATA.getReindexClearedFields(gabunganFields, true))
+                    .setSegmentValidations();
+        } else {
+            submissionConfig
+                    .setReferenceConfigs(ER7105PosLtlbDppkPmbk.Configs.REF_CONFIG)
+                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                    .setSegmentValidations(metadataValidation);
+        }
+
+        return submissionConfig.build().get();
     }
 
     @Override

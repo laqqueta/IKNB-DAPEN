@@ -40,7 +40,7 @@ import static id.go.ojk.metadata.util.constants.SectorType.SYARIAH;
 @AllArgsConstructor
 public enum Dppk0004Lphu implements ILbltFieldMetadata {
 
-    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK),
+    FLAG(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric)
                     .confConstant("D01"))),
 
@@ -57,34 +57,34 @@ public enum Dppk0004Lphu implements ILbltFieldMetadata {
             sf(2, null, "Akumulasi s.d DD-MM-YYYY Manfaat Pensiun", sv(M, 1, 18, numericNegatif))),
 
     AKUMULASI_MANFAAT_PENSIUN_LAINNYA_MANFAAT_TAMBAHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK, PPMPPPIPK),
-            sf(3, null, "Akumulasi s.d DD-MM-YYYY Manfaat Pensiun Lainnya Manfaat Tambahan", sv(M, 1, 18, numericNegatif))),
+            sf(3, null, "Akumulasi s.d DD-MM-YYYY Manfaat Pensiun Lainnya - Manfaat Tambahan", sv(M, 1, 18, numericNegatif))),
 
     AKUMULASI_MANFAAT_PENSIUN_LAINNYA_KOMPENSASI_PASCAKERJA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK, PPMPPPIPK),
-            sf(4, null, "Akumulasi s.d DD-MM-YYYY Manfaat Pensiun Lainnya Kompensasi Pascakerja", sv(M, 1, 18, numericNegatif))),
+            sf(4, null, "Akumulasi s.d DD-MM-YYYY Manfaat Pensiun Lainnya - Kompensasi Pascakerja", sv(M, 1, 18, numericNegatif))),
 
     AKUMULASI_MANFAAT_PENSIUN_LAINNYA_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK, PPMPPPIPK),
-            sf(5, null, "Akumulasi s.d DD-MM-YYYY Manfaat Pensiun Lainnya Lainnya", sv(M, 1, 18, numericNegatif))),
+            sf(5, null, "Akumulasi s.d DD-MM-YYYY Manfaat Pensiun Lainnya - Lainnya", sv(M, 1, 18, numericNegatif))),
 
     AKUMULASI_MANFAAT_LAIN_KOMPENSASI_PASCAKERJA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK, PPMPPPIPK),
-            sf(6, null, "Akumulasi s.d DD-MM-YYYY Manfaat Lain Kompensasi Pascakerja", sv(M, 1, 18, numericNegatif))),
+            sf(6, null, "Akumulasi s.d DD-MM-YYYY Manfaat Lain - Kompensasi Pascakerja", sv(M, 1, 18, numericNegatif))),
 
     AKUMULASI_MANFAAT_LAIN_KESEHATAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK, PPMPPPIPK),
-            sf(7, null, "Akumulasi s.d DD-MM-YYYY Manfaat Lain Kesehatan", sv(M, 1, 18, numericNegatif))),
+            sf(7, null, "Akumulasi s.d DD-MM-YYYY Manfaat Lain - Kesehatan", sv(M, 1, 18, numericNegatif))),
 
     AKUMULASI_MANFAAT_LAIN_SANTUNAN_KEMATIAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK, PPMPPPIPK),
-            sf(8, null, "Akumulasi s.d DD-MM-YYYY Manfaat Lain Santunan Kematian", sv(M, 1, 18, numericNegatif))),
+            sf(8, null, "Akumulasi s.d DD-MM-YYYY Manfaat Lain - Santunan Kematian", sv(M, 1, 18, numericNegatif))),
 
     AKUMULASI_MANFAAT_LAIN_IBADAH_KEAGAMAAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK, PPMPPPIPK),
-            sf(9, null, "Akumulasi s.d DD-MM-YYYY Manfaat Lain Ibadah Keagamaan", sv(M, 1, 18, numericNegatif))),
+            sf(9, null, "Akumulasi s.d DD-MM-YYYY Manfaat Lain - Ibadah Keagamaan", sv(M, 1, 18, numericNegatif))),
 
     AKUMULASI_MANFAAT_LAIN_PENDIDIKAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK, PPMPPPIPK),
-            sf(10, null, "Akumulasi s.d DD-MM-YYYY Manfaat Lain Pendidikan", sv(M, 1, 18, numericNegatif))),
+            sf(10, null, "Akumulasi s.d DD-MM-YYYY Manfaat Lain - Pendidikan", sv(M, 1, 18, numericNegatif))),
 
     AKUMULASI_MANFAAT_LAIN_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK, PPMPPPIPK),
-            sf(11, null, "Akumulasi s.d DD-MM-YYYY Manfaat Lain Lainnya", sv(M, 1, 18, numericNegatif))),
+            sf(11, null, "Akumulasi s.d DD-MM-YYYY Manfaat Lain - Lainnya", sv(M, 1, 18, numericNegatif))),
 
     AKUMULASI_GABUNGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK, PPMPPPIPK),
-            sf(12, null, "Akumulasi s.d DD-MM-YYYY Gabungan", sv(M, 1, 18, numericNegatif))),
+            sf(12, null, "Akumulasi s.d DD-MM-YYYY - Gabungan", sv(M, 1, 18, numericNegatif))),
 
     UUS_MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPMPPPIPK),
             sf(13, null, "UUS - Manfaat Pensiun", sv(M, 1, 18, numericNegatif))),
@@ -122,7 +122,7 @@ public enum Dppk0004Lphu implements ILbltFieldMetadata {
 
     public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, ProgramType programType) {
         EFormLaporanBulananTahunan LPHU_FORM = EFormLaporanBulananTahunan.LTLB_LPHU;
-        return SubmissionFormatBuilder.builder()
+        SubmissionFormatBuilder sf = SubmissionFormatBuilder.builder()
                 .code(LPHU_FORM.getCode())
                 .name(LPHU_FORM.getName())
                 .extension(ExtensionType.TXT)
@@ -131,6 +131,13 @@ public enum Dppk0004Lphu implements ILbltFieldMetadata {
                 .minRow(ER7004PosLtlbDppkLphu.getRowSize(programType))
                 .fields(new ArrayList<>())
                 .build();
+
+        if (programType == PPMPPPIPK) {
+            sf.setMaxRow(null);
+            sf.setMinRow(0);
+        }
+
+        return sf;
     }
 
     public static SubmissionFormat formMetadata(SectorType sectorType, ProgramType programType) {
@@ -155,25 +162,30 @@ public enum Dppk0004Lphu implements ILbltFieldMetadata {
             case DPLK:
                 metadataValidation = VALIDATION_METADATA_DPLK;
                 break;
+            case PPMPPPIPK:
+                break;
             default:
                 throw new IllegalStateException();
         }
 
         BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType).config()
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
-                .setReferenceConfigs(referenceConfig)
-                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-                .setSegmentValidations(metadataValidation);
+//                .setReferenceConfigs(referenceConfig)
+//                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+//                .setSegmentValidations(metadataValidation)
+                ;
 
-//        if (programType == DPLK) {
-//            submissionConfig
-//                    .setSubmissionField(FIELD_METADATA.getClearedFields())
-//                    .setSegmentValidations();
-//        } else {
-//            submissionConfig
-//                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-//                    .setSegmentValidations(metadataValidation);
-//        }
+        if (programType == PPMPPPIPK) {
+            List<Integer> gabunganField = Arrays.asList(0, 1, 1000, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
+            submissionConfig
+                    .setSubmissionField(FIELD_METADATA.getReindexClearedFields(gabunganField, true))
+                    .setSegmentValidations();
+        } else {
+            submissionConfig
+                    .setReferenceConfigs(referenceConfig)
+                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                    .setSegmentValidations(metadataValidation);
+        }
 
         return submissionConfig.build().get();
 

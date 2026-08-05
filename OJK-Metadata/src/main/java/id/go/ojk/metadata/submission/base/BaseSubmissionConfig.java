@@ -90,7 +90,7 @@ public abstract class BaseSubmissionConfig extends BaseMetadata {
         }
 
         public <C extends ReferenceConfig> Config<T> setReferenceConfigs(C referenceConfigs) {
-            if (referenceConfigs == null) throw new IllegalStateException();
+//            if (referenceConfigs == null) throw new IllegalStateException();
 
             BaseSubmissionConfig.this.referenceConfig = referenceConfigs;
             return this;

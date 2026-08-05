@@ -23,7 +23,8 @@ public class DppkkDatBuilder extends BaseDatBuilder {
 	private static final EReport REPORT_TL = EReport.TL_DPPKK;
 	private static final EReport REPORT_TL_UUS = EReport.TL_DPPKU;
     private static final EReport REPORT_LKTB = EReport.LKBT_DPPKK;
-	private static final List<String> DUMMY_USER = Arrays.asList("dppkkdummy@gmail.com", "dev.external002@gmail.com", "dev.external05@gmail.com", "airdev.test01@gmail.com", "airdev.test02@gmail.com", "apolo.sit006@gmail.com", "apolo.sit007@gmail.com", "dev@local");
+	private static final List<String> DUMMY_USER = Arrays.asList("dppkkdummy@gmail.com", "dev.external002@gmail.com", "dev.external05@gmail.com", "airdev.test01@gmail.com",
+			"airdev.test02@gmail.com", "apolo.sit006@gmail.com", "apolo.sit007@gmail.com", "dev@local");
 
 	public static void main(String[] args) {
 		try {

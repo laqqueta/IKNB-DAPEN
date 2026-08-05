@@ -33,7 +33,7 @@ public class LbltMetadataValidation<T extends Enum<T> & ILbltMetadataValidation>
                 .filter(e -> e.getProgramTypes().contains(programType) || e.getProgramTypes().contains(ProgramType.ALL))
                 .collect(Collectors.toList());
 
-        if (enumVals.isEmpty()) throw new IllegalStateException("empty metadata validation");
+//        if (enumVals.isEmpty()) throw new IllegalStateException("empty metadata validation");
 
         return enumVals;
     }

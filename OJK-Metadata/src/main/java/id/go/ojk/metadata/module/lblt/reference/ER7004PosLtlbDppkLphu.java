@@ -153,6 +153,8 @@ public enum ER7004PosLtlbDppkLphu implements IObject<KeyValueString> {
                 return Configs.REF_CONFIG_PPIPM;
             case DPLK:
                 return Configs.REF_CONFIG_DPLK;
+            case PPMPPPIPK:
+                return null;
             default:
                 throw new IllegalStateException();
         }

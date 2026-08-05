@@ -15,6 +15,7 @@ import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataLkdpPpipm;
 import id.go.ojk.metadata.module.lblt.reference.ER7201PosLtlbDppkLcf;
 import id.go.ojk.metadata.module.lblt.validations.E7201LcfValidationsConfig;
 import id.go.ojk.metadata.submission.SubmissionConfig;
+import id.go.ojk.metadata.submission.base.BaseSubmissionConfig;
 import id.go.ojk.metadata.util.constants.ProgramType;
 import id.go.ojk.metadata.util.constants.SectorType;
 import id.go.ojk.metadata.validation.base.BaseMetadataValidation;
@@ -89,22 +90,23 @@ public enum Dppk0121Lcf implements ILbltFieldMetadata {
 
     private static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, ProgramType programType) {
         EFormLaporanBulananTahunan form = EFormLaporanBulananTahunan.LTLB_LCF;
+        int rowSize = 7;
         SubmissionFormatBuilder sfConfig = SubmissionFormatBuilder.builder()
                 .code(form.getCode())
                 .name(form.getName())
                 .extension(ExtensionType.TXT)
                 .reportCode(programType.toString())
-                .maxRow(7)
-                .minRow(7)
+                .maxRow(rowSize)
+                .minRow(rowSize)
                 .fields(new ArrayList<>())
                 .build();
 
-        if (sectorType.equals(KONVENSIONAL) || sectorType.equals(SYARIAH)) {
-            return sfConfig;
+        if (programType == PPMPPPIPK) {
+            sfConfig.setMaxRow(null);
+            sfConfig.setMinRow(0);
         }
 
-
-        throw new IllegalArgumentException("Unknown sector type: " + sectorType);
+        return sfConfig;
     }
 
     public static SubmissionFormat formMetadata(SectorType sectorType, ProgramType programType) {
@@ -119,18 +121,33 @@ public enum Dppk0121Lcf implements ILbltFieldMetadata {
             case DPLK:
                 metadataValidation = E7201LcfValidationsConfig.VALIDATION_METADATA_DPLK;
                 break;
+            case PPMPPPIPK:
+                break;
             default:
                 throw new IllegalStateException();
         }
 
-        return new SubmissionConfig(programType)
+        BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType)
                 .config()
-                .setReferenceConfigs(ER7201PosLtlbDppkLcf.Configs.REF_CONFIG)
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
-                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-                .setSegmentValidations(metadataValidation)
-                .build()
-                .get();
+//                .setReferenceConfigs(referenceConfig)
+//                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+//                .setSegmentValidations(metadataValidation)
+                ;
+
+        if (programType == PPMPPPIPK) {
+            List<Integer> gabunganFields = Arrays.asList(0, 1, 1000, 2, 3, 4, 5, 6, 7, 8);
+            submissionConfig
+                    .setSubmissionField(FIELD_METADATA.getReindexClearedFields(gabunganFields, true))
+                    .setSegmentValidations();
+        } else {
+            submissionConfig
+                    .setReferenceConfigs(ER7201PosLtlbDppkLcf.Configs.REF_CONFIG)
+                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                    .setSegmentValidations(metadataValidation);
+        }
+
+        return submissionConfig.build().get();
     }
 
     @Override

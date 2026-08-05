@@ -6,10 +6,7 @@ import java.time.format.DateTimeFormatter;
 import id.go.ojk.client.model.config.SubmissionMetadata;
 import id.go.ojk.client.vc.HomeController;
 import id.go.ojk.conf.client.BaseMetadataBuilder;
-import id.go.ojk.dppkk.client.builder.field.ltlb.MetadataPPIPK;
-import id.go.ojk.dppkk.client.builder.field.ltlb.MetadataPPIPM;
-import id.go.ojk.dppkk.client.builder.field.ltlb.MetadataPPMPK;
-import id.go.ojk.dppkk.client.builder.field.ltlb.MetadataPPMPM;
+import id.go.ojk.dppkk.client.builder.field.ltlb.*;
 import id.go.ojk.dppkk.client.builder.field.rb.metadata.MetadataRb;
 import id.go.ojk.dppkk.client.builder.field.rb.metadata.MetadataRe;
 import id.go.ojk.dppkk.client.builder.field.rb.metadata.MetadataRp;
@@ -62,6 +59,7 @@ public class MetadataBuilder extends BaseMetadataBuilder {
 		res.getFormats().addAll(MetadataPPMPM.getMetadata());
 		res.getFormats().addAll(MetadataPPIPK.getMetadata());
 		res.getFormats().addAll(MetadataPPIPM.getMetadata());
+		res.getFormats().addAll(MetadataPPMPKPPIPK.getMetadata());
 		return res;
 	}
 
