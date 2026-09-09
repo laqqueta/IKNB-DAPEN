@@ -8,7 +8,9 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ER7042PosLtlbDppkPiut implements IObject<KeyValueString> {
@@ -24,6 +26,20 @@ public enum ER7042PosLtlbDppkPiut implements IObject<KeyValueString> {
         for (ER7042PosLtlbDppkPiut eEnum : ER7042PosLtlbDppkPiut.values()) {
             res.add(eEnum.getObject());
         }
+        return res;
+    }
+
+    public static List<KeyValueString> getObjectsGabungan() {
+        List<KeyValueString> res = getObjects();
+
+        res.addAll(Arrays.stream(ER7042PosLtlbDppkPiut.values())
+                .map(ER7042PosLtlbDppkPiut::getObject)
+                .collect(Collectors.toList()));
+
+        res.addAll(Arrays.stream(ER7042PosLtlbDppkPiut.values())
+                .map(ER7042PosLtlbDppkPiut::getObject)
+                .collect(Collectors.toList()));
+
         return res;
     }
 
@@ -74,6 +90,34 @@ public enum ER7042PosLtlbDppkPiut implements IObject<KeyValueString> {
             }
         },
 
+        REF_CONFIG_PPMPKPPIPK {
+            private final String rowPPMP = UtilMetadata.genPipeRow(getObjectsGabungan(), new int[] { 1 });
+            private final String rowPPIP = UtilMetadata.genPipeRow(getObjectsGabungan(), new int[] { 3 });
 
+            @Override
+            public String savePos() {
+                return UtilMetadata.genFieldSave("2|4|5|6|7|8|9|10|11|12|13|14", getObjectsGabungan());
+            }
+
+            @Override
+            public String savePosForm() {
+                return UtilMetadata.genFieldSave("2|4|5|6|7|8|9|10|11|12|13|14", getObjectsGabungan());
+            }
+
+            @Override
+            public Integer segmentRequireColumnLink() {
+                return 2;
+            }
+
+            @Override
+            public String segmentColumnValue() {
+                return "PPMP|PPIP";
+            }
+
+            @Override
+            public String segmentReqiurePosCode() {
+                return rowPPMP + "#" + rowPPIP;
+            }
+        }
     }
 }

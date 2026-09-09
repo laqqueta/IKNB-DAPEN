@@ -9,8 +9,10 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ER7102PosLtlbDppkPinv implements IObject<KeyValueString> {
@@ -112,10 +114,29 @@ public enum ER7102PosLtlbDppkPinv implements IObject<KeyValueString> {
         return res;
     }
 
-    public static List<KeyValueString> getObjects(ProgramType programType) {
+    public static List<KeyValueString> getObjects(ProgramType jenisProgram) {
+        if (!jenisProgram.equals(ProgramType.PPMPPPIPK)) return getNonGabunganObjects(jenisProgram);
+
+        ER7102PosLtlbDppkPinv[] eVals = ER7102PosLtlbDppkPinv.values();
+
+        List<KeyValueString> res = Arrays.stream(eVals)
+                .filter(eEnum -> eEnum.jenisProgram.contains(ProgramType.PPMPK) || eEnum.jenisProgram.contains(ProgramType.ALL))
+                .map(ER7102PosLtlbDppkPinv::getObject).collect(Collectors.toList());
+
+        res.addAll(Arrays.stream(eVals)
+                .filter(eEnum -> eEnum.jenisProgram.contains(ProgramType.PPIPK) || eEnum.jenisProgram.contains(ProgramType.ALL))
+                .map(ER7102PosLtlbDppkPinv::getObject)
+                .collect(Collectors.toList()));
+
+        return res;
+    }
+
+    private static List<KeyValueString> getNonGabunganObjects(ProgramType jenisProgram) {
         List<KeyValueString> res = new ArrayList<>();
         for (ER7102PosLtlbDppkPinv eEnum : ER7102PosLtlbDppkPinv.values()) {
-            if (programType.equals(ProgramType.DPLK) && eEnum.jenisProgram.contains(ProgramType.DPLK)) {
+            if (!jenisProgram.equals(ProgramType.DPLK) && (eEnum.jenisProgram.contains(jenisProgram) || eEnum.jenisProgram.contains(ProgramType.ALL))) {
+                res.add(eEnum.getObject());
+            } else if (jenisProgram.equals(ProgramType.DPLK) && eEnum.jenisProgram.contains(ProgramType.DPLK)) {
                 res.add(eEnum.getObject());
             }
         }
@@ -145,5 +166,35 @@ public enum ER7102PosLtlbDppkPinv implements IObject<KeyValueString> {
                 return UtilMetadata.genFieldSave("2|3|4|5", getObjects());
             }
         },
+
+        REF_CONFIG_PPMPKPPIPK {
+            private final String rowPPMP = UtilMetadata.genPipeRow(getObjects(ProgramType.PPMPPPIPK));
+            private final String rowPPIP = UtilMetadata.genPipeRow(getObjects(ProgramType.PPMPPPIPK));
+
+            @Override
+            public String savePos() {
+                return UtilMetadata.genFieldSave("2|3|4|5|6", getObjects(ProgramType.PPMPPPIPK));
+            }
+
+            @Override
+            public String savePosForm() {
+                return UtilMetadata.genFieldSave("2|3|4|5|6", getObjects(ProgramType.PPMPPPIPK));
+            }
+
+            @Override
+            public Integer segmentRequireColumnLink() {
+                return 2;
+            }
+
+            @Override
+            public String segmentColumnValue() {
+                return "PPMP|PPIP";
+            }
+
+            @Override
+            public String segmentReqiurePosCode() {
+                return rowPPMP + "#" + rowPPIP;
+            }
+        }
     }
 }

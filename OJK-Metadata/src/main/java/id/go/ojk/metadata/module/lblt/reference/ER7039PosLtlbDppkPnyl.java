@@ -8,7 +8,9 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ER7039PosLtlbDppkPnyl implements IObject<KeyValueString> {
@@ -68,6 +70,36 @@ public enum ER7039PosLtlbDppkPnyl implements IObject<KeyValueString> {
             @Override
             public String requiredPos() {
                 return UtilMetadata.genPipeRow(getObjects(), new int[] { 1 });
+            }
+        },
+
+        REF_CONFIG_PPMPKPPIPK {
+            private final String rowPPMP = UtilMetadata.genPipeRow(getObjectsGabungan(), new int[] { 1 });
+            private final String rowPPIP = UtilMetadata.genPipeRow(getObjectsGabungan(), new int[] { 3 });
+
+            @Override
+            public String savePos() {
+                return UtilMetadata.genFieldSave("2|3|10|12|16|17|20|22|31", getObjectsGabungan());
+            }
+
+            @Override
+            public String savePosForm() {
+                return UtilMetadata.genFieldSave("2|3|10|12|16|17|20|22|31", getObjectsGabungan());
+            }
+
+            @Override
+            public Integer segmentRequireColumnLink() {
+                return 2;
+            }
+
+            @Override
+            public String segmentColumnValue() {
+                return "PPMP|PPIP";
+            }
+
+            @Override
+            public String segmentReqiurePosCode() {
+                return rowPPMP + "#" + rowPPIP;
             }
         }
     }

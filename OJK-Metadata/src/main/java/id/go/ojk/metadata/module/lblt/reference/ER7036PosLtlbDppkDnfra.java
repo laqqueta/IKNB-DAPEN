@@ -8,7 +8,9 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ER7036PosLtlbDppkDnfra implements IObject<KeyValueString> {
@@ -57,17 +59,47 @@ public enum ER7036PosLtlbDppkDnfra implements IObject<KeyValueString> {
         REF_CONFIG {
             @Override
             public String savePos() {
-                return UtilMetadata.genFieldSave("6|7|8|9|12", getObjects());
+                return UtilMetadata.genFieldSave("5|6|7|8", getObjects());
             }
 
             @Override
             public String savePosForm() {
-                return UtilMetadata.genFieldSave("7|8|11", getObjects());
+                return UtilMetadata.genFieldSave("6|7|10", getObjects());
             }
 
             @Override
             public String requiredPos() {
                 return UtilMetadata.genPipeRow(getObjects(), new int[] { 1 });
+            }
+        },
+
+        REF_CONFIG_PPMPKPPIPK {
+            private final String rowPPMP = UtilMetadata.genPipeRow(getObjectsGabungan(), new int[] { 1 });
+            private final String rowPPIP = UtilMetadata.genPipeRow(getObjectsGabungan(), new int[] { 3 });
+
+            @Override
+            public String savePos() {
+                return UtilMetadata.genFieldSave("2|6|7|8|9|11", getObjectsGabungan());
+            }
+
+            @Override
+            public String savePosForm() {
+                return UtilMetadata.genFieldSave("2|6|7|8|9|11", getObjectsGabungan());
+            }
+
+            @Override
+            public Integer segmentRequireColumnLink() {
+                return 2;
+            }
+
+            @Override
+            public String segmentColumnValue() {
+                return "PPMP|PPIP";
+            }
+
+            @Override
+            public String segmentReqiurePosCode() {
+                return rowPPMP + "#" + rowPPIP;
             }
         }
     }

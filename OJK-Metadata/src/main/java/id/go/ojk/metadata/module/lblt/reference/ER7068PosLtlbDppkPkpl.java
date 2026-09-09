@@ -108,11 +108,4 @@ public enum ER7068PosLtlbDppkPkpl implements IObject<KeyValueString> {
             }
         },
     }
-
-    public static void main(String[] args) {
-        getObjectsGabungan().forEach(v -> System.out.println(v.getKey() + " > " + v.getValue()));
-        System.out.println(Configs.REF_CONFIG_PPMPKPPIPK.segmentReqiurePosCode());
-    }
-
-    // REF_CONFIG \{\n@Override\npublic String savePos\(\) \{\nreturn UtilMetadata\.genFieldSave\("[^"]*", getObjects\(\)\);\n\}\n\n@Override\n    public String savePosForm\(\) \{\n        return UtilMetadata\.genFieldSave\("[^"]*", getObjects\(\)\);\n    \}\n\n    @Override\n    public String requiredPos\(\) \{\n        return UtilMetadata\.genPipeRow\(getObjects\(\), new int\[\] \{ 1 \}\);\n    \}\n\},
 }

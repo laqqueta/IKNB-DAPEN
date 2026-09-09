@@ -71,6 +71,36 @@ public enum ER7067PosLtlbDppkPph implements IObject<KeyValueString> {
             public String requiredPos() {
                 return UtilMetadata.genPipeRow(getObjects(), new int[] { 1 });
             }
+        },
+
+        REF_CONFIG_PPMPKPPIPK {
+            private final String rowPPMP = UtilMetadata.genPipeRow(getObjectsGabungan(), new int[] { 1 });
+            private final String rowPPIP = UtilMetadata.genPipeRow(getObjectsGabungan(), new int[] { 3 });
+
+            @Override
+            public String savePos() {
+                return UtilMetadata.genFieldSave("2|4|5", getObjectsGabungan());
+            }
+
+            @Override
+            public String savePosForm() {
+                return UtilMetadata.genFieldSave("2|4|5", getObjectsGabungan());
+            }
+
+            @Override
+            public Integer segmentRequireColumnLink() {
+                return 2;
+            }
+
+            @Override
+            public String segmentColumnValue() {
+                return "PPMP|PPIP";
+            }
+
+            @Override
+            public String segmentReqiurePosCode() {
+                return rowPPMP + "#" + rowPPIP;
+            }
         }
     }
 }
