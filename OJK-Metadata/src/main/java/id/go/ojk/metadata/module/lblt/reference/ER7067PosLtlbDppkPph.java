@@ -8,7 +8,9 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ER7067PosLtlbDppkPph implements IObject<KeyValueString> {
@@ -24,6 +26,20 @@ public enum ER7067PosLtlbDppkPph implements IObject<KeyValueString> {
         for (ER7067PosLtlbDppkPph eEnum : ER7067PosLtlbDppkPph.values()) {
             res.add(eEnum.getObject());
         }
+        return res;
+    }
+
+    public static List<KeyValueString> getObjectsGabungan() {
+        List<KeyValueString> res = getObjects();
+
+        res.addAll(Arrays.stream(ER7067PosLtlbDppkPph.values())
+                .map(ER7067PosLtlbDppkPph::getObject)
+                .collect(Collectors.toList()));
+
+        res.addAll(Arrays.stream(ER7067PosLtlbDppkPph.values())
+                .map(ER7067PosLtlbDppkPph::getObject)
+                .collect(Collectors.toList()));
+
         return res;
     }
 

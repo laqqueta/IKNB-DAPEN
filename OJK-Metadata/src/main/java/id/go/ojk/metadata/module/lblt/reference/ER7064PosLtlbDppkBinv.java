@@ -27,6 +27,20 @@ public enum ER7064PosLtlbDppkBinv implements IObject<KeyValueString> {
         return res;
     }
 
+    public static List<KeyValueString> getObjectsGabungan() {
+        List<KeyValueString> res = getObjects();
+
+        res.addAll(Arrays.stream(ER7064PosLtlbDppkBinv.values())
+                .map(ER7064PosLtlbDppkBinv::getObject)
+                .collect(Collectors.toList()));
+
+        res.addAll(Arrays.stream(ER7064PosLtlbDppkBinv.values())
+                .map(ER7064PosLtlbDppkBinv::getObject)
+                .collect(Collectors.toList()));
+
+        return res;
+    }
+
     public static String getName() {
         return ER7064PosLtlbDppkBinv.class.getSimpleName().substring(6);
     }

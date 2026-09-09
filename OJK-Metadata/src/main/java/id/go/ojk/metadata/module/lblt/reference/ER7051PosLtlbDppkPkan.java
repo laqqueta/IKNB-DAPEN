@@ -27,6 +27,20 @@ public enum ER7051PosLtlbDppkPkan implements IObject<KeyValueString> {
         return res;
     }
 
+    public static List<KeyValueString> getObjectsGabungan() {
+        List<KeyValueString> res = getObjects();
+
+        res.addAll(Arrays.stream(ER7051PosLtlbDppkPkan.values())
+                .map(ER7051PosLtlbDppkPkan::getObject)
+                .collect(Collectors.toList()));
+
+        res.addAll(Arrays.stream(ER7051PosLtlbDppkPkan.values())
+                .map(ER7051PosLtlbDppkPkan::getObject)
+                .collect(Collectors.toList()));
+
+        return res;
+    }
+
     public static String getName() {
         return ER7051PosLtlbDppkPkan.class.getSimpleName().substring(6);
     }

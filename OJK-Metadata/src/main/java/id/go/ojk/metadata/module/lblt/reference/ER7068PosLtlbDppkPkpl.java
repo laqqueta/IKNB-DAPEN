@@ -4,12 +4,19 @@ import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
+import id.go.ojk.metadata.util.constants.ProgramType;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import static id.go.ojk.lib.client.model.config.DataType.numeric;
+
+@RequiredArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ER7068PosLtlbDppkPkpl implements IObject<KeyValueString> {
 
@@ -24,6 +31,20 @@ public enum ER7068PosLtlbDppkPkpl implements IObject<KeyValueString> {
         for (ER7068PosLtlbDppkPkpl eEnum : ER7068PosLtlbDppkPkpl.values()) {
             res.add(eEnum.getObject());
         }
+        return res;
+    }
+
+    public static List<KeyValueString> getObjectsGabungan() {
+        List<KeyValueString> res = getObjects();
+
+        res.addAll(Arrays.stream(ER7068PosLtlbDppkPkpl.values())
+                .map(ER7068PosLtlbDppkPkpl::getObject)
+                .collect(Collectors.toList()));
+
+        res.addAll(Arrays.stream(ER7068PosLtlbDppkPkpl.values())
+                .map(ER7068PosLtlbDppkPkpl::getObject)
+                .collect(Collectors.toList()));
+
         return res;
     }
 
@@ -55,6 +76,43 @@ public enum ER7068PosLtlbDppkPkpl implements IObject<KeyValueString> {
             public String requiredPos() {
                 return UtilMetadata.genPipeRow(getObjects(), new int[] { 1 });
             }
-        }
+        },
+
+        REF_CONFIG_PPMPKPPIPK {
+            private final String rowPPMP = UtilMetadata.genPipeRow(getObjectsGabungan(), new int[] { 1 });
+            private final String rowPPIP = UtilMetadata.genPipeRow(getObjectsGabungan(), new int[] { 3 });
+
+            @Override
+            public String savePos() {
+                return UtilMetadata.genFieldSave("2|4|5", getObjectsGabungan());
+            }
+
+            @Override
+            public String savePosForm() {
+                return UtilMetadata.genFieldSave("2|4|5", getObjectsGabungan());
+            }
+
+            @Override
+            public Integer segmentRequireColumnLink() {
+                return 2;
+            }
+
+            @Override
+            public String segmentColumnValue() {
+                return "PPMP|PPIP";
+            }
+
+            @Override
+            public String segmentReqiurePosCode() {
+                return rowPPMP + "#" + rowPPIP;
+            }
+        },
     }
+
+    public static void main(String[] args) {
+        getObjectsGabungan().forEach(v -> System.out.println(v.getKey() + " > " + v.getValue()));
+        System.out.println(Configs.REF_CONFIG_PPMPKPPIPK.segmentReqiurePosCode());
+    }
+
+    // REF_CONFIG \{\n@Override\npublic String savePos\(\) \{\nreturn UtilMetadata\.genFieldSave\("[^"]*", getObjects\(\)\);\n\}\n\n@Override\n    public String savePosForm\(\) \{\n        return UtilMetadata\.genFieldSave\("[^"]*", getObjects\(\)\);\n    \}\n\n    @Override\n    public String requiredPos\(\) \{\n        return UtilMetadata\.genPipeRow\(getObjects\(\), new int\[\] \{ 1 \}\);\n    \}\n\},
 }
