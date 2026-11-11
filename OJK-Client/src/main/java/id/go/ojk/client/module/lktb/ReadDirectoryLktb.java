@@ -39,6 +39,7 @@ public class ReadDirectoryLktb extends BaseReadDirectory {
     protected void clearFormData() {
         super.clearFormData();
         SubmissionFormat.treeMapPosValueForm.clear();
+        SubmissionFormat.segmentUniquePos.clear();
     }
 
     private LocalDate getReportPeriod(File file) {
