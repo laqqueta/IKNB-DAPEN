@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-@XStreamAlias("ConditionalPosAndComparatorHasValue3")
+@XStreamAlias("ConditionalPosAndComparatorHasValueSbn")
 public class ConditionalPosAndComparatorHasValueSbn extends MapParamConditionalRequired {
 	private RequiredCondition trueCondition;
 	private RequiredCondition falseCondition;

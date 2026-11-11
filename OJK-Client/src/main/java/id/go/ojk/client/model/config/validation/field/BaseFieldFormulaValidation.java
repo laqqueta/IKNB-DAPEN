@@ -53,7 +53,7 @@ public abstract class BaseFieldFormulaValidation extends MapParamFieldValidation
 						} else if (valueOperator.equals("*")) {
 							res = res.multiply(tmp);
 						} else if (valueOperator.equals("/")) {
-							if (tmp == BigDecimal.ZERO) {
+							if (tmp.equals(BigDecimal.ZERO)) {
 								res = BigDecimal.ZERO;
 							} else {
 								res = res.divide(tmp);
@@ -91,7 +91,7 @@ public abstract class BaseFieldFormulaValidation extends MapParamFieldValidation
 						} else if (valueOperator.equals("*")) {
 							res = res.multiply(tmp);
 						} else if (valueOperator.equals("/")) {
-							if (tmp == BigDecimal.ZERO) {
+							if (tmp.equals(BigDecimal.ZERO)) {
 								res = BigDecimal.ZERO;
 							} else {
 								res = res.divide(tmp, MathContext.DECIMAL64);
@@ -130,7 +130,7 @@ public abstract class BaseFieldFormulaValidation extends MapParamFieldValidation
 						} else if (valueOperator.equals("*")) {
 							res = res.multiply(tmp);
 						} else if (valueOperator.equals("/")) {
-							if (tmp == BigDecimal.ZERO) {
+							if (tmp.equals(BigDecimal.ZERO)) {
 								res = BigDecimal.ZERO;
 							} else {
 								res = res.divide(tmp, 4, RoundingMode.HALF_EVEN);
