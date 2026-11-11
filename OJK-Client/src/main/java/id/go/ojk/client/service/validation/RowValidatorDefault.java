@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.regex.Pattern;
 
+import id.go.ojk.client.util.CharacterSpliter;
 import org.apache.commons.lang3.StringUtils;
 
 import id.go.ojk.client.model.bind.ProgressPreparationAndSending.SubmissionData;
@@ -32,7 +33,7 @@ import lombok.experimental.Tolerate;
 
 @Builder
 public class RowValidatorDefault implements RowValidator {
-	
+
 	@Setter protected SubmissionFormat submissionFormat;
 	@Setter protected List<ValidationRelation> validationRelations;
 	@Setter protected ReferenceService referenceService;
@@ -51,18 +52,18 @@ public class RowValidatorDefault implements RowValidator {
 	@Override
 	public void initilized(){
 		if ( fields == null ){
-			fields = submissionFormat.getFields();			
+			fields = submissionFormat.getFields();
 		}
-		
+
 		if (keysColumn == null){
 			keysColumn = new HashSet<>();
 			for (SubmissionField field : fields) {
 				if ( field.isUnique() ){
 					keysColumn.add(field.getNumber());
 				}
-			}			
+			}
 		}
-		
+
 		if ( segmentValidations == null ){
 			segmentValidations = new ArrayList<>();
 			for (SegmentValidation segmentValidation : submissionFormat.getSegmentValidations()) {
@@ -76,21 +77,21 @@ public class RowValidatorDefault implements RowValidator {
 					throw new SlikException("Unsuported SegmentValidationType " + segmentValidation.getSegmentValidationType());
 				}
 				segmentValidation.load(submissionFormat);
-			}			
+			}
 		}
-		
+
 		minAllDate = referenceService.getConfig(ReferenceService.minAllDate );
-		maxAllDate = referenceService.getConfig(ReferenceService.maxAllDate );		
+		maxAllDate = referenceService.getConfig(ReferenceService.maxAllDate );
 	}
-	
+
 	@Override
 	public void cleanUp() {
 		for (SegmentValidation segmentValidation : segmentValidations) {
 			segmentValidation.cleanUp();
-		}		
+		}
 	}
 
-	
+
 	@Override
 	public SubmissionFormat getSubmissionFormat(){
 		return submissionFormat;
@@ -110,7 +111,7 @@ public class RowValidatorDefault implements RowValidator {
 		if ( validationRelations != null ){
 			for (ValidationRelation validationRelation : validationRelations) {
 				validationRelation.validate(validationResult);
-			}			
+			}
 		}
 
 		//prepare ref conditional
@@ -120,12 +121,12 @@ public class RowValidatorDefault implements RowValidator {
 				validationResult.refRequiredConditions.add(conditionalRequired.analizeRequiredCondition(submissionFormat, validationResult));
 			}
 		}
-		
+
 		for(int i=0; i < fields.size(); i++){
 			if ( submissionData.isValidateBetweenRow() ){
 				if ( !keysColumn.contains(i) ){		//jika ada di keysColumn, artinya sudah di validasi
-					validateSimpleValidation(fields.get(i), validationResult);				
-				}				
+					validateSimpleValidation(fields.get(i), validationResult);
+				}
 			} else {
 				validateSimpleValidation(fields.get(i), validationResult);
 			}
@@ -135,11 +136,11 @@ public class RowValidatorDefault implements RowValidator {
 			segmentValidation.validate(submissionData, submissionFormat, validationResult);
 		}
 	}
-	
+
 	@Override
 	public void validateSimpleValidation(SubmissionField field, ValidationResult validationResult){
 		String value = validationResult.getColumn(field.getNumber());
-		
+
 		switch (field.getSimpleValidation().getRequiredCondition()) {
 		case M:
 			if ( StringUtils.isEmpty(value) ){
@@ -188,12 +189,12 @@ public class RowValidatorDefault implements RowValidator {
 			break;
 		}
 	}
-	
+
 	@Override
 	public boolean validateField(SubmissionField field, ValidationResult validationResult){
 		int preErrorSize = validationResult.errors.size();
 		String value = validationResult.getColumn(field.getNumber());
-		
+
 		if(submissionFormat.getUniqueCombineFields() == null) { // Arnol modif : lewati validasi yang unique combine
 			validateField(field, validationResult, value);
 		}
@@ -212,29 +213,29 @@ public class RowValidatorDefault implements RowValidator {
 		}
 		return validationResult.errors.size() == preErrorSize;
 	}
-	
+
 	@Override // Nisa modif
 	public boolean validateFields(Map<Integer, Boolean> validationResultCache, int fieldNumber, ValidationResult validationResult){
-		int preErrorSize = validationResult.errors.size();		
+		int preErrorSize = validationResult.errors.size();
 			Boolean valid = validationResultCache.get(fieldNumber);
 			if ( valid == null ){
 				valid = validateField(fields.get(fieldNumber), validationResult);
 				validationResultCache.put(fieldNumber, valid);
 			}
-		
+
 		return validationResult.errors.size() == preErrorSize;
 	}
 
 	@Override
 	public void validateField(SubmissionField field, ValidationResult validationResult, String value){
-		
+
 		SimpleValidation simpleValidation = field.getSimpleValidation();
 		int length = value.length();
-		
+
 		DataType dataType = simpleValidation.getDataType();
 		if ( dataType == DataType.refTable ){
 			validateReference(field, value, field.getSimpleValidation().getReferenceTableNumbers(), validationResult.errors);
-		} 
+		}
 		else if ( dataType == DataType.refTablePerSegment ) {
 			validateReferencePerSegment(field, value, field.getSimpleValidation().getReferenceTableNumbers(), validationResult.errors);
 		}
@@ -267,13 +268,22 @@ public class RowValidatorDefault implements RowValidator {
 				}
 			}
 		}
-		
+
 		if ( StringUtils.isNotEmpty(simpleValidation.getConstant()) ){
-			if( !simpleValidation.getConstant().equals(value)){
+			if (simpleValidation.getConstant().indexOf("|") > 0) { // check if there is multiple constant
+				String[] values = CharacterSpliter.PIPE.getPattern().split(simpleValidation.getConstant());
+                int ctr = values.length;
+				for (String s : values) {
+					if (!s.equals(value)) ctr--;
+				}
+
+                if (ctr == 0) validationResult.errors.add(new ValidationError(field, ValidationErrorCode.E03_37_EQUALS, values));
+
+			} else if (!simpleValidation.getConstant().equals(value)) {
 				validationResult.errors.add(new ValidationError(field, ValidationErrorCode.E11_06_EQUAL, field.getName(), simpleValidation.getConstant()));
 			}
 		}
-		
+
 		//field validation
 		customFieldValidation(field, validationResult);
 //		List<FieldValidation> fieldValidations = field.getFieldValidations();
@@ -283,17 +293,17 @@ public class RowValidatorDefault implements RowValidator {
 //			}
 //		}
 	}
-	
+
 	@Override
 	public void validateReference(SubmissionField field, String code, List<Integer> referenceNumbers, List<ValidationError> errors){
-		referenceService.validate(field, code, referenceNumbers, errors);	
+		referenceService.validate(field, code, referenceNumbers, errors);
 	}
-	
+
 	@Override
 	public void validateReferencePerSegment(SubmissionField field, String code, List<Integer> referenceNumbers, List<ValidationError> errors){
-		referenceService.validatePerSegment(field, code, submissionFormat.getCode(), referenceNumbers, errors);	
+		referenceService.validatePerSegment(field, code, submissionFormat.getCode(), referenceNumbers, errors);
 	}
-	
+
 	@Override
 	public Tupple2<RequiredCondition, String>  analizeRequiredCondition(SubmissionField field, ValidationResult validationResult){
 		SimpleValidation simpleValidation = field.getSimpleValidation();
