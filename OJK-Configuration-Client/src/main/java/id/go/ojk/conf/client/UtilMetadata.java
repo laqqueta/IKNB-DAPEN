@@ -109,6 +109,38 @@ public class UtilMetadata {
         return res.length() > 0 ? res.toString().substring(0, res.length() - 1) : "";
     }
 
+    public static String genDelimitedRowExcept(List<KeyValueString> listKv, List<KeyValueString> exceptArr, String delimiter) {
+        StringBuilder res = new StringBuilder();
+        for (int i = 0; i < listKv.size(); i++) {
+            KeyValueString kv = listKv.get(i);
+            boolean isExcept = isExcept(kv, exceptArr);
+            if (!isExcept) {
+                res.append(kv.getKey());
+                res.append(delimiter);
+            }
+        }
+        return res.length() > 0 ? res.toString().substring(0, res.length() - 1) : "";
+    }
+
+    public static String genDelimitedRowExcept2(List<KeyValueString> listKv, int[] exceptArrIdx, String delimiter) {
+        StringBuilder res = new StringBuilder();
+        List<KeyValueString> exceptArr = new ArrayList<>();
+
+        for (int i : exceptArrIdx) {
+            exceptArr.add(listKv.get(i));
+        }
+
+        for (int i = 0; i < listKv.size(); i++) {
+            KeyValueString kv = listKv.get(i);
+            boolean isExcept = isExcept(kv, exceptArr);
+            if (!isExcept) {
+                res.append(kv.getKey());
+                res.append(delimiter);
+            }
+        }
+        return res.length() > 0 ? res.toString().substring(0, res.length() - 1) : "";
+    }
+
     public static String genDelimitedRow(List<KeyValueString> listKv, int[] arr, String delimiter) {
         StringBuilder res = new StringBuilder();
         int length = arr.length;
@@ -484,6 +516,17 @@ public class UtilMetadata {
         boolean res = false;
         for (int i = 0; i < arr.length; i++) {
             res = (value == arr[i]);
+            if (res) {
+                break;
+            }
+        }
+        return res;
+    }
+
+    private static boolean isExcept(KeyValueString current, List<KeyValueString> except) {
+        boolean res = false;
+        for (KeyValueString keyValueString : except) {
+            res = keyValueString.getKey().equals(current.getKey());
             if (res) {
                 break;
             }

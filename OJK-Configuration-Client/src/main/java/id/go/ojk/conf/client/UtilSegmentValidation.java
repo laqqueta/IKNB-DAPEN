@@ -217,6 +217,14 @@ public class UtilSegmentValidation {
         return new LengthValidation(builder.toString());
     }
 
+    public static SegmentValidation genLengthOptional(String selectField, String selectPosCode, int minLength, int maxLength) {
+        StringBuilder builder = new StringBuilder("selectField=" + selectField);
+        builder.append("&selectPosCode=" + selectPosCode);
+        builder.append("&minLength=" + minLength);
+        builder.append("&maxLength=" + maxLength);
+        return new LengthOptionalValidation(builder.toString());
+    }
+
     public static SegmentValidation genFixedValue(String selectField, String selectPosCode, String value) {
         StringBuilder builder = new StringBuilder("selectField=" + selectField);
         builder.append("&selectPosCode=" + selectPosCode);
@@ -270,6 +278,20 @@ public class UtilSegmentValidation {
         builder.append("&operator=e");
         builder.append("&msgError=" + msgError);
         return new RatioValidation(builder.toString());
+    }
+
+    public static SegmentValidation genEqualsRatioDapen(String selectField, String fieldResult, String rightFormula,
+                                                   String filterField, String filterValue,
+                                                   String msgError) {
+        StringBuilder builder = new StringBuilder("selectField=" + selectField);
+        builder.append("&selectPosCode=" + fieldResult);
+        builder.append("&leftFormula=" + fieldResult);
+        builder.append("&rightFormula=" + rightFormula);
+        builder.append("&fieldFilter=" + filterField);
+        builder.append("&filterValue=" + filterValue);
+        builder.append("&operator=e");
+        builder.append("&msgError=" + msgError);
+        return new RatioValidation3(builder.toString());
     }
 
     public static SegmentValidation genEqualsRatioByRatio(String selectField, String fieldResult, String rightFormula,
@@ -981,6 +1003,35 @@ public class UtilSegmentValidation {
         return new ComparisonFormulaValidation(builder.toString());
     }
 
+    public static SegmentValidation genFilterEqualsFormula_DAPEN(String selectField, String selectPosCode, String comparatorPosCode,
+                                                           String msgError) {
+        return genFilterEqualsFormula(selectField, selectPosCode, comparatorPosCode, "2", "PPMP|PPIP", msgError, 2);
+    }
+
+    public static SegmentValidation genFilterEqualsFormula_DAPEN_PPIP(String selectField, String selectPosCode, String comparatorPosCode,
+                                                                 String msgError) {
+        return genFilterEqualsFormula(selectField, selectPosCode, comparatorPosCode, "2", "PPIP", msgError, 2);
+    }
+
+    public static SegmentValidation genFilterEqualsFormula_DAPEN_PPMP(String selectField, String selectPosCode, String comparatorPosCode,
+                                                                 String msgError) {
+        return genFilterEqualsFormula(selectField, selectPosCode, comparatorPosCode, "2", "PPMP", msgError, 2);
+    }
+
+    public static SegmentValidation genFilterEqualsFormula(String selectField, String selectPosCode, String comparatorPosCode,
+                                                     String filterField, String filterValue,
+                                                     String msgError, int scale) {
+        StringBuilder builder = new StringBuilder("selectField=" + selectField);
+        builder.append("&selectPosCode=" + selectPosCode);
+        builder.append("&comparatorPosCode=" + comparatorPosCode);
+        builder.append("&filterField=" + filterField);
+        builder.append("&filterValue=" + filterValue);
+        builder.append("&operator=e");
+        builder.append("&scale=" + scale);
+        builder.append("&msgError=" + msgError);
+        return new ComparisonFilterFormulaValidation(builder.toString());
+    }
+
     public static SegmentValidation genEqualsFormulaLan(String selectField, String selectPosCode, String comparatorPosCode,
                                                         String msgError, int scale) {
         StringBuilder builder = new StringBuilder("selectField=" + selectField);
@@ -990,6 +1041,20 @@ public class UtilSegmentValidation {
         builder.append("&scale=" + scale);
         builder.append("&msgError=" + msgError);
         return new ComparisonFormulaValidation4(builder.toString());
+    }
+
+    public static SegmentValidation genEqualsFormulaLan(String selectField, String selectPosCode, String comparatorPosCode,
+                                                        String filterField, String filterValue,
+                                                        String msgError, int scale) {
+        StringBuilder builder = new StringBuilder("selectField=" + selectField);
+        builder.append("&selectPosCode=" + selectPosCode);
+        builder.append("&comparatorPosCode=" + comparatorPosCode);
+        builder.append("&operator=e");
+        builder.append("&scale=" + scale);
+        builder.append("&filterField=" + filterField);
+        builder.append("&filterValue=" + filterValue);
+        builder.append("&msgError=" + msgError);
+        return new ComparisonFormulaValidation4Filter(builder.toString());
     }
 
     public static SegmentValidation genEqualsFormula(String selectField, String selectPosCode, String comparatorField,
@@ -1133,6 +1198,23 @@ public class UtilSegmentValidation {
         return new EqualsRatio2Validation(builder.toString());
     }
 
+    public static SegmentValidation genEqualsFilterRatio2(String selectField, String selectPosCode,
+                                                          String comparator1RowCode, String fieldRow1, String comparator2RowCode, String fieldRow2,
+                                                          String filterField, String filterValue,
+                                                          String message, int scale) {
+        StringBuilder builder = new StringBuilder("selectField=" + selectField);
+        builder.append("&selectPosCode=" + selectPosCode);
+        builder.append("&comparator1RowCode=" + comparator1RowCode);
+        builder.append("&fieldRow1=" + fieldRow1);
+        builder.append("&comparator2RowCode=" + comparator2RowCode);
+        builder.append("&fieldRow2=" + fieldRow2);
+        builder.append("&fieldFilter=" + filterField);
+        builder.append("&filterValue=" + filterValue);
+        builder.append("&scale=" + scale);
+        builder.append("&message=" + message);
+        return new EqualsFilterRatio2Validation(builder.toString());
+    }
+
     public static SegmentValidation genEqualsRatioLan(String selectField, String selectPosCode,
                                                       String comparator1RowCode, String fieldRow1, String comparator2RowCode, String fieldRow2, String message, int scale) {
         StringBuilder builder = new StringBuilder("selectField=" + selectField);
@@ -1144,6 +1226,23 @@ public class UtilSegmentValidation {
         builder.append("&scale=" + scale);
         builder.append("&message=" + message);
         return new EqualsRatioDppkLanValidation(builder.toString());
+    }
+
+    public static SegmentValidation genEqualsRatioLan(String selectField, String selectPosCode,
+                                                      String comparator1RowCode, String fieldRow1, String comparator2RowCode, String fieldRow2,
+                                                      String filterField, String filterValue,
+                                                      String message, int scale) {
+        StringBuilder builder = new StringBuilder("selectField=" + selectField);
+        builder.append("&selectPosCode=" + selectPosCode);
+        builder.append("&comparator1RowCode=" + comparator1RowCode);
+        builder.append("&fieldRow1=" + fieldRow1);
+        builder.append("&comparator2RowCode=" + comparator2RowCode);
+        builder.append("&fieldRow2=" + fieldRow2);
+        builder.append("&filterField=" + filterField);
+        builder.append("&filterValue=" + filterValue);
+        builder.append("&scale=" + scale);
+        builder.append("&message=" + message);
+        return new EqualsRatioDppkLanFilterValidation(builder.toString());
     }
 
     public static SegmentValidation genEqualsPercentageForm(String selectField, String selectPosCode,
