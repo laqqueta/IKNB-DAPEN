@@ -22,4 +22,18 @@ public interface ReferenceConfig {
         return null;
     }
 
+    default Integer segmentRequireColumnLink() {
+        return null;
+    }
+
+    default String segmentColumnValue() {
+        return null;
+    }
+
+    default String segmentReqiurePosCode() {
+        return null;
+    }
+
+    default String segmentUniquePos() { return null; }
+
 }
