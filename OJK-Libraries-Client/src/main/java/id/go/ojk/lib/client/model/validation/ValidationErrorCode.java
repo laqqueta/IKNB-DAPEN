@@ -161,12 +161,15 @@ public class ValidationErrorCode {
 	public static final ValidationErrorCode E50_18_FORMULA3 			= bvec("50",	"18",	"Kesalahan Formula 3",				"nilai harus %1$s");
 	public static final ValidationErrorCode E50_19_COLUMNCONDITION		= bvec("50",	"19",	"Validasi Kolom Conditional",		"nilai harus lebih dari %1$s karena Kolom '%2$s' bernilai %3$s");
 	public static final ValidationErrorCode E50_20_FORMULA_TOTAL 		= bvec("50",	"20",	"Kesalahan Formula",				"nilai total penjumlahan Kolom '%1$s' harus %2$s");
-	public static final ValidationErrorCode E50_21_FORMULA_SUMIF 		= bvec("50",	"21",	"Kesalahan Formula SUMIF",				"nilai harus sama dengan total penjumlahan pada form '%1$s' kolom '%2$s' dengan kriteria '%3$s' pada kolom '%4$s'");
-	public static final ValidationErrorCode E50_22_FORMULA_GEOMEAN 		= bvec("50",	"22",	"Kesalahan Formula",				"nilai harus = %1$s ^ (1 / Total Nilai Positif pada Kolom %2$s - %3$s) pada form %4$s");
-	public static final ValidationErrorCode E50_23_FORMULA_MULTICRITERIASUMIF = bvec("50",	"23",	"Kesalahan Formula SUMIF",				"nilai harus sama dengan total penjumlahan pada form '%1$s' kolom '%2$s' dengan kriteria '%3$s' pada kolom %4$s dan '%5$s' pada kolom %6$s");
-	public static final ValidationErrorCode E50_24_FORMULA_MULTIFORMSUMIF = bvec("50",	"24",	"Kesalahan Formula SUMIF",				"nilai harus sama dengan total penjumlahan pada '%1$s'");
+	public static final ValidationErrorCode E50_21_FORMULA_SUMIF 		= bvec("50",	"21",	"Kesalahan Formula SUMIF",				"nilai harus = Total Penjumlahan pada kolom '%2$s' Form '%1$s' dengan kondisi %4$s = '%3$s'");
+	public static final ValidationErrorCode E50_22_FORMULA_GEOMEAN 		= bvec("50",	"22",	"Kesalahan Formula",				"nilai harus = %1$s ^ (1 / Total Nilai Positif pada Kolom %2$s - %3$s) pada form '%4$s'");
+	public static final ValidationErrorCode E50_22_FORMULA_GEOMEAN_2 	= bvec("50",	"22",	"Kesalahan Formula",				"nilai harus = %1$s ^ (1 / Total Nilai Positif pada Kolom %2$s - %3$s) pada form '%4$s' dengan '%5$s' = %6$s");
+	public static final ValidationErrorCode E50_23_FORMULA_MULTICRITERIASUMIF = bvec("50",	"23",	"Kesalahan Formula SUMIF",				"nilai harus = Total Penjumlahan pada kolom '%2$s' Form '%1$s' dengan kondisi %4$s = '%3$s' dan %6$s = '%5$s'");
+	public static final ValidationErrorCode E50_24_FORMULA_MULTIFORMSUMIF = bvec("50",	"24",	"Kesalahan Formula SUMIF",				"nilai harus = Total Penjumlahan pada '%1$s'");
 	public static final ValidationErrorCode E50_25_FORMULA_CONDITION 	= bvec("50",	"25",	"Kesalahan Formula",				"nilai harus diisi '%1$s' karena %2$s");
-	public static final ValidationErrorCode E50_26_FORMULA_CONDITIONVALUE = bvec("50",	"25",	"Kesalahan Formula",				"kolom hanya dapat diisi '%1$s'");
+	public static final ValidationErrorCode E50_26_FORMULA_CONDITIONVALUE = bvec("50",	"26",	"Kesalahan Formula",				"kolom hanya dapat diisi '%1$s'");
+	public static final ValidationErrorCode E50_27_FORMULA_SUMIF_FILTER   = bvec("50",	"27",	"Kesalahan Formula SUMIF",				"nilai harus = Total Penjumlahan pada kolom '%2$s' Form '%1$s' dengan kondisi '%4$s' = '%3$s' pada %5$s = %6$s");
+	public static final ValidationErrorCode E50_28_FORMULA_MULTICRITERIASUMIF = bvec("50",	"28",	"Kesalahan Formula SUMIF",				"nilai harus = Total Penjumlahan pada kolom '%2$s' Form '%1$s' dengan kondisi %4$s = '%3$s' dan %6$s = '%5$s' pada %7$s = %8$s");
 
     //-Tidak digunakan
     public static final ValidationErrorCode E50_00_OTHER 				= bvec("50",	"00",	"Kesalahan lain",					"Kesalahan %1$s");
@@ -231,12 +234,17 @@ public class ValidationErrorCode {
     public static final ValidationErrorCode E03_29_DEVIATION_CALCULATION= bvec("03",	"29",	"Validasi Formula",		"Perhitungan Deviasi = ('%s' - '%s') / '%s'");
 
 	// Dapen 2026
-	public static final ValidationErrorCode E03_30_JENIS_PROGRAM		= bvec("03", 	"30", 	"Header - Jenis Program",		"Error di Kolom 9 'Jenis Program'. Jenis Program '%1$s' tidak sesuai dengan Program yang dipilih '%2$s'.");
+	public static final ValidationErrorCode E03_30_JENIS_PROGRAM			= bvec("03", 	"30", 	"Header - Jenis Program",		"Error di Kolom 9 'Jenis Program'. Jenis Program '%1$s' tidak sesuai dengan Program yang dipilih '%2$s'.");
 	public static final ValidationErrorCode E03_31_JENIS_PROGRAM_NOT_EXISTS	= bvec("03", 	"31", 	"Header - Jenis Program",		"Error di Kolom 9 'Jenis Program'. Jenis Program '%1$s' Tidak Terdaftar.");
-	public static final ValidationErrorCode E03_32_EQUAL_PENISUN 				= bvec("03",	"32",	"Sama Dengan",						"Program Pensiun harus diisi '%1$s' karena Jenis Program yang dipilih adalah '%2$s'");
+	public static final ValidationErrorCode E03_32_EQUAL_PENISUN 			= bvec("03",	"32",	"Sama Dengan",						"Program Pensiun harus diisi '%1$s' karena Jenis Program yang dipilih adalah '%2$s'");
 	public static final ValidationErrorCode E03_33_ROW_COUNT 				= bvec("03",	"33",	"Kesalahan",						"Jumlah baris '%1$s' minimal %2$s");
 	public static final ValidationErrorCode E03_34_EQUAL_FORM 				= bvec("03",	"34",	"Sama Dengan",						"nilai harus sama dengan %1$s pada form %2$s");
 	public static final ValidationErrorCode E03_35_EQUAL_FORM 				= bvec("03",	"35",	"Sama Dengan",						"nilai harus %1$s");
+	public static final ValidationErrorCode E03_36_UNIQUE_POS_SEGMENT 		= bvec("03",	"36",	"Harus Unik",						"Harus unik pada segment Jenis Program '%1$s'");
+	public static final ValidationErrorCode E03_37_EQUALS 					= bvec("03",	"37",	"Sama Dengan",						"nilai harus sama dengan '%1$s' atau '%2$s'");
+	public static final ValidationErrorCode E03_38_POS_SEGMENT_MUST_EXIST	= bvec("03",	"38",	"Pos Must Exist",					"Kode Komponen/Baris '%2$s' tidak ditemukan pada '%3$s' = %4$s");
+	public static final ValidationErrorCode E03_39_POS_SEGMENT_MUST_UNIQUE	= bvec("03",	"39",	"Pos Must Unique",					"Kode Komponen/Baris '%1$s' harus unik pada '%2$s' = %3$s");
+	public static final ValidationErrorCode E03_40_REFERENCE 				= bvec("03",	"40",	"Referensi",						"tidak ditemukan pada Referensi '%1$s' untuk Jenis Program = '%2$s'");
 
 	//-Tidak digunakan
 	public static final ValidationErrorCode E03_00_HEADER 				= bvec("03",	"00",	"Header",							"Header tidak valid, %1$s");
