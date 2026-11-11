@@ -8,7 +8,7 @@ import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 @XStreamAlias("metadata")
-public class SubmissionMetadata {
+public class  SubmissionMetadata {
 
 	@XStreamAsAttribute
 	public String version;
