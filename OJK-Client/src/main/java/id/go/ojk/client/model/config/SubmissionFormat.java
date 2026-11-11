@@ -15,6 +15,7 @@ import java.time.LocalDate;
 import java.util.*;
 import java.util.Map.Entry;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -77,6 +78,23 @@ public class SubmissionFormat {
     @XStreamAsAttribute
     private String savePosFormDb;
 
+    /*
+    * Dapen 2026
+    *
+    * This is used for segmented pos code form based on specific column value,
+    * in this case its 'Jenis Program' column for PPMPPPIPK report
+    *
+    * coud be used for similar case, but need to test it first
+    * */
+    @XStreamAsAttribute
+    private Integer segmentRequireColumnLink;
+    @XStreamAsAttribute
+    private String segmentColumnValue;
+    @XStreamAsAttribute
+    private String segmentReqiurePosCode;
+    @XStreamAsAttribute
+    private String segmentUniquePosCode;
+
     private Integer totalRow;
     private Integer reportFormGroupCode;
     private List<SubmissionField> fields = new ArrayList<>();
@@ -89,6 +107,7 @@ public class SubmissionFormat {
     public static List<String> officeCodeErrorChecker = new ArrayList<String>();
     public static List<String> tempOtherValueList = new ArrayList<String>();
     public static List<String> checkUniqueCustom = new ArrayList<String>();
+    public static Map<String, Set<String>> segmentUniquePos = new HashMap<>();
     public static Map<String, Map<String, String>> mapPosValue = new HashMap<>();
     public static Map<String, List<String>> mapPosValueLBBPRK = new HashMap<String, List<String>>();
     public static Map<String, Map<String, String>> mapPosValueForm = new HashMap<>();
@@ -346,6 +365,54 @@ public class SubmissionFormat {
 
     public void setRequiredPos(ReferenceConfig referenceConfig) {
         this.requiredPos = referenceConfig.requiredPos();
+    }
+
+    public Integer getSegmentRequireColumnLink() {
+        return segmentRequireColumnLink;
+    }
+
+    public void setSegmentRequireColumnLink(Integer segmentRequireColumnLink) {
+        this.segmentRequireColumnLink = segmentRequireColumnLink;
+    }
+
+    public void setSegmentRequireColumnLink(ReferenceConfig referenceConfig) {
+        this.segmentRequireColumnLink = referenceConfig.segmentRequireColumnLink();
+    }
+
+    public String getSegmentColumnValue() {
+        return segmentColumnValue;
+    }
+
+    public void setSegmentColumnValue(String segmentColumnValue) {
+        this.segmentColumnValue = segmentColumnValue;
+    }
+
+    public void setSegmentColumnValue(ReferenceConfig referenceConfig) {
+        this.segmentColumnValue = referenceConfig.segmentColumnValue();
+    }
+
+    public String getSegmentReqiurePosCode() {
+        return segmentReqiurePosCode;
+    }
+
+    public void setSegmentReqiurePosCode(String segmentReqiurePosCode) {
+        this.segmentReqiurePosCode = segmentReqiurePosCode;
+    }
+
+    public void setSegmentReqiurePosCode(ReferenceConfig referenceConfig) {
+        this.segmentReqiurePosCode = referenceConfig.segmentReqiurePosCode();
+    }
+
+    public String getSegmentUniquePos() {
+        return segmentUniquePosCode;
+    }
+
+    public void setSegmentUniquePos(String segmentUniquePos) {
+        this.segmentUniquePosCode = segmentUniquePos;
+    }
+
+    public void setSegmentUniquePos(ReferenceConfig referenceConfig) {
+        this.segmentUniquePosCode = referenceConfig.segmentUniquePos();
     }
 
     public String getFieldSavePos() {
@@ -608,6 +675,10 @@ public class SubmissionFormat {
         return getSum(getStreamOfFormSubMap(form + pos, Character.MAX_VALUE), field);
     }
 
+    public static BigDecimal getSumTreeMapPosFormValue(String form, String pos, String field, String filterField, String filterValue) {
+        return getSum(getStreamOfFormSubMapFieldFilter(form + pos, Character.MAX_VALUE, filterField, filterValue), field);
+    }
+
     public static BigDecimal getSumMapPosFormValueFilterByReference(String form, String pos, String field, String referenceField, List<String> referenceKeys) {
         return getSumFilterByReference(SubmissionFormat.mapPosValueForm, form + pos, field, referenceField, referenceKeys);
     }
@@ -680,15 +751,58 @@ public class SubmissionFormat {
         return null;
     }
 
+    public static String getFormValue(String prefix, String field, String fieldFilter, String filterValue) {
+        final String[] tmp = new String[1];
+        Optional<String> optVal = treeMapPosValueForm
+                .subMap(prefix, true, prefix + Character.MAX_VALUE, true).values()
+                .stream()
+                .filter(stringStringMap -> {
+                    tmp[0] = stringStringMap.get(fieldFilter);
+
+                    return tmp[0] != null && tmp[0].equalsIgnoreCase(filterValue);
+                }).map(stringStringMap -> stringStringMap.get(field))
+                .findAny();
+
+        return optVal.orElse("");
+
+    }
+
     public static SortedMap<String, Map<String, String>> getFormValues(String prefix, char ranges) {
         return treeMapPosValueForm
                 .subMap(prefix, true, prefix + ranges, true);
+    }
+
+    public static SortedMap<String, Map<String, String>> getFormValues(String prefix, char ranges, String filterField, String filterValue) {
+        final String[] tmp = new String[1];
+        return treeMapPosValueForm
+                .subMap(prefix, true, prefix + ranges, true).entrySet()
+                .stream()
+                .filter(v -> {
+                    tmp[0] = v.getValue().get(filterField);
+
+                    return tmp[0] != null && tmp[0].equalsIgnoreCase(filterValue);
+                }).collect(Collectors.toMap(
+                        Entry::getKey, Entry::getValue,
+                        (a, b) -> a,
+                        TreeMap::new));
     }
 
     public static Stream<Entry<String, Map<String, String>>> getStreamOfFormSubMap(String prefix, char ranges) {
         return treeMapPosValueForm
                 .subMap(prefix, true, prefix + ranges, true).entrySet()
                 .stream();
+    }
+
+    public static Stream<Entry<String, Map<String, String>>> getStreamOfFormSubMapFieldFilter(String prefix, char ranges, String field, String filterValue) {
+        final String[] tmp = new String[1];
+        return treeMapPosValueForm
+                .subMap(prefix, true, prefix + ranges, true).entrySet()
+                .stream()
+                .filter(v -> {
+                    tmp[0] = v.getValue().get(field);
+
+                    return tmp[0] != null && tmp[0].equalsIgnoreCase(filterValue);
+                });
     }
 
     public static Stream<Entry<String, Map<String, String>>> getStreamOfFormsSubMap(List<String> prefix, List<Character> ranges) {
@@ -754,6 +868,27 @@ public class SubmissionFormat {
         return res;
     }
 
+    public static BigDecimal getSumFilterField(Map<String, Map<String, String>> map, String pos, String field, String filterField, String filterValue) {
+        BigDecimal res = BigDecimal.ZERO;
+        String key = pos + "-";
+        for (Entry<String, Map<String, String>> entry : map.entrySet()) {
+            if (entry.getKey().startsWith(key) && (entry.getValue().get(filterField) != null &&
+                    entry.getValue().get(filterField).equals(filterValue))) {
+                String colValue = entry.getValue().get(field);
+                BigDecimal tmp = BigDecimal.ZERO;
+                try {
+                    tmp = new BigDecimal(colValue);
+                } catch (Exception e) {
+                    // silent
+                } finally {
+                    res = res.add(tmp);
+                }
+            }
+        }
+        return res;
+    }
+
+
     public static BigDecimal getSum(Stream<Entry<String, Map<String, String>>> map, String field) {
         BigDecimal[] res = { BigDecimal.ZERO };
         String[] columnVal = { "" };
@@ -763,14 +898,6 @@ public class SubmissionFormat {
             if (!isInvalidNumeric(columnVal[0])) {
                 res[0] = res[0].add(new BigDecimal(columnVal[0]));
             }
-
-//            try {
-//                tmpRes[0] = new BigDecimal(columnVal[0]);
-//            } catch (Exception e) {
-//                // silent
-//            } finally {
-//                res[0] = res[0].add(tmpRes[0]);
-//            }
         });
         return res[0];
     }
