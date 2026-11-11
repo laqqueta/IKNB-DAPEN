@@ -65,12 +65,10 @@ public enum Dppk0029Obli implements ILbltFieldMetadata {
             sf(8, null, "Tanggal Jatuh Tempo", sv(C, 8, 8, date))),
 
     PERINGKAT_AWAL(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
-            sf(9, null, "Peringkat: Awal", sv(C, 1, 10, freeText)
-                    .confRegex(SimpleValidation.patternAll3))),
+            sf(9, null, "Peringkat: Awal", sv(C, 1, 10, freeText))),
 
     PERINGKAT_AKHIR(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
-            sf(10, null, "Peringkat: Akhir", sv(C, 1, 10, freeText)
-                    .confRegex(SimpleValidation.patternAll3))),
+            sf(10, null, "Peringkat: Akhir", sv(C, 1, 10, freeText))),
 
     NILAI_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(11, null, "Nilai Perolehan", sv(M, 1, 18, numeric))),
