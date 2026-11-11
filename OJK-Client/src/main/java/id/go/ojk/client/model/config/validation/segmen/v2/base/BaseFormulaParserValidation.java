@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 import static id.go.ojk.client.model.config.validation.segmen.v2.util.FormulaParser.ParsedFormula;
 import static id.go.ojk.client.model.config.validation.segmen.v2.util.FormulaParser.parse;
 
-@XStreamAlias("BaseFormulaParserFormValidation")
+@XStreamAlias("BaseFormulaParserValidation")
 public class BaseFormulaParserValidation extends BaseRowValidation {
     protected String formulaOperation;
     protected String formulaOperationErr;
@@ -114,6 +114,30 @@ public class BaseFormulaParserValidation extends BaseRowValidation {
                         if (isInvalidValue[0]) continue;
                         if (isInvalidNumeric(v.get(field))) isInvalidValue[0] = true;
                         else {
+                            fieldTotal[0] = calculateFieldOperand(fieldTotal[0],
+                                    new BigDecimal(v.get(field)),
+                                    rowToken.getMapOperands().get(field), ctrA[0]++);
+                        }
+                    }
+
+                    if (isInvalidValue[0]) fieldTotal[0] = BigDecimal.ZERO;
+                });
+
+        return fieldTotal[0];
+    }
+
+    protected BigDecimal calculateFieldStream(FormulaParser.RowToken rowToken, String fieldFilter, String filterValue) {
+        BigDecimal[] fieldTotal = { BigDecimal.ZERO };
+        int[] ctrA = { 0 };
+        boolean[] isInvalidValue = { false };
+        SubmissionFormat.getStreamOfFormSubMap(rowToken.getRowPrefix() + rowToken.getRowCode(), Character.MAX_VALUE)
+                .map(Map.Entry::getValue)
+                .forEach(v -> {
+                    for (String field : rowToken.getMapOperands().keySet()) {
+                        if (isInvalidValue[0]) continue;
+                        if (isInvalidNumeric(v.get(field))) isInvalidValue[0] = true;
+                        else {
+                            if (v.get(fieldFilter) == null || !v.get(fieldFilter).equals(filterValue)) return;
                             fieldTotal[0] = calculateFieldOperand(fieldTotal[0],
                                     new BigDecimal(v.get(field)),
                                     rowToken.getMapOperands().get(field), ctrA[0]++);

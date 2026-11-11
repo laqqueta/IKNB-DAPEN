@@ -180,7 +180,8 @@ public class SumIfMultiSpecFieldCriteriaFormValidation extends BaseSumIf<SumIfMu
                     for (int i = 0; i < criteriaFields.length; i++) {
                         if (i != criteriaAsKey) {
                             criteriaVal[0] = entry.getValue().get(criteriaFields[i]);
-                            if (!criteriaVal[0].equalsIgnoreCase(param.getAdditionalCriteria())) return;
+//                            if (!criteriaPrioVal[0].equalsIgnoreCase(param.getAdditionalCriteria())) return;
+                            if (!param.getAdditionalCriteria().contains(criteriaVal[0])) return;
                         }
                     }
 

@@ -60,9 +60,6 @@ public class EqualsInvestasiRatioValidation extends BaseDecimalValidation {
 			return BigDecimal.ZERO;
 		}
 
-		BigDecimal tmp = value1.divide(value2, MathContext.DECIMAL128);
-		BigDecimal tmp2 = tmp.multiply(BigDecimal.valueOf(100));
-
 		return value1.divide(value2, scale, RoundingMode.HALF_UP);
 	}
 

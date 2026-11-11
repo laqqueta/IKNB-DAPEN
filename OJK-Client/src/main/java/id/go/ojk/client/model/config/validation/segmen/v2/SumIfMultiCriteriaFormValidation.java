@@ -37,15 +37,15 @@ public class SumIfMultiCriteriaFormValidation extends BaseSumIf<SumIfMultiCriter
     }
 
     /*
-    * Note:
-    * the multi criteria conditions are only support row based,
-    * there is no support for column based
-    *
-    * also only support 1 additional criteria (not sure about this)
-    *
-    * need to additional testing for multi criteria support
-    *
-    * */
+     * Note:
+     * the multi criteria conditions are only support row based,
+     * there is no support for column based
+     *
+     * also only support 1 additional criteria (not sure about this)
+     *
+     * need to additional testing for multi criteria support
+     *
+     * */
 
     @Override
     public void validate(SubmissionData submissionData, SubmissionFormat submissionFormat, ValidationResult validationResult) {
@@ -98,12 +98,12 @@ public class SumIfMultiCriteriaFormValidation extends BaseSumIf<SumIfMultiCriter
 
                     String criteriaError = idxField.equals(sumField) ?
                             slashFormatError(sumConditionError) :
-                            criteriaKeyError[i-1];
+                            criteriaKeyError[i - 1];
 
                     validationResult.errors.add(new ValidationError(submissionField,
                             ValidationErrorCode.E50_23_FORMULA_MULTICRITERIASUMIF,
                             msgErrors[0], msgErrors[1], criteriaError, msgErrors[2],
-                            criteriaConditionsError.get(criteriaRowIdx), msgErrors[3] ));
+                            criteriaConditionsError.get(criteriaRowIdx), msgErrors[3]));
                 }
 
             }
@@ -141,7 +141,8 @@ public class SumIfMultiCriteriaFormValidation extends BaseSumIf<SumIfMultiCriter
                     for (int i = 0; i < criteriaFields.length; i++) {
                         if (i != criteriaAsKey) {
                             criteriaPrioVal[0] = entry.getValue().get(criteriaFields[i]);
-                            if (!criteriaPrioVal[0].equalsIgnoreCase(param.getAdditionalCriteria())) return;
+//                            if (!criteriaPrioVal[0].equalsIgnoreCase(param.getAdditionalCriteria())) return;
+                            if (!param.getAdditionalCriteria().contains(criteriaPrioVal[0])) return;
                         }
                     }
 
@@ -163,7 +164,7 @@ public class SumIfMultiCriteriaFormValidation extends BaseSumIf<SumIfMultiCriter
         return mapCriteria;
     }
 
-    private List<String> criteriaConditions(String[] criteriasCondition) {
+    protected List<String> criteriaConditions(String[] criteriasCondition) {
         List<String> criterias = new ArrayList<>();
         for (int i = 0; i < criteriasCondition.length; i++) {
             if (i != criteriaAsKey) {

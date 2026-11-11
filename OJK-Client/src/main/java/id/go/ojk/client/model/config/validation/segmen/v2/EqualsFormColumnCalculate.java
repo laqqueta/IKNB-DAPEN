@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
-@XStreamAlias("EqualsFormColumnCalculateV2")
+@XStreamAlias("EqualsFormColumnCalculate")
 @Slf4j
 public class EqualsFormColumnCalculate extends BaseDecimalValidation {
 	private String comparatorColumn;

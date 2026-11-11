@@ -6,6 +6,7 @@ import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.validation.segmen.v2.base.BaseRowValidation;
 import id.go.ojk.client.model.validation.ValidationError;
 import id.go.ojk.client.model.validation.ValidationResult;
+import id.go.ojk.lib.client.constant.ESymbolMap;
 import id.go.ojk.lib.client.model.validation.ValidationErrorCode;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -22,6 +23,7 @@ public class OperatorComparationValidation extends BaseRowValidation {
     private String operatorComparation;
     private String comparationValue;
     private String defaultValue;
+    private String operatorComparationErr;
 
     private String formCode = "";
 
@@ -38,6 +40,7 @@ public class OperatorComparationValidation extends BaseRowValidation {
         operatorComparation = getStringParameter("operatorComparation");
         comparationValue = getStringParameter("comparationValue");
         defaultValue = getStringParameter("defaultValue");
+        operatorComparationErr = getStringParameter("operatorComparationErr");
 
         return this;
     }
@@ -51,6 +54,7 @@ public class OperatorComparationValidation extends BaseRowValidation {
         if (selectRowCodes.contains(currentRowCode)) {
             String[] fields = StringUtils.split(selectField, "|");
             String[] arrOperatorComparations = StringUtils.split(operatorComparation, "|");
+            String[] arrOperatorComparationErr = StringUtils.split(operatorComparationErr, "|");
             List<String> comparations = Arrays.stream(StringUtils.split(comparationValue, "|"))
                     .collect(Collectors.toCollection(LinkedList::new));
 
@@ -59,7 +63,7 @@ public class OperatorComparationValidation extends BaseRowValidation {
 
             for (String idxField : fields) {
                 String selectValue = getCurrentValue(validationResult, idxField);
-                String comparatorValue = comparatorValue(idxField, arrOperatorComparations);
+                String compValue = comparatorValue(idxField, arrOperatorComparations);
 
                 if (!comparations.contains(selectValue)) {
                     List<SubmissionField> subsFields = submissionFormat.getFields();
@@ -67,14 +71,14 @@ public class OperatorComparationValidation extends BaseRowValidation {
                     validationResult.errors.add(new ValidationError(submissionField,
                             ValidationErrorCode.E50_26_FORMULA_CONDITIONVALUE,
                             String.join(" atau ", comparations)));
-                } else if (!selectValue.equals(comparatorValue)) {
-                    int errIdx = comparations.indexOf(comparatorValue);
+                } else if (!selectValue.equals(compValue)) {
+                    int errIdx = comparations.indexOf(compValue);
                     List<SubmissionField> subsFields = submissionFormat.getFields();
                     SubmissionField submissionField = subsFields.get(Integer.parseInt(idxField));
-                    logger.error("{}>{}?{}", parameter, selectValue, comparatorValue);
+                    logger.error("{}>{}?{}", parameter, selectValue, compValue);
                     validationResult.errors.add(new ValidationError(submissionField,
                             ValidationErrorCode.E50_25_FORMULA_CONDITION,
-                            comparatorValue, operationComparatorMsg(arrOperatorComparations[errIdx], idxField)));
+                            compValue, operationComparatorMsg(arrOperatorComparationErr[errIdx], idxField)));
                 }
             }
         }
@@ -82,12 +86,21 @@ public class OperatorComparationValidation extends BaseRowValidation {
 
     private String comparatorValue(String fields, String[] operatorComparation) {
         String[] arrComparationsValue = StringUtils.split(comparationValue, "|");
+        String retVal = defaultValue;
 
         for (int i = 0; i < operatorComparation.length; i++) {
-            if (evalOperations(fields, operatorComparation[i])) return arrComparationsValue[i];
+            String ops = ESymbolMap.decode(operatorComparation[i]);
+            String[] opsArr = StringUtils.split(ops, "&");
+            List<Boolean> res = Arrays.asList(false, false);
+
+            for (int j = 0; j < opsArr.length; j++) {
+                res.set(j, evalOperations(fields, opsArr[j]));
+            }
+
+            if (!res.contains(false)) return arrComparationsValue[i];
         }
 
-        return defaultValue;
+        return retVal;
     }
 
     private String getCurrentValue(ValidationResult validationResult, String idxField) {
@@ -139,18 +152,25 @@ public class OperatorComparationValidation extends BaseRowValidation {
     }
 
     private String operationComparatorMsg(String operation, String field) {
+        String ops[] = StringUtils.split(ESymbolMap.decode(operation), "&");
         Pattern pattern = Pattern.compile("(.*?)(>=|<=|==|!=|>|<)(.*)");
-        Matcher matcher = pattern.matcher(operation);
+        StringBuilder sb = new StringBuilder();
 
-        if (matcher.matches()) {
-            String left = matcher.group(1).trim();
-            String op = matcher.group(2);
-            String right = matcher.group(3).trim();
+        for (String op : ops) {
+            Matcher matcher = pattern.matcher(op);
 
-            return String.format("kolom %4$s baris %1$s %2$s kolom %4$s baris %3$s", left, op, right, field);
+            if (matcher.matches()) {
+                String left = matcher.group(1).trim();
+                String operator = matcher.group(2);
+                String right = matcher.group(3).trim();
+
+                sb.append(String.format("'%1$s' %2$s '%3$s'", left, operator, right));
+            }
+
+            sb.append(" dan ");
         }
 
-        return null;
+        return sb.substring(0, sb.length()-4);
     }
 
     private String getComparatorMsg(String comparatorFormula) {

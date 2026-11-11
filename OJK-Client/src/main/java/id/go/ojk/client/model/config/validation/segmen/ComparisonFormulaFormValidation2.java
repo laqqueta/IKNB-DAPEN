@@ -3,6 +3,7 @@ package id.go.ojk.client.model.config.validation.segmen;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
+import java.util.Objects;
 
 import javax.script.ScriptEngine;
 
@@ -102,7 +103,7 @@ public class ComparisonFormulaFormValidation2 extends BaseRowFormulaValidation {
 		} else if (valueOperator.equals("*")) {
 			res = res.multiply(tmp);
 		} else if (valueOperator.equals("/")) {
-			if (tmp == BigDecimal.ZERO) {
+			if (Objects.equals(tmp, BigDecimal.ZERO)) {
 				res = BigDecimal.ZERO;
 			} else {
 				res = res.divide(tmp);

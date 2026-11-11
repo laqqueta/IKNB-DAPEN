@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 
 import java.math.BigDecimal;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public abstract class MapParamSegmentValidation extends BaseSegmentValidation {
 	protected Map<String, String> parameterMap = new HashMap<>();
@@ -172,6 +173,10 @@ public abstract class MapParamSegmentValidation extends BaseSegmentValidation {
 		return arithmeticOperation(SubmissionFormat.mapPosValue, formula, fieldNumber);
 	}
 
+	protected BigDecimal arithmeticOperation(String formula, int fieldNumber, String filterField, String filterValue) {
+		return arithmeticOperation(SubmissionFormat.mapPosValue, formula, fieldNumber, filterField, filterValue);
+	}
+
 	protected BigDecimal arithmeticOperation(Map<String, Map<String, String>> savedValues, String formula, int fieldNumber) {
 		Logger logger = LoggerFactory.getLogger(MapParamSegmentValidation.class);
 		BigDecimal res = BigDecimal.ZERO;
@@ -191,7 +196,43 @@ public abstract class MapParamSegmentValidation extends BaseSegmentValidation {
 						} else if (valueOperator.equals("*")) {
 							res = res.multiply(tmp);
 						} else if (valueOperator.equals("/")) {
-							if (tmp == BigDecimal.ZERO) {
+							if (tmp.equals(BigDecimal.ZERO)) {
+								res = BigDecimal.ZERO;
+							} else {
+								res = res.divide(tmp);
+							}
+						} else {
+							res = res.add(tmp);
+						}
+					}
+				}
+			}
+		} catch (Exception e) {
+			logger.error(parameter, e);
+		}
+		return res;
+	}
+
+	protected BigDecimal arithmeticOperation(Map<String, Map<String, String>> savedValues, String formula, int fieldNumber, String filterField, String filterValue) {
+		Logger logger = LoggerFactory.getLogger(MapParamSegmentValidation.class);
+		BigDecimal res = BigDecimal.ZERO;
+		try {
+			String[] formulaSplit = formula.split("(?<=[-+/*])|(?=[-+/*])");
+			if (formulaSplit != null) {
+				int length = formulaSplit.length;
+				String valueOperator = "+";
+				for (int i = 0; i < length; i++) {
+					String value = formulaSplit[i];
+					if (value.length() == 1) {
+						valueOperator = value;
+					} else {
+						BigDecimal tmp = SubmissionFormat.getSum(savedValues, value, String.valueOf(fieldNumber), filterField, filterValue);
+						if (valueOperator.equals("-")) {
+							res = res.subtract(tmp);
+						} else if (valueOperator.equals("*")) {
+							res = res.multiply(tmp);
+						} else if (valueOperator.equals("/")) {
+							if (tmp.equals(BigDecimal.ZERO)) {
 								res = BigDecimal.ZERO;
 							} else {
 								res = res.divide(tmp);

@@ -50,7 +50,7 @@ public class ComparisonFormulaFormValidation3 extends ComparisonFormulaFormValid
 		} else if (valueOperator.equals("*")) {
 			res = res.multiply(tmp);
 		} else if (valueOperator.equals("/")) {
-			if (tmp == BigDecimal.ZERO) {
+			if (tmp.equals(BigDecimal.ZERO)) {
 				res = BigDecimal.ZERO;
 			} else {
 				res = res.divide(tmp);

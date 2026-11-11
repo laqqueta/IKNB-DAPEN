@@ -103,7 +103,7 @@ public class EqualsRatioDppkLanValidation extends BaseDecimalValidation {
 
                     validationResult.errors.add(new ValidationError(submissionField,
                             ValidationErrorCode.E99_00_OTHER,
-                            String.format("nilai harus kolom '%s' / kolom '%s' pada baris '%s' * 100", errField.getName(), errField.getName(), message)));
+                            String.format("nilai harus = kolom '%s' / kolom %s '%s' * 100", errField.getName(), errField.getName(), message)));
                 }
             }
         }

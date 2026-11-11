@@ -136,7 +136,7 @@ public class MultiFormSumIfFormValidation extends BaseSumIf<SumIfBaseParams> {
     }
 
     private String getErrorMessage(String[] errMsg, String condition) {
-        String msg = "form '%1$s' dan '%2$s' pada kolom '%3$s' dengan kriteria\n\t'%4$s' pada kolom '%5$s'";
+        String msg = "kolom '%3$s' Form '%1$s' dan Form '%2$s' dengan kriteria\n\t'%5$s' = '%4$s'";
         return String.format(msg, errMsg[0], errMsg[1], errMsg[2], condition, errMsg[3]);
     }
 }

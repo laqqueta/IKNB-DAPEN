@@ -20,12 +20,14 @@ import id.go.ojk.client.service.validation.ValidationService;
 import id.go.ojk.lib.client.constant.ESymbolMap;
 import id.go.ojk.lib.client.model.validation.ValidationErrorCode;
 
+import static id.go.ojk.lib.client.model.config.DataType.numeric;
+
 public abstract class BaseRowFormulaValidation extends BaseDecimalValidation {
 	protected String comparatorPosCode;
 	protected String operator;
 	protected String operatorFormula;
 	protected String msgError;
-	private ScriptEngine engine;
+	protected ScriptEngine engine;
 
 	protected BaseRowFormulaValidation() {
 		super();
@@ -128,5 +130,36 @@ public abstract class BaseRowFormulaValidation extends BaseDecimalValidation {
 		String res = msgError.replace("|", " " + operatorFormula.replace("==", "=") + " ");
 		res = res.replace("#kolom#", "kolom " + (Integer.parseInt(idxSelectField) + 1));
 		return res;
+	}
+
+	protected static boolean isInvalidNumeric(String s) {
+		if (s == null || s.isEmpty()) return true;
+
+		boolean isDot = false;
+		boolean isNumeric = false;
+		int i = 0;
+
+		if (s.charAt(0) == '-') {
+			if (s.length() == 1) return true;
+			i = 1;
+		}
+
+		for (; i < s.length(); i++) {
+			char c = s.charAt(i);
+
+			if (c >= '0' && c <= '9') {
+				isNumeric = true;
+			} else if (c == '.') {
+				if (isDot) return true;
+				if (!isNumeric) return true;
+				isDot = true;
+			} else {
+				return true;
+			}
+		}
+
+		if (isDot && s.charAt(s.length() - 1) == '.') return true;
+
+		return false;
 	}
 }
