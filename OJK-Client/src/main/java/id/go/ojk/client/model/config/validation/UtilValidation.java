@@ -2,13 +2,9 @@ package id.go.ojk.client.model.config.validation;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.Set;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import javax.script.ScriptEngine;
@@ -253,6 +249,50 @@ public class UtilValidation {
 	private static BigDecimal calculate(Map<String, Map<String, String>> savedValues, String rowCode, String columnIdx, String operator, BigDecimal value) {
 		BigDecimal res = value;
 		BigDecimal sum = SubmissionFormat.getSum(savedValues, rowCode, columnIdx);
+		if (operator.equals("-")) {
+			res = res.subtract(sum);
+		} else if (operator.equals("*")) {
+			res = res.multiply(sum);
+		} else if (operator.equals("/")) {
+			if (value != BigDecimal.ZERO) {
+				res = res.divide(sum);
+			}
+		} else {
+			res = res.add(sum);
+		}
+		return res;
+	}
+
+	public static BigDecimal calculateColumn(Map<String, Map<String, String>> savedValues, String rowCode, String columnFormula, int scale, String filterField, String filterValue) {
+		Logger logger = LoggerFactory.getLogger(MapParamSegmentValidation.class);
+		BigDecimal res = BigDecimal.ZERO;
+		try {
+			String[] formulaSplit = columnFormula.split(FORMULA_REGEX);
+			if (formulaSplit != null) {
+				int length = formulaSplit.length;
+				String operator = "+";
+				for (int i = 0; i < length; i++) {
+					String formula = formulaSplit[i];
+					if (!formula.isEmpty()) {
+						if (FORMULA_SYMBOL.contains(formula)) {
+							operator = formula;
+						} else  {
+							res = calculate(savedValues, rowCode, formula, operator, res, filterField, filterValue);
+						}
+					}
+				}
+			}
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+		}
+		return res.setScale(scale, RoundingMode.HALF_UP);
+	}
+
+	private static BigDecimal calculate(Map<String, Map<String, String>> savedValues, String rowCode, String columnIdx, String operator, BigDecimal value, String filterField, String filterValue) {
+		BigDecimal res = value;
+		BigDecimal sum = SubmissionFormat.getSumFilterField(
+				savedValues, rowCode, columnIdx, filterField, filterValue);
+
 		if (operator.equals("-")) {
 			res = res.subtract(sum);
 		} else if (operator.equals("*")) {
