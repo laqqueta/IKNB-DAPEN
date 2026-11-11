@@ -35,10 +35,17 @@ public enum E7055UmpsValidationsConfig implements ILbltMetadataValidation, IVali
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 4), R_UMPS000000.key, R_UMPS010000.key,
                     UtilMetadata.genMessageTotal(R_UMPS000000.value, R_UMPS010000.value))),
 
+    SG_EQUAL_FORMULA_GABUNGAN(programs(PPMPPPIPK),
+            () -> UtilSegmentValidation.genFilterEqualsFormula_DAPEN(UtilMetadata.genPipeColumn(2, 4), R_UMPS000000.key, R_UMPS010000.key,
+                    UtilMetadata.genMessageTotal(R_UMPS000000.value, R_UMPS010000.value))),
+
     FV_EQUAL_TOTAL(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(4),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("2+3", R_UMPS000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(5),
+    FV_EQUAL_TOTAL_GABUNGAN(programs(PPMPPPIPK), validationFields(4),
+            () -> UtilFieldValidation.genEqualsExceptPosFormula("3+4", R_UMPS000000.key)),
+
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK), validationFields(5),
             () -> UtilFieldConditional.genExistPos("N", "O", R_UMPS000000.key)),
 
     ;
@@ -79,6 +86,10 @@ public enum E7055UmpsValidationsConfig implements ILbltMetadataValidation, IVali
     public ConditionalRequired toFieldConditional() {
         return ValidationConverter
                 .toValidation(this, ConditionalRequired.class);
+    }
+
+    public static BaseMetadataValidation<E7055UmpsValidationsConfig> getValidationMetadata(ProgramType programType) {
+        return new LbltMetadataValidation<>(E7055UmpsValidationsConfig.class, programType);
     }
 
     public static final BaseMetadataValidation<E7055UmpsValidationsConfig> VALIDATION_METADATA_PPMPK =

@@ -75,7 +75,7 @@ public enum E7004LphuMValidationsConfig implements ILbltMetadataValidation, IVal
 
     SG_ADDITION_4(programs(PPMPM),
             () -> UtilSegmentValidation.genEqualsFormula("2", R_LPHU0606000000.key, UtilMetadata.genPlusRow(getObjects(), 22, 25) + "-LPHU0605000000",
-                    UtilMetadata.genMessage(R_LPHU0606000000.value, UtilMetadata.genPlusDesc(getObjects(), 22, 25) + "-LPHU0605000000"))),
+                    UtilMetadata.genMessage(R_LPHU0606000000.value, UtilMetadata.genPlusDesc(getObjects(), 22, 25) + "-Beban Lain di Luar Investasi dan Operasional "))),
 
     SG_SUBSTRACTION_1(programs(PPMPM),
             () -> UtilSegmentValidation.genEqualsFormula("2", R_LPHU0400000000.key, UtilMetadata.genMinusRow(getObjects(), new int[]{5, 12}),
@@ -87,7 +87,7 @@ public enum E7004LphuMValidationsConfig implements ILbltMetadataValidation, IVal
 
     SG_MIX_ADD_SUB(programs(PPMPM),
             () -> UtilSegmentValidation.genEqualsFormula("2", R_LPHU0700000000.key, UtilMetadata.genMinusRow(getObjects(), new int[] {13, 21}) + "+LPHU0606000000",
-                    UtilMetadata.genMessage(R_LPHU0700000000.value, UtilMetadata.genMinusRow(getObjects(), new int[] {13, 21}) + "+LPHU0606000000"))),
+                    UtilMetadata.genMessage(R_LPHU0700000000.value, UtilMetadata.genMinusDesc(getObjects(), new int[] {13, 21}) + "+Total Pendapatan dan Beban Lain-Lain"))),
     
     SG_ROW_VALIDATION_8A(programs(PPMPM),
             () -> genRowValidation(R_LPHU0101000000.getObject(), "2")),
@@ -184,7 +184,7 @@ public enum E7004LphuMValidationsConfig implements ILbltMetadataValidation, IVal
 
         return UtilSegmentValidationV2.genEqualsForm("2", posCode.getKey(),
                 EFormLaporanBulananTahunan.LTLB_ROI.getCode(), comparatorField,
-                ER7009PosLtlbDppkRoi.R_ROI2100000000.getObject().getKey(), msg + " pada form ROI");
+                ER7009PosLtlbDppkRoi.R_ROI2100000000.getObject().getKey(), msg);
     }
 
 }

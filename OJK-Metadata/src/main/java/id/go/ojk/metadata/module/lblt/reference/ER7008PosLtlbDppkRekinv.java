@@ -9,39 +9,13 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ER7008PosLtlbDppkRekinv implements IObject<KeyValueString> {
-
-//    R_REKINV0100000000("REKINV0100000000", "Deposito on call pada Bank", EnumSet.of(ProgramType.ALL)),
-//    R_REKINV0200000000("REKINV0200000000", "Deposito berjangka pada Bank", EnumSet.of(ProgramType.ALL)),
-//    R_REKINV0300000000("REKINV0300000000", "Sertifikat deposito pada Bank", EnumSet.of(ProgramType.ALL)),
-//    R_REKINV0400000000("REKINV0400000000", "Surat berharga yang diterbitkan oleh Bank Indonesia", EnumSet.of(ProgramType.ALL)),
-//    R_REKINV0500000000("REKINV0500000000", "Surat Berharga Negara", EnumSet.of(ProgramType.ALL)),
-//    R_REKINV0600000000("REKINV0600000000", "Saham yang tercatat di Bursa Efek di Indonesia", EnumSet.of(ProgramType.ALL)),
-//    R_REKINV0700000000("REKINV0700000000", "Obligasi korporasi yang tercatat di Bursa Efek di indonesia", EnumSet.of(ProgramType.ALL)),
-//    R_REKINV0800000000("REKINV0800000000", "Sukuk Korporasi yang Tercatat di Bursa Efek di Indonesia", EnumSet.of(ProgramType.ALL)),
-//    R_REKINV0900000000("REKINV0900000000", "Obligasi/Sukuk Daerah", EnumSet.of(ProgramType.ALL)),
-//    R_REKINV1000000000("REKINV1000000000", "Reksa Dana", EnumSet.of(ProgramType.ALL)),
-//    R_REKINV1100000000("REKINV1100000000", "MTN", EnumSet.of(ProgramType.ALL)),
-//    R_REKINV1200000000("REKINV1200000000", "Efek beragun aset", EnumSet.of(ProgramType.ALL)),
-//    R_REKINV1300000000("REKINV1300000000", "Dana investasi real estat berbentuk kontrak investasi kolektif", EnumSet.of(ProgramType.ALL)),
-//    R_REKINV1400000000("REKINV1400000000", "Dana investasi infrastruktur berbentuk kontrak investasi kolektif", EnumSet.of(ProgramType.ALL)),
-//    R_REKINV1500000000("REKINV1500000000", "Kontrak opsi dan kontrak berjangka efek yang diperdagangkan di Bursa Efek di Indonesia", EnumSet.of(ProgramType.ALL)),
-//    R_REKINV1600000000("REKINV1600000000", "REPO", EnumSet.of(ProgramType.ALL)),
-//    R_REKINV1700000000("REKINV1700000000", "Penyertaan langsung di Indonesia", EnumSet.of(ProgramType.ALL)),
-//    R_REKINV1800000000("REKINV1800000000", "Tanah di Indonesia", EnumSet.of(ProgramType.ALL)),
-//    R_REKINV1900000000("REKINV1900000000", "Bangunan di Indonesia", EnumSet.of(ProgramType.ALL)),
-//    R_REKINV2000000000("REKINV2000000000", "Tanah dan Bangunan di Indonesia", EnumSet.of(ProgramType.ALL)),
-//    R_REKINV2100000000("REKINV2100000000", "TOTAL INVESTASI", EnumSet.of(ProgramType.ALL)),
-//    R_REKINV2200000000("REKINV2200000000", "Aset Tersedia Gabungan", EnumSet.of(ProgramType.ALL)),
-//    R_REKINV2300000000("REKINV2300000000", "Aset Tersedia Manfaat Lain",
-//            EnumSet.of(ProgramType.PPIPK, ProgramType.PPMPK, ProgramType.PPMPPPIPK)),
-//    R_REKINV2400000000("REKINV2400000000", "Aset Tersedia Manfaat Pensiun Lain",
-//            EnumSet.of(ProgramType.PPIPK, ProgramType.PPMPK, ProgramType.PPMPPPIPK)),
-
     R_REKINV0100000000("REKINV0100000000", "Deposito on call pada Bank", EnumSet.of(ProgramType.ALL, ProgramType.DPLK)),
     R_REKINV0200000000("REKINV0200000000", "Deposito berjangka pada Bank", EnumSet.of(ProgramType.ALL, ProgramType.DPLK)),
     R_REKINV0300000000("REKINV0300000000", "Sertifikat deposito pada Bank", EnumSet.of(ProgramType.ALL, ProgramType.DPLK)),
@@ -74,14 +48,31 @@ public enum ER7008PosLtlbDppkRekinv implements IObject<KeyValueString> {
 
     private final String key;
     private final String value;
-    private final EnumSet<ProgramType> jenisPrograms;
+    private final EnumSet<ProgramType> jenisProgram;
 
     public static List<KeyValueString> getObjects(ProgramType jenisProgram) {
+        if (!jenisProgram.equals(ProgramType.PPMPPPIPK)) return getNonGabunganObjects(jenisProgram);
+
+        ER7008PosLtlbDppkRekinv[] eVals = ER7008PosLtlbDppkRekinv.values();
+
+        List<KeyValueString> res = Arrays.stream(eVals)
+                .filter(eEnum -> eEnum.jenisProgram.contains(ProgramType.PPMPK) || eEnum.jenisProgram.contains(ProgramType.ALL))
+                .map(ER7008PosLtlbDppkRekinv::getObject).collect(Collectors.toList());
+
+        res.addAll(Arrays.stream(eVals)
+                .filter(eEnum -> eEnum.jenisProgram.contains(ProgramType.PPIPK) || eEnum.jenisProgram.contains(ProgramType.ALL))
+                .map(ER7008PosLtlbDppkRekinv::getObject)
+                .collect(Collectors.toList()));
+
+        return res;
+    }
+
+    private static List<KeyValueString> getNonGabunganObjects(ProgramType jenisProgram) {
         List<KeyValueString> res = new ArrayList<>();
         for (ER7008PosLtlbDppkRekinv eEnum : ER7008PosLtlbDppkRekinv.values()) {
-            if (!jenisProgram.equals(ProgramType.DPLK) && (eEnum.jenisPrograms.contains(jenisProgram) || eEnum.jenisPrograms.contains(ProgramType.ALL))) {
+            if (!jenisProgram.equals(ProgramType.DPLK) && (eEnum.jenisProgram.contains(jenisProgram) || eEnum.jenisProgram.contains(ProgramType.ALL))) {
                 res.add(eEnum.getObject());
-            } else if (jenisProgram.equals(ProgramType.DPLK) && eEnum.jenisPrograms.contains(ProgramType.DPLK)) {
+            } else if (jenisProgram.equals(ProgramType.DPLK) && eEnum.jenisProgram.contains(ProgramType.DPLK)) {
                 res.add(eEnum.getObject());
             }
         }
@@ -117,7 +108,7 @@ public enum ER7008PosLtlbDppkRekinv implements IObject<KeyValueString> {
             case DPLK:
                 return Configs.REF_CONFIG_DPLK;
             case PPMPPPIPK:
-                return null;
+                return Configs.REF_CONFIG_GABUNGAN;
             default:
                 throw new IllegalStateException();
         }
@@ -217,6 +208,41 @@ public enum ER7008PosLtlbDppkRekinv implements IObject<KeyValueString> {
             public String requiredPos() {
                 return UtilMetadata.genPipeRow(getObjects(programType));
             }
-        }
-    }
+        },
+
+        REF_CONFIG_GABUNGAN {
+            private final ProgramType programType = ProgramType.PPMPPPIPK;
+            private final String rowPPMP = UtilMetadata.genPipeRow(getObjects(ProgramType.PPMPK));
+            private final String rowPPIP = UtilMetadata.genPipeRow(getObjects(ProgramType.PPIPK));
+
+            @Override
+            public String savePos() {
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 14),getObjects(programType));
+            }
+
+            @Override
+            public String savePosForm() {
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 14), getObjects(programType));
+            }
+
+            @Override
+            public Integer segmentRequireColumnLink() {
+                return 2;
+            }
+
+            @Override
+            public String segmentColumnValue() {
+                return "PPMP|PPIP";
+            }
+
+            @Override
+            public String segmentReqiurePosCode() {
+                return rowPPMP + "#" + rowPPIP;
+            }
+
+            @Override
+            public String segmentUniquePos() {
+                return rowPPMP + "#" + rowPPIP;
+            }
+        }    }
 }

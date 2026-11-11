@@ -53,13 +53,13 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         return UtilSegmentValidationV2.genFormulaParserValidationV2("2|3|4", R_RAS10101000000.key, operationForm, operationFormErr);
     }),
 
-    SG_RAS10102000000_A(programs(PPMPK), () -> {
-        KeyValueString selectPosCode = R_RAS10102000000.getObject();
-        KeyValueString comparatorPosCode = ER7010PosLtlbDppkRoiml.R_ROIML2100000000.getObject();
-        String errMsg = selectPosCode.getValue() + "|" + comparatorPosCode.getValue() + " pada form ROIML";
-        return UtilSegmentValidationV2.genEqualsForm("4", selectPosCode.getKey(),
-                EFormLaporanBulananTahunan.LTLB_ROI_ML.getCode(), "10", comparatorPosCode.getKey(), errMsg);
-    }),
+//    SG_RAS10102000000_A(programs(PPMPK), () -> {
+//        KeyValueString selectPosCode = R_RAS10102000000.getObject();
+//        KeyValueString comparatorPosCode = ER7010PosLtlbDppkRoiml.R_ROIML2100000000.getObject();
+//        String errMsg = selectPosCode.getValue() + "|" + comparatorPosCode.getValue() + " pada form ROIML";
+//        return UtilSegmentValidationV2.genEqualsForm("4", selectPosCode.getKey(),
+//                EFormLaporanBulananTahunan.LTLB_ROI_ML.getCode(), "10", comparatorPosCode.getKey(), errMsg);
+//    }),
 
     SG_RAS10102000000_B(programs(PPMPK), () -> {
         KeyValueString selectPosCode = R_RAS10102000000.getObject();
@@ -180,9 +180,9 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
         List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPMPK);
 
-        FormulaParserData operation2 = genFormulaParser(formObject, "38", "3", comparatorForm);
-        FormulaParserData operation3 = genFormulaParser(formObject, "38", "4+5+6", comparatorForm);
-        FormulaParserData operation4 = genFormulaParser(formObject, "38", "7+8+9+10+11+12", comparatorForm);
+        FormulaParserData operation2 = genFormulaParser(formObject, "39", "3", comparatorForm);
+        FormulaParserData operation3 = genFormulaParser(formObject, "39", "4+5+6", comparatorForm);
+        FormulaParserData operation4 = genFormulaParser(formObject, "39", "7+8+9+10+11+12", comparatorForm);
 
         String operationForm = operation2.getFormula() + "|" + operation3.getFormula() + "|" + operation4.getFormula();
         String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LAN" + "|" +
@@ -196,9 +196,9 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
         List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPMPK);
 
-        FormulaParserData operation2 = genFormulaParser(formObject, "22+23+24", "3", comparatorForm);
-        FormulaParserData operation3 = genFormulaParser(formObject, "22+23+24", "4+5+6", comparatorForm);
-        FormulaParserData operation4 = genFormulaParser(formObject, "22+23+24", "7+8+9+10+11+12", comparatorForm);
+        FormulaParserData operation2 = genFormulaParser(formObject, "22+23+24+25", "3", comparatorForm);
+        FormulaParserData operation3 = genFormulaParser(formObject, "22+23+24+25", "4+5+6", comparatorForm);
+        FormulaParserData operation4 = genFormulaParser(formObject, "22+23+24+25", "7+8+9+10+11+12", comparatorForm);
 
         String operationForm = operation2.getFormula() + "|" + operation3.getFormula() + "|" + operation4.getFormula();
         String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LAN" + "|" +
@@ -244,9 +244,9 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
         List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPMPK);
 
-        FormulaParserData operation2 = genFormulaParser(formObject, "48", "3", comparatorForm);
-        FormulaParserData operation3 = genFormulaParser(formObject, "48", "4+5+6", comparatorForm);
-        FormulaParserData operation4 = genFormulaParser(formObject, "48", "7+8+9+10+11+12", comparatorForm);
+        FormulaParserData operation2 = genFormulaParser(formObject, "49", "3", comparatorForm);
+        FormulaParserData operation3 = genFormulaParser(formObject, "49", "4+5+6", comparatorForm);
+        FormulaParserData operation4 = genFormulaParser(formObject, "49", "7+8+9+10+11+12", comparatorForm);
 
         String operationForm = operation2.getFormula() + "|" + operation3.getFormula() + "|" + operation4.getFormula();
         String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LAN" + "|" +
@@ -260,9 +260,9 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
         List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPMPK);
 
-        FormulaParserData operation2 = genFormulaParser(formObject, "27+28", "3", comparatorForm);
-        FormulaParserData operation3 = genFormulaParser(formObject, "27+28", "4+5+6", comparatorForm);
-        FormulaParserData operation4 = genFormulaParser(formObject, "27+28", "7+8+9+10+11+12", comparatorForm);
+        FormulaParserData operation2 = genFormulaParser(formObject, "28+29", "3", comparatorForm);
+        FormulaParserData operation3 = genFormulaParser(formObject, "28+29", "4+5+6", comparatorForm);
+        FormulaParserData operation4 = genFormulaParser(formObject, "28+29", "7+8+9+10+11+12", comparatorForm);
 
         String operationForm = operation2.getFormula() + "|" + operation3.getFormula() + "|" + operation4.getFormula();
         String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LAN" + "|" +
@@ -356,9 +356,9 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
         List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPMPK);
 
-        FormulaParserData operation2 = genFormulaParser(formObject, "48", "3", comparatorForm);
-        FormulaParserData operation3 = genFormulaParser(formObject, "48", "4+5+6", comparatorForm);
-        FormulaParserData operation4 = genFormulaParser(formObject, "48", "7+8+9+10+11+12", comparatorForm);
+        FormulaParserData operation2 = genFormulaParser(formObject, "49", "3", comparatorForm);
+        FormulaParserData operation3 = genFormulaParser(formObject, "49", "4+5+6", comparatorForm);
+        FormulaParserData operation4 = genFormulaParser(formObject, "49", "7+8+9+10+11+12", comparatorForm);
 
         String operationForm = operation2.getFormula() + "|" + operation3.getFormula() + "|" + operation4.getFormula();
         String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LAN" + "|" +
@@ -443,9 +443,9 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
         List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPMPK);
 
-        FormulaParserData operation2 = genFormulaParser(formObject, "22+23+24", "3", comparatorForm);
-        FormulaParserData operation3 = genFormulaParser(formObject, "22+23+24", "4+5+6", comparatorForm);
-        FormulaParserData operation4 = genFormulaParser(formObject, "22+23+24", "7+8+9+10+11+12", comparatorForm);
+        FormulaParserData operation2 = genFormulaParser(formObject, "22+23+24+25", "3", comparatorForm);
+        FormulaParserData operation3 = genFormulaParser(formObject, "22+23+24+25", "4+5+6", comparatorForm);
+        FormulaParserData operation4 = genFormulaParser(formObject, "22+23+24+25", "7+8+9+10+11+12", comparatorForm);
 
         String operationForm = operation2.getFormula() + "|" + operation3.getFormula() + "|" + operation4.getFormula();
         String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LAN" + "|" +
@@ -459,9 +459,9 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
         List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPMPK);
 
-        FormulaParserData operation2 = genFormulaParser(formObject, "48", "3", comparatorForm);
-        FormulaParserData operation3 = genFormulaParser(formObject, "48", "4+5+6", comparatorForm);
-        FormulaParserData operation4 = genFormulaParser(formObject, "48", "7+8+9+10+11+12", comparatorForm);
+        FormulaParserData operation2 = genFormulaParser(formObject, "49", "3", comparatorForm);
+        FormulaParserData operation3 = genFormulaParser(formObject, "49", "4+5+6", comparatorForm);
+        FormulaParserData operation4 = genFormulaParser(formObject, "49", "7+8+9+10+11+12", comparatorForm);
 
         String operationForm = operation2.getFormula() + "|" + operation3.getFormula() + "|" + operation4.getFormula();
         String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LAN" + "|" +
@@ -756,7 +756,14 @@ public enum E7017Ras1KValidationsConfig implements ILbltMetadataValidation, IVal
     private static SegmentValidation genValidationRatioAB(IObject<KeyValueString> posCode, int rowA, int rowB) {
         String errMsg = "Rasio (A:B)|'" + getObjects(PPMPK).get(rowA).getValue() + "' : '"
                 + getObjects(PPMPK).get(rowB).getValue() + "'";
-        return UtilSegmentValidation.genEqualsRatio(UtilMetadata.genPipeColumn(2, 5), posCode.getObject().getKey(),
+
+        String col = UtilMetadata.genPipeColumn(2, 5);
+
+        if (posCode.equals(R_RAS12030000000) || posCode.equals(R_RAS13030000000)) {
+            col = UtilMetadata.genPipeColumn(2, 4);
+        }
+
+        return UtilSegmentValidation.genEqualsRatio(col, posCode.getObject().getKey(),
                 UtilMetadata.genPipeRow(getObjects(PPMPK), new int[]{rowA, rowB}), errMsg);
     }
 

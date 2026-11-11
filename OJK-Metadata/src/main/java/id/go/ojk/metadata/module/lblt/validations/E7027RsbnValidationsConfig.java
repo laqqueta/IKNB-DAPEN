@@ -36,23 +36,40 @@ public enum E7027RsbnValidationsConfig implements ILbltMetadataValidation, IVali
             () -> UtilSegmentValidation.genEqualsFormula("4|7|8|9", R_RSBN000000.key, R_RSBN010000.key,
                     UtilMetadata.genMessageTotal(R_RSBN000000.value, R_RSBN010000.value))),
 
+    SG_EQUAL_FORMULA_GABUNGAN(programs(PPMPPPIPK),
+            () -> UtilSegmentValidation.genFilterEqualsFormula_DAPEN("5|8|9|10", R_RSBN000000.key, R_RSBN010000.key,
+                    UtilMetadata.genMessageTotal(R_RSBN000000.value, R_RSBN010000.value))),
+
     FV_EQUAL_NILAI_INVESTASI(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(9),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("8-7", R_RSBN000000.key)),
+
+    FV_EQUAL_NILAI_INVESTASI_GABUNGAN(programs(PPMPPPIPK), validationFields(9),
+            () -> UtilFieldValidation.genEqualsExceptPosFormula("9-8", R_RSBN000000.key)),
 
     FV_EQUAL_PERSENTASE_INVESTASI(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(10),
             () -> UtilFieldValidation.genEqualsPercentageExceptPosFormula("9/7", R_RSBN000000.key)),
 
+    FV_EQUAL_PERSENTASE_INVESTASI_GABUNGAN(programs(PPMPPPIPK), validationFields(10),
+            () -> UtilFieldValidation.genEqualsPercentageExceptPosFormula("10/8", R_RSBN000000.key)),
+
     FV_DATE_GREATER(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(6),
             () -> UtilFieldValidation.genDateGreaterEquals("3")),
+
+    FV_DATE_GREATER_GABUNGAN(programs(PPMPPPIPK), validationFields(6),
+            () -> UtilFieldValidation.genDateGreaterEquals("4")),
 
     CR_NAMA_PENGELOLA(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(14),
             () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("N", "M", "N",
                     R_RSBN010000.key, "13", ER1252Pengelolaan.getReferenceIndex(0), ER1252Pengelolaan.getReferenceValueIndex(0))),
 
-    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(2, 3, 5, 6, 10, 11, 12, 13),
+    CR_NAMA_PENGELOLA_GABUNGAN(programs(PPMPPPIPK), validationFields(14),
+            () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("N", "M", "N",
+                    R_RSBN010000.key, "14", ER1252Pengelolaan.getReferenceIndex(0), ER1252Pengelolaan.getReferenceValueIndex(0))),
+
+    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK), validationFields(2, 3, 5, 6, 10, 11, 12, 13),
             () -> UtilFieldConditional.genExistPos("N", "M", R_RSBN000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(15),
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK), validationFields(15),
             () -> UtilFieldConditional.genExistPos("N", "O", R_RSBN000000.key)),
 
     ;
@@ -93,6 +110,10 @@ public enum E7027RsbnValidationsConfig implements ILbltMetadataValidation, IVali
     public ConditionalRequired toFieldConditional() {
         return ValidationConverter
                 .toValidation(this, ConditionalRequired.class);
+    }
+
+    public static BaseMetadataValidation<E7027RsbnValidationsConfig> getValidationMetadata(ProgramType programType) {
+        return new LbltMetadataValidation<>(E7027RsbnValidationsConfig.class, programType);
     }
 
     public static final BaseMetadataValidation<E7027RsbnValidationsConfig> VALIDATION_METADATA_PPMPK =

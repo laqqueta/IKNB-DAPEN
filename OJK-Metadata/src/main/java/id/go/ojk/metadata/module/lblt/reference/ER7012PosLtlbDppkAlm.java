@@ -3,14 +3,17 @@ package id.go.ojk.metadata.module.lblt.reference;
 import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.lib.client.IObject;
+import id.go.ojk.lib.client.model.KeyValue;
 import id.go.ojk.lib.client.model.KeyValueString;
 import id.go.ojk.metadata.util.constants.ProgramType;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import static id.go.ojk.metadata.util.constants.ProgramType.*;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ER7012PosLtlbDppkAlm implements IObject<KeyValueString> {
@@ -142,10 +145,12 @@ public enum ER7012PosLtlbDppkAlm implements IObject<KeyValueString> {
     R_ALM0506000000("ALM0506000000", "Utang Lain-Lain", EnumSet.of(ProgramType.DPLK)),
     R_ALM0507000000("ALM0507000000", "Total Liabilitas Diluar Liabilitas Manfaat Pensiun", EnumSet.of(ProgramType.DPLK)),
 
-    R_ALM0600000000("ALM0600000000", "F. Nilai Kini Aktuarial", EnumSet.of(ProgramType.PPMPM, ProgramType.PPMPK, ProgramType.PPMPPPIPK)),
+    R_ALM0600000000("ALM0600000000", "F. Nilai Kini Aktuarial", EnumSet.of(ProgramType.PPMPM, PPMPK, ProgramType.PPMPPPIPK)),
     R_ALM0600000000_DPLK("ALM0600000000", "F. Total Liabilitas (D+E)", EnumSet.of(ProgramType.DPLK)),
 
     R_ALM0700000000("ALM0700000000", "F. Liabilitas Manfaat Pensiun", EnumSet.of(ProgramType.PPIPM, ProgramType.PPIPK)),
+    R_ALM0700000000_TMP_PPMPPPIPK("ALM0600000000", "F. Liabilitas Manfaat Pensiun", EnumSet.of(ProgramType.TMP_PPMPPPIPK)),
+
     R_ALM0700000000_DPLK("ALM0700000000", "G. Selisih Total Aset dan Total Liabilitas (C-F)", EnumSet.of(ProgramType.DPLK)),
 
     R_ALM0800000000("ALM0800000000", "G. Persentase (%) Rasio Kecukupan Dana", EnumSet.of(ProgramType.DPLK)),
@@ -161,24 +166,65 @@ public enum ER7012PosLtlbDppkAlm implements IObject<KeyValueString> {
 
     R_ALM1000000000("ALM1000000000", "H. Total Liabilitas (F+G)", EnumSet.of(ProgramType.ALL)),
     R_ALM1100000000("ALM1100000000", "I. Selisih Total Aset dan Total Liabilitas (E-H)", EnumSet.of(ProgramType.ALL)),
-    R_ALM1200000000("ALM1200000000", "J. Persentase (%) Rasio Kecukupan Dana", EnumSet.of(ProgramType.PPMPM, ProgramType.PPMPK, ProgramType.PPMPPPIPK)),
+    R_ALM1200000000("ALM1200000000", "J. Persentase (%) Rasio Kecukupan Dana", EnumSet.of(ProgramType.PPMPM, PPMPK, ProgramType.PPMPPPIPK)),
 
     ;
 
     public final String key;
     public final String value;
-    private final EnumSet<ProgramType> jenisPrograms;
+    private final EnumSet<ProgramType> jenisProgram;
 
     public static List<KeyValueString> getObjects(ProgramType jenisProgram) {
+        if (!jenisProgram.equals(ProgramType.PPMPPPIPK)) return getNonGabunganObjects(jenisProgram);
+
+        ER7012PosLtlbDppkAlm[] eVals = ER7012PosLtlbDppkAlm.values();
+
+        List<KeyValueString> res = Arrays.stream(eVals)
+                .filter(eEnum -> eEnum.jenisProgram.contains(PPMPK) || eEnum.jenisProgram.contains(ProgramType.ALL))
+                .map(ER7012PosLtlbDppkAlm::getObject).collect(Collectors.toList());
+
+        res.addAll(getPpipGabunganObjects());
+
+        return res;
+    }
+
+    private static List<KeyValueString> getNonGabunganObjects(ProgramType jenisProgram) {
         List<KeyValueString> res = new ArrayList<>();
         for (ER7012PosLtlbDppkAlm eEnum : ER7012PosLtlbDppkAlm.values()) {
-            if (!jenisProgram.equals(ProgramType.DPLK) && (eEnum.jenisPrograms.contains(jenisProgram) || eEnum.jenisPrograms.contains(ProgramType.ALL))) {
+            if (!jenisProgram.equals(ProgramType.DPLK) && (eEnum.jenisProgram.contains(jenisProgram) || eEnum.jenisProgram.contains(ProgramType.ALL))) {
                 res.add(eEnum.getObject());
-            } else if (jenisProgram.equals(ProgramType.DPLK) && eEnum.jenisPrograms.contains(ProgramType.DPLK)) {
+            } else if (jenisProgram.equals(ProgramType.DPLK) && eEnum.jenisProgram.contains(ProgramType.DPLK)) {
                 res.add(eEnum.getObject());
             }
         }
         return res;
+    }
+
+    private static List<KeyValueString> getPpipGabunganObjects() {
+        // Key > original key | Value > changed key
+        Map<String, String> changedKey = Stream.of(new String[][] {
+                { "ALM0700000000", "ALM0600000000" },
+        }).collect(Collectors.toMap(originalKey -> originalKey[0], updatedKey -> updatedKey[1]));
+
+        ER7012PosLtlbDppkAlm[] eVals = ER7012PosLtlbDppkAlm.values();
+
+        Map<String, KeyValueString> tmpGabunganPpip = Arrays.stream(eVals)
+                .filter(eEnum -> eEnum.jenisProgram.contains(ProgramType.TMP_PPMPPPIPK))
+                .map(ER7012PosLtlbDppkAlm::getObject)
+                .collect(Collectors.toMap(KeyValueString::getKey, v -> v));
+
+        return Arrays.stream(eVals)
+                .filter(eEnum -> eEnum.jenisProgram.contains(ProgramType.PPIPK) || eEnum.jenisProgram.contains(ProgramType.ALL))
+                .map(ER7012PosLtlbDppkAlm::getObject)
+                .peek(v -> {
+                    String key = changedKey.get(v.getKey());
+                    if (key != null && !key.isEmpty()) {
+                        v.setKey(tmpGabunganPpip.get(key).getKey());
+                        v.setValue(tmpGabunganPpip.get(key).getValue());
+                    }
+                })
+                .sorted(Comparator.comparing(KeyValueString::getKey))
+                .collect(Collectors.toList());
     }
 
     public static String getName() {
@@ -197,9 +243,28 @@ public enum ER7012PosLtlbDppkAlm implements IObject<KeyValueString> {
         return getObjects(programType).size();
     }
 
+    public static ReferenceConfig getRefConfig(ProgramType programType) {
+        switch (programType) {
+            case PPMPK:
+                return Configs.REF_CONFIG_PPMPK;
+            case PPMPM:
+                return Configs.REF_CONFIG_PPMPM;
+            case PPIPK:
+                return Configs.REF_CONFIG_PPIPK;
+            case PPIPM:
+                return Configs.REF_CONFIG_PPIPM;
+            case DPLK:
+                return Configs.REF_CONFIG_DPLK;
+            case PPMPPPIPK:
+                return Configs.REF_CONFIG_GABUNGAN;
+            default:
+                throw new IllegalStateException();
+        }
+    }
+
     public enum Configs implements ReferenceConfig {
         REF_CONFIG_PPMPK {
-            private final ProgramType programType = ProgramType.PPMPK;
+            private final ProgramType programType = PPMPK;
 
             @Override
             public String savePos() {
@@ -227,7 +292,7 @@ public enum ER7012PosLtlbDppkAlm implements IObject<KeyValueString> {
 
             @Override
             public String savePosForm() {
-                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 16),getObjects(programType));
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 16), getObjects(programType));
             }
 
             @Override
@@ -292,5 +357,52 @@ public enum ER7012PosLtlbDppkAlm implements IObject<KeyValueString> {
                 return UtilMetadata.genPipeRow(getObjects(programType));
             }
         },
+
+        REF_CONFIG_GABUNGAN {
+            private final ProgramType programType = ProgramType.PPMPPPIPK;
+            private final String rowPPMP = UtilMetadata.genPipeRow(getObjects(PPMPK));
+            private final String rowPPIP = UtilMetadata.genPipeRow(getPpipGabunganObjects());
+
+            @Override
+            public String savePos() {
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 17), getObjects(programType));
+            }
+
+            @Override
+            public String savePosForm() {
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 17), getObjects(programType));
+            }
+
+            @Override
+            public Integer segmentRequireColumnLink() {
+                return 2;
+            }
+
+            @Override
+            public String segmentColumnValue() {
+                return "PPMP|PPIP";
+            }
+
+            @Override
+            public String segmentReqiurePosCode() {
+                return rowPPMP + "#" + rowPPIP;
+            }
+
+            @Override
+            public String segmentUniquePos() {
+                return rowPPMP + "#" + rowPPIP;
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        List<KeyValueString> kvs = getObjects(DPLK);
+
+        for (int i = 0; i < kvs.size(); i++) {
+            System.out.println(i + "\t:: " + kvs.get(i).getKey() + " - " + kvs.get(i).getValue());
+        }
+
+        System.out.println("Total len: " + (kvs.size()-1));
+
     }
 }

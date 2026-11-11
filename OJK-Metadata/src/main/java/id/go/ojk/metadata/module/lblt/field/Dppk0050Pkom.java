@@ -5,14 +5,12 @@ import id.go.ojk.client.model.config.SimpleValidation;
 import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
+import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.metadata.field.lblt.ILbltFieldMetadata;
 import id.go.ojk.metadata.field.lblt.LbltMetadataField;
 import id.go.ojk.metadata.module.lblt.EFormLaporanBulananTahunan;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataLkdpPpipk;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataLkdpPpipm;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataLkdpPpmpk;
-import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataLkdpPpmpm;
+import id.go.ojk.metadata.module.lblt.header.*;
 import id.go.ojk.metadata.module.lblt.reference.ER7050PosLtlbDppkPkom;
 import id.go.ojk.metadata.module.lblt.validations.E7050PkomValidationsConfig;
 import id.go.ojk.metadata.submission.SubmissionConfig;
@@ -46,7 +44,7 @@ public enum Dppk0050Pkom implements ILbltFieldMetadata {
                     .confRegex(SimpleValidation.patternAlfaNumeric))),
 
     JENIS_PERALATAN_KOMPUTER(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, PPMPPPIPK),
-            sf(2, null, "Jenis Peralatan Komputer", sv(C, 1, 50, alfaNumeric))),
+            sf(2, null, "Jenis Peralatan Komputer", sv(C, 1, 50, freeText))),
 
     TANGGAL_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, PPMPPPIPK),
             sf(3, null, "Tanggal Perolehan", sv(C, 8, 8, date))),
@@ -66,7 +64,8 @@ public enum Dppk0050Pkom implements ILbltFieldMetadata {
     /* Gabungan Additional Field */
 
     JENIS_PROGRAM(sectors(KONVENSIONAL, SYARIAH), programs(PPMPPPIPK),
-            sf(1000, null, "Jenis Program", sv(M, 5, 5, alfa))),
+            sf(1000, null, "Jenis Program", sv(M, 4, 4, alfa)
+                    .confConstant("PPMP|PPIP"))),
 
     ;
 
@@ -78,68 +77,41 @@ public enum Dppk0050Pkom implements ILbltFieldMetadata {
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataLkdpPpmpk.R7050Pkom.getObject()),
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataLkdpPpmpm.R7050Pkom.getObject()),
             new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataLkdpPpipk.R7050Pkom.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataLkdpPpipm.R7050Pkom.getObject())
+            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataLkdpPpipm.R7050Pkom.getObject()),
+            new AbstractMap.SimpleEntry<>(PPMPPPIPK, EHeaderMetadataLkdpPpmpppipk.R7056Pkom.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0050Pkom> FIELD_METADATA = new LbltMetadataField<>(Dppk0050Pkom.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
 
     public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, ProgramType programType) {
         EFormLaporanBulananTahunan PKOM_FORM = EFormLaporanBulananTahunan.LTLB_PKOM;
-        SubmissionFormatBuilder sfConfig = SubmissionFormatBuilder.builder()
+        return SubmissionFormatBuilder.builder()
                 .code(PKOM_FORM.getCode())
                 .name(PKOM_FORM.getName())
                 .extension(ExtensionType.TXT)
                 .reportCode(programType.toString())
                 .maxRow(null)
+                .minRow(0)
                 .fields(new ArrayList<>())
                 .build();
-
-        if (sectorType.equals(KONVENSIONAL) || sectorType.equals(SYARIAH)) {
-            sfConfig.setMinRow(0);
-            return sfConfig;
-        }
-
-
-        throw new IllegalArgumentException("Unknown sector type: " + sectorType);
     }
 
     public static SubmissionFormat formMetadata(SectorType sectorType, ProgramType programType) {
         FIELD_METADATA.setProgramType(programType);
 
-        BaseMetadataValidation<E7050PkomValidationsConfig> metadataValidation = null;
-
-        switch (programType) {
-            case PPMPK:
-                metadataValidation = E7050PkomValidationsConfig.VALIDATION_METADATA_PPMPK;
-                break;
-            case PPMPM:
-                metadataValidation = E7050PkomValidationsConfig.VALIDATION_METADATA_PPMPM;
-                break;
-            case PPIPK:
-                metadataValidation = E7050PkomValidationsConfig.VALIDATION_METADATA_PPIPK;
-                break;
-            case PPIPM:
-                metadataValidation = E7050PkomValidationsConfig.VALIDATION_METADATA_PPIPM;
-                break;
-            case PPMPPPIPK:
-                break;
-            default:
-                throw new IllegalStateException();
-        }
-
+        BaseMetadataValidation<?> metadataValidation = E7050PkomValidationsConfig.getValidationMetadata(programType);
+        ReferenceConfig referenceConfig = ER7050PosLtlbDppkPkom.getRefConfig(programType);
         BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType)
                 .config()
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType));
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
+                .setReferenceConfigs(referenceConfig)
+                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                .setSegmentValidations(metadataValidation);
 
-        if (programType == PPMPPPIPK) {
+        if (programType.equals(PPMPPPIPK)) {
             List<Integer> gabunganFields = Arrays.asList(0, 1, 1000, 2, 3, 4, 5, 6, 7);
             submissionConfig
-                    .setSubmissionField(FIELD_METADATA.getReindexClearedFields(gabunganFields, true))
-                    .setSegmentValidations();
-        } else {
-            submissionConfig
-                    .setReferenceConfigs(ER7050PosLtlbDppkPkom.Configs.REF_CONFIG)
-                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                    .setSubmissionField(FIELD_METADATA.getReindexFields(gabunganFields, metadataValidation.getFieldValidations()))
                     .setSegmentValidations(metadataValidation);
         }
 

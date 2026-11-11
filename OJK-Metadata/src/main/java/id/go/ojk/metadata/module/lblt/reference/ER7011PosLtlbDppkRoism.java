@@ -9,8 +9,10 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ER7011PosLtlbDppkRoism implements IObject<KeyValueString> {
@@ -57,9 +59,7 @@ public enum ER7011PosLtlbDppkRoism implements IObject<KeyValueString> {
     R_ROISM1800000000("ROISM1800000000", "Tanah di Indonesia", EnumSet.of(ProgramType.ALL, ProgramType.DPLK)),
     R_ROISM1900000000("ROISM1900000000", "Bangunan di Indonesia", EnumSet.of(ProgramType.ALL, ProgramType.DPLK)),
     R_ROISM2000000000("ROISM2000000000", "Tanah dan Bangunan di Indonesia", EnumSet.of(ProgramType.ALL, ProgramType.DPLK)),
-    R_ROISM2100000000("ROISM2100000000", "Total", EnumSet.of(ProgramType.ALL, ProgramType.DPLK));
-
-    ;
+    R_ROISM2100000000("ROISM2100000000", "Total", EnumSet.of(ProgramType.ALL, ProgramType.DPLK));;
 
     public final String key;
     public final String value;
@@ -75,10 +75,29 @@ public enum ER7011PosLtlbDppkRoism implements IObject<KeyValueString> {
         return res;
     }
 
-    public static List<KeyValueString> getObjects(ProgramType programType) {
+    public static List<KeyValueString> getObjects(ProgramType jenisProgram) {
+        if (!jenisProgram.equals(ProgramType.PPMPPPIPK)) return getNonGabunganObjects(jenisProgram);
+
+        ER7011PosLtlbDppkRoism[] eVals = ER7011PosLtlbDppkRoism.values();
+
+        List<KeyValueString> res = Arrays.stream(eVals)
+                .filter(eEnum -> eEnum.jenisProgram.contains(ProgramType.PPMPK) || eEnum.jenisProgram.contains(ProgramType.ALL))
+                .map(ER7011PosLtlbDppkRoism::getObject).collect(Collectors.toList());
+
+        res.addAll(Arrays.stream(eVals)
+                .filter(eEnum -> eEnum.jenisProgram.contains(ProgramType.PPIPK) || eEnum.jenisProgram.contains(ProgramType.ALL))
+                .map(ER7011PosLtlbDppkRoism::getObject)
+                .collect(Collectors.toList()));
+
+        return res;
+    }
+
+    private static List<KeyValueString> getNonGabunganObjects(ProgramType jenisProgram) {
         List<KeyValueString> res = new ArrayList<>();
         for (ER7011PosLtlbDppkRoism eEnum : ER7011PosLtlbDppkRoism.values()) {
-            if (programType.equals(ProgramType.DPLK) && eEnum.jenisProgram.contains(ProgramType.DPLK)) {
+            if (!jenisProgram.equals(ProgramType.DPLK) && (eEnum.jenisProgram.contains(jenisProgram) || eEnum.jenisProgram.contains(ProgramType.ALL))) {
+                res.add(eEnum.getObject());
+            } else if (jenisProgram.equals(ProgramType.DPLK) && eEnum.jenisProgram.contains(ProgramType.DPLK)) {
                 res.add(eEnum.getObject());
             }
         }
@@ -98,19 +117,59 @@ public enum ER7011PosLtlbDppkRoism implements IObject<KeyValueString> {
     }
 
     public static int getRowSize(ProgramType programType) {
-        return programType.equals(ProgramType.DPLK) ? getObjects(programType).size() : getObjects().size();
+        if (programType.equals(ProgramType.DPLK) || programType.equals(ProgramType.PPMPPPIPK)) {
+            return getObjects(programType).size();
+        }
+
+        return getObjects().size();
     }
 
     public enum Configs implements ReferenceConfig {
         REF_CONFIG {
             @Override
             public String savePos() {
-                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 11),getObjects());
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 11), getObjects());
             }
 
             @Override
             public String requiredPos() {
                 return UtilMetadata.genPipeRow(getObjects());
+            }
+        },
+
+        REF_CONFIG_GABUNGAN {
+            private final ProgramType programType = ProgramType.PPMPPPIPK;
+            private final String rowPPMP = UtilMetadata.genPipeRow(getObjects(ProgramType.PPMPK));
+            private final String rowPPIP = UtilMetadata.genPipeRow(getObjects(ProgramType.PPIPK));
+
+            @Override
+            public String savePos() {
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 12), getObjects(programType));
+            }
+
+            @Override
+            public String savePosForm() {
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 12), getObjects(programType));
+            }
+
+            @Override
+            public Integer segmentRequireColumnLink() {
+                return 2;
+            }
+
+            @Override
+            public String segmentColumnValue() {
+                return "PPMP|PPIP";
+            }
+
+            @Override
+            public String segmentReqiurePosCode() {
+                return rowPPMP + "#" + rowPPIP;
+            }
+
+            @Override
+            public String segmentUniquePos() {
+                return rowPPMP + "#" + rowPPIP;
             }
         }
     }

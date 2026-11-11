@@ -114,13 +114,8 @@ public enum E7103PinvsValidationsConfig implements ILbltMetadataValidation, IVal
                 .toValidation(this, ConditionalRequired.class);
     }
 
-    public static final BaseMetadataValidation<E7103PinvsValidationsConfig> VALIDATION_METADATA_PPIPK =
-            new LbltMetadataValidation<>(E7103PinvsValidationsConfig.class, PPIPK);
-
-    public static final BaseMetadataValidation<E7103PinvsValidationsConfig> VALIDATION_METADATA_PPIPM =
-            new LbltMetadataValidation<>(E7103PinvsValidationsConfig.class, PPIPM);
-
-    public static final BaseMetadataValidation<E7103PinvsValidationsConfig> VALIDATION_METADATA_DPLK =
-            new LbltMetadataValidation<>(E7103PinvsValidationsConfig.class, DPLK);
+    public static BaseMetadataValidation<E7103PinvsValidationsConfig> getValidationMetadata(ProgramType programType) {
+        return new LbltMetadataValidation<>(E7103PinvsValidationsConfig.class, programType);
+    }
 
 }

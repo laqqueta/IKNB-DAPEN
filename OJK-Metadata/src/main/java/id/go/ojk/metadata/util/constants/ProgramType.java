@@ -8,7 +8,9 @@ public enum ProgramType {
     PPIPM("PPIP Kopmpleks"),
     DPLK("DPLK"),
     PPMPPPIPK("PPMPPPIP Kompleks"),
-    ALL("ALL")
+    TMP_PPMPPPIPK("PPMPPPIP Kompleks"),
+    ALL("ALL"),
+    NONE("NULL"),
     ;
 
     private final String detail;

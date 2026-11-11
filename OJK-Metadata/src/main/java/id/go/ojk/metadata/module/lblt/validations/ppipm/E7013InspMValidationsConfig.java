@@ -9,6 +9,7 @@ import id.go.ojk.conf.client.UtilFieldConditional;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
 import id.go.ojk.conf.client.UtilSegmentValidationV2;
+import id.go.ojk.lib.client.model.KeyValueString;
 import id.go.ojk.metadata.module.lblt.EFormLaporanBulananTahunan;
 import id.go.ojk.metadata.module.lblt.reference.ER7001PosLtlbDppkLan;
 import id.go.ojk.metadata.util.constants.ProgramType;
@@ -27,6 +28,7 @@ import static id.go.ojk.metadata.module.lblt.reference.ER7013PosLtlbDppkInsp.R_I
 import static id.go.ojk.metadata.module.lblt.reference.ER7013PosLtlbDppkInsp.R_INSP010000;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
+import static id.go.ojk.metadata.util.constants.ProgramType.DPLK;
 import static id.go.ojk.metadata.util.constants.ProgramType.PPIPM;
 
 @AllArgsConstructor
@@ -37,11 +39,19 @@ public enum E7013InspMValidationsConfig implements ILbltMetadataValidation, IVal
             () -> UtilSegmentValidation.genEqualsFormula("4", R_INSP000000.key, R_INSP010000.key,
                     UtilMetadata.genMessageTotal(R_INSP000000.value, R_INSP010000.value))),
 
+    SG_TOTAL_INVESTASI_EQ_LAN(programs(PPIPM), () -> {
+        KeyValueString selectPosCode = R_INSP000000.getObject();
+        KeyValueString comparatorPosCode = ER7001PosLtlbDppkLan.R_LAN0102000000.getObject();
+        String errMsg = selectPosCode.getValue() + "|'" + comparatorPosCode.getValue() + "' Kolom 'Manfaat Pensiun' pada form LAN";
+        return UtilSegmentValidationV2.genEqualsForm("4", selectPosCode.getKey(),
+                EFormLaporanBulananTahunan.LTLB_LAN.getCode(), "3", comparatorPosCode.getKey(), errMsg);
+    }),
+
     SG_EQUAL_INVESTASI_RATIO(programs(PPIPM),
             () -> UtilSegmentValidationV2.genEqualsInvestasiRatio("5", R_INSP010000.key,
                     R_INSP010000.key, "4", EFormLaporanBulananTahunan.LTLB_LAN.getCode(),
                     ER7001PosLtlbDppkLan.R_LAN0102000000.getObject().getKey(), "3",
-                    UtilMetadata.genMessage(R_INSP010000.value, R_INSP010000.value + " / Baris 'TOTAL INVESTASI' (Piutang Investasi) pada form LAN"), 2)),
+                    UtilMetadata.genMessage(R_INSP010000.value, R_INSP010000.value + " / 'TOTAL INVESTASI' Kolom 'Manfaat Pensiun' pada form LAN"), 2)),
 
     CR_EXIST_POS_M(programs(PPIPM), validationFields(2,3,5,6),
             () -> UtilFieldConditional.genExistPos("N", "M", R_INSP000000.key)),

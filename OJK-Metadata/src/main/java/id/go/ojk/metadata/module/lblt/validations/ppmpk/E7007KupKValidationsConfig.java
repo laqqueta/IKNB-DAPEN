@@ -9,6 +9,9 @@ import id.go.ojk.conf.client.UtilFieldConditional;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
 import id.go.ojk.conf.client.UtilSegmentValidationV2;
+import id.go.ojk.conf.client.dto.FormulaParserData;
+import id.go.ojk.lib.client.constant.ESymbolMap;
+import id.go.ojk.lib.client.model.KeyValueString;
 import id.go.ojk.metadata.module.lblt.EFormLaporanBulananTahunan;
 import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataSharedLblt;
 import id.go.ojk.metadata.module.lblt.reference.ER7001PosLtlbDppkLan;
@@ -25,8 +28,8 @@ import java.util.EnumSet;
 import java.util.List;
 import java.util.function.Supplier;
 
+import static id.go.ojk.conf.client.UtilMetadata.genFormulaParser;
 import static id.go.ojk.metadata.module.lblt.reference.ER7007PosLtlbDppkKup.*;
-import static id.go.ojk.metadata.module.lblt.reference.ER7007PosLtlbDppkKup.getObjects;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
 import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
@@ -84,21 +87,46 @@ public enum E7007KupKValidationsConfig implements ILbltMetadataValidation, IVali
                     UtilMetadata.genMessage(R_KUP0200000200.getObject().getValue(),
                             UtilMetadata.genPlusDesc(getObjects(ProgramType.PPMPK), new int[]{0, 13})))),
 
-    SG_EQUAL_FORM_LAN(programs(PPMPK),
-            () -> UtilSegmentValidationV2.genEqualsForm("3|4|5",
-                    R_KUP0100000000.getObject().getKey(), EFormLaporanBulananTahunan.LTLB_LAN.getCode(),
-                    "3", ER7001PosLtlbDppkLan.R_LAN0111000000.getObject().getKey(),
-                    UtilMetadata.genMessage(R_KUP0100000000.getObject().getValue(), ER7001PosLtlbDppkLan.R_LAN0111000000.getObject().getValue()) +
-                            " pada for LAN")),
+//    SG_EQUAL_FORM_LAN(programs(PPMPK),
+//            () -> UtilSegmentValidationV2.genEqualsForm("3|4|5",
+//                    R_KUP0100000000.getObject().getKey(), EFormLaporanBulananTahunan.LTLB_LAN.getCode(),
+//                    "3", ER7001PosLtlbDppkLan.R_LAN0111000000.getObject().getKey(),
+//                    UtilMetadata.genMessage(R_KUP0100000000.getObject().getValue(), ER7001PosLtlbDppkLan.R_LAN0111000000.getObject().getValue()) +
+//                            " pada for LAN")),
 
-    SG_VALIDATION_PROYEKSI_PENDANAAN(programs(PPMPK),
-            () -> UtilSegmentValidationV2.genOperatorProyeksi("3|4|5",
-                    R_KUP0209000000.getObject().getKey(),
-                    String.format("%1$s<%2$s|%1$s>%3$s",
-                            R_KUP0200000200.getObject().getKey(),
-                            R_KUP0206000000.getObject().getKey(),
-                            R_KUP0207000000.getObject().getKey()),
-                    "III|I", "II")),
+    SG_MULTI_SUM_KUP0100000000(programs(PPMPK), () -> {
+        String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
+        List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPMPK);
+
+        FormulaParserData operation2 = genFormulaParser(formObject, "49", "3", comparatorForm);
+        FormulaParserData operation3 = genFormulaParser(formObject, "49", "4+5+6", comparatorForm);
+        FormulaParserData operation4 = genFormulaParser(formObject, "49", "7+8+9+10+11+12", comparatorForm);
+
+        String operationForm = operation2.getFormula() + "|" + operation3.getFormula() + "|" + operation4.getFormula();
+        String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LAN" + "|" +
+                "sama dengan Baris " + operation3.getErrMessage() + " Manfaat Pensiun Lainnya pada form LAN" + "|" +
+                "sama dengan Baris " + operation4.getErrMessage() + " Manfaat Lain pada form LAN";
+
+        return UtilSegmentValidationV2.genFormulaParserValidationV2("3|4|5", R_KUP0100000000.getObject().getKey(), operationForm, operationFormErr);
+    }),
+
+    SG_VALIDATION_PROYEKSI_PENDANAAN(programs(PPMPK), () -> {
+        String op = "%1$s>=%3$s&%1$s>=%2$s|%1$s<=%3$s&%1$s>=%2$s";
+
+        String formula = ESymbolMap.encode(String.format(op,
+                R_KUP0200000200.getObject().getKey(),
+                R_KUP0206000000.getObject().getKey(),
+                R_KUP0207000000.getObject().getKey()));
+
+        String formulaErr = ESymbolMap.encode(String.format(op,
+                R_KUP0200000200.getObject().getValue(),
+                R_KUP0206000000.getObject().getValue(),
+                R_KUP0207000000.getObject().getValue()));
+
+        return UtilSegmentValidationV2.genOperatorProyeksi("3|4|5",
+                R_KUP0209000000.getObject().getKey(),
+                formula, "I|II", "III", formulaErr);
+    }),
 
     SG_REF_KODE_PENDANAAN(programs(PPMPK),
             () -> UtilSegmentValidation.genReference("3|4|5",
@@ -107,23 +135,47 @@ public enum E7007KupKValidationsConfig implements ILbltMetadataValidation, IVali
 
     SG_ROW_DATA_TYPE_NUMERIC_1(programs(PPMPK), () ->
             UtilSegmentValidation.genRegexNumeric("3|4|5",
-                    UtilMetadata.genPipeRow(getObjects(PPMPK), new int[] { 1, 7, 9, 11 }))),
+                    UtilMetadata.genPipeRowExcept(getObjects(PPMPK), new int[]{0, 1, 7, 9, 11, 14, 15, 16, 17, 18, 19}))),
 
     SG_ROW_DATA_TYPE_NUMERIC_2(programs(PPMPK), () ->
-            UtilSegmentValidation.genRegexNumeric("3|4|5",
-                    UtilMetadata.genPipeRowExcept(getObjects(PPMPK), new int[] { 0, 1, 7, 9, 11, 14, 18, 19}))),
-
-    SG_ROW_DATA_TYPE_NUMERIC_NEGATIVE(programs(PPMPK), () ->
             UtilSegmentValidation.genRegexNumericNegative("3|4|5",
-                    UtilMetadata.genPipeRow(getObjects(PPMPK), new int[] { 0, 14 }))),
+                    UtilMetadata.genPipeRow(getObjects(PPMPK), new int[]{0, 14}))),
 
-    SG_ROW_DATA_TYPE_ALFA_NUMERIC(programs(PPMPK), () ->
-            UtilSegmentValidation.genRegexAlfaNumeric("3|4|5",
-                    UtilMetadata.genPipeRow(getObjects(PPMPK), new int[] { 19 }))),
+    SG_ROW_DATA_TYPE_NUMERIC_3(programs(PPMPK), () ->
+            UtilSegmentValidation.genRegexNumericDot("3|4|5",
+                    UtilMetadata.genPipeRow(getObjects(PPMPK), new int[]{15, 16, 17}))),
 
-    SG_ROW_DATA_TYPE_ALFA(programs(PPMPK), () ->
+    SG_ROW_DATA_TYPE_NUMERIC_4(programs(PPMPK), () ->
             UtilSegmentValidation.genRegexAlfa("3|4|5",
-                    UtilMetadata.genPipeRow(getObjects(PPMPK), new int[] { 18 }))),
+                    UtilMetadata.genPipeRow(getObjects(PPMPK), new int[]{18}))),
+
+    SG_ROW_DATA_TYPE_NUMERIC_5(programs(PPMPK), () ->
+            UtilSegmentValidation.genRegexAlfaNumeric("3|4|5",
+                    UtilMetadata.genPipeRow(getObjects(PPMPK), new int[]{19}))),
+
+    SG_ROW_DATA_TYPE_TEXT(programs(PPMPK), () ->
+            UtilSegmentValidation.genRegexAll("2",
+                    UtilMetadata.genPipeRow(ER7007PosLtlbDppkKup.getObjects(ProgramType.PPMPK), new int[]{1, 7, 9, 11}))),
+
+    SG_ROW_DATA_LEN_1(programs(PPMPK), () ->
+            UtilSegmentValidation.genLength("3|4|5",
+                    UtilMetadata.genPipeRow(getObjects(PPMPK), new int[]{18}), 1, 3)),
+
+    SG_ROW_DATA_LEN_2(programs(PPMPK), () ->
+            UtilSegmentValidation.genLength("3|4|5",
+                    UtilMetadata.genPipeRow(getObjects(PPMPK), new int[]{19}), 5, 5)),
+
+    SG_ROW_DATA_LEN_3(programs(PPMPK), () ->
+            UtilSegmentValidation.genLength("3|4|5",
+                    UtilMetadata.genPipeRow(getObjects(PPMPK), new int[]{15, 16, 17}), 4, 18)),
+
+    SG_ROW_DATA_LEN_4(programs(PPMPK), () ->
+            UtilSegmentValidation.genLength("3|4|5",
+                    UtilMetadata.genPipeRowExcept(getObjects(PPMPK), new int[]{1, 7, 9, 11, 15, 16, 17, 18, 19}), 1, 18)),
+
+    SG_ROW_DATA_LEN_5(programs(PPMPK), () ->
+            UtilSegmentValidation.genLength("2",
+                    UtilMetadata.genPipeRow(ER7007PosLtlbDppkKup.getObjects(ProgramType.PPMPK), new int[]{1, 7, 9, 11}), 1, 255)),
 
     CR_URAIAN(programs(PPMPK), validationFields(2),
             () -> UtilFieldConditional.genExistPos("M", "N",

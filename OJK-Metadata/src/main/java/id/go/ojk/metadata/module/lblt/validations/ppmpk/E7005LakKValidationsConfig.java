@@ -55,16 +55,6 @@ public enum E7005LakKValidationsConfig implements ILbltMetadataValidation, IVali
                     UtilMetadata.genPlusRow(getObjects(), new int[]{28, 29}),
                     UtilMetadata.genMessage(R_LAK0900000000.value, UtilMetadata.genPlusDesc(getObjects(), new int[]{28, 29})))),
 
-    SG_NEG_NUM(programs(PPMPK),
-            () -> UtilSegmentValidation.genRegexNumericNegative(
-                    UtilMetadata.genPipeColumn(2, 11),
-                    UtilMetadata.genPipeRowExcept(getObjects(), new int[]{7, 18, 27, 28, 29, 30}))),
-
-    SG_POV_NUM(programs(PPMPM),
-            () -> UtilSegmentValidation.genRegexNumericNegative(
-                    UtilMetadata.genPipeColumn(2, 11),
-                    UtilMetadata.genPipeRow(getObjects(), new int[]{7, 18, 27, 28, 29, 30}))),
-
     FV_SUM_ROW(programs(PPMPK), validationFields(12),
             () -> UtilFieldValidation.genEqualsExceptPosFormula(
                     UtilMetadata.genPlusColumn(2, 11), R_LAK0200000000.key)),

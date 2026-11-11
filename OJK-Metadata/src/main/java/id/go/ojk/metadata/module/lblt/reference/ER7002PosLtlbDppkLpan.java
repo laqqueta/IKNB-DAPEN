@@ -71,7 +71,7 @@ public enum ER7002PosLtlbDppkLpan implements IObject<KeyValueString> {
                 .map(ER7002PosLtlbDppkLpan::getObject).collect(Collectors.toList());
 
         res.addAll(Arrays.stream(eVals)
-                .filter(eEnum -> eEnum.jenisProgram.contains(ProgramType.PPIPK) || eEnum.jenisProgram.contains(ProgramType.ALL))
+                .filter(eEnum -> eEnum.jenisProgram.contains(ProgramType.PPMPK) || eEnum.jenisProgram.contains(ProgramType.ALL))
                 .map(ER7002PosLtlbDppkLpan::getObject)
                 .collect(Collectors.toList()));
 
@@ -120,7 +120,7 @@ public enum ER7002PosLtlbDppkLpan implements IObject<KeyValueString> {
             case DPLK:
                 return Configs.REF_CONFIG_DPLK;
             case PPMPPPIPK:
-                return Configs.REF_CONFIG_PPMPPPIPK;
+                return Configs.REF_CONFIG_GABUNGAN;
             default:
                 throw new IllegalStateException();
         }
@@ -222,22 +222,39 @@ public enum ER7002PosLtlbDppkLpan implements IObject<KeyValueString> {
             }
         },
 
-        REF_CONFIG_PPMPPPIPK {
-            private final ProgramType dplkProgram = ProgramType.PPMPPPIPK;
+        REF_CONFIG_GABUNGAN {
+            private final ProgramType programType = ProgramType.PPMPPPIPK;
+            private final String rowPPMP = UtilMetadata.genPipeRow(getObjects(ProgramType.PPMPK));
+            private final String rowPPIP = UtilMetadata.genPipeRow(getObjects(ProgramType.PPMPK));
 
             @Override
             public String savePos() {
-                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 17), getObjects(dplkProgram));
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 17),getObjects(programType));
             }
 
             @Override
             public String savePosForm() {
-                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 17), getObjects(dplkProgram));
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 17), getObjects(programType));
             }
 
             @Override
-            public String requiredPos() {
-                return UtilMetadata.genPipeRow(getObjects(dplkProgram));
+            public Integer segmentRequireColumnLink() {
+                return 2;
+            }
+
+            @Override
+            public String segmentColumnValue() {
+                return "PPMP|PPIP";
+            }
+
+            @Override
+            public String segmentReqiurePosCode() {
+                return rowPPMP + "#" + rowPPIP;
+            }
+
+            @Override
+            public String segmentUniquePos() {
+                return rowPPMP + "#" + rowPPIP;
             }
         },
     }

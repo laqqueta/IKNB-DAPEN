@@ -36,7 +36,6 @@ import static id.go.ojk.metadata.module.lblt.reference.ER7003PosLtlbDppkNrc.*;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
 import static id.go.ojk.metadata.util.constants.ProgramType.PPIPK;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
 
 @AllArgsConstructor
 @RequiredArgsConstructor
@@ -201,24 +200,24 @@ public enum E7003NrcKValidationsConfig implements ILbltMetadataValidation, IVali
                         EFormLaporanBulananTahunan.LTLB_PROP.getCode(),
                         ER7040PosLtlbDppkProp.R_PROP010000.getObject().getKey(),
                         "8", "17|2", "2", criteriaCondition, sumCriteriaCondition,
-                        "PROP|Nilai Perolehan|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain|Jenis Objek (Tanah/Bangunan/Tanah&Bangunan)",
+                        "PROP|Nilai Perolehan|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain|Jenis Objek (Tanah/Bangunan/Tanah dan Bangunan)",
                         criteriaConditionErr, sumCriteriaConditionErr, "0");
             }),
 
     SG_SUMIF_PROP_2(programs(PPIPK),
             () -> {
                 String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MPL1|MPL2|MPL3|ML1|ML2|ML3|ML4|ML5|ML6|UUS1|UUS2|UUS3")
-                        + "$" + ER1250Properti.getKey("2005");
+                        + "$" + ER1250Properti.getKey("2005") + "|" + ER1250Properti.getKey("2010");
                 String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MPL1|MPL2|MPL3|ML1|ML2|ML3|ML4|ML5|ML6|UUS1|UUS2|UUS3")
-                        + "$" + ER1250Properti.getKeyValue("2005");
+                        + "$" + ER1250Properti.getKeyValue("2005") + "|" + ER1250Properti.getKeyValue("2010");
                 String sumCriteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
                 String sumCriteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
-                return UtilSegmentValidationV2.genMultiCriteriaSumIf(
+                return UtilSegmentValidationV2.genMultiCriteriaSumIf2(
                         UtilMetadata.genPipeColumnExcept(2, 15, new int[]{12}), R_NRC0101210000.key,
                         EFormLaporanBulananTahunan.LTLB_PROP.getCode(),
                         ER7040PosLtlbDppkProp.R_PROP010000.getObject().getKey(),
-                        "8", "17|2", "2", criteriaCondition, sumCriteriaCondition,
-                        "PROP|Nilai Perolehan|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain|Jenis Objek (Tanah/Bangunan/Tanah&Bangunan)",
+                        "9", "17|2", "2", criteriaCondition, sumCriteriaCondition,
+                        "PROP|Akumulasi Penyusutan|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain|Jenis Objek (Tanah/Bangunan/Tanah dan Bangunan)",
                         criteriaConditionErr, sumCriteriaConditionErr, "0");
             }),
 
@@ -358,9 +357,9 @@ public enum E7003NrcKValidationsConfig implements ILbltMetadataValidation, IVali
     SG_EQUALS_FORMULA_1(programs(PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 16),
                     ER7003PosLtlbDppkNrc.R_NRC0102000000.getObject().getKey(),
-                    UtilMetadata.genPlusRow(ER7003PosLtlbDppkNrc.getObjects(ProgramType.PPIPK), 0, 20),
+                    UtilMetadata.genPlusRow(ER7003PosLtlbDppkNrc.getObjects(PPIPK), 0, 19) + "-NRC0101210000",
                     UtilMetadata.genMessage(ER7003PosLtlbDppkNrc.R_NRC0102000000.getObject().getValue(),
-                            UtilMetadata.genPlusDesc(ER7003PosLtlbDppkNrc.getObjects(ProgramType.PPIPK), 0, 20)))),
+                            UtilMetadata.genPlusDesc(ER7003PosLtlbDppkNrc.getObjects(PPIPK), 0, 19) + "-'Akumulasi Penyusutan Bangunan'"))),
 
     SG_EQUALS_FORMULA_2(programs(PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 16),
@@ -460,14 +459,6 @@ public enum E7003NrcKValidationsConfig implements ILbltMetadataValidation, IVali
                 comparatorPosCodeForm, comparatorForm, errMsg, 2);
     }),
 
-    SG_ROW_DATA_TYPE_NUMERIC(programs(PPIPK), () ->
-            UtilSegmentValidation.genRegexNumeric(UtilMetadata.genPipeColumn(2, 16),
-                    UtilMetadata.genPipeRowExcept(getObjects(PPIPK), new int[] { 39 }))),
-
-    SG_ROW_DATA_TYPE_NUMERIC_NEGATIVE(programs(PPIPK), () ->
-            UtilSegmentValidation.genRegexNumericNegative(UtilMetadata.genPipeColumn(2, 16),
-                    UtilMetadata.genPipeRow(getObjects(PPIPK), new int[] { 39 }))),
-
     FV_EQUALS_EXCEPT_1(programs(PPIPK), validationFields(Dppk0003Nrc.GABUNGAN),
             () -> UtilFieldValidation.genEqualsExceptPosFormula(
                     UtilMetadata.genPlusColumn(2, 11),
@@ -555,7 +546,7 @@ public enum E7003NrcKValidationsConfig implements ILbltMetadataValidation, IVali
                 errMsg);
     }
 
-    public static List<SegmentValidation> additionalSegmentLan() {
+    public static List<SegmentValidation> additionalSegmentLanPPIPK() {
         int maxField = 16;
         KeyValueString[] kvsForm = {R_NRC0104010000.getObject(), R_NRC0115020000.getObject()};
         KeyValueString[] kvsComparator = {ER7001PosLtlbDppkLan.R_LAN0103010000.getObject(), ER7001PosLtlbDppkLan.R_LAN0108020200.getObject()};

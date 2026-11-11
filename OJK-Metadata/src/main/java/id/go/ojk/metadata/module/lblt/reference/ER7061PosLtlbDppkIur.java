@@ -4,6 +4,7 @@ import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
+import id.go.ojk.metadata.util.constants.ProgramType;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
@@ -30,7 +31,7 @@ public enum ER7061PosLtlbDppkIur implements IObject<KeyValueString> {
     }
 
     public static List<KeyValueString> getObjectsGabungan() {
-        List<KeyValueString> res = getObjects();
+        List<KeyValueString> res = new ArrayList<>();
 
         res.addAll(Arrays.stream(ER7061PosLtlbDppkIur.values())
                 .map(ER7061PosLtlbDppkIur::getObject)
@@ -55,16 +56,33 @@ public enum ER7061PosLtlbDppkIur implements IObject<KeyValueString> {
         return new KeyValueString(key, value, new String[]{});
     }
 
+    public static ReferenceConfig getRefConfig(ProgramType programType) {
+        switch (programType) {
+            case PPMPK:
+            case PPMPM:
+                return Configs.REF_CONFIG_PPMP;
+            case PPIPK:
+            case PPIPM:
+                return Configs.REF_CONFIG_PPIP;
+            case DPLK:
+                return Configs.REF_CONFIG_DPLK;
+            case PPMPPPIPK:
+                return Configs.REF_CONFIG_PPMPKPPIPK;
+            default:
+                throw new IllegalStateException();
+        }
+    }
+
     public enum Configs implements ReferenceConfig {
         REF_CONFIG_PPMP {
             @Override
             public String savePos() {
-                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumnExcept(5, 16, new int[] { 6 }), getObjects());
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(4, 17), getObjects());
             }
 
             @Override
             public String savePosForm() {
-                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(new int[]{5, 6, 7, 8, 17}), getObjects());
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(4, 17), getObjects());
             }
 
             @Override
@@ -76,12 +94,12 @@ public enum ER7061PosLtlbDppkIur implements IObject<KeyValueString> {
         REF_CONFIG_PPIP {
             @Override
             public String savePos() {
-                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumnExcept(5, 15, new int[] { 6 }), getObjects());
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(4, 17), getObjects());
             }
 
             @Override
             public String savePosForm() {
-                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(5, 15), getObjects());
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(4, 17), getObjects());
             }
 
             @Override
@@ -93,12 +111,12 @@ public enum ER7061PosLtlbDppkIur implements IObject<KeyValueString> {
         REF_CONFIG_DPLK {
             @Override
             public String savePos() {
-                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(4, 7), getObjects());
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(3, 9), getObjects());
             }
 
             @Override
             public String savePosForm() {
-                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(4, 7), getObjects());
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(3, 9), getObjects());
             }
 
             @Override

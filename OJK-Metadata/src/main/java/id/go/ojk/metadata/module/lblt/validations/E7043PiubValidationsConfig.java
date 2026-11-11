@@ -38,11 +38,17 @@ public enum E7043PiubValidationsConfig implements ILbltMetadataValidation, IVali
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(3, 4), R_PIUB000000.key, R_PIUB010000.key,
                     UtilMetadata.genMessageTotal(R_PIUB000000.value, R_PIUB010000.value))),
 
-    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(2, 6),
+    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM, PPMPPPIPK), validationFields(2, 6),
             () -> UtilFieldConditional.genExistPos("N", "M", R_PIUB000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(7),
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM, PPMPPPIPK), validationFields(7),
             () -> UtilFieldConditional.genExistPos("N", "O", R_PIUB000000.key)),
+
+    /* PPMPPPIPK Specific Validations */
+
+    SG_EQUAL_FORMULA_GABUNGAN(programs(PPMPPPIPK),
+            () -> UtilSegmentValidation.genFilterEqualsFormula_DAPEN(UtilMetadata.genPipeColumn(4, 6), R_PIUB000000.key, R_PIUB010000.key,
+                    UtilMetadata.genMessageTotal(R_PIUB000000.value, R_PIUB010000.value))),
 
     ;
 
@@ -84,16 +90,8 @@ public enum E7043PiubValidationsConfig implements ILbltMetadataValidation, IVali
                 .toValidation(this, ConditionalRequired.class);
     }
 
-    public static final BaseMetadataValidation<E7043PiubValidationsConfig> VALIDATION_METADATA_PPMPK =
-            new LbltMetadataValidation<>(E7043PiubValidationsConfig.class, PPMPK);
-
-    public static final BaseMetadataValidation<E7043PiubValidationsConfig> VALIDATION_METADATA_PPMPM =
-            new LbltMetadataValidation<>(E7043PiubValidationsConfig.class, PPMPM);
-
-    public static final BaseMetadataValidation<E7043PiubValidationsConfig> VALIDATION_METADATA_PPIPK =
-            new LbltMetadataValidation<>(E7043PiubValidationsConfig.class, PPIPK);
-
-    public static final BaseMetadataValidation<E7043PiubValidationsConfig> VALIDATION_METADATA_PPIPM =
-            new LbltMetadataValidation<>(E7043PiubValidationsConfig.class, PPIPM);
+    public static BaseMetadataValidation<?> getSegmentValidation(ProgramType programType) {
+        return new LbltMetadataValidation<>(E7043PiubValidationsConfig.class, programType);
+    }
 
 }

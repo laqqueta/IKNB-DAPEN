@@ -39,6 +39,12 @@ public enum EHeaderMetadataSharedLblt implements IObject<ReferenceMetadata> {
 	R021(ER1267RincianInvestasi.getRefNumber(), ER1267RincianInvestasi.getName(), ER1267RincianInvestasi.getObjects()),
 	R022(ER1268JenisInvestasi.getRefNumber(), ER1268JenisInvestasi.getName(), ER1268JenisInvestasi.getObjects()),
 	R023(ER1269MetodePendanaan.getRefNumber(), ER1269MetodePendanaan.getName(), ER1269MetodePendanaan.getObjects()),
+	R024(ER1255JenisManfaat.getRefNumber("PPMPK"), ER1255JenisManfaat.getName("PPMPK"), ER1255JenisManfaat.getObjects("PPMPK")),
+	R025(ER1255JenisManfaat.getRefNumber("PPMPM"), ER1255JenisManfaat.getName("PPMPM"), ER1255JenisManfaat.getObjects("PPMPM")),
+	R026(ER1255JenisManfaat.getRefNumber("PPIPK"), ER1255JenisManfaat.getName("PPIPK"), ER1255JenisManfaat.getObjects("PPIPK")),
+	R027(ER1255JenisManfaat.getRefNumber("PPIPM"), ER1255JenisManfaat.getName("PPIPM"), ER1255JenisManfaat.getObjects("PPIPM")),
+	R028(ER1255JenisManfaat.getRefNumber("GabunganPPMP"), ER1255JenisManfaat.getName("GabunganPPMP"), ER1255JenisManfaat.getObjects("GabunganPPMP")),
+	R029(ER1255JenisManfaat.getRefNumber("GabunganPPIP"), ER1255JenisManfaat.getName("GabunganPPIP"), ER1255JenisManfaat.getObjects("GabunganPPIP")),
 	;
 
 	@Getter

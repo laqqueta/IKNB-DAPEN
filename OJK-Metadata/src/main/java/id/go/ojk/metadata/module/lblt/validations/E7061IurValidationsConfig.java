@@ -45,17 +45,21 @@ public enum E7061IurValidationsConfig implements ILbltMetadataValidation, IValid
                     UtilMetadata.genPipeColumn(4, 6), R_IUR000000.key, R_IUR010000.key,
                     UtilMetadata.genMessageTotal(R_IUR000000.value, R_IUR010000.value))),
 
-    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(2, 3, 4, 6, 17),
+    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM, PPMPPPIPK), validationFields(2, 3, 4, 6, 17),
             () -> UtilFieldConditional.genExistPos("N", "M", R_IUR000000.key)),
 
     CR_EXISTS_POS_M_DPLK(programs(DPLK), validationFields(2, 3, 17),
             () -> UtilFieldConditional.genExistPos("N", "M", R_IUR000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(18),
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK), validationFields(18),
             () -> UtilFieldConditional.genExistPos("N", "O", R_IUR000000.key)),
 
-//    CR_EXISTS_POS_O_DPLK(programs(DPLK), validationFields(8),
-//            () -> UtilFieldConditional.genExistPos("N", "O", R_IUR000000.key)),
+    /* Gabungan Specific Validations */
+
+    SG_EQUAL_FORMULA_GABUNGAN(programs(PPMPPPIPK),
+            () -> UtilSegmentValidation.genFilterEqualsFormula_DAPEN(
+                    UtilMetadata.genPipeColumnExcept(6, 17, new int[] { 7 }), R_IUR000000.key, R_IUR010000.key,
+                    UtilMetadata.genMessageTotal(R_IUR000000.value, R_IUR010000.value))),
 
     ;
 
@@ -97,19 +101,8 @@ public enum E7061IurValidationsConfig implements ILbltMetadataValidation, IValid
                 .toValidation(this, ConditionalRequired.class);
     }
 
-    public static final BaseMetadataValidation<E7061IurValidationsConfig> VALIDATION_METADATA_PPMPK =
-            new LbltMetadataValidation<>(E7061IurValidationsConfig.class, PPMPK);
-
-    public static final BaseMetadataValidation<E7061IurValidationsConfig> VALIDATION_METADATA_PPMPM =
-            new LbltMetadataValidation<>(E7061IurValidationsConfig.class, PPMPM);
-
-    public static final BaseMetadataValidation<E7061IurValidationsConfig> VALIDATION_METADATA_PPIPK =
-            new LbltMetadataValidation<>(E7061IurValidationsConfig.class, PPIPK);
-
-        public static final BaseMetadataValidation<E7061IurValidationsConfig> VALIDATION_METADATA_PPIPM =
-            new LbltMetadataValidation<>(E7061IurValidationsConfig.class, PPIPM);
-
-    public static final BaseMetadataValidation<E7061IurValidationsConfig> VALIDATION_METADATA_DPLK =
-            new LbltMetadataValidation<>(E7061IurValidationsConfig.class, DPLK);
+    public static BaseMetadataValidation<?> getSegmentValidation(ProgramType programType) {
+        return new LbltMetadataValidation<>(E7061IurValidationsConfig.class, programType);
+    }
 
 }

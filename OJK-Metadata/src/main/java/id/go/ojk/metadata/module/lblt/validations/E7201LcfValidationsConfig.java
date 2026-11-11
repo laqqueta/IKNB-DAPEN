@@ -90,10 +90,8 @@ public enum E7201LcfValidationsConfig implements ILbltMetadataValidation, IValid
                 .toValidation(this, ConditionalRequired.class);
     }
 
-    public static final BaseMetadataValidation<E7201LcfValidationsConfig> VALIDATION_METADATA_PPIPM =
-            new LbltMetadataValidation<>(E7201LcfValidationsConfig.class, PPIPM);
-
-    public static final BaseMetadataValidation<E7201LcfValidationsConfig> VALIDATION_METADATA_DPLK =
-            new LbltMetadataValidation<>(E7201LcfValidationsConfig.class, DPLK);
+    public static BaseMetadataValidation<E7201LcfValidationsConfig> getValidationMetadata(ProgramType programType) {
+        return new LbltMetadataValidation<>(E7201LcfValidationsConfig.class, programType);
+    }
 
 }

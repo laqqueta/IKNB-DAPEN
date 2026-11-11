@@ -41,7 +41,7 @@ public enum E7014InptMValidationsConfig implements ILbltMetadataValidation, IVal
             () -> UtilSegmentValidationV2.genEqualsInvestasiRatio("5", R_INPT010000.key,
                     R_INPT010000.key, "4", EFormLaporanBulananTahunan.LTLB_LAN.getCode(),
                     ER7001PosLtlbDppkLan.R_LAN0102000000.getObject().getKey(), "3",
-                    UtilMetadata.genMessage(R_INPT010000.value, R_INPT010000.value + " / Baris 'TOTAL INVESTASI' (Piutang Investasi) pada form LAN"), 2)),
+                    UtilMetadata.genMessage(R_INPT010000.value, R_INPT010000.value + " / 'TOTAL INVESTASI' Kolom 'Manfaat Pensiun' pada form LAN"), 2)),
 
     CR_EXISTS_POS_M(programs(PPIPM), validationFields(2,3,5,6),
             () -> UtilFieldConditional.genExistPos("N", "M", R_INPT000000.key)),

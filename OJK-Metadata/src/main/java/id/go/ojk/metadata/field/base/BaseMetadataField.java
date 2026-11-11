@@ -5,6 +5,7 @@ import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.validation.conditional.ConditionalRequired;
 import id.go.ojk.client.model.config.validation.field.FieldValidation;
 import id.go.ojk.lib.client.model.constant.RequiredCondition;
+import id.go.ojk.metadata.module.lblt.field.Dppk0001Lan;
 import id.go.ojk.metadata.util.FieldUtil;
 import id.go.ojk.metadata.util.constants.SectorType;
 import id.go.ojk.metadata.validation.ValidationConverter;
@@ -38,16 +39,25 @@ public abstract class BaseMetadataField<T extends Enum<T> & IBaseFieldMetadata> 
 
     protected List<SubmissionField> reindex(List<SubmissionField> filtered, List<Integer> reindexNumber) {
         AtomicInteger idx = new AtomicInteger(0);
-        return filtered.stream()
-                .filter(f -> reindexNumber.contains(f.getNumber()))
-                .peek(f -> {
-                    int num = idx.getAndIncrement();
-                    String code = "F" + (num < 10 ? "0" : "") + num;
-                    f.setNumber(num);
-                    f.setCode(code);
-                })
-                .sorted(Comparator.comparingInt(SubmissionField::getNumber))
-                .collect(Collectors.toList());
+        List<SubmissionField> filterField = new ArrayList<>();
+        Optional<SubmissionField> tmpSf;
+        String[] code = new String[1];
+
+        for (int i : reindexNumber) {
+            tmpSf = filtered.stream()
+                    .filter(f -> f.getNumber() == i)
+                    .map(SerializationUtils::clone)
+                    .peek(f -> {
+                        int num = idx.getAndIncrement();
+                        code[0] = "F" + (num < 10 ? "0" : "") + num;
+                        f.setNumber(num);
+                        f.setCode(code[0]);
+                    }).findAny();
+
+            tmpSf.ifPresent(filterField::add);
+        }
+
+        return filterField;
     }
 
     protected Stream<SubmissionField> getfilteredFieldStream() {
@@ -117,7 +127,6 @@ public abstract class BaseMetadataField<T extends Enum<T> & IBaseFieldMetadata> 
 
     public List<SubmissionField> getReindexClearedFields(List<Integer> reindexNumber) {
         return reindex(getfilteredFieldStream()
-                .map(SerializationUtils::clone)
                 .peek(this::clearedField)
                 .sorted(Comparator.comparingInt(SubmissionField::getNumber))
                 .collect(Collectors.toList()), reindexNumber);
@@ -125,7 +134,6 @@ public abstract class BaseMetadataField<T extends Enum<T> & IBaseFieldMetadata> 
 
     public List<SubmissionField> getReindexClearedFields(List<Integer> reindexNumber, boolean isAll) {
         return reindex(getfilteredFieldStream()
-                .map(SerializationUtils::clone)
                 .peek(f -> {
                     if (isAll) {
                         allClearedField(f);

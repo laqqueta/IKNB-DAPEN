@@ -174,9 +174,16 @@ public enum E7001LanKValidationsConfig implements ILbltMetadataValidation, IVali
                         EFormLaporanBulananTahunan.LTLB_PROP.getCode(),
                         ER7040PosLtlbDppkProp.R_PROP010000.getObject().getKey(),
                         "11", "17|2", "3", fieldSpec, specCondition, criteriaCondition, sumCriteriaCondition,
-                        "PROP|Nilai Buku|Nilai Appraisal/ Nilai Wajar|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain|Jenis Objek (Tanah/Bangunan/Tanah&Bangunan)",
+                        "PROP|Nilai Buku|Nilai Appraisal/ Nilai Wajar|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain|Jenis Objek (Tanah/Bangunan/Tanah danBangunan)",
                         criteriaConditionErr, sumCriteriaConditionErr, "0");
             }),
+
+    SG_SUMIF_LAN0103010000(FieldUtil.programs(DPLK),
+            () -> sumIfValidationHelper(R_LAN0103010000.key,
+                    "6", "7",
+                    EFormLaporanBulananTahunan.LTLB_KASB.getCode(),
+                    ER7041PosLtlbDppkKasb.R_KASB010000.getObject().getKey(),
+                    "KASB|Nominal|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain/LCF")),
 
     SG_SUMIF_LAN0103020000(programs(DPLK),
             () -> sumIfValidationHelper(
@@ -275,23 +282,23 @@ public enum E7001LanKValidationsConfig implements ILbltMetadataValidation, IVali
     SG_EQUALS_FORMULA_2(programs(DPLK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(3, 13),
                     ER7001PosLtlbDppkLan.R_LAN0104000000.getObject().getKey(),  
-                    UtilMetadata.genPlusRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.DPLK), 21, 25),
+                    UtilMetadata.genPlusRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.DPLK), 21, 26),
                     UtilMetadata.genMessage(ER7001PosLtlbDppkLan.R_LAN0104000000.getObject().getValue(),
-                            UtilMetadata.genPlusDesc(ER7001PosLtlbDppkLan.getObjects(ProgramType.DPLK), 21, 25)))),
+                            UtilMetadata.genPlusDesc(ER7001PosLtlbDppkLan.getObjects(ProgramType.DPLK), 21, 26)))),
 
     SG_EQUALS_FORMULA_3(programs(DPLK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(3, 13),
                     ER7001PosLtlbDppkLan.R_LAN0106000000.getObject().getKey(),
-                    UtilMetadata.genPlusRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.DPLK), new int[]{21, 26, 27}),
+                    UtilMetadata.genPlusRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.DPLK), new int[]{21, 27, 28}),
                     UtilMetadata.genMessage(ER7001PosLtlbDppkLan.R_LAN0106000000.getObject().getValue(),
-                            UtilMetadata.genPlusDesc(ER7001PosLtlbDppkLan.getObjects(ProgramType.DPLK), new int[]{21, 26, 27})))),
+                            UtilMetadata.genPlusDesc(ER7001PosLtlbDppkLan.getObjects(ProgramType.DPLK), new int[]{21, 27, 28})))),
 
     SG_EQUALS_FORMULA_4(programs(DPLK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(3, 13),
                     ER7001PosLtlbDppkLan.R_LAN0108000000.getObject().getKey(),
-                    UtilMetadata.genPlusRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.DPLK), 29, 34),
+                    UtilMetadata.genPlusRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.DPLK), 30, 35),
                     UtilMetadata.genMessage(ER7001PosLtlbDppkLan.R_LAN0108000000.getObject().getValue(),
-                            UtilMetadata.genPlusDesc(ER7001PosLtlbDppkLan.getObjects(ProgramType.DPLK), 29, 34)))),
+                            UtilMetadata.genPlusDesc(ER7001PosLtlbDppkLan.getObjects(ProgramType.DPLK), 30, 35)))),
 
     SG_EQUALS_FORMULA_5(programs(DPLK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(3, 13),
@@ -391,21 +398,21 @@ public enum E7001LanKValidationsConfig implements ILbltMetadataValidation, IVali
 
     SG_ROW_DATA_TYPE_NUMERIC(programs(DPLK), () ->
             UtilSegmentValidation.genRegexNumeric(UtilMetadata.genPipeColumn(3, 12),
-                    UtilMetadata.genPipeRow(getObjects(DPLK), 0, 36))),
+                    UtilMetadata.genPipeRow(getObjects(DPLK), 0, 37))),
 
     SG_ROW_DATA_TYPE_NUMERIC_NEGATIVE(programs(DPLK), () ->
             UtilSegmentValidation.genRegexNumericNegative(UtilMetadata.genPipeColumn(3, 12),
-                    UtilMetadata.genPipeRow(getObjects(DPLK), new int[]{37}))),
+                    UtilMetadata.genPipeRow(getObjects(DPLK), new int[]{38}))),
 
     FV_GABUNGAN_EQUALS_EXCEPT(programs(DPLK), validationFields(Dppk0001Lan.GABUNGAN),
             () -> UtilFieldValidation.genEqualsExceptPosFormula(
                     UtilMetadata.genPlusColumn(3, 12),
-                    UtilMetadata.genPipeRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.DPLK), new int[]{20, 26, 28, 35, 36, 37}),
+                    UtilMetadata.genPipeRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.DPLK), new int[]{20, 27, 29, 36, 37, 38}),
                     2)),
 
     CR_EXIST_POS_N_PERSENTASE_INVESTASI(programs(DPLK), validationFields(2),
             () -> UtilFieldConditional.genExistPos("N", "M",
-                    UtilMetadata.genPipeRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.DPLK), 21, 37))),
+                    UtilMetadata.genPipeRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.DPLK), 21, 38))),
 
     ;
 

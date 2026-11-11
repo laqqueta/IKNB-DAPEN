@@ -42,8 +42,7 @@ public class FieldUtil {
     }
 
     public static List<Integer> validationPipeFields(String fields) {
-        String[] fieldSplit = fields.split("[|]");
-        return Arrays.stream(fieldSplit)
+        return Arrays.stream(fields.split("[|]"))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }

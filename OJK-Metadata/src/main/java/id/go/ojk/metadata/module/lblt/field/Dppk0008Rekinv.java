@@ -88,7 +88,8 @@ public enum Dppk0008Rekinv implements ILbltFieldMetadata {
     /* Gabungan Additional Field */
 
     JENIS_PROGRAM(sectors(KONVENSIONAL, SYARIAH), programs(PPMPPPIPK),
-            sf(1000, null, "Jenis Program", sv(M, 5, 5, alfa))),
+            sf(1000, null, "Jenis Program", sv(M, 4, 4, alfa)
+                    .confConstant("PPMP|PPIP"))),
 
     ;
 
@@ -101,7 +102,8 @@ public enum Dppk0008Rekinv implements ILbltFieldMetadata {
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataLkdpPpmpm.R7008Rekinv.getObject()),
             new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataLkdpPpipk.R7008Rekinv.getObject()),
             new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataLkdpPpipm.R7008Rekinv.getObject()),
-            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkdpDplk.R7008Rekinv.getObject())
+            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkdpDplk.R7008Rekinv.getObject()),
+            new AbstractMap.SimpleEntry<>(PPMPPPIPK, EHeaderMetadataLkdpPpmpppipk.R7008Rekinv.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0008Rekinv> FIELD_METADATA =
@@ -110,7 +112,7 @@ public enum Dppk0008Rekinv implements ILbltFieldMetadata {
     public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, ProgramType programType) {
         EFormLaporanBulananTahunan REKINV_FORM = EFormLaporanBulananTahunan.LTLB_REKINV;
         int minMaxRow = ER7008PosLtlbDppkRekinv.getRowSize(programType);
-        SubmissionFormatBuilder sf = SubmissionFormatBuilder.builder()
+        return SubmissionFormatBuilder.builder()
                 .code(REKINV_FORM.getCode())
                 .name(REKINV_FORM.getName())
                 .extension(ExtensionType.TXT)
@@ -118,16 +120,7 @@ public enum Dppk0008Rekinv implements ILbltFieldMetadata {
                 .fields(new ArrayList<>())
                 .maxRow(minMaxRow)
                 .minRow(minMaxRow)
-                .maxRow(null)
-                .minRow(0)
                 .build();
-
-        if (programType == PPMPPPIPK) {
-            sf.setMaxRow(null);
-            sf.setMinRow(0);
-        }
-
-        return sf;
     }
 
     public static SubmissionFormat formMetadata(SectorType sectorType, ProgramType programType) {
@@ -136,48 +129,20 @@ public enum Dppk0008Rekinv implements ILbltFieldMetadata {
         SubmissionFormatBuilder submissionFormatBuilder = getPpmpSubmissionFormatConfig(sectorType, programType);
         ReferenceConfig referenceConfig = ER7008PosLtlbDppkRekinv.getRefConfig(programType);
         BaseMetadataValidation<? extends IBaseMetadataValidation> metadataValidation = E7008RekinvValidationsConfig.getValidationMetadata(programType);
-
-        switch (programType) {
-            case PPMPK:
-            case PPMPM:
-            case PPIPK:
-            case PPIPM:
-            case DPLK:
-            case PPMPPPIPK:
-                break;
-            default:
-                throw new IllegalStateException();
-        }
-
         BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType).config()
                 .setSubmissionFormat(submissionFormatBuilder)
-//                .setReferenceConfigs(referenceConfig)
-//                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-//                .setSegmentValidations(metadataValidation)
-                ;
+                .setReferenceConfigs(referenceConfig)
+                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                .setSegmentValidations(metadataValidation);
 
-        if (programType == PPMPPPIPK) {
+        if (programType.equals(PPMPPPIPK)) {
             List<Integer> gabunganFields = Arrays.asList(0, 1, 1000, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13);
             submissionConfig
-                    .setSubmissionField(FIELD_METADATA.getReindexClearedFields(gabunganFields, true))
-                    .setSegmentValidations();
-        } else {
-            submissionConfig
-                    .setReferenceConfigs(referenceConfig)
-                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                    .setSubmissionField(FIELD_METADATA.getReindexFields(gabunganFields, metadataValidation.getFieldValidations()))
                     .setSegmentValidations(metadataValidation);
         }
 
         return submissionConfig.build().get();
-
-//        return new SubmissionConfig(programType)
-//                .config()
-//                .setReferenceConfigs(referenceConfig)
-//                .setSubmissionFormat(submissionFormatBuilder)
-//                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-//                .setSegmentValidations(metadataValidation)
-//                .build()
-//                .get();
     }
 
     @Override

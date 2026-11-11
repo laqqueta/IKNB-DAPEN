@@ -172,8 +172,8 @@ public enum E7017Ras1MValidationsConfig implements ILbltMetadataValidation, IVal
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
         List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPMPM);
 
-        FormulaParserData operation = genFormulaParser(formObject, "22+23+24", "3", comparatorForm);
-        String err = "sama dengan baris" + operation.getErrMessage() + "'Manfaat Pensiun' pada Form LAN * Bulan Audit form DTUM";
+        FormulaParserData operation = genFormulaParser(formObject, "22+23+24+25", "3", comparatorForm);
+        String err = "sama dengan baris" + operation.getErrMessage() + " 'Manfaat Pensiun' pada Form LAN * Bulan Audit form DTUM";
 
         return UtilSegmentValidationV2.genFormulaParserValidationV2PeriodeAudit("2", R_RAS10701000000.key, operation.getFormula(), err,
                 ER7000PosLtlbDppkDtum.R_DTUM080700.key, "2", "DTUM", 0);
@@ -197,7 +197,7 @@ public enum E7017Ras1MValidationsConfig implements ILbltMetadataValidation, IVal
 
     SG_MULTI_SUM_RAS10802000000(programs(PPMPM), () -> {
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
-        FormulaParserData ops = genFormulaParser(ER7001PosLtlbDppkLan.getObjects(PPMPM), "48", "3", comparatorForm);
+        FormulaParserData ops = genFormulaParser(ER7001PosLtlbDppkLan.getObjects(PPMPM), "49", "3", comparatorForm);
         String err = "sama dengan baris " + ops.getErrMessage() + " Manfaat Pensiun pada form LAN";
         return UtilSegmentValidationV2.genFormulaParserValidationV2("2", R_RAS10802000000.key, ops.getFormula(), err);
     }),
@@ -205,7 +205,7 @@ public enum E7017Ras1MValidationsConfig implements ILbltMetadataValidation, IVal
     SG_MULTI_SUM_RAS10901000000(programs(PPMPM), () -> {
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
         List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPMPM);
-        FormulaParserData operation = genFormulaParser(formObject, "27+28", "3", comparatorForm);
+        FormulaParserData operation = genFormulaParser(formObject, "28+29", "3", comparatorForm);
         String err = "sama dengan baris " + operation.getErrMessage() + " 'Manfaat Pensiun' pada Form LAN";
         return UtilSegmentValidationV2.genFormulaParserValidationV2("2", R_RAS10901000000.key, operation.getFormula(), err);
     }),
@@ -259,7 +259,7 @@ public enum E7017Ras1MValidationsConfig implements ILbltMetadataValidation, IVal
 
     SG_MULTI_SUM_RAS11202000000(programs(PPMPM), () -> {String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
         List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPMPM);
-        FormulaParserData operation2 = genFormulaParser(formObject, "48", "3", comparatorForm);
+        FormulaParserData operation2 = genFormulaParser(formObject, "49", "3", comparatorForm);
         String operationForm = operation2.getFormula();
         String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LAN";
 
@@ -314,7 +314,7 @@ public enum E7017Ras1MValidationsConfig implements ILbltMetadataValidation, IVal
     SG_MULTI_SUM_RAS11501000000(programs(PPMPM), () -> {
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
         List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPMPM);
-        FormulaParserData operation2 = genFormulaParser(formObject, "22+23+24", "3", comparatorForm);
+        FormulaParserData operation2 = genFormulaParser(formObject, "22+23+24+25", "3", comparatorForm);
         String operationForm = operation2.getFormula();
         String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LAN";
 
@@ -324,7 +324,7 @@ public enum E7017Ras1MValidationsConfig implements ILbltMetadataValidation, IVal
     SG_MULTI_SUM_RAS11502000000(programs(PPMPM), () -> {
         String comparatorForm = EFormLaporanBulananTahunan.LTLB_LAN.getCode();
         List<KeyValueString> formObject = ER7001PosLtlbDppkLan.getObjects(PPMPM);
-        FormulaParserData operation2 = genFormulaParser(formObject, "48", "3", comparatorForm);
+        FormulaParserData operation2 = genFormulaParser(formObject, "49", "3", comparatorForm);
         String operationForm = operation2.getFormula();
         String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + " Manfaat Pensiun pada form LAN";
 

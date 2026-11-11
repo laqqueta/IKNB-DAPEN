@@ -161,7 +161,26 @@ public enum ER7103PosLtlbDppkPinvs implements IObject<KeyValueString> {
     }
 
     public static int getRowSize(ProgramType programType) {
-        return programType.equals(ProgramType.DPLK) ? getObjects(programType).size() : getObjects().size();
+                if (programType.equals(ProgramType.DPLK) || programType.equals(ProgramType.PPMPPPIPK)) {
+            return getObjects(programType).size();
+        }
+
+        return getObjects().size();
+    }
+
+    public static ReferenceConfig getRefConfig(ProgramType programType) {
+        switch (programType) {
+            case PPMPK:
+            case PPMPM:
+            case PPIPK:
+            case PPIPM:
+            case DPLK:
+                return Configs.REF_CONFIG;
+            case PPMPPPIPK:
+                return Configs.REF_CONFIG_PPMPKPPIPK;
+            default:
+                throw new IllegalStateException();
+        }
     }
 
     public enum Configs implements ReferenceConfig {

@@ -36,21 +36,35 @@ public enum E7024DpjkvValidationsConfig implements ILbltMetadataValidation, IVal
             () -> UtilSegmentValidation.genEqualsFormula("6|7|8", R_DPJKV000000.key, R_DPJKV010000.key,
                     UtilMetadata.genMessageTotal(R_DPJKV000000.value, R_DPJKV010000.value))),
 
+    SG_EQUAL_DPJKV000000_DPJKV010000_GABUNGAN(programs(PPMPPPIPK),
+            () -> UtilSegmentValidation.genFilterEqualsFormula_DAPEN("7|8|9", R_DPJKV000000.key, R_DPJKV010000.key,
+                    UtilMetadata.genMessageTotal(R_DPJKV000000.value, R_DPJKV010000.value))),
+
     FV_EQUAL_NILAI_INVESATSI(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(8),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("7-6", R_DPJKV000000.key)),
+
+    FV_EQUAL_NILAI_INVESATSI_GABUNGAN(programs(PPMPPPIPK), validationFields(8),
+            () -> UtilFieldValidation.genEqualsExceptPosFormula("8-7", R_DPJKV000000.key)),
 
     FV_EQUAL_PERSENTASE_INVESTASI(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(9),
             () -> UtilFieldValidation.genEqualsPercentageExceptPosFormula("8/7", R_DPJKV000000.key)),
 
-    CR_EXISTS_DPJKA000000_M(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(2, 5, 9, 10, 11, 12, 13, 15),
+    FV_EQUAL_PERSENTASE_INVESTASI_GABUNGAN(programs(PPMPPPIPK), validationFields(9),
+            () -> UtilFieldValidation.genEqualsPercentageExceptPosFormula("9/8", R_DPJKV000000.key)),
+
+    CR_EXISTS_DPJKA000000_M(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK), validationFields(2, 5, 9, 10, 11, 12, 13, 15),
             () -> UtilFieldConditional.genExistPos("N", "M", R_DPJKV000000.key)),
 
-    CR_EXISTS_DPJKA000000_O(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(3, 4, 16),
+    CR_EXISTS_DPJKA000000_O(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK), validationFields(3, 4, 16),
             () -> UtilFieldConditional.genExistPos("N", "O", R_DPJKV000000.key)),
 
     CR_EQUAL_NAMA_PENGELOLA(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(14),
             () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("N", "M", "N",
                     R_DPJKV010000.key, "13", ER1252Pengelolaan.getReferenceIndex(0), ER1252Pengelolaan.getReferenceValueIndex(0))),
+
+    CR_EQUAL_NAMA_PENGELOLA_GABUNGAN(programs(PPMPPPIPK), validationFields(14),
+            () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("N", "M", "N",
+                    R_DPJKV010000.key, "14", ER1252Pengelolaan.getReferenceIndex(0), ER1252Pengelolaan.getReferenceValueIndex(0))),
 
     ;
 
@@ -92,19 +106,8 @@ public enum E7024DpjkvValidationsConfig implements ILbltMetadataValidation, IVal
                 .toValidation(this, ConditionalRequired.class);
     }
 
-    public static final BaseMetadataValidation<E7024DpjkvValidationsConfig> VALIDATION_METADATA_PPMPK =
-            new LbltMetadataValidation<>(E7024DpjkvValidationsConfig.class, PPMPK);
-
-    public static final BaseMetadataValidation<E7024DpjkvValidationsConfig> VALIDATION_METADATA_PPMPM =
-            new LbltMetadataValidation<>(E7024DpjkvValidationsConfig.class, PPMPM);
-
-    public static final BaseMetadataValidation<E7024DpjkvValidationsConfig> VALIDATION_METADATA_PPIPK =
-            new LbltMetadataValidation<>(E7024DpjkvValidationsConfig.class, PPIPK);
-
-        public static final BaseMetadataValidation<E7024DpjkvValidationsConfig> VALIDATION_METADATA_PPIPM =
-            new LbltMetadataValidation<>(E7024DpjkvValidationsConfig.class, PPIPM);
-
-    public static final BaseMetadataValidation<E7024DpjkvValidationsConfig> VALIDATION_METADATA_DPLK =
-            new LbltMetadataValidation<>(E7024DpjkvValidationsConfig.class, DPLK);
+    public static BaseMetadataValidation<E7024DpjkvValidationsConfig> getValidationMetadata(ProgramType programType) {
+        return new LbltMetadataValidation<>(E7024DpjkvValidationsConfig.class, programType);
+    }
 
 }

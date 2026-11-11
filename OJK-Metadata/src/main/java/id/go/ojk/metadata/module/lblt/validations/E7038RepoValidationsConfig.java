@@ -36,20 +36,34 @@ public enum E7038RepoValidationsConfig implements ILbltMetadataValidation, IVali
             () -> UtilSegmentValidation.genEqualsFormula("5|10|11|13|14|15", R_REPO000000.key, R_REPO010000.key,
                     UtilMetadata.genMessageTotal(R_REPO000000.value, R_REPO010000.value))),
 
+    SG_EQUAL_FORMULA_GABUNGAN(programs(PPMPPPIPK),
+            () -> UtilSegmentValidation.genFilterEqualsFormula_DAPEN("6|11|12|14|15|16", R_REPO000000.key, R_REPO010000.key,
+                    UtilMetadata.genMessageTotal(R_REPO000000.value, R_REPO010000.value))),
+
     FV_EQUAL_NILAI_INVESTASI(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(15),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("14-10", R_REPO000000.key)),
 
+    FV_EQUAL_NILAI_INVESTASI_GABUNGAN(programs(PPMPPPIPK), validationFields(15),
+            () -> UtilFieldValidation.genEqualsExceptPosFormula("15-11", R_REPO000000.key)),
+
     FV_EQUAL_PERSENTASE_INVESTASI(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(16),
             () -> UtilFieldValidation.genEqualsPercentageExceptPosFormula("15/10", R_REPO000000.key)),
+
+    FV_EQUAL_PERSENTASE_INVESTASI_GABUNGAN(programs(PPMPPPIPK), validationFields(16),
+            () -> UtilFieldValidation.genEqualsPercentageExceptPosFormula("16/11", R_REPO000000.key)),
 
     CR_NAMA_PENGELOLA(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(19),
             () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("N", "M", "N",
                     R_REPO010000.key, "18", ER1252Pengelolaan.getReferenceIndex(0), ER1252Pengelolaan.getReferenceValueIndex(0))),
 
-    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(2, 3, 4, 6, 7, 8, 9, 12, 16, 17, 18),
+    CR_NAMA_PENGELOLA_GABUNGAN(programs(PPMPPPIPK), validationFields(19),
+            () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("N", "M", "N",
+                    R_REPO010000.key, "19", ER1252Pengelolaan.getReferenceIndex(0), ER1252Pengelolaan.getReferenceValueIndex(0))),
+
+    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK), validationFields(2, 3, 4, 6, 7, 8, 9, 12, 16, 17, 18),
             () -> UtilFieldConditional.genExistPos("N", "M", R_REPO000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(20),
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK), validationFields(20),
             () -> UtilFieldConditional.genExistPos("N", "O", R_REPO000000.key)),
 
     ;
@@ -90,6 +104,10 @@ public enum E7038RepoValidationsConfig implements ILbltMetadataValidation, IVali
     public ConditionalRequired toFieldConditional() {
         return ValidationConverter
                 .toValidation(this, ConditionalRequired.class);
+    }
+
+    public static BaseMetadataValidation<E7038RepoValidationsConfig> getValidationMetadata(ProgramType programType) {
+        return new LbltMetadataValidation<>(E7038RepoValidationsConfig.class, programType);
     }
 
     public static final BaseMetadataValidation<E7038RepoValidationsConfig> VALIDATION_METADATA_PPMPK =

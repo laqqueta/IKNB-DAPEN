@@ -96,8 +96,8 @@ public enum E7002LpanKValidationsConfig implements ILbltMetadataValidation, IVal
 
     SG_EQUAL_FORMULA_2(programs(DPLK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 12),
-                    R_LPAN0107000000.getObject().getKey(), UtilMetadata.genPlusRow(getObjects(ProgramType.DPLK), 6, 9),
-                    UtilMetadata.genMessage(R_LPAN0107000000.getObject().getValue(), UtilMetadata.genPlusDesc(getObjects(ProgramType.DPLK), 6, 9)))),
+                    R_LPAN0107000000.getObject().getKey(), UtilMetadata.genPlusRow(getObjects(ProgramType.DPLK), 5, 9),
+                    UtilMetadata.genMessage(R_LPAN0107000000.getObject().getValue(), UtilMetadata.genPlusDesc(getObjects(ProgramType.DPLK), 5, 9)))),
 
     SG_EQUAL_FORMULA_3(programs(DPLK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 11),
@@ -106,13 +106,13 @@ public enum E7002LpanKValidationsConfig implements ILbltMetadataValidation, IVal
 
     SG_EQUAL_FORMULA_4(programs(DPLK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 11),
-                    R_LPAN0300000000.getObject().getKey(), UtilMetadata.genPlusRow(getObjects(ProgramType.DPLK), new int[]{5, 10}) + "-LPAN0209000000",
-                    UtilMetadata.genMessage(R_LPAN0300000000.getObject().getValue(), UtilMetadata.genPlusDesc(getObjects(ProgramType.DPLK), new int[]{5, 10}) + "-'Jumlah Pengurangan'"))),
+                    R_LPAN0300000000.getObject().getKey(), UtilMetadata.genMinusRow(getObjects(ProgramType.DPLK), new int[]{10, 19}),
+                    UtilMetadata.genMessage(R_LPAN0300000000.getObject().getValue(), UtilMetadata.genMinusDesc(getObjects(ProgramType.DPLK), new int[]{10, 19})))),
 
     SG_EQUAL_FORMULA_5(programs(DPLK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 11),
-                    R_LPAN0500000000.getObject().getKey(), UtilMetadata.genMinusRow(getObjects(ProgramType.DPLK), new int[]{21, 20}),
-                    UtilMetadata.genMessage(R_LPAN0500000000.getObject().getValue(), UtilMetadata.genMinusDesc(getObjects(ProgramType.DPLK), new int[]{21, 20})))),
+                    R_LPAN0500000000.getObject().getKey(), UtilMetadata.genPlusRow(getObjects(ProgramType.DPLK), new int[]{21, 20}),
+                    UtilMetadata.genMessage(R_LPAN0500000000.getObject().getValue(), UtilMetadata.genPlusDesc(getObjects(ProgramType.DPLK), new int[]{21, 20})))),
 
     SG_EQUAL_FORMULA_ROI_1(programs(DPLK),
             () -> genRowValidation(R_LPAN0101010000.getObject(), "2")),

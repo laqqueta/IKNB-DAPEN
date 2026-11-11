@@ -26,8 +26,10 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static id.go.ojk.lib.client.model.config.DataType.*;
+import static id.go.ojk.lib.client.model.constant.RequiredCondition.C;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
 import static id.go.ojk.metadata.module.lblt.validations.dplk.E7004LphuKValidationsConfig.VALIDATION_METADATA_DPLK;
+import static id.go.ojk.metadata.module.lblt.validations.gabungan.E7004LphuGabunganValidationsConfig.VALIDATION_METADATA_PPMPPPIPK;
 import static id.go.ojk.metadata.module.lblt.validations.ppipik.E7004LphuKValidationsConfig.VALIDATION_METADATA_PPIPK;
 import static id.go.ojk.metadata.module.lblt.validations.ppipm.E7004LphuMValidationsConfig.VALIDATION_METADATA_PPIPM;
 import static id.go.ojk.metadata.module.lblt.validations.ppmpk.E7004LphuKValidationsConfig.VALIDATION_METADATA_PPMPK;
@@ -86,22 +88,35 @@ public enum Dppk0004Lphu implements ILbltFieldMetadata {
     AKUMULASI_GABUNGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK, PPMPPPIPK),
             sf(12, null, "Akumulasi s.d DD-MM-YYYY - Gabungan", sv(M, 1, 18, numericNegatif))),
 
-    UUS_MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPMPPPIPK),
+    UUS_MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK),
             sf(13, null, "UUS - Manfaat Pensiun", sv(M, 1, 18, numericNegatif))),
 
-    UUS_MANFAAT_PENSIUN_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPMPPPIPK),
+    UUS_MANFAAT_PENSIUN_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK),
             sf(14, null, "UUS - Manfaat Pensiun Lainnya", sv(M, 1, 18, numericNegatif))),
 
-    UUS_MANFAAT_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPMPPPIPK),
+    UUS_MANFAAT_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK),
             sf(15, null, "UUS - Manfaat Lain", sv(M, 1, 18, numericNegatif))),
 
-    TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK, PPMPPPIPK),
+    TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK),
             sf(16, null, "Total", sv(M, 1, 18, numericNegatif))),
 
     /* Gabungan Additional Field */
 
     JENIS_PROGRAM(sectors(KONVENSIONAL, SYARIAH), programs(PPMPPPIPK),
-            sf(1000, null, "Jenis Program", sv(M, 5, 5, alfa))),
+            sf(1000, null, "Jenis Program", sv(M, 4, 4, alfa)
+                    .confConstant("PPMP|PPIP"))),
+
+    UUS_MANFAAT_PENSIUN_GABUNGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPPPIPK),
+            sf(1001, null, "UUS - Manfaat Pensiun", sv(C, 1, 18, freeText))),
+
+    UUS_MANFAAT_PENSIUN_LAINNYA_GABUNGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPPPIPK),
+            sf(1002, null, "UUS - Manfaat Pensiun Lainnya", sv(C, 1, 18, freeText))),
+
+    UUS_MANFAAT_LAIN_GABUNGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPPPIPK),
+            sf(1003, null, "UUS - Manfaat Lain", sv(C, 1, 18, freeText))),
+
+    TOTAL_GABUNGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPPPIPK),
+            sf(1004, null, "Total", sv(C, 1, 18, freeText))),
     ;
 
     private final EnumSet<SectorType> sectorType;
@@ -113,7 +128,8 @@ public enum Dppk0004Lphu implements ILbltFieldMetadata {
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataLkdpPpmpm.R7004Lphu.getObject()),
             new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataLkdpPpipk.R7004Lphu.getObject()),
             new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataLkdpPpipm.R7004Lphu.getObject()),
-            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkdpDplk.R7004Lphu.getObject())
+            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkdpDplk.R7004Lphu.getObject()),
+            new AbstractMap.SimpleEntry<>(PPMPPPIPK, EHeaderMetadataLkdpPpmpppipk.R7004Lphu.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0004Lphu> FIELD_METADATA =
@@ -122,7 +138,7 @@ public enum Dppk0004Lphu implements ILbltFieldMetadata {
 
     public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, ProgramType programType) {
         EFormLaporanBulananTahunan LPHU_FORM = EFormLaporanBulananTahunan.LTLB_LPHU;
-        SubmissionFormatBuilder sf = SubmissionFormatBuilder.builder()
+        return SubmissionFormatBuilder.builder()
                 .code(LPHU_FORM.getCode())
                 .name(LPHU_FORM.getName())
                 .extension(ExtensionType.TXT)
@@ -131,19 +147,12 @@ public enum Dppk0004Lphu implements ILbltFieldMetadata {
                 .minRow(ER7004PosLtlbDppkLphu.getRowSize(programType))
                 .fields(new ArrayList<>())
                 .build();
-
-        if (programType == PPMPPPIPK) {
-            sf.setMaxRow(null);
-            sf.setMinRow(0);
-        }
-
-        return sf;
     }
 
     public static SubmissionFormat formMetadata(SectorType sectorType, ProgramType programType) {
         FIELD_METADATA.setProgramType(programType);
 
-        BaseMetadataValidation<? extends ILbltMetadataValidation> metadataValidation = null;
+        BaseMetadataValidation<? extends ILbltMetadataValidation> metadataValidation;
         ReferenceConfig referenceConfig = ER7004PosLtlbDppkLphu.getRefConfig(programType);
 
         switch (programType) {
@@ -163,6 +172,7 @@ public enum Dppk0004Lphu implements ILbltFieldMetadata {
                 metadataValidation = VALIDATION_METADATA_DPLK;
                 break;
             case PPMPPPIPK:
+                metadataValidation = VALIDATION_METADATA_PPMPPPIPK;
                 break;
             default:
                 throw new IllegalStateException();
@@ -170,32 +180,18 @@ public enum Dppk0004Lphu implements ILbltFieldMetadata {
 
         BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType).config()
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
-//                .setReferenceConfigs(referenceConfig)
-//                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-//                .setSegmentValidations(metadataValidation)
-                ;
+                .setReferenceConfigs(referenceConfig)
+                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                .setSegmentValidations(metadataValidation);
 
-        if (programType == PPMPPPIPK) {
-            List<Integer> gabunganField = Arrays.asList(0, 1, 1000, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
+        if (programType.equals(PPMPPPIPK)) {
+            List<Integer> gabunganField = Arrays.asList(0, 1, 1000, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1001, 1002, 1003, 1004);
             submissionConfig
-                    .setSubmissionField(FIELD_METADATA.getReindexClearedFields(gabunganField, true))
-                    .setSegmentValidations();
-        } else {
-            submissionConfig
-                    .setReferenceConfigs(referenceConfig)
-                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                    .setSubmissionField(FIELD_METADATA.getReindexFields(gabunganField, metadataValidation.getFieldValidations()))
                     .setSegmentValidations(metadataValidation);
         }
 
         return submissionConfig.build().get();
-
-//        return new SubmissionConfig(programType)
-//                .config()
-//                .setReferenceConfigs(referenceConfig)
-//                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
-//                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-//                .setSegmentValidations(metadataValidation).build()
-//                .get();
     }
 
     @Override

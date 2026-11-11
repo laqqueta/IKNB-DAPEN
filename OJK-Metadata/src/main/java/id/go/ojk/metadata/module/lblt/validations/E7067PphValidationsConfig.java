@@ -34,10 +34,14 @@ public enum E7067PphValidationsConfig implements ILbltMetadataValidation, IValid
             () -> UtilSegmentValidation.genEqualsFormula("3", R_PPH000000.key, R_PPH010000.key,
                     UtilMetadata.genMessageTotal(R_PPH000000.value, R_PPH010000.value))),
 
-    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(2,4),
+    SG_EQUAL_FORMULA_GABUNGAN(programs(PPMPPPIPK),
+            () -> UtilSegmentValidation.genFilterEqualsFormula_DAPEN("4", R_PPH000000.key, R_PPH010000.key,
+                    UtilMetadata.genMessageTotal(R_PPH000000.value, R_PPH010000.value))),
+
+    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK), validationFields(2,4),
             () -> UtilFieldConditional.genExistPos("N", "M", R_PPH000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(5),
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK), validationFields(5),
             () -> UtilFieldConditional.genExistPos("N", "O", R_PPH000000.key)),
 
     ;
@@ -80,19 +84,8 @@ public enum E7067PphValidationsConfig implements ILbltMetadataValidation, IValid
                 .toValidation(this, ConditionalRequired.class);
     }
 
-    public static final BaseMetadataValidation<E7067PphValidationsConfig> VALIDATION_METADATA_PPMPK =
-            new LbltMetadataValidation<>(E7067PphValidationsConfig.class, PPMPK);
-
-    public static final BaseMetadataValidation<E7067PphValidationsConfig> VALIDATION_METADATA_PPMPM =
-            new LbltMetadataValidation<>(E7067PphValidationsConfig.class, PPMPM);
-
-    public static final BaseMetadataValidation<E7067PphValidationsConfig> VALIDATION_METADATA_PPIPK =
-            new LbltMetadataValidation<>(E7067PphValidationsConfig.class, PPIPK);
-
-        public static final BaseMetadataValidation<E7067PphValidationsConfig> VALIDATION_METADATA_PPIPM =
-            new LbltMetadataValidation<>(E7067PphValidationsConfig.class, PPIPM);
-
-    public static final BaseMetadataValidation<E7067PphValidationsConfig> VALIDATION_METADATA_DPLK =
-            new LbltMetadataValidation<>(E7067PphValidationsConfig.class, DPLK);
+    public static BaseMetadataValidation<E7067PphValidationsConfig> getValidations(ProgramType programType) {
+        return new LbltMetadataValidation<>(E7067PphValidationsConfig.class, programType);
+    }
 
 }

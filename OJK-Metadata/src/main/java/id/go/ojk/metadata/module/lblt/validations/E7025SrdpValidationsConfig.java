@@ -35,15 +35,23 @@ public enum E7025SrdpValidationsConfig implements ILbltMetadataValidation, IVali
             () -> UtilSegmentValidation.genEqualsFormula("6", R_SRDP000000.key, R_SRDP010000.key,
                     UtilMetadata.genMessageTotal(R_SRDP000000.value, R_SRDP010000.value))),
 
-    CR_EXISTS_SRDP000000_M(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(2, 5, 7, 8, 9, 10),
+    SG_EQUAL_SRDP000000_SRDP010000_GABUNGAN(programs(PPMPPPIPK),
+            () -> UtilSegmentValidation.genFilterEqualsFormula_DAPEN("7", R_SRDP000000.key, R_SRDP010000.key,
+                    UtilMetadata.genMessageTotal(R_SRDP000000.value, R_SRDP010000.value))),
+
+    CR_EXISTS_SRDP000000_M(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK), validationFields(2, 5, 7, 8, 9, 10),
             () -> UtilFieldConditional.genExistPos("N", "M", R_SRDP000000.key)),
 
-    CR_EXISTS_SRDP000000_O(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(3, 4, 12),
+    CR_EXISTS_SRDP000000_O(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK), validationFields(3, 4, 12),
             () -> UtilFieldConditional.genExistPos("N", "O", R_SRDP000000.key)),
 
     CR_EQUAL_NAMA_PENGGUNA(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(11),
             () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("N", "M", "N",
                     R_SRDP010000.key, "10", ER1252Pengelolaan.getReferenceIndex(0), ER1252Pengelolaan.getReferenceValueIndex(0))),
+
+    CR_EQUAL_NAMA_PENGGUNA_GABUNGAN(programs(PPMPPPIPK), validationFields(11),
+            () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("N", "M", "N",
+                    R_SRDP010000.key, "11", ER1252Pengelolaan.getReferenceIndex(0), ER1252Pengelolaan.getReferenceValueIndex(0))),
 
     ;
 
@@ -83,6 +91,10 @@ public enum E7025SrdpValidationsConfig implements ILbltMetadataValidation, IVali
     public ConditionalRequired toFieldConditional() {
         return ValidationConverter
                 .toValidation(this, ConditionalRequired.class);
+    }
+
+    public static BaseMetadataValidation<E7025SrdpValidationsConfig> getValidationMetadata(ProgramType programType) {
+        return new LbltMetadataValidation<>(E7025SrdpValidationsConfig.class, programType);
     }
 
     public static final BaseMetadataValidation<E7025SrdpValidationsConfig> VALIDATION_METADATA_PPMPK =

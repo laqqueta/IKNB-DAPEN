@@ -12,6 +12,7 @@ import id.go.ojk.metadata.module.lblt.EFormLaporanBulananTahunan;
 import id.go.ojk.metadata.module.lblt.header.*;
 import id.go.ojk.metadata.module.lblt.reference.ER7018PosLtlbDppkRas2;
 import id.go.ojk.metadata.module.lblt.validations.E7018Ras2ValidationsConfig;
+import id.go.ojk.metadata.module.lblt.validations.gabungan.E7018Ras2GabunganValidationsConfig;
 import id.go.ojk.metadata.submission.base.BaseSubmissionConfig;
 import id.go.ojk.metadata.util.constants.ProgramType;
 import id.go.ojk.metadata.util.constants.SectorType;
@@ -54,15 +55,16 @@ public enum Dppk0018Ras2 implements ILbltFieldMetadata {
             sf(2, null, "Realisasi Tahun Sebelumnya", sv(C, 1, 18, numeric))),
 
     ANGGARAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
-            sf(3, null, "Anggaran", sv(C, 1, 18, all2))),
+            sf(3, null, "Anggaran", sv(C, 1, 18, freeText))),
 
     REALISASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
-            sf(4, null, "Realisasi", sv(C, 1, 18, all2))),
+            sf(4, null, "Realisasi", sv(C, 1, 18, freeText))),
 
     /* Gabungan Additional Field */
 
     JENIS_PROGRAM(sectors(KONVENSIONAL, SYARIAH), programs(PPMPPPIPK),
-            sf(1000, null, "Jenis Program", sv(M, 5, 5, alfa))),
+            sf(1000, null, "Jenis Program", sv(M, 4, 4, alfa)
+                    .confConstant("PPMP|PPIP"))),
 
     ;
 
@@ -75,14 +77,15 @@ public enum Dppk0018Ras2 implements ILbltFieldMetadata {
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataLkdpPpmpm.R7018Ras2.getObject()),
             new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataLkdpPpipk.R7018Ras2.getObject()),
             new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataLkdpPpipm.R7018Ras2.getObject()),
-            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkdpDplk.R7018Ras2.getObject())
+            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkdpDplk.R7018Ras2.getObject()),
+            new AbstractMap.SimpleEntry<>(PPMPPPIPK, EHeaderMetadataLkdpPpmpppipk.R7020Ras2.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0018Ras2> FIELD_METADATA = new LbltMetadataField<>(Dppk0018Ras2.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
 
     public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, ProgramType programType) {
         EFormLaporanBulananTahunan RAS2_FORM = EFormLaporanBulananTahunan.LTLB_RAS_2;
-        SubmissionFormatBuilder sf = SubmissionFormatBuilder.builder()
+        return SubmissionFormatBuilder.builder()
                 .code(RAS2_FORM.getCode())
                 .name(RAS2_FORM.getName())
                 .extension(ExtensionType.TXT)
@@ -91,68 +94,42 @@ public enum Dppk0018Ras2 implements ILbltFieldMetadata {
                 .minRow(ER7018PosLtlbDppkRas2.getRowSize(programType))
                 .fields(new ArrayList<>())
                 .build();
-
-        if (programType == PPMPPPIPK) {
-            sf.setMaxRow(null);
-            sf.setMinRow(0);
-        }
-
-        return sf;
     }
 
     public static SubmissionFormat formMetadata(SectorType sectorType, ProgramType programType) {
         FIELD_METADATA.setProgramType(programType);
 
         BaseMetadataValidation<? extends ILbltMetadataValidation> metadataValidation = E7018Ras2ValidationsConfig.getValidationMetadata(programType);
-        ReferenceConfig referenceConfig = ER7018PosLtlbDppkRas2.Configs.REF_CONFIG;
+        ReferenceConfig referenceConfig = ER7018PosLtlbDppkRas2.getRefConfig(programType);
+        BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType).config()
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType));
 
         switch (programType) {
             case PPMPK:
             case PPMPM:
             case PPIPK:
             case PPIPM:
-                break;
             case DPLK:
-                metadataValidation = VALIDATION_METADATA_DPLK;
-                referenceConfig = ER7018PosLtlbDppkRas2.Configs.REF_CONFIG_DPLK;
+                if (programType.equals(DPLK)) metadataValidation = VALIDATION_METADATA_DPLK;
+                submissionConfig
+                        .setReferenceConfigs(referenceConfig)
+                        .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                        .setSegmentValidations(metadataValidation);
                 break;
             case PPMPPPIPK:
-                metadataValidation = null;
+                List<Integer> gabunganField = Arrays.asList(0, 1, 1000, 2, 3, 4);
+                metadataValidation = E7018Ras2GabunganValidationsConfig.VALIDATION_METADATA_PPMPPPIPK;
+                submissionConfig
+                        .setReferenceConfigs(referenceConfig)
+                        .setSubmissionField(FIELD_METADATA.getReindexFields(gabunganField, metadataValidation.getFieldValidations()))
+                        .setSegmentValidations(metadataValidation);
                 break;
             default:
                 throw new IllegalStateException();
 
         }
 
-        BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType).config()
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
-//                .setReferenceConfigs(referenceConfig)
-//                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-//                .setSegmentValidations(metadataValidation)
-                ;
-
-        if (programType == PPMPPPIPK) {
-            List<Integer> gabunganField = Arrays.asList(0, 1, 1000, 2, 3, 4);
-            submissionConfig
-                    .setSubmissionField(FIELD_METADATA.getReindexClearedFields(gabunganField, true))
-                    .setSegmentValidations();
-        } else {
-            submissionConfig
-                    .setReferenceConfigs(referenceConfig)
-                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-                    .setSegmentValidations(metadataValidation);
-        }
-
         return submissionConfig.build().get();
-
-//        return new SubmissionConfig(programType)
-//                .config()
-//                .setReferenceConfigs(ER7018PosLtlbDppkRas2.Configs.REF_CONFIG)
-//                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
-//                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-//                .setSegmentValidations(metadataValidation)
-//                .build()
-//                .get();
     }
 
     @Override

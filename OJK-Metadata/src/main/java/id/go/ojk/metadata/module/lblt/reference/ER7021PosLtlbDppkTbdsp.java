@@ -9,9 +9,11 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ER7021PosLtlbDppkTbdsp implements IObject<KeyValueString> {
@@ -39,13 +41,11 @@ public enum ER7021PosLtlbDppkTbdsp implements IObject<KeyValueString> {
     R_TBDSP0204000000("TBDSP0204000000", "4. Dana yang tidak diketahui pemiliknya, diketahui pemiliknya tetapi tidak ditemukan, atau diketahui pemiliknya tetapi biaya pengembaliannya lebih besar dari jumlah dana tersebut", EnumSet.of(ProgramType.ALL)),
     R_TBDSP0204000000_DPLK("TBDSP0204000000", "4. Transaksi lainnya yang tidak sesuai dengan Prinsip Syariah", EnumSet.of(ProgramType.DPLK)),
     R_TBDSP0205000000("TBDSP0205000000", "5. Transaksi lainnya yang tidak sesuai dengan Prinsip Syariah", EnumSet.of(ProgramType.ALL)),
-//    R_TBDSP0300000000("TBDSP0300000000", "C. Penggunaan Tahun Berjalan", EnumSet.of(ProgramType.DPLK)),
+    //    R_TBDSP0300000000("TBDSP0300000000", "C. Penggunaan Tahun Berjalan", EnumSet.of(ProgramType.DPLK)),
     R_TBDSP0301000000("TBDSP0301000000", "Rincian - Nama Penerima", EnumSet.of(ProgramType.ALL, ProgramType.DPLK)),
     R_TBDSP0302000000("TBDSP0302000000", "Total Pengguna Tahun Berjalan", EnumSet.of(ProgramType.DPLK)),
     R_TBDSP0303000000("TBDSP0303000000", "Total Pengguna Tahun Berjalan", EnumSet.of(ProgramType.ALL)),
-    R_TBDSP0400000000("TBDSP0400000000", "D. Saldo Akhir (A+B-C)", EnumSet.of(ProgramType.ALL, ProgramType.DPLK))
-
-    ;
+    R_TBDSP0400000000("TBDSP0400000000", "D. Saldo Akhir (A+B-C)", EnumSet.of(ProgramType.ALL, ProgramType.DPLK));
 
     public final String key;
     public final String value;
@@ -61,10 +61,29 @@ public enum ER7021PosLtlbDppkTbdsp implements IObject<KeyValueString> {
         return res;
     }
 
-    public static List<KeyValueString> getObjects(ProgramType programType) {
+    public static List<KeyValueString> getObjects(ProgramType jenisProgram) {
+        if (!jenisProgram.equals(ProgramType.PPMPPPIPK)) return getNonGabunganObjects(jenisProgram);
+
+        ER7021PosLtlbDppkTbdsp[] eVals = ER7021PosLtlbDppkTbdsp.values();
+
+        List<KeyValueString> res = Arrays.stream(eVals)
+                .filter(eEnum -> eEnum.jenisProgram.contains(ProgramType.PPMPK) || eEnum.jenisProgram.contains(ProgramType.ALL))
+                .map(ER7021PosLtlbDppkTbdsp::getObject).collect(Collectors.toList());
+
+        res.addAll(Arrays.stream(eVals)
+                .filter(eEnum -> eEnum.jenisProgram.contains(ProgramType.PPIPK) || eEnum.jenisProgram.contains(ProgramType.ALL))
+                .map(ER7021PosLtlbDppkTbdsp::getObject)
+                .collect(Collectors.toList()));
+
+        return res;
+    }
+
+    private static List<KeyValueString> getNonGabunganObjects(ProgramType jenisProgram) {
         List<KeyValueString> res = new ArrayList<>();
         for (ER7021PosLtlbDppkTbdsp eEnum : ER7021PosLtlbDppkTbdsp.values()) {
-            if (programType.equals(ProgramType.DPLK) && eEnum.jenisProgram.contains(ProgramType.DPLK)) {
+            if (!jenisProgram.equals(ProgramType.DPLK) && (eEnum.jenisProgram.contains(jenisProgram) || eEnum.jenisProgram.contains(ProgramType.ALL))) {
+                res.add(eEnum.getObject());
+            } else if (jenisProgram.equals(ProgramType.DPLK) && eEnum.jenisProgram.contains(ProgramType.DPLK)) {
                 res.add(eEnum.getObject());
             }
         }
@@ -81,6 +100,22 @@ public enum ER7021PosLtlbDppkTbdsp implements IObject<KeyValueString> {
 
     public KeyValueString getObject() {
         return new KeyValueString(key, value, new String[]{});
+    }
+
+    public static ReferenceConfig getRefConfig(ProgramType programType) {
+        switch (programType) {
+            case PPMPK:
+            case PPMPM:
+            case PPIPK:
+            case PPIPM:
+                return Configs.REF_CONFIG;
+            case DPLK:
+                return Configs.REF_CONFIG_DPLK;
+            case PPMPPPIPK:
+                return Configs.REF_CONFIG_GABUNGAN;
+            default:
+                throw new IllegalStateException();
+        }
     }
 
     public enum Configs implements ReferenceConfig {
@@ -108,6 +143,41 @@ public enum ER7021PosLtlbDppkTbdsp implements IObject<KeyValueString> {
             public String requiredPos() {
                 return UtilMetadata.genPipeRowExcept(getObjects(programType), new int[]{6});
             }
-        }
-    }
+        },
+
+        REF_CONFIG_GABUNGAN {
+            private final ProgramType programType = ProgramType.PPMPPPIPK;
+            private final String rowPPMP = UtilMetadata.genPipeRowExcept(getObjects(ProgramType.PPMPK), new int[] {3, 8});
+            private final String rowPPIP = UtilMetadata.genPipeRowExcept(getObjects(ProgramType.PPIPK), new int[] {3, 8});
+
+            @Override
+            public String savePos() {
+                return UtilMetadata.genFieldSave("2|4",getObjects(programType));
+            }
+
+            @Override
+            public String savePosForm() {
+                return UtilMetadata.genFieldSave("2|4", getObjects(programType));
+            }
+
+            @Override
+            public Integer segmentRequireColumnLink() {
+                return 2;
+            }
+
+            @Override
+            public String segmentColumnValue() {
+                return "PPMP|PPIP";
+            }
+
+            @Override
+            public String segmentReqiurePosCode() {
+                return rowPPMP + "#" + rowPPIP;
+            }
+
+            @Override
+            public String segmentUniquePos() {
+                return rowPPMP + "#" + rowPPIP;
+            }
+        }    }
 }

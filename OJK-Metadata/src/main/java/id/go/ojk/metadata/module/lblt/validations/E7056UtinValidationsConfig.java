@@ -34,10 +34,14 @@ public enum E7056UtinValidationsConfig implements ILbltMetadataValidation, IVali
             () -> UtilSegmentValidation.genEqualsFormula("4", R_UTIN000000.key, R_UTIN010000.key,
                     UtilMetadata.genMessageTotal(R_UTIN000000.value, R_UTIN010000.value))),
 
-    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(2,3,5),
+    SG_EQUAL_FORMULA_GABUNGAN(programs(PPMPPPIPK),
+            () -> UtilSegmentValidation.genFilterEqualsFormula_DAPEN("5", R_UTIN000000.key, R_UTIN010000.key,
+                    UtilMetadata.genMessageTotal(R_UTIN000000.value, R_UTIN010000.value))),
+
+    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK), validationFields(2,3,5),
             () -> UtilFieldConditional.genExistPos("N", "M", R_UTIN000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(6),
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK), validationFields(6),
             () -> UtilFieldConditional.genExistPos("N", "O", R_UTIN000000.key)),
 
     ;
@@ -78,6 +82,10 @@ public enum E7056UtinValidationsConfig implements ILbltMetadataValidation, IVali
     public ConditionalRequired toFieldConditional() {
         return ValidationConverter
                 .toValidation(this, ConditionalRequired.class);
+    }
+
+    public static BaseMetadataValidation<E7056UtinValidationsConfig> getValidationMetadata(ProgramType programType) {
+        return new LbltMetadataValidation<>(E7056UtinValidationsConfig.class, programType);
     }
 
     public static final BaseMetadataValidation<E7056UtinValidationsConfig> VALIDATION_METADATA_PPMPK =

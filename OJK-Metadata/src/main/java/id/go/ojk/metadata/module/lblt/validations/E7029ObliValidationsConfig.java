@@ -32,26 +32,44 @@ import static id.go.ojk.metadata.util.constants.ProgramType.*;
 @AllArgsConstructor
 public enum E7029ObliValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
-    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), () -> UtilSegmentValidation.genEqualsFormula("6|11|12|13", R_OBLI000000.key, R_OBLI010000.key,
+    SG_EQUAL_FORMULA(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), () ->
+            UtilSegmentValidation.genEqualsFormula("6|11|12|13", R_OBLI000000.key, R_OBLI010000.key,
             UtilMetadata.genMessageTotal(R_OBLI000000.value, R_OBLI010000.value))),
+
+    SG_EQUAL_FORMULA_GABUNGAN(programs(PPMPPPIPK), () ->
+            UtilSegmentValidation.genFilterEqualsFormula_DAPEN("7|12|13|14", R_OBLI000000.key, R_OBLI010000.key,
+                    UtilMetadata.genMessageTotal(R_OBLI000000.value, R_OBLI010000.value))),
 
     FV_EQUAL_NILAI_INVESTASI(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(13),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("12-11", R_OBLI000000.key)),
 
+    FV_EQUAL_NILAI_INVESTASI_GABUNGAN(programs(PPMPPPIPK), validationFields(13),
+            () -> UtilFieldValidation.genEqualsExceptPosFormula("13-12", R_OBLI000000.key)),
+
     FV_EQUAL_PERSENTASE_INVESTASI(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(14),
             () -> UtilFieldValidation.genEqualsPercentageExceptPosFormula("13/11", R_OBLI000000.key)),
 
+    FV_EQUAL_PERSENTASE_INVESTASI_GABUNGAN(programs(PPMPPPIPK), validationFields(14),
+            () -> UtilFieldValidation.genEqualsPercentageExceptPosFormula("14/12", R_OBLI000000.key)),
+
     FV_DATE_GREATER(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(8),
             () -> UtilFieldValidation.genDateGreaterEquals("5")),
+
+    FV_DATE_GREATER_GABUNGAN(programs(PPMPPPIPK), validationFields(8),
+            () -> UtilFieldValidation.genDateGreaterEquals("6")),
 
     CR_NAMA_PENGELOLA(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(19),
             () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("N", "M", "N",
                     R_OBLI010000.key, "18", ER1252Pengelolaan.getReferenceIndex(0), ER1252Pengelolaan.getReferenceValueIndex(0))),
 
-    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(2,3,4,5,7,8,9,10,14,15,16,17,18),
+    CR_NAMA_PENGELOLA_GABUNGAN(programs(PPMPPPIPK), validationFields(19),
+            () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("N", "M", "N",
+                    R_OBLI010000.key, "19", ER1252Pengelolaan.getReferenceIndex(0), ER1252Pengelolaan.getReferenceValueIndex(0))),
+
+    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK), validationFields(2,3,4,5,7,8,9,10,14,15,16,17,18),
             () -> UtilFieldConditional.genExistPos("N", "M", R_OBLI000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(20),
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK), validationFields(20),
             () -> UtilFieldConditional.genExistPos("N", "O", R_OBLI000000.key)),
 
     ;
@@ -91,6 +109,10 @@ public enum E7029ObliValidationsConfig implements ILbltMetadataValidation, IVali
     public ConditionalRequired toFieldConditional() {
         return ValidationConverter
                 .toValidation(this, ConditionalRequired.class);
+    }
+
+    public static BaseMetadataValidation<E7029ObliValidationsConfig> getValidationMetadata(ProgramType programType) {
+        return new LbltMetadataValidation<>(E7029ObliValidationsConfig.class, programType);
     }
 
     public static final BaseMetadataValidation<E7029ObliValidationsConfig> VALIDATION_METADATA_PPMPK =

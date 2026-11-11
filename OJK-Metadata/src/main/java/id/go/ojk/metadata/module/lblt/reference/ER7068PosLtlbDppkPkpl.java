@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
 
 import static id.go.ojk.lib.client.model.config.DataType.numeric;
 
-@RequiredArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ER7068PosLtlbDppkPkpl implements IObject<KeyValueString> {
 
@@ -35,7 +34,7 @@ public enum ER7068PosLtlbDppkPkpl implements IObject<KeyValueString> {
     }
 
     public static List<KeyValueString> getObjectsGabungan() {
-        List<KeyValueString> res = getObjects();
+        List<KeyValueString> res = new ArrayList<>();
 
         res.addAll(Arrays.stream(ER7068PosLtlbDppkPkpl.values())
                 .map(ER7068PosLtlbDppkPkpl::getObject)
@@ -58,6 +57,21 @@ public enum ER7068PosLtlbDppkPkpl implements IObject<KeyValueString> {
 
     public KeyValueString getObject() {
         return new KeyValueString(key, value, new String[]{});
+    }
+
+    public static ReferenceConfig getRefConfig(ProgramType programType) {
+        switch (programType) {
+            case PPMPK:
+            case PPMPM:
+            case PPIPK:
+            case PPIPM:
+            case DPLK:
+                return Configs.REF_CONFIG;
+            case PPMPPPIPK:
+                return Configs.REF_CONFIG_PPMPKPPIPK;
+            default:
+                throw new IllegalStateException();
+        }
     }
 
     public enum Configs implements ReferenceConfig {

@@ -30,8 +30,7 @@ import static id.go.ojk.conf.client.UtilMetadata.genFormulaParser;
 import static id.go.ojk.metadata.module.lblt.reference.ER7001PosLtlbDppkLan.*;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPIPK;
-import static id.go.ojk.metadata.util.constants.ProgramType.PPIPM;
+import static id.go.ojk.metadata.util.constants.ProgramType.*;
 
 @AllArgsConstructor
 @RequiredArgsConstructor
@@ -184,9 +183,18 @@ public enum E7001LanKValidationsConfig implements ILbltMetadataValidation, IVali
                         EFormLaporanBulananTahunan.LTLB_PROP.getCode(),
                         ER7040PosLtlbDppkProp.R_PROP010000.getObject().getKey(),
                         "11", "17|2", "3", fieldSpec, specCondition, criteriaCondition, sumCriteriaCondition,
-                        "PROP|Nilai Appraisal/ Nilai Wajar|Nilai Perolehan|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain|Jenis Objek (Tanah/Bangunan/Tanah&Bangunan)",
+                        "PROP|Nilai Appraisal/ Nilai Wajar|Nilai Perolehan|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain|Jenis Objek (Tanah/Bangunan/Tanah danBangunan)",
                         criteriaConditionErr, sumCriteriaConditionErr, "0");
             }),
+
+    SG_SUMIF_LAN0103010000(programs(PPIPK),
+            () -> sumIfValidationHelper(
+                    ER7001PosLtlbDppkLan.R_LAN0103010000.getObject().getKey(), "6", "7",
+                    EFormLaporanBulananTahunan.LTLB_KASB.getCode(),
+                    ER7041PosLtlbDppkKasb.R_KASB010000.getObject().getKey(),
+                    "KASB|Nominal|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain/LCF"
+            )),
+
 
     SG_SUMIF_PIUT(programs(PPIPK),
             () -> {
@@ -218,7 +226,7 @@ public enum E7001LanKValidationsConfig implements ILbltMetadataValidation, IVali
         String sumCriteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
         String sumCriteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
 
-        return UtilSegmentValidationV2.genSumIfMultiField(UtilMetadata.genPipeColumn(3, 12), posCode,
+        return UtilSegmentValidationV2.genSumIfMultiField(UtilMetadata.genPipeColumnExcept(3, 16, new int[]{13}), posCode,
                 formCode, formObjects,
                 rangeField, criteriaField, sumField, criteriaCondition, sumCriteriaCondition,
                 errMsg, criteriaConditionErr, sumCriteriaConditionErr);
@@ -321,30 +329,30 @@ public enum E7001LanKValidationsConfig implements ILbltMetadataValidation, IVali
     SG_EQUALS_FORMULA_2(programs(PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(3, 16),
                     ER7001PosLtlbDppkLan.R_LAN0104000000.getObject().getKey(),
-                    UtilMetadata.genPlusRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.PPIPK), 21, 29),
+                    UtilMetadata.genPlusRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.PPIPK), 21, /*30*/ 29),
                     UtilMetadata.genMessage(ER7001PosLtlbDppkLan.R_LAN0104000000.getObject().getValue(),
-                            UtilMetadata.genPlusDesc(ER7001PosLtlbDppkLan.getObjects(ProgramType.PPIPK), 21, 29)))),
+                            UtilMetadata.genPlusDesc(ER7001PosLtlbDppkLan.getObjects(ProgramType.PPIPK), 21, /*30*/ 29)))),
 
     SG_EQUALS_FORMULA_3(programs(PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(3, 16),
                     ER7001PosLtlbDppkLan.R_LAN0107000000.getObject().getKey(),
-                    UtilMetadata.genPlusRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.PPIPK), new int[]{20, 30, 36, 37}),
+                    UtilMetadata.genPlusRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.PPIPK), new int[]{20, 30, 36, 37}/*{20, 31, 37, 38}*/),
                     UtilMetadata.genMessage(ER7001PosLtlbDppkLan.R_LAN0107000000.getObject().getValue(),
-                            UtilMetadata.genPlusDesc(ER7001PosLtlbDppkLan.getObjects(ProgramType.PPIPK), new int[]{20, 30, 36, 37})))),
+                            UtilMetadata.genPlusDesc(ER7001PosLtlbDppkLan.getObjects(ProgramType.PPIPK), new int[]{20, 30, 36, 37}/*{20, 31, 37, 38}*/)))),
 
     SG_EQUALS_FORMULA_4(programs(PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(3, 16),
                     ER7001PosLtlbDppkLan.R_LAN0111000000.getObject().getKey(),
-                    UtilMetadata.genMinusRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.PPIPK), new int[]{38, 47}),
+                    UtilMetadata.genMinusRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.PPIPK), new int[]{38, 47}/*{39, 48}*/),
                     UtilMetadata.genMessage(ER7001PosLtlbDppkLan.R_LAN0111000000.getObject().getValue(),
-                            UtilMetadata.genMinusDesc(ER7001PosLtlbDppkLan.getObjects(ProgramType.PPIPK), new int[]{38, 47})))),
+                            UtilMetadata.genMinusDesc(ER7001PosLtlbDppkLan.getObjects(ProgramType.PPIPK), new int[]{38, 47}/*{39, 48}*/)))),
 
     SG_EQUALS_FORMULA_5(programs(PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(3, 16),
                     ER7001PosLtlbDppkLan.R_LAN0109000000.getObject().getKey(),
-                    UtilMetadata.genPlusRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.PPIPK), 39, 45),
+                    UtilMetadata.genPlusRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.PPIPK), /*40, 46*/39, 45),
                     UtilMetadata.genMessage(ER7001PosLtlbDppkLan.R_LAN0109000000.getObject().getValue(),
-                            UtilMetadata.genPlusDesc(ER7001PosLtlbDppkLan.getObjects(ProgramType.PPIPK), 39, 45)))),
+                            UtilMetadata.genPlusDesc(ER7001PosLtlbDppkLan.getObjects(ProgramType.PPIPK), /*40, 46*/39, 45)))),
 
     SG_EQUALS_FORMULA_6(programs(PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(3, 16),
@@ -391,17 +399,6 @@ public enum E7001LanKValidationsConfig implements ILbltMetadataValidation, IVali
         String operationFormErr = "sama dengan Baris " + operation2.getErrMessage() + "pada form REKINV sesuai dengan Periode Bulan Laporan Berjalan ({})";
 
         return UtilSegmentValidationV2.genFormulaParserlRekinvPeriodePelaporan(selectField, selectPosCode, operationForm, operationFormErr, 2);
-    }),
-
-    GEN_VALIDATON_FORM_KASB(programs(PPIPK), () -> {
-        KeyValueString selectPosCode = R_LAN0103010000.getObject();
-        int[] cols = {6};
-        String comparatorColumn = UtilMetadata.genPlusColumn(cols);
-        String form = EFormLaporanBulananTahunan.LTLB_KASB.getCode();
-        String comparatorPosCode = ER7041PosLtlbDppkKasb.R_KASB000000.key;
-        String errMsg = selectPosCode.getValue() + " | Total Nominal pada form " + form;
-        return UtilSegmentValidationV2.genEqualsFormColumCalculation("17", selectPosCode.getKey(), comparatorColumn,
-                comparatorPosCode, form, errMsg, 2);
     }),
 
     GEN_VALIDATON_FORM_LAK(programs(PPIPK), () -> {
@@ -523,27 +520,27 @@ public enum E7001LanKValidationsConfig implements ILbltMetadataValidation, IVali
 
     SG_ROW_DATA_TYPE_NUMERIC(programs(PPIPK), () ->
             UtilSegmentValidation.genRegexNumeric(UtilMetadata.genPipeColumn(3, 17),
-                    UtilMetadata.genPipeRow(getObjects(PPIPK), 0, 47))),
+                    UtilMetadata.genPipeRow(getObjects(PPIPK), 0, /*48*/ 47))),
 
     SG_ROW_DATA_TYPE_NUMERIC_NEGATIVE(programs(PPIPK), () ->
             UtilSegmentValidation.genRegexNumericNegative(UtilMetadata.genPipeColumn(3, 17),
-                    UtilMetadata.genPipeRow(getObjects(PPIPK), new int[]{48}))),
+                    UtilMetadata.genPipeRow(getObjects(PPIPK), new int[]{/*49*/ 48}))),
 
     FV_GABUNGAN_EQUALS_EXCEPT(programs(PPIPK), validationFields(Dppk0001Lan.GABUNGAN),
             () -> UtilFieldValidation.genEqualsExceptPosFormula(
                     UtilMetadata.genPlusColumn(3, 12),
-                    UtilMetadata.genPipeRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.PPIPK), new int[]{20, 30, 38, 48}),
+                    UtilMetadata.genPipeRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.PPIPK), new int[]{20, /*31, 39, 49*/ 30, 38, 48}),
                     2)),
 
     FV_TOTAL_EQUALS_EXCEPT(programs(PPIPK), validationFields(Dppk0001Lan.TOTAL),
             () -> UtilFieldValidation.genEqualsExceptPosFormula(
                     UtilMetadata.genPlusColumn(13, 16),
-                    UtilMetadata.genPipeRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.PPIPK), new int[]{20, 30, 38, 48}),
+                    UtilMetadata.genPipeRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.PPIPK), new int[]{20, /*31, 39, 49*/ 30, 38, 48}),
                     2)),
 
     CR_EXIST_POS_N_PERSENTASE_INVESTASI(programs(PPIPK), validationFields(2),
             () -> UtilFieldConditional.genExistPos("N", "M",
-                    UtilMetadata.genPipeRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.PPIPK), 21, 48))),
+                    UtilMetadata.genPipeRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.PPIPK), 21, /*49*/ 48))),
 
     ;
 

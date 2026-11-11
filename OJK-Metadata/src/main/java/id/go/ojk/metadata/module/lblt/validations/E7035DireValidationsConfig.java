@@ -36,20 +36,34 @@ public enum E7035DireValidationsConfig implements ILbltMetadataValidation, IVali
             () -> UtilSegmentValidation.genEqualsFormula("6|7|8|9", R_DIRE000000.key, R_DIRE010000.key,
                     UtilMetadata.genMessageTotal(R_DIRE000000.value, R_DIRE010000.value))),
 
+    SG_EQUAL_FORMULA_GABUNGAN(programs(PPMPPPIPK),
+            () -> UtilSegmentValidation.genFilterEqualsFormula_DAPEN("7|8|9|10", R_DIRE000000.key, R_DIRE010000.key,
+                    UtilMetadata.genMessageTotal(R_DIRE000000.value, R_DIRE010000.value))),
+
     FV_EQUAL_NILAI_INVESTASI(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(9),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("8-7", R_DIRE000000.key)),
 
+    FV_EQUAL_NILAI_INVESTASI_GABUNGAN(programs(PPMPPPIPK), validationFields(9),
+            () -> UtilFieldValidation.genEqualsExceptPosFormula("9-8", R_DIRE000000.key)),
+
     FV_EQUAL_PERSENTASE_INVESTASI(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(10),
             () -> UtilFieldValidation.genEqualsPercentageExceptPosFormula("9/7", R_DIRE000000.key)),
+
+    FV_EQUAL_PERSENTASE_INVESTASI_GABUNGAN(programs(PPMPPPIPK), validationFields(10),
+            () -> UtilFieldValidation.genEqualsPercentageExceptPosFormula("10/8", R_DIRE000000.key)),
 
     CR_NAMA_PENGELOLA(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(13),
             () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("N", "M", "N",
                     R_DIRE010000.key, "12", ER1252Pengelolaan.getReferenceIndex(0), ER1252Pengelolaan.getReferenceValueIndex(0))),
 
-    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(2, 3, 4, 5, 10, 11, 12),
+    CR_NAMA_PENGELOLA_GABUNGAN(programs(PPMPPPIPK), validationFields(13),
+            () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("N", "M", "N",
+                    R_DIRE010000.key, "13", ER1252Pengelolaan.getReferenceIndex(0), ER1252Pengelolaan.getReferenceValueIndex(0))),
+
+    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK), validationFields(2, 3, 4, 5, 10, 11, 12),
             () -> UtilFieldConditional.genExistPos("N", "M", R_DIRE000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(14),
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK), validationFields(14),
             () -> UtilFieldConditional.genExistPos("N", "O", R_DIRE000000.key)),
 
     ;
@@ -90,6 +104,10 @@ public enum E7035DireValidationsConfig implements ILbltMetadataValidation, IVali
     public ConditionalRequired toFieldConditional() {
         return ValidationConverter
                 .toValidation(this, ConditionalRequired.class);
+    }
+
+    public static BaseMetadataValidation<E7035DireValidationsConfig> getValidationMetadata(ProgramType programType) {
+        return new LbltMetadataValidation<>(E7035DireValidationsConfig.class, programType);
     }
 
     public static final BaseMetadataValidation<E7035DireValidationsConfig> VALIDATION_METADATA_PPMPK =

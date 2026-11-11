@@ -7,6 +7,7 @@ import id.go.ojk.client.model.validation.IValidation;
 import id.go.ojk.conf.client.UtilFieldValidation;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
+import id.go.ojk.metadata.module.lblt.reference.ER7009PosLtlbDppkRoi;
 import id.go.ojk.metadata.module.lblt.reference.ER7010PosLtlbDppkRoiml;
 import id.go.ojk.metadata.util.constants.ProgramType;
 import id.go.ojk.client.validation.IValidationConverter;
@@ -34,18 +35,19 @@ public enum E7010RoimlValidationsConfig implements ILbltMetadataValidation, IVal
             () -> UtilFieldValidation.genEqualsFormula(UtilMetadata.genPlusColumn(2, 7) + "-8")),
 
     FV_FIELD_VALIDATION_2(programs(PPMPK, PPIPK, DPLK), validationFields(11),
-            () -> UtilFieldValidation.genEqualsExceptPosFormula("9/10", R_ROIML2100000000.key, 2)),
+            () -> UtilFieldValidation.genEqualsPosFormula3("9/10", 2,
+                    UtilMetadata.genPipeRow(ER7010PosLtlbDppkRoiml.getObjects()))),
 
     SG_SUM_POS_COL_EQUAL(programs(PPMPK, PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula(
-                    UtilMetadata.genPipeColumn(new int[] { 2, 3, 4, 5, 6, 7, 8, 10, 11}), R_ROIML2100000000.key,
+                    UtilMetadata.genPipeColumn(new int[] { 2, 3, 4, 5, 6, 7, 8, 10}), R_ROIML2100000000.key,
                     UtilMetadata.genPlusRow(ER7010PosLtlbDppkRoiml.getObjects(), 0, 19),
                     UtilMetadata.genMessage(R_ROIML2100000000.value,
                             UtilMetadata.genPlusDesc(ER7010PosLtlbDppkRoiml.getObjects(), 0, 19)))),
 
     SG_SUM_POS_COL_EQUAL_DPLK(programs(DPLK),
             () -> UtilSegmentValidation.genEqualsFormula(
-                    UtilMetadata.genPipeColumn(new int[] { 2, 3, 4, 5, 6, 7, 8, 10, 11}), R_ROIML2100000000.key,
+                    UtilMetadata.genPipeColumn(new int[] { 2, 3, 4, 5, 6, 7, 8, 10}), R_ROIML2100000000.key,
                     UtilMetadata.genPlusRow(ER7010PosLtlbDppkRoiml.getObjects(DPLK), 0, 19),
                     UtilMetadata.genMessage(R_ROIML2100000000.value,
                             UtilMetadata.genPlusDesc(ER7010PosLtlbDppkRoiml.getObjects(DPLK), 0, 19)))),

@@ -52,7 +52,7 @@ public enum ER7101PosLtlbDppkRoimpl implements IObject<KeyValueString> {
     }
 
     public static List<KeyValueString> getObjectsGabungan() {
-        List<KeyValueString> res = getObjects();
+        List<KeyValueString> res = new ArrayList<>();
 
         res.addAll(Arrays.stream(ER7101PosLtlbDppkRoimpl.values())
                 .map(ER7101PosLtlbDppkRoimpl::getObject)
@@ -77,8 +77,26 @@ public enum ER7101PosLtlbDppkRoimpl implements IObject<KeyValueString> {
         return new KeyValueString(key, value, new String[]{});
     }
 
-    public static int getRowSize() {
+    public static int getRowSize(ProgramType programType) {
+        if (programType.equals(ProgramType.PPMPPPIPK))
+            return getObjectsGabungan().size();
+
         return getObjects().size();
+    }
+
+    public static ReferenceConfig getRefConfig(ProgramType programType) {
+        switch (programType) {
+            case PPMPK:
+            case PPMPM:
+            case PPIPK:
+            case PPIPM:
+            case DPLK:
+                return Configs.REF_CONFIG;
+            case PPMPPPIPK:
+                return Configs.REF_CONFIG_PPMPKPPIPK;
+            default:
+                throw new IllegalStateException();
+        }
     }
 
     public enum Configs implements ReferenceConfig {

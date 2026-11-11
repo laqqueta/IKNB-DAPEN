@@ -55,8 +55,30 @@ public enum Dppk0043Piub implements ILbltFieldMetadata {
     PIUTANG_BUNGA_IURAN_TAMBAHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPMPPPIPK),
             sf(5, null, "Piutang Bunga Iuran Tambahan", sv(M, 1, 18, numeric))),
 
-    MANFAAT_PENSIUN_LAINNYA_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, PPMPPPIPK),
-            sf(6, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain", sv(C, 1, 6, refTable)
+    /* Jenis Manfaat field ref */
+
+    MANFAAT_PENSIUN_LAINNYA_LAIN_LCF_PPMPK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK),
+            sf(6, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain/LCF", sv(C, 1, 6, refTable)
+                    .confRegex(SimpleValidation.patternAlfaNumeric)
+                    .confReference(EHeaderMetadataSharedLblt.R024.getObject()))),
+
+    MANFAAT_PENSIUN_LAINNYA_LAIN_LCF_PPMPM(sectors(KONVENSIONAL, SYARIAH), programs(PPMPM),
+            sf(6, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain/LCF", sv(C, 1, 6, refTable)
+                    .confRegex(SimpleValidation.patternAlfaNumeric)
+                    .confReference(EHeaderMetadataSharedLblt.R025.getObject()))),
+
+    MANFAAT_PENSIUN_LAINNYA_LAIN_LCF_PPIPK(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK),
+            sf(6, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain/LCF", sv(C, 1, 6, refTable)
+                    .confRegex(SimpleValidation.patternAlfaNumeric)
+                    .confReference(EHeaderMetadataSharedLblt.R026.getObject()))),
+
+    MANFAAT_PENSIUN_LAINNYA_LAIN_LCF_PPIPM(sectors(KONVENSIONAL, SYARIAH), programs(PPIPM),
+            sf(6, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain/LCF", sv(C, 1, 6, refTable)
+                    .confRegex(SimpleValidation.patternAlfaNumeric)
+                    .confReference(EHeaderMetadataSharedLblt.R027.getObject()))),
+
+    MANFAAT_PENSIUN_LAINNYA_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(DPLK, PPMPPPIPK),
+            sf(6, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain/LCF", sv(C, 1, 6, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric)
                     .confReference(EHeaderMetadataSharedLblt.R009.getObject()))),
 
@@ -66,7 +88,8 @@ public enum Dppk0043Piub implements ILbltFieldMetadata {
     /* Gabungan Additional Field */
 
     JENIS_PROGRAM(sectors(KONVENSIONAL, SYARIAH), programs(PPMPPPIPK),
-            sf(1000, null, "Jenis Program", sv(M, 5, 5, alfa))),
+            sf(1000, null, "Jenis Program", sv(M, 4, 4, alfa)
+                    .confConstant("PPMP|PPIP"))),
 
     ;
 
@@ -78,83 +101,56 @@ public enum Dppk0043Piub implements ILbltFieldMetadata {
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataLkdpPpmpk.R7043Piub.getObject()),
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataLkdpPpmpm.R7043Piub.getObject()),
             new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataLkdpPpipk.R7043Piub.getObject()),
-            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataLkdpPpipm.R7043Piub.getObject())
+            new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataLkdpPpipm.R7043Piub.getObject()),
+            new AbstractMap.SimpleEntry<>(PPMPPPIPK, EHeaderMetadataLkdpPpmpppipk.R7049Piub.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0043Piub> FIELD_METADATA = new LbltMetadataField<>(Dppk0043Piub.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
 
     public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, ProgramType programType) {
         EFormLaporanBulananTahunan PIUB_FORM = EFormLaporanBulananTahunan.LTLB_PIUB;
-        SubmissionFormatBuilder sfConfig = SubmissionFormatBuilder.builder()
+        return SubmissionFormatBuilder.builder()
                 .code(PIUB_FORM.getCode())
                 .name(PIUB_FORM.getName())
                 .extension(ExtensionType.TXT)
                 .reportCode(programType.toString())
                 .maxRow(null)
+                .minRow(0)
                 .fields(new ArrayList<>())
                 .build();
-
-        if (sectorType.equals(KONVENSIONAL) || sectorType.equals(SYARIAH)) {
-            sfConfig.setMinRow(0);
-            return sfConfig;
-        }
-
-
-        throw new IllegalArgumentException("Unknown sector type: " + sectorType);
     }
 
     public static SubmissionFormat formMetadata(SectorType sectorType, ProgramType programType) {
         FIELD_METADATA.setProgramType(programType);
 
-        BaseMetadataValidation<E7043PiubValidationsConfig> metadataValidation = null;
-        List<SubmissionField> submissionFields = null;
-        ReferenceConfig referenceConfig = null;
-
-        List<Integer> usedFieldIdx = Arrays.asList(0, 1, 2, 3, 4, 6, 7);
+        BaseMetadataValidation<?> metadataValidation = E7043PiubValidationsConfig.getSegmentValidation(programType);
+        ReferenceConfig referenceConfig = ER7043PosLtlbDppkPiub.getRefConfig(programType);
+        BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType).config()
+                .setReferenceConfigs(referenceConfig)
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType));
 
         switch (programType) {
             case PPMPK:
-                metadataValidation = E7043PiubValidationsConfig.VALIDATION_METADATA_PPMPK;
-                submissionFields = FIELD_METADATA.getFields(metadataValidation.getFieldValidations());
-                referenceConfig = ER7043PosLtlbDppkPiub.Configs.REF_CONFIG_PPMP;
-                break;
             case PPMPM:
-                metadataValidation = E7043PiubValidationsConfig.VALIDATION_METADATA_PPMPM;
-                submissionFields = FIELD_METADATA.getFields(metadataValidation.getFieldValidations());
-                referenceConfig = ER7043PosLtlbDppkPiub.Configs.REF_CONFIG_PPMP;
+                submissionConfig
+                        .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                        .setSegmentValidations(metadataValidation);
                 break;
             case PPIPK:
-                metadataValidation = E7043PiubValidationsConfig.VALIDATION_METADATA_PPIPK;
-                submissionFields = FIELD_METADATA.getReindexFields(usedFieldIdx, metadataValidation.getFieldValidations());
-                referenceConfig = ER7043PosLtlbDppkPiub.Configs.REF_CONFIG_PPIP;
-                break;
             case PPIPM:
-                metadataValidation = E7043PiubValidationsConfig.VALIDATION_METADATA_PPIPM;
-                submissionFields = FIELD_METADATA.getReindexFields(usedFieldIdx, metadataValidation.getFieldValidations());
-                referenceConfig = ER7043PosLtlbDppkPiub.Configs.REF_CONFIG_PPIP;
+                List<Integer> usedFieldIdx = Arrays.asList(0, 1, 2, 3, 4, 6, 7);
+                submissionConfig
+                        .setSubmissionField(FIELD_METADATA.getReindexFields(usedFieldIdx, metadataValidation.getFieldValidations()))
+                        .setSegmentValidations(metadataValidation);
                 break;
             case PPMPPPIPK:
+                List<Integer> gabunganFields = Arrays.asList(0, 1, 1000, 2, 3, 4, 5, 6, 7);
+                submissionConfig
+                        .setSubmissionField(FIELD_METADATA.getReindexFields(gabunganFields, metadataValidation.getFieldValidations()))
+                        .setSegmentValidations(metadataValidation);
                 break;
             default:
                 throw new IllegalStateException();
-        }
-
-        BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType).config()
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
-//                .setSubmissionField(submissionFields)
-//                .setSegmentValidations(metadataValidation)
-                ;
-
-        if (programType == PPMPPPIPK) {
-            List<Integer> gabunganFields = Arrays.asList(0, 1, 1000, 2, 3, 4, 5, 6, 7);
-            submissionConfig
-                    .setSubmissionField(FIELD_METADATA.getReindexClearedFields(gabunganFields, true))
-                    .setSegmentValidations();
-        } else {
-            submissionConfig
-                    .setReferenceConfigs(referenceConfig)
-                    .setSubmissionField(submissionFields)
-                    .setSegmentValidations(metadataValidation);
         }
 
         return submissionConfig.build().get();

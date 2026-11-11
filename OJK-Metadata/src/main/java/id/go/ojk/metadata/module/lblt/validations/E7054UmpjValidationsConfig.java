@@ -35,13 +35,20 @@ public enum E7054UmpjValidationsConfig implements ILbltMetadataValidation, IVali
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(2, 4), R_UMPJ000000.key, R_UMPJ010000.key,
                     UtilMetadata.genMessageTotal(R_UMPJ000000.value, R_UMPJ010000.value))),
 
+    SG_EQUAL_FORMULA_GABUNGAN(programs(PPMPPPIPK),
+            () -> UtilSegmentValidation.genFilterEqualsFormula_DAPEN(UtilMetadata.genPipeColumn(3, 5), R_UMPJ000000.key, R_UMPJ010000.key,
+                    UtilMetadata.genMessageTotal(R_UMPJ000000.value, R_UMPJ010000.value))),
+
     FV_EQUAL_TOTAL(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(4),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("2+3", R_UMPJ000000.key)),
 
-    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(5),
+    FV_EQUAL_TOTAL_GABUNGAN(programs(PPMPPPIPK), validationFields(4),
+            () -> UtilFieldValidation.genEqualsExceptPosFormula("3+4", R_UMPJ000000.key)),
+
+    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK), validationFields(5),
             () -> UtilFieldConditional.genExistPos("N", "M", R_UMPJ000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(6),
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK), validationFields(6),
             () -> UtilFieldConditional.genExistPos("N", "O", R_UMPJ000000.key)),
 
     ;
@@ -82,6 +89,10 @@ public enum E7054UmpjValidationsConfig implements ILbltMetadataValidation, IVali
     public ConditionalRequired toFieldConditional() {
         return ValidationConverter
                 .toValidation(this, ConditionalRequired.class);
+    }
+
+    public static BaseMetadataValidation<E7054UmpjValidationsConfig> getValidationMetadata(ProgramType programType) {
+        return new LbltMetadataValidation<>(E7054UmpjValidationsConfig.class, programType);
     }
 
     public static final BaseMetadataValidation<E7054UmpjValidationsConfig> VALIDATION_METADATA_PPMPK =

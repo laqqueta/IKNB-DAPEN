@@ -8,9 +8,9 @@ import id.go.ojk.metadata.util.constants.ProgramType;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ER7003PosLtlbDppkNrc implements IObject<KeyValueString> {
@@ -110,13 +110,24 @@ public enum ER7003PosLtlbDppkNrc implements IObject<KeyValueString> {
     R_NRC0104020300_DPLK("NRC0104020300", "Piutang Lain-Lain", EnumSet.of(ProgramType.DPLK)),
 
     R_NRC0104020400("NRC0104020400", "Iuran Tambahan", EnumSet.of(ProgramType.PPMPM, ProgramType.PPMPK)),
+
     R_NRC0104030000("NRC0104030000", "Piutang Bunga Keterlambatan Iuran", EnumSet.of(ProgramType.ALL)),
+    R_NRC0104030000_TMP_GABUNGAN("NRC0104020400", "Piutang Bunga Keterlambatan Iuran", EnumSet.of(ProgramType.TMP_PPMPPPIPK)),
+
     R_NRC0104040000("NRC0104040000", "Beban Dibayar di Muka", EnumSet.of(ProgramType.ALL)),
+    R_NRC0104040000_TMP_GABUNGAN("NRC0104030000", "Beban Dibayar di Muka", EnumSet.of(ProgramType.TMP_PPMPPPIPK)),
+
     R_NRC0104050000("NRC0104050000", "Piutang Investasi", EnumSet.of(ProgramType.ALL)),
+    R_NRC0104050000_TMP_GABUNGAN("NRC0104040000", "Piutang Investasi", EnumSet.of(ProgramType.TMP_PPMPPPIPK)),
+
     R_NRC0104060000("NRC0104060000", "Piutang Hasil Investasi", EnumSet.of(ProgramType.ALL)),
+    R_NRC0104060000_TMP_GABUNGAN("NRC0104050000", "Piutang Hasil Investasi", EnumSet.of(ProgramType.TMP_PPMPPPIPK)),
+
     R_NRC0104070000("NRC0104070000", "Piutang Lain-Lain", EnumSet.of(ProgramType.ALL)),
+    R_NRC0104070000_TMP_GABUNGAN("NRC0104060000", "Piutang Lain-Lain", EnumSet.of(ProgramType.TMP_PPMPPPIPK)),
 
     R_NRC0105000000("NRC0105000000", "TOTAL ASET LANCAR DI LUAR INVESTASI", EnumSet.of(ProgramType.ALL, ProgramType.DPLK)),
+    R_NRC0105000000_TMP_GABUNGAN("NRC0104070000", "TOTAL ASET LANCAR DI LUAR INVESTASI", EnumSet.of(ProgramType.TMP_PPMPPPIPK)),
 
     R_NRC0106000000("NRC0106000000", "ASET LAIN-LAIN", EnumSet.of(ProgramType.DPLK)),
 
@@ -151,7 +162,10 @@ public enum ER7003PosLtlbDppkNrc implements IObject<KeyValueString> {
 
     R_NRC0111000000("NRC0111000000", "NILAI KINI AKTUARIAL", EnumSet.of(ProgramType.PPMPM, ProgramType.PPMPK)),
     R_NRC0112000000("NRC0112000000", "SELISIH NILAI KINI AKTUARIAL", EnumSet.of(ProgramType.PPMPM, ProgramType.PPMPK)),
+
     R_NRC0113000000("NRC0113000000", "LIABILITAS MANFAAT PENSIUN", EnumSet.of(ProgramType.PPIPM, ProgramType.PPIPK, ProgramType.PPMPPPIPK)),
+    R_NRC0113000000_TMP_GABUBNGAN("NRC0111000000", "LIABILITAS MANFAAT PENSIUN", EnumSet.of(ProgramType.TMP_PPMPPPIPK)),
+
     R_NRC0115010000("NRC0115010000", "Utang Manfaat Pensiun dan Manfaat Lain Jatuh Tempo", EnumSet.of(ProgramType.ALL)),
     R_NRC0115020000("NRC0115020000", "Utang Manfaat Sukarela", EnumSet.of(ProgramType.ALL)),
     R_NRC0115030000("NRC0115030000", "Utang Investasi", EnumSet.of(ProgramType.ALL)),
@@ -160,7 +174,10 @@ public enum ER7003PosLtlbDppkNrc implements IObject<KeyValueString> {
     R_NRC0115060000("NRC0115060000", "Utang Lain-Lain", EnumSet.of(ProgramType.ALL)),
     R_NRC0115070000("NRC0115070000", "Utang Dana Ta'zir (bagi syariah)", EnumSet.of(ProgramType.ALL)),
     R_NRC0116000000("NRC0116000000", "TOTAL LIABILITAS DI LUAR NILAI KINI AKTUARIAL", EnumSet.of(ProgramType.PPMPM, ProgramType.PPMPK)),
+
     R_NRC0117000000("NRC0117000000", "TOTAL LIABILITAS DI LUAR LIABILITAS MANFAAT PENSIUN", EnumSet.of(ProgramType.PPIPM, ProgramType.PPIPK, ProgramType.PPMPPPIPK)),
+    R_NRC0117000000_TMP_GABUNGAN("NRC0116000000", "TOTAL LIABILITAS DI LUAR LIABILITAS MANFAAT PENSIUN", EnumSet.of(ProgramType.TMP_PPMPPPIPK)),
+
     R_NRC0118000000("NRC0118000000", "TOTAL LIABILITAS", EnumSet.of(ProgramType.ALL));
 
     public final String key;
@@ -168,6 +185,47 @@ public enum ER7003PosLtlbDppkNrc implements IObject<KeyValueString> {
     private final EnumSet<ProgramType> jenisProgram;
 
     public static List<KeyValueString> getObjects(ProgramType jenisProgram) {
+        if (!jenisProgram.equals(ProgramType.PPMPPPIPK)) return getNonGabunganObjects(jenisProgram);
+        List<KeyValueString> res = new ArrayList<>();
+
+        res.addAll(getPpipGabunganObjects());
+        res.addAll(getPpipGabunganObjects());
+
+        return res;
+    }
+
+    private static List<KeyValueString> getPpipGabunganObjects() {
+        // Key > original key | Value > changed key
+        Map<String, String> changedKey = Stream.of(new String[][] {
+                { "NRC0104030000", "NRC0104020400" },
+                { "NRC0104040000", "NRC0104030000" },
+                { "NRC0104050000", "NRC0104040000" },
+                { "NRC0104060000", "NRC0104050000" },
+                { "NRC0104070000", "NRC0104060000" }
+        }).collect(Collectors.toMap(originalKey -> originalKey[0], updatedKey -> updatedKey[1]));
+
+        ER7003PosLtlbDppkNrc[] eVals = ER7003PosLtlbDppkNrc.values();
+
+        Map<String, KeyValueString> tmpGabunganPpip = Arrays.stream(eVals)
+                .filter(eEnum -> eEnum.jenisProgram.contains(ProgramType.TMP_PPMPPPIPK))
+                .map(ER7003PosLtlbDppkNrc::getObject)
+                .collect(Collectors.toMap(KeyValueString::getKey, v -> v));
+
+        return Arrays.stream(eVals)
+                .filter(eEnum -> eEnum.jenisProgram.contains(ProgramType.PPIPK) || eEnum.jenisProgram.contains(ProgramType.ALL))
+                .map(ER7003PosLtlbDppkNrc::getObject)
+                .peek(v -> {
+                    String key = changedKey.get(v.getKey());
+                    if (key != null && !key.isEmpty()) {
+                        v.setKey(tmpGabunganPpip.get(key).getKey());
+                        v.setValue(tmpGabunganPpip.get(key).getValue());
+                    }
+                })
+                .sorted(Comparator.comparing(KeyValueString::getKey))
+                .collect(Collectors.toList());
+    }
+
+    private static List<KeyValueString> getNonGabunganObjects(ProgramType jenisProgram) {
         List<KeyValueString> res = new ArrayList<>();
         for (ER7003PosLtlbDppkNrc eEnum : ER7003PosLtlbDppkNrc.values()) {
             if (!jenisProgram.equals(ProgramType.DPLK) && (eEnum.jenisProgram.contains(jenisProgram) || eEnum.jenisProgram.contains(ProgramType.ALL))) {
@@ -208,7 +266,7 @@ public enum ER7003PosLtlbDppkNrc implements IObject<KeyValueString> {
             case DPLK:
                 return Configs.REF_CONFIG_DPLK;
             case PPMPPPIPK:
-                return null;
+                return Configs.REF_CONFIG_GABUNGAN;
             default:
                 throw new IllegalStateException();
         }
@@ -309,5 +367,45 @@ public enum ER7003PosLtlbDppkNrc implements IObject<KeyValueString> {
                 return UtilMetadata.genPipeRow(getObjects(programType));
             }
         },
+
+        REF_CONFIG_GABUNGAN {
+            private final ProgramType programType = ProgramType.PPMPPPIPK;
+            private final String rowPPMP = UtilMetadata.genPipeRow(getPpipGabunganObjects());
+            private final String rowPPIP = UtilMetadata.genPipeRow(getPpipGabunganObjects());
+
+            @Override
+            public String savePos() {
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 17),getObjects(programType));
+            }
+
+            @Override
+            public String savePosForm() {
+                return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 17), getObjects(programType));
+            }
+
+            @Override
+            public Integer segmentRequireColumnLink() {
+                return 2;
+            }
+
+            @Override
+            public String segmentColumnValue() {
+                return "PPMP|PPIP";
+            }
+
+            @Override
+            public String segmentReqiurePosCode() {
+                return rowPPMP + "#" + rowPPIP;
+            }
+
+            @Override
+            public String segmentUniquePos() {
+                return rowPPMP + "#" + rowPPIP;
+            }
+        },
+    }
+
+    public static void main(String[] args) {
+        System.out.println(UtilMetadata.genPipeRow(ER7003PosLtlbDppkNrc.getObjects(ProgramType.PPMPM), 17, 20));
     }
 }

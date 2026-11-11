@@ -48,11 +48,26 @@ public enum E7042PiutValidationsConfig implements ILbltMetadataValidation, IVali
     FV_EQUAL_TAMBAHAN(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(11),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("9+10", R_PIUT000000.key)),
 
-    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(2, 13),
+    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM, PPMPPPIPK), validationFields(2, 13),
             () -> UtilFieldConditional.genExistPos("N", "M", R_PIUT000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(14),
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM, PPMPPPIPK), validationFields(14),
             () -> UtilFieldConditional.genExistPos("N", "O", R_PIUT000000.key)),
+
+    /* PPMPPPIPK Specific Validations */
+
+    SG_EQUAL_FORMULA_GABUNGAN(programs(PPMPPPIPK),
+            () -> UtilSegmentValidation.genFilterEqualsFormula_DAPEN(UtilMetadata.genPipeColumn(4, 13), R_PIUT000000.key, R_PIUT010000.key,
+                    UtilMetadata.genMessageTotal(R_PIUT000000.value, R_PIUT010000.value))),
+
+    FV_EQUAL_PEMBERI_KERJA_GABUNGAN(programs(PPMPPPIPK), validationFields(5),
+            () -> UtilFieldValidation.genEqualsExceptPosFormula("4+5", R_PIUT000000.key)),
+
+    FV_EQUAL_PESERTA_GABUNGAN(programs(PPMPPPIPK), validationFields(8),
+            () -> UtilFieldValidation.genEqualsExceptPosFormula("7+8", R_PIUT000000.key)),
+
+    FV_EQUAL_TAMBAHAN_GABUNGAN(programs(PPMPPPIPK), validationFields(11),
+            () -> UtilFieldValidation.genEqualsExceptPosFormula("10+11", R_PIUT000000.key))
 
     ;
 
@@ -94,16 +109,8 @@ public enum E7042PiutValidationsConfig implements ILbltMetadataValidation, IVali
                 .toValidation(this, ConditionalRequired.class);
     }
 
-    public static final BaseMetadataValidation<E7042PiutValidationsConfig> VALIDATION_METADATA_PPMPK =
-            new LbltMetadataValidation<>(E7042PiutValidationsConfig.class, PPMPK);
-
-    public static final BaseMetadataValidation<E7042PiutValidationsConfig> VALIDATION_METADATA_PPMPM =
-            new LbltMetadataValidation<>(E7042PiutValidationsConfig.class, PPMPM);
-
-    public static final BaseMetadataValidation<E7042PiutValidationsConfig> VALIDATION_METADATA_PPIPK =
-            new LbltMetadataValidation<>(E7042PiutValidationsConfig.class, PPIPK);
-
-    public static final BaseMetadataValidation<E7042PiutValidationsConfig> VALIDATION_METADATA_PPIPM =
-            new LbltMetadataValidation<>(E7042PiutValidationsConfig.class, PPIPM);
+    public static BaseMetadataValidation<?> getSegmentValidation(ProgramType programType) {
+        return new LbltMetadataValidation<>(E7042PiutValidationsConfig.class, programType);
+    }
 
 }

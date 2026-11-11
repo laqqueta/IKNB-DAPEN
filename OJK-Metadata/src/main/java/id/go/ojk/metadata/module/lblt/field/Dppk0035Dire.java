@@ -5,6 +5,7 @@ import id.go.ojk.client.model.config.SimpleValidation;
 import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
+import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.metadata.field.lblt.ILbltFieldMetadata;
 import id.go.ojk.metadata.field.lblt.LbltMetadataField;
@@ -54,7 +55,7 @@ public enum Dppk0035Dire implements ILbltFieldMetadata {
             sf(5, null, "Tanggal Perolehan", sv(C, 8, 8, date))),
 
     JUMLAH_UNIT(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
-            sf(6, null, "Jumlah Unit", sv(M, 1, 12, numeric))),
+            sf(6, null, "Jumlah Unit", sv(M, 1, 13, numeric))),
 
     NILAI_PEROLEHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(7, null, "Nilai Perolehan", sv(M, 1, 18, numeric))),
@@ -63,13 +64,35 @@ public enum Dppk0035Dire implements ILbltFieldMetadata {
             sf(8, null, "Nilai Wajar", sv(M, 1, 18, numeric))),
 
     SELISIH_PENILAIAN_INVESTASI_NILAI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
-            sf(9, null, "Selisih Penilaian Investasi Nilai", sv(M, 1, 18, numeric))),
+            sf(9, null, "Selisih Penilaian Investasi Nilai", sv(M, 1, 18, numericNegatif))),
 
     SELISIH_PENILAIAN_INVESTASI_PERSEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
-            sf(10, null, "Selisih Penilaian Investasi %", sv(C, 4, 6, numericDot))),
+            sf(10, null, "Selisih Penilaian Investasi %", sv(C, 4, 7, numericDotNegatif))),
 
-    MANFAAT_PENSIUN_MANFAAT_PENSIUN_LAINNYA_MANFAAT_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
-            sf(11, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain", sv(C, 1, 6, refTable)
+    /* Jenis Manfaat field ref */
+
+    MANFAAT_PENSIUN_LAINNYA_LAIN_LCF_PPMPK(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK),
+            sf(11, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain/LCF", sv(C, 1, 6, refTable)
+                    .confRegex(SimpleValidation.patternAlfaNumeric)
+                    .confReference(EHeaderMetadataSharedLblt.R024.getObject()))),
+
+    MANFAAT_PENSIUN_LAINNYA_LAIN_LCF_PPMPM(sectors(KONVENSIONAL, SYARIAH), programs(PPMPM),
+            sf(11, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain/LCF", sv(C, 1, 6, refTable)
+                    .confRegex(SimpleValidation.patternAlfaNumeric)
+                    .confReference(EHeaderMetadataSharedLblt.R025.getObject()))),
+
+    MANFAAT_PENSIUN_LAINNYA_LAIN_LCF_PPIPK(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK),
+            sf(11, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain/LCF", sv(C, 1, 6, refTable)
+                    .confRegex(SimpleValidation.patternAlfaNumeric)
+                    .confReference(EHeaderMetadataSharedLblt.R026.getObject()))),
+
+    MANFAAT_PENSIUN_LAINNYA_LAIN_LCF_PPIPM(sectors(KONVENSIONAL, SYARIAH), programs(PPIPM),
+            sf(11, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain/LCF", sv(C, 1, 6, refTable)
+                    .confRegex(SimpleValidation.patternAlfaNumeric)
+                    .confReference(EHeaderMetadataSharedLblt.R027.getObject()))),
+
+    MANFAAT_PENSIUN_LAINNYA_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(DPLK, PPMPPPIPK),
+            sf(11, null, "Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain/LCF", sv(C, 1, 6, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric)
                     .confReference(EHeaderMetadataSharedLblt.R009.getObject()))),
 
@@ -87,7 +110,8 @@ public enum Dppk0035Dire implements ILbltFieldMetadata {
     /* Gabungan Additional Field */
 
     JENIS_PROGRAM(sectors(KONVENSIONAL, SYARIAH), programs(PPMPPPIPK),
-            sf(1000, null, "Jenis Program", sv(M, 5, 5, alfa))),
+            sf(1000, null, "Jenis Program", sv(M, 4, 4, alfa)
+                    .confConstant("PPMP|PPIP"))),
 
     ;
 
@@ -95,77 +119,47 @@ public enum Dppk0035Dire implements ILbltFieldMetadata {
     private final EnumSet<ProgramType> programType;
     private final SubmissionField field;
 
-    private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
+        private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
             new AbstractMap.SimpleEntry<>(PPMPK, EHeaderMetadataLkdpPpmpk.R7035Dire.getObject()),
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataLkdpPpmpm.R7035Dire.getObject()),
             new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataLkdpPpipk.R7035Dire.getObject()),
             new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataLkdpPpipm.R7035Dire.getObject()),
-            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkdpDplk.R7035Dire.getObject())
+            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkdpDplk.R7035Dire.getObject()),
+            new AbstractMap.SimpleEntry<>(PPMPPPIPK, EHeaderMetadataLkdpPpmpppipk.R7041Dire.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0035Dire> FIELD_METADATA = new LbltMetadataField<>(Dppk0035Dire.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
 
     public static SubmissionFormatBuilder getPpmpSubmissionFormatConfig(SectorType sectorType, ProgramType programType) {
         EFormLaporanBulananTahunan FORM = EFormLaporanBulananTahunan.LTLB_DIRE;
-        SubmissionFormatBuilder sfConfig = SubmissionFormatBuilder.builder()
+        return SubmissionFormatBuilder.builder()
                 .code(FORM.getCode())
                 .name(FORM.getName())
                 .extension(ExtensionType.TXT)
                 .reportCode(programType.toString())
                 .maxRow(null)
+                .minRow(0)
                 .fields(new ArrayList<>())
                 .build();
-
-        if (sectorType.equals(KONVENSIONAL) || sectorType.equals(SYARIAH)) {
-            sfConfig.setMinRow(0);
-            return sfConfig;
-        }
-
-
-        throw new IllegalArgumentException("Unknown sector type: " + sectorType);
     }
 
     public static SubmissionFormat formMetadata(SectorType sectorType, ProgramType programType) {
         FIELD_METADATA.setProgramType(programType);
 
-        BaseMetadataValidation<E7035DireValidationsConfig> metadataValidation = null;
-
-        switch (programType) {
-            case PPMPK:
-                metadataValidation = E7035DireValidationsConfig.VALIDATION_METADATA_PPMPK;
-                break;
-            case PPMPM:
-                metadataValidation = E7035DireValidationsConfig.VALIDATION_METADATA_PPMPM;
-                break;
-            case PPIPK:
-                metadataValidation = E7035DireValidationsConfig.VALIDATION_METADATA_PPIPK;
-                break;
-            case PPIPM:
-                metadataValidation = E7035DireValidationsConfig.VALIDATION_METADATA_PPIPM;
-                break;
-            case DPLK:
-                metadataValidation = E7035DireValidationsConfig.VALIDATION_METADATA_DPLK;
-                break;
-            case PPMPPPIPK:
-                break;
-            default:
-                throw new IllegalStateException();
-        }
-
+        BaseMetadataValidation<?> metadataValidation = E7035DireValidationsConfig.getValidationMetadata(programType);
+        ReferenceConfig referenceConfig = ER7035PosLtlbDppkDire.getRefConfig(programType);
         BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType)
                 .config()
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType));
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
+                .setReferenceConfigs(referenceConfig)
+                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                .setSegmentValidations(metadataValidation);
 
-        if (programType == PPMPPPIPK) {
+        if (programType.equals(PPMPPPIPK)) {
             List<Integer> gabunganFields = Arrays.asList(0, 1, 1000, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14);
             submissionConfig
-                    .setSubmissionField(FIELD_METADATA.getReindexClearedFields(gabunganFields, true))
-                    .setSegmentValidations();
-        } else {
-            submissionConfig
-                    .setReferenceConfigs(ER7035PosLtlbDppkDire.Configs.REF_CONFIG)
-                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-                    .setSegmentValidations(metadataValidation);
+                        .setSubmissionField(FIELD_METADATA.getReindexFields(gabunganFields, metadataValidation.getFieldValidations()))
+                        .setSegmentValidations(metadataValidation);
         }
 
         return submissionConfig.build().get();

@@ -110,7 +110,7 @@ public enum E7012AlmKValidationsConfig implements ILbltMetadataValidation, IVali
     SG_FIELD_TOTAL_6(programs(PPMPK), () -> genTotalValidation(R_ALM0106000000.key,
             EFormLaporanBulananTahunan.LTLB_SHM,
             ER7028PosLtlbDppkShm.getObjects(),
-            "6", "Nilai Perolehan")),
+            "7", "Nilai Pasar")),
 
     SG_FIELD_TOTAL_7(programs(PPMPK), () -> genTotalValidation(R_ALM0107000000.key,
             EFormLaporanBulananTahunan.LTLB_OBLI,
@@ -195,27 +195,27 @@ public enum E7012AlmKValidationsConfig implements ILbltMetadataValidation, IVali
     SG_FIELD_TOTAL_23(programs(PPMPK), () -> genTotalValidation(R_ALM0301000000.key,
             EFormLaporanBulananTahunan.LTLB_TNBG,
             ER7048PosLtlbDppkTnbg.getObjects(),
-            "6", "Nilai Perolehan")),
+            "8", "Nilai Buku")),
 
     SG_FIELD_TOTAL_24(programs(PPMPK), () -> genTotalValidation(R_ALM0302000000.key,
             EFormLaporanBulananTahunan.LTLB_KNDR,
             ER7049PosLtlbDppkKndr.getObjects(),
-            "5", "Nilai Perolahan")),
+            "7", "Nilai Buku")),
 
     SG_FIELD_TOTAL_25(programs(PPMPK), () -> genTotalValidation(R_ALM0303000000.key,
             EFormLaporanBulananTahunan.LTLB_PKOM,
             ER7050PosLtlbDppkPkom.getObjects(),
-            "4", "Nilai Perolehan")),
+            "6", "Nilai Buku")),
 
     SG_FIELD_TOTAL_26(programs(PPMPK), () -> genTotalValidation(R_ALM0304000000.key,
             EFormLaporanBulananTahunan.LTLB_PKAN,
             ER7051PosLtlbDppkPkan.getObjects(),
-            "4", "Nilai Perolehan")),
+            "6", "Nilai Buku")),
 
     SG_FIELD_TOTAL_27(programs(PPMPK), () -> genTotalValidation(R_ALM0305000000.key,
             EFormLaporanBulananTahunan.LTLB_ASOL,
             ER7052PosLtlbDppkAsol.getObjects(),
-            "4", "Nilai Perolehan")),
+            "6", "Nilai Buku")),
 
     SG_FIELD_TOTAL_28(programs(PPMPK), () -> genTotalValidation(R_ALM0400000000.key,
             EFormLaporanBulananTahunan.LTLB_ASLN,
@@ -300,7 +300,7 @@ public enum E7012AlmKValidationsConfig implements ILbltMetadataValidation, IVali
                     R_ALM0118000000.key, "11", "2",
                     EFormLaporanBulananTahunan.LTLB_PROP.getCode(),
                     ER7040PosLtlbDppkProp.R_PROP010000.getObject().getKey(),
-                    "PROP|Nilai Appraisal/Nilai Wajar|Jenis Objek (Tanah/Bangunan/Tanah&Bangunan)", "2001"
+                    "PROP|Nilai Appraisal/Nilai Wajar|Jenis Objek (Tanah/Bangunan/Tanah dan Bangunan)", "2001"
             )),
 
     SG_SUMIF_PROP_ALM0119000000(programs(PPMPK),
@@ -308,7 +308,7 @@ public enum E7012AlmKValidationsConfig implements ILbltMetadataValidation, IVali
                     R_ALM0119000000.key, "11", "2",
                     EFormLaporanBulananTahunan.LTLB_PROP.getCode(),
                     ER7040PosLtlbDppkProp.R_PROP010000.getObject().getKey(),
-                    "PROP|Nilai Appraisal/Nilai Wajar|Jenis Objek (Tanah/Bangunan/Tanah&Bangunan)", "2005"
+                    "PROP|Nilai Appraisal/Nilai Wajar|Jenis Objek (Tanah/Bangunan/Tanah dan Bangunan)", "2005"
             )),
 
     SG_SUMIF_PROP_ALM0120000000(programs(PPMPK),
@@ -321,46 +321,50 @@ public enum E7012AlmKValidationsConfig implements ILbltMetadataValidation, IVali
 
     SG_ROW_DATA_TYPE_NUMERIC(programs(PPMPK),
             () -> UtilSegmentValidation.genRegexNumeric(UtilMetadata.genPipeColumn(2, 16),
-                    UtilMetadata.genPipeRowExcept(ER7012PosLtlbDppkAlm.getObjects(PPMPK), new int[] { 50 }))),
+                    UtilMetadata.genPipeRowExcept(ER7012PosLtlbDppkAlm.getObjects(PPMPK), new int[] { 50, 51 }))),
 
     SG_ROW_DATA_TYPE_NUMERIC_NEGATIVE(programs(PPMPK),
             () -> UtilSegmentValidation.genRegexNumericNegative(UtilMetadata.genPipeColumn(2, 16),
                     UtilMetadata.genPipeRow(ER7012PosLtlbDppkAlm.getObjects(PPMPK), new int[] { 50 }))),
 
+    SG_ROW_DATA_TYPE_NUMERIC_DOT_NEGATIVE(programs(PPMPK),
+            () -> UtilSegmentValidation.genRegexNumericDotNegative(UtilMetadata.genPipeColumn(2, 16),
+                    UtilMetadata.genPipeRow(ER7012PosLtlbDppkAlm.getObjects(PPMPK), new int[] { 51 }))),
+
     FV_TOTAL1_EQUAL(programs(PPMPK), validationFields(14),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("2+5+8+11",
                     UtilMetadata.genPipeRow(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPMPK),
-                            new int[]{20, 31, 37, 38, 39, 40, 48, 49, 50, 51}))),
+                            new int[]{20, 31, 37, 39, 48, 49, 50, 51}))),
 
     FV_TOTAL2_EQUAL(programs(PPMPK), validationFields(15),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("3+6+9+12",
                     UtilMetadata.genPipeRow(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPMPK),
-                            new int[]{20, 31, 37, 38, 39, 40, 48, 49, 50, 51}))),
+                            new int[]{20, 31, 37, 39, 48, 49, 50, 51}))),
 
     FV_TOTAL3_EQUAL(programs(PPMPK), validationFields(16),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("14+15",
                     UtilMetadata.genPipeRow(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPMPK),
-                            new int[]{20, 31, 37, 38, 39, 40, 48, 49, 50, 51}))),
+                            new int[]{20, 31, 37, 39, 48, 49, 50, 51}))),
 
     FV_JTD_EQUAL(programs(PPMPK), validationFields(13),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("11+12",
                     UtilMetadata.genPipeRow(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPMPK),
-                            new int[]{20, 31, 37, 38, 39, 40, 48, 49, 50, 51}))),
+                            new int[]{20, 31, 37, 39, 48, 49, 50, 51}))),
 
     FV_JTC_EQUAL(programs(PPMPK), validationFields(10),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("8+9",
                     UtilMetadata.genPipeRow(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPMPK),
-                            new int[]{20, 31, 37, 38, 39, 40, 48, 49, 50, 51}))),
+                            new int[]{20, 31, 37, 39, 48, 49, 50, 51}))),
 
     FV_JTB_EQUAL(programs(PPMPK), validationFields(7),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("5+6",
                     UtilMetadata.genPipeRow(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPMPK),
-                            new int[]{20, 31, 37, 38, 39, 40, 48, 49, 50, 51}))),
+                            new int[]{20, 31, 37, 39, 48, 49, 50, 51}))),
 
     FV_JTA_EQUAL(programs(PPMPK), validationFields(4),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("2+3",
                     UtilMetadata.genPipeRow(ER7012PosLtlbDppkAlm.getObjects(ProgramType.PPMPK),
-                            new int[]{20, 31, 37, 38, 39, 40, 48, 49, 50, 51}))),
+                            new int[]{20, 31, 37, 39, 48, 49, 50, 51}))),
 
     CR_PERCENTAGE(programs(PPMPK), validationFields(4, 7, 10, 13, 16),
             () -> UtilFieldConditional.genExistPos("N", "M", ER7012PosLtlbDppkAlm.R_ALM1200000000.getObject().getKey()));

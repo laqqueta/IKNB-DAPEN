@@ -9,6 +9,7 @@ import id.go.ojk.conf.client.UtilFieldConditional;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
 import id.go.ojk.conf.client.UtilSegmentValidationV2;
+import id.go.ojk.lib.client.model.KeyValueString;
 import id.go.ojk.metadata.module.lblt.EFormLaporanBulananTahunan;
 import id.go.ojk.metadata.module.lblt.reference.ER7001PosLtlbDppkLan;
 import id.go.ojk.metadata.util.constants.ProgramType;
@@ -23,6 +24,7 @@ import java.util.EnumSet;
 import java.util.List;
 import java.util.function.Supplier;
 
+import static id.go.ojk.metadata.module.lblt.reference.ER7013PosLtlbDppkInsp.R_INSP000000;
 import static id.go.ojk.metadata.module.lblt.reference.ER7014PosLtlbDppkInpt.R_INPT000000;
 import static id.go.ojk.metadata.module.lblt.reference.ER7014PosLtlbDppkInpt.R_INPT010000;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
@@ -41,7 +43,7 @@ public enum E7014InptKValidationsConfig implements ILbltMetadataValidation, IVal
             () -> UtilSegmentValidationV2.genEqualsInvestasiRatio("5", R_INPT010000.key,
                     R_INPT010000.key, "4", EFormLaporanBulananTahunan.LTLB_LAN.getCode(),
                     ER7001PosLtlbDppkLan.R_LAN0102000000.getObject().getKey(), "3",
-                    UtilMetadata.genMessage(R_INPT010000.value, R_INPT010000.value + " / Baris 'TOTAL INVESTASI' Manfaat Pensiun pada form LAN"), 2)),
+                    UtilMetadata.genMessage(R_INPT010000.value, R_INPT010000.value + " / 'TOTAL INVESTASI' Kolom 'Manfaat Pensiun' pada form LAN"), 2)),
 
     CR_EXISTS_POS_M(programs(DPLK), validationFields(2,3,5,6),
             () -> UtilFieldConditional.genExistPos("N", "M", R_INPT000000.key)),

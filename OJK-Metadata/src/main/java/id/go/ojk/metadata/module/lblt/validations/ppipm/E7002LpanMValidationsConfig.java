@@ -47,10 +47,12 @@ public enum E7002LpanMValidationsConfig implements ILbltMetadataValidation, IVal
                         UtilMetadata.genPipeRow(ER7002PosLtlbDppkLpan.getObjects(ProgramType.PPIPM), 7, 9),
                         EFormLaporanBulananTahunan.LTLB_IUR.getCode(),
                         ER7061PosLtlbDppkIur.R_IUR010000.getObject().getKey(),
-                        "6|5|7", "13", "2", criteriaCondition, sumCriteriaCondition,
+                        "7|5|8", "13", "2", criteriaCondition, sumCriteriaCondition,
                         "IUR|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain",
                         criteriaConditionErr, sumCriteriaConditionErr,
-                        "Iuran Jatuh Tempo - Iuran Normal Pemberi Kerja %|Iuran Jatuh Tempo - Iuran Normal Peserta Jumlah|Iuran Jatuh Tempo - Iuran Normal Pemberi Kerja Jumlah");
+                        "Iuran Jatuh Tempo - Iuran Normal Pemberi Kerja Jumlah|" +
+                                "Iuran Jatuh Tempo - Iuran Normal Peserta Jumlah|" +
+                                "Iuran Jatuh Tempo - Iuran Sukarela Peserta");
             }
     ),
 
@@ -96,8 +98,8 @@ public enum E7002LpanMValidationsConfig implements ILbltMetadataValidation, IVal
 
     SG_EQUAL_FORMULA_2(programs(PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula("2",
-                    R_LPAN0107000000.getObject().getKey(), UtilMetadata.genPlusRow(getObjects(ProgramType.PPIPM), 6, 11),
-                    UtilMetadata.genMessage(R_LPAN0107000000.getObject().getValue(), UtilMetadata.genPlusDesc(getObjects(ProgramType.PPIPM), 6, 11)))),
+                    R_LPAN0107000000.getObject().getKey(), UtilMetadata.genPlusRow(getObjects(ProgramType.PPIPM), 5, 11),
+                    UtilMetadata.genMessage(R_LPAN0107000000.getObject().getValue(), UtilMetadata.genPlusDesc(getObjects(ProgramType.PPIPM), 5, 11)))),
 
     SG_EQUAL_FORMULA_3(programs(PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula("2",
@@ -106,13 +108,13 @@ public enum E7002LpanMValidationsConfig implements ILbltMetadataValidation, IVal
 
     SG_EQUAL_FORMULA_4(programs(PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula("2",
-                    R_LPAN0300000000.getObject().getKey(), UtilMetadata.genPlusRow(getObjects(ProgramType.PPIPM), new int[]{5, 12}) + "-LPAN0208000000",
-                    UtilMetadata.genMessage(R_LPAN0300000000.getObject().getValue(), UtilMetadata.genPlusDesc(getObjects(ProgramType.PPIPM), new int[]{5, 12}) + "-LPAN0208000000"))),
+                    R_LPAN0300000000.getObject().getKey(), UtilMetadata.genMinusRow(getObjects(ProgramType.PPIPM), new int[]{13, 20}),
+                    UtilMetadata.genMessage(R_LPAN0300000000.getObject().getValue(), UtilMetadata.genMinusDesc(getObjects(ProgramType.PPIPM), new int[]{13, 20})))),
 
     SG_EQUAL_FORMULA_5(programs(PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula("2",
-                    R_LPAN0500000000.getObject().getKey(), UtilMetadata.genMinusRow(getObjects(ProgramType.PPIPM), new int[]{22, 21}),
-                    UtilMetadata.genMessage(R_LPAN0500000000.getObject().getValue(), UtilMetadata.genMinusDesc(getObjects(ProgramType.PPIPM), new int[]{22, 21})))),
+                    R_LPAN0500000000.getObject().getKey(), UtilMetadata.genPlusRow(getObjects(ProgramType.PPIPM), new int[]{22, 21}),
+                    UtilMetadata.genMessage(R_LPAN0500000000.getObject().getValue(), UtilMetadata.genPlusDesc(getObjects(ProgramType.PPIPM), new int[]{22, 21})))),
 
     SG_EQUAL_FORMULA_ROI_1(programs(PPIPM),
             () -> genRowValidation(R_LPAN0101010000.getObject(), "2")),

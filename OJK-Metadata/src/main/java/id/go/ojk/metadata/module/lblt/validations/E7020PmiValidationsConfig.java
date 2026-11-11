@@ -35,10 +35,17 @@ public enum E7020PmiValidationsConfig implements ILbltMetadataValidation, IValid
             () -> UtilSegmentValidation.genEqualsFormula("7|8|9|11|12", R_PMI000000.key, R_PMI010000.key,
                     UtilMetadata.genMessageTotal(R_PMI000000.value, R_PMI010000.value))),
 
+    SG_EQUAL_FORMULA_GABUNGAN(programs(PPMPPPIPK),
+            () -> UtilSegmentValidation.genFilterEqualsFormula_DAPEN("8|9|10|12|13", R_PMI000000.key, R_PMI010000.key,
+                    UtilMetadata.genMessageTotal(R_PMI000000.value, R_PMI010000.value))),
+
     FV_PENILAIAN_INVESATSI(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(9),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("7-8", R_PMI000000.key)),
 
-    CR_EXIST_POS(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(2,3,4,5,6,10,13),
+    FV_PENILAIAN_INVESATSI_GABUNGAN(programs(PPMPPPIPK), validationFields(9),
+            () -> UtilFieldValidation.genEqualsExceptPosFormula("8-9", R_PMI000000.key)),
+
+    CR_EXIST_POS(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK), validationFields(2,3,4,5,6,10,13),
             () -> UtilFieldConditional.genExistPos("N", "M", R_PMI000000.key)),
 
     ;
@@ -81,19 +88,7 @@ public enum E7020PmiValidationsConfig implements ILbltMetadataValidation, IValid
                 .toValidation(this, ConditionalRequired.class);
     }
 
-    public static final BaseMetadataValidation<E7020PmiValidationsConfig> VALIDATION_METADATA_PPMPK =
-            new LbltMetadataValidation<>(E7020PmiValidationsConfig.class, PPMPK);
-
-    public static final BaseMetadataValidation<E7020PmiValidationsConfig> VALIDATION_METADATA_PPMPM =
-            new LbltMetadataValidation<>(E7020PmiValidationsConfig.class, PPMPM);
-
-    public static final BaseMetadataValidation<E7020PmiValidationsConfig> VALIDATION_METADATA_PPIPK =
-            new LbltMetadataValidation<>(E7020PmiValidationsConfig.class, PPIPK);
-
-    public static final BaseMetadataValidation<E7020PmiValidationsConfig> VALIDATION_METADATA_PPIPM =
-            new LbltMetadataValidation<>(E7020PmiValidationsConfig.class, PPIPM);
-
-    public static final BaseMetadataValidation<E7020PmiValidationsConfig> VALIDATION_METADATA_DPLK =
-            new LbltMetadataValidation<>(E7020PmiValidationsConfig.class, DPLK);
-
+    public static BaseMetadataValidation<E7020PmiValidationsConfig> getValidationMetadata(ProgramType programType) {
+        return new LbltMetadataValidation<>(E7020PmiValidationsConfig.class, programType);
+    }
 }

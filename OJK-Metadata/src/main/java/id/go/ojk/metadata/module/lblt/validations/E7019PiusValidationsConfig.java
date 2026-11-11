@@ -33,6 +33,11 @@ public enum E7019PiusValidationsConfig implements ILbltMetadataValidation, IVali
                     UtilMetadata.genPipeColumn(2, 6), R_PIUS0000000000.key, R_PIUS0100000000.key,
                     UtilMetadata.genMessageTotal(R_PIUS0000000000.value, R_PIUS0100000000.value))),
 
+    SG_EQUAL_FORMULA_DAPEN(programs(PPMPPPIPK),
+            () -> UtilSegmentValidation.genFilterEqualsFormula_DAPEN(
+                    UtilMetadata.genPipeColumn(3, 7), R_PIUS0000000000.key, R_PIUS0100000000.key,
+                    UtilMetadata.genMessageTotal(R_PIUS0000000000.value, R_PIUS0100000000.value))),
+
     ;
 
     private final EnumSet<ProgramType> programTypes;
@@ -73,19 +78,8 @@ public enum E7019PiusValidationsConfig implements ILbltMetadataValidation, IVali
                 .toValidation(this, ConditionalRequired.class);
     }
 
-    public static final BaseMetadataValidation<E7019PiusValidationsConfig> VALIDATION_METADATA_PPMPK =
-            new LbltMetadataValidation<>(E7019PiusValidationsConfig.class, PPMPK);
-
-    public static final BaseMetadataValidation<E7019PiusValidationsConfig> VALIDATION_METADATA_PPMPM =
-            new LbltMetadataValidation<>(E7019PiusValidationsConfig.class, PPMPM);
-
-    public static final BaseMetadataValidation<E7019PiusValidationsConfig> VALIDATION_METADATA_PPIPK =
-            new LbltMetadataValidation<>(E7019PiusValidationsConfig.class, PPIPK);
-
-    public static final BaseMetadataValidation<E7019PiusValidationsConfig> VALIDATION_METADATA_PPIPM =
-            new LbltMetadataValidation<>(E7019PiusValidationsConfig.class, PPIPM);
-
-    public static final BaseMetadataValidation<E7019PiusValidationsConfig> VALIDATION_METADATA_DPLK =
-            new LbltMetadataValidation<>(E7019PiusValidationsConfig.class, DPLK);
+    public static BaseMetadataValidation<E7019PiusValidationsConfig> getValidationMetadata(ProgramType programType) {
+        return new LbltMetadataValidation<>(E7019PiusValidationsConfig.class, programType);
+    }
 
 }

@@ -5,6 +5,7 @@ import id.go.ojk.client.model.config.SimpleValidation;
 import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
+import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
 import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.lib.client.model.config.UniqueType;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
@@ -22,17 +23,21 @@ import id.go.ojk.metadata.validation.base.BaseMetadataValidation;
 import id.go.ojk.metadata.validation.lblt.ILbltMetadataValidation;
 import lombok.AllArgsConstructor;
 
-import javax.print.attribute.standard.PagesPerMinute;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static id.go.ojk.lib.client.model.config.DataType.*;
-import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
+import static id.go.ojk.lib.client.model.constant.RequiredCondition.*;
 import static id.go.ojk.metadata.module.lblt.validations.dplk.E7003NrcKValidationsConfig.VALIDATION_METADATA_DPLK;
+import static id.go.ojk.metadata.module.lblt.validations.dplk.E7003NrcKValidationsConfig.additionalSegmentLanDPLK;
+import static id.go.ojk.metadata.module.lblt.validations.gabungan.E7003NrcGabunganValidationsConfig.VALIDATION_METADATA_PPMPPPIPK;
+import static id.go.ojk.metadata.module.lblt.validations.gabungan.E7003NrcGabunganValidationsConfig.additionalSegmentLanGabungan;
 import static id.go.ojk.metadata.module.lblt.validations.ppipik.E7003NrcKValidationsConfig.VALIDATION_METADATA_PPIPK;
+import static id.go.ojk.metadata.module.lblt.validations.ppipik.E7003NrcKValidationsConfig.additionalSegmentLanPPIPK;
 import static id.go.ojk.metadata.module.lblt.validations.ppipm.E7003NrcMValidationsConfig.VALIDATION_METADATA_PPIPM;
 import static id.go.ojk.metadata.module.lblt.validations.ppmpk.E7003NrcKValidationsConfig.VALIDATION_METADATA_PPMPK;
+import static id.go.ojk.metadata.module.lblt.validations.ppmpk.E7003NrcKValidationsConfig.additionalSegmentLanPPMPK;
 import static id.go.ojk.metadata.module.lblt.validations.ppmpm.E7003NrcMValidationsConfig.VALIDATION_METADATA_PPMPM;
 import static id.go.ojk.metadata.util.FieldUtil.*;
 import static id.go.ojk.metadata.util.constants.ProgramType.*;
@@ -53,60 +58,72 @@ public enum Dppk0003Nrc implements ILbltFieldMetadata {
 
     KODE_KOMPONEN_GABUNGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPPPIPK),
             sf(1, null, "Kode Komponen", sv(M, 13, 13, refTable)
-                    .confRegex(SimpleValidation.patternAlfaNumeric))
-                    .confUnique(UniqueType.U)),
+                    .confRegex(SimpleValidation.patternAlfaNumeric))),
 
     MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK,PPMPPPIPK),
-            sf(2, null, "Manfaat Pensiun", sv(M, 1, 18, freeText))),
+            sf(2, null, "Manfaat Pensiun", sv(M, 1, 18, numericNegatif))),
 
     MANFAAT_PENSIUN_LAINNYA_MANFAAT_TAMBAHAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK,PPMPPPIPK),
-            sf(3, null, "Manfaat Pensiun Lainnya Manfaat Tambahan", sv(M, 1, 18, freeText))),
+            sf(3, null, "Manfaat Pensiun Lainnya Manfaat Tambahan", sv(M, 1, 18, numericNegatif))),
 
     MANFAAT_PENSIUN_LAINNYA_KOMPENSASI_PASCAKERJA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK,PPMPPPIPK),
-            sf(4, null, "Manfaat Pensiun Lainnya Kompensasi Pascakerja", sv(M, 1, 18, freeText))),
+            sf(4, null, "Manfaat Pensiun Lainnya Kompensasi Pascakerja", sv(M, 1, 18, numericNegatif))),
 
     MANFAAT_PENSIUN_LAINNYA_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK,PPMPPPIPK),
-            sf(5, null, "Manfaat Pensiun Lainnya Lainnya", sv(M, 1, 18, freeText))),
+            sf(5, null, "Manfaat Pensiun Lainnya Lainnya", sv(M, 1, 18, numericNegatif))),
 
     MANFAAT_LAIN_KOMPENSASI_PASCAKERJA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK,PPMPPPIPK),
-            sf(6, null, "Manfaat Lain Kompensasi Pascakerja", sv(M, 1, 18, freeText))),
+            sf(6, null, "Manfaat Lain Kompensasi Pascakerja", sv(M, 1, 18, numericNegatif))),
 
     MANFAAT_LAIN_KESEHATAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK,PPMPPPIPK),
-            sf(7, null, "Manfaat Lain Kesehatan", sv(M, 1, 18, freeText))),
+            sf(7, null, "Manfaat Lain Kesehatan", sv(M, 1, 18, numericNegatif))),
 
     MANFAAT_LAIN_SANTUNAN_KEMATIAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK,PPMPPPIPK),
-            sf(8, null, "Manfaat Lain Santunan Kematian", sv(M, 1, 18, freeText))),
+            sf(8, null, "Manfaat Lain Santunan Kematian", sv(M, 1, 18, numericNegatif))),
 
     MANFAAT_LAIN_IBADAH_KEAGAMAAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK,PPMPPPIPK),
-            sf(9, null, "Manfaat Lain Ibadah Keagamaan", sv(M, 1, 18, freeText))),
+            sf(9, null, "Manfaat Lain Ibadah Keagamaan", sv(M, 1, 18, numericNegatif))),
 
     MANFAAT_LAIN_PENDIDIKAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK,PPMPPPIPK),
-            sf(10, null, "Manfaat Lain Pendidikan", sv(M, 1, 18, freeText))),
+            sf(10, null, "Manfaat Lain Pendidikan", sv(M, 1, 18, numericNegatif))),
 
     MANFAAT_LAIN_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK,PPMPPPIPK),
-            sf(11, null, "Manfaat Lain Lainnya", sv(M, 1, 18, freeText))),
+            sf(11, null, "Manfaat Lain Lainnya", sv(M, 1, 18, numericNegatif))),
 
     GABUNGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK,PPMPPPIPK),
-            sf(12, null, "Gabungan", sv(M, 1, 18, freeText))/*.addFieldValidations(E7003NrcValidationsConfig.FV_EQUALS_EXCEPT)*/),
+            sf(12, null, "Gabungan", sv(M, 1, 18, numericNegatif))/*.addFieldValidations(E7003NrcValidationsConfig.FV_EQUALS_EXCEPT)*/),
 
     /* Additional for PPIPK Program Type */
 
     UUS_MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK,PPMPPPIPK),
-            sf(13, null, "UUS - Manfaat Pensiun", sv(M, 1, 18, freeText))),
+            sf(13, null, "UUS - Manfaat Pensiun", sv(M, 1, 18, numericNegatif))),
 
     UUS_MANFAAT_PENSIUN_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK,PPMPPPIPK),
-            sf(14, null, "UUS - Manfaat Pensiun Lainnya", sv(M, 1, 18, freeText))),
+            sf(14, null, "UUS - Manfaat Pensiun Lainnya", sv(M, 1, 18, numericNegatif))),
 
     UUS_MANFAAT_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK,PPMPPPIPK),
-            sf(15, null, "UUS - Manfaat Lain", sv(M, 1, 18, freeText))),
+            sf(15, null, "UUS - Manfaat Lain", sv(M, 1, 18, numericNegatif))),
 
     TOTAL(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK,PPMPPPIPK),
-            sf(16, null, "Total", sv(M, 1, 18, freeText))),
+            sf(16, null, "Total", sv(M, 1, 18, numericNegatif))),
 
     /* Gabungan Additional Field */
 
     JENIS_PROGRAM(sectors(KONVENSIONAL, SYARIAH), programs(PPMPPPIPK),
-            sf(1000, null, "Jenis Program", sv(M, 5, 5, alfa))),
+            sf(1000, null, "Jenis Program", sv(M, 4, 4, alfa)
+                    .confConstant("PPMP|PPIP"))),
+
+    UUS_MANFAAT_PENSIUN_GABUNGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPPPIPK),
+            sf(1001, null, "UUS - Manfaat Pensiun", sv(C, 1, 18, numericNegatif))),
+
+    UUS_MANFAAT_PENSIUN_LAINNYA_GABUNGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPPPIPK),
+            sf(1002, null, "UUS - Manfaat Pensiun Lainnya", sv(C, 4, 18, numericNegatif))),
+
+    UUS_MANFAAT_LAIN_GABUNGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPPPIPK),
+            sf(1003, null, "UUS - Manfaat Lain", sv(C, 4, 18, numericNegatif))),
+
+    TOTAL_GABUNGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPPPIPK),
+            sf(1004, null, "Total", sv(C, 4, 18, numericNegatif))),
 
     ;
 
@@ -119,7 +136,8 @@ public enum Dppk0003Nrc implements ILbltFieldMetadata {
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataLkdpPpmpm.R7003Nrc.getObject()),
             new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataLkdpPpipk.R7003Nrc.getObject()),
             new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataLkdpPpipm.R7003Nrc.getObject()),
-            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkdpDplk.R7003Nrc.getObject())
+            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkdpDplk.R7003Nrc.getObject()),
+            new AbstractMap.SimpleEntry<>(PPMPPPIPK, EHeaderMetadataLkdpPpmpppipk.R7003Nrc.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0003Nrc> FIELD_METADATA = new LbltMetadataField<>(Dppk0003Nrc.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
@@ -150,24 +168,31 @@ public enum Dppk0003Nrc implements ILbltFieldMetadata {
 
         BaseMetadataValidation<? extends ILbltMetadataValidation> metadataValidation = null;
         ReferenceConfig referenceConfig = ER7003PosLtlbDppkNrc.getRefConfig(programType);
+        List<SegmentValidation> additionalSegmentValidation = new ArrayList<>();
 
         switch (programType) {
             case PPMPK:
                 metadataValidation = VALIDATION_METADATA_PPMPK;
+                additionalSegmentValidation.addAll(additionalSegmentLanPPMPK());
                 break;
             case PPMPM:
                 metadataValidation = VALIDATION_METADATA_PPMPM;
                 break;
             case PPIPK:
                 metadataValidation = VALIDATION_METADATA_PPIPK;
+                additionalSegmentValidation.addAll(additionalSegmentLanPPIPK());
                 break;
             case PPIPM:
                 metadataValidation = VALIDATION_METADATA_PPIPM;
                 break;
             case DPLK:
                 metadataValidation = VALIDATION_METADATA_DPLK;
+                additionalSegmentValidation.addAll(additionalSegmentLanDPLK());
                 break;
             case PPMPPPIPK:
+                metadataValidation = VALIDATION_METADATA_PPMPPPIPK;
+                additionalSegmentValidation.addAll(additionalSegmentLanGabungan("PPMPK"));
+                additionalSegmentValidation.addAll(additionalSegmentLanGabungan("PPIPK"));
                 break;
             default:
                 throw new IllegalStateException();
@@ -175,35 +200,21 @@ public enum Dppk0003Nrc implements ILbltFieldMetadata {
 
         BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType).config()
                 .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
-//                .setReferenceConfigs(referenceConfig)
-//                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-//                .setSegmentValidations(metadataValidation)
-                ;
+                .setReferenceConfigs(referenceConfig)
+                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                .setSegmentValidations(metadataValidation);
 
-        if (programType == PPMPPPIPK) {
-            List<Integer> gabunganField = Arrays.asList(0, 1, 1000, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
+        if (programType.equals(PPMPPPIPK)) {
+            List<Integer> gabunganField = Arrays.asList(0, 1, 1000, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1001, 1002, 1003, 1004);
             submissionConfig
-                    .setSubmissionField(FIELD_METADATA.getReindexClearedFields(gabunganField, true))
-                    .setSegmentValidations();
-        } else {
-            submissionConfig
-                    .setReferenceConfigs(referenceConfig)
-                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                    .setSubmissionField(FIELD_METADATA.getReindexFields(gabunganField, metadataValidation.getFieldValidations()))
                     .setSegmentValidations(metadataValidation);
         }
 
-//        BaseSubmissionConfig.Config<? extends BaseSubmissionConfig.Config<?>> submssionConfig =
-//                new SubmissionConfig(programType).config()
-//                        .setReferenceConfigs(referenceConfig)
-//                        .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
-//                        .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-//                        .setSegmentValidations(metadataValidation);
+        if (!additionalSegmentValidation.isEmpty()) submissionConfig
+                .additionalSegmentValidations(additionalSegmentValidation);
 
-        if (programType.equals(PPIPK)) submissionConfig
-                .additionalSegmentValidations(E7003NrcKValidationsConfig.additionalSegmentLan());
-
-        return submissionConfig.build()
-                .get();
+        return submissionConfig.build().get();
     }
 
     @Override
@@ -219,12 +230,5 @@ public enum Dppk0003Nrc implements ILbltFieldMetadata {
     @Override
     public EnumSet<ProgramType> getProgramType() {
         return programType;
-    }
-
-    public static void main(String[] args) {
-        FIELD_METADATA.setProgramType(DPLK);
-        FIELD_METADATA.getFields().forEach(v -> {
-            System.out.println(v.getNumber() + "::" + v.getName());
-        });
     }
 }

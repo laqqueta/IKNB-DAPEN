@@ -68,17 +68,6 @@ public enum E7005LakMValidationsConfig implements ILbltMetadataValidation, IVali
                 comparatorPosCodeForm, comparatorForm, errMsg, 2);
     }),
 
-
-    SG_NEGATIVE_NUM(programs(PPMPM),
-            () -> UtilSegmentValidation.genRegexNumericNegative(
-                    "2",
-                    UtilMetadata.genPipeRowExcept(getObjects(), new int[]{7, 18, 27, 28, 29, 30}))),
-
-    SG_POSITIVE_NUM(programs(PPMPM),
-            () -> UtilSegmentValidation.genRegexNumeric(
-                    "2",
-                    UtilMetadata.genPipeRow(getObjects(), new int[]{7, 18, 27, 28, 29, 30}))),
-
     ;
 
     private final EnumSet<ProgramType> programTypes;

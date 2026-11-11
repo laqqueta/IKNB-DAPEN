@@ -1,5 +1,6 @@
 package id.go.ojk.metadata.module.lblt.reference;
 
+import com.sun.prism.es2.ES2Pipeline;
 import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.lib.client.IObject;
@@ -46,6 +47,7 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
     R_LAN0103040000_DPLK("LAN0103040000", "Piutang Hasil Investasi", EnumSet.of(ProgramType.DPLK)),
     R_LAN0103050000("LAN0103050000", "- Iuran Sukarela Peserta", EnumSet.of(ProgramType.ALL)),
     R_LAN0103050000_DPLK("LAN0103050000", "Piutang Lain-Lain", EnumSet.of(ProgramType.DPLK)),
+    R_LAN0103051000("LAN0103051000", "- Iuran Tambahan", EnumSet.of(ProgramType.PPMPK, ProgramType.PPMPM, ProgramType.PPMPPPIPK)),
     R_LAN0103060000("LAN0103060000", "Piutang Bunga Keterlambatan Iuran", EnumSet.of(ProgramType.ALL)),
     R_LAN0103070000("LAN0103070000", "Beban Dibayar di Muka", EnumSet.of(ProgramType.ALL)),
     R_LAN0103080000("LAN0103080000", "Piutang Investasi", EnumSet.of(ProgramType.ALL)),
@@ -68,7 +70,7 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
     R_LAN0107010400("LAN0107010400", "Pendapatan Diterima di Muka", EnumSet.of(ProgramType.DPLK)),
     R_LAN0107010500("LAN0107010500", "Beban yang Masih Harus Dibayar", EnumSet.of(ProgramType.DPLK)),
     R_LAN0107010600("LAN0107010600", "Utang Lain-Lain", EnumSet.of(ProgramType.DPLK)),
-    R_LAN0108000000("LAN0108000000", "Total Liabilitas di luar Liabilitas Manfaat Pensiun", EnumSet.of(ProgramType.DPLK)),
+    R_LAN0108000000("LAN0108000000", "Total Liabilitas di Luar Nilai Kini Aktuarial", EnumSet.of(ProgramType.DPLK)),
     R_LAN0108020100("LAN0108020100", "Utang Manfaat Pensiun dan Manfaat Lain Jatuh Tempo", EnumSet.of(ProgramType.ALL)),
     R_LAN0108020200("LAN0108020200", "Utang Manfaat Sukarela", EnumSet.of(ProgramType.ALL)),
     R_LAN0108020300("LAN0108020300", "Utang Investasi", EnumSet.of(ProgramType.ALL)),
@@ -76,7 +78,7 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
     R_LAN0108020500("LAN0108020500", "Beban yang Masih Harus Dibayar", EnumSet.of(ProgramType.ALL)),
     R_LAN0108020600("LAN0108020600", "Utang Lain-Lain", EnumSet.of(ProgramType.ALL)),
     R_LAN0108020700("LAN0108020700", "Utang Dana Ta'zir (bagi syariah)", EnumSet.of(ProgramType.ALL)),
-    R_LAN0109000000("LAN0109000000", "Total Liabilitas di luar Liabilitas Manfaat Pensiun", EnumSet.of(ProgramType.ALL)),
+    R_LAN0109000000("LAN0109000000", "Total Liabilitas di Luar Nilai Kini Aktuarial", EnumSet.of(ProgramType.ALL)),
     R_LAN0109000000_DPLK("LAN0109000000", "TOTAL LIABILITAS", EnumSet.of(ProgramType.DPLK)),
     R_LAN0110000000("LAN0110000000", "TOTAL LIABILITAS", EnumSet.of(ProgramType.ALL)),
     R_LAN0110000000_DPLK("LAN0110000000", "ASET NETO", EnumSet.of(ProgramType.DPLK)),
@@ -102,6 +104,13 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
                 .map(ER7001PosLtlbDppkLan::getObject)
                 .collect(Collectors.toList()));
 
+        for (int i = 0; i < res.size(); i++) {
+            if (res.get(i).getKey().equals(R_LAN0103051000.getObject().getKey())) {
+                res.remove(i);
+                i -= 1;
+            }
+        }
+
         return res;
     }
 
@@ -114,7 +123,29 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
                 res.add(eEnum.getObject());
             }
         }
+
         return res;
+    }
+
+    private static List<KeyValueString> getNonGabunganObjectsTmp(ProgramType jenisProgram) {
+        List<KeyValueString> res = new ArrayList<>();
+        for (ER7001PosLtlbDppkLan eEnum : ER7001PosLtlbDppkLan.values()) {
+            if (!jenisProgram.equals(ProgramType.DPLK) && (eEnum.jenisProgram.contains(jenisProgram) || eEnum.jenisProgram.contains(ProgramType.ALL))) {
+                res.add(eEnum.getObject());
+            } else if (jenisProgram.equals(ProgramType.DPLK) && eEnum.jenisProgram.contains(ProgramType.DPLK)) {
+                res.add(eEnum.getObject());
+            }
+        }
+
+        int idxToRmv = 0;
+        for (int i = 0; i < res.size(); i++) {
+            if (res.get(i).getKey().equals(R_LAN0103051000.getObject().getKey())) idxToRmv = i;
+        }
+
+        res.remove(idxToRmv);
+
+        return res;
+
     }
 
     public static String getName() {
@@ -192,7 +223,7 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
         },
 
         REF_CONFIG_PPIPK {
-            private final ProgramType programType = ProgramType.PPMPK;
+            private final ProgramType programType = ProgramType.PPIPK;
             @Override
             public String savePos() {
                 return UtilMetadata.genFieldSave(UtilMetadata.genPipeColumn(2, 17), getObjects(programType));
@@ -249,6 +280,8 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
 
         REF_CONFIG_PPMPKPPIPK {
             private final ProgramType programType = ProgramType.PPMPPPIPK;
+            private final String rowPPMP = UtilMetadata.genPipeRow(getNonGabunganObjectsTmp(ProgramType.PPMPK));
+            private final String rowPPIP = UtilMetadata.genPipeRow(getNonGabunganObjectsTmp(ProgramType.PPIPK));
 
             @Override
             public String savePos() {
@@ -261,11 +294,43 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
             }
 
             @Override
-            public String requiredPos() {
-                return UtilMetadata.genPipeRow(getObjects(programType));
+            public Integer segmentRequireColumnLink() {
+                return 2;
+            }
+
+            @Override
+            public String segmentColumnValue() {
+                return "PPMP|PPIP";
+            }
+
+            @Override
+            public String segmentReqiurePosCode() {
+                return rowPPMP + "#" + rowPPIP;
+            }
+
+            @Override
+            public String segmentUniquePos() {
+                return rowPPMP + "#" + rowPPIP;
             }
         },
+    }
 
+    public static void main(String[] args) {
+        List<KeyValueString> kvs = getObjects(ProgramType.PPMPPPIPK);
+
+//        kvs.remove(R_LAN0103051000.getObject());
+//        int idxToRmv = 0;
+//        for (int i = 0; i < kvs.size(); i++) {
+//            if (kvs.get(i).getKey().equals(R_LAN0103051000.getObject().getKey())) idxToRmv = i;
+//        }
+//
+//        kvs.remove(idxToRmv);
+
+        for (int i = 0; i < kvs.size(); i++) {
+            System.out.println(i + " > " + kvs.get(i).getKey() + " :: " + kvs.get(i).getValue());
+        }
+
+        System.out.println(getRowSize(ProgramType.PPMPPPIPK));
 
     }
 }

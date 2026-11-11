@@ -5,15 +5,19 @@ import id.go.ojk.client.model.config.SimpleValidation;
 import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
+import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.lib.client.model.config.UniqueType;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.metadata.field.lblt.ILbltFieldMetadata;
 import id.go.ojk.metadata.field.lblt.LbltMetadataField;
 import id.go.ojk.metadata.module.lblt.EFormLaporanBulananTahunan;
+import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataLkdpDplk;
 import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataLkdpPpipk;
+import id.go.ojk.metadata.module.lblt.header.EHeaderMetadataLkdpPpmpppipk;
 import id.go.ojk.metadata.module.lblt.reference.ER7068PosLtlbDppkPkpl;
 import id.go.ojk.metadata.module.lblt.reference.ER7101PosLtlbDppkRoimpl;
 import id.go.ojk.metadata.module.lblt.validations.E7101RoimplValidationsConfig;
+import id.go.ojk.metadata.module.lblt.validations.gabungan.E7101RoimplGabunganValidationsConfig;
 import id.go.ojk.metadata.submission.SubmissionConfig;
 import id.go.ojk.metadata.submission.base.BaseSubmissionConfig;
 import id.go.ojk.metadata.util.constants.ProgramType;
@@ -81,7 +85,8 @@ public enum Dppk0101Roimpl implements ILbltFieldMetadata {
     /* Gabungan Additional Field */
 
     JENIS_PROGRAM(sectors(KONVENSIONAL, SYARIAH), programs(PPMPPPIPK),
-            sf(1000, null, "Jenis Program", sv(M, 5, 5, alfa))),
+            sf(1000, null, "Jenis Program", sv(M, 4, 4, alfa)
+                    .confConstant("PPMP|PPIP"))),
 
     ;
 
@@ -90,57 +95,48 @@ public enum Dppk0101Roimpl implements ILbltFieldMetadata {
     private final SubmissionField field;
 
     private static final Map<ProgramType, ReferenceMetadata> KODE_KOMPONEN_HEADERS = Stream.of(
-            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataLkdpPpipk.R7013Roimpl.getObject())
+            new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataLkdpPpipk.R7013Roimpl.getObject()),
+            new AbstractMap.SimpleEntry<>(PPMPPPIPK, EHeaderMetadataLkdpPpmpppipk.R7013Roimpl.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     private static final LbltMetadataField<Dppk0101Roimpl> FIELD_METADATA = new LbltMetadataField<>(Dppk0101Roimpl.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
 
     private static SubmissionFormatBuilder getPpipSubmissionFormatConfig(SectorType sectorType, ProgramType programType) {
         EFormLaporanBulananTahunan form = EFormLaporanBulananTahunan.LTLB_ROI_MPL;
-        SubmissionFormatBuilder sf = SubmissionFormatBuilder.builder()
+        return SubmissionFormatBuilder.builder()
                 .code(form.getCode())
                 .name(form.getName())
                 .extension(ExtensionType.TXT)
                 .reportCode(programType.toString())
-                .minRow(ER7101PosLtlbDppkRoimpl.getRowSize())
-                .maxRow(ER7101PosLtlbDppkRoimpl.getRowSize())
+                .minRow(ER7101PosLtlbDppkRoimpl.getRowSize(programType))
+                .maxRow(ER7101PosLtlbDppkRoimpl.getRowSize(programType))
                 .fields(new ArrayList<>())
                 .build();
-
-        if (programType == PPMPPPIPK) {
-            sf.setMaxRow(null);
-            sf.setMinRow(0);
-        }
-
-        return sf;
     }
 
     public static SubmissionFormat formMetadata(SectorType sectorType, ProgramType programType) {
         FIELD_METADATA.setProgramType(programType);
 
-        BaseMetadataValidation<? extends ILbltMetadataValidation> metadataValidation = null;
+        BaseMetadataValidation<?> metadataValidation;
+        ReferenceConfig referenceConfig = ER7101PosLtlbDppkRoimpl.getRefConfig(programType);
+        BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType)
+                .config()
+                .setSubmissionFormat(getPpipSubmissionFormatConfig(sectorType, programType))
+                .setReferenceConfigs(referenceConfig);
 
         if (Objects.requireNonNull(programType) == PPIPK) {
             metadataValidation = E7101RoimplValidationsConfig.VALIDATION_METADATA_PPIPK;
-        } else if (Objects.requireNonNull(programType) == PPMPPPIPK) {
-        } else {
-            throw new IllegalStateException();
-        }
-
-        BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType)
-                .config()
-                .setSubmissionFormat(getPpipSubmissionFormatConfig(sectorType, programType));
-
-        if (programType == PPMPPPIPK) {
-            List<Integer> gabunganFields = Arrays.asList(0, 1, 1000, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11);
             submissionConfig
-                    .setSubmissionField(FIELD_METADATA.getReindexClearedFields(gabunganFields, true))
-                    .setSegmentValidations();
-        } else {
-            submissionConfig
-                    .setReferenceConfigs(ER7101PosLtlbDppkRoimpl.Configs.REF_CONFIG)
                     .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
                     .setSegmentValidations(metadataValidation);
+        } else if (Objects.requireNonNull(programType) == PPMPPPIPK) {
+            metadataValidation = E7101RoimplGabunganValidationsConfig.GABUNGAN_VALIDATIONS;
+            List<Integer> gabunganFields = Arrays.asList(0, 1, 1000, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11);
+            submissionConfig
+                    .setSubmissionField(FIELD_METADATA.getReindexFields(gabunganFields, metadataValidation.getFieldValidations()))
+                    .setSegmentValidations(metadataValidation);
+        } else {
+            throw new IllegalStateException();
         }
 
         return submissionConfig.build().get();

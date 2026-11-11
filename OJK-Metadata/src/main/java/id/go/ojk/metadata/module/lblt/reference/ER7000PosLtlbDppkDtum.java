@@ -90,7 +90,11 @@ public enum ER7000PosLtlbDppkDtum implements IObject<KeyValueString> {
     }
 
     public static int getRowSize(ProgramType programType) {
-        return programType.equals(ProgramType.DPLK) ? getObjects(programType).size() : getObjects().size();
+        if (programType.equals(ProgramType.DPLK) || programType.equals(ProgramType.PPMPPPIPK)) {
+            return getObjects(programType).size();
+        }
+
+        return getObjects().size();
     }
 
     public enum Configs implements ReferenceConfig {
@@ -102,7 +106,7 @@ public enum ER7000PosLtlbDppkDtum implements IObject<KeyValueString> {
 
             @Override
             public String savePos() {
-                return UtilMetadata.genFieldSave("0", getObjects());
+                return UtilMetadata.genFieldSave("0|2", getObjects());
             }
 
             @Override

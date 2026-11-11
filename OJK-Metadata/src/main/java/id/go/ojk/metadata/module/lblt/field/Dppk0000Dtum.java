@@ -26,6 +26,7 @@ import java.util.stream.Stream;
 
 import static id.go.ojk.lib.client.model.config.DataType.alfaNumeric;
 import static id.go.ojk.lib.client.model.config.DataType.freeText;
+import static id.go.ojk.lib.client.model.constant.RequiredCondition.C;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
 import static id.go.ojk.metadata.util.FieldUtil.*;
 import static id.go.ojk.metadata.util.constants.ProgramType.*;
@@ -39,14 +40,12 @@ public enum Dppk0000Dtum implements ILbltFieldMetadata {
             sf(0, null, "Flag", sv(M, 3, 3, alfaNumeric)
                     .confConstant("D01"))),
 
-
     KODE_KOMPONEN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(1, null, "Kode Komponen", sv(M, 10, 10, freeText)
                     .confRegex(SimpleValidation.patternAlfaNumeric))),
 
-
     KETERANGAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
-            sf(2, null, "Keterangan", sv(M, 1, 1000, freeText))),
+            sf(2, null, "Keterangan", sv(C, 1, 1000, freeText))),
 
 
     ;
@@ -60,7 +59,8 @@ public enum Dppk0000Dtum implements ILbltFieldMetadata {
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataLkdpPpmpm.R7000Dtum.getObject()),
             new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataLkdpPpipk.R7000Dtum.getObject()),
             new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataLkdpPpipm.R7000Dtum.getObject()),
-            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkdpDplk.R7000Dtum.getObject())
+            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkdpDplk.R7000Dtum.getObject()),
+            new AbstractMap.SimpleEntry<>(PPMPPPIPK, EHeaderMetadataLkdpPpmpppipk.R7000Dtum.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     private static final LbltMetadataField<Dppk0000Dtum> FIELD_METADATA = new LbltMetadataField<>
@@ -74,44 +74,21 @@ public enum Dppk0000Dtum implements ILbltFieldMetadata {
                 .extension(ExtensionType.TXT)
                 .reportCode(programType.toString())
                 .maxRow(null)
-                .minRow(ER7000PosLtlbDppkDtum.getRowSize(programType))
+                .minRow(ER7000PosLtlbDppkDtum.getRowSize(programType) - 1)
                 .fields(new ArrayList<>())
                 .build();
     }
 
     public static SubmissionFormat formMetadata(SectorType sectorType, ProgramType programType) {
         FIELD_METADATA.setProgramType(programType);
-
         BaseMetadataValidation<E7000DtumValidationsConfig> metadataValidation = E7000DtumValidationsConfig.getValidationMetadata(programType);
-        ReferenceConfig referenceConfig = ER7000PosLtlbDppkDtum.Configs.REF_CONFIG_ALL;
-
-
-        switch (programType) {
-            case PPMPK:
-            case PPMPM:
-            case PPIPK:
-            case PPIPM:
-            case DPLK:
-            case PPMPPPIPK:
-                break;
-            default:
-                throw new IllegalStateException();
-        }
-
         BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType)
                 .config()
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType));
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
+                .setReferenceConfigs(ER7000PosLtlbDppkDtum.Configs.REF_CONFIG_ALL)
+                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                .setSegmentValidations(metadataValidation);
 
-        if (programType == PPMPPPIPK) {
-            submissionConfig
-                    .setSubmissionField(FIELD_METADATA.getClearedFields(true))
-                    .setSegmentValidations();
-        } else {
-            submissionConfig
-                    .setReferenceConfigs(ER7000PosLtlbDppkDtum.Configs.REF_CONFIG_ALL)
-                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-                    .setSegmentValidations(metadataValidation);
-        }
 
         return submissionConfig.build().get();
     }

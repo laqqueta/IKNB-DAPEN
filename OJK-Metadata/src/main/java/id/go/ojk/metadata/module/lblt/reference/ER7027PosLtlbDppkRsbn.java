@@ -4,6 +4,7 @@ import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
+import id.go.ojk.metadata.util.constants.ProgramType;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
@@ -30,7 +31,7 @@ public enum ER7027PosLtlbDppkRsbn implements IObject<KeyValueString> {
     }
 
     public static List<KeyValueString> getObjectsGabungan() {
-        List<KeyValueString> res = getObjects();
+        List<KeyValueString> res = new ArrayList<>();
 
         res.addAll(Arrays.stream(ER7027PosLtlbDppkRsbn.values())
                 .map(ER7027PosLtlbDppkRsbn::getObject)
@@ -53,6 +54,21 @@ public enum ER7027PosLtlbDppkRsbn implements IObject<KeyValueString> {
 
     public KeyValueString getObject() {
         return new KeyValueString(key, value, new String[]{});
+    }
+
+        public static ReferenceConfig getRefConfig(ProgramType programType) {
+        switch (programType) {
+            case PPMPK:
+            case PPMPM:
+            case PPIPK:
+            case PPIPM:
+            case DPLK:
+                return Configs.REF_CONFIG;
+            case PPMPPPIPK:
+                return Configs.REF_CONFIG_PPMPKPPIPK;
+            default:
+                throw new IllegalStateException();
+        }
     }
 
     public enum Configs implements ReferenceConfig {

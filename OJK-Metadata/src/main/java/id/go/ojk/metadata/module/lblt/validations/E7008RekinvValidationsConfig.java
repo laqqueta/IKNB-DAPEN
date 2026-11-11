@@ -63,6 +63,14 @@ public enum E7008RekinvValidationsConfig implements ILbltMetadataValidation, IVa
                     UtilMetadata.genMessage(R_REKINV2100000000.getObject().getValue(),
                             UtilMetadata.genPlusRow(ER7008PosLtlbDppkRekinv.getObjects(DPLK), 0, 19)))),
 
+    SG_SUM_POS_EQUAL_GABUNGAN(programs(PPMPPPIPK),
+            () -> UtilSegmentValidation.genFilterEqualsFormula(UtilMetadata.genPipeColumn(3, 14),
+                    R_REKINV2100000000.getObject().getKey(),
+                    UtilMetadata.genPlusRow(ER7008PosLtlbDppkRekinv.getObjects(PPMPPPIPK), 0, 19),
+                    "2", "PPMP|PPIP",
+                    UtilMetadata.genMessage(R_REKINV2100000000.getObject().getValue(),
+                            UtilMetadata.genPlusRow(ER7008PosLtlbDppkRekinv.getObjects(PPMPPPIPK), 0, 19)), 2)),
+
     ;
 
     private final EnumSet<ProgramType> programTypes;

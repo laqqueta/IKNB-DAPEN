@@ -4,6 +4,7 @@ import id.go.ojk.client.model.config.validation.conditional.ConditionalRequired;
 import id.go.ojk.client.model.config.validation.field.FieldValidation;
 import id.go.ojk.client.model.config.validation.segmen.SegmentValidation;
 import id.go.ojk.client.model.validation.IValidation;
+import id.go.ojk.conf.client.UtilFieldConditional;
 import id.go.ojk.conf.client.UtilFieldValidation;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
@@ -21,13 +22,13 @@ import java.util.EnumSet;
 import java.util.List;
 import java.util.function.Supplier;
 
-import static id.go.ojk.metadata.module.lblt.reference.ER7000PosLtlbDppkDtum.R_DTUM020000;
+import static id.go.ojk.metadata.module.lblt.reference.ER7000PosLtlbDppkDtum.*;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
 import static id.go.ojk.metadata.util.constants.ProgramType.*;
 
-@RequiredArgsConstructor
 @AllArgsConstructor
+@RequiredArgsConstructor
 public enum E7000DtumValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
     SG_REGEX_ALL(programs(ALL),
@@ -47,15 +48,22 @@ public enum E7000DtumValidationsConfig implements ILbltMetadataValidation, IVali
                     UtilMetadata.genPipeRow(ER7000PosLtlbDppkDtum.getObjects(), new int[] {0}),1, 500)),
 
     SG_REGEX_DATA_LEN_3(programs(ALL),
-            () -> UtilSegmentValidation.genLength("2",
+            () -> UtilSegmentValidation.genLengthOptional("2",
                     UtilMetadata.genPipeRow(ER7000PosLtlbDppkDtum.getObjects(), new int[] {6, 13}), 8, 10)),
 
     SG_REGEX_DATA_LEN_4(programs(ALL),
             () -> UtilSegmentValidation.genLength("2",
                     UtilMetadata.genPipeRowExcept(ER7000PosLtlbDppkDtum.getObjects(), new int[] {0, 4, 5, 6, 13}),1, 100)),
 
+    SG_FIXED_VALUE_OPEN_CLOSE(programs(ALL),
+            () -> UtilSegmentValidation.genFixedValue("2", R_DTUM060000.key, "Open|Close")),
+
     SG_ROW_COUNT(programs(ALL),
-            () -> UtilSegmentValidation.genPosCodeMinCount(UtilMetadata.genPipeRow(ER7000PosLtlbDppkDtum.getObjects(), new int[] { 24, 25 }), 2)),
+            () -> UtilSegmentValidation
+                    .genPosCodeMinCount(UtilMetadata.genPipeRow(ER7000PosLtlbDppkDtum.getObjects(), new int[] { 24, 25 }), 2)),
+
+    CR_DATE_OPEN_CLOSE(programs(ALL), validationFields(2),
+            () -> UtilFieldConditional.genExistPosAndComparatorHasValue5("O", "M", R_DTUM070000.key, R_DTUM060000.key, "2", "Open")),
 
     FV_EQUALS_JENIS_PENSIUN(programs(ALL), validationFields(2),
             () -> UtilFieldValidation.genEqualsJenisProgram(R_DTUM020000.key)),
@@ -65,6 +73,7 @@ public enum E7000DtumValidationsConfig implements ILbltMetadataValidation, IVali
     private final EnumSet<ProgramType> programTypes;
     private List<Integer> fieldIndexes;
     private final Supplier<? extends IValidation> supplier;
+
 
     @Override
     public Supplier<? extends IValidation> getSupplier() {

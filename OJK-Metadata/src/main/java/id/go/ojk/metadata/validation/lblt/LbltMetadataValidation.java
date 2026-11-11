@@ -29,13 +29,12 @@ public class LbltMetadataValidation<T extends Enum<T> & ILbltMetadataValidation>
 
     @Override
     protected List<T> enumValues() {
-        List<T> enumVals = EnumSet.allOf(enumClass).stream()
-                .filter(e -> e.getProgramTypes().contains(programType) || e.getProgramTypes().contains(ProgramType.ALL))
-                .collect(Collectors.toList());
 
 //        if (enumVals.isEmpty()) throw new IllegalStateException("empty metadata validation");
 
-        return enumVals;
+        return EnumSet.allOf(enumClass).stream()
+                .filter(e -> e.getProgramTypes().contains(programType) || e.getProgramTypes().contains(ProgramType.ALL))
+                .collect(Collectors.toList());
     }
 
 }

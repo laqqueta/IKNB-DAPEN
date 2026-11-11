@@ -4,6 +4,7 @@ import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
+import id.go.ojk.metadata.util.constants.ProgramType;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
@@ -30,7 +31,7 @@ public enum ER7057PosLtlbDppkPddm implements IObject<KeyValueString> {
     }
 
     public static List<KeyValueString> getObjectsGabungan() {
-        List<KeyValueString> res = getObjects();
+        List<KeyValueString> res = new ArrayList<>();
 
         res.addAll(Arrays.stream(ER7057PosLtlbDppkPddm.values())
                 .map(ER7057PosLtlbDppkPddm::getObject)
@@ -55,6 +56,21 @@ public enum ER7057PosLtlbDppkPddm implements IObject<KeyValueString> {
         return new KeyValueString(key, value, new String[]{});
     }
 
+    public static ReferenceConfig getRefConfig(ProgramType programType) {
+        switch (programType) {
+            case PPMPK:
+            case PPMPM:
+            case PPIPK:
+            case PPIPM:
+            case DPLK:
+                return Configs.REF_CONFIG;
+            case PPMPPPIPK:
+                return Configs.REF_CONFIG_PPMPKPPIPK;
+            default:
+                throw new IllegalStateException();
+        }
+    }
+
     public enum Configs implements ReferenceConfig {
         REF_CONFIG {
             @Override
@@ -69,13 +85,13 @@ public enum ER7057PosLtlbDppkPddm implements IObject<KeyValueString> {
 
             @Override
             public String requiredPos() {
-                return UtilMetadata.genPipeRow(getObjects(), new int[] { 1 });
+                return UtilMetadata.genPipeRow(getObjects(), new int[]{1});
             }
         },
 
         REF_CONFIG_PPMPKPPIPK {
-            private final String rowPPMP = UtilMetadata.genPipeRow(getObjectsGabungan(), new int[] { 1 });
-            private final String rowPPIP = UtilMetadata.genPipeRow(getObjectsGabungan(), new int[] { 3 });
+            private final String rowPPMP = UtilMetadata.genPipeRow(getObjectsGabungan(), new int[]{1});
+            private final String rowPPIP = UtilMetadata.genPipeRow(getObjectsGabungan(), new int[]{3});
 
             @Override
             public String savePos() {

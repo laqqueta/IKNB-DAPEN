@@ -36,20 +36,34 @@ public enum E7032RksdValidationsConfig implements ILbltMetadataValidation, IVali
             () -> UtilSegmentValidation.genEqualsFormula("7|8|9|10", R_RKSD000000.key, R_RKSD010000.key,
                     UtilMetadata.genMessageTotal(R_RKSD000000.value, R_RKSD010000.value))),
 
+    SG_EQUAL_FORMULA_GABUNGAN(programs(PPMPPPIPK),
+            () -> UtilSegmentValidation.genFilterEqualsFormula_DAPEN("8|9|10|11", R_RKSD000000.key, R_RKSD010000.key,
+                    UtilMetadata.genMessageTotal(R_RKSD000000.value, R_RKSD010000.value))),
+
     FV_EQUAL_NILAI_INVESTASI(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(10),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("9-8", R_RKSD000000.key)),
 
+    FV_EQUAL_NILAI_INVESTASI_GABUNGAN(programs(PPMPPPIPK), validationFields(10),
+            () -> UtilFieldValidation.genEqualsExceptPosFormula("10-9", R_RKSD000000.key)),
+
     FV_EQUAL_PERSENTASE_INVESTASI(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(11),
             () -> UtilFieldValidation.genEqualsPercentageExceptPosFormula("10/8", R_RKSD000000.key)),
+
+    FV_EQUAL_PERSENTASE_INVESTASI_GABUNGAN(programs(PPMPPPIPK), validationFields(11),
+            () -> UtilFieldValidation.genEqualsPercentageExceptPosFormula("11/9", R_RKSD000000.key)),
 
     CR_NAMA_PENGELOLA(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(14),
             () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("N", "M", "N",
                     R_RKSD010000.key, "13", ER1252Pengelolaan.getReferenceIndex(0), ER1252Pengelolaan.getReferenceValueIndex(0))),
 
-    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(2, 3, 4, 5, 6, 11, 12, 13),
+    CR_NAMA_PENGELOLA_GABUNGAN(programs(PPMPPPIPK), validationFields(14),
+            () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("N", "M", "N",
+                    R_RKSD010000.key, "14", ER1252Pengelolaan.getReferenceIndex(0), ER1252Pengelolaan.getReferenceValueIndex(0))),
+
+    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK), validationFields(2, 3, 4, 5, 6, 11, 12, 13),
             () -> UtilFieldConditional.genExistPos("N", "M", R_RKSD000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(15),
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK), validationFields(15),
             () -> UtilFieldConditional.genExistPos("N", "O", R_RKSD000000.key)),
 
     ;
@@ -90,6 +104,10 @@ public enum E7032RksdValidationsConfig implements ILbltMetadataValidation, IVali
     public ConditionalRequired toFieldConditional() {
         return ValidationConverter
                 .toValidation(this, ConditionalRequired.class);
+    }
+
+    public static BaseMetadataValidation<E7032RksdValidationsConfig> getValidationMetadata(ProgramType programType) {
+        return new LbltMetadataValidation<>(E7032RksdValidationsConfig.class, programType);
     }
 
     public static final BaseMetadataValidation<E7032RksdValidationsConfig> VALIDATION_METADATA_PPMPK =

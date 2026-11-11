@@ -36,20 +36,34 @@ public enum E7028ShmValidationsConfig implements ILbltMetadataValidation, IValid
             () -> UtilSegmentValidation.genEqualsFormula("5|6|7|8", R_SHM000000.key, R_SHM010000.key,
                     UtilMetadata.genMessageTotal(R_SHM000000.value, R_SHM010000.value))),
 
+    SG_EQUAL_FORMULA_GABUNGAN(programs(PPMPPPIPK),
+            () -> UtilSegmentValidation.genFilterEqualsFormula_DAPEN("6|7|8|9", R_SHM000000.key, R_SHM010000.key,
+                    UtilMetadata.genMessageTotal(R_SHM000000.value, R_SHM010000.value))),
+
     FV_EQUAL_NILAI_INVESTASI(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(8),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("7-6", R_SHM000000.key)),
 
+    FV_EQUAL_NILAI_INVESTASI_GABUNGAN(programs(PPMPPPIPK), validationFields(8),
+            () -> UtilFieldValidation.genEqualsExceptPosFormula("8-7", R_SHM000000.key)),
+
     FV_EQUAL_PERSENTASE_INVESTASI(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(9),
             () -> UtilFieldValidation.genEqualsPercentageExceptPosFormula("8/6", R_SHM000000.key)),
+
+    FV_EQUAL_PERSENTASE_INVESTASI_GABUNGAN(programs(PPMPPPIPK), validationFields(9),
+            () -> UtilFieldValidation.genEqualsPercentageExceptPosFormula("9/7", R_SHM000000.key)),
 
     CR_NAMA_PENGELOLA(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(13),
             () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("N", "M", "N",
                     R_SHM010000.key, "12", ER1252Pengelolaan.getReferenceIndex(0), ER1252Pengelolaan.getReferenceValueIndex(0))),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(14),
+    CR_NAMA_PENGELOLA_GABUNGAN(programs(PPMPPPIPK), validationFields(13),
+            () -> UtilFieldConditional.genExistPosAndComparatorHasValue2("N", "M", "N",
+                    R_SHM010000.key, "13", ER1252Pengelolaan.getReferenceIndex(0), ER1252Pengelolaan.getReferenceValueIndex(0))),
+
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK), validationFields(14),
             () -> UtilFieldConditional.genExistPos("N", "M", R_SHM000000.key)),
 
-    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(2, 3, 4, 9, 10, 11, 12),
+    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK), validationFields(2, 3, 4, 9, 10, 11, 12),
             () -> UtilFieldConditional.genExistPos("N", "O", R_SHM000000.key)),
 
     ;
@@ -90,6 +104,10 @@ public enum E7028ShmValidationsConfig implements ILbltMetadataValidation, IValid
     public ConditionalRequired toFieldConditional() {
         return ValidationConverter
                 .toValidation(this, ConditionalRequired.class);
+    }
+
+    public static BaseMetadataValidation<E7028ShmValidationsConfig> getValidationMetadata(ProgramType programType) {
+        return new LbltMetadataValidation<>(E7028ShmValidationsConfig.class, programType);
     }
 
     public static final BaseMetadataValidation<E7028ShmValidationsConfig> VALIDATION_METADATA_PPMPK =

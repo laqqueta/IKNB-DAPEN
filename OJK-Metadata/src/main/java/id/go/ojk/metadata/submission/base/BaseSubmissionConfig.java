@@ -67,6 +67,22 @@ public abstract class BaseSubmissionConfig extends BaseMetadata {
         if (referenceConfig.uniquePos() != null) {
             sf.setUniquePos(referenceConfig);
         }
+
+        if (referenceConfig.segmentColumnValue() != null) {
+            sf.setSegmentColumnValue(referenceConfig);
+        }
+
+        if (referenceConfig.segmentRequireColumnLink() != null) {
+            sf.setSegmentRequireColumnLink(referenceConfig);
+        }
+
+        if (referenceConfig.segmentReqiurePosCode() != null) {
+            sf.setSegmentReqiurePosCode(referenceConfig);
+        }
+
+        if (referenceConfig.segmentUniquePos() != null) {
+            sf.setSegmentUniquePos(referenceConfig);
+        }
     }
 
     public <T extends Config<T>> Config<T> config() {

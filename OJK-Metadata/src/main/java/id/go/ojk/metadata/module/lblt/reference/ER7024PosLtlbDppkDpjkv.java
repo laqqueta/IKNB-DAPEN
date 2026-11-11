@@ -4,6 +4,7 @@ import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
+import id.go.ojk.metadata.util.constants.ProgramType;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
@@ -30,7 +31,7 @@ public enum ER7024PosLtlbDppkDpjkv implements IObject<KeyValueString> {
     }
 
     public static List<KeyValueString> getObjectsGabungan() {
-        List<KeyValueString> res = getObjects();
+        List<KeyValueString> res = new ArrayList<>();
 
         res.addAll(Arrays.stream(ER7024PosLtlbDppkDpjkv.values())
                 .map(ER7024PosLtlbDppkDpjkv::getObject)
@@ -55,16 +56,31 @@ public enum ER7024PosLtlbDppkDpjkv implements IObject<KeyValueString> {
         return new KeyValueString(key, value, new String[]{});
     }
 
+        public static ReferenceConfig getRefConfig(ProgramType programType) {
+        switch (programType) {
+            case PPMPK:
+            case PPMPM:
+            case PPIPK:
+            case PPIPM:
+            case DPLK:
+                return Configs.REF_CONFIG;
+            case PPMPPPIPK:
+                return Configs.REF_CONFIG_PPMPKPPIPK;
+            default:
+                throw new IllegalStateException();
+        }
+    }
+
     public enum Configs implements ReferenceConfig {
         REF_CONFIG {
             @Override
             public String savePos() {
-                return UtilMetadata.genFieldSave("6|7|8|13", getObjects());
+                return UtilMetadata.genFieldSave("6|7|8|9|13", getObjects());
             }
 
             @Override
             public String savePosForm() {
-                return UtilMetadata.genFieldSave("6|12", getObjects());
+                return UtilMetadata.genFieldSave("6|7|8|9|12|13", getObjects());
             }
 
             @Override
@@ -79,12 +95,12 @@ public enum ER7024PosLtlbDppkDpjkv implements IObject<KeyValueString> {
 
             @Override
             public String savePos() {
-                return UtilMetadata.genFieldSave("2|7|8|9|13|14", getObjectsGabungan());
+                return UtilMetadata.genFieldSave("2|3|6|7|8|9|10|11|13|14", getObjectsGabungan());
             }
 
             @Override
             public String savePosForm() {
-                return UtilMetadata.genFieldSave("2|7|8|9|13|14", getObjectsGabungan());
+                return UtilMetadata.genFieldSave("2|3|6|7|8|9|10|11|13|14", getObjectsGabungan());
             }
 
             @Override

@@ -8,7 +8,7 @@ import lombok.Getter;
 public enum EFormLaporanBulananTahunan {
 	LTLB_DTUM("DTUM", "Form Data Umum"),
 	LTLB_LAN("LAN", "Form Laporan Aset Neto"),
-	LTLB_LPAN("LPAN", "Form Laporan Perubahan Aset Neto Murni"),
+	LTLB_LPAN("LPAN", "Form Laporan Perubahan Aset Neto"),
 	LTLB_NERACA("NRC", "Form Neraca"),
 	LTLB_LPHU("LPHU", "Form Laporan Perhitungan Hasil Usaha"),
 	LTLB_LAK("LAK", "Form Laporan Arus Kas"),
@@ -79,8 +79,8 @@ public enum EFormLaporanBulananTahunan {
 	/* PPIP Form */
 
 	LTLB_ROI_MPL("ROIMPL", "Form Laporan Hasil Investasi Manfaat Pensiun Lainnya"),
-	LTLB_PINV("PINV", "Form Laporan Paket Investigasi"),
-	LTLB_PINVS("PINVS", "Form Laporan Paket Investigasi Syariah"),
+	LTLB_PINV("PINV", "Form Laporan Paket Investasi"),
+	LTLB_PINVS("PINVS", "Form Laporan Paket Investasi Syariah"),
 	LTLB_MPBK("MPBK", "Form Laporan Investasi Manfaat Pensiun Berkala"),
 	LTLB_PMBK("PMBK", "Form Laporan Pengelolaan Manfaat Pensiun Berkala"),
 	LTLB_LCF("LCF", "Form Laporan Life Cycle Fund"),

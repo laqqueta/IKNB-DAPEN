@@ -5,6 +5,7 @@ import id.go.ojk.client.model.config.SimpleValidation;
 import id.go.ojk.client.model.config.SubmissionField;
 import id.go.ojk.client.model.config.SubmissionFormat;
 import id.go.ojk.client.model.config.SubmissionFormatBuilder;
+import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.lib.client.model.reference.ReferenceMetadata;
 import id.go.ojk.metadata.module.lblt.EFormLaporanBulananTahunan;
 import id.go.ojk.metadata.module.lblt.header.*;
@@ -57,7 +58,7 @@ public enum Dppk0020Pmi implements ILbltFieldMetadata {
     JENIS_INVESTASI(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(6, null, "Jenis Investasi", sv(C, 1, 6, refTable)
                     .confRegex(SimpleValidation.patternAlfaNumeric)
-                    .confReference(EHeaderMetadataSharedLblt.R022.getObject()))),
+                    .confReference(EHeaderMetadataSharedLblt.R021.getObject()))),
 
     JUMLAH_NILAI_WAJAR_DANA_KELOLAAN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK),
             sf(7, null, "Jumlah Nilai Wajar Dana Kelolaan (Rp)", sv(M, 1, 18, numeric))),
@@ -83,7 +84,8 @@ public enum Dppk0020Pmi implements ILbltFieldMetadata {
     /* Gabungan Additional Field */
 
     JENIS_PROGRAM(sectors(KONVENSIONAL, SYARIAH), programs(PPMPPPIPK),
-            sf(1000, null, "Jenis Program", sv(M, 5, 5, alfa))),
+            sf(1000, null, "Jenis Program", sv(M, 4, 4, alfa)
+                    .confConstant("PPMP|PPIP"))),
 
     ;
 
@@ -96,7 +98,8 @@ public enum Dppk0020Pmi implements ILbltFieldMetadata {
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataLkdpPpmpm.R7020Pmi.getObject()),
             new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataLkdpPpipk.R7020Pmi.getObject()),
             new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataLkdpPpipm.R7020Pmi.getObject()),
-            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkdpDplk.R7020Pmi.getObject())
+            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkdpDplk.R7020Pmi.getObject()),
+            new AbstractMap.SimpleEntry<>(PPMPPPIPK, EHeaderMetadataLkdpPpmpppipk.R7026Pmi.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0020Pmi> FIELD_METADATA = new LbltMetadataField<>(Dppk0020Pmi.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
@@ -124,43 +127,19 @@ public enum Dppk0020Pmi implements ILbltFieldMetadata {
     public static SubmissionFormat formMetadata(SectorType sectorType, ProgramType programType) {
         FIELD_METADATA.setProgramType(programType);
 
-        BaseMetadataValidation<E7020PmiValidationsConfig> metadataValidation = null;
-
-        switch (programType) {
-            case PPMPK:
-                metadataValidation = E7020PmiValidationsConfig.VALIDATION_METADATA_PPMPK;
-                break;
-            case PPMPM:
-                metadataValidation = E7020PmiValidationsConfig.VALIDATION_METADATA_PPMPM;
-                break;
-            case PPIPK:
-                metadataValidation = E7020PmiValidationsConfig.VALIDATION_METADATA_PPIPK;
-                break;
-            case PPIPM:
-                metadataValidation = E7020PmiValidationsConfig.VALIDATION_METADATA_PPIPM;
-                break;
-            case DPLK:
-                metadataValidation = E7020PmiValidationsConfig.VALIDATION_METADATA_DPLK;
-                break;
-            case PPMPPPIPK:
-                break;
-            default:
-                throw new IllegalStateException();
-        }
-
+        BaseMetadataValidation<?> metadataValidation = E7020PmiValidationsConfig.getValidationMetadata(programType);
+        ReferenceConfig referenceConfig = ER7020PosLtlbDppkPmi.getRefConfig(programType);
         BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType)
                 .config()
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType));
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
+                .setReferenceConfigs(referenceConfig)
+                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                .setSegmentValidations(metadataValidation);
 
-        if (programType == PPMPPPIPK) {
+        if (programType.equals(PPMPPPIPK)) {
             List<Integer> gabunganField = Arrays.asList(0, 1, 1000, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13);
             submissionConfig
-                    .setSubmissionField(FIELD_METADATA.getReindexClearedFields(gabunganField, true))
-                    .setSegmentValidations();
-        } else {
-            submissionConfig
-                    .setReferenceConfigs(ER7020PosLtlbDppkPmi.Configs.REF_CONFIG)
-                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                    .setSubmissionField(FIELD_METADATA.getReindexFields(gabunganField, metadataValidation.getFieldValidations()))
                     .setSegmentValidations(metadataValidation);
         }
 

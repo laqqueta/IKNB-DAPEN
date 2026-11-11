@@ -29,6 +29,7 @@ import static id.go.ojk.lib.client.model.config.DataType.*;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.C;
 import static id.go.ojk.lib.client.model.constant.RequiredCondition.M;
 import static id.go.ojk.metadata.module.lblt.validations.dplk.E7012AlmKValidationsConfig.VALIDATION_METADATA_DPLK;
+import static id.go.ojk.metadata.module.lblt.validations.gabungan.E7012AlmGabungan2ValidationsConfig.VALIDATION_METADATA_PPMPPPIPK;
 import static id.go.ojk.metadata.module.lblt.validations.ppipik.E7012AlmKValidationsConfig.VALIDATION_METADATA_PPIPK;
 import static id.go.ojk.metadata.module.lblt.validations.ppipm.E7012AlmMValidationsConfig.VALIDATION_METADATA_PPIPM;
 import static id.go.ojk.metadata.module.lblt.validations.ppmpk.E7012AlmKValidationsConfig.VALIDATION_METADATA_PPMPK;
@@ -116,7 +117,8 @@ public enum Dppk0012Alm implements ILbltFieldMetadata {
     /* Gabungan Additional Field */
 
     JENIS_PROGRAM(sectors(KONVENSIONAL, SYARIAH), programs(PPMPPPIPK),
-            sf(1000, null, "Jenis Program", sv(M, 5, 5, alfa))),
+            sf(1000, null, "Jenis Program", sv(M, 4, 4, alfa)
+                    .confConstant("PPMP|PPIP"))),
 
     ;
 
@@ -129,7 +131,8 @@ public enum Dppk0012Alm implements ILbltFieldMetadata {
             new AbstractMap.SimpleEntry<>(PPMPM, EHeaderMetadataLkdpPpmpm.R7012Alm.getObject()),
             new AbstractMap.SimpleEntry<>(PPIPK, EHeaderMetadataLkdpPpipk.R7012Alm.getObject()),
             new AbstractMap.SimpleEntry<>(PPIPM, EHeaderMetadataLkdpPpipm.R7012Alm.getObject()),
-            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkdpDplk.R7012Alm.getObject())
+            new AbstractMap.SimpleEntry<>(DPLK, EHeaderMetadataLkdpDplk.R7012Alm.getObject()),
+            new AbstractMap.SimpleEntry<>(PPMPPPIPK, EHeaderMetadataLkdpPpmpppipk.R7014Alm.getObject())
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     public static final LbltMetadataField<Dppk0012Alm> FIELD_METADATA = new LbltMetadataField<>(Dppk0012Alm.class, Arrays.asList(KONVENSIONAL, SYARIAH), KODE_KOMPONEN_HEADERS);
@@ -158,81 +161,47 @@ public enum Dppk0012Alm implements ILbltFieldMetadata {
     public static SubmissionFormat formMetadata(SectorType sectorType, ProgramType programType) {
         FIELD_METADATA.setProgramType(programType);
 
-        BaseMetadataValidation<? extends ILbltMetadataValidation> metadataValidation = null;
-        ReferenceConfig referenceConfig = null;
+        BaseMetadataValidation<? extends ILbltMetadataValidation> metadataValidation;
+        ReferenceConfig referenceConfig = ER7012PosLtlbDppkAlm.getRefConfig(programType);
 
         switch (programType) {
             case PPMPK:
                 metadataValidation = VALIDATION_METADATA_PPMPK;
-                referenceConfig = ER7012PosLtlbDppkAlm.Configs.REF_CONFIG_PPMPK;
                 break;
             case PPMPM:
                 metadataValidation = VALIDATION_METADATA_PPMPM;
-                referenceConfig = ER7012PosLtlbDppkAlm.Configs.REF_CONFIG_PPMPM;
                 break;
             case PPIPK:
                 metadataValidation = VALIDATION_METADATA_PPIPK;
-                referenceConfig = ER7012PosLtlbDppkAlm.Configs.REF_CONFIG_PPIPK;
                 break;
             case PPIPM:
                 metadataValidation = VALIDATION_METADATA_PPIPM;
-                referenceConfig = ER7012PosLtlbDppkAlm.Configs.REF_CONFIG_PPIPM;
                 break;
             case DPLK:
-                referenceConfig = ER7012PosLtlbDppkAlm.Configs.REF_CONFIG_DPLK;
                 metadataValidation = VALIDATION_METADATA_DPLK;
                 break;
             case PPMPPPIPK:
+                metadataValidation = VALIDATION_METADATA_PPMPPPIPK;
                 break;
             default:
                 throw new IllegalStateException();
         }
 
-//        BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType).config()
-//                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
-//                .setReferenceConfigs(referenceConfig)
-//                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-//                .setSegmentValidations(metadataValidation);
+        BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType).config()
+                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
+                .setReferenceConfigs(referenceConfig)
+                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                .setSegmentValidations(metadataValidation);
 
-//        if (programType == DPLK) {
-//            submissionConfig
-//                    .setSubmissionField(FIELD_METADATA.getClearedFields())
-//                    .setSegmentValidations();
-//        } else {
-//            submissionConfig
-//                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-//                    .setSegmentValidations(metadataValidation);
-//        }
 
-        BaseSubmissionConfig.Config<?> submissionConfig = new SubmissionConfig(programType)
-                .config()
-                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType));
-
-        if (programType == PPMPPPIPK) {
+        if (programType.equals(PPMPPPIPK)) {
             List<Integer> gabunganFields = Arrays.asList(0, 1, 1000, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
             submissionConfig
-                    .setSubmissionField(FIELD_METADATA.getReindexClearedFields(gabunganFields, true))
-                    .setSegmentValidations();
-        } else {
-            submissionConfig
-                    .setReferenceConfigs(referenceConfig)
-                    .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
+                    .setSubmissionField(FIELD_METADATA.getReindexFields(gabunganFields, metadataValidation.getFieldValidations()))
                     .setSegmentValidations(metadataValidation);
         }
 
         return submissionConfig.build().get();
-
-//        return submissionConfig.build().get();
-
-
-//        return new SubmissionConfig(programType)
-//                .config()
-//                .setReferenceConfigs(referenceConfig)
-//                .setSubmissionFormat(getPpmpSubmissionFormatConfig(sectorType, programType))
-//                .setSubmissionField(FIELD_METADATA.getFields(metadataValidation.getFieldValidations()))
-//                .setSegmentValidations(metadataValidation)
-//                .build()
-//                .get();
     }
 
     @Override

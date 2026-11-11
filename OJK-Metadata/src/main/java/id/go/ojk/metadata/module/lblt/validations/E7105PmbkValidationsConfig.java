@@ -31,6 +31,9 @@ public enum E7105PmbkValidationsConfig implements ILbltMetadataValidation, IVali
     FV_EQUAL_NILAI_INVESTASI(programs(PPIPK, PPIPM, DPLK), validationFields(Dppk0105Pmbk.AKUMULASI_DANA_TOTAL),
             () -> UtilFieldValidation.genEqualsPosFormula("4+5", R_PMBK010000.key)),
 
+    FV_EQUAL_NILAI_INVESTASI_GABUNGAN(programs(PPMPPPIPK), validationFields(Dppk0105Pmbk.AKUMULASI_DANA_TOTAL),
+            () -> UtilFieldValidation.genEqualsPosFormula("5+6", R_PMBK010000.key)),
+
     ;
 
     private final EnumSet<ProgramType> programTypes;
@@ -70,13 +73,8 @@ public enum E7105PmbkValidationsConfig implements ILbltMetadataValidation, IVali
                 .toValidation(this, ConditionalRequired.class);
     }
 
-    public static final BaseMetadataValidation<E7105PmbkValidationsConfig> VALIDATION_METADATA_PPIPK =
-            new LbltMetadataValidation<>(E7105PmbkValidationsConfig.class, PPIPK);
-
-    public static final BaseMetadataValidation<E7105PmbkValidationsConfig> VALIDATION_METADATA_PPIPM =
-            new LbltMetadataValidation<>(E7105PmbkValidationsConfig.class, PPIPM);
-
-    public static final BaseMetadataValidation<E7105PmbkValidationsConfig> VALIDATION_METADATA_DPLK =
-            new LbltMetadataValidation<>(E7105PmbkValidationsConfig.class, DPLK);
+    public static BaseMetadataValidation<E7105PmbkValidationsConfig> getValidationMetadata(ProgramType programType) {
+        return new LbltMetadataValidation<>(E7105PmbkValidationsConfig.class, programType);
+    }
 
 }

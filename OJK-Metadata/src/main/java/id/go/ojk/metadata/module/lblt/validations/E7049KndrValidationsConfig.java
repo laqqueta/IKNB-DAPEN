@@ -35,13 +35,20 @@ public enum E7049KndrValidationsConfig implements ILbltMetadataValidation, IVali
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(5, 7), R_KNDR000000.key, R_KNDR010000.key,
                     UtilMetadata.genMessageTotal(R_KNDR000000.value, R_KNDR010000.value))),
 
+    SG_EQUAL_FORMULA_GABUNGAN(programs(PPMPPPIPK),
+            () -> UtilSegmentValidation.genFilterEqualsFormula_DAPEN(UtilMetadata.genPipeColumn(6, 8), R_KNDR000000.key, R_KNDR010000.key,
+                    UtilMetadata.genMessageTotal(R_KNDR000000.value, R_KNDR010000.value))),
+
     FV_EQUAL_NILAI_BUKU(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(7),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("5-6", R_KNDR000000.key)),
 
-    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(2, 3, 4),
+    FV_EQUAL_NILAI_BUKU_GABUNGAn(programs(PPMPPPIPK), validationFields(7),
+            () -> UtilFieldValidation.genEqualsExceptPosFormula("6-7", R_KNDR000000.key)),
+
+    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM, PPMPPPIPK), validationFields(2, 3, 4),
             () -> UtilFieldConditional.genExistPos("N", "M", R_KNDR000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(8),
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM, PPMPPPIPK), validationFields(8),
             () -> UtilFieldConditional.genExistPos("N", "O", R_KNDR000000.key)),
 
     ;
@@ -82,6 +89,10 @@ public enum E7049KndrValidationsConfig implements ILbltMetadataValidation, IVali
     public ConditionalRequired toFieldConditional() {
         return ValidationConverter
                 .toValidation(this, ConditionalRequired.class);
+    }
+
+    public static BaseMetadataValidation<E7049KndrValidationsConfig> getValidationMetadata(ProgramType programType) {
+        return new LbltMetadataValidation<>(E7049KndrValidationsConfig.class, programType);
     }
 
     public static final BaseMetadataValidation<E7049KndrValidationsConfig> VALIDATION_METADATA_PPMPK =

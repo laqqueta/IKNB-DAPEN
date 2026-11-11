@@ -34,7 +34,11 @@ public enum E7104MpbkValidationsConfig implements ILbltMetadataValidation, IVali
             () -> UtilSegmentValidation.genEqualsFormula("4|7|15", R_MPBK000000.key, R_MPBK010000.key,
                     UtilMetadata.genMessageTotal(R_MPBK000000.value, R_MPBK010000.value))),
 
-    CR_EXIST_POS(programs(PPIPK, PPIPM, DPLK), validationFields(2,3,5,6,8,9,10,11,12,13,14),
+    SG_EQUAL_FORMULA_GABUNGAN(programs(PPMPPPIPK),
+            () -> UtilSegmentValidation.genFilterEqualsFormula_DAPEN("5|8|16", R_MPBK000000.key, R_MPBK010000.key,
+                    UtilMetadata.genMessageTotal(R_MPBK000000.value, R_MPBK010000.value))),
+
+    CR_EXIST_POS(programs(PPIPK, PPIPM, DPLK, PPMPPPIPK), validationFields(2,3,5,6,8,9,10,11,12,13,14),
             () -> UtilFieldConditional.genExistPos("N", "M", R_MPBK000000.key)),
 
     ;
@@ -76,13 +80,8 @@ public enum E7104MpbkValidationsConfig implements ILbltMetadataValidation, IVali
                 .toValidation(this, ConditionalRequired.class);
     }
 
-    public static final BaseMetadataValidation<E7104MpbkValidationsConfig> VALIDATION_METADATA_PPIPK =
-            new LbltMetadataValidation<>(E7104MpbkValidationsConfig.class, PPIPK);
-
-    public static final BaseMetadataValidation<E7104MpbkValidationsConfig> VALIDATION_METADATA_PPIPM =
-            new LbltMetadataValidation<>(E7104MpbkValidationsConfig.class, PPIPM);
-
-    public static final BaseMetadataValidation<E7104MpbkValidationsConfig> VALIDATION_METADATA_DPLK =
-            new LbltMetadataValidation<>(E7104MpbkValidationsConfig.class, DPLK);
+    public static BaseMetadataValidation<E7104MpbkValidationsConfig> getValidationMetadata(ProgramType programType) {
+        return new LbltMetadataValidation<>(E7104MpbkValidationsConfig.class, programType);
+    }
 
 }

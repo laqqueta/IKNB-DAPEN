@@ -39,7 +39,7 @@ public enum E7009RoiValidationsConfig implements ILbltMetadataValidation, IValid
 
     FV_FIELD_VALIDATION_2(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK), validationFields(Dppk0009Roi.ROI),
             () -> UtilFieldValidation.genEqualsPosFormula3("9/10", 2,
-                    UtilMetadata.genPipeRowExcept(ER7009PosLtlbDppkRoi.getObjects(), new int[] { 20 }))),
+                    UtilMetadata.genPipeRow(ER7009PosLtlbDppkRoi.getObjects()))),
 
     SG_GEO_MEAN_PPMPK(programs(PPMPK),
             () -> {
@@ -103,13 +103,13 @@ public enum E7009RoiValidationsConfig implements ILbltMetadataValidation, IValid
 
     SG_SUM_POS_COL_EQUAL(programs(PPMPK, PPMPM, PPIPK, PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula(
-                    UtilMetadata.genPipeColumn(2, 11), R_ROI2100000000.key,
+                    UtilMetadata.genPipeColumn(2, 10), R_ROI2100000000.key,
                     UtilMetadata.genPlusRow(ER7009PosLtlbDppkRoi.getObjects(), 0, 19),
                     UtilMetadata.genMessage(R_ROI2100000000.value, UtilMetadata.genPlusDesc(ER7009PosLtlbDppkRoi.getObjects(), 0, 19)))),
 
     SG_SUM_POS_COL_EQUAL_DPL(programs(DPLK),
             () -> UtilSegmentValidation.genEqualsFormula(
-                    UtilMetadata.genPipeColumn(2, 11), R_ROI2100000000.key,
+                    UtilMetadata.genPipeColumn(2, 10), R_ROI2100000000.key,
                     UtilMetadata.genPlusRow(ER7009PosLtlbDppkRoi.getObjects(DPLK), 0, 19),
                     UtilMetadata.genMessage(R_ROI2100000000.value, UtilMetadata.genPlusDesc(ER7009PosLtlbDppkRoi.getObjects(DPLK), 0, 19)))),
 

@@ -4,6 +4,7 @@ import id.go.ojk.client.service.ReferenceConfig;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.lib.client.IObject;
 import id.go.ojk.lib.client.model.KeyValueString;
+import id.go.ojk.metadata.util.constants.ProgramType;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
@@ -30,7 +31,7 @@ public enum ER7036PosLtlbDppkDnfra implements IObject<KeyValueString> {
     }
 
     public static List<KeyValueString> getObjectsGabungan() {
-        List<KeyValueString> res = getObjects();
+        List<KeyValueString> res = new ArrayList<>();
 
         res.addAll(Arrays.stream(ER7036PosLtlbDppkDnfra.values())
                 .map(ER7036PosLtlbDppkDnfra::getObject)
@@ -55,16 +56,31 @@ public enum ER7036PosLtlbDppkDnfra implements IObject<KeyValueString> {
         return new KeyValueString(key, value, new String[]{});
     }
 
+    public static ReferenceConfig getRefConfig(ProgramType programType) {
+        switch (programType) {
+            case PPMPK:
+            case PPMPM:
+            case PPIPK:
+            case PPIPM:
+            case DPLK:
+                return Configs.REF_CONFIG;
+            case PPMPPPIPK:
+                return Configs.REF_CONFIG_PPMPKPPIPK;
+            default:
+                throw new IllegalStateException();
+        }
+    }
+
     public enum Configs implements ReferenceConfig {
         REF_CONFIG {
             @Override
             public String savePos() {
-                return UtilMetadata.genFieldSave("5|6|7|8", getObjects());
+                return UtilMetadata.genFieldSave("5|6|7|8|9|10|11", getObjects());
             }
 
             @Override
             public String savePosForm() {
-                return UtilMetadata.genFieldSave("6|7|10", getObjects());
+                return UtilMetadata.genFieldSave("5|6|7|8|9|10|11", getObjects());
             }
 
             @Override
@@ -76,15 +92,15 @@ public enum ER7036PosLtlbDppkDnfra implements IObject<KeyValueString> {
         REF_CONFIG_PPMPKPPIPK {
             private final String rowPPMP = UtilMetadata.genPipeRow(getObjectsGabungan(), new int[] { 1 });
             private final String rowPPIP = UtilMetadata.genPipeRow(getObjectsGabungan(), new int[] { 3 });
-
+            //2|6|7|8|9|10|11|12
             @Override
             public String savePos() {
-                return UtilMetadata.genFieldSave("2|6|7|8|9|11", getObjectsGabungan());
+                return UtilMetadata.genFieldSave("2|6|7|8|9|10|11|12", getObjectsGabungan());
             }
 
             @Override
             public String savePosForm() {
-                return UtilMetadata.genFieldSave("2|6|7|8|9|11", getObjectsGabungan());
+                return UtilMetadata.genFieldSave("2|6|7|8|9|10|11|12", getObjectsGabungan());
             }
 
             @Override

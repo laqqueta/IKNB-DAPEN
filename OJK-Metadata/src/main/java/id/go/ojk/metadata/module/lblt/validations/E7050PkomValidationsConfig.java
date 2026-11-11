@@ -38,10 +38,17 @@ public enum E7050PkomValidationsConfig implements ILbltMetadataValidation, IVali
     FV_EQUAL_NILAI_BUKU(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(6),
             () -> UtilFieldValidation.genEqualsExceptPosFormula("4-5", R_PKOM000000.key)),
 
-    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(2, 3),
+    SG_EQUAL_FORMULA_GABUNGAN(programs(PPMPPPIPK),
+            () -> UtilSegmentValidation.genFilterEqualsFormula_DAPEN(UtilMetadata.genPipeColumn(5, 7), R_PKOM000000.key, R_PKOM010000.key,
+                    UtilMetadata.genMessageTotal(R_PKOM000000.value, R_PKOM010000.value))),
+
+    FV_EQUAL_NILAI_BUKU_GABUNGAN(programs(PPMPPPIPK), validationFields(6),
+            () -> UtilFieldValidation.genEqualsExceptPosFormula("5-6", R_PKOM000000.key)),
+
+    CR_EXISTS_POS_M(programs(PPMPK, PPMPM, PPIPK, PPIPM, PPMPPPIPK), validationFields(2, 3),
             () -> UtilFieldConditional.genExistPos("N", "M", R_PKOM000000.key)),
 
-    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM), validationFields(7),
+    CR_EXISTS_POS_O(programs(PPMPK, PPMPM, PPIPK, PPIPM, PPMPPPIPK), validationFields(7),
             () -> UtilFieldConditional.genExistPos("N", "O", R_PKOM000000.key)),
 
     ;
@@ -82,6 +89,10 @@ public enum E7050PkomValidationsConfig implements ILbltMetadataValidation, IVali
     public ConditionalRequired toFieldConditional() {
         return ValidationConverter
                 .toValidation(this, ConditionalRequired.class);
+    }
+
+    public static BaseMetadataValidation<E7050PkomValidationsConfig> getValidationMetadata(ProgramType programType) {
+        return new LbltMetadataValidation<>(E7050PkomValidationsConfig.class, programType);
     }
 
     public static final BaseMetadataValidation<E7050PkomValidationsConfig> VALIDATION_METADATA_PPMPK =

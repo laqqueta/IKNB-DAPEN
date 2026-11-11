@@ -27,6 +27,7 @@ import java.util.function.Supplier;
 import static id.go.ojk.metadata.module.lblt.reference.ER7016PosLtlbDppkSbn.*;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
+import static id.go.ojk.metadata.util.constants.ProgramType.PPMPK;
 import static id.go.ojk.metadata.util.constants.ProgramType.PPMPM;
 
 @AllArgsConstructor
@@ -41,13 +42,10 @@ public enum E7016SbnMValidationsConfig implements ILbltMetadataValidation, IVali
             () -> UtilSegmentValidationV2.genEqualsSbnRatio("9", R_SBN020000.key,
                     R_SBN000000.key, "10", EFormLaporanBulananTahunan.LTLB_LAN.getCode(),
                     ER7001PosLtlbDppkLan.R_LAN0102000000.getObject().getKey(), "3",
-                    UtilMetadata.genMessage(R_SBN020000.value, R_SBN020000.value + " / Baris 'TOTAL INVESTASI' (Piutang Investasi) pada form LAN"), 2)),
+                    UtilMetadata.genMessage(R_SBN020000.value, R_SBN020000.value + " / Baris 'TOTAL INVESTASI' Manfaat Pensiun pada form LAN"), 2)),
 
     CR_FOR_SALDO(programs(PPMPM), validationFields(10),
             () -> UtilFieldConditional.genExistPos("M", "N", UtilMetadata.genPipeRow(getObjects(), new int[]{0, 1}))),
-
-    CR_FOR_SBN(programs(PPMPM), validationFields(9),
-            () -> UtilFieldConditional.genExistPos("M", "N", UtilMetadata.genPipeRow(getObjects(), new int[]{0, 2}))),
 
     CR_FOR_TOTAL(programs(PPMPM), validationFields(2, 3, 8),
             () -> UtilFieldConditional.genExistPos("N", "M", UtilMetadata.genPipeRow(getObjects(), new int[]{1, 2}))),
@@ -55,6 +53,12 @@ public enum E7016SbnMValidationsConfig implements ILbltMetadataValidation, IVali
 //    CR_JENIS_INVESTASI_VALUE_OBLIGASI(programs(PPMPM),
 //            () -> UtilFieldConditional.genEquals("M", "N", "2",
 //                    ER1268JenisInvestasi.getReferenceIndex(1))),
+
+    CR_FOR_SBN_VALUE_SBN(programs(PPMPM), validationFields(9),
+            () -> UtilFieldConditional.genExistPosAndComparatorHasValueDapenVer2(
+                    "O", "M", R_SBN010000.key,
+                    "M", R_SBN020000.key, "N",
+                    "2", ER1268JenisInvestasi.getReferenceIndex(0))),
 
     CR_JENIS_INVESTASI_VALUE_OBLIGASI(programs(PPMPM), validationFields(4, 5, 6),
             () -> UtilFieldConditional.genExistPosAndComparatorHasValueDapenVer("O", "M", "N",
