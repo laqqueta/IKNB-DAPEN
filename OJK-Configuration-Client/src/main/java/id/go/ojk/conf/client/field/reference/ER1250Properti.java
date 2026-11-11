@@ -16,7 +16,7 @@ public enum ER1250Properti implements IObject<KeyValueString> {
 
 	R_PR1("2001", "Tanah"),
 	R_PR2("2005", "Bangunan"),
-	R_PR3("2010", "Tanah & Bangunan"),
+	R_PR3("2010", "Tanah dan Bangunan"),
 	;
 
 	private String key;

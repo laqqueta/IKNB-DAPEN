@@ -13,13 +13,13 @@ public enum ER1253SektorEkonomi implements IObject<KeyValueString> {
 
 	R_SE1("SE01", "Pertanian"),
 	R_SE2("SE02", "Pertambangan"),
-	R_SE3("SE03", "Industri Dasar & Kimia"),
+	R_SE3("SE03", "Industri Dasar dan Kimia"),
 	R_SE4("SE04", "Aneka Industri"),
 	R_SE5("SE05", "Industri Barang Konsumsi"),
 	R_SE6("SE06", "Properti, Real Estate dan Konstruksi Bangunan"),
-	R_SE7("SE07", "Infrastruktur, Utilitas & Transportasi"),
+	R_SE7("SE07", "Infrastruktur, Utilitas, dan Transportasi"),
 	R_SE8("SE08", "Keuangan"),
-	R_SE9("SE09", "Perdagangan, Jasa & Investasi"),
+	R_SE9("SE09", "Perdagangan, Jasa, dan Investasi"),
 	;
 
 	private String key;

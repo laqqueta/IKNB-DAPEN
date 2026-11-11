@@ -11,8 +11,8 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ER1262BuktiKepemilikan implements IObject<KeyValueString> {
 
-	R_BK1("SHM", "Sertifikat Hak Milik ( SHM )"),
-	R_BK2("SHSRS", "Sertifikat Hak Satuan Rumah Susun (SHSRS)/strata title"),
+	R_BK1("SHM", "Sertifikat Hak Milik (SHM)"),
+	R_BK2("SHSRS", "Sertifikat Hak Satuan Rumah Susun (SHSRS) / Strata Title"),
 	R_BK3("SHGB", "Sertifikat Hak Guna Bangunan (SHGB)"),
 	R_BK4("GRK", "Girik"),
 	R_BK5("AJB", "Akta Jual Beli (AJB)"),
