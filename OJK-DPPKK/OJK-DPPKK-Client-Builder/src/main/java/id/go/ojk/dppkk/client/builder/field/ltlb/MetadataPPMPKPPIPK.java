@@ -25,7 +25,7 @@ public class MetadataPPMPKPPIPK {
                 Dppk0000Dtum.formMetadata(sectorType, programType),
                 Dppk0001Lan.formMetadata(sectorType, programType),
                 Dppk0002Lpan.formMetadata(sectorType, programType),
-                Dppk0003Nrc.formMetadata(sectorType, programType),
+                Dppk0003Nrc.formMetadata(sectorType, programType), /* ==> Temp Test */
                 Dppk0004Lphu.formMetadata(sectorType, programType),
                 Dppk0005Lak.formMetadata(sectorType, programType),
                 Dppk0006Pst.formMetadata(sectorType, programType),
@@ -41,7 +41,7 @@ public class MetadataPPMPKPPIPK {
                 Dppk0014Inpt.formMetadata(sectorType, programType),
                 Dppk0015Inbm.formMetadata(sectorType, programType),
                 Dppk0016Sbn.formMetadata(sectorType, programType),
-                Dppk0017Ras1.formMetadata(sectorType, programType),
+                Dppk0017Ras1.formMetadata(sectorType, programType), /* ==> Temp Test */
                 Dppk0018Ras2.formMetadata(sectorType, programType),
                 Dppk0102Pinv.formMetadata(sectorType, programType),
                 Dppk0103Pinvs.formMetadata(sectorType, programType),
