@@ -281,24 +281,24 @@ public enum E7001LanKValidationsConfig implements ILbltMetadataValidation, IVali
 
     SG_EQUALS_FORMULA_2(programs(DPLK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(3, 13),
-                    ER7001PosLtlbDppkLan.R_LAN0104000000.getObject().getKey(),  
-                    UtilMetadata.genPlusRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.DPLK), 21, 26),
+                    ER7001PosLtlbDppkLan.R_LAN0104000000.getObject().getKey(),
+                    UtilMetadata.genPlusRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.DPLK), 21, 25),
                     UtilMetadata.genMessage(ER7001PosLtlbDppkLan.R_LAN0104000000.getObject().getValue(),
-                            UtilMetadata.genPlusDesc(ER7001PosLtlbDppkLan.getObjects(ProgramType.DPLK), 21, 26)))),
+                            UtilMetadata.genPlusDesc(ER7001PosLtlbDppkLan.getObjects(ProgramType.DPLK), 21, 25)))),
 
     SG_EQUALS_FORMULA_3(programs(DPLK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(3, 13),
                     ER7001PosLtlbDppkLan.R_LAN0106000000.getObject().getKey(),
-                    UtilMetadata.genPlusRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.DPLK), new int[]{21, 27, 28}),
+                    UtilMetadata.genPlusRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.DPLK), new int[]{21, 26, 27}),
                     UtilMetadata.genMessage(ER7001PosLtlbDppkLan.R_LAN0106000000.getObject().getValue(),
-                            UtilMetadata.genPlusDesc(ER7001PosLtlbDppkLan.getObjects(ProgramType.DPLK), new int[]{21, 27, 28})))),
+                            UtilMetadata.genPlusDesc(ER7001PosLtlbDppkLan.getObjects(ProgramType.DPLK), new int[]{21, 26, 27})))),
 
     SG_EQUALS_FORMULA_4(programs(DPLK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(3, 13),
                     ER7001PosLtlbDppkLan.R_LAN0108000000.getObject().getKey(),
-                    UtilMetadata.genPlusRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.DPLK), 30, 35),
+                    UtilMetadata.genPlusRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.DPLK), 29, 34),
                     UtilMetadata.genMessage(ER7001PosLtlbDppkLan.R_LAN0108000000.getObject().getValue(),
-                            UtilMetadata.genPlusDesc(ER7001PosLtlbDppkLan.getObjects(ProgramType.DPLK), 30, 35)))),
+                            UtilMetadata.genPlusDesc(ER7001PosLtlbDppkLan.getObjects(ProgramType.DPLK), 29, 34)))),
 
     SG_EQUALS_FORMULA_5(programs(DPLK),
             () -> UtilSegmentValidation.genEqualsFormula(UtilMetadata.genPipeColumn(3, 13),
@@ -398,21 +398,21 @@ public enum E7001LanKValidationsConfig implements ILbltMetadataValidation, IVali
 
     SG_ROW_DATA_TYPE_NUMERIC(programs(DPLK), () ->
             UtilSegmentValidation.genRegexNumeric(UtilMetadata.genPipeColumn(3, 12),
-                    UtilMetadata.genPipeRow(getObjects(DPLK), 0, 37))),
+                    UtilMetadata.genPipeRow(getObjects(DPLK), 0, 36))),
 
     SG_ROW_DATA_TYPE_NUMERIC_NEGATIVE(programs(DPLK), () ->
             UtilSegmentValidation.genRegexNumericNegative(UtilMetadata.genPipeColumn(3, 12),
-                    UtilMetadata.genPipeRow(getObjects(DPLK), new int[]{38}))),
+                    UtilMetadata.genPipeRow(getObjects(DPLK), new int[]{37}))),
 
     FV_GABUNGAN_EQUALS_EXCEPT(programs(DPLK), validationFields(Dppk0001Lan.GABUNGAN),
             () -> UtilFieldValidation.genEqualsExceptPosFormula(
                     UtilMetadata.genPlusColumn(3, 12),
-                    UtilMetadata.genPipeRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.DPLK), new int[]{20, 27, 29, 36, 37, 38}),
+                    UtilMetadata.genPipeRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.DPLK), new int[]{20, 26, 28, 35, 36, 37}),
                     2)),
 
     CR_EXIST_POS_N_PERSENTASE_INVESTASI(programs(DPLK), validationFields(2),
             () -> UtilFieldConditional.genExistPos("N", "M",
-                    UtilMetadata.genPipeRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.DPLK), 21, 38))),
+                    UtilMetadata.genPipeRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.DPLK), 21, 37))),
 
     ;
 
