@@ -31,6 +31,7 @@ import static id.go.ojk.conf.client.UtilMetadata.genFormulaParser;
 import static id.go.ojk.metadata.module.lblt.reference.ER7001PosLtlbDppkLan.*;
 import static id.go.ojk.metadata.util.FieldUtil.programs;
 import static id.go.ojk.metadata.util.FieldUtil.validationFields;
+import static id.go.ojk.metadata.util.constants.ProgramType.PPIPK;
 import static id.go.ojk.metadata.util.constants.ProgramType.PPMPPPIPK;
 
 @AllArgsConstructor
@@ -313,43 +314,43 @@ public enum E7001LanGabunganValidationsConfig implements ILbltMetadataValidation
                     "UTLN|Nilai|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain/LCF"
             )),
 
-    SG_EQUALS_FORMULA_1(programs(PPMPPPIPK),
-            () -> UtilSegmentValidation.genFilterEqualsFormula_DAPEN_PPMP(UtilMetadata.genPipeColumn(3, 13),
+    SG_EQUALS_FORMULA_1_PPMP(programs(PPMPPPIPK),
+            () -> UtilSegmentValidation.genFilterEqualsFormula_DAPEN_PPMP(UtilMetadata.genPipeColumn(4, 14),
                     ER7001PosLtlbDppkLan.R_LAN0102000000.getObject().getKey(),
                     UtilMetadata.genPlusRow(ER7001PosLtlbDppkLan.getObjects(PPMPPPIPK), 0, 19),
                     UtilMetadata.genMessage(ER7001PosLtlbDppkLan.R_LAN0102000000.getObject().getValue(),
                             UtilMetadata.genPlusDesc(ER7001PosLtlbDppkLan.getObjects(PPMPPPIPK), 0, 19)))),
 
-    SG_EQUALS_FORMULA_2(programs(PPMPPPIPK),
-            () -> UtilSegmentValidation.genFilterEqualsFormula_DAPEN_PPMP(UtilMetadata.genPipeColumn(3, 13),
+    SG_EQUALS_FORMULA_2_PPMP(programs(PPMPPPIPK),
+            () -> UtilSegmentValidation.genFilterEqualsFormula_DAPEN_PPMP(UtilMetadata.genPipeColumn(4, 14),
                     ER7001PosLtlbDppkLan.R_LAN0104000000.getObject().getKey(),
                     UtilMetadata.genPlusRow(ER7001PosLtlbDppkLan.getObjects(PPMPPPIPK), 21, 29),
                     UtilMetadata.genMessage(ER7001PosLtlbDppkLan.R_LAN0104000000.getObject().getValue(),
                             UtilMetadata.genPlusDesc(ER7001PosLtlbDppkLan.getObjects(PPMPPPIPK), 21, 29)))),
 
-    SG_EQUALS_FORMULA_3(programs(PPMPPPIPK),
-            () -> UtilSegmentValidation.genFilterEqualsFormula_DAPEN_PPMP(UtilMetadata.genPipeColumn(3, 13),
+    SG_EQUALS_FORMULA_3_PPMP(programs(PPMPPPIPK),
+            () -> UtilSegmentValidation.genFilterEqualsFormula_DAPEN_PPMP(UtilMetadata.genPipeColumn(4, 14),
                     ER7001PosLtlbDppkLan.R_LAN0107000000.getObject().getKey(),
                     UtilMetadata.genPlusRow(ER7001PosLtlbDppkLan.getObjects(PPMPPPIPK), new int[]{20, 30, 36, 37}),
                     UtilMetadata.genMessage(ER7001PosLtlbDppkLan.R_LAN0107000000.getObject().getValue(),
                             UtilMetadata.genPlusDesc(ER7001PosLtlbDppkLan.getObjects(PPMPPPIPK), new int[]{20, 30, 36, 37})))),
 
-    SG_EQUALS_FORMULA_4(programs(PPMPPPIPK),
-            () -> UtilSegmentValidation.genFilterEqualsFormula_DAPEN_PPMP(UtilMetadata.genPipeColumn(3, 13),
+    SG_EQUALS_FORMULA_4_PPMP(programs(PPMPPPIPK),
+            () -> UtilSegmentValidation.genFilterEqualsFormula_DAPEN_PPMP(UtilMetadata.genPipeColumn(4, 14),
                     R_LAN0111000000.getObject().getKey(),
                     UtilMetadata.genMinusRow(ER7001PosLtlbDppkLan.getObjects(PPMPPPIPK), new int[]{38, 47}),
                     UtilMetadata.genMessage(R_LAN0111000000.getObject().getValue(),
                             UtilMetadata.genMinusDesc(ER7001PosLtlbDppkLan.getObjects(PPMPPPIPK), new int[]{38, 47})))),
 
-    SG_EQUALS_FORMULA_5(programs(PPMPPPIPK),
-            () -> UtilSegmentValidation.genFilterEqualsFormula_DAPEN_PPMP(UtilMetadata.genPipeColumn(3, 13),
+    SG_EQUALS_FORMULA_5_PPMP(programs(PPMPPPIPK),
+            () -> UtilSegmentValidation.genFilterEqualsFormula_DAPEN_PPMP(UtilMetadata.genPipeColumn(4, 14),
                     ER7001PosLtlbDppkLan.R_LAN0109000000.getObject().getKey(),
                     UtilMetadata.genPlusRow(ER7001PosLtlbDppkLan.getObjects(PPMPPPIPK), 39, 45),
                     UtilMetadata.genMessage(ER7001PosLtlbDppkLan.R_LAN0109000000.getObject().getValue(),
                             UtilMetadata.genPlusDesc(ER7001PosLtlbDppkLan.getObjects(PPMPPPIPK), 39, 45)))),
 
-    SG_EQUALS_FORMULA_6(programs(PPMPPPIPK),
-            () -> UtilSegmentValidation.genFilterEqualsFormula_DAPEN_PPMP(UtilMetadata.genPipeColumn(3, 13),
+    SG_EQUALS_FORMULA_6_PPMP(programs(PPMPPPIPK),
+            () -> UtilSegmentValidation.genFilterEqualsFormula_DAPEN_PPMP(UtilMetadata.genPipeColumn(4, 14),
                     ER7001PosLtlbDppkLan.R_LAN0110000000.getObject().getKey(),
                     ER7001PosLtlbDppkLan.R_LAN0109000000.getObject().getKey(),
                     UtilMetadata.genMessage(ER7001PosLtlbDppkLan.R_LAN0110000000.getObject().getValue(),
@@ -835,6 +836,7 @@ public enum E7001LanGabunganValidationsConfig implements ILbltMetadataValidation
                     ER7058PosLtlbDppkBmhb.R_BMHB010000.getObject().getKey(),
                     "BMHB|Nilai|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain/LCF"
             )),
+
     SG_SUMIF_LAN0108020600_PPIP(programs(PPMPPPIPK),
             () -> sumIfValidationHelper_PPIP(
                     ER7001PosLtlbDppkLan.R_LAN0108020600.getObject().getKey(), "5", "6",
@@ -842,6 +844,48 @@ public enum E7001LanGabunganValidationsConfig implements ILbltMetadataValidation
                     ER7059PosLtlbDppkUtln.R_UTLN010000.getObject().getKey(),
                     "UTLN|Nilai|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain/LCF"
             )),
+
+    SG_EQUALS_FORMULA_1_PPIP(programs(PPMPPPIPK),
+            () -> UtilSegmentValidation.genFilterEqualsFormula_DAPEN_PPIP(UtilMetadata.genPipeColumn(4, 17),
+                    ER7001PosLtlbDppkLan.R_LAN0102000000.getObject().getKey(),
+                    UtilMetadata.genPlusRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.PPIPK), 0, 19),
+                    UtilMetadata.genMessage(ER7001PosLtlbDppkLan.R_LAN0102000000.getObject().getValue(),
+                            UtilMetadata.genPlusDesc(ER7001PosLtlbDppkLan.getObjects(ProgramType.PPIPK), 0, 19)))),
+
+    SG_EQUALS_FORMULA_2_PPIP(programs(PPMPPPIPK),
+            () -> UtilSegmentValidation.genFilterEqualsFormula_DAPEN_PPIP(UtilMetadata.genPipeColumn(4, 17),
+                    ER7001PosLtlbDppkLan.R_LAN0104000000.getObject().getKey(),
+                    UtilMetadata.genPlusRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.PPIPK), 21, /*30*/ 29),
+                    UtilMetadata.genMessage(ER7001PosLtlbDppkLan.R_LAN0104000000.getObject().getValue(),
+                            UtilMetadata.genPlusDesc(ER7001PosLtlbDppkLan.getObjects(ProgramType.PPIPK), 21, /*30*/ 29)))),
+
+    SG_EQUALS_FORMULA_3_PPIP(programs(PPMPPPIPK),
+            () -> UtilSegmentValidation.genFilterEqualsFormula_DAPEN_PPIP(UtilMetadata.genPipeColumn(4, 17),
+                    ER7001PosLtlbDppkLan.R_LAN0107000000.getObject().getKey(),
+                    UtilMetadata.genPlusRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.PPIPK), new int[]{20, 30, 36, 37}/*{20, 31, 37, 38}*/),
+                    UtilMetadata.genMessage(ER7001PosLtlbDppkLan.R_LAN0107000000.getObject().getValue(),
+                            UtilMetadata.genPlusDesc(ER7001PosLtlbDppkLan.getObjects(ProgramType.PPIPK), new int[]{20, 30, 36, 37}/*{20, 31, 37, 38}*/)))),
+
+    SG_EQUALS_FORMULA_4_PPIP(programs(PPMPPPIPK),
+            () -> UtilSegmentValidation.genFilterEqualsFormula_DAPEN_PPIP(UtilMetadata.genPipeColumn(4, 17),
+                    ER7001PosLtlbDppkLan.R_LAN0111000000.getObject().getKey(),
+                    UtilMetadata.genMinusRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.PPIPK), new int[]{38, 47}/*{39, 48}*/),
+                    UtilMetadata.genMessage(ER7001PosLtlbDppkLan.R_LAN0111000000.getObject().getValue(),
+                            UtilMetadata.genMinusDesc(ER7001PosLtlbDppkLan.getObjects(ProgramType.PPIPK), new int[]{38, 47}/*{39, 48}*/)))),
+
+    SG_EQUALS_FORMULA_5_PPIP(programs(PPMPPPIPK),
+            () -> UtilSegmentValidation.genFilterEqualsFormula_DAPEN_PPIP(UtilMetadata.genPipeColumn(4, 17),
+                    ER7001PosLtlbDppkLan.R_LAN0109000000.getObject().getKey(),
+                    UtilMetadata.genPlusRow(ER7001PosLtlbDppkLan.getObjects(ProgramType.PPIPK), /*40, 46*/39, 45),
+                    UtilMetadata.genMessage(ER7001PosLtlbDppkLan.R_LAN0109000000.getObject().getValue(),
+                            UtilMetadata.genPlusDesc(ER7001PosLtlbDppkLan.getObjects(ProgramType.PPIPK), /*40, 46*/39, 45)))),
+
+    SG_EQUALS_FORMULA_6_PPIP(programs(PPMPPPIPK),
+            () -> UtilSegmentValidation.genFilterEqualsFormula_DAPEN_PPIP(UtilMetadata.genPipeColumn(4, 17),
+                    ER7001PosLtlbDppkLan.R_LAN0110000000.getObject().getKey(),
+                    ER7001PosLtlbDppkLan.R_LAN0109000000.getObject().getKey(),
+                    UtilMetadata.genMessage(ER7001PosLtlbDppkLan.R_LAN0110000000.getObject().getValue(),
+                            ER7001PosLtlbDppkLan.R_LAN0109000000.getObject().getValue()))),
 
     GEN_VALIDATON_FORM_LPAN_PPIP(programs(PPMPPPIPK), () -> {
         KeyValueString selectPosCode = R_LAN0111000000.getObject();

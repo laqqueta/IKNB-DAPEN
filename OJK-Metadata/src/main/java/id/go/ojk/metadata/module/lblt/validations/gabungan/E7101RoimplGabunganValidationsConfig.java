@@ -9,6 +9,7 @@ import id.go.ojk.conf.client.UtilFieldValidation;
 import id.go.ojk.conf.client.UtilMetadata;
 import id.go.ojk.conf.client.UtilSegmentValidation;
 import id.go.ojk.metadata.module.lblt.field.Dppk0101Roimpl;
+import id.go.ojk.metadata.module.lblt.reference.ER7011PosLtlbDppkRoism;
 import id.go.ojk.metadata.module.lblt.reference.ER7101PosLtlbDppkRoimpl;
 import id.go.ojk.metadata.util.constants.ProgramType;
 import id.go.ojk.metadata.validation.ValidationConverter;
@@ -38,7 +39,8 @@ public enum E7101RoimplGabunganValidationsConfig implements ILbltMetadataValidat
 
     FV_FIELD_VALIDATION_2(programs(PPIPK),
             validationFields(Dppk0101Roimpl.ROI),
-            () -> UtilFieldValidation.genEqualsExceptPosFormula("10/11", R_ROIMPL2100000000.key)),
+            () -> UtilFieldValidation.genEqualsPosFormula3("10/11",2,
+                    UtilMetadata.genPipeRow(ER7101PosLtlbDppkRoimpl.getObjectsGabungan()))),
 
     SG_SUM_POS_COL_EQUAL(programs(PPIPK),
             () -> UtilSegmentValidation.genEqualsFormula(

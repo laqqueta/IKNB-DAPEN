@@ -117,7 +117,7 @@ public enum E7007KupGabunganValidationsConfig implements ILbltMetadataValidation
                 R_KUP0206000000.getObject().getValue(),
                 R_KUP0207000000.getObject().getValue()));
 
-        return UtilSegmentValidationV2.genOperatorProyeksi("3|4|5",
+        return UtilSegmentValidationV2.genOperatorProyeksi("4|5|6",
                 R_KUP0209000000.getObject().getKey(),
                 formula, "I|II", "III", "2", "PPMP|PPIP", formulaErr);
     }),
@@ -128,47 +128,47 @@ public enum E7007KupGabunganValidationsConfig implements ILbltMetadataValidation
                     EHeaderMetadataSharedLblt.R023.getNumber())),
 
     SG_ROW_DATA_TYPE_NUMERIC_1(programs(PPMPPPIPK), () ->
-            UtilSegmentValidation.genRegexNumeric("3|4|5",
+            UtilSegmentValidation.genRegexNumeric("4|5|6",
                     UtilMetadata.genPipeRowExcept(getObjects(PPMPPPIPK), new int[]{0, 1, 7, 9, 11, 14, 15, 16, 17, 18, 19}))),
 
     SG_ROW_DATA_TYPE_NUMERIC_2(programs(PPMPPPIPK), () ->
-            UtilSegmentValidation.genRegexNumericNegative("3|4|5",
+            UtilSegmentValidation.genRegexNumericNegative("4|5|6",
                     UtilMetadata.genPipeRow(getObjects(PPMPPPIPK), new int[]{0, 14}))),
 
     SG_ROW_DATA_TYPE_NUMERIC_3(programs(PPMPPPIPK), () ->
-            UtilSegmentValidation.genRegexNumericDot("3|4|5",
+            UtilSegmentValidation.genRegexNumericDot("4|5|6",
                     UtilMetadata.genPipeRow(getObjects(PPMPPPIPK), new int[]{15, 16, 17}))),
 
     SG_ROW_DATA_TYPE_NUMERIC_4(programs(PPMPPPIPK), () ->
-            UtilSegmentValidation.genRegexAlfa("3|4|5",
+            UtilSegmentValidation.genRegexAlfa("4|5|6",
                     UtilMetadata.genPipeRow(getObjects(PPMPPPIPK), new int[]{18}))),
 
     SG_ROW_DATA_TYPE_NUMERIC_5(programs(PPMPPPIPK), () ->
-            UtilSegmentValidation.genRegexAlfaNumeric("3|4|5",
+            UtilSegmentValidation.genRegexAlfaNumeric("4|5|6",
                     UtilMetadata.genPipeRow(getObjects(PPMPPPIPK), new int[]{19}))),
 
     SG_ROW_DATA_TYPE_TEXT(programs(PPMPPPIPK), () ->
-            UtilSegmentValidation.genRegexAll("2",
+            UtilSegmentValidation.genRegexAll("3",
                     UtilMetadata.genPipeRow(ER7007PosLtlbDppkKup.getObjects(ProgramType.PPMPPPIPK), new int[]{1, 7, 9, 11}))),
 
     SG_ROW_DATA_LEN_1(programs(PPMPPPIPK), () ->
-            UtilSegmentValidation.genLength("3|4|5",
+            UtilSegmentValidation.genLength("4|5|6",
                     UtilMetadata.genPipeRow(getObjects(PPMPPPIPK), new int[]{18}), 1, 3)),
 
     SG_ROW_DATA_LEN_2(programs(PPMPPPIPK), () ->
-            UtilSegmentValidation.genLength("3|4|5",
+            UtilSegmentValidation.genLength("4|5|6",
                     UtilMetadata.genPipeRow(getObjects(PPMPPPIPK), new int[]{19}), 5, 5)),
 
     SG_ROW_DATA_LEN_3(programs(PPMPPPIPK), () ->
-            UtilSegmentValidation.genLength("3|4|5",
+            UtilSegmentValidation.genLength("4|5|6",
                     UtilMetadata.genPipeRow(getObjects(PPMPPPIPK), new int[]{15, 16, 17}), 4, 18)),
 
     SG_ROW_DATA_LEN_4(programs(PPMPPPIPK), () ->
-            UtilSegmentValidation.genLength("3|4|5",
+            UtilSegmentValidation.genLength("4|5|6",
                     UtilMetadata.genPipeRowExcept(getObjects(PPMPPPIPK), new int[]{1, 7, 9, 11, 15, 16, 17, 18, 19}), 1, 18)),
 
     SG_ROW_DATA_LEN_5(programs(PPMPPPIPK), () ->
-            UtilSegmentValidation.genLength("2",
+            UtilSegmentValidation.genLength("3",
                     UtilMetadata.genPipeRow(ER7007PosLtlbDppkKup.getObjects(ProgramType.PPMPPPIPK), new int[]{1, 7, 9, 11}), 1, 255)),
 
     CR_URAIAN(programs(PPMPPPIPK), validationFields(2),

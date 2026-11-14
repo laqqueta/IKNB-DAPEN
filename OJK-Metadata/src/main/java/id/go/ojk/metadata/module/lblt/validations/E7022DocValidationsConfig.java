@@ -43,10 +43,10 @@ public enum E7022DocValidationsConfig implements ILbltMetadataValidation, IValid
             () -> UtilSegmentValidation.genFilterEqualsFormula_DAPEN("7", R_DOC000000.key, R_DOC010000.key,
                     UtilMetadata.genMessageTotal(R_DOC000000.value, R_DOC010000.value))),
 
-//    FV_JENIS_MANFAAT_GABUNGAN(programs(PPMPPPIPK), validationFields(9),
-//            () -> UtilFieldValidation.genJenisManfaat(R_EBA000000.key, "PPMP",
-//                    ER1255JenisManfaat.getPipedReferenceKeys("UUS1|UUS2|UUS3"),
-//                    EHeaderMetadataSharedLblt.R009.getNumber())),
+    FV_JENIS_MANFAAT_GABUNGAN(programs(PPMPPPIPK), validationFields(9),
+            () -> UtilFieldValidation.genJenisManfaat(R_EBA000000.key, "PPMP",
+                    ER1255JenisManfaat.getPipedReferenceKeys("UUS1|UUS2|UUS3"),
+                    EHeaderMetadataSharedLblt.R009.getNumber())),
 
     CR_EXISTS_DOC000000_M(programs(PPMPK, PPMPM, PPIPK, PPIPM, DPLK, PPMPPPIPK), validationFields(2, 4, 5, 7, 8, 9, 10),
             () -> UtilFieldConditional.genExistPos("N", "M", R_DOC000000.key)),

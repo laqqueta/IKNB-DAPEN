@@ -398,27 +398,27 @@ public enum E7003NrcGabunganValidationsConfig implements ILbltMetadataValidation
                     UtilMetadata.genMessage(ER7003PosLtlbDppkNrc.R_NRC0117000000_TMP_GABUNGAN.getObject().getValue(),
                             UtilMetadata.genPlusDesc(ER7003PosLtlbDppkNrc.getObjects(ProgramType.PPMPPPIPK), 43, 49)))),
 
-    SG_FIELD_TOTAL_7_PPMP(programs(PPMPPPIPK), () -> genTotalValidationPPIP(R_NRC0106010000.key,
+    SG_FIELD_TOTAL_7_PPMP(programs(PPMPPPIPK), () -> genTotalValidationPPMP(R_NRC0106010000.key,
             EFormLaporanBulananTahunan.LTLB_TNBG,
             ER7048PosLtlbDppkTnbg.getObjects(),
             "10", "Nilai Perolehan Pada Tanggal Laporan")),
 
-    SG_FIELD_TOTAL_8_PPMP(programs(PPMPPPIPK), () -> genTotalValidationPPIP(R_NRC0106020000.key,
+    SG_FIELD_TOTAL_8_PPMP(programs(PPMPPPIPK), () -> genTotalValidationPPMP(R_NRC0106020000.key,
             EFormLaporanBulananTahunan.LTLB_KNDR,
             ER7049PosLtlbDppkKndr.getObjects(),
             "6", "Nilai Perolahan")),
 
-    SG_FIELD_TOTAL_9_PPMP(programs(PPMPPPIPK), () -> genTotalValidationPPIP(R_NRC0106030000.key,
+    SG_FIELD_TOTAL_9_PPMP(programs(PPMPPPIPK), () -> genTotalValidationPPMP(R_NRC0106030000.key,
             EFormLaporanBulananTahunan.LTLB_PKOM,
             ER7050PosLtlbDppkPkom.getObjects(),
             "5", "Nilai Perolehan")),
 
-    SG_FIELD_TOTAL_10_PPMP(programs(PPMPPPIPK), () -> genTotalValidationPPIP(R_NRC0106040000.key,
+    SG_FIELD_TOTAL_10_PPMP(programs(PPMPPPIPK), () -> genTotalValidationPPMP(R_NRC0106040000.key,
             EFormLaporanBulananTahunan.LTLB_PKAN,
             ER7051PosLtlbDppkPkan.getObjects(),
             "5", "Nilai Perolehan")),
 
-    SG_FIELD_TOTAL_11_PPMP(programs(PPMPPPIPK), () -> genTotalValidationPPIP(R_NRC0106050000.key,
+    SG_FIELD_TOTAL_11_PPMP(programs(PPMPPPIPK), () -> genTotalValidationPPMP(R_NRC0106050000.key,
             EFormLaporanBulananTahunan.LTLB_ASOL,
             ER7052PosLtlbDppkAsol.getObjects(),
             "5", "Nilai Perolehan")),

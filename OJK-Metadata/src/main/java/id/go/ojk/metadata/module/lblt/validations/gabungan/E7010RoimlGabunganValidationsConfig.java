@@ -34,7 +34,7 @@ public enum E7010RoimlGabunganValidationsConfig implements ILbltMetadataValidati
             () -> UtilFieldValidation.genEqualsFormula(UtilMetadata.genPlusColumn(3, 8) + "-9")),
 
     FV_FIELD_VALIDATION_2(programs(PPMPPPIPK), validationFields(11),
-            () -> UtilFieldValidation.genEqualsPosFormula("10/11", 2,
+            () -> UtilFieldValidation.genEqualsPosFormula3("10/11", 2,
                     UtilMetadata.genPipeRow(ER7010PosLtlbDppkRoiml.getObjects(PPMPPPIPK)))),
 
     SG_SUM_POS_COL_EQUAL(programs(PPMPPPIPK),
