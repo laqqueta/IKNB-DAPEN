@@ -36,56 +36,56 @@ import static id.go.ojk.metadata.util.constants.ProgramType.*;
 public enum E7007KupMValidationsConfig implements ILbltMetadataValidation, IValidationConverter {
 
     SG_EQUAL_SUM_POS_1(programs(PPMPM),
-            () -> UtilSegmentValidation.genEqualsFormula("3|4|5",
+            () -> UtilSegmentValidation.genEqualsFormula("3",
                     R_KUP0201020000.getObject().getKey(),
                     R_KUP0201010000.getObject().getKey(),
                     UtilMetadata.genMessageTotal(R_KUP0201020000.getObject().getValue(),
                             R_KUP0201010000.getObject().getValue()))),
 
     SG_EQUAL_SUM_POS_2(programs(PPMPM),
-            () -> UtilSegmentValidation.genEqualsFormula("3|4|5",
+            () -> UtilSegmentValidation.genEqualsFormula("3",
                     R_KUP0203020000.getObject().getKey(),
                     R_KUP0203010000.getObject().getKey(),
                     UtilMetadata.genMessageTotal(R_KUP0203020000.getObject().getValue(),
                             R_KUP0203010000.getObject().getValue()))),
 
     SG_EQUAL_SUM_POS_3(programs(PPMPM),
-            () -> UtilSegmentValidation.genEqualsFormula("3|4|5",
+            () -> UtilSegmentValidation.genEqualsFormula("3",
                     R_KUP0204020000.getObject().getKey(),
                     R_KUP0204010000.getObject().getKey(),
                     UtilMetadata.genMessageTotal(R_KUP0204020000.getObject().getValue(),
                             R_KUP0204010000.getObject().getValue()))),
 
     SG_EQUAL_SUM_POS_4(programs(PPMPM),
-            () -> UtilSegmentValidation.genEqualsFormula("3|4|5",
+            () -> UtilSegmentValidation.genEqualsFormula("3",
                     R_KUP0205020000.getObject().getKey(),
                     R_KUP0205010000.getObject().getKey(),
                     UtilMetadata.genMessageTotal(R_KUP0205020000.getObject().getValue(),
                             R_KUP0205010000.getObject().getValue()))),
 
     SG_EQUAL_ROW_PLUS_1(programs(PPMPM),
-            () -> UtilSegmentValidation.genEqualsFormula("3|4|5",
+            () -> UtilSegmentValidation.genEqualsFormula("3",
                     R_KUP0202040000.getObject().getKey(),
                     UtilMetadata.genPlusRow(getObjects(ProgramType.PPMPM), 3, 5),
                     UtilMetadata.genMessage(R_KUP0202040000.getObject().getValue(),
                             UtilMetadata.genPlusDesc(getObjects(ProgramType.PPMPM), 3, 5)))),
 
     SG_EQUAL_ROW_PLUS_2(programs(PPMPM),
-            () -> UtilSegmentValidation.genEqualsFormula("3|4|5",
+            () -> UtilSegmentValidation.genEqualsFormula("3",
                     R_KUP0200000100.getObject().getKey(),
                     UtilMetadata.genPlusRow(getObjects(ProgramType.PPMPM), new int[]{2, 6, 8, 10, 12}),
                     UtilMetadata.genMessage(R_KUP0200000100.getObject().getValue(),
                             UtilMetadata.genPlusDesc(getObjects(ProgramType.PPMPM), new int[]{2, 6, 8, 10, 12})))),
 
     SG_EQUAL_ROW_MINUS_3(programs(PPMPM),
-            () -> UtilSegmentValidation.genEqualsFormula("3|4|5",
+            () -> UtilSegmentValidation.genEqualsFormula("3",
                     R_KUP0200000200.getObject().getKey(),
                     UtilMetadata.genMinusRow(getObjects(ProgramType.PPMPM), new int[]{0, 13}),
                     UtilMetadata.genMessage(R_KUP0200000200.getObject().getValue(),
                             UtilMetadata.genPlusDesc(getObjects(ProgramType.PPMPM), new int[]{0, 13})))),
 
     SG_EQUAL_FORM_LAN(programs(PPMPM),
-            () -> UtilSegmentValidationV2.genEqualsForm("3|4|5",
+            () -> UtilSegmentValidationV2.genEqualsForm("3",
                     R_KUP0100000000.getObject().getKey(), EFormLaporanBulananTahunan.LTLB_LAN.getCode(),
                     "3", ER7001PosLtlbDppkLan.R_LAN0111000000.getObject().getKey(),
                     UtilMetadata.genMessage(R_KUP0100000000.getObject().getValue(), ER7001PosLtlbDppkLan.R_LAN0111000000.getObject().getValue()) +
@@ -104,35 +104,35 @@ public enum E7007KupMValidationsConfig implements ILbltMetadataValidation, IVali
                 R_KUP0206000000.getObject().getValue(),
                 R_KUP0207000000.getObject().getValue()));
 
-        return UtilSegmentValidationV2.genOperatorProyeksi("3|4|5",
+        return UtilSegmentValidationV2.genOperatorProyeksi("3",
                 R_KUP0209000000.getObject().getKey(),
                 formula, "I|II", "III", formulaErr);
     }),
 
 
     SG_REF_KODE_PENDANAAN(programs(PPMPM),
-            () -> UtilSegmentValidation.genReference("3|4|5",
+            () -> UtilSegmentValidation.genReference("3",
                     UtilMetadata.genPipeRow(getObjects(ProgramType.PPMPM), new int[]{19}),
                     EHeaderMetadataSharedLblt.R023.getNumber())),
 
     SG_ROW_DATA_TYPE_NUMERIC_1(programs(PPMPM), () ->
-            UtilSegmentValidation.genRegexNumeric("3|4|5",
+            UtilSegmentValidation.genRegexNumeric("3",
                     UtilMetadata.genPipeRowExcept(getObjects(PPMPM), new int[]{0, 1, 7, 9, 11, 14, 15, 16, 17, 18, 19}))),
 
     SG_ROW_DATA_TYPE_NUMERIC_2(programs(PPMPM), () ->
-            UtilSegmentValidation.genRegexNumericNegative("3|4|5",
+            UtilSegmentValidation.genRegexNumericNegative("3",
                     UtilMetadata.genPipeRow(getObjects(PPMPM), new int[]{0, 14}))),
 
     SG_ROW_DATA_TYPE_NUMERIC_3(programs(PPMPM), () ->
-            UtilSegmentValidation.genRegexNumericDot("3|4|5",
+            UtilSegmentValidation.genRegexNumericDot("3",
                     UtilMetadata.genPipeRow(getObjects(PPMPM), new int[]{15, 16, 17}))),
 
     SG_ROW_DATA_TYPE_NUMERIC_4(programs(PPMPM), () ->
-            UtilSegmentValidation.genRegexAlfa("3|4|5",
+            UtilSegmentValidation.genRegexAlfa("3",
                     UtilMetadata.genPipeRow(getObjects(PPMPM), new int[]{18}))),
 
     SG_ROW_DATA_TYPE_NUMERIC_5(programs(PPMPM), () ->
-            UtilSegmentValidation.genRegexAlfaNumeric("3|4|5",
+            UtilSegmentValidation.genRegexAlfaNumeric("3",
                     UtilMetadata.genPipeRow(getObjects(PPMPM), new int[]{19}))),
 
     SG_ROW_DATA_TYPE_TEXT(programs(PPMPM), () ->
@@ -140,19 +140,19 @@ public enum E7007KupMValidationsConfig implements ILbltMetadataValidation, IVali
                     UtilMetadata.genPipeRow(ER7007PosLtlbDppkKup.getObjects(ProgramType.PPMPM), new int[]{1, 7, 9, 11}))),
 
     SG_ROW_DATA_LEN_1(programs(PPMPM), () ->
-            UtilSegmentValidation.genLength("3|4|5",
+            UtilSegmentValidation.genLength("3",
                     UtilMetadata.genPipeRow(getObjects(PPMPM), new int[]{18}), 1, 3)),
 
     SG_ROW_DATA_LEN_2(programs(PPMPM), () ->
-            UtilSegmentValidation.genLength("3|4|5",
+            UtilSegmentValidation.genLength("3",
                     UtilMetadata.genPipeRow(getObjects(PPMPM), new int[]{19}), 5, 5)),
 
     SG_ROW_DATA_LEN_3(programs(PPMPM), () ->
-            UtilSegmentValidation.genLength("3|4|5",
+            UtilSegmentValidation.genLength("3",
                     UtilMetadata.genPipeRow(getObjects(PPMPM), new int[]{15, 16, 17}), 4, 18)),
 
     SG_ROW_DATA_LEN_4(programs(PPMPM), () ->
-            UtilSegmentValidation.genLength("3|4|5",
+            UtilSegmentValidation.genLength("3",
                     UtilMetadata.genPipeRowExcept(getObjects(PPMPM), new int[]{1, 7, 9, 11, 15, 16, 17, 18, 19}), 1, 18)),
 
     SG_ROW_DATA_LEN_5(programs(PPMPM), () ->

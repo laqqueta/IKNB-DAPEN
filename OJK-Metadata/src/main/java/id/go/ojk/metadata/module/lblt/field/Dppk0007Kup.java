@@ -59,10 +59,10 @@ public enum Dppk0007Kup implements ILbltFieldMetadata {
     NILAI_PROGRAM_MANFAAT_PENSIUN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPMPPPIPK),
             sf(3, null, "Nilai Program Manfaat Pensiun", sv(M, 1, 1000, freeText))),
 
-    NILAI_PROGRAM_MANFAAT_PENSIUN_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK,PPMPM, PPMPPPIPK),
+    NILAI_PROGRAM_MANFAAT_PENSIUN_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPPPIPK),
             sf(4, null, "Nilai Program Manfaat Pensiun Lainnya", sv(M, 1, 1000, freeText))),
 
-    NILAI_PROGRAM_MANFAAT_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPMPPPIPK),
+    NILAI_PROGRAM_MANFAAT_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPPPIPK),
             sf(5, null, "Nilai Program Manfaat Lain", sv(M, 1, 1000, freeText))),
 
     /* Gabungan Additional Field */

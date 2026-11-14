@@ -294,7 +294,7 @@ public enum E7003NrcKValidationsConfig implements ILbltMetadataValidation, IVali
                     ER7003PosLtlbDppkNrc.R_NRC0104070000.getObject().getKey(), "4", "6",
                     EFormLaporanBulananTahunan.LTLB_PILL.getCode(),
                     ER7047PosLtlbDppkPill.R_PILL010000.getObject().getKey(),
-                    "PIHI|Nominal|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain"
+                    "PILL|Nominal|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain"
             )),
 
     SG_SUMIF_ASLN(programs(PPIPK),

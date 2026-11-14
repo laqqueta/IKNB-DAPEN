@@ -151,10 +151,10 @@ public enum E7004LphuMValidationsConfig implements ILbltMetadataValidation, IVal
         String comparatorRangeField = "3";
         String comparatorCriteriaField = "4|2";
         String criteriaKey = "0";
-        String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3") + "$" + additionalCriteria;
-        String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3") + "$" + additionalCriteriaErr;
-        String sumCriteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
-        String sumCriteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
+        String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3|UUS1") + "$" + additionalCriteria;
+        String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3|UUS1") + "$" + additionalCriteriaErr;
+        String sumCriteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3|UUS1");
+        String sumCriteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3|UUS1");
 
         return UtilSegmentValidationV2.genMultiCriteriaSumIf("2", row,
                 formComparator, comparatorRow,
@@ -166,10 +166,10 @@ public enum E7004LphuMValidationsConfig implements ILbltMetadataValidation, IVal
         String sumField = "2";
         String rangeField = "3";
         String criteriaField = "4";
-        String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
-        String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
-        String sumCriteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
-        String sumCriteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
+        String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3|UUS1");
+        String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3|UUS1");
+        String sumCriteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3|UUS1");
+        String sumCriteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3|UUS1");
 
         return UtilSegmentValidationV2.genSumIf("2", row,
                 comparatorForm, comparatorRow,

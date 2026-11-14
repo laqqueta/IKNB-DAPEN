@@ -47,7 +47,7 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
     R_LAN0103040000_DPLK("LAN0103040000", "Piutang Hasil Investasi", EnumSet.of(ProgramType.DPLK)),
     R_LAN0103050000("LAN0103050000", "- Iuran Sukarela Peserta", EnumSet.of(ProgramType.ALL)),
     R_LAN0103050000_DPLK("LAN0103050000", "Piutang Lain-Lain", EnumSet.of(ProgramType.DPLK)),
-    R_LAN0103051000("LAN0103051000", "- Iuran Tambahan", EnumSet.of(ProgramType.PPMPK, ProgramType.PPMPM, ProgramType.PPMPPPIPK)),
+    R_LAN0103051000("LAN0103051000", "- Iuran Tambahan", EnumSet.of(ProgramType.PPMPK, ProgramType.PPMPM)),
     R_LAN0103060000("LAN0103060000", "Piutang Bunga Keterlambatan Iuran", EnumSet.of(ProgramType.ALL)),
     R_LAN0103070000("LAN0103070000", "Beban Dibayar di Muka", EnumSet.of(ProgramType.ALL)),
     R_LAN0103080000("LAN0103080000", "Piutang Investasi", EnumSet.of(ProgramType.ALL)),
@@ -96,20 +96,14 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
         ER7001PosLtlbDppkLan[] eVals = ER7001PosLtlbDppkLan.values();
 
         List<KeyValueString> res = Arrays.stream(eVals)
-                .filter(eEnum -> eEnum.jenisProgram.contains(ProgramType.PPMPK) || eEnum.jenisProgram.contains(ProgramType.ALL))
+                .filter(eEnum ->
+                        (eEnum.jenisProgram.contains(ProgramType.PPMPK) || eEnum.jenisProgram.contains(ProgramType.ALL)) && !eEnum.equals(R_LAN0103051000))
                 .map(ER7001PosLtlbDppkLan::getObject).collect(Collectors.toList());
 
         res.addAll(Arrays.stream(eVals)
                 .filter(eEnum -> eEnum.jenisProgram.contains(ProgramType.PPIPK) || eEnum.jenisProgram.contains(ProgramType.ALL))
                 .map(ER7001PosLtlbDppkLan::getObject)
                 .collect(Collectors.toList()));
-
-        for (int i = 0; i < res.size(); i++) {
-            if (res.get(i).getKey().equals(R_LAN0103051000.getObject().getKey())) {
-                res.remove(i);
-                i -= 1;
-            }
-        }
 
         return res;
     }
@@ -125,27 +119,6 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
         }
 
         return res;
-    }
-
-    private static List<KeyValueString> getNonGabunganObjectsTmp(ProgramType jenisProgram) {
-        List<KeyValueString> res = new ArrayList<>();
-        for (ER7001PosLtlbDppkLan eEnum : ER7001PosLtlbDppkLan.values()) {
-            if (!jenisProgram.equals(ProgramType.DPLK) && (eEnum.jenisProgram.contains(jenisProgram) || eEnum.jenisProgram.contains(ProgramType.ALL))) {
-                res.add(eEnum.getObject());
-            } else if (jenisProgram.equals(ProgramType.DPLK) && eEnum.jenisProgram.contains(ProgramType.DPLK)) {
-                res.add(eEnum.getObject());
-            }
-        }
-
-        int idxToRmv = 0;
-        for (int i = 0; i < res.size(); i++) {
-            if (res.get(i).getKey().equals(R_LAN0103051000.getObject().getKey())) idxToRmv = i;
-        }
-
-        res.remove(idxToRmv);
-
-        return res;
-
     }
 
     public static String getName() {
@@ -280,8 +253,8 @@ public enum ER7001PosLtlbDppkLan implements IObject<KeyValueString> {
 
         REF_CONFIG_PPMPKPPIPK {
             private final ProgramType programType = ProgramType.PPMPPPIPK;
-            private final String rowPPMP = UtilMetadata.genPipeRow(getNonGabunganObjectsTmp(ProgramType.PPMPK));
-            private final String rowPPIP = UtilMetadata.genPipeRow(getNonGabunganObjectsTmp(ProgramType.PPIPK));
+            private final String rowPPMP = UtilMetadata.genPipeRow(getObjects(ProgramType.PPMPK));
+            private final String rowPPIP = UtilMetadata.genPipeRow(getObjects(ProgramType.PPIPK));
 
             @Override
             public String savePos() {

@@ -67,13 +67,13 @@ public enum Dppk0017Ras1 implements ILbltFieldMetadata {
     MANFAAT_PENSIUN_PPMPM_PPIPM(sectors(KONVENSIONAL, SYARIAH), programs(PPMPM, PPIPM),
             sf(2, null, "Manfaat Pensiun", sv(C, 1, 18, freeText))),
 
-    MANFAAT_PENSIUN_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, DPLK, PPMPPPIPK),
+    MANFAAT_PENSIUN_LAINNYA(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK, PPMPPPIPK),
             sf(3, null, "Manfaat Pensiun Lainnya", sv(M, 1, 18, freeText))),
 
-    MANFAAT_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, PPIPK, DPLK, PPMPPPIPK),
+    MANFAAT_LAIN(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPIPK, DPLK, PPMPPPIPK),
             sf(4, null, "Manfaat lain", sv(M, 1, 18, freeText))),
 
-    TOTAL_PPMP(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, PPMPM, DPLK, PPMPPPIPK),
+    TOTAL_PPMP(sectors(KONVENSIONAL, SYARIAH), programs(PPMPK, DPLK, PPMPPPIPK),
             sf(5, null, "Total", sv(C, 1, 18, freeText))),
 
     TOTAL_PPIP(sectors(KONVENSIONAL, SYARIAH), programs(PPIPK),

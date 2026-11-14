@@ -53,10 +53,10 @@ public enum E7001LanMValidationsConfig implements ILbltMetadataValidation, IVali
                         + EFormLaporanBulananTahunan.LTLB_DPJKV.getCode();
                 String comparatorRows = ER7023PosLtlbDppkDpjka.R_DPJKA010000.getObject().getKey() + "|"
                         + ER7024PosLtlbDppkDpjkv.R_DPJKV010000.getObject().getKey();
-                String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
-                String sumCriteriaCond = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
-                String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
-                String sumConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
+                String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3|UUS1");
+                String sumCriteriaCond = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3|UUS1");
+                String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3|UUS1");
+                String sumConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3|UUS1");
                 return UtilSegmentValidationV2.genMultiFormSumIf(
                         "3", ER7001PosLtlbDppkLan.R_LAN0101020000.getObject().getKey(),
                         comparatorForms, comparatorRows,
@@ -159,12 +159,12 @@ public enum E7001LanMValidationsConfig implements ILbltMetadataValidation, IVali
     SG_SUMIF_PROP(programs(PPIPM),
             () -> {
                 // For Validation Kode Pos LAN0101180000, LAN0101190000, and LAN0101200000
-                String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3")
+                String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3|UUS1")
                         + "$" + ER1250Properti.getPipedReferenceKeys();
-                String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3")
+                String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3|UUS1")
                         + "$" + ER1250Properti.getPipedReferenceKeyValues();
-                String sumCriteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
-                String sumCriteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
+                String sumCriteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3|UUS1");
+                String sumCriteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3|UUS1");
                 return UtilSegmentValidationV2.genMultiCriteriaSumIf("3", UtilMetadata.genPipeRow(ER7001PosLtlbDppkLan.getObjects(PPIPM), 17, 19),
                         EFormLaporanBulananTahunan.LTLB_PROP.getCode(),
                         ER7040PosLtlbDppkProp.R_PROP010000.getObject().getKey(), "11", "17|2", "3",
@@ -176,16 +176,16 @@ public enum E7001LanMValidationsConfig implements ILbltMetadataValidation, IVali
             () -> sumIfValidationHelper(
                     ER7001PosLtlbDppkLan.R_LAN0103010000.getObject().getKey(), "6", "7",
                     EFormLaporanBulananTahunan.LTLB_KASB.getCode(),
-                    ER7044PosLtlbDppkBbmk.R_BBMK010000.getObject().getKey(),
+                    ER7041PosLtlbDppkKasb.R_KASB010000.getObject().getKey(),
                     "KASB|Nominal|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain/LCF"
             )),
 
     SG_SUMIF_PIUT(programs(PPIPM),
             () -> {
-                String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
-                String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
-                String sumCriteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
-                String sumCriteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
+                String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3|UUS1");
+                String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3|UUS1");
+                String sumCriteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3|UUS1");
+                String sumCriteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3|UUS1");
                 return UtilSegmentValidationV2.genSumIf(
                         "3", UtilMetadata.genPipeRow(ER7001PosLtlbDppkLan.getObjects(PPIPM), 22, 24),
                         EFormLaporanBulananTahunan.LTLB_PIUT.getCode(),
@@ -205,10 +205,10 @@ public enum E7001LanMValidationsConfig implements ILbltMetadataValidation, IVali
         String errMsg = "PIUB|Piutang Bunga Iuran Peserta dan Piutang Bunga Iuran Pemberi Kerja|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain/LCF";
 
         String sumField = "3";
-        String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
-        String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
-        String sumCriteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
-        String sumCriteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
+        String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3|UUS1");
+        String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3|UUS1");
+        String sumCriteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3|UUS1");
+        String sumCriteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3|UUS1");
 
         return UtilSegmentValidationV2.genSumIfMultiField("3", posCode,
                 formCode, formObjects,

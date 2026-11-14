@@ -253,13 +253,13 @@ public enum E7003NrcMValidationsConfig implements ILbltMetadataValidation, IVali
         String formObjects = ER7043PosLtlbDppkPiub.R_PIUB010000.getObject().getKey();
         String errMsg = "PIUB|Piutang Bunga Iuran Peserta dan Piutang Bunga Iuran Pemberi Kerja|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain/LCF";
 
-        String sumField = "3";
-        String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MPL1|MPL2|MPL3|ML1|ML2|ML3|ML4|ML5|ML6|UUS1|UUS2|UUS3");
-        String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MPL1|MPL2|MPL3|ML1|ML2|ML3|ML4|ML5|ML6|UUS1|UUS2|UUS3");
+        String sumField = "2";
+        String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3|UUS1");
+        String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3|UUS1");
         String sumCriteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3|UUS1");
         String sumCriteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3|UUS1");
 
-        return UtilSegmentValidationV2.genSumIfMultiField(UtilMetadata.genPipeColumnExcept(2, 15, new int[]{12}), posCode,
+        return UtilSegmentValidationV2.genSumIfMultiField("2", posCode,
                 formCode, formObjects,
                 rangeField, criteriaField, sumField, criteriaCondition, sumCriteriaCondition,
                 errMsg, criteriaConditionErr, sumCriteriaConditionErr);
@@ -291,10 +291,10 @@ public enum E7003NrcMValidationsConfig implements ILbltMetadataValidation, IVali
 
     SG_SUMIF_PILL(programs(PPIPM),
             () -> sumIfValidationHelper(
-                    ER7003PosLtlbDppkNrc.R_NRC0104070000.getObject().getKey(), "4", "5",
+                    ER7003PosLtlbDppkNrc.R_NRC0104070000.getObject().getKey(), "4", "6",
                     EFormLaporanBulananTahunan.LTLB_PILL.getCode(),
                     ER7047PosLtlbDppkPill.R_PILL010000.getObject().getKey(),
-                    "PIHI|Nominal|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain"
+                    "PILL|Nominal|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain"
             )),
 
     //

@@ -295,7 +295,7 @@ public enum E7003NrcGabunganValidationsConfig implements ILbltMetadataValidation
                     ER7003PosLtlbDppkNrc.R_NRC0104070000_TMP_GABUNGAN.getObject().getKey(), "5", "7",
                     EFormLaporanBulananTahunan.LTLB_PILL.getCode(),
                     ER7047PosLtlbDppkPill.R_PILL010000.getObject().getKey(),
-                    "PIHI|Nominal|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain"
+                    "PILL|Nominal|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain"
             )),
 
     SG_SUMIF_ASLN_PPMP(programs(PPMPPPIPK),
@@ -727,7 +727,7 @@ public enum E7003NrcGabunganValidationsConfig implements ILbltMetadataValidation
                     ER7003PosLtlbDppkNrc.R_NRC0104070000_TMP_GABUNGAN.getObject().getKey(), "5", "7",
                     EFormLaporanBulananTahunan.LTLB_PILL.getCode(),
                     ER7047PosLtlbDppkPill.R_PILL010000.getObject().getKey(),
-                    "PIHI|Nominal|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain"
+                    "PILL|Nominal|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain"
             )),
 
     SG_SUMIF_ASLN_PPIP(programs(PPMPPPIPK),

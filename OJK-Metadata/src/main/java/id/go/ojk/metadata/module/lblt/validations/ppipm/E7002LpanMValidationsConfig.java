@@ -39,20 +39,20 @@ public enum E7002LpanMValidationsConfig implements ILbltMetadataValidation, IVal
 
     SG_SUMIF_IUR(programs(PPIPM),
             () -> {
-                String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
-                String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
-                String sumCriteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
-                String sumCriteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
+                String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3|UUS1");
+                String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3|UUS1");
+                String sumCriteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3|UUS1");
+                String sumCriteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3|UUS1");
                 return UtilSegmentValidationV2.genSumIf("2",
                         UtilMetadata.genPipeRow(ER7002PosLtlbDppkLpan.getObjects(ProgramType.PPIPM), 7, 9),
                         EFormLaporanBulananTahunan.LTLB_IUR.getCode(),
                         ER7061PosLtlbDppkIur.R_IUR010000.getObject().getKey(),
-                        "7|5|8", "13", "2", criteriaCondition, sumCriteriaCondition,
+                        "7|5|10", "13", "2", criteriaCondition, sumCriteriaCondition,
                         "IUR|Manfaat Pensiun/Manfaat Pensiun Lainnya/Manfaat Lain",
                         criteriaConditionErr, sumCriteriaConditionErr,
                         "Iuran Jatuh Tempo - Iuran Normal Pemberi Kerja Jumlah|" +
                                 "Iuran Jatuh Tempo - Iuran Normal Peserta Jumlah|" +
-                                "Iuran Jatuh Tempo - Iuran Sukarela Peserta");
+                                "Penerimaan Iuran - Iuran Sukarela Peserta");
             }
     ),
 
@@ -108,8 +108,8 @@ public enum E7002LpanMValidationsConfig implements ILbltMetadataValidation, IVal
 
     SG_EQUAL_FORMULA_4(programs(PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula("2",
-                    R_LPAN0300000000.getObject().getKey(), UtilMetadata.genMinusRow(getObjects(ProgramType.PPIPM), new int[]{13, 20}),
-                    UtilMetadata.genMessage(R_LPAN0300000000.getObject().getValue(), UtilMetadata.genMinusDesc(getObjects(ProgramType.PPIPM), new int[]{13, 20})))),
+                    R_LPAN0300000000.getObject().getKey(), UtilMetadata.genMinusRow(getObjects(ProgramType.PPIPM), new int[]{12, 20}),
+                    UtilMetadata.genMessage(R_LPAN0300000000.getObject().getValue(), UtilMetadata.genMinusDesc(getObjects(ProgramType.PPIPM), new int[]{12, 20})))),
 
     SG_EQUAL_FORMULA_5(programs(PPIPM),
             () -> UtilSegmentValidation.genEqualsFormula("2",
@@ -202,10 +202,10 @@ public enum E7002LpanMValidationsConfig implements ILbltMetadataValidation, IVal
     private static SegmentValidation genSumIfValidation(String posCode, String rangeField, String criteriaField, String formCode,
                                                         String formObjects, String errMsg) {
         String sumField = "2";
-        String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
-        String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
-        String sumCriteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3");
-        String sumCriteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3");
+        String criteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3|UUS1");
+        String criteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3|UUS1");
+        String sumCriteriaCondition = ER1255JenisManfaat.getPipedReferenceKeys("MP1|MP2|MP3|UUS1");
+        String sumCriteriaConditionErr = ER1255JenisManfaat.getPipedReferenceKeyValues("MP1|MP2|MP3|UUS1");
 
         return UtilSegmentValidationV2.genSumIf("2", posCode,
                 formCode, formObjects,
